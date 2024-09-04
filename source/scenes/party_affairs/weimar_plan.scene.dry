@@ -1,0 +1,64 @@
+title: The Weimar Plan
+new-page: true
+is-card: true
+view-if: z_relation >= 50 and ddp_relation >= 40 and nazi_urgency > 0 and unemployed > 12 and moderate_plan_adopted == 1 and weimar_rejected != 1
+on-arrival: weimar_plan_timer = 3; month_actions += 1
+card-image: img/iron_front.png
+tags: party_affairs; antifascism
+
+= The Weimar Plan?
+
+Following our decision to adopt the Reformist economic plan, some have called for us to canvas the plan through the "Weimar" parties of Zentrum and the DDP so as to create a common economic plan for the republican parties to rally around together and combat extremism. 
+
+[? if neorevisionism == 1 : The neorevisionists have joined in these calls and see it as a great way to create a mass movement to defend the republic. ?]
+
+[? if weimar_coalition == 1 : This will be made easier by the fact that we are already governing as part of a coalition with the parties in question. ?]
+
+[? if grand_coalition == 1 : This will be made harder by opposition to the idea from the DVP in our government, who will influence Zentrum and DDP against the idea. ?]
+
+- @canvas_1: We will attempt to get Zentrum and the DDP behind this idea.
+- @canvas_2: We will attempt to get Zentrum and the DDP behind this idea.
+- @canvas_3: We will attempt to get Zentrum and the DDP behind this idea.
+- @adopt: We will convince Zentrum and the DDP to adopt our plan!
+- @sovereignty: The SPD will not compromise its status as a worker's party by entering such alliances with the bourgeois parties.
+
+@canvas_1
+view-if: grand_coalition != 1 and weimar_coalition != 1
+choose-if: (neorevisionist_strength + (reformist_strength/2))-left_strength > 0
+unavailable_subtitle: The Left would never allow this to happen.
+on-arrival: weimar_support += ((10+unemployed+nsdap_r+kpd_r)*(1-dissent)+((neorevisionist_strength+(reformist_strength/2))/10)-(left_strength/10)+((z_relation + ddp_relation)/10)/coalition_dissent; left_strength -= 2; left_dissent += 2; kpd_relation -= 4; z_relation -= 2;
+
+We are attempting to convince Zentrum and the DDP to adopt our economic plan. This will be made easier by increasing our relations.
+
+@canvas_2
+view-if: grand_coalition == 1
+choose-if: (neorevisionist_strength + (reformist_strength/2))-left_strength > 0
+unavailable_subtitle: The Left would never allow this to happen.
+on-arrival: weimar_support += (((10+unemployed+nsdap_r+kpd_r)/2)*(1-dissent)+((neorevisionist_strength+(reformist_strength/2))/10)-(left_strength/10)+((z_relation + ddp_relation)/15)/coalition_dissent; left_strength -= 2; left_dissent += 2; kpd_relation -= 4; z_relation -= 5; coalition_dissent += 1;
+
+We are attempting to convince our coalition partners to adopt our economic plan. The DVP is opposing our efforts and influencing Zentrum against the idea, making it significantly harder and threatening the integrity of our coalition.
+                               
+@canvas_3
+view-if: weimar_coalition == 1
+choose-if: (neorevisionist_strength + (reformist_strength/2))-left_strength > 0
+unavailable_subtitle: The Left would never allow this to happen.
+on-arrival: weimar_support += (((10+unemployed+nsdap_r+kpd_r)*1.5)*(1-dissent)+((neorevisionist_strength+(reformist_strength/2))/10)-(left_strength/10)+((z_relation + ddp_relation)/5)/coalition_dissent; left_strength -= 2; left_dissent += 2; kpd_relation -= 4;
+
+We are attempting to convince our coalition partners to adopt our economic plan. This is made significantly easier by our pre-existing cooperation in the governance of Germany.
+                               
+@adopt
+view-if: weimar_support >= 100
+on-arrival: weimar_plan_adopted = 1; moderate_plan_support += 1; workers_spd += ((4*(1-dissent))*(pro_republic/100)); unemployed_spd += ((3*(1-dissent))*(pro_republic/100)); rural_spd += ((3*(1-dissent))*(pro_republic/100)); new_middle_spd += ((3*(1-dissent))*(pro_republic/100)); old_middle_spd += ((3*(1-dissent))*(pro_republic/100)); workers_ddp += 2*(pro_republic/100); unemployed_nsdap -= 2*(pro_republic/100); unemployed_kpd -= 2*(pro_republic/100); rural_z += 3*(pro_republic/100); new_middle_ddp += 3*(pro_republic/100); old_middle_ddp += 2*(pro_republic/100); old_middle_z += 2*(pro_republic/100); peoples_party_support += 1; neorevisionist_strength += 5; left_strength -= 2; left_dissent += 2; kpd_relation -= 5; pro_republic += 10*(((z_relation + ddp_relation)/2)/100);
+
+We have finally convinced Zentrum and the DDP to adopt our economic plan and hold a rally between our parties on its behalf.
+
+[? if pro_republic < 40 : Such a show of democratic solidarity bolsters republican forces, but as extremist and anti-democratic rhetoric has recently entered the mainstream, many who hear our message remain unconvinced, and many on the Left of the party even criticize the rally and our alignment with the bourgeois parties. ?]
+
+[? if pro_republic < 60 and > 40 : Such a show of democratic solidarity bolsters republican forces, helping match the now prevalent anti-democratic rhetoric from the far-left and far-right, though many on the Left oppose our decision to align with the bourgeois parties. ?]
+
+[? if pro_republic > 60 : Such a show of democratic solidarity has greatly bolstered republican forces, helping combat the increasingly prevalent anti-democratic rhetoric from the far-left and far-right. Nevertheless, some on the Left of the party still oppose our alignment with the bourgeois parties. ?]
+                               
+@sovereignty
+on-arrival: weimar_rejected = 1; neorevisionist_strength -= 5; neorevisionist_dissent += 10
+
+
