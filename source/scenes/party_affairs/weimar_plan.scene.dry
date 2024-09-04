@@ -8,13 +8,7 @@ tags: party_affairs; antifascism
 
 = The Weimar Plan
 
-Following our decision to adopt the Reformist economic plan, some have called for us to canvas the plan through the "Weimar" parties of Zentrum and the DDP so as to create a common economic plan for the republican parties to rally around together and combat extremism. 
-
-[? if neorevisionism == 1 : The neorevisionists have joined in these calls and see it as a great way to create a mass movement to defend the republic. ?]
-
-[? if weimar_coalition == 1 : This will be made easier by the fact that we are already governing as part of a coalition with the parties in question. ?]
-
-[? if grand_coalition == 1 : This will be made harder by opposition to the idea from the DVP in our government, who will influence Zentrum and DDP against the idea. ?]
+Following our decision to adopt the Reformist economic plan, some have called for us to canvas the plan through the "Weimar" parties of Zentrum and the DDP so as to create a common economic plan for the republican parties to rally around together and combat extremism. [? if neorevisionism == 1 : The neorevisionists have joined in these calls and see it as a great way to create a mass movement to defend the republic. ?] [? if weimar_coalition == 1 : This will be made easier by the fact that we are already governing as part of a coalition with the parties in question. ?] [? if grand_coalition == 1 : This will be made harder by opposition to the idea from the DVP in our government, who will influence Zentrum and DDP against the idea. ?]
 
 - @canvas_1: We will attempt to get Zentrum and the DDP behind this idea.
 - @canvas_2: We will attempt to get Zentrum and the DDP behind this idea.
