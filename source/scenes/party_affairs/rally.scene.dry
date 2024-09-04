@@ -59,6 +59,8 @@ Mass rallies are a common feature of social democratic life, especially in the l
 - @democracy: Expanding our nascent democracy and defending it against dictatorship and fascism.
 - @pacifism: Opposing war, nationalism, and militarism at all costs.
 - @wtb: Support the WTB plan!
+- @weimar_1: A joint rally by the Weimar parties on behalf of our economic plan, tauting it as a republican compromise.
+- @weimar_2: A joint rally by the Weimar parties on behalf of our economic plan, tauting it as a republican compromise.
 - @local: A mixture of various local and national concerns that resonate most with the audience.
 - @easy_discard
 
@@ -94,6 +96,24 @@ on-arrival: wtb_support += 1; workers_spd += 6*(1-dissent); unemployed_spd += 6*
 
 The WTB plan has become a popular rallying cry for our party. The workers are eager to go back to work, and that is exactly what the plan promises.
 
+@weimar_1
+view-if: moderate_plan_adopted = 1
+subtitle: We will first need to convince our Weimar partners of the plan's merits.
+unavailable-subtitle: Our Weimar partners are not willing to be convinced of the plan's merits.
+choose-if: z_relation >= 50 and ddp_relation >= 40 and nazi_urgency > 0 and unemployed > 12
+go-to: weimar_plan
+
+@weimar_2
+view-if: weimar_plan_adopted = 1
+on-arrival: moderate_plan_support += 1; workers_spd += ((4*(1-dissent))*(pro_republic/100)); unemployed_spd += ((3*(1-dissent))*(pro_republic/100)); rural_spd += ((3*(1-dissent))*(pro_republic/100)); new_middle_spd += ((3*(1-dissent))*(pro_republic/100)); old_middle_spd += ((3*(1-dissent))*(pro_republic/100)); workers_ddp += 2*(pro_republic/100); unemployed_nsdap -= 2*(pro_republic/100); unemployed_kpd -= 2*(pro_republic/100); rural_z += 3*(pro_republic/100); new_middle_ddp += 3*(pro_republic/100); old_middle_ddp += 2*(pro_republic/100); old_middle_z += 2*(pro_republic/100); peoples_party_support += 1; neorevisionist_strength += 5; left_strength -= 2; left_dissent += 2; kpd_relation -= 5; pro_republic += 10*(((z_relation + ddp_relation)/2)/100);
+
+We rally alongside politicians from Zentruma and the DDP, united behind our economic plan and support of the republic.
+
+[? if pro_republic < 40 : Such a show of democratic solidarity bolsters republican forces, but as extremist and anti-democratic rhetoric has recently entered the mainstream, many who hear our message remain unconvinced, and many on the Left of the party even criticize the rally and our alignment with the bourgeois parties. ?]
+
+[? if pro_republic < 60 and > 40 : Such a show of democratic solidarity bolsters republican forces, helping match the now prevalent anti-democratic rhetoric from the far-left and far-right, though many on the Left oppose our decision to align with the bourgeois parties. ?]
+
+[? if pro_republic > 60 : Such a show of democratic solidarity has greatly bolstered republican forces, helping combat the increasingly prevalent anti-democratic rhetoric from the far-left and far-right. Nevertheless, some on the Left of the party still oppose our alignment with the bourgeois parties. ?]
 
 @local
 on-arrival: workers_spd += 3*(1-dissent); old_middle_spd += 1*(1-dissent); new_middle_spd += 2*(1-dissent); unemployed_spd += 3*(1-dissent);
