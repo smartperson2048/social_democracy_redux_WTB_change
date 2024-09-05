@@ -51,12 +51,19 @@ Unfortunately, our negotiations have met with failure. The center-right parties 
 @weimar_enact
 title: Urge the coalition to enact the Weimar Plan.
 view-if: weimar_plan_adopted == 1
-choose-if: budget >= 2 and dvp_relation >= 30 and z_relation >= 40
+choose-if: budget >= 2 and unemployed >= 8 and dvp_relation >= 30 and z_relation >= 40
 unavailable-subtitle: There is not enough budget to enact the plan.
 go-to: weimar_success if dvp_relation >= 40 and z_relation >= 50 and (unemployed > 25 or nsdap_r > 25); weimar_failure if dvp_relation < 40 or z_relation < 50 or (unemployed <= 25 and nsdap <= 25)
 
 @weimar_success
-on-arrival: budget -= 2 
+on-arrival: budget -= 2; works_program += 1; unemployed -= 3 if unemployed >= 8; inflation += 1.5; workers_spd += 4*(1-dissent); workers_ddp += 2; unemployed_spd += 3*(1-dissent); unemployed_ddp += 1; new_middle_spd += 1*(1-dissent); new_middle_ddp += 2; old_middle_z += 1; old_middle_ddp += 1; rural_spd += 1*(1-dissent); rural_z += 1; moderate_plan_progress += 1; inflation += 1 if unemployed < 10; z_relation -= 5; dvp_relation -=10
+
+The coalition has, albeit reluctantly, agreed to enact the Weimar Plan under Zentrum’s guidance! However, the coalition is increasingly viewing us as a nuisance and may cease implementation of the plan.
+
+@weimar_failure
+on-arrival: workers_spd -= 2, unemployed_spd -= 3, left_dissent += 5, labor_dissent += 5, reformist_dissent += 5, reformist_strength -= 5, neorevisionist_strength -= 10, z_relation -= 5, dvp_relation -= 5, ddp_relation -= 2
+
+Despite the protests of our Weimar allies in the coalition, our economic plan remains unenacted. This has discredited the Weimar Plan and has hurt our relations with the governing parties as well as our support.
 
 @improve_relations
 title: Improve relations with the parties of the coalition.
