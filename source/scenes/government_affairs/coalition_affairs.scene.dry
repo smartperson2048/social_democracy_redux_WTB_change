@@ -14,6 +14,7 @@ How do we reduce tensions with the coalition?
 
 - @promise_cuts: Agree to the bourgeois plans to cut welfare.
 - @resources: Use our party resources to support our allies.
+- @weimar_convince: Can we convince our partners to adopt our economic plan?
 - @bring_down: Instead, we will bring down the government with a no-confidence vote, and call for new elections.
 - @no_change: Take none of these actions.
 - @easy_discard
@@ -32,6 +33,14 @@ choose-if: resources >= 2
 on-arrival: resources -= 2; coalition_dissent -= 1
 
 By transferring campaign funds to our coalition partners, we can make our policies more acceptable to them. Some would call this corruption, but perhaps it is necessary to save democracy.
+
+@weimar_convince
+subtitle: A shared programme could help combat extremism, but may be hard to accomplish...
+view-if: moderate-plan-adopted == 1
+choose-if: z_relation >= 50 and ddp_relation >= 40 and nazi_urgency > 0 and unemployed > 12
+unavailable-subtitle: Our Weimar partners are not willing to be convinced of the plan's benefits.
+on-arrival: z_relation -= 2
+go-to: weimar_plan
 
 @no_change
 
