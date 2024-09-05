@@ -12,7 +12,8 @@ We are currently acting as external support to the government of Chancellor [+ c
 
 - @break_toleration
 - @urge_against_austerity
-- @weimar_enact
+- @weimar_enact_1
+- @weimar_enact_2
 - @improve_relations
 - @new_grand_coalition
 - @stay_course: Stay the course, for stability's sake.
@@ -48,12 +49,19 @@ on-arrival: z_relation -= 3; dvp_relation -= 3
 
 Unfortunately, our negotiations have met with failure. The center-right parties increasingly see us as a nuisance, and might not wish to continue these negotiations.
 
-@weimar_enact
+@weimar_enact_1
 title: Urge the coalition to enact the Weimar Plan.
-view-if: weimar_plan_adopted == 1
+view-if: weimar_plan_adopted == 1 and president != "Braun"
 choose-if: budget >= 2 and unemployed >= 8 and dvp_relation >= 30 and z_relation >= 40
 unavailable-subtitle: There is not enough budget to enact the plan.
-go-to: weimar_success if ((((((ddp_relation/4)+z_relation)+((nsdap_r*nazi_urgency)-(spd_r/2)-(z_r)+unemployed)*(1-dissent))))-((100-dvp_relation)*2)) >= 20; weimar_failure if ((((((ddp_relation/4)+z_relation)+((nsdap_r*nazi_urgency)-(spd_r/2)-(z_r)+unemployed)*(1-dissent))))-((100-dvp_relation)*2)) < 20
+go-to: weimar_success if ((((((ddp_relation/4)+z_relation)+((nsdap_r*nazi_urgency)-(spd_r/2)-(z_r)+unemployed)*(1-dissent))))-((100-dvp_relation)*2)) >= 50; weimar_failure if ((((((ddp_relation/4)+z_relation)+((nsdap_r*nazi_urgency)-(spd_r/2)-(z_r)+unemployed)*(1-dissent))))-((100-dvp_relation)*2)) < 50
+
+@weimar_enact_2
+title: Urge the coalition to enact the Weimar Plan.
+view-if: weimar_plan_adopted == 1 and president == "Braun"
+choose-if: budget >= 2 and unemployed >= 8 and dvp_relation >= 30 and z_relation >= 40
+unavailable-subtitle: There is not enough budget to enact the plan.
+go-to: weimar_success if ((((((ddp_relation/4)+z_relation)+((nsdap_r*nazi_urgency)-(spd_r/2)-(z_r)+unemployed)*(1-dissent))))-((100-dvp_relation)*2)) >= 25; weimar_failure if ((((((ddp_relation/4)+z_relation)+((nsdap_r*nazi_urgency)-(spd_r/2)-(z_r)+unemployed)*(1-dissent))))-((100-dvp_relation)*2)) < 25
 
 @weimar_success
 on-arrival: budget -= 2; works_program += 1; unemployed -= 3 if unemployed >= 8; inflation += 1.5; workers_spd += 4*(1-dissent); workers_ddp += 2; unemployed_spd += 3*(1-dissent); unemployed_ddp += 1; new_middle_spd += 1*(1-dissent); new_middle_ddp += 2; old_middle_z += 1; old_middle_ddp += 1; rural_spd += 1*(1-dissent); rural_z += 1; moderate_plan_progress += 1; inflation += 1 if unemployed < 10; z_relation -= 5; dvp_relation -=10
