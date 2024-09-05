@@ -61,7 +61,7 @@ on-arrival: budget -= 2; works_program += 1; unemployed -= 3 if unemployed >= 8;
 The coalition has, albeit reluctantly, agreed to enact the Weimar Plan under Zentrum’s guidance! However, the coalition is increasingly viewing us as a nuisance and may cease implementation of the plan.
 
 @weimar_failure
-on-arrival: workers_spd -= 2, unemployed_spd -= 3, left_dissent += 5, labor_dissent += 5, reformist_dissent += 5, reformist_strength -= 5, neorevisionist_strength -= 10, z_relation -= 5, dvp_relation -= 5, ddp_relation -= 2
+on-arrival: workers_spd -= 2; unemployed_spd -= 3; left_dissent += 5; labor_dissent += 5; reformist_dissent += 5; reformist_strength -= 5; neorevisionist_dissent += 5; neorevisionist_strength -= 10; z_relation -= 5; dvp_relation -= 5; ddp_relation -= 2
 
 Despite the protests of our Weimar allies in the coalition, our economic plan remains unenacted. This has discredited the Weimar Plan and has hurt our relations with the governing parties as well as our support.
 
