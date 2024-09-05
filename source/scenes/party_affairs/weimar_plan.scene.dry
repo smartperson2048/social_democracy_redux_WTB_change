@@ -112,6 +112,7 @@ We have finally convinced Zentrum and the DDP to adopt our economic plan and hol
 view-if: weimar_support >= 100 and z_relation < 70
 
 We have made great progress in convincing Zentrum and the DDP to adopt our economic plan, and the right-wing of Zentrum is finally willing to agree, but desire concessions first.
+
 - @promise_them_cuts: Agree to the bourgeois plans to cut welfare.
 - @use_our_relationship: Use our relations to sway them.
 - @resource_gift: Use our party resources to convince them.
