@@ -4,7 +4,7 @@ tags: advisor, reformist
 card-image: img/portraits/BraunOtto.jpg
 view-if: braun_advisor = 1
 new-page: true 
-on-arrival: weimar_willingness = 0; 1 if (z_relation >= 50 and ddp_relation >= 40 and nazi_urgency > 0 and unemployed > 12) or (z_relation >= 70 and ddp_relation >= 50 and unemployed > 10) or (z_relation >= 40 and ddp_relation >= 30 and nazi_urgency > 1 and unemployed > 20) or (z_relation >= 40 and ddp_relation >= 30 and unemployed > 40)
+on-arrival: weimar_willingness = 0; weimar_willingness = 1 if (z_relation >= 50 and ddp_relation >= 40 and nazi_urgency > 0 and unemployed > 12) or (z_relation >= 70 and ddp_relation >= 50 and unemployed > 10) or (z_relation >= 40 and ddp_relation >= 30 and nazi_urgency > 1 and unemployed > 20) or (z_relation >= 40 and ddp_relation >= 30 and unemployed > 40)
 
 = Otto Braun
 
