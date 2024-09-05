@@ -100,6 +100,7 @@ Q.moderate_plan_adopted = 0;
 Q.weimar_rejected = 0
 Q.weimar_plan_adopted = 0
 Q.weimar_support = 0
+Q.weimar_willingness = ((z_relation-50)+((ddp_relation-40)/2)+(nazi_urgency*(unemployed/2)))-(100-dvp_relation)
 
 // organizations
 
@@ -368,7 +369,7 @@ Q.blutmai = 0;
 // have we reformed these institutions to be more democratic?
 Q.judicial_reform = 0;
 Q.bureaucratic_reform = 0;
-Q.military_reform = 0;
+Q.military_reform = 0;+
 Q.womens_rights = 0;
 // level of welfare relative to 1928 (can go negative)
 Q.welfare = 0;
