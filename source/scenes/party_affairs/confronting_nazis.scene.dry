@@ -49,7 +49,8 @@ What do the three arrows stand for?
 - @unity: Unity, Activity, and Discipline.
 - @anti: Opposition to Fascism, Stalinism, and Monarchism.
 - @orgs: The SPD, ADGB, and Reichsbanner.
-- @wtb: Woytinsky, Tarnow, and Baade of the WTB-Plan
+- @wtb: Woytinsky, Tarnow, and Baade of the WTB-Plan.
+- @weipla: The Weimar parties of the SPD, DDP and Zentrum.
 - @all: All of the above.
 
 @unity
@@ -63,6 +64,10 @@ go-to: if_end
 
 @wtb
 view-if: wtb_adopted == 1
+go-to: if_end
+
+@weipla
+view-if: weimar_plan_adopted == 1
 go-to: if_end
 
 @all
