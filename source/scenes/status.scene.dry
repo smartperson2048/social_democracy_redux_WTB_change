@@ -22,7 +22,7 @@ SPD position: [? if spd_toleration : toleration ?][? if spd_in_government : in g
 
 Internal dissent: [+ dissent_percent : dissent +]
 
-DEBUG - Weimar Willingness: [+ ((z_relation-50)+((ddp_relation-40)/2)+(nazi_urgency*(unemployed/2)))-(100-dvp_relation) +]
+DEBUG - Weimar Willingness: [+ (z_relation-50)+((ddp_relation-40)/2)+(nazi_urgency*(unemployed/2))-(100-dvp_relation) +]
 
 = Government
 
