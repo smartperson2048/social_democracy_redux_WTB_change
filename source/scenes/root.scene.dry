@@ -100,7 +100,6 @@ Q.moderate_plan_adopted = 0;
 Q.weimar_rejected = 0
 Q.weimar_plan_adopted = 0
 Q.weimar_support = 0
-Q.weimar_willingness = ((z_relation-50)+((ddp_relation-40)/2)+(nazi_urgency*(unemployed/2)))-(100-dvp_relation)
 
 // organizations
 
@@ -485,7 +484,7 @@ Q.unemployment_insurance_timer = 0;
 Q.sa_ban_timer = 0;
 Q.sh_ban_timer = 0;
 Q.kpd_ultimatum_timer = 0;
-
+Q.weimar_willingness = ((z_relation-50)+((ddp_relation-40)/2)+(nazi_urgency*(unemployed/2)))-(100-dvp_relation)
 
 // all the initial advisors are centrists.
 Q.wels_advisor = 1; // Otto Wels
