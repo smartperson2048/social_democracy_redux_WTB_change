@@ -37,7 +37,7 @@ By transferring campaign funds to our coalition partners, we can make our polici
 @weimar_convince
 subtitle: A shared programme could help combat extremism, but may be hard to accomplish...
 view-if: moderate-plan-adopted == 1
-choose-if: z_relation >= 50 and ddp_relation >= 40 and nazi_urgency > 0 and unemployed > 12
+choose-if: (z_relation >= 50 and ddp_relation >= 40 and nazi_urgency > 0 and unemployed > 12) or (z_relation >= 70 and ddp_relation >= 50 and unemployed > 10) or (z_relation >= 40 and ddp_relation >= 30 and nazi_urgency > 1 and unemployed > 20) or (z_relation >= 40 and ddp_relation >= 30 and unemployed > 30)
 unavailable-subtitle: Our Weimar partners are not willing to be convinced of the plan's merits.
 on-arrival: z_relation -= 2
 go-to: weimar_plan
