@@ -13,11 +13,12 @@ Following our decision to adopt the Reformist economic plan, some have called fo
 - @canvas_1: We will attempt to get Zentrum and the DDP behind this idea.
 - @canvas_2: We will attempt to get Zentrum and the DDP behind this idea.
 - @canvas_3: We will attempt to get Zentrum and the DDP behind this idea.
+- @canvas_4: We will attempt to get Zentrum and the DDP behind this idea.
 - @adopt: We will convince Zentrum and the DDP to adopt our plan!
 - @sovereignty: The SPD will not compromise its status as a worker's party by entering such alliances with the bourgeois parties.
 
 @canvas_1
-view-if: in_grand_coalition != 1 and in_weimar_coalition != 1 and weimar_support < 100
+view-if: spd_in_government == 0 and dvp_in_government == 0 and weimar_support < 100
 choose-if: (neorevisionist_strength + (reformist_strength/2))-left_strength > 0
 unavailable_subtitle: The Left would never allow this to happen.
 on-arrival: weimar_support += (10+unemployed+nsdap_r+kpd_r)*(1-dissent)+((neorevisionist_strength+(reformist_strength/2))/10)-(left_strength/10)+((z_relation+ddp_relation)/10)/coalition_dissent; left_strength -= 2; left_dissent += 2; kpd_relation -= 4; z_relation -= 2
@@ -39,7 +40,15 @@ unavailable_subtitle: The Left would never allow this to happen.
 on-arrival: weimar_support += ((10+unemployed+nsdap_r+kpd_r)*1.5)*(1-dissent)+((neorevisionist_strength+(reformist_strength/2))/10)-(left_strength/10)+((z_relation+ddp_relation)/5)/coalition_dissent; left_strength -= 2; left_dissent += 2; kpd_relation -= 4
 
 We are attempting to convince our coalition partners to adopt our economic plan. This is made significantly easier by our pre-existing cooperation in the governance of Germany.
-                               
+
+@canvas_4
+view-if: spd_in_government == 0 and z_in_government == 1 and dvp_in_government == 1 and weimar_support < 100
+choose-if: (neorevisionist_strength + (reformist_strength/2))-left_strength > 0
+unavailable_subtitle: The Left would never allow this to happen.
+on-arrival: weimar_support += ((10+unemployed+nsdap_r+kpd_r)/4)*(1-dissent)+((neorevisionist_strength+(reformist_strength/2))/10)-(left_strength/10)+((z_relation+ddp_relation)/20); left_strength -= 2; left_dissent += 2; kpd_relation -= 4; z_relation -= 6
+
+We are attempting to convince our coalition partners to adopt our economic plan. The DVP is opposing our efforts and influencing Zentrum against the idea, making it significantly harder especially due to our position relative to the DVP.
+
 @adopt
 view-if: weimar_support >= 100
 on-arrival: weimar_plan_adopted = 1; moderate_plan_support += 1; workers_spd += ((4*(1-dissent))*(pro_republic/100)); unemployed_spd += ((3*(1-dissent))*(pro_republic/100)); rural_spd += ((3*(1-dissent))*(pro_republic/100)); new_middle_spd += ((3*(1-dissent))*(pro_republic/100)); old_middle_spd += ((3*(1-dissent))*(pro_republic/100)); workers_ddp += 2*(pro_republic/100); unemployed_nsdap -= 2*(pro_republic/100); unemployed_kpd -= 2*(pro_republic/100); rural_z += 3*(pro_republic/100); new_middle_ddp += 3*(pro_republic/100); old_middle_ddp += 2*(pro_republic/100); old_middle_z += 2*(pro_republic/100); peoples_party_support += 1; neorevisionist_strength += 5; left_strength -= 5; left_dissent += 5; kpd_relation -= 10; pro_republic += 10*(((z_relation + ddp_relation)/2)/100)
