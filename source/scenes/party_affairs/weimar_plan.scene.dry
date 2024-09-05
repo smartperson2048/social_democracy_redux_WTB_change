@@ -18,7 +18,8 @@ Following our decision to adopt the Reformist economic plan, some have called fo
 - @canvas_6: We will attempt to get Zentrum and the DDP behind this idea.
 - @canvas_7: We will attempt to get Zentrum and the DDP behind this idea.
 - @canvas_8: We will attempt to get Zentrum and the DDP behind this idea.
-- @adopt: We will convince Zentrum and the DDP to adopt our plan!
+- @adopt_1: We will convince Zentrum and the DDP to adopt our plan!
+- @adopt_2: We will convince Zentrum and the DDP to adopt our plan!
 - @sovereignty: The SPD will not compromise its status as a worker's party by entering such alliances with the bourgeois parties.
 
 @canvas_1
@@ -27,15 +28,15 @@ choose-if: (neorevisionist_strength + (reformist_strength/2))-left_strength > 0
 unavailable_subtitle: The Left would never allow this to happen.
 on-arrival: weimar_support += (10+unemployed+nsdap_r+kpd_r)*(1-dissent)+((neorevisionist_strength+(reformist_strength/2))/10)-(left_strength/10)+((z_relation+ddp_relation)/10); left_strength -= 2; left_dissent += 2; kpd_relation -= 4; z_relation -= 2
 
-We are attempting to convince Zentrum and the DDP to adopt our economic plan. This will be made easier by increasing our relations.
+We are attempting to convince Zentrum and the DDP to adopt our economic plan. This will be made easier by increasing our relations. [? if weimar_support >= 25 and weimar_support <= 50 : The DDP has been convinced to adopt the plan should Zentrum do the same, while Zentrum still debates the suggestion internally, unable to reach a conclusion. ?] [? if weimar_support >= 50 and weimar_support <= 75 : So far, the DDP has been convinced to adopt our plan, and great progress has been made in doing the same for Zentrum, though the right-wing of their party continues to resist the idea. ?] [? if weimar_support >= 75 and weimar_support <= 100 : So far, the DDP and a large portion of Zentrum have agreed to adopt our plan, and under influence from our allies the right-wing of Zentrum has become willing to consider the plan. ?]  
 
 @canvas_2
-view-if: in_grand_coalition == 1 and president != "Braun" and weimar_support < 100
+view-if: in_grand_coalition == 1 and spd_in_government == 1 and president != "Braun" and weimar_support < 100
 choose-if: (neorevisionist_strength + (reformist_strength/2))-left_strength > 0
 unavailable_subtitle: The Left would never allow this to happen.
 on-arrival: weimar_support += ((10+unemployed+nsdap_r+kpd_r)/2)*(1-dissent)+((neorevisionist_strength+(reformist_strength/2))/10)-(left_strength/10)+((z_relation+ddp_relation)/15)/coalition_dissent; left_strength -= 2; left_dissent += 2; kpd_relation -= 4; z_relation -= 5; coalition_dissent += 1
 
-We are attempting to convince our coalition partners to adopt our economic plan. The DVP is opposing our efforts and influencing Zentrum against the idea, making it significantly harder and threatening the integrity of our coalition.
+We are attempting to convince our coalition partners to adopt our economic plan. The DVP is opposing our efforts and influencing Zentrum against the idea, making it significantly harder and threatening the integrity of our coalition. [? if weimar_support >= 25 and weimar_support <= 50 : The DDP has been convinced to adopt the plan should Zentrum do the same, while Zentrum still debates the suggestion internally, unable to reach a conclusion. ?] [? if weimar_support >= 50 and weimar_support <= 75 : So far, the DDP has been convinced to adopt our plan, and great progress has been made in doing the same for Zentrum, though the right-wing of their party continues to resist the idea. ?] [? if weimar_support >= 75 and weimar_support <= 100 : So far, the DDP and a large portion of Zentrum have agreed to adopt our plan, and under influence from our allies the right-wing of Zentrum has become willing to consider the plan. ?]
                                
 @canvas_3
 view-if: in_weimar_coalition == 1 and president != "Braun" and weimar_support < 100
@@ -43,7 +44,7 @@ choose-if: (neorevisionist_strength + (reformist_strength/2))-left_strength > 0
 unavailable_subtitle: The Left would never allow this to happen.
 on-arrival: weimar_support += ((10+unemployed+nsdap_r+kpd_r)*1.5)*(1-dissent)+((neorevisionist_strength+(reformist_strength/2))/10)-(left_strength/10)+((z_relation+ddp_relation)/5)/coalition_dissent; left_strength -= 2; left_dissent += 2; kpd_relation -= 4
 
-We are attempting to convince our coalition partners to adopt our economic plan. This is made significantly easier by our pre-existing cooperation in the governance of Germany.
+We are attempting to convince our coalition partners to adopt our economic plan. This is made significantly easier by our pre-existing coalition arrangements. [? if weimar_support >= 25 and weimar_support <= 50 : The DDP has been convinced to adopt the plan should Zentrum do the same, while Zentrum still debates the suggestion internally, unable to reach a conclusion. ?] [? if weimar_support >= 50 and weimar_support <= 75 : So far, the DDP has been convinced to adopt our plan, and great progress has been made in doing the same for Zentrum, though the right-wing of their party continues to resist the idea. ?] [? if weimar_support >= 75 and weimar_support <= 100 : So far, the DDP and a large portion of Zentrum have agreed to adopt our plan, and under influence from our allies the right-wing of Zentrum has become willing to consider the plan. ?]
 
 @canvas_4
 view-if: spd_in_government == 0 and z_in_government == 1 and dvp_in_government == 1 and president != "Braun" and weimar_support < 100
@@ -51,7 +52,7 @@ choose-if: (neorevisionist_strength + (reformist_strength/2))-left_strength > 0
 unavailable_subtitle: The Left would never allow this to happen.
 on-arrival: weimar_support += ((10+unemployed+nsdap_r+kpd_r)/4)*(1-dissent)+((neorevisionist_strength+(reformist_strength/2))/10)-(left_strength/10)+((z_relation+ddp_relation)/20); left_strength -= 2; left_dissent += 2; kpd_relation -= 4; z_relation -= 6
 
-We are attempting to convince Zentrum and the DDP to adopt our economic plan. The DVP is opposing our efforts and influencing Zentrum against the idea, making it significantly harder especially due to our position relative to the DVP.
+We are attempting to convince Zentrum and the DDP to adopt our economic plan. The DVP is opposing our efforts and influencing Zentrum against the idea, making it significantly harder especially due to our position relative to the DVP. [? if weimar_support >= 25 and weimar_support <= 50 : The DDP has been convinced to adopt the plan should Zentrum do the same, while Zentrum still debates the suggestion internally, unable to reach a conclusion. ?] [? if weimar_support >= 50 and weimar_support <= 75 : So far, the DDP has been convinced to adopt our plan, and great progress has been made in doing the same for Zentrum, though the right-wing of their party continues to resist the idea. ?] [? if weimar_support >= 75 and weimar_support <= 100 : So far, the DDP and a large portion of Zentrum have agreed to adopt our plan, and under influence from our allies the right-wing of Zentrum has become willing to consider the plan. ?]
 
 @canvas_5
 view-if: spd_in_government == 0 and dvp_in_government == 0 and president == "Braun" and weimar_support < 100
@@ -59,7 +60,7 @@ choose-if: (neorevisionist_strength + (reformist_strength/2))-left_strength > 0
 unavailable_subtitle: The Left would never allow this to happen.
 on-arrival: weimar_support += ((10+unemployed+nsdap_r+kpd_r)*1.25)*(1-dissent)+((neorevisionist_strength+(reformist_strength/2))/5)-(left_strength/10)+((z_relation+ddp_relation)/5); left_strength -= 2; left_dissent += 4; kpd_relation -= 6
 
-We are attempting to convince Zentrum and the DDP to adopt our economic plan. This will be made easier by increasing our relations. Pressure from President Braun has helped in our efforts to convince Zentrum and the DDP to adopt this plan.
+We are attempting to convince Zentrum and the DDP to adopt our economic plan. This will be made easier by increasing our relations. Pressure from President Braun has helped in our efforts to convince Zentrum and the DDP to adopt this plan. [? if weimar_support >= 25 and weimar_support <= 50 : The DDP has been convinced to adopt the plan should Zentrum do the same, while Zentrum still debates the suggestion internally, unable to reach a conclusion. ?] [? if weimar_support >= 50 and weimar_support <= 75 : So far, the DDP has been convinced to adopt our plan, and great progress has been made in doing the same for Zentrum, though the right-wing of their party continues to resist the idea. ?] [? if weimar_support >= 75 and weimar_support <= 100 : So far, the DDP and a large portion of Zentrum have agreed to adopt our plan, and under influence from our allies the right-wing of Zentrum has become willing to consider the plan. ?]
 
 @canvas_6
 view-if: in_grand_coalition == 1 and president == "Braun" and weimar_support < 100
@@ -67,7 +68,7 @@ choose-if: (neorevisionist_strength + (reformist_strength/2))-left_strength > 0
 unavailable_subtitle: The Left would never allow this to happen.
 on-arrival: weimar_support += ((10+unemployed+nsdap_r+kpd_r)/1.5)*(1-dissent)+((neorevisionist_strength+(reformist_strength/2))/5)-(left_strength/10)+((z_relation+ddp_relation)/10)/coalition_dissent; left_strength -= 2; left_dissent += 4; kpd_relation -= 6; z_relation -= 2; coalition_dissent += 1
 
-We are attempting to convince our coalition partners to adopt our economic plan. The DVP is opposing our efforts and influencing Zentrum against the idea, making it significantly harder and threatening the integrity of our coalition. Pressure from President Braun has helped in our efforts to convince Zentrum and the DDP to adopt this plan.
+We are attempting to convince our coalition partners to adopt our economic plan. The DVP is opposing our efforts and influencing Zentrum against the idea, making it significantly harder and threatening the integrity of our coalition. Pressure from President Braun has helped in our efforts to convince Zentrum and the DDP to adopt this plan. [? if weimar_support >= 25 and weimar_support <= 50 : The DDP has been convinced to adopt the plan should Zentrum do the same, while Zentrum still debates the suggestion internally, unable to reach a conclusion. ?] [? if weimar_support >= 50 and weimar_support <= 75 : So far, the DDP has been convinced to adopt our plan, and great progress has been made in doing the same for Zentrum, though the right-wing of their party continues to resist the idea. ?] [? if weimar_support >= 75 and weimar_support <= 100 : So far, the DDP and a large portion of Zentrum have agreed to adopt our plan, and under influence from our allies the right-wing of Zentrum has become willing to consider the plan. ?]
 
 @canvas_7
 view-if: in_weimar_coalition == 1 and president == "Braun" and weimar_support < 100
@@ -75,7 +76,7 @@ choose-if: (neorevisionist_strength + (reformist_strength/2))-left_strength > 0
 unavailable_subtitle: The Left would never allow this to happen.
 on-arrival: weimar_support += ((10+unemployed+nsdap_r+kpd_r)*2)*(1-dissent)+((neorevisionist_strength+(reformist_strength/2))/5)-(left_strength/10)+((z_relation+ddp_relation)/2)/coalition_dissent; left_strength -= 2; left_dissent += 4; kpd_relation -= 6
 
-We are attempting to convince our coalition partners to adopt our economic plan. This is made significantly easier by our pre-existing cooperation in the governance of Germany. Pressure from President Braun has helped in our efforts to convince Zentrum and the DDP to adopt this plan.
+We are attempting to convince our coalition partners to adopt our economic plan. This is made significantly easier by our pre-existing cooperation in the governance of Germany. Pressure from President Braun has helped in our efforts to convince Zentrum and the DDP to adopt this plan. [? if weimar_support >= 25 and weimar_support <= 50 : The DDP has been convinced to adopt the plan should Zentrum do the same, while Zentrum still debates the suggestion internally, unable to reach a conclusion. ?] [? if weimar_support >= 50 and weimar_support <= 75 : So far, the DDP has been convinced to adopt our plan, and great progress has been made in doing the same for Zentrum, though the right-wing of their party continues to resist the idea. ?] [? if weimar_support >= 75 and weimar_support <= 100 : So far, the DDP and a large portion of Zentrum have agreed to adopt our plan, and under influence from our allies the right-wing of Zentrum has become willing to consider the plan. ?]
 
 @canvas_8
 view-if: spd_in_government == 0 and z_in_government == 1 and dvp_in_government == 1 and president == "Braun" and weimar_support < 100
@@ -83,16 +84,57 @@ choose-if: (neorevisionist_strength + (reformist_strength/2))-left_strength > 0
 unavailable_subtitle: The Left would never allow this to happen.
 on-arrival: weimar_support += ((10+unemployed+nsdap_r+kpd_r)/2)*(1-dissent)+((neorevisionist_strength+(reformist_strength/2))/5)-(left_strength/10)+((z_relation+ddp_relation)/15); left_strength -= 2; left_dissent += 4; kpd_relation -= 6; z_relation -= 4
 
-We are attempting to convince Zentrum and the DDP to adopt our economic plan. The DVP is opposing our efforts and influencing Zentrum against the idea, making it significantly harder especially due to our position relative to the DVP. Pressure from President Braun has helped in our efforts to convince Zentrum and the DDP to adopt this plan.
+We are attempting to convince Zentrum and the DDP to adopt our economic plan. The DVP is opposing our efforts and influencing Zentrum against the idea, making it significantly harder especially due to our position relative to the DVP. Pressure from President Braun has helped in our efforts to convince Zentrum and the DDP to adopt this plan. [? if weimar_support >= 25 and weimar_support <= 50 : The DDP has been convinced to adopt the plan should Zentrum do the same, while Zentrum still debates the suggestion internally, unable to reach a conclusion. ?] [? if weimar_support >= 50 and weimar_support <= 75 : So far, the DDP has been convinced to adopt our plan, and great progress has been made in doing the same for Zentrum, though the right-wing of their party continues to resist the idea. ?] [? if weimar_support >= 75 and weimar_support <= 100 : So far, the DDP and a large portion of Zentrum have agreed to adopt our plan, and under influence from our allies the right-wing of Zentrum has become willing to consider the plan. ?]
 
-@adopt
-view-if: weimar_support >= 100
+@adopt_1
+view-if: weimar_support >= 100 and z_relation >= 70
 on-arrival: weimar_plan_adopted = 1; moderate_plan_support += 1; workers_spd += ((4*(1-dissent))*(pro_republic/100)); unemployed_spd += ((3*(1-dissent))*(pro_republic/100)); rural_spd += ((3*(1-dissent))*(pro_republic/100)); new_middle_spd += ((3*(1-dissent))*(pro_republic/100)); old_middle_spd += ((3*(1-dissent))*(pro_republic/100)); workers_ddp += 2*(pro_republic/100); unemployed_nsdap -= 2*(pro_republic/100); unemployed_kpd -= 2*(pro_republic/100); rural_z += 3*(pro_republic/100); new_middle_ddp += 3*(pro_republic/100); old_middle_ddp += 2*(pro_republic/100); old_middle_z += 2*(pro_republic/100); peoples_party_support += 1; neorevisionist_strength += 5; left_strength -= 5; left_dissent += 5; kpd_relation -= 10; pro_republic += 10*(((z_relation + ddp_relation)/2)/100)
 
 We have finally convinced Zentrum and the DDP to adopt our economic plan and hold a rally between our parties on its behalf. [? if pro_republic < 40 : Such a show of democratic solidarity bolsters republican forces, but as extremist and anti-democratic rhetoric has recently entered the mainstream, many who hear our message remain unconvinced, and many on the Left of the party even criticize the rally and our alignment with the bourgeois parties. ?] [? if pro_republic < 60 and pro_republic > 40 : Such a show of democratic solidarity bolsters republican forces, helping match the now prevalent anti-democratic rhetoric from the far-left and far-right, though many on the Left oppose our decision to align with the bourgeois parties. ?] [? if pro_republic > 60 : Such a show of democratic solidarity has greatly bolstered republican forces, helping combat the increasingly prevalent anti-democratic rhetoric from the far-left and far-right. Nevertheless, some on the Left of the party still oppose our alignment with the bourgeois parties. ?]
-                               
+
+@adopt_2 
+view-if: weimar_support >= 100 and z_relation < 70
+
+We have made great progress in convincing Zentrum and the DDP to adopt our economic plan, and the right-wing of Zentrum is finally willing to agree, but desire concessions first.
+- @promise_them_cuts: Agree to the bourgeois plans to cut welfare.
+- @use_our_relationship: Use our relations to sway them.
+- @resource_gift: Use our party resources to convince them.
+- @presidential_pressure_braun: Use pressure from President Braun to force the issue.
+- @drop_the_matter: This isn't working out. We'll bide our time and maybe they'll adopt it later.
+
+@promise_them_cuts
+view-if: spd_in_government == 1
+on-arrival: workers_spd -= 5; unemployed_spd -= 6; workers_kpd += 5; unemployed_kpd += 3; unemployed_nsdap += 3; left_dissent += 10; labor_dissent += 5; welfare -= 1; budget += 1; coalition_dissent = 0
+go-to: adopt_1
+
+Fine. By cutting welfare, we have appeased the right-wing of Zentrum.
+
+@use_our_relationship: Use our relations to sway them.
+choose-if: z_relation >= 60
+unavailable-subtitle: We do not have good enough relations.
+on-arrival: z_relation -= 10
+go-to: adopt_1
+
+@resource_gift
+choose-if: resources >= 2
+unavailable-subtitle: We do not have sufficient resources.
+on-arrival: resources -= 2
+go-to: adopt_1
+
+Fine. By using our party resources we have appeased the right-wing of Zentrum.
+
+@presidential_pressure_braun
+view-if: president == "Braun"
+on-arrival: z_relation -= 5; pro_republic -= 2
+go-to: adopt_1
+
+By applying pressure with President Braun we have managed to cow the right-wing of Zentrum.
+
+@drop_the_matter
+on-arrival: weimar_support -= 50; labor_dissent += 5; center_dissent += 5; left_dissent += 5; reformist_dissent += 5; neorevisionist_dissent += 5; workers_spd -= 1
+
 @sovereignty
-on-arrival: weimar_rejected = 1; neorevisionist_strength -= 5; neorevisionist_dissent += 10; left_dissent -= 5
+on-arrival: weimar_rejected = 1; neorevisionist_strength -= 5; neorevisionist_dissent += 10; left_dissent -= 10; center_dissent -= 5; labor_dissent -= 5; workers_spd += 2
 
 We will keep the SPD party program as the SPD's party program solely, and we will not enter into any unnecessary alliances with the bourgeois parties.
 
