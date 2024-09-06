@@ -254,6 +254,14 @@ go-to: eg_menu
 
 The SPD has been declared a "People's Party", representing all of the people, not just the working class. This policy has many supporters and detractors, and what will become of the party is still unclear.
 
+@weimar_plan_achieved
+title: The republican parties banded around the "Weimar Plan".
+view-if: weimar_plan_adopted == 1
+tags: endings
+go-to: eg_menu
+
+The SPD has convinced the Weimar parties to adopt the moderate economic plan, now dubbed the Weimar Plan. This shared programme is opposed by both the left-wing of the SPD and the right-wing of Zentrum, and is not expected to last long should the immediate threats to democracy be defeated.
+
 @nationalization_achieved
 title: Socialization of the economy has commenced.
 view-if: nationalization_progress >= 2
