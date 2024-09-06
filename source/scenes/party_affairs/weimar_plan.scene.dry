@@ -21,7 +21,7 @@ Following our decision to adopt the Reformist economic plan, some have called fo
 - @adopt_1: We will convince Zentrum and the DDP to adopt our plan!
 - @adopt_2: We will convince Zentrum and the DDP to adopt our plan!
 - @sovereignty: The SPD will not compromise its status as a worker's party by entering such alliances with the bourgeois parties.
-- @delay_decision: We will decide later when we have more information on whether to take this course of action or not.
+- @delay_decision: We will delay making a decision for the time being.
 
 @canvas_1
 view-if: spd_in_government == 0 and dvp_in_government == 0 and spd_toleration == 0 and president != "Braun" and weimar_support < 100
@@ -152,6 +152,7 @@ By applying pressure with President Braun we have managed to cow the right-wing 
 on-arrival: weimar_support -= 50; labor_dissent += 5; center_dissent += 5; left_dissent += 5; reformist_dissent += 5; neorevisionist_dissent += 5; workers_spd -= 1
 
 @sovereignty
+view-if: weimar_support == 0
 on-arrival: weimar_rejected = 1; neorevisionist_strength -= 5; neorevisionist_dissent += 10; left_dissent -= 10; center_dissent -= 5; labor_dissent -= 5; workers_spd += 2; unemployed_spd += 2
 
 We will keep the SPD party program as the SPD's party program solely, and we will not enter into any unnecessary alliances with the bourgeois parties.
