@@ -83,6 +83,7 @@ Q.neorevisionist_strength = 100*Q.neorevisionist_strength/total_strength;
 
 var total_dissent = Q.left_strength*Q.left_dissent + Q.center_strength*Q.center_dissent + Q.labor_strength*Q.labor_dissent + Q.reformist_strength*Q.reformist_dissent + Q.neorevisionist_strength*Q.neorevisionist_dissent;
 
+var weimar_willingness = 1 if (z_relation >= 50 and ddp_relation >= 40 and nazi_urgency > 0 and unemployed > 12) or (z_relation >= 70 and ddp_relation >= 50 and unemployed > 10) or (z_relation >= 40 and ddp_relation >= 30 and nazi_urgency > 1 and unemployed > 20) or (z_relation >= 40 and ddp_relation >= 30 and unemployed > 30); else 0
 
 Q.dissent = 0.01*total_dissent/total_strength;
 Q.dissent_percent = Q.dissent*100;
