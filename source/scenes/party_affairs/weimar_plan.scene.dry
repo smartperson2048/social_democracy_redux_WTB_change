@@ -157,6 +157,6 @@ on-arrival: weimar_rejected = 1; neorevisionist_strength -= 5; neorevisionist_di
 We will keep the SPD party program as the SPD's party program solely, and we will not enter into any unnecessary alliances with the bourgeois parties.
 
 @delay_decision
-show-if: weimar_support == 0
+view-if: weimar_support == 0
 
 It is too soon to decide whether or not to attempt this so-called Weimar Plan or not. By delaying a decision we avoid offending any factions and can wait for more information that would help in deciding.
