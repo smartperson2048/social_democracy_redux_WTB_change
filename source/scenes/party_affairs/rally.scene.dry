@@ -100,7 +100,7 @@ The WTB plan has become a popular rallying cry for our party. The workers are ea
 view-if: moderate_plan_adopted = 1 and weimar_rejected != 1 and weimar_plan_adopted != 1
 subtitle: We will first need to convince our Weimar partners of the plan's merits.
 unavailable-subtitle: Our Weimar partners are not willing to be convinced of the plan's merits.
-choose-if: (z_relation >= 50 and ddp_relation >= 40 and nazi_urgency > 0 and unemployed > 12) or (z_relation >= 70 and ddp_relation >= 50 and unemployed > 10) or (z_relation >= 40 and ddp_relation >= 30 and nazi_urgency > 1 and unemployed > 20) or (z_relation >= 40 and ddp_relation >= 30 and unemployed > 30)
+choose-if: weimar_willingness == 1
 go-to: weimar_plan
 
 @weimar_2
