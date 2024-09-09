@@ -72,7 +72,8 @@ The election proceeds, with limited electoral interference thanks to our efforts
   
 The election proceeds under the watchful eye of the SA in the streets, who continue attacks on socialist and communist organizers throughout the voting period and violently disperse attempts to oppose the reform. This reign of terror continues all throughout the voting period and when voting finishes it is [? if reform_support >= pass_threshold : no surprise for anyone to hear that Hitler's reforms have been approved by a supposed majority of the populace. ?] [? if reform_support < pass_threshold : a great surprise for everyone when Hitler's reforms are defeated, though barely. ?]
 
-- @republic_doomed_2: A grim day for democracy.
+- @judicial_help: Can we get the judiciary to declare the results invalid?
+- @hitler_victorious: What do we do now?
 - @republic_safe: A great day for democracy.
 
 @hitler_referendum
@@ -93,20 +94,14 @@ go-to: hitler_takes_power
 @republic_safe
 view-if: reform_support < pass_threshold
 
-@republic_doomed_2
-view-if: reform_support >= pass_threshold
-
-- @judicial_help: Can we get the judiciary to declare the results invalid?
-- @hitler_victorious: What now?
-
 @judicial_help
-choose-if: judicial_reform >= 3
+choose-if: judicial_reform >= 3 and reform_support >= pass_threshold
 unavailable-subtitle: The judiciary would never agree with us.
 
 We complain to the judiciary that due to the violent interference of the SA the referendum is illegitimate and should be declared such. The judiciary reviews our case and agrees! This has enraged Hitler who begins to consider more radical actions to secure his power.
 
 @hitler_victorious
-view-if: judicial_reform < 3
+view-if: judicial_reform < 3 and reform_support >= pass_threshold
 subtitle: The beginning of the end.
 on-arrival: presidential_powers = 0
 go-to: hitler_takes_power
