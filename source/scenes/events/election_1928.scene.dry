@@ -519,6 +519,13 @@ There is no path to an obviously workable majority. Since President Hindenburg i
 - @new_grand_coalition: We will try to form a new grand coalition.
 - @new_elections: We will have new elections.
 
+@no_majority_hitler
+title: Hitler appoints himself chancellor.
+on-arrival: chancellor = "Hitler"; chancellor_party = "NSDAP"
+view-if: weimar_coalition < 50 and (grand_coalition < 50 or grand_coalition_failed == 1) and president = "Hitler" and far_right_coalition < 50
+go-to: hitler_chancellor
+
+
 # - if NSDAP is the largest party and the 
 
 @no_majority_bruning
