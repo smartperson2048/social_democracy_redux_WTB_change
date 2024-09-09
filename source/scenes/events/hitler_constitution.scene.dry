@@ -69,6 +69,7 @@ The election proceeds, with limited electoral interference thanks to our efforts
 - @republic_safe: A great day for democracy.
 
 @results_rigged
+on-arrival: pro_republic -= 6; workers_nsdap += 2; unemployed_nsdap += 4; new_middle_nsdap += 2; old_middle_nsdap += 3; rural_nsdap += 3; unemployed_kpd -= 5; workers_kpd -= 2; unemployed_spd -= 3; workers_spd -= 2
   
 The election proceeds under the watchful eye of the SA in the streets, who continue attacks on socialist and communist organizers throughout the voting period and violently disperse attempts to oppose the reform. This reign of terror continues all throughout the voting period and when voting finishes it is [? if reform_support >= pass_threshold : no surprise for anyone to hear that Hitler's reforms have been approved by a supposed majority of the populace. ?] [? if reform_support < pass_threshold : a great surprise for everyone when Hitler's reforms are defeated, though barely. ?]
 
