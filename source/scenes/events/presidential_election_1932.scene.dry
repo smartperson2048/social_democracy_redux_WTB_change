@@ -409,6 +409,13 @@ on-arrival: president = nsdap_candidate; chancellor = "Hitler"; chancellor_party
 [? if nsdap_candidate != "Hitler" : The NSDAP candidate [+ president +] has won. The first action President [+ president +] takes is inviting Hitler back into Germany, and appointing him chancellor. The Nazis waste no time in consolidating power. ?]
 
 - @hitler_takes_power: What do we do now?
+- @hitler_constitution: What do we do now?
+
+@hitler_takes_power
+view-if: presidential_powers != 1
+
+@hitler_constitution
+view-if: presidential powers == 1
 
 
 @braun_wins
