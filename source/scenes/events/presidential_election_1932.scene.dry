@@ -415,7 +415,7 @@ on-arrival: president = nsdap_candidate; chancellor = "Hitler"; chancellor_party
 view-if: presidential_powers != 1
 
 @hitler_constitution
-view-if: presidential powers == 1
+view-if: presidential_powers == 1
 
 
 @braun_wins
