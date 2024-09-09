@@ -5,7 +5,7 @@ new-page: true
 max-visits: 1
 tags: event
 
-== Constitutional Referendum
+= Constitutional Referendum
 
 With Hitler's election as president he has wasted no time in attempting to consolidate power. His efforts are impeded however thanks to our own changes to the constitution in weakening the powers of the presidency. To bypass this he has called a constitutional referendum on undoing our changes and restoring the presidency's power, and the SA has already mobilized to intimidate voters and attempt to force the referendum through. If this referendum passes, it will mean the end of Germany democracy.
 
@@ -107,4 +107,3 @@ We complain to the judiciary that due to the violent interference of the SA the 
 
 @hitler_takes_power
 view-if: judicial_reform < 3
-go-to: hitler_takes_power
