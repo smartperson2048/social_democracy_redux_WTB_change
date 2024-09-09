@@ -28,6 +28,7 @@ on-arrival: defense_strength = rb_strength*rb_militancy*(1-dissent/2); defense_s
 go-to: prevention_success if defense_strength > enemy_strength and defense_strength - enemy_strength >= 100; prevention_failure if defense_strength < enemy_strength and enemy_strength - defense_strength >= 100; prevention_civil_war if enemy_strength - defense_strength < 100 and enemy_strength - defense_strength > -100
 
 @campaign
+on-arrival: enemy_strength = sa_strength*sa_militancy
 go-to: hitler_referendum
 
 @prevention_success
@@ -83,7 +84,7 @@ Q.reform_support = Q.nsdap_normalized + Q.dnvp_normalized + (Q.others_normalized
 if (Q.dvp_relation < 30) {
      Q.reform_support += Q.dvp_normalized;
 }
-Q.reform_support * (enemy_strength/defense_strength)
+Q.reform_support * (1/(enemy_strength/1000))
 !}
 go-to: @results_rigged
 
