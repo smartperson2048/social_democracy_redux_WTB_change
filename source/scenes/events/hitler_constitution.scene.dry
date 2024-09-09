@@ -97,7 +97,7 @@ view-if: reform_support < pass_threshold
 view-if: reform_support >= pass_threshold
 
 - @judicial_help: Can we get the judiciary to declare the results invalid?
-- @hitler_takes_power: What now?
+- @hitler_victorious: What now?
 
 @judicial_help
 choose-if: judicial_reform >= 3
@@ -105,5 +105,8 @@ unavailable-subtitle: The judiciary would never agree with us.
 
 We complain to the judiciary that due to the violent interference of the SA the referendum is illegitimate and should be declared such. The judiciary reviews our case and agrees! This has enraged Hitler who begins to consider more radical actions to secure his power.
 
-@hitler_takes_power
+@hitler_victorious
 view-if: judicial_reform < 3
+subtitle: The beginning of the end.
+on-arrival: presidential_powers = 0
+go-to: hitler_takes_power
