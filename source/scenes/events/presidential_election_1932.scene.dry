@@ -425,7 +425,7 @@ go-to: hitler_constitution
 view-if: presidential_powers == 1 and sa_banned == 1
 on-arrival: judicial_reform -= 1 if judicial_reform >= 1; interior_police_loyalty -= 0.05; pro_republic -= 10; workers_nsdap += 3; unemployed_nsdap += 3; new_middle_nsdap += 3; old_middle_nsdap += 3; rural_nsdap += 3
 
-
+Thanks to our reforms weakening the presidency's powers and the banning of the SA, Hitler is unable to immediately consolidate power as he would like to. He has however taken full advantage of his new position for campaigning, attempting to spread the Nazi message to all German citizens in preparation for the next election.
 
 
 @braun_wins
