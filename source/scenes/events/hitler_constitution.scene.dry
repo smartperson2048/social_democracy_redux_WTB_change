@@ -33,7 +33,7 @@ go-to: hitler_referendum
 
 @prevention_success
 on-arrival: sa_strength -= 50; workers_nsdap -= 2; unemployed_nsdap -= 2; {!
-Q.nazi_reform = Q.nsdap_normalized + Q.dnvp_normalized + (Q.other_normalized/(pro_republic/100));
+Q.nazi_reform = Q.nsdap_normalized + Q.dnvp_normalized + (Q.other_normalized/(Q.pro_republic/100));
 if (Q.dvp_relation < 30) {
      Q.nazi_reform += Q.dvp_normalized;
 }
@@ -45,7 +45,7 @@ Our forces clash with Hitler's in the streets as the referendum is held, and, sh
 
 @prevention_failure
 on-arrival: rb_strength -= 50; workers_spd -= 2; unemployed_spd -= 2; {!
-Q.nazi_reform = Q.nsdap_normalized + Q.dnvp_normalized + (Q.other_normalized/(pro_republic/100));
+Q.nazi_reform = Q.nsdap_normalized + Q.dnvp_normalized + (Q.other_normalized/(Q.pro_republic/100));
 if (Q.dvp_relation < 30) {
      Q.nazi_reform += Q.dvp_normalized;
 }
@@ -80,7 +80,7 @@ The election proceeds under the watchful eye of the SA in the streets, who conti
 
 @hitler_referendum
 on-arrival: {!
-Q.nazi_reform = Q.nsdap_normalized + Q.dnvp_normalized + (Q.other_normalized/(pro_republic/100));
+Q.nazi_reform = Q.nsdap_normalized + Q.dnvp_normalized + (Q.other_normalized/(Q.pro_republic/100));
 if (Q.dvp_relation < 30) {
      Q.nazi_reform += Q.dvp_normalized;
 }
