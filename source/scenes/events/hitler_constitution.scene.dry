@@ -1,6 +1,6 @@
 title: Hitler calls a referendum!
 subtitle: Hitler is attempting to consolidate power…
-view-if: president == "Hitler" and presidential_powers == 1
+view-if: president == "Hitler" and presidential_powers == 1 and sa_banned != 1
 new-page: true
 max-visits: 1
 tags: event
