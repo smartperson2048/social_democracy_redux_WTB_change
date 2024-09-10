@@ -410,15 +410,22 @@ on-arrival: president = nsdap_candidate; chancellor = "Hitler" if presidential_p
 
 - @hitler_victory: What do we do now?
 - @hitler_referendum: What do we do now?
+- @hitler_stall What do we do now?
 
 @hitler_victory
 view-if: presidential_powers != 1
 go-to: hitler_takes_power
 
 @hitler_referendum
-view-if: presidential_powers == 1
-on-arrival: judicial_reform -= 2 if judicial_reform >= 2
+view-if: presidential_powers == 1 and sa_banned != 1
+on-arrival: pro_republic -= 5; workers_nsdap += 2; unemployed_nsdap += 2; new_middle_nsdap += 2; old_middle_nsdap += 2; rural_nsdap += 2
 go-to: hitler_constitution
+
+@hitler_stall
+view-if: presidential_powers == 1 and sa_banned == 1
+on-arrival: judicial_reform -= 1 if judicial_reform >= 1; interior_police_loyalty -= 0.05; pro_republic -= 10; workers_nsdap += 3; unemployed_nsdap += 3; new_middle_nsdap += 3; old_middle_nsdap += 3; rural_nsdap += 3
+
+
 
 
 @braun_wins
