@@ -417,6 +417,7 @@ go-to: hitler_takes_power
 
 @hitler_referendum
 view-if: presidential_powers == 1
+on-arrival: judicial_reform -= 2 if judicial_reform >= 2
 go-to: hitler_constitution
 
 
