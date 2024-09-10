@@ -49,7 +49,7 @@ Q.nazi_reform = Q.nsdap_normalized + Q.dnvp_normalized + (Q.other_normalized/(Q.
 if (Q.dvp_relation < 30) {
      Q.nazi_reform += Q.dvp_normalized;
 }
-Q.nazi_reform * ((Q.enemy_strength*4)/Q.defense_strength)
+Q.nazi_reform *= ((Q.enemy_strength*4)/Q.defense_strength)
 !}
 
 Our forces clash with Hitler's and, despite our best efforts, the SA is triumphant. Emboldened by the defeat of the Reichsbanner, the SA ramps up their terror on the streets, making it unlikely that this referendum will be a fair one. 
@@ -84,7 +84,7 @@ Q.nazi_reform = Q.nsdap_normalized + Q.dnvp_normalized + (Q.other_normalized/(Q.
 if (Q.dvp_relation < 30) {
      Q.nazi_reform += Q.dvp_normalized;
 }
-Q.nazi_reform * (1/(Q.enemy_strength/1000))
+Q.nazi_reform *= (1/(Q.enemy_strength/1000))
 !}
 go-to: @results_rigged
 
