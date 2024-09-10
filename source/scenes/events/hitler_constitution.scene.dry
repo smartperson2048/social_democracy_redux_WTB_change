@@ -28,14 +28,14 @@ on-arrival: defense_strength = rb_strength*rb_militancy*(1-dissent/2); defense_s
 go-to: prevention_success if defense_strength > enemy_strength and defense_strength - enemy_strength >= 100; prevention_failure if defense_strength < enemy_strength and enemy_strength - defense_strength >= 100; prevention_civil_war if enemy_strength - defense_strength < 100 and enemy_strength - defense_strength > -100
 
 @campaign
-on-arrival: enemy_strength = sa_strength*sa_militancy
+on-arrival: enemy_strength = sa_strength*sa_militancy; defense_strength = rb_strength*rb_militancy*(1-dissent/2)
 go-to: hitler_referendum
 
 @prevention_success
 on-arrival: sa_strength -= 50; workers_nsdap -= 2; unemployed_nsdap -= 2; {!
-Q.reform_support = Q.nsdap_normalized + Q.dnvp_normalized + (Q.others_normalized/(pro_republic/100));
+Q.nazi_reform = Q.nsdap_normalized + Q.dnvp_normalized + (Q.other_normalized/(pro_republic/100));
 if (Q.dvp_relation < 30) {
-     Q.reform_support += Q.dvp_normalized;
+     Q.nazi_reform += Q.dvp_normalized;
 }
 !}
 
@@ -45,11 +45,11 @@ Our forces clash with Hitler's in the streets as the referendum is held, and, sh
 
 @prevention_failure
 on-arrival: rb_strength -= 50; workers_spd -= 2; unemployed_spd -= 2; {!
-Q.reform_support = Q.nsdap_normalized + Q.dnvp_normalized + (Q.others_normalized/(pro_republic/100));
+Q.nazi_reform = Q.nsdap_normalized + Q.dnvp_normalized + (Q.other_normalized/(pro_republic/100));
 if (Q.dvp_relation < 30) {
-     Q.reform_support += Q.dvp_normalized;
+     Q.nazi_reform += Q.dvp_normalized;
 }
-Q.reform_support * ((enemy_strength*4)/defense_strength)
+Q.nazi_reform * ((enemy_strength*4)/defense_strength)
 !}
 
 Our forces clash with Hitler's and, despite our best efforts, the SA is triumphant. Emboldened by the defeat of the Reichsbanner, the SA ramps up their terror on the streets, making it unlikely that this referendum will be a fair one. 
@@ -64,7 +64,7 @@ Clashes in the streets between the SA and the Reichsbanner escalate as the Stalh
 
 @results_unimpeded
 
-The election proceeds, with limited electoral interference thanks to our efforts. The results are tallied and Germany holds her breath. [? if reform_support >= pass_threshold : Despite our successes in ensuring little electoral interference, the referendum succeeds. ?] [? if reform_support < pass_threshold : Thanks to our efforts in preventing Nazi electoral interference, the referendum fails. Though this is a great victory for democracy, the struggle is not over yet. His recent failures have only frustrated Hitler and he may take much more drastic measures if we continue to impede his efforts of consolidating power. ?]
+The election proceeds, with limited electoral interference thanks to our efforts. The results are tallied and Germany holds her breath. [? if nazi_reform >= 0.5 : Despite our successes in ensuring little electoral interference, the referendum succeeds. ?] [? if nazi_reform < 0.5 : Thanks to our efforts in preventing Nazi electoral interference, the referendum fails. Though this is a great victory for democracy, the struggle is not over yet. His recent failures have only frustrated Hitler and he may take much more drastic measures if we continue to impede his efforts of consolidating power. ?]
 
 - @republic_doomed: A grim day for democracy.
 - @republic_safe: A great day for democracy.
@@ -72,7 +72,7 @@ The election proceeds, with limited electoral interference thanks to our efforts
 @results_rigged
 on-arrival: pro_republic -= 6*(enemy_strength/defense_strength); workers_nsdap += 3*(enemy_strength/defense_strength); unemployed_nsdap += 6*(enemy_strength/defense_strength); new_middle_nsdap += 4*(enemy_strength/defense_strength); old_middle_nsdap += 5*(enemy_strength/defense_strength); rural_nsdap += 5*(enemy_strength/defense_strength); unemployed_kpd -= 8*(enemy_strength/defense_strength); workers_kpd -= 3*(enemy_strength/defense_strength); unemployed_spd -= 4*(enemy_strength/defense_strength); workers_spd -= 2*(enemy_strength/defense_strength)
   
-The election proceeds under the watchful eye of the SA in the streets, who continue attacks on socialist and communist organizers throughout the voting period and violently disperse attempts to oppose the reform. This reign of terror continues all throughout the voting period and when voting finishes it is [? if reform_support >= pass_threshold : no surprise for anyone to hear that Hitler's reforms have been approved by a supposed majority of the populace. ?] [? if reform_support < pass_threshold : a great surprise for everyone when Hitler's reforms are defeated, though barely. ?]
+The election proceeds under the watchful eye of the SA in the streets, who continue attacks on socialist and communist organizers throughout the voting period and violently disperse attempts to oppose the reform. This reign of terror continues all throughout the voting period and when voting finishes it is [? if nazi_reform >= 0.5 : no surprise for anyone to hear that Hitler's reforms have been approved by a supposed majority of the populace. ?] [? if nazi_reform < 0.5 : a great surprise for everyone when Hitler's reforms are defeated, though barely. ?]
 
 - @judicial_help: Can we get the judiciary to declare the results invalid?
 - @hitler_victorious: What do we do now?
@@ -80,30 +80,31 @@ The election proceeds under the watchful eye of the SA in the streets, who conti
 
 @hitler_referendum
 on-arrival: {!
-Q.reform_support = Q.nsdap_normalized + Q.dnvp_normalized + (Q.others_normalized/(pro_republic/100));
+Q.nazi_reform = Q.nsdap_normalized + Q.dnvp_normalized + (Q.other_normalized/(pro_republic/100));
 if (Q.dvp_relation < 30) {
-     Q.reform_support += Q.dvp_normalized;
+     Q.nazi_reform += Q.dvp_normalized;
 }
-Q.reform_support * (1/(enemy_strength/1000))
+Q.nazi_reform * (1/(enemy_strength/1000))
 !}
 go-to: @results_rigged
 
 @republic_doomed
-view-if: reform_support >= pass_threshold
+view-if: nazi_reform >= 0.5
 on-arrival: presidential_powers = 0
 go-to: hitler_takes_power
 
 @republic_safe
-view-if: reform_support < pass_threshold
+view-if: nazi_reform < 0.5
 
 @judicial_help
-choose-if: judicial_reform >= 3 and reform_support >= pass_threshold
+view-if: nazi_reform >= 0.5
+choose-if: judicial_reform >= 3
 unavailable-subtitle: The judiciary would never agree with us.
 
 We complain to the judiciary that due to the violent interference of the SA the referendum is illegitimate and should be declared such. The judiciary reviews our case and agrees! This has enraged Hitler who begins to consider more radical actions to secure his power.
 
 @hitler_victorious
-view-if: judicial_reform < 3 and reform_support >= pass_threshold
+view-if: judicial_reform < 3 and nazi_reform >= 0.5
 subtitle: The beginning of the end.
 on-arrival: presidential_powers = 0
 go-to: hitler_takes_power
