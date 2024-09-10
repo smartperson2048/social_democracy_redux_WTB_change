@@ -410,7 +410,7 @@ on-arrival: president = nsdap_candidate; chancellor = "Hitler" if presidential_p
 
 - @hitler_victory: What do we do now?
 - @hitler_referendum: What do we do now?
-- @hitler_stall What do we do now?
+- @hitler_stall: What do we do now?
 
 @hitler_victory
 view-if: presidential_powers != 1
