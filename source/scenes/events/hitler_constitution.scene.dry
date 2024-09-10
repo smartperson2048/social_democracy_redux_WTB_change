@@ -95,6 +95,7 @@ go-to: hitler_takes_power
 
 @republic_safe
 view-if: nazi_reform < 0.5
+go-to: root
 
 @judicial_help
 view-if: nazi_reform >= 0.5
