@@ -1,6 +1,6 @@
 title: Reichsbanner Banned!
 subtitle: The government has banned the Reichsbanner.
-view-if: judicial_reform == 0 and nsdap_in_government == 1
+view-if: judicial_reform == 0 and interior_minister_party == "NSDAP"
 new-page: true
 tags: event
 
