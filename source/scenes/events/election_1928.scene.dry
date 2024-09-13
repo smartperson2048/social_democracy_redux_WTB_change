@@ -949,6 +949,8 @@ Rudolf Breitscheid has been appointed chancellor.
 @grand_coalition
 title: We can form a Grand Coalition.
 view-if: grand_coalition >= 50 and grand_coalition_failed == 0
+choose-if: president != Hitler
+unavailable-subtitle: SPD + Z + BVP + DDP + DVP - [? if president == "Hitler" : Hitler refuses to appoint a chancellor under such a governing arrangement. ?]
 subtitle: SPD + Z + BVP + DDP + DVP
 on-arrival: in_grand_coalition = 1; in_popular_front = 0; in_left_front = 0
 go-to: grand_coalition_spd_lead if (n_elections <= 1 and largest_party == "SPD") or (largest_party == "SPD" and spd_r >= 30) or president = "Braun"; grand_coalition_z_lead if president != "Braun" and ((n_elections > 1 and spd_r < 30) or (n_elections <= 1 and largest_party != "SPD"))
