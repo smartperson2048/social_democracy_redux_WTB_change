@@ -279,10 +279,10 @@ There are some potential coalition arrangements.
 - @right_coalition
 - @far_right_coalition
 - @no_majority
-- @no_majority_hitler
 - @brauns_dilemma
 - @left_coalition
 - @popular_front_coalition
+- @no_majority_hitler
 
 # TODO: black-brown coalition
 
@@ -536,6 +536,7 @@ What are we to do now?
 
 - @fight: We will fight on the streets to prevent Hitler from taking power.
 - @vote_against: We will vote against the nazis in the Reichstag.
+#- @judicial_protest: We will file a complaint to the judiciary that this goes against the spirit of the constitution.
 
 
 @fight
