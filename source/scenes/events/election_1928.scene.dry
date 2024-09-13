@@ -552,8 +552,8 @@ A motion of no confidence is called against Hitler's government.
 
 In total, [+ no_confidence_votes +]% of the Reichstag is against Hitler. [? if no_confidence_succeeds : We have won the vote of no confidence. ?]
 
-- @no_confidence_elections_new_hitler: There will be new elections, which we will try to delay.
-- @no_confidence_win_hitler: We have won, for now.
+- @no_confidence_elections_new_hitler: There will be new elections.
+- @no_confidence_win_hitler: Hitler has won, for now.
 
 @no_confidence_elections_new_hitler
 on-arrival: {!
@@ -588,6 +588,7 @@ The next elections are set for [+ next_election_month : month +] [+ next_electio
 
 @no_confidence_win_hitler
 view-if: no_confidence_votes <= 50
+on-arrival: judicial_reform -= 3 if judicial_reform >= 3; judicial_reform -= 2 if judicial_reform = 2; judicial_reform -= 1 if judicial_reform = 1; interior_police_loyalty -= 0.2; workers_nsdap += 2; unemployed_nsdap += 5; new_middle_nsdap += 3; old_middle_nsdap += 3; rural_nsdap += 3; pro_republic -= 5
 
 Hitler has won the vote of no confidence. He will continue to govern democratically until he is able to seize total control.
 
