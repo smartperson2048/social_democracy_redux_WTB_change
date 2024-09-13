@@ -290,9 +290,9 @@ There are some potential coalition arrangements.
 @popular_front_coalition
 title: A new "Popular Front" coalition?
 subtitle: SPD + KPD + Z + DDP ([+ popular_front_coalition +]%)
-unavailable-subtitle: SPD + KPD + Z + DDP ([+ popular_front_coalition +]%) - [? if kpd_relation < 50: We do not have good enough relations with the KPD. ?][? if z_relation < 50: We do not have good enough relations with the Center Party. ?][? if communist_coalition < 3 : The Communists are unwilling to compromise at all. ?]
+unavailable-subtitle: SPD + KPD + Z + DDP ([+ popular_front_coalition +]%) - [? if kpd_relation < 50: We do not have good enough relations with the KPD. ?][? if z_relation < 50: We do not have good enough relations with the Center Party. ?][? if communist_coalition < 3 : The Communists are unwilling to compromise at all. ?][? if president == "Hitler" : Hitler refuses to appoint a chancellor under such a governing arrangement. ?]
 view-if: popular_front_coalition >= 50
-choose-if: kpd_relation >= 50 and z_relation >= 50 and ddp_relation >= 50 and communist_coalition >= 3
+choose-if: kpd_relation >= 50 and z_relation >= 50 and ddp_relation >= 50 and communist_coalition >= 3 and president != "Hitler"
 
 Could we really form a coalition that included both the Center and the Communists? It seems like an absurd concept, but given our good relationships with both sides, it is not an impossibility.
 
@@ -397,9 +397,9 @@ Alternatively, Braun could use the emergency powers of the presidency. Article 4
 @left_coalition
 title: Is a United Left coalition possible?
 subtitle: SPD + KPD ([+ left_coalition +]%)
-unavailable-subtitle: SPD + KPD ([+ left_coalition +]%). [? if kpd_relation < 50 : We do not have adequate relations with the KPD. ?][? if communist_coalition < 3 : The Communists are too committed to their radical ways to partake in government. ?]
+unavailable-subtitle: SPD + KPD ([+ left_coalition +]%). [? if kpd_relation < 50 : We do not have adequate relations with the KPD. ?][? if communist_coalition < 3 : The Communists are too committed to their radical ways to partake in government. ?][? if president == "Hitler" : Hitler refuses to appoint a chancellor under such a governing arrangement. ?]
 view-if: left_coalition >= 50
-choose-if: kpd_relation >= 50 and communist_coalition >= 3
+choose-if: kpd_relation >= 50 and communist_coalition >= 3 and president != "Hitler"
 
 There are enough votes for a SPD + KPD coalition government, if such a thing were actually possible.
 
@@ -526,7 +526,7 @@ There is no path to an obviously workable majority. Since President Hindenburg i
 @no_majority_hitler
 title: Hitler appoints himself chancellor.
 on-arrival: chancellor = "Hitler"; chancellor_party = "NSDAP"; foreign_minister_party = "NSDAP"; interior_minister_party = "NSDAP"; justice_minister_party = "NSDAP"; labor_minister_party = "NSDAP"; reichswehr_minister_party = "NSDAP"; economic_minister_party = "NSDAP"; finance_minister_party = "NSDAP"; agriculture_minister_party = "NSDAP"; spd_in_government = 0; spd_toleration = 0
-view-if: weimar_coalition < 50 and (grand_coalition < 50 or grand_coalition_failed == 1) and president == "Hitler" and far_right_coalition < 50
+view-if: president == "Hitler" and far_right_coalition < 50
 
 Despite the weakened powers of the presidency, appointing a chancellor has remained the duty of the president and Hitler wastes no time in appointing himself chancellor in an unprecedented move.
 
@@ -627,8 +627,8 @@ The third option is to have new elections.
 title: A "New Grand Coalition" of all the constitutional parties?
 subtitle: SPD + Z + BVP + DDP + DVP + Others ([+ neo_weimar_coalition +]%)
 view-if: neo_weimar_coalition >= 50 and grand_coalition < 50
-choose-if: z_relation >= 50 and dvp_relation >= 30
-unavailable-subtitle: SPD + Z + BVP + DDP + DVP + Others ([+ neo_weimar_coalition +]%) - [? if z_relation < 50 : We do not have adequate relations with the Center Party. ?][? if dvp_relation < 30 : We do not have adequate relations with the DVP. ?]
+choose-if: z_relation >= 50 and dvp_relation >= 30 and president != "Hitler"
+unavailable-subtitle: SPD + Z + BVP + DDP + DVP + Others ([+ neo_weimar_coalition +]%) - [? if z_relation < 50 : We do not have adequate relations with the Center Party. ?][? if dvp_relation < 30 : We do not have adequate relations with the DVP. ?][? if president == "Hitler" : Hitler refuses to appoint a chancellor under such a governing arrangement. ?]
 
 How do we convince vehemently anti-socialist parties to allow us to form a majority coalition? Our largely benevolent relations with the Center and DVP may allow us some leverage.
 
@@ -667,6 +667,8 @@ We have assembled a new coalition under Otto Braun.
 @unity_government
 title: The Center Party offers a "Government of National Unity" under Chancellor Joseph Wirth.
 subtitle: SPD + Z + BVP + DDP + DVP + Others ([+ neo_weimar_coalition +]%)
+unavailable-subtitle: SPD + Z + BVP + DDP + DVP + Others ([+ neo_weimar_coalition +]%) - [? if president == "Hitler" : Hitler refuses to appoint a chancellor under such a governing arrangement. ?]
+choose-if: president != "Hitler"
 view-if: z_party_leader == "Joos" and neo_weimar_coalition >= 50 and weimar_coalition < 50
 
 The Center Party leader, Joseph Joos, clearly sees the threat from the ascension of the anti-democratic extremist parties, and thus tries to negotiate a "Government of National Unity" to save the republic. This coalition would be led by Joseph Wirth, a left-leaning member of the Center Party and former chancellor, and would encompass all of the constitutional parties. Our role in this government might be limited, however.
@@ -740,7 +742,9 @@ There is no path to a majority government for now. The scheming around President
 @spd_majority
 title: SPD majority alone
 subtitle: SPD: [+ spd_r +]%
+unavailable-subtitle: SPD: [+ spd_r +]% - [? if president == "Hitler" : Hitler refuses to appoint a chancellor under such a governing arrangement. ?]
 view-if: spd_r >= 50
+choose-if: president != "Hitler"
 on-arrival: chancellor = "Empty"; chancellor_party = "SPD"; spd_in_government = 1; in_spd_majority = 1; pro_republic += 5; foreign_minister_party = "SPD"; interior_minister_party = "SPD"; justice_minister_party = "SPD"; labor_minister_party = "SPD"; reichswehr_minister_party = "SPD"; economic_minister_party = "SPD"; finance_minister_party = "SPD"; agriculture_minister_party = "SPD"; reichswehr_loyalty -= 0.05; 
 achievement: majority_party
 
@@ -916,6 +920,7 @@ We have won the vote of no confidence, and are currently ruling under an SPD min
 @weimar_coalition
 title: We can form a Weimar Coalition.
 subtitle: SPD + Z + DDP ([+ weimar_coalition +]%)
+unavailable-subtitle: SPD + Z + DDP ([+ weimar_coalition +]%) - [? if president == "Hitler" : Hitler refuses to appoint a chancellor under such a governing arrangement. ?]
 view-if: weimar_coalition >= 50
 on-arrival: leverage += 15; in_weimar_coalition = 1; spd_in_government = 1; in_popular_front = 0; in_left_front = 0
 achievement: weimar_coalition
