@@ -527,7 +527,69 @@ There is no path to an obviously workable majority. Since President Hindenburg i
 title: Hitler appoints himself chancellor.
 on-arrival: chancellor = "Hitler"; chancellor_party = "NSDAP"
 view-if: weimar_coalition < 50 and (grand_coalition < 50 or grand_coalition_failed == 1) and president == "Hitler" and far_right_coalition < 50
-go-to: hitler_chancellor
+
+Despite the weakened powers of the presidency, appointing a chancellor has remained the duty of the president and Hitler wastes no time in appointing himself chancellor in an unprecedented move.
+
+He has promised a campaign of revenge against the socialists, and the Nazis have already spilled blood. In his published manifesto, he promises a campaign of unspeakable horror against Jews, and endless wars of violent expansion that will ruin all of Europe.
+
+What are we to do now?
+
+- @fight: We will fight on the streets to prevent Hitler from taking power.
+- @vote_against: We will vote against the nazis in the Reichstag.
+
+
+@fight
+
+Do we realize that this means civil war, against the full force of the state?
+
+- @civil_war: Yes.
+- @vote_against: We are not ready for war. Instead, we will vote against the nazis in the Reichstag.
+
+@vote_against
+on-arrival: z_no_confidence = 1 if z_relation > 60 or z_party_leader == "Joos"; other_no_confidence = 1 if (z_relation + dvp_relation)/2 > 70; no_confidence_votes = spd_r + kpd_r + ddp_r; no_confidence_votes += z_r if z_no_confidence; no_confidence_votes += other_r + dvp_r if other_no_confidence; no_confidence_succeeds = 1 if no_confidence_votes > 50
+
+A motion of no confidence is called against Hitler's government. 
+
+In total, [+ no_confidence_votes +]% of the Reichstag is against Hitler. [? if no_confidence_succeeds : We have won the vote of no confidence. ?]
+
+- @no_confidence_elections_new_hitler: There will be new elections, which we will try to delay.
+- @no_confidence_win_hitler: We have won, for now.
+
+@no_confidence_elections_new_hitler
+on-arrival: {!
+Q.no_majority_elections += 1;
+Q.next_election_month = Q.month + 6;
+Q.next_election_time = Q.time + 6;
+if (Q.next_election_month > 12) {
+    Q.next_election_month -= 12;
+    Q.next_election_year = Q.year + 1;
+} else {
+    Q.next_election_year = Q.year;
+}
+Q.pro_republic -= 2;
+Q.workers_spd += 1;
+Q.workers_kpd += 2;
+Q.new_middle_spd += 1;
+Q.old_middle_spd += 1;
+Q.old_middle_dnvp += 2;
+Q.rural_spd += 1;
+Q.rural_dnvp += 2;
+Q.catholics_spd += 1;
+Q.workers_nsdap -= 1;
+Q.old_middle_nsdap -= 2;
+Q.new_middle_nsdap -= 2;
+Q.rural_nsdap -= 2;
+Q.unemployed_nsdap -= 1;
+!}
+view-if: no_confidence_votes > 50
+
+The next elections are set for [+ next_election_month : month +] [+ next_election_year +].
+
+
+@no_confidence_win_hitler
+view-if: no_confidence_votes <= 50
+
+Hitler has won the vote of no confidence. He will continue to govern democratically until he is able to seize total control.
 
 
 # - if NSDAP is the largest party and the 
