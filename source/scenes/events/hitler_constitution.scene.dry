@@ -32,7 +32,7 @@ on-arrival: enemy_strength = sa_strength*sa_militancy; defense_strength = rb_str
 go-to: hitler_referendum
 
 @prevention_success
-on-arrival: sa_strength -= 50; workers_nsdap -= 2; unemployed_nsdap -= 2; {!
+on-arrival: sa_strength -= 50; workers_nsdap -= 2; unemployed_nsdap -= 2; nazi_rage_progress += 2; {!
 Q.nazi_reform = Q.nsdap_normalized + Q.dnvp_normalized + (Q.other_normalized/(Q.pro_republic/100));
 if (Q.dvp_relation < 30) {
      Q.nazi_reform += Q.dvp_normalized;
@@ -95,11 +95,13 @@ go-to: hitler_takes_power
 
 @republic_safe
 view-if: nazi_reform < 0.5
+on-arrival: nazi_rage_progress += 3
 go-to: root
 
 @judicial_help
 view-if: nazi_reform >= 0.5
 choose-if: judicial_reform >= 3
+on-arrival; nazi_rage_progress += 5
 unavailable-subtitle: The judiciary would never agree with us.
 
 We complain to the judiciary that due to the violent interference of the SA the referendum is illegitimate and should be declared such. The judiciary reviews our case and agrees! This has enraged Hitler who begins to consider more radical actions to secure his power.
