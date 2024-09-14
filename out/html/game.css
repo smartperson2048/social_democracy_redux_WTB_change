@@ -517,6 +517,9 @@ table {
 .seat.kpd {
     fill: #8B0000;
 }
+.seat.sapd {
+    fill: #FF7F50;
+}
 .seat.spd {
     fill: #E3000F;
     stroke: #000;
