@@ -62,6 +62,7 @@ Q.neorevisionist_dissent = 10;
 Q.unions_independent = 0;
 Q.center_resigned = 0;
 Q.left_split = 0;
+Q.sapd_formed = 0;
 Q.reformists_resigned = 0;
 
 // have we discovered neorevisionism?
