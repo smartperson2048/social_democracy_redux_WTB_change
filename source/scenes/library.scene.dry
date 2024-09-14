@@ -248,7 +248,7 @@ title: Figures and Charts
 go-to: menu
 on-arrival: z_minus_bvp_r = z_r - 3;
 on-display: {!
-if (sapd_formed == 1) {
+if (Q.sapd_formed == 1) {
     data = [
         {    "id": "kpd",
             "legend": "KPD",
