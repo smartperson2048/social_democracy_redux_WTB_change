@@ -153,7 +153,7 @@ Q.election_records.push(election_result);
 !}
 on-departure: nazi_urgency = 1 if (nazi_urgency == 0 and nsdap_r >= 15)
 on-display: {!
-if (sapd_formed == 1) {
+if (Q.sapd_formed == 1) {
     data = [
         {    "id": "kpd",
             "legend": "KPD",
