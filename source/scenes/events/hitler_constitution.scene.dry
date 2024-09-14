@@ -101,7 +101,7 @@ go-to: root
 @judicial_help
 view-if: nazi_reform >= 0.5
 choose-if: judicial_reform >= 3
-on-arrival; nazi_rage_progress += 5
+on-arrival: nazi_rage_progress += 5
 unavailable-subtitle: The judiciary would never agree with us.
 
 We complain to the judiciary that due to the violent interference of the SA the referendum is illegitimate and should be declared such. The judiciary reviews our case and agrees! This has enraged Hitler who begins to consider more radical actions to secure his power.
