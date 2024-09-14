@@ -536,7 +536,7 @@ What are we to do now?
 
 - @fight: We will fight on the streets to prevent Hitler from taking power.
 - @vote_against: We will vote against the nazis in the Reichstag.
-#- @judicial_protest: We will file a complaint to the judiciary that this goes against the spirit of the constitution.
+- @judicial_protest: We will file a complaint to the judiciary that this goes against the spirit of the constitution.
 
 
 @fight
@@ -592,6 +592,24 @@ view-if: no_confidence_votes <= 50
 on-arrival: judicial_reform -= 3 if judicial_reform >= 3; judicial_reform -= 2 if judicial_reform = 2; judicial_reform -= 1 if judicial_reform = 1; interior_police_loyalty -= 0.2; workers_nsdap += 2; unemployed_nsdap += 5; new_middle_nsdap += 3; old_middle_nsdap += 3; rural_nsdap += 3; pro_republic -= 5
 
 Hitler has won the vote of no confidence. He will continue to govern democratically until he is able to seize total control.
+
+@judicial_protest
+view-if: weimar_coalition >= 50 or (grand_coalition >= 50 and grand_coalition_failed != 1)
+choose-if: judicial_reform >= 3
+unavailable-subtitle: The judiciary is not willing to take our side.
+go-to: judicial_success if judicial_reform >= 4; judicial_failure if judicial_reform < 4
+
+@judicial_success
+
+We complain that, due to the availability and potential of a majority government without the NSDAP, the president is not needed to appoint a minority government and his decision to do so despite the existence of a coalition ready to assume their role in government is an overreach of his powers little better than outright sacking a democratic government. The judiciary reviews our complaint and has agreed, demanding [+ president +] recognize the formation of a coalition government.
+
+@judicial_failure
+on-arrival: judicial_reform -= 1
+
+We complain that, due to the availability and potential of a majority government without the NSDAP, the president is not needed to appoint a minority government and his decision to do so despite the existence of a coalition ready to assume their role in government is an overreach of his powers little better than outright sacking a democratic government. Despite our reforms in the judiciary however there is still a strong right-wing current who resist the idea. What can we do to win the case?
+
+- @vote-against: Then we have no choice but to vote against the Nazis in the Reichstag.
+- @fight: Then we have no choice but to fight in the streets to stop Hitler from taking power.
 
 
 # - if NSDAP is the largest party and the 
