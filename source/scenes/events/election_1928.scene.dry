@@ -581,6 +581,7 @@ Q.old_middle_nsdap -= 2;
 Q.new_middle_nsdap -= 2;
 Q.rural_nsdap -= 2;
 Q.unemployed_nsdap -= 1;
+Q.nazi_rage_progress += 2;
 !}
 view-if: no_confidence_votes > 50
 
@@ -589,7 +590,7 @@ The next elections are set for [+ next_election_month : month +] [+ next_electio
 
 @no_confidence_win_hitler
 view-if: no_confidence_votes <= 50
-on-arrival: judicial_reform -= 3 if judicial_reform >= 3; judicial_reform -= 2 if judicial_reform = 2; judicial_reform -= 1 if judicial_reform = 1; interior_police_loyalty -= 0.2; workers_nsdap += 2; unemployed_nsdap += 5; new_middle_nsdap += 3; old_middle_nsdap += 3; rural_nsdap += 3; pro_republic -= 5
+on-arrival: judicial_reform -= 3 if judicial_reform >= 3; judicial_reform -= 2 if judicial_reform = 2; judicial_reform -= 1 if judicial_reform = 1; interior_police_loyalty -= 0.2; workers_nsdap += 2; unemployed_nsdap += 5; new_middle_nsdap += 3; old_middle_nsdap += 3; rural_nsdap += 3; pro_republic -= 5; nazi_rage_progress -= 2
 
 Hitler has won the vote of no confidence. He will continue to govern democratically until he is able to seize total control.
 
@@ -600,11 +601,32 @@ unavailable-subtitle: The judiciary is not willing to take our side.
 go-to: judicial_success if judicial_reform >= 4; judicial_failure if judicial_reform < 4
 
 @judicial_success
+on-arrival: {!
+Q.no_majority_elections += 1;
+Q.next_election_month = Q.month + 6;
+Q.next_election_time = Q.time + 6;
+if (Q.next_election_month > 12) {
+    Q.next_election_month -= 12;
+    Q.next_election_year = Q.year + 1;
+} else {
+    Q.next_election_year = Q.year;
+}
+Q.pro_republic -= 10;
+Q.workers_kpd += 1;
+Q.old_middle_dnvp += 1;
+Q.rural_dnvp += 1;
+Q.workers_nsdap += 2;
+Q.old_middle_nsdap += 1;
+Q.new_middle_nsdap += 1;
+Q.rural_nsdap += 2;
+Q.unemployed_nsdap += 3;
+Q.nazi_rage_progress += 7;
+!}
 
-We complain that, due to the availability and potential of a majority government without the NSDAP, the president is not needed to appoint a minority government and his decision to do so despite the existence of a coalition ready to assume their role in government is an overreach of his powers little better than outright sacking a democratic government. The judiciary reviews our complaint and has agreed, demanding [+ president +] recognize the formation of a coalition government.
+We complain that, due to the availability and potential of a majority government without the NSDAP, the president is not needed to appoint a minority government and his decision to do so despite the existence of a coalition ready to assume their role in government is an overreach of his powers little better than outright sacking a democratic government. The judiciary reviews our complaint and has agreed, demanding [+ president +] recognize the formation of a coalition government. Outraged, [+ president +] has refused, triggering a constitutional crisis while he dissolves his government and calls snap elections to avoid needing to appoint a non-Nazi government. 
 
 @judicial_failure
-on-arrival: judicial_reform -= 1
+on-arrival: judicial_reform -= 1; nazi_rage_progress -= 1
 
 We complain that, due to the availability and potential of a majority government without the NSDAP, the president is not needed to appoint a minority government and his decision to do so despite the existence of a coalition ready to assume their role in government is an overreach of his powers little better than outright sacking a democratic government. Despite our reforms in the judiciary however there is still a strong right-wing current who resist the idea. What can we do to win the case?
 
