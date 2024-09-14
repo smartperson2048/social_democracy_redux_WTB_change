@@ -608,7 +608,7 @@ on-arrival: judicial_reform -= 1
 
 We complain that, due to the availability and potential of a majority government without the NSDAP, the president is not needed to appoint a minority government and his decision to do so despite the existence of a coalition ready to assume their role in government is an overreach of his powers little better than outright sacking a democratic government. Despite our reforms in the judiciary however there is still a strong right-wing current who resist the idea. What can we do to win the case?
 
-- @vote-against: Then we have no choice but to vote against the Nazis in the Reichstag.
+- @vote_against: Then we have no choice but to vote against the Nazis in the Reichstag.
 - @fight: Then we have no choice but to fight in the streets to stop Hitler from taking power.
 
 
