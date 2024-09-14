@@ -1,0 +1,15 @@
+title: The SAPD consolidates
+subtitle: As the SPD loses more and more of its base, the SAPD has increasingly consolidated as an alternative.
+view-if: unions_independent == 1 and sapd_formed == 1 and centrists_resign == 1
+on-arrival: workers_spd -= 10; workers_sapd += 10; workers_kpd -= 5; unemployed_spd -= 5; unemployed_kpd -= 5; unemployed_sapd += 5; unemployed_sapd += 15 if economic_plan == 0; unemployed_sapd += 10 if moderate_plan_adopted == 1; sapd_consolidated = 1
+max-visits: 1
+new-page: true
+tags: event
+
+= Consolidation of the SAPD
+
+With the unions having left the SPD and the Left and Center defecting to form a new party with them, the SAPD has consolidated and become a genuine competitor to our party. Seeing this growth, anti-Stalinists in the KPD too defect and join the SAPD, creating a strong bloc between the two parties.
+
+[? if economic_plan == 0 : Our failure to formulate an economic plan has only strengthened this bloc further as many unemployed supporters of our party join the SAPD in the hopes of getting their jobs back. ?] [? if moderate_plan_adopted == 1 : Our adoption of the moderate economic plan has only bolstered the SAPD further as many of the more radical members in our party feel it is inadequate and find accomodation elsewhere. ?]
+
+- @root: Disturbing.
