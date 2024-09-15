@@ -67,3 +67,29 @@ We have decided to fund our economic plan through increased taxes on the rich an
 on-arrival: workers_spd -= 12; unemployed_spd -= 12; workers_kpd += 4; workers_kpd += 2 if sapd_consolidated == 0; workers_sapd += 2 if sapd_consolidated == 1; welfare -= 2; reformist_dissent += 20; left_dissent += 20; labor_dissent += 20; center_dissent += 10; neorevisionist_dissent += 10; dvp_relation += 10; z_relation += 6 if z_party_leader == "Kaas"; z_relation -= 2 if z_party_leader == "Joos"; pro_republic -= 6; coalition_dissent -= 2 if in_grand_coalition; kpd_coalition_dissent += 2; kpd_relation -= 16; inflation -= 0.6; unemployed += 0.8; works_program += 1; unemployed -= 3 if unemployed >= 8; inflation += 1.5; workers_spd += 6*(1-dissent); unemployed_spd += 4*(1-dissent); new_middle_spd += 3*(1-dissent); old_middle_spd += 2*(1-dissent); rural_spd += 2*(1-dissent); moderate_plan_progress += 1; kpd_coalition_dissent += 1; inflation += 1 if unemployed < 10; kpd_relation -= 5 if in_popular_front or in_left_front
 
 We have decided to fund our economic plan through cuts to welfare and social spending across the board. This angers the workers, who begin to view the Weimar Plan as nothing more than disguised austerity, but it has allowed us to implement the plan. [? if z_party_leader == "Joos" : Joos is puzzled by our course but we reason that welfare cuts in this situation are simply necessary. He folds and agrees with the right-wing of his party satisfied by the measures. ?] [? if z_party_leader == "Kaas" : Our decision is approved of by [+ finance_minister +] and Kaas, bolstering ties, though it has left many in the Catholic trade unions who had been seeking to align with the SPD feeling confused. ?]
+
+@military
+choose-if: reichswehr_strength >= 40 and (((z_relation >= 75 and z_party_leader == "Kaas") or (z_relation >= 50 and z_party_leader == "Joos")) or reichswehr_minister_party == "SPD")
+unavailable-subtitle: [? if reichswehr_strength == 0 : There is not enough left to cut. ?] [? if not ((z_relation >= 75 and z_party_leader == "Kaas") or (z_relation >= 50 and z_party_leader == "Joos")) : Our partners are too committed to the military and not willing to engage in large scale cuts. ?]
+on-arrival: coalition_dissent += 2 if in_grand_coalition == 1; coalition_dissent += 1 if z_party_leader == "Kaas"; reichswehr_militancy -= 2; reichswehr_strength -= 40; dvp_relation -= 10; z_relation -= 5 if z_party_leader == "Kaas"; reichswehr_loyalty -= 0.10; coup_progress += 2; reichswehr_goal_completed = 1; works_program += 1; unemployed -= 3 if unemployed >= 8; inflation += 1.5; workers_spd += 6*(1-dissent); unemployed_spd += 4*(1-dissent); new_middle_spd += 3*(1-dissent); old_middle_spd += 2*(1-dissent); rural_spd += 2*(1-dissent); moderate_plan_progress += 1; kpd_coalition_dissent += 1; inflation += 1 if unemployed < 10; kpd_relation -= 5 if in_popular_front or in_left_front
+
+We have decided to fund our economic plan through cuts to military spending. [? if z_party_leader == "Kaas" and reichswehr_minister_party != "SPD" : This was only very reluctantly agreed upon by our partners, who expect us to pay them back in future with concessions in some form. The military is equally upset and rumors of a coup begin to spread around, though likely sensationalist. ?] [? if z_party_leader == "Joos" and reichswehr_minister_party != "SPD" : This has been accepted thanks to the friendly influence of Joos, though it has still caused noticeable tension in government. The military too is upset, and rumors of a coup are spread around, though likely sensationalist. ?] [? if reichswehr_minister_party == "SPD" : As we control the Reichswehr Ministry, we do not even need to convince our partners to take this course and quickly provide the funds needed for the plan by taking from the army. Despite this, though, many are displeased with this and the army is no exception with sensationalist rumors of a coup being passed around. ?]
+
+@just_enact_1
+view-if: budget >= 2
+subtitle: -2 budget.
+on-arrival: budget -= 2; works_program += 1; unemployed -= 3 if unemployed >= 8; inflation += 1.5; workers_spd += 6*(1-dissent); unemployed_spd += 4*(1-dissent); new_middle_spd += 3*(1-dissent); old_middle_spd += 2*(1-dissent); rural_spd += 2*(1-dissent); moderate_plan_progress += 1; kpd_coalition_dissent += 1; inflation += 1 if unemployed < 10; kpd_relation -= 5 if in_popular_front or in_left_front
+
+We decide to delay a decision on how to raise additional funds as it is not yet necessary thanks to our current surplus that allows us to immediately implement the plan. This is fine by our coalition partners and implementation begins swiftly.
+
+@just_enact_2
+view-if: budget = 1
+subtitle: -1 budget.
+on-arrival: budget -= 1; works_program += 1; unemployed -= 2 if unemployed >= 8; inflation += 1; workers_spd += 4*(1-dissent); unemployed_spd += 2*(1-dissent); new_middle_spd += 2*(1-dissent); old_middle_spd += 1*(1-dissent); rural_spd += 1*(1-dissent); moderate_plan_progress += 1; kpd_coalition_dissent += 1; inflation += 1 if unemployed < 10; kpd_relation -= 5 if in_popular_front or in_left_front
+
+We decide to delay a decision on how to raise additional funds as it is not yet necessary thanks to our current small surplus that allows us to implement the plan, though only partially. This is fine by our coalition partners and partial implementation begins as we deliberate on a more longterm solution to our funding issues.
+
+@delay
+on-arrival: z_party_relation -= 5 if z_party_leader == "Joos"; ddp_relation -= 5
+
+This takes our coalition partners by surprise, but they are fine with waiting. [? if z_party_leader == "Joos" : Joos is puzzled by the delay, but he accepts our argument that if we rush implementation the economy will only worsen. ?]
