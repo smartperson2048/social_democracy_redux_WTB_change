@@ -1,0 +1,69 @@
+title: Enacting the Weimar Plan
+subtitle: Our coalition partners are ready to proceed with the plan.
+view-if: weimar_plan_adopted == 1 and spd_in_government == 1 and economic_minister_party != "SPD" and finance_minister_party != "SPD"
+new-page: true
+max-visits: 1
+tags: event
+go-to: plan_menu
+
+= Enacting the Plan
+
+Now that we are in government, it is time for us to enact our economic plan alongside our partners. As we lack the finance and economic ministries, the task of pursuing the plan has fallen to [+ finance_minister +] of [+ finance_minister_party +] and [+ economic_minister +] of [+ economic_minister_party +]. They are ready to proceed but have approached us to decide how we should go about funding the plan.
+
+@plan_menu
+  
+- @taxes_1: We should fund our plan by raising taxes.
+- @taxes_2: We should fund our plan by raising taxes.
+- @welfare: We have no choice but to cut welfare and social spending to fund our plan.
+- @military: Cuts to military spending will give us the funds we need.
+- @just_enact_1: We will not find ways to raise funds for now and simply begin with the funds that we have.
+- @just_enact_2: We will not find ways to raise funds for now and simply begin with the funds that we have.
+- @delay: We do not have the funds we need. We will have to delay pursuing of our plan.
+
+@taxes_1
+view-if: z_party_leader == "Kaas"
+  
+Funding the plan by increasing taxes is certainly one option, though one that [+ finance_minister +] is reluctant to pursue. His preferred course is to fund the plan via cuts to social spending.
+
+- @convince: We will use our ties with [+ finance_minister_party +] to sway [+ finance_minister +]. 
+- @compromise: Perhaps we can fund the plan through a combination of tax hikes and social spending cuts as a compromise.
+- @plan_menu: What are the other options?
+
+@convince
+choose-if: z_relation >= 70
+on-arrival: z_relation -= 5
+
+We have managed to convince [+ finance_minister +] to fund the plan with an increase in taxes. Now we must decide how to go about the tax hikes.
+
+- @tax_rich: Our tax hikes will be aimed specifically at the rich.
+- @general_tax: We will raise taxes across the board.
+
+@compromise
+on-arrival: upper_tax_rates += 1; unemployed += 1.4; inflation += 0.7; new_middle_spd -= 2; old_middle_spd -= 2; workers_spd -= 6; unemployed_spd -= 6; workers_kpd += 3; welfare -= 1; reformist_dissent += 10; left_dissent += 10; labor_dissent += 10; center_dissent += 5; neorevisionist_dissent += 5; dvp_relation += 5; z_relation += 3; pro_republic -= 3; coalition_dissent -= 1 if in_grand_coalition; kpd_coalition_dissent += 2; kpd_relation -= 8; works_program += 1; unemployed -= 3 if unemployed >= 8; workers_spd += 6*(1-dissent); unemployed_spd += 4*(1-dissent); new_middle_spd += 3*(1-dissent); old_middle_spd += 2*(1-dissent); rural_spd += 2*(1-dissent); moderate_plan_progress += 1; inflation += 1 if unemployed < 10; kpd_relation -= 5 if in_popular_front or in_left_front
+
+Our suggestion to synthesize both methods of raising funds for the plan is agreeable to [+ finance_minister +] and we do so. This is viewed with suspicion from many of our supporters, and the results are yet unclear, though the economy does seem to be improving.
+  
+@taxes_2
+view-if: z_party_leader == "Joos"
+
+Funding the plan by increasing taxes is certainly one option, and one that, under influence from Joos, [+ finance_minister +] is willing to accept. There still the matter, however, of how to go about increasing taxes.
+
+- @tax_rich: Our tax hikes will be aimed specifically at the rich.
+- @general_tax: We will raise taxes across the board.
+
+@tax_rich
+choose-if: z_relation >= 70 or z_party_leader == "Joos"
+unavailable-subtitle: This is unacceptable to our partners.
+on-arrival: coalition_dissent += 1 if z_party_leader == "Kaas"; z_relation -= 5 if z_party_leader == "Kaas"; upper_tax_rates += 1; capital_strike_progress += 1; capital_strike_progress += 1 if upper_tax_rates > 1; capital_strike_progress += 1 if upper_tax_rates > 3; workers_spd += 4*(1-dissent); old_middle_spd -= 4; new_middle_spd -= 4; coalition_dissent += 1 if in_grand_coalition; coalition_dissent += 1 if capital_strike_progress >= 5; dvp_relation -= 4; unemployed += 1; finance_goal_completed += 1; inflation += 0.9; works_program += 1; unemployed -= 3 if unemployed >= 8; workers_spd += 6*(1-dissent); unemployed_spd += 4*(1-dissent); new_middle_spd += 3*(1-dissent); old_middle_spd += 2*(1-dissent); rural_spd += 2*(1-dissent); moderate_plan_progress += 1; kpd_coalition_dissent += 1; inflation += 1 if unemployed < 10; kpd_relation -= 5 if in_popular_front or in_left_front
+
+We have decided to fund our economic plan through increased taxes on the rich. [? if z_party_leader == "Kaas" : This decision strains the integrity of our collaboration, but has been begrudgingly accepted. ?] [? if z_party_leader == "Joos" : This is broadly acceptable to the parties involved, though a confrontation with the capitalists is not impossible should we continue down this course. ?]
+
+@general_tax
+on-arrival: works_program += 1; unemployed -= 3 if unemployed >= 8; inflation += 1.5; workers_spd += 6*(1-dissent); unemployed_spd += 4*(1-dissent); new_middle_spd += 3*(1-dissent); old_middle_spd += 2*(1-dissent); rural_spd += 2*(1-dissent); moderate_plan_progress += 1; kpd_coalition_dissent += 1; inflation += 1 if unemployed < 10; kpd_relation -= 5 if in_popular_front or in_left_front; upper_tax_rates += 1; lower_tax_rates += 1; budget += 2; unemployed += 1.5; capital_strike_progress -= 1; inflation -= 1; new_middle_spd -= 3; old_middle_spd -= 3; workers_spd -= 3; rural_spd -= 3; kpd_coalition_dissent += 1; kpd_relation -= 5; left_dissent += 5
+
+We have decided to fund our economic plan through increased taxes on the rich and implementation has begun. Many in our party say that we should have insisted on tax increases exclusively on the rich, but what is done is done and we can only hope that the plan can successfully fix the economy.
+
+@welfare
+on-arrival: workers_spd -= 12; unemployed_spd -= 12; workers_kpd += 4; workers_kpd += 2 if sapd_consolidated == 0; workers_sapd += 2 if sapd_consolidated == 1; welfare -= 2; reformist_dissent += 20; left_dissent += 20; labor_dissent += 20; center_dissent += 10; neorevisionist_dissent += 10; dvp_relation += 10; z_relation += 6 if z_party_leader == "Kaas"; z_relation -= 2 if z_party_leader == "Joos"; pro_republic -= 6; coalition_dissent -= 2 if in_grand_coalition; kpd_coalition_dissent += 2; kpd_relation -= 16; inflation -= 0.6; unemployed += 0.8; works_program += 1; unemployed -= 3 if unemployed >= 8; inflation += 1.5; workers_spd += 6*(1-dissent); unemployed_spd += 4*(1-dissent); new_middle_spd += 3*(1-dissent); old_middle_spd += 2*(1-dissent); rural_spd += 2*(1-dissent); moderate_plan_progress += 1; kpd_coalition_dissent += 1; inflation += 1 if unemployed < 10; kpd_relation -= 5 if in_popular_front or in_left_front
+
+We have decided to fund our economic plan through cuts to welfare and social spending across the board. This angers the workers, who begin to view the Weimar Plan as nothing more than disguised austerity, but it has allowed us to implement the plan. [? if z_party_leader == "Joos" : Joos is puzzled by our course but we reason that welfare cuts in this situation are simply necessary. He folds and agrees with the right-wing of his party satisfied by the measures. ?] [? if z_party_leader == "Kaas" : Our decision is approved of by [+ finance_minister +] and Kaas, bolstering ties, though it has left many in the Catholic trade unions who had been seeking to align with the SPD feeling confused. ?]
