@@ -72,7 +72,7 @@ We remind them of the successes of our rally in 1929, and they are willing to ta
 #- @rally_fail: Now the rally...
 
 @rally_kpd_2
-view-if: // Nazis dont disrupt
+view-if: fascist_disruption != 1
 on-arrival: workers_kpd += 12; unemployed_kpd += 12; workers_spd += 3*(1-dissent); unemployed_spd += 3*(1-dissent); new_middle_spd -= 7; old_middle_spd -= 7; z_relation -= 15; dvp_relation -= 15; coalition_dissent += 2; communist_coalition += 1; rfb_strength += 50; rfb_militancy += 0.1; sa_strength += 25; sh_strength += 25; coup_progress += 1 if spd_in_government == 1; capital_strike_progress += 1 if spd_in_government == 1
 
 The rally goes ahead, with the KPD taking a very active participatory role. The reason soon becomes clear as they very obviously dominate the rally and proceedings, treating the SPD's involvement as that of a subservient auxilliary. The bulk of support from the rally goes towards the KPD and the SPD is left floundering for the leftovers. The reactionaries notice this and waste no time in calling the SPD a puppet of the KPD. They also expand their forces through the growing anticommunist fears provoked by our rallies with the KPD.
