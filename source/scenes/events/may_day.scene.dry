@@ -62,7 +62,7 @@ We promise to front the resources needed for organizing the rally, and the KPD a
 
 @appeal_1929
 choose-if: blutmai == 0
-on-arrival: spd_dominance == 1 if (((rb_strength*rb_militancy*(1-dissent))*spd_normalized)>=((rfb_strength*rfb_militancy)*kpd_normalized)); kpd_dominance == 1 if (((rb_strength*rb_militancy*(1-dissent))*spd_normalized)<((rfb_strength*rfb_militancy)*kpd_normalized)); fascist_disruption == 1 if ((sa_strength*sa_militancy)+(sh_strength*sh_militancy)) >= 500
+on-arrival: spd_dominance = 1 if (((rb_strength*rb_militancy*(1-dissent))*spd_normalized)>=((rfb_strength*rfb_militancy)*kpd_normalized)); kpd_dominance = 1 if (((rb_strength*rb_militancy*(1-dissent))*spd_normalized)<((rfb_strength*rfb_militancy)*kpd_normalized)); fascist_disruption = 1 if ((sa_strength*sa_militancy)+(sh_strength*sh_militancy)) >= 500
 
 We remind them of the successes of our rally in 1929, and they are willing to take that as evidence for the utility of another such rally. Preparations are made and it isn't long before everything is ready for the rally.
 
