@@ -1,0 +1,94 @@
+title: May Day
+new-page: true
+subtitle: A joint demonstration?
+tags: event
+view-if: month = 5 and communist_coalition >= 3 and kpd_relation >= 60 and nationalization_adopted == 1
+on-arrival: month_actions += 1
+
+= May Day
+
+It is May Day of [+ year +] and as we prepare the possibility is discussed of a rally together with the KPD for the abolition of the capitalist economy and a swift transition towards socialism to end the suffering of the workers from the economic crisis. From what we know the KPD seems amenable to the idea, though it would terrify the bourgeoisie, voters and parties alike. [? if blutmai = 0 : This idea is given legitimacy by the success of our rally with the KPD in 1929. ?] 
+
+Should we pursue this idea?
+
+- @invite_kpd_1: Let us invite the KPD to a rally of the working class united against capitalism and its crisis!
+- @invite_kpd_2: Let us invite the KPD to a rally of the working class united against capitalism and its crisis!
+- @dismiss: We have a lot in common with the KPD, but it is best to maintain our party's independence. 
+
+@dismiss
+on-arrival: left_dissent += 5; center_dissent -= 10; reformist_dissent -= 10; labor_dissent -= 5; neorevisionist_dissent -= 10; left_strength -= 5
+
+We will not participate in such an event with the KPD.
+
+@invite_kpd_1
+view-if: kpd_normalized <= spd_normalized
+
+We have decided to go ahead with our plan and reach out to the KPD. They are open to the idea, but some of their more hardline members require further convincing.
+
+- @relations: Use our relations.
+- @resources: Use our resources.
+- @appeal_1929: Remind them of our success in 1929.
+#- @let_kpd: Let the KPD organize and manage the rally.
+
+@invite_kpd_2
+view-if: kpd_normalized > spd_normalized
+
+We have decided to go ahead with our plan and reach out to the KPD. They are, to our surprise, more than happy to go ahead with the plan. Preparations are made, with the cost even being fronted by the KPD, and soon everything is ready.
+
+- @rally_kpd_2: Now the rally...
+- @rally_disruption: Now the rally...
+
+@relations
+view-if: kpd_relation >= 75
+
+Thankfully, due to our great relations, it isn't hard to bring the KPD around to the idea. Preparations are made and it isn't long before everything is ready for the rally.
+
+- @rally_spd_1: Now the rally...
+- @rally_disruption: Now the rally
+- @rally_kpd_1: Now the rally...
+#- @rally_fail: Now the rally...
+
+@resources
+subtitle: -1 resources
+choose-if: resources >= 1
+on-arrival: resources -= 1
+
+We promise to front the resources needed for organizing the rally, and the KPD accepts this. Preparations are made and it isn't long before everything is ready for the rally.
+
+- @rally_spd_1: Now the rally...
+- @rally_disruption: Now the rally
+- @rally_kpd_1: Now the rally...
+#- @rally_fail: Now the rally...
+
+@appeal_1929
+choose-if: blutmai == 0
+on-arrival: spd_dominance == 1 if (((rb_strength*rb_militancy*(1-dissent))*spd_normalized)>=((rfb_strength*rfb_militancy)*kpd_normalized)); kpd_dominance == 1 if (((rb_strength*rb_militancy*(1-dissent))*spd_normalized)<((rfb_strength*rfb_militancy)*kpd_normalized)); fascist_disruption == 1 if (((sa_strength*sa_militancy)+(sh_strength*sh_militancy)) >= 500)
+
+We remind them of the successes of our rally in 1929, and they are willing to take that as evidence for the utility of another such rally. Preparations are made and it isn't long before everything is ready for the rally.
+
+- @rally_spd_1: Now the rally...
+- @rally_disruption: Now the rally
+- @rally_kpd_1: Now the rally...
+#- @rally_fail: Now the rally...
+
+@rally_kpd_2
+view-if: // Nazis dont disrupt
+on-arrival: workers_kpd += 12; unemployed_kpd += 12; workers_spd += 3*(1-dissent); unemployed_spd += 3*(1-dissent); new_middle_spd -= 7; old_middle_spd -= 7; z_relation -= 15; dvp_relation -= 15; coalition_dissent += 2; communist_coalition += 1; rfb_strength += 50; rfb_militancy += 0.1; sa_strength += 25; sh_strength += 25; coup_progress += 1 if spd_in_government == 1; capital_strike_progress += 1 if spd_in_government == 1
+
+The rally goes ahead, with the KPD taking a very active participatory role. The reason soon becomes clear as they very obviously dominate the rally and proceedings, treating the SPD's involvement as that of a subservient auxilliary. The bulk of support from the rally goes towards the KPD and the SPD is left floundering for the leftovers. The reactionaries notice this and waste no time in calling the SPD a puppet of the KPD. They also expand their forces through the growing anticommunist fears provoked by our rallies with the KPD.
+
+@rally_spd_1
+on-arrival: workers_spd += 10*(1-dissent); unemployed_spd += 10*(1-dissent); workers_kpd += 5; unemployed_kpd += 5; z_relation -= 10; dvp_relation -= 10; coalition_dissent += 2; communist_coalition += 1; rfb_strength += 50; rfb_militancy += 0.1; sa_strength += 25; sh_strength += 25; coup_progress += 1 if spd_in_government == 1; capital_strike_progress += 1 if spd_in_government == 1
+view-if: spd_dominance == 1 and fascist_disruption != 1
+
+The rally goes ahead, and is largely a success. The bulk of the support gained goes to the SPD, though the KPD is not left out of its fair share. The reactionaries attack us as nothing more than KPD puppets and expand their forces by using the growing anticommunist fears that we have caused as a recruiting tool.
+
+@rally_disruption
+view-if: fascist_disruption == 1
+
+The SA and Stalhelm have attacked our rally! What started as a show of proletarian unity and action devolves into a bloody violent clash between forces of the communist RFB and the attacking SA and Stalhelm. 
+
+@rally_kpd_1
+
+Placeholder
+
