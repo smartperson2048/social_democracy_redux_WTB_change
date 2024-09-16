@@ -613,7 +613,7 @@ Do we realize that this means civil war, against the full force of the state?
 - @vote_against: We are not ready for war. Instead, we will vote against the nazis in the Reichstag.
 
 @vote_against
-on-arrival: z_no_confidence = 1 if z_relation > 60 or z_party_leader == "Joos"; other_no_confidence = 1 if (z_relation + dvp_relation)/2 > 70; no_confidence_votes = spd_r + kpd_r + ddp_r; no_confidence_votes += z_r if z_no_confidence; no_confidence_votes += other_r + dvp_r if other_no_confidence; no_confidence_succeeds = 1 if no_confidence_votes > 50
+on-arrival: z_no_confidence = 1 if z_relation > 60 or z_party_leader == "Joos"; other_no_confidence = 1 if (z_relation + dvp_relation)/2 > 70; no_confidence_votes = spd_r + kpd_r + sapd_r + ddp_r; no_confidence_votes += z_r if z_no_confidence; no_confidence_votes += other_r + dvp_r if other_no_confidence; no_confidence_succeeds = 1 if no_confidence_votes > 50
 
 A motion of no confidence is called against Hitler's government. 
 
@@ -924,7 +924,7 @@ Their numbers are bolstered by the many government workers who are against the p
 @emergency_no_confidence
 title: The Nazis immediately call a no-confidence vote against us...
 view-if: far_right_coalition < 45
-on-arrival: z_no_confidence = 1 if z_relation < 45; kpd_no_confidence = 1 if kpd_relation < 45; others_no_confidence = 1 if (z_relation + dvp_relation)/2 < 45; sa_strength += 200; sh_strength += 200; no_confidence_votes = nsdap_r + dnvp_r; no_confidence_votes += z_r if z_no_confidence; no_confidence_votes += kpd_r if kpd_no_confidence; no_confidence_votes += other_r if other_no_confidence; no_confidence_succeeds = 1 if no_confidence_votes > 50
+on-arrival: z_no_confidence = 1 if z_relation < 45; kpd_no_confidence = 1 if kpd_relation < 45; others_no_confidence = 1 if (z_relation + dvp_relation)/2 < 45; sa_strength += 200; sh_strength += 200; no_confidence_votes = nsdap_r + dnvp_r; no_confidence_votes += z_r if z_no_confidence; no_confidence_votes += kpd_r if kpd_no_confidence; no_confidence_votes += sapd_r if kpd_no_confidence; no_confidence_votes += other_r if other_no_confidence; no_confidence_succeeds = 1 if no_confidence_votes > 50
 
 The NSDAP and DNVP will vote against us, of course. The other parties vote their conscience.
 
