@@ -1,6 +1,6 @@
 title: 1929
 subtitle: A new year
-on-arrival: 1929_republic = pro_republic; {!
+on-arrival: old_republic = pro_republic; {!
 Q.unemployed += 3;
 Q.inflation -= 1;
 if (Q.old_demographics) {
