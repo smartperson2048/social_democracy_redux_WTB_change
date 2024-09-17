@@ -1,11 +1,11 @@
 title: 1933
 subtitle: A new year 
-on-arrival: strife += 1; {!
+on-arrival: older_republic = old_republic; old_republic = pro_republic; strife += 1; {!
 if (pro_republic > 75) {
-    Q.new_middle_ddp += (Q.pro_republic - Q.1932_republic)
-    Q.old_middle_ddp += ((Q.pro_republic - Q.1932_republic)/2)
-    Q.new_middle_dvp += ((Q.pro_republic - Q.1932_republic)/2)
-    Q.old_middle_dvp += (Q.pro_republic - Q.1932_republic)
+    Q.new_middle_ddp += (Q.pro_republic - Q.older_republic)
+    Q.old_middle_ddp += ((Q.pro_republic - Q.older_republic)/2)
+    Q.new_middle_dvp += ((Q.pro_republic - Q.older_republic)/2)
+    Q.old_middle_dvp += (Q.pro_republic - Q.older_republic)
 }
 !}
 tags: event
