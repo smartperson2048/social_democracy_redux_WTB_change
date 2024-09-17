@@ -6,7 +6,7 @@ Q.inflation -= 1;
 if (Q.old_demographics) {
     Q.catholics_z += 3;
 }
-if (Q.pro_republic > 75 && Q.pro_republic > Q.older_republic) {
+if (Q.pro_republic > 75 && Q.pro_republic > 59) {
     Q.new_middle_ddp += (Q.pro_republic - 59)
     Q.old_middle_ddp += ((Q.pro_republic - 59)/2)
     Q.new_middle_dvp += ((Q.pro_republic - 59)/2)
