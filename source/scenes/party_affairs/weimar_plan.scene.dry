@@ -164,6 +164,8 @@ By applying pressure with President Braun we have managed to cow the right-wing 
 @drop_the_matter
 on-arrival: weimar_support -= 50; labor_dissent += 5; center_dissent += 5; left_dissent += 5; reformist_dissent += 5; neorevisionist_dissent += 5; workers_spd -= 1
 
+Whether it be due to a change in strategy or lacking the means to convince our allies, we have decided to drop the idea for now.
+
 @sovereignty
 view-if: weimar_support <= 0
 on-arrival: weimar_rejected = 1; neorevisionist_strength -= 5; neorevisionist_dissent += 10; left_dissent -= 10; center_dissent -= 5; labor_dissent -= 5; workers_spd += 2; unemployed_spd += 2
