@@ -1,7 +1,7 @@
 title: 1930
 subtitle: A new year 
 audio: clear shuffle music/1928_1933/ZurSonne_zurFreiheit.mp3 music/1928_1933/arbeiter_marseille.mp3 music/1928_1933/DERLINDENBAUM_normalized.mp3 music/1928_1933/Wann_wir_schreiten_Seit_an_Seit.mp3 music/1930_1933/Internationale-de_normalized.ogg music/1930_1933/ironfront_normalized.mp3 music/1930_1933/KommSusserTod.mp3 music/1930_1933/Warszawianka.mp3
-on-arrival: 1930_republic = pro_republic; {!
+on-arrival: old_republic = older_republic; old_republic = pro_republic; {!
 // increase NSDAP vote share 
 Q.unemployed += 8; 
 Q.inflation -= 4;
@@ -10,10 +10,10 @@ if (Q.old_demographics) {
     Q.catholics_z += 3;
 }
 if (pro_republic > 75) {
-    Q.new_middle_ddp += (Q.pro_republic - Q.1929_republic)
-    Q.old_middle_ddp += ((Q.pro_republic - Q.1929_republic)/2)
-    Q.new_middle_dvp += ((Q.pro_republic - Q.1929_republic)/2)
-    Q.old_middle_dvp += (Q.pro_republic - Q.1919_republic)
+    Q.new_middle_ddp += (Q.pro_republic - Q.older_republic)
+    Q.old_middle_ddp += ((Q.pro_republic - Q.older_republic)/2)
+    Q.new_middle_dvp += ((Q.pro_republic - Q.older_republic)/2)
+    Q.old_middle_dvp += (Q.pro_republic - Q.older_republic)
 }
 Q.rural_nsdap += 15; 
 Q.rural_dnvp -= 15;
