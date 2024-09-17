@@ -1,6 +1,6 @@
 title: 1932
 subtitle: A new year 
-on-arrival: 1932_republic = pro_republic; {!
+on-arrival: older_republic = old_republic; old_republic = pro_republic; {!
 // increase NSDAP vote share 
 // TODO: if a public works program has started, unemployment is not so bad.
 if (Q.works_program && Q.works_program >= 2) {
@@ -17,10 +17,10 @@ if (Q.old_demographics) {
     Q.catholics_z += 5;
 }
 if (pro_republic > 75) {
-    Q.new_middle_ddp += (Q.pro_republic - Q.1931_republic)
-    Q.old_middle_ddp += ((Q.pro_republic - Q.1931_republic)/2)
-    Q.new_middle_dvp += ((Q.pro_republic - Q.1931_republic)/2)
-    Q.old_middle_dvp += (Q.pro_republic - Q.1931_republic)
+    Q.new_middle_ddp += (Q.pro_republic - Q.older_republic)
+    Q.old_middle_ddp += ((Q.pro_republic - Q.older_republic)/2)
+    Q.new_middle_dvp += ((Q.pro_republic - Q.older_republic)/2)
+    Q.old_middle_dvp += (Q.pro_republic - Q.older_republic)
 }
 if (!Q.works_program) {
     Q.unemployed += 6; 
