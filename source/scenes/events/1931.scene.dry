@@ -1,6 +1,6 @@
 title: 1931
 subtitle: A new year 
-on-arrival: {!
+on-arrival: 1931_republic = pro_republic; {!
 // increase NSDAP vote share 
 // TODO: if a public works program has started, unemployment is not so bad.
 Q.unemployed += 8;
@@ -12,6 +12,12 @@ if (Q.works_program) {
 if (Q.works_program && Q.works_program > 1) {
     Q.unemployed -= 2;
     Q.inflation += 2;
+}
+if (pro_republic > 75) {
+    Q.new_middle_ddp += (Q.pro_republic - Q.1930_republic)
+    Q.old_middle_ddp += ((Q.pro_republic - Q.1930_republic)/2)
+    Q.new_middle_dvp += ((Q.pro_republic - Q.1930_republic)/2)
+    Q.old_middle_dvp += (Q.pro_republic - Q.1930_republic)
 }
 Q.catholics_z += 5;
 Q.rural_dvp -= 5;
