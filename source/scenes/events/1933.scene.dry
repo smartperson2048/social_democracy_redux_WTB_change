@@ -1,7 +1,7 @@
 title: 1933
 subtitle: A new year 
 on-arrival: older_republic = old_republic; old_republic = pro_republic; strife += 1; {!
-if (pro_republic > 75) {
+if (Q.pro_republic > 75 && Q.pro_republic > Q.older_republic) {
     Q.new_middle_ddp += (Q.pro_republic - Q.older_republic)
     Q.old_middle_ddp += ((Q.pro_republic - Q.older_republic)/2)
     Q.new_middle_dvp += ((Q.pro_republic - Q.older_republic)/2)
