@@ -62,7 +62,7 @@ We promise to front the resources needed for organizing the rally, and the KPD a
 #- @rally_fail: Now the rally...
 
 @appeal_1929
-choose-if: volksmai == 1
+view-if: volksmai == 1
 on-arrival: spd_dominance = 1 if (((rb_strength*rb_militancy*(1-dissent))*spd_normalized)>=((rfb_strength*rfb_militancy)*kpd_normalized)); kpd_dominance = 1 if (((rb_strength*rb_militancy*(1-dissent))*spd_normalized)<((rfb_strength*rfb_militancy)*kpd_normalized)); fascist_disruption = 1 if ((sa_strength*sa_militancy)+(sh_strength*sh_militancy)) >= 500
 
 We remind them of the successes of our rally in 1929, and they are willing to take that as evidence for the utility of another such rally. Preparations are made and it isn't long before everything is ready for the rally.
@@ -120,7 +120,7 @@ on-arrival: rfb_strength += 50; rb_strength -= 25; strife += 1; pacifism -= 1; p
 The fight is bloody and long, and when the smoke clears, there is no clear victor. Both sides withdraw their forces from the battleground, and we and the reactionaries both claim victory. One thing is certain, this confrontation will not be our last.
 
 @rally_kpd_1
-view-if: kpd_dominance == 1
+view-if: kpd_dominance == 1 and fascist_disruption != 1
 on-arrival: workers_spd += 5*(1-dissent); unemployed_spd += 5*(1-dissent); workers_kpd += 10; unemployed_kpd += 10; z_relation -= 10; dvp_relation -= 10; coalition_dissent += 2; communist_coalition += 1; rfb_strength += 50; rfb_militancy += 0.1; sa_strength += 25; sh_strength += 25; coup_progress += 1 if spd_in_government == 1; capital_strike_progress += 1 if spd_in_government == 1; unemployed_spd += 2*(1-dissent) if left_strength > reformist_strength; workers_spd += 3*(1-dissent) if nationalization_progress > 0; unemployed_spd += 2*(1-dissent) if nationalization_progress > 0; left_strength += 5; left_dissent -= 5
 
 The rally goes ahead, and is largely a success, although the bulk of the support gained seems to have gone to the KPD due to their strong showing. The reactionaries have noticed and attack us as nothing more than KPD puppets, expanding their forces by using the growing anticommunist fears that we have caused as a recruiting tool.
