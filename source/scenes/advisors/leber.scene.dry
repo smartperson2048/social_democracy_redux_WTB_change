@@ -10,6 +10,7 @@ new-page: true
 Leber is a former army officer who turned against the military leaders of the Kapp Putsch in 1920, helping us put down the army's attempted coup. He is in favor of expanded democracy and building a broad popular base for the SPD.
 
 - @democratic_rally
+- @weimar_rally
 - @military_affairs
 - @support_peoples_party
 - @build_peoples_party
@@ -19,11 +20,20 @@ Leber is a former army officer who turned against the military leaders of the Ka
 @democratic_rally
 title: Rally for democracy
 subtitle: Rally our party and the German people to defend democracy and freedom.
+view-if: weimar_plan_adopted == 0
 choose-if: advisor_action_timer == 0 
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
 on-arrival: advisor_action_timer = 6; pro_republic += 5; democratization += 1; neorevisionist_strength += 5; reformist_strength += 3; workers_spd += 4*(1-dissent) if democratization >= 4; new_middle_spd += 3*(1-dissent) if democratization >= 4
 
 Leber helps us to rally the people in defense of democracy.
+
+@weimar_rally
+title: Rally for democracy and the Weimar Plan with our allies!
+subtitle: Rally the German people to defend democracy and the republic and end the economic crisis together with the Weimar parties.
+view-if: weimar_plan_adopted == 1
+choose-if: advisor_action_timer == 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; democratization += 2; moderate_plan_support += 1; workers_spd += ((5*(1-dissent))*(pro_republic/100)); unemployed_spd += ((4*(1-dissent))*(pro_republic/100)); rural_spd += ((3*(1-dissent))*(pro_republic/100)); new_middle_spd += ((3*(1-dissent))*(pro_republic/100)); old_middle_spd += ((3*(1-dissent))*(pro_republic/100)); workers_ddp += 3*(pro_republic/100); unemployed_nsdap -= 2*(pro_republic/100); unemployed_kpd -= 2*(pro_republic/100); rural_z += 4*(pro_republic/100); new_middle_ddp += 4*(pro_republic/100); old_middle_ddp += 3*(pro_republic/100); old_middle_z += 3*(pro_republic/100); workers_nsdap -= 1*(pro_republic/100); workers_kpd -= 1*(pro_republic/100); new_middle_nsdap -= 2*(pro_republic/100); old_middle_nsdap -= 1*(pro_republic/100); peoples_party_support += 1; neorevisionist_strength += 5; left_strength -= 2; left_dissent += 2; kpd_relation -= 5; pro_republic += 2*(((z_relation + ddp_relation)/2)/100)
 
 @military_affairs
 title: Military affairs
