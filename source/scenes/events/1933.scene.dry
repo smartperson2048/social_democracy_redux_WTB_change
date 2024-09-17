@@ -1,6 +1,13 @@
 title: 1933
 subtitle: A new year 
-on-arrival: strife += 1
+on-arrival: strife += 1; {!
+if (pro_republic > 75) {
+    Q.new_middle_ddp += (Q.pro_republic - Q.1932_republic)
+    Q.old_middle_ddp += ((Q.pro_republic - Q.1932_republic)/2)
+    Q.new_middle_dvp += ((Q.pro_republic - Q.1932_republic)/2)
+    Q.old_middle_dvp += (Q.pro_republic - Q.1932_republic)
+}
+!}
 tags: event
 priority: 1
 max-visits: 1
