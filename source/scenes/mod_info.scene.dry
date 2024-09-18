@@ -7,6 +7,8 @@ This mod adds a variety of changes to the base game, mostly in the form of flavo
 - @sapd: SAPD flavor
 - @weakened_presidency_hitler: Flavor for scenarios where the Presidency is weakened and Hitler takes power (WIP)
 - @minor_changes: Other minor changes
+- @changelog: Changelog
+- @plans: Plans for the mod
 
 @moderate
 
@@ -19,5 +21,50 @@ Once you've managed, you can now rally for the Weimar Plan together with Zentrum
 - @mod_info: Back
                                                                                                                                                                                                                                                                                           
 @left
+
+= Left Plan flavor
+
+Somewhat a work in progress, there is also flavor for the Left Plan. If relations with the KPD are high enough you can do May Day rallies with them for the enacting of the Left Plan though be warned this can lead to confrontations with the SA and Stalhelm, as well as general bourgeois outrage.
+
+- @mod_info: Back
+
+@sapd
+
+= SAPD flavor
+
+The SAPD is now a distinct party rather than being lumped in with the right-wing "Others"! It also has its own event allowing it to consolidate into an actually formidable force amongst workers if you lean too hard into Volkspartei rhetoric or if Labor, Left and Center all defect.
+
+- @mod_info: Back
+
+@weakened_presidency_hitler
+
+= Weakened Presidency Hitler
+
+A very rare scenario in terms of actually occuring in a game, I have added unique scenarios (though quite WIP) for if Hitler is elected President after you weaken the Presidency so that it no longer has unrestrained power. I am thinking of maybe eventually extending this flavor to encompass all Nazi takeovers so that you can play them out a bit even if the result always amounts to the same.
+
+- @mod_info: Back
+
+@minor_changes
+
+= Minor Changes
+
+The mod also contains many small changes that I felt would be good additions to the game. These include the DNVP and KPD benefitting rather than the NSDAP from a capital strike if the NSDAP has suffered a crisis, the DDP and DVP gaining support from increases in support for the republic and made it so that Nazis in Crisis won't fire if the economy is still doing very badly. More similar minor tweaks will occur and when they do will be added here.
+
+@changelog
+
+= Changelog
+
+Nothing here yet.
+
+@mod_info: Back
+
+@plans
+
+= Plans for the mod
+
+I'm not 100% sure on any plan really, however I do have quite a few ideas on how to extend my mod into 1934 if the base game receives a 1934 extension which I'm still hoping for. If the base game doesn't anytime soon I *might* add one myself but don't get your hopes up. I will finish working on the Hitler flavor and after that my main focus will probably be on tweaks to my existing features to make them work better and themselves have more flavor. I may add KPD flavor too! Stay tuned.
+
+@mod_info: Back
+
                                                                                                                                                                                                                                                                                           
                                                                                                                                                                                                                                                                                          
