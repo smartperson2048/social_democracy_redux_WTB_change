@@ -23,6 +23,9 @@ Q.sh_strength += 100;
 Q.rural_dnvp -= 15;
 Q.rural_nsdap += 10;
 Q.unemployed_nsdap += 18;
+if (Q.dnvp_in_government == 1) {
+    Q.workers_spd += 5;
+}
 !}
 tags: event
 view-if: year = 1929 and month = 1
