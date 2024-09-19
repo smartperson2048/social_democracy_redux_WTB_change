@@ -12,6 +12,7 @@ This mod adds a variety of changes to the base game, mostly in the form of flavo
 - @left: Left Plan flavor
 - @sapd: SAPD flavor
 - @weakened_presidency_hitler: Weakened Presidency + Hitler takeover flavor
+- @coalition_flavor: Coalition flavor
 - @minor_changes: Other minor changes
 - @plans: Plans for the mod
 - @ideas: Ideas and feedback
@@ -52,6 +53,14 @@ A very rare scenario in terms of actually occuring in a game, I have added uniqu
 
 - @flavors: Back
 
+@oalition_flavor
+
+= Coalition Flavor
+
+I have made it so that a right-wing coalition from Zentrum to the DNVP can form in 1928 if the SPD refuses to form a government. This will collapse following the Young Plan referendum due to the DNVP's opposition to the Young Plan. I plan to add more similar flavor to coalitions in future though this is the main one, likely for a while.
+
+- @flavors: Back
+
 @minor_changes
 
 = Minor Changes
@@ -64,7 +73,7 @@ The mod also contains many small changes that I felt would be good additions to 
 
 = Changelog
 
-Nothing here yet.
+19/09/2024: Added right-wing coalition as a possibility in 1928 if the SPD refuses to form a government, plus some bug fixes.
 
 - @flavors: Back
 
