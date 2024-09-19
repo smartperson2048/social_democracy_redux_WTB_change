@@ -37,7 +37,7 @@ By transferring campaign funds to our coalition partners, we can make our polici
 
 @weimar_convince
 subtitle: A shared programme could help combat extremism, but may be hard to accomplish...
-view-if: moderate_plan_adopted == 1 and weimar_plan_adopted != 1
+view-if: moderate_plan_adopted == 1 and weimar_plan_adopted != 1 and weimar_rejected != 1
 choose-if: weimar_willingness == 1
 unavailable-subtitle: Our Weimar partners are not willing to be convinced of the plan's merits.
 on-arrival: z_relation -= 2
