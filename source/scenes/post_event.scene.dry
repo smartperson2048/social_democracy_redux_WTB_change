@@ -89,6 +89,10 @@ if ((Q.z_relation >= 50 && Q.ddp_relation >= 40 && Q.nazi_urgency > 0 && Q.unemp
     Q.weimar_willingness = 0;
 }
 
+if ((Q.spd_in_government == 1) || (Q.spd_toleration == 1)) {
+    Q.dnvp_in_government = 0
+}
+
 Q.dissent = 0.01*total_dissent/total_strength;
 Q.dissent_percent = Q.dissent*100;
 console.log('new dissent: ' + Q.dissent);
