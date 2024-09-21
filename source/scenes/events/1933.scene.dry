@@ -11,6 +11,6 @@ if (Q.pro_republic > 75 && Q.pro_republic > Q.older_republic) {
 tags: event
 priority: 1
 max-visits: 1
-view-if: chancellor != "Schleicher" and chancellor != "Papen" and year == 1933 and momth == 1
+view-if: year = 1933 and month = 1
 
 A new year begins. [? if president == "Braun" : With Hindenburg out of office and an SPD candidate at the helm, perhaps in this year Germany will overcome its crisis. It will be our job to ensure this. ?] [? if president == "Hindenburg" : President Hindenburg's presidency continues, though for how long remains uncertain as his health deteriorates. We can only hope that should he die we may take his place and not the Nazis. ?]
