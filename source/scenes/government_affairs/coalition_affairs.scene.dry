@@ -15,7 +15,7 @@ How do we reduce tensions with the coalition?
 - @promise_cuts: Agree to the bourgeois plans to cut welfare.
 - @resources: Use our party resources to support our allies.
 - @weimar_convince: Can we convince our partners to adopt our economic plan?
-- @weimar_enacting: Can we enact the Weimar Plan?
+- @weimar_enact: Can we enact the Weimar Plan?
 - @bring_down: Instead, we will bring down the government with a no-confidence vote, and call for new elections.
 - @no_change: Take none of these actions.
 - @easy_discard
@@ -43,8 +43,9 @@ unavailable-subtitle: Our Weimar partners are not willing to be convinced of the
 on-arrival: z_relation -= 2
 go-to: weimar_plan
 
-@weimar_enacting
+@weimar_enact
 view-if: weimar_plan_adopted == 1 and spd_in_government == 1 and economic_minister_party != "SPD" and finance_minister_party != "SPD"
+go-to: weimar_enacting
 
 @no_change
 
