@@ -1,5 +1,5 @@
 title: The KPD checks upon our progress in accomplishing the coalition's goals...
-view-if: (in_popular_front or in_left_front) and kpd_ultimatum_timer = 0 and kpd_goals_seen = 1 and kpd_ultimatum_seen = 0 and spd_in_government
+view-if: (in_popular_front or in_left_front) and (kpd_ultimatum_timer = 0 or (welfare_goal_completed and agriculture_goal_completed and economy_goal_completed and finance_goal_completed and labor_goal_completed and reichswehr_goal_completed)) and kpd_goals_seen = 1 and kpd_ultimatum_seen = 0 and spd_in_government
 on-arrival: {!
 Q.kpd_ultimatum_seen = 1;
 Q.kpd_goals_completed = 1;
@@ -69,11 +69,11 @@ Unfortunately, we have failed to accomplish all of the goals the KPD set out. Th
 - @no_vonc: They cannot call a vote of no confidence due to the constitutional reforms, but they can obstruct our government at every opportunity.
 
 @appeal
-choose-if: kpd_score >= 4 and kpd_relation > 50 and kpd_appeal_seen = 0
+choose-if: (kpd_score >= 4 and kpd_relation > 50 and kpd_appeal_seen = 0) or kpd_party_leader = "Conciliators"
 unavailable-subtitle: [? if kpd_score < 4: They do not see us as serious in trying to achieve the goals of the coalition. ?] [? if kpd_relation < 50: Our relations are too poor. ?] [? if kpd_appeal_seen = 1: we do not have any more time. ?]
 on-arrival: kpd_ultimatum_seen = 0; kpd_ultimatum_timer += 6; kpd_appeal_seen = 1
 
-We argue that we have already achieved most of the coalition's goals, and in the name of proletarian solidarity, we must make this coalition function. Surprisingly, the KPD hears our pleas, and is willing to give us six more months before the coalition goals must be achieved.
+We argue that we are working hard to achieve the coalition's goals, and in the name of proletarian solidarity, we must make this coalition function. Surprisingly, the KPD hears our pleas, and is willing to give us six more months before the coalition goals must be achieved.
 
 
 @goals_success
