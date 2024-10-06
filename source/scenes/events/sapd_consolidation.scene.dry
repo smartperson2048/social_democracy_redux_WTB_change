@@ -33,6 +33,9 @@ if (Q.pro_republic > 80) {
     Q.unemployed_kpd -= 2;
     Q.unemployed_sapd += 2;
 }
+if (Q.unions_independent != 1) {
+    Q.labor_dissent += 10;
+}
 !}
 max-visits: 1
 new-page: true
