@@ -40,7 +40,7 @@ We have decided to go ahead with our plan and reach out to the KPD. They are, to
 
 @relations
 view-if: kpd_relation >= 75
-on-arrival: spd_dominance = 1 if (((rb_strength*rb_militancy*(1-dissent))*spd_normalized)>=((rfb_strength*rfb_militancy)*kpd_normalized)); kpd_dominance = 1 if (((rb_strength*rb_militancy*(1-dissent))*spd_normalized)<((rfb_strength*rfb_militancy)*kpd_normalized)); fascist_disruption = 1 if ((sa_strength*sa_militancy)+(sh_strength*sh_militancy)) >= 500
+on-arrival: spd_dominance = 1 if (((rb_strength*rb_militancy*(1-dissent))*spd_normalized)>=((rfb_strength*rfb_militancy)*kpd_normalized)); kpd_dominance = 1 if (((rb_strength*rb_militancy*(1-dissent))*spd_normalized)<((rfb_strength*rfb_militancy)*kpd_normalized)); fascist_disruption = 1 if ((sa_strength*sa_militancy)+(sh_strength*sh_militancy)) >= 1000
 
 Thankfully, due to our great relations, it isn't hard to bring the KPD around to the idea. Preparations are made and it isn't long before everything is ready for the rally.
 
@@ -52,23 +52,23 @@ Thankfully, due to our great relations, it isn't hard to bring the KPD around to
 @resources
 subtitle: -1 resources
 choose-if: resources >= 1
-on-arrival: resources -= 1; spd_dominance = 1 if (((rb_strength*rb_militancy*(1-dissent))*spd_normalized)>=((rfb_strength*rfb_militancy)*kpd_normalized)); kpd_dominance = 1 if (((rb_strength*rb_militancy*(1-dissent))*spd_normalized)<((rfb_strength*rfb_militancy)*kpd_normalized)); fascist_disruption = 1 if ((sa_strength*sa_militancy)+(sh_strength*sh_militancy)) >= 500
+on-arrival: resources -= 1; spd_dominance = 1 if (((rb_strength*rb_militancy*(1-dissent))*spd_normalized)>=((rfb_strength*rfb_militancy)*kpd_normalized)); kpd_dominance = 1 if (((rb_strength*rb_militancy*(1-dissent))*spd_normalized)<((rfb_strength*rfb_militancy)*kpd_normalized)); fascist_disruption = 1 if ((sa_strength*sa_militancy)+(sh_strength*sh_militancy)) >= 1000
 
 We promise to front the resources needed for organizing the rally, and the KPD accepts this. Preparations are made and it isn't long before everything is ready for the rally.
 
 - @rally_spd_1: Now the rally...
-- @rally_disruption: Now the rally
+- @rally_disruption: Now the rally...
 - @rally_kpd_1: Now the rally...
 #- @rally_fail: Now the rally...
 
 @appeal_1929
 view-if: volksmai == 1
-on-arrival: spd_dominance = 1 if (((rb_strength*rb_militancy*(1-dissent))*spd_normalized)>=((rfb_strength*rfb_militancy)*kpd_normalized)); kpd_dominance = 1 if (((rb_strength*rb_militancy*(1-dissent))*spd_normalized)<((rfb_strength*rfb_militancy)*kpd_normalized)); fascist_disruption = 1 if ((sa_strength*sa_militancy)+(sh_strength*sh_militancy)) >= 500
+on-arrival: spd_dominance = 1 if (((rb_strength*rb_militancy*(1-dissent))*spd_normalized)>=((rfb_strength*rfb_militancy)*kpd_normalized)); kpd_dominance = 1 if (((rb_strength*rb_militancy*(1-dissent))*spd_normalized)<((rfb_strength*rfb_militancy)*kpd_normalized)); fascist_disruption = 1 if ((sa_strength*sa_militancy)+(sh_strength*sh_militancy)) >= 1000
 
 We remind them of the successes of our rally in 1929, and they are willing to take that as evidence for the utility of another such rally. Preparations are made and it isn't long before everything is ready for the rally.
 
 - @rally_spd_1: Now the rally...
-- @rally_disruption: Now the rally
+- @rally_disruption: Now the rally...
 - @rally_kpd_1: Now the rally...
 #- @rally_fail: Now the rally...
 

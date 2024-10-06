@@ -36,6 +36,7 @@ But the crux of the matter is, what can we do?
 
 - @destroy: Fine. We will end this coalition.
 - @accept: Unfortunately, we must accept the Right's demands for the sake of stability.
+- @accept_weimar: We will accept on the condition that the Center and Democratic Parties adopt the Weimar Plan.
 - @compromise: Surely there is some compromise to be had?
 
 @destroy
@@ -55,6 +56,12 @@ Unfortunately, we must accept this ultimatum if we are to maintain this coalitio
 
 The workers are furious at our betrayal, as are a good portion of our membership throughout the factions. Our loss is the KPD's gain, and even the NSDAP, those lapdogs of the bourgeoisie, have joined in criticizing us for our austerity.
 
+@accept_weimar
+view-if: weimar_rejected != 1 and weimar_plan_adopted != 1 and weimar_willingness == 1
+choose-if: weimar_support >= 100
+unavailable-subtitle: They have not been convinced enough of the plan's merits.
+on-arrival: workers_spd -= 0.15*workers_spd; umemployed_spd -= 0.3*unemployed_spd; workers_kpd += 5; workers_kpd += 2 if sapd_consolidated == 0; workers_sapd += 2 if sapd_consolidated == 1; workers_nsdap += 7; unemployed_kpd += 4; unemployed_kpd += 1 if sapd_consolidated == 0; unemployed_sapd += 1 if sapd_consolidated == 1; unemployed_nsdap += 5; left_dissent += 15; center_dissent += 10; labor_dissent += 15; reformist_dissent += 5; welfare -= 2; budget += 1; unemployed += 3; month += 1; pro_republic -= 4; kpd_relation -= 8; inflation -= 2
+go-to: @weimar_plan.adopt_1
 
 @compromise
 unavailable-subtitle: We do not have good enough relations with the right-wing parties.

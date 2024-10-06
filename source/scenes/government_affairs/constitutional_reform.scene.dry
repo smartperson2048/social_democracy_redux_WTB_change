@@ -28,6 +28,7 @@ A constitutional reform requires either a two-thirds supermajority in the Reichs
 - @as_is: Do not pursue constitutional reform.
 - @easy_discard
 #- @constitutional_bans: Allow the banning of anti-constitutional parties.
+#- @constitutional_convention: Hold a constitutional convention to draft a wholly new constitution for the country.
 
 @vote_threshold
 subtitle: Change the vote threshold to 5% for parties to be represented in the Reichstag.
@@ -128,6 +129,9 @@ We have successfully passed a constitutional amendment to limit presidential pow
 
 # Temporarily disable this for now - how would this interact with the already-extant law for the protection of the republic? This 
 
+@constitutional_convention
+
+# Disabled
 
 @as_is
 go-to: root

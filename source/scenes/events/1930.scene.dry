@@ -33,6 +33,10 @@ Q.workers_z += 3;
 Q.old_middle_z += 2;
 Q.new_middle_z += 2;
 Q.workers_nsdap += 3;
+if (Q.right_coalition_failed && Q.economic_plan) {
+    Q.workers_spd += 5;
+    Q.unemployed_spd += 5;
+}
 Q.sa_strength += 100;
 Q.sh_strength += 100;
 if (Q.budget > 0) {
