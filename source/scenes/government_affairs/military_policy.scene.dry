@@ -37,8 +37,8 @@ The military has fewer guns and fewer soldiers. [? if coup_progress < 5 : There 
 subtitle: -1 budget
 choose-if: budget >= 1
 unavailable-subtitle: We do not have the budget.
-on-arrival: coalition_dissent += 1 if in_grand_coalition == 1; reichswehr_loyalty += 0.15; reichswehr_militancy -= 1; budget -= 1; coup_progress += 1; coup_progress += 1 if reichswehr_loyalty < 0.2; coup_progress += 1 if reichswehr_loyalty < 0.1; coup_progress += 1 if reichswehr_loyalty = 0; coup progress -= 1 if reichswehr_loyalty >= 0.6 and coup_progress > 0; coup_progress -= 1 if reichswehr_loyalty >= 0.7 and coup_progress > 0
+on-arrival: coalition_dissent += 1 if in_grand_coalition == 1; coalition_dissent += 1 if coup_progress >= 4; coalition_dissent += 1 if coup_progress >= 6; coalition_dissent += 1 if coup_progress >= 8; coup_progress += 1 if reichswehr_loyalty < 0.4; coup_progress += 1 if reichswehr_loyalty < 0.2; coup_progress += 1 if reichswehr_loyalty < 0.1; coup_progress += 1 if reichswehr_loyalty = 0; coup progress -= 1 if reichswehr_loyalty >= 0.6 and coup_progress > 0; coup_progress -= 1 if reichswehr_loyalty >= 0.7 and coup_progress > 0; reichswehr_loyalty += 0.15; reichswehr_militancy -= 1; budget -= 1
 
 Our efforts are at least somewhat successful; we have changed the recruiting and training patterns so that more soldiers from non-reactionary backgrounds can join, hopefully changing the culture of the forces. We have also removed some of the officers who supported the previous Kapp putsch.
 
-The center-right parties are committed to the military and deeply suspicious of our efforts to reform it.
+[? if coup_progress > 6 and reichswehr_loyalty < 0.6 : The reactionaries, seeing our attempts to weaken their influence have only accelerated their existing coup plans, spurred into action by our moves against them. ?] The center-right parties are committed to the military and deeply suspicious of our efforts to reform it.
