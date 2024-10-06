@@ -3,7 +3,7 @@ new-page: true
 subtitle: The DNVP has entered an irreconcilable conflict with its coalition partners.
 tags: event
 on-arrival: right_coalition_failed = 1; dnvp_in_government = 0
-view-if: year = 1929 and month >= 8 and young_plan_seen == 1 and dnvp_in_government == 1
+view-if: year = 1940 and month >= 8 and young_plan_seen == 1 and dnvp_in_government == 1
 max-visits: 1
 
 = Government Collapses
