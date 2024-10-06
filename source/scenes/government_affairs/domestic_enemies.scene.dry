@@ -94,7 +94,7 @@ We have found evidence of seditious plots in the military and Harzburg Front, co
 - @purge: We will use all of our evidence gathered to crush the coup plot!
 
 @act_immediately
-view-if: coup_info < (2 + (3 - judicial_reform))
+view-if: coup_info < 3
 choose-if: judicial_reform >= 2
 unavailable-subtitle: The judiciary is unconvinced and unwilling to allow such action until further information is gathered.
 on-arrival: coup_info -= 1; coup_progress -= 1; coup_progress -= 1 if reichswehr_minister_party == "SPD"; workers_nsdap -= 2; new_middle_nsdap -= 4; old_middle_nsdap -= 4; rural_nsdap -= 2; pro_republic += 2; interior_police_loyalty -= 0.05
@@ -102,15 +102,13 @@ on-arrival: coup_info -= 1; coup_progress -= 1; coup_progress -= 1 if reichswehr
 We arrest those implicated and take further efforts to foil these reactionary schemes, setting back the plot somewhat. Unfortunately, this has the effect of revealing to the coup plotters that we know of their plot, so they manage to cover their tracks somewhat and make further investigation harder.
 
 @wait_info
-view-if: coup_info < (2 + (3 - judicial_reform))
+view-if: coup_info < 3
 
 We must play the long game so that we can find not only the participants of this plot but also the leadership and just how far it stretches. We shelve our current info as evidence and work to compile more by investigating associates and acquiantances of the plotters we find.
 
 @purge
-view-if: coup_info >= 2
-choose-if: coup_info > (2 + (3 - judicial_reform))
-unavailable-subtitle: The judiciary wants more evidence to be presented in order to justify such a purge.
-on-arrival: coup_progress -= 6 if coup_progress >= 6; coup_progress = 0 if coup_progress < 6; workers_nsdap -= 5; new_middle_nsdap -= 10; old_middle_nsdap -= 10; rural_nsdap -= 2; pro_republic += 5; strife += 1; interior_police_loyalty -= 0.1
+view-if: coup_info >= 3
+on-arrival: coup_progress -= 5 if coup_progress >= 5; coup_progress = 0 if coup_progress < 5; workers_nsdap -= 5; new_middle_nsdap -= 10; old_middle_nsdap -= 10; rural_nsdap -= 2; pro_republic += 5; strife += 1; interior_police_loyalty -= 0.1
 
 Having finally gathered enough evidence to truly paralyze the coup, we publicize our foundings and launch sweeping arrests of the plotters involved. Reichswehr officers implicated are quickly discharged and placed under arrest or, for the more problematic ones, reassigned to entirely different posts to prevent them from enacting their plans. With many of their top schemers, plotters and leaders arrested over night, the remaining coup plot crumbles and the Harzburg Front is left grasping at straws as they consider but decide against an immediate uprising, certain that they would lose now with their plan shattered.  
 
