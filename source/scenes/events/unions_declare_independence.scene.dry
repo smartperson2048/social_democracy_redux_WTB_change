@@ -8,8 +8,6 @@ max-visits: 1
 
 = Unions Declare Independence
 
-Our policy choices have greatly offended the labor movement. Union leaders have declared that they are independent of any political party, and some have been seen seeking accomodation with the KPD and even the NSDAP.
-
-Most workers remain loyal to the SPD, although their affiliation is less solid. Many workers move left[? if sapd_formed:, to the KPD or the nascent SAPD?]. Others move in a more nationalist direction, as the ADGB signals its willingness to work with the right to solve the economic crisis.
+Our policy choices have greatly offended the labor movement. Union leaders have declared that they are independent of any political party, and some have been seen seeking accomodation with the KPD and NSDAP.
 
 Much of our working-class base has defected, and labor's influence in our party has greatly diminished. [? if left_split = 1 and sapd_formed != 1 : The small SAPD has capitalized on this, helping its rise from an insignificant and small movement into a party able to achieve Reichstag representation, even if little. ?] [? if sapd_formed == 1 : The SAPD has capitalized on this, managing to rally the bulk of the unions around itself and presenting a serious threat to our working class base. ?]
