@@ -61,7 +61,7 @@ Q.neorevisionist_dissent = 10;
 
 // secret events...
 Q.unions_independent = 0;
-Q.center_resigned = 0;
+Q.centrists_resign = 0;
 Q.left_split = 0;
 Q.sapd_formed = 0;
 Q.reformists_resigned = 0;
@@ -317,6 +317,9 @@ Q.old_dnvp_r = 20;
 Q.old_nsdap_r = 3;
 Q.old_other_r = 9;
 
+// for changing the DDP's name to the DStP
+Q.ddp_name = "DDP";
+
 // array of objects of the form {date: Date(), spd: 10, kpd: 12, ...} for each election
 Q.election_records = [];
 // party support records for every month
@@ -338,6 +341,7 @@ Q.dnvp_in_government = 1;
 Q.kpd_in_government = 0;
 Q.nsdap_in_government = 0;
 
+Q.in_right_coalition = 0;
 // Weimar coalition = SPD + Z + DDP
 Q.in_weimar_coalition = 0;
 // Grand coalition = SPD + Z + BVP + DDP + DVP

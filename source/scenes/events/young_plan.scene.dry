@@ -2,7 +2,7 @@ title: Young Plan
 new-page: true
 subtitle: A new agreement on reparations
 tags: event
-view-if: year = 1929 and month >= 7
+view-if: year = 1929 and month >= 7 and in_right_coalition = 0 and young_plan_seen = 0
 on-arrival: young_plan_seen = 1
 max-visits: 1
 
@@ -11,8 +11,6 @@ max-visits: 1
 The Young Plan is an agreement with the Western powers to reduce Germany's reparation payments and give us more fiscal autonomy. Simultaneously, France will agree to withdraw its military occupation from the Rhineland.
 
 While this seems to be a positive development for the country, the Right is campaigning hard against this plan, as are the Communists for whatever reason. They claim that any reparations are a form of national slavery, and have organized a referendum against it.
-
-[? if dnvp_in_government == 1 : Meanwhile, the ruling right-wing coalition has split over the issue, as the DNVP stands at the forefront of opposition to the Young Plan while the rest of the coalition is in favor. With Hugenberg at the forefront of the DNVP, it is likely the government will soon dissolve. ?]
 
 - @pro_plan: Campaign in favor of the Young Plan and against the referendum.
 - @no_plan: Do not campaign on the Young Plan, one way or another.
