@@ -109,7 +109,7 @@ if (Q.sapd_formed == 1 && Q.sapd_consolidated != 1 && Q.centrists_resign == 1) {
 if (Q.sapd_formed == 1 && Q.sapd_consolidated != 1 && Q.unions_independent == 1) {
     Q.center_dissent += 1;
 }
-if (Q.sapd_consolidated == 1 && pro_republic >= 75 && kpd_party_leader != "Conciliators") {
+if (Q.sapd_consolidated == 1 && Q.pro_republic >= 75 && Q.kpd_party_leader != "Conciliators") {
     Q.workers_kpd -= 1;
     Q.workers_sapd += 1;
 }
