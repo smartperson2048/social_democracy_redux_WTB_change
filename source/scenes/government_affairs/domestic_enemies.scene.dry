@@ -121,7 +121,7 @@ Having finally gathered enough evidence to truly paralyze the coup, we publicize
 German democracy is saved, for now.
 
 @purge_failure
-on-arrival: strife += 2; reichswehr_loyalty += 0.05; workers_nsdap -= 3; new_middle_nsdap -= 6; old_middle_nsdap -= 6
+on-arrival: strife += 2; reichswehr_loyalty += 0.05; workers_nsdap -= 3; new_middle_nsdap -= 6; old_middle_nsdap -= 6; harzburg_purge = 1
 
 Having finally gathered enough evidence to truly paralyze the coup, we publicize our findings and launch sweeping arrests of the plotters involved. Reichswehr officers implicated are quickly discharged and placed under arrest or, for the more problematic ones, reassigned to entirely different posts to prevent them from enacting their plans. With many of their top schemers, plotters and leaders arrested over night, the Harzburg Front is left scattered, but nevertheless, fearing that if they do not act now they would be completely crushed, have launched an uprising in their weakened position. SA forces storm barracks with the Stalhelm, either deposing or convincing the officers and seizing control over those Reichswehr forces. City halls are seized, their republican mayors ousted, while reactionary city governments deploy police forces on the side of the Nazi coup to suppress any potential resistance.
 
