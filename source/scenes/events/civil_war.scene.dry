@@ -68,6 +68,9 @@ Q.sh_power = Q.sh_strength*Q.sh_militancy;
 Q.enemy_power += Q.sh_power;
 Q.hostile_reichswehr_power = Q.reichswehr_strength*Q.reichswehr_militancy*(1-Q.reichswehr_loyalty);
 Q.enemy_power += Q.hostile_reichswehr_power;
+if (Q.harzburg_purged == 1) {
+    Q.enemy_power *= 0.8;
+}
 console.log("Enemy strength:", Q.enemy_power);
 
 if (Q.total_power > Q.enemy_power*1.1) {
