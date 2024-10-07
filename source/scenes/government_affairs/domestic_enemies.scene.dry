@@ -81,7 +81,8 @@ on-arrival: rfb_banned = 0; kpd_relation += 5; rfb_strength += 50; prussian_poli
 The Communist RFB is no longer banned.
 
 @investigate_coup
-view-if: coup_progress > 5
+on-arrival: sa_legal = 1 if sa_banned == 0; sa_legal = 0 if sa_banned == 1; sh_legal = 1 if sh_banned == 0; sh_legal = 0 if sh_banned == 1
+view-if: coup_progress > 3
 go-to: investigate_success if interior_police_loyalty >= (0.1 + (coup_progress/10)); investigate_failure if interior_police_loyalty < (0.1 + (coup_progress/10))
 
 @investigate_success
@@ -108,6 +109,7 @@ We must play the long game so that we can find not only the participants of this
 
 @purge
 view-if: coup_info >= 3
+go-to: purge_success if ((sa_strength*sa_militancy*sa_legal)+(sh_strength*sh_militancy*sh_legal)) > workers_spd
 on-arrival: coup_progress -= 5 if coup_progress >= 5; coup_progress = 0 if coup_progress < 5; workers_nsdap -= 5; new_middle_nsdap -= 10; old_middle_nsdap -= 10; rural_nsdap -= 2; pro_republic += 5; strife += 1; interior_police_loyalty -= 0.1
 
 Having finally gathered enough evidence to truly paralyze the coup, we publicize our foundings and launch sweeping arrests of the plotters involved. Reichswehr officers implicated are quickly discharged and placed under arrest or, for the more problematic ones, reassigned to entirely different posts to prevent them from enacting their plans. With many of their top schemers, plotters and leaders arrested over night, the remaining coup plot crumbles and the Harzburg Front is left grasping at straws as they consider but decide against an immediate uprising, certain that they would lose now with their plan shattered.  
