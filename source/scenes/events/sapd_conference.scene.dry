@@ -2,6 +2,8 @@ title: Calls for an Einheitsfront
 subtitle: The SAPD has called on us and the KPD to reconcile and unite.
 max-visits: 1
 view-if: sapd_consolidated == 1 and sapd_r >= 5 and (nsdap_r + dnvp_r + unemployed >= 40)
+new-page: true
+tags: event
 on-arrival: {! 
 if (Q.kpd_leader != "Conciliators") {
     if (Q.peoples_party = 0 && kpd_relation >=80) {
