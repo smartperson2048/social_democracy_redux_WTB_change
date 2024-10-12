@@ -14,6 +14,7 @@ Fiscal policy involves issues of taxation and budget.
 - @raise_rich: Increase taxes on the rich.
 - @raise_overall: Increase overall taxes.
 - @cut_overall: Cut overall taxes.
+- @cut_overall_wtb: Cut overall taxes.
 - @regressive
 - @root: Do not change the tax system.
 - @easy_discard
@@ -31,11 +32,19 @@ on-arrival: upper_tax_rates += 1; capital_strike_progress += 1; capital_strike_p
 Raising taxes on the rich is popular among our base, but it alienates the bourgeoisie. Increasing taxes also decreases economic demand, which may lead to more unemployment.
 
 @cut_overall
+view-if: wtb_adopted == 0 or budget >= 2
 subtitle: -2 budget
 choose-if: budget >= 2
 on-arrival: budget -= 2; upper_tax_rates -= 1; lower_tax_rates -= 1; new_middle_spd += 5*(1-dissent); old_middle_spd += 4*(1-dissent); workers_spd += 3*(1-dissent); dvp_relation += 5*(1-dissent); z_relation += 5*(1-dissent); unemployed -= 1 if unemployed >= 5; capital_strike_progress -= 1 if upper_tax_rates < 0; inflation += 0.4
 
 Cutting taxes benefits most the rich and middle-class, who pay more taxes than the working class. Our coalition partners are happy at our orthodox economic course.
+
+@cut_overall_wtb
+view-if: wtb_adopted == 1 and budget < 2
+subtitle: -2 budget. We will enter deficit spending.
+on-arrival: budget -= 2; upper_tax_rates -= 1; lower_tax_rates -= 1; new_middle_spd += 5*(1-dissent); old_middle_spd += 4*(1-dissent); workers_spd += 3*(1-dissent); dvp_relation -= 3; z_relation -= 2; unemployed -= 1 if unemployed >= 5; capital_strike_progress -= 1 if upper_tax_rates < 0; inflation += 0.6; coalition_dissent += 1 if in_grand_coalition; center_dissent += 5
+
+Cutting taxes benefits most the rich and middle-class, who pay more taxes than the working class. Our coalition partners are upset at our deficit spending, warning that it will lead to a repeat of the hyperinflation in the early history of our republic. The Center Marxists join in these warnings.
 
 @raise_overall
 subtitle: +3 budget
