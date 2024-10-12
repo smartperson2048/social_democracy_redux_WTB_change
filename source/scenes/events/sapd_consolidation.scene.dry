@@ -1,6 +1,6 @@
 title: The SAPD consolidates
 subtitle: As the SPD loses more and more of its base, the SAPD has increasingly consolidated as an alternative.
-view-if: sapd_formed == 1 and centrists_resign == 1 and (unions_independent == 1 or workers_spd_normalized < 35) 
+view-if: sapd_formed == 1 and centrists_resign == 1 and (unions_independent == 1 or workers_spd_normalized < 0.35) 
 on-arrival: sapd_consolidated = 1; {!
 Q.workers_spd -= 10;
 Q.workers_sapd += 10;
@@ -23,6 +23,12 @@ if (Q.communist_coalition == 0) {
     Q.workers_kpd -= 3;
     Q.workers_sapd += 3;
 }
+if (Q.kpd_leader != "Conciliators") {
+    Q.workers_kpd -= 3;
+    Q.workers_sapd += 3;
+    Q.unemployed_sapd += 2;
+    Q.unemployed_kpd -= 2;
+}
 if (Q.pro_republic > 60) {
     Q.workers_kpd -= 2;
     Q.workers_sapd += 2;
@@ -35,6 +41,11 @@ if (Q.pro_republic > 80) {
 }
 if (Q.unions_independent != 1) {
     Q.labor_dissent += 10;
+}
+if (Q.unions_independent == 1) {
+    Q.workers_kpd -= 5;
+    Q.workers_nsdap -= 5;
+    Q.workers_sapd += 10;
 }
 !}
 max-visits: 1

@@ -1,0 +1,156 @@
+title: Calls for an Einheitsfront
+subtitle: The SAPD has called on us and the KPD to reconcile and unite.
+max-visits: 1
+view-if: sapd_consolidated == 1 and sapd_r >= 5 and (nsdap_r + dnvp_r + unemployed >= 40)
+on-arrival: {! 
+if (Q.kpd_leader != "Conciliators") {
+    if (Q.peoples_party = 0 && kpd_relation >=80) {
+        Q.kpd_good_faith = 1;
+    }
+    if (Q.peoples_party = 1 || kpd_relation < 80) {
+        if ((kpd_relation >= 25) || (kpd_relation >= 40 && peoples_party == 0)) {
+            Q.kpd_bad_faith = 1;
+        }
+        else {
+            Q.kpd_refuse = 1;
+        }
+    }
+}
+if (Q.kpd_leader == "Conciliators") {
+    if (Q.peoples_party = 0 && kpd_relation >= 35) {
+        Q.kpd_good_faith = 1;
+    }
+    if (Q.peoples_party = 1 && kpd_relation >= 50) {
+        Q.kpd_good_faith = 1;
+    }
+    else {
+        if (Q.peoples_party = 1) {
+            if (Q.kpd_relation >= 25) {
+                Q.kpd_bad_faith = 1;
+            }
+            
+        }
+        if (Q.peoples_party = 0) {
+            if (Q.kpd_relation >= 10) {
+                Q.kpd_bad_faith = 1;
+            }
+            
+        }
+        else {
+            Q.kpd_refuse = 1;
+        }
+    }
+}
+!}
+
+The SAPD, enjoying in its recent growth, has launched a manifesto and program calling for the SPD and KPD to put aside their differences and convene in an SAPD arbitrated conference for the formation of an "Einheitsfront" of the workers. If we refuse, it may reflect badly, especially on our working class base, and give the SAPD more ammunition.
+
+- @participate_good_faith_1: We will attend this conference as a means of reconciling with the KPD.
+- @participate_good_faith_2: We will attend this conference as a means of reconciling with the KPD.
+- @participate_good_faith_3: We will attend this conference as a means of reconciling with the KPD.
+- @participate_bad_faith_1: We will attend this conference as a means of showing that reconciliation is impossible and hopeless.
+- @participate_bad_faith_2: We will attend this conference as a means of showing that reconciliation is impossible and hopeless.
+- @participate_bad_faith_3: We will attend this conference as a means of showing that reconciliation is impossible and hopeless.
+- @refuse_1: Let the SAPD delude themselves with ideas of a united front, we will have no part in it.
+- @refuse_2: Let the SAPD delude themselves with ideas of a united front, we will have no part in it.
+
+@participate_good_faith_1
+view-if: kpd_good_faith and (not kpd_bad_faith or kpd_refuse)
+on-arrival: kpd_relation += 15; workers_sapd += 5; communist_coalition += 2; reformist_dissent += 10; neorevisionist_dissent += 15; left_strength += 10; left_dissent -= 5; z_relation -= 5; z_relation -= 5 if z_party_leader != "Joos"; dvp_relation -= 10; coalition_dissent += 1 if spd_in_government
+
+We agree to the idea and participate in the conference that the SAPD calls. To our surprise, the KPD not only participates but seems to do so in good faith with genuine interest in reconciliation [? if kpd_leader == "Conciliators" : , undoubtedly under the influence of their Conciliator leadership ?]. Multiple agreements are reached, with the SAPD mediating many of the disputes, and the conference ends as a propaganda victory for the SAPD as well as what remains of our party's left-wing, and a noticeable increase in our relations with the KPD. Our party's right, as well as the country's, accuse us of collaboration with the Communists, and our relations with them have worsened.
+
+Whether this will be the start of a new course or not remains to be seen.
+
+@participate_good_faith_2
+view-if: kpd_bad_faith and not (kpd_good_faith or kpd_refuse)
+on-arrival: reformist_dissent += 5; neorevisionist_dissent += 10; z_relation -= 5 if z_party_leader != "Joos"; dvp_relation -= 5; coalition_dissent += 1 if spd_in_government
+
+We agree to the idea and participate in the conference that the SAPD calls. The KPD too participates, but seems to do so out of obligation rather than genuine goodwill. They, intransingent as always, set forth unreasonable demands, including [? if kpd_rectified_history = 0 : the expulsion of Noske from the party, ?][? if spd_toleration : the breaking of our toleration agreement, ?] the adoption of a more radically and revolutionary socialist agenda, and the breaking of ties with the Right.
+
+- @accept_kpd: We will accept these demands.
+- @refuse_kpd: We will refuse these outrageous demands.
+
+@accept_kpd
+choose-if: reformist_strength + neorevisionist_strength < left_strength + center_strength + labor_strength
+unavailable-subtitle: The SPD right would never allow this.
+on-arrival: {! 
+if (Q.kpd_rectified_history == 0) {
+    Q.reformist_dissent += 12;
+    Q.reformist_strength -= 2;
+    Q.neorevisionist_dissent += 5; 
+    Q.left_dissent -= 6; 
+    Q.left_strength += 5; 
+    Q.kpd_rectified_history = 1; 
+    Q.z_relation -= 6; 
+    Q.dvp_relation -= 6; 
+    Q.ddp_relation -= 4; 
+    Q.kpd_relation += 8*(1-Q.dissent); 
+    Q.coalition_dissent += 1
+}
+if (Q.spd_toleration == 1) {
+    Q.time_to_election = 3; 
+    Q.spd_in_government = 0;
+    Q.in_grand_coalition = 0; 
+    Q.spd_toleration = 0; 
+    Q.pro_republic -= 5; 
+    Q.dvp_relation -= 5; 
+    Q.z_relation -= 5;
+}
+if (Q.kpd_relation <= 40) {
+    Q.kpd_relation = 50
+}
+if (Q.kpd_relation > 40) {
+    Q.kpd_relation += 10
+}
+Q.z_relation -= 10;
+Q.dvp_relation -= 15;
+Q.communist_coalition = 3;
+Q.reformist_dissent += 15;
+Q.neorevisionist_dissent += 25;
+Q.reformist_strength -= 10;
+Q.neorevisionist_strength -= 15;
+Q.left_strength += 25;
+Q.left_dissent -= 10;
+Q.ddp_relation -= 5;
+Q.new_middle_spd *= 0.95;
+Q.old_middle_spd *= 0.95;
+Q.rural_spd *= 0.95;
+Q.coalition_dissent += 1;
+Q.workers_spd += (Q.workers_sapd*0.15)
+Q.workers_sapd *= 0.85
+!}
+go-to: set_next_election_time if spd_toleration
+
+Despite the opposition of the right-wing, we have agreed to the KPD's demands. This has shaken the party to its core, and caused a shift back towards the left. The KPD themselves are shocked, but quickly adapt to the new reality, ready to collaborate with the SPD though still viewing us with suspicion. The SAPD has meanwhile lost steam, with many rejoining the SPD.
+
+@refuse_kpd
+on-arrival: kpd_relation -= 10; Q.workers_kpd -= 3; Q.workers_spd += 1; Q.workers_sapd += 2
+
+Of course, we could never agree to such outrageous demands. The conference is a failure, and we blame the KPD for it. The SAPD continues to agitate for a united front, pointing to the failure of the SPD and KPD to cooperate as a reason to vote for the SAPD instead, but this thankfully doesn't effect us too much.
+
+@participate_good_faith_3
+view-if: kpd_refuse and not (kpd_good_faith or kpd_bad_faith)
+on-arrival: reformist_dissent += 5; neorevisionist_dissent += 10; z_relation -= 5 if z_party_leader != "Joos"; dvp_relation -= 5; coalition_dissent += 1 if spd_in_government; workers_kpd -= 10; workers_sapd += 7; workers_spd += 3; unemployed_kpd -= 5; unemployed_sapd += 5; left_dissent -= 5; left_strength -= 5
+
+We attend the SAPD conference, but are alone in doing so, with the KPD refusing. We accuse the KPD of being the reason for the failure of an Einheitsfront to take form, and our ties with the left and SAPD are somewhat repaired. The SAPD campaigns off of the KPD's failure to participate, taking yet more support away from them. The right-wing though, both of our party and as a whole, are nevertheless disgruntled by our participation.
+
+@participate_bad_faith_1
+
+Placeholder
+
+@participate_bad_faith_2
+
+Placeholder
+
+@participate_bad_faith_3
+
+Placeholder
+
+@refuse_1
+
+Placeholder
+
+@refuse_2
+
+Placeholder
