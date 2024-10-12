@@ -125,7 +125,7 @@ go-to: set_next_election_time if spd_toleration
 Despite the opposition of the right-wing, we have agreed to the KPD's demands. This has shaken the party to its core, and caused a shift back towards the left. The KPD themselves are shocked, but quickly adapt to the new reality, ready to collaborate with the SPD though still viewing us with suspicion. The SAPD has meanwhile lost steam, with many rejoining the SPD.
 
 @refuse_kpd
-on-arrival: kpd_relation -= 10; Q.workers_kpd -= 3; Q.workers_spd += 1; Q.workers_sapd += 2
+on-arrival: kpd_relation -= 10; workers_kpd -= 3; workers_spd += 1; workers_sapd += 2
 
 Of course, we could never agree to such outrageous demands. The conference is a failure, and we blame the KPD for it. The SAPD continues to agitate for a united front, pointing to the failure of the SPD and KPD to cooperate as a reason to vote for the SAPD instead, but this thankfully doesn't effect us too much.
 
