@@ -167,6 +167,7 @@ if (Q.month_actions >= 1) {
         Q.old_middle_spd -= Q.hyperinflation
         Q.rural_spd -= Q.hyperinflation
         Q.unemployed_spd -= Q.hyperinflation
+        Q.coalition_dissent += (Q.hyperinflation*2)
     }
     // deflation is bad
     if (Q.inflation < -0.5 && Q.inflation > -5 && Q.unemployed < 15) {
