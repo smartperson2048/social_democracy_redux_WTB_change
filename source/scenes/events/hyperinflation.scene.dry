@@ -34,6 +34,8 @@ on-arrival: capital_strike_progress += 6; inflation *= 0.75; hyperinflation = 0;
 Price controls are very unpopular with the bourgeoisie and their representatives, as well as rural producers, while wage controls hurt organized workers. However, the policies do stem the tide of inflation, at least somewhat.
 
 @volksmark
+choose-if: year = 1935
+unavailable-subtitle: WIP
 
 Placeholder
 
