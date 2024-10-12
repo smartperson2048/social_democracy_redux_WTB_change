@@ -162,6 +162,11 @@ if (Q.month_actions >= 1) {
     if ((Q.budget <= -5 && Q.inflation >= 10) || (Q.hyperinflation >= 1 && Q.budget < 0)) {
         Q.inflation *= (1.2-(Q.unemployed/100)+((Q.budget*-1)/10)+Q.hyperinflation)
         Q.hyperinflation += 0.1
+        Q.workers_spd -= Q.hyperinflation
+        Q.new_middle_spd -= Q.hyperinflation
+        Q.old_middle_spd -= Q.hyperinflation
+        Q.rural_spd -= Q.hyperinflation
+        Q.unemployed_spd -= Q.hyperinflation
     }
     // deflation is bad
     if (Q.inflation < -0.5 && Q.inflation > -5 && Q.unemployed < 15) {
