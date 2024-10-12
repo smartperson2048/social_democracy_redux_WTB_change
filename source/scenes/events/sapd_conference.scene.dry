@@ -5,8 +5,12 @@ view-if: sapd_consolidated == 1 and sapd_r >= 5 and (nsdap_r + dnvp_r + unemploy
 new-page: true
 tags: event
 on-arrival: {! 
+Q.kpd_refuse = 0;
+Q.kpd_good_faith = 0;
+Q.kpd_bad_faith = 0;
+
 if (Q.kpd_leader != "Conciliators") {
-    if (Q.peoples_party = 0 && kpd_relation >=80) {
+    if (Q.peoples_party = 0 && kpd_relation >= 80) {
         Q.kpd_good_faith = 1;
     }
     if (Q.peoples_party = 1 || kpd_relation < 80) {
