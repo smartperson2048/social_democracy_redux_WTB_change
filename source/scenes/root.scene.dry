@@ -61,6 +61,7 @@ Q.neorevisionist_dissent = 10;
 
 // secret events...
 Q.unions_independent = 0;
+Q.iron_front_independent = 0;
 Q.centrists_resign = 0;
 Q.left_split = 0;
 Q.sapd_formed = 0;
