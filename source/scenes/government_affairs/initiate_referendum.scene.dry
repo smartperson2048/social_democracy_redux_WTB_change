@@ -26,7 +26,7 @@ subtitle: -1 resource.
 unavailable-subtitle: -1 resource. [? if budget < 1 : The government doesn't have the budget to pursue this. ?]
 on-arrival: resources -= 1; kpd_relation += 5; rural_spd += 3*(1-dissent); rural_kpd += 1; rural_dnvp -= 2 if year < 1931; rural_nsdap -= 1 if year >= 1931; dvp_relation -= 5; z_relation -= 4; left_strength += 6; left_dissent -= 4; ddp_support = 1 if ddp_relation >= 75; referendum_support = (spd_votes + kpd_votes + sapd_votes); referendum_support += ddp_votes if ddp_support == 1; referendum_succeed = 1 if referendum_support >= 50; referendum_fail if referendum_support < 50
 
-@land_reform_success: The referendum succeeds!
+@land_reform_success: The referendum succeeds.
 @land_reform_fail: The referendum fails.
 
 @land_reform_success
