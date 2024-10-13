@@ -1,0 +1,14 @@
+title: Direct Democracy
+new-page: true
+is-card: true
+card-image: img/petition_referendum.jpg
+view-if: referendum_timer = 0 and (spd_in_government == 0 or spd_toleration == 1)
+on-arrival: referendum_timer += 6; month_actions += 1
+tags: govt_affairs
+
+= Direct Democracy
+
+As part of the Weimar constitution, petitions, if they gain enough signatures, may be put to nationwide referendums for the people to directly vote on laws. We may not be in government, but we can try to bypass this and campaign ourselves for certain laws or actions, which, even if fail, may invigorate our supporters or provide publicity.
+
+- @placeholder: Do nothing.
+- @easy_discard

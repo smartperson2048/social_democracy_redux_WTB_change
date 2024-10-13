@@ -9,6 +9,7 @@ new-page: true
 This mod adds a variety of changes to the base game, mostly in the form of flavor and minor improvements.
 
 - @moderate: Reformist Plan flavor
+- @economics: Economic changes
 - @left: Left Plan flavor
 - @sapd: SAPD flavor
 - @weakened_presidency_hitler: Weakened Presidency + Hitler takeover flavor
@@ -28,7 +29,13 @@ When you adopt the Reformist Plan now, you have an option to try and convince Ze
 Once you've managed, you can now rally for the Weimar Plan together with Zentrum and the DDP (Julius Leber has an advisor action for this now) which will increase support for the republic, hurt extremist parties and also increase the support of all three of your parties. You can also enact the Weimar Plan through your allies if they are in government and you aren't, or if you lack the Finance/Economic ministry.
   
 - @flavors: Back
-                                                                                                                                                                                                                                                                                          
+
+@economics
+
+= Economic Changes
+
+I have added hyperinflation if you have a big budget deficit and high inflation, and plan to add a way to end hyperinflation through the replacement of the Reichsmark with the Volksmark. Also, you can do tax cuts even if you don't have enough budget if you've adopted the WTB plan.
+
 @left
 
 = Left Plan flavor
@@ -41,7 +48,7 @@ Somewhat a work in progress, there is also flavor for the Left Plan. If relation
 
 = SAPD flavor
 
-The SAPD is now a distinct party rather than being lumped in with the right-wing "Others"! It also has its own event allowing it to consolidate into an actually formidable force amongst workers if you lean too hard into Volkspartei rhetoric or if Labor, Left and Center all defect.
+The SAPD is now a distinct party rather than being lumped in with the right-wing "Others"! It also has its own event allowing it to consolidate into an actually formidable force amongst workers if you lean too hard into Volkspartei rhetoric or if Labor, Left and Center all defect, and can then use its position to try and organize an Einheitsfront, with penalties for the SPD and KPD if they refuse.
 
 - @flavors: Back
 
@@ -77,6 +84,10 @@ The mod also contains many small changes that I felt would be good additions to 
 
 **06/10/2024**: Updated the mod to fit base game's additions with 0.17 and 0.17.1 though mostly preserving the mod form of the features for now. Also added an alternate Blutmai event for if the right-wing coalition has formed, SAPD flavor, changes to defunding the Reichswehr, and another Weimar Plan option (convincing them through the UIC)
 
+**12/10/2024**: Added more SAPD content (WIP and non-functional) as well as hyperinflation and deficit tax cuts.
+
+**13/10/2024**: Iron Front may now defect as part of a new neorevisionist split, may incorporate this into a reformist split either as a DDP/DStP boost or a right-wing SAPD equivalent.
+
 - @flavors: Back
 
 @plans
@@ -84,6 +95,8 @@ The mod also contains many small changes that I felt would be good additions to 
 = Plans for the mod
 
 I'm not 100% sure on any plan really, however I do have quite a few ideas on how to extend my mod into 1934 if the base game receives a 1934 extension which I'm still hoping for. If the base game doesn't anytime soon I *might* add one myself but don't get your hopes up. I will finish working on the Hitler flavor and after that my main focus will probably be on tweaks to my existing features to make them work better and themselves have more flavor. I may add KPD flavor too! Stay tuned.
+
+May add corruption as a mechanic, as well as a Volksfront/Volkspartei if the reformists and neorevisionists both defect. Also plan on adding referendums.
 
 - @flavors: Back
 
