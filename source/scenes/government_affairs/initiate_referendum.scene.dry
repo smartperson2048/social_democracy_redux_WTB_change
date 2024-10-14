@@ -38,7 +38,7 @@ choose-if: budget >= 1
 unavailable-subtitle: The government doesn't have the budget to pursue this.
 on-arrival: kpd_relation += 5; rural_spd += 3*(1-dissent); rural_kpd += 1; rural_dnvp -= 2 if year < 1931; rural_nsdap -= 1 if year >= 1931; dvp_relation -= 5; z_relation -= 4; left_strength += 6; left_dissent -= 4; ddp_support = 1 if ddp_relation >= 75; referendum_support = (spd_votes + kpd_votes + sapd_votes); referendum_support += ddp_votes if ddp_support == 1; referendum_succeed = 1 if referendum_support >= 50; referendum_succeed = 0 if referendum_support < 50
 
-We initiate a petition for the implementation of a land reform program and launch a campaign through the countryside to get it the signatures it needs. Many of our grassroots members in their campaigning for the petition campaign alongside the Communists, who quickly involve themselves in the referendum [? if kpd_relation < 25 : despite their hostility toward Social Democracy ?]. Soon it gains enough signatures to be put to a referendum, which the DNVP aggressively campaigns against, leading to a decrease in their rural support as previously reactionary farmers turn against the party.
+We initiate a petition for the implementation of a land reform program and launch a campaign through the countryside to get it the signatures it needs. Many of our grassroots members in their campaigning for the petition campaign alongside the Communists, who quickly involve themselves in the referendum [? if kpd_relation < 25 : despite their hostility toward Social Democracy?]. Soon it gains enough signatures to be put to a referendum, which the DNVP aggressively campaigns against, leading to a decrease in their rural support as previously reactionary farmers turn against the party.
 
 - @land_reform_success: The referendum succeeds.
 - @land_reform_fail: The referendum fails.
@@ -52,7 +52,7 @@ The referendum has succeeded with [+ referendum_support +]% of the vote! The inf
 @land_reform_fail
 view-if: not referendum_succeed
 
-Unfortunately, the referendum has failed with [+ referendum_support +]% of the vote. Nevertheless, our advocacy of land reform through the referendum has improved our ties with the KPD and our standing amongst rural regions.
+Unfortunately, the referendum has failed with only [+ referendum_support +]% of the vote. Nevertheless, our advocacy of land reform through the referendum has improved our ties with the KPD and our standing amongst rural regions.
 
 @nationalization_vote
 view-if: (nationalization_adopted or socializations >= 2) and unemployed >= 20
@@ -75,7 +75,7 @@ The referendum has succeeded with [+ referendum_support +]% of the vote! The nat
 @nationalization_fail
 view-if: not referendum_succeed
 
-Unfortunately, the referendum has failed with [+ referendum_support +]% of the vote. Nevertheless, our advocacy of nationalization through the referendum has improved our standing amongst the workers.
+Unfortunately, the referendum has failed with only [+ referendum_support +]% of the vote. Nevertheless, our advocacy of nationalization through the referendum has improved our standing amongst the workers.
 
 @work_council_vote
 view-if: works_councils < 3
@@ -96,7 +96,7 @@ The referendum has succeeded with [+ referendum_support +]% of the vote! [? if w
 @work_council_fail
 view-if: not referendum_succeed
 
-Unfortunately, the referendum has failed with [+ referendum_support +]% of the vote. Nevertheless, our ties with labor have strengthened, as has our position amongst the workers, thanks to our attempts to empower them.
+Unfortunately, the referendum has failed with only [+ referendum_support +]% of the vote. Nevertheless, our ties with labor have strengthened, as has our position amongst the workers, thanks to our attempts to empower them.
 
 @state_buyer_vote
 subtitle: Call for the creation of a state monopoly for grain purchases, guaranteeing prices for farmers and stable prices for consumers.
@@ -123,9 +123,9 @@ Unfortunately, the referendum has failed with [+ referendum_support +]% of the v
 @wtb_vote
 view-if: wtb_adopted == 1
 subtitle: Call for the implementation of the WTB plan.
-on-arrival: workers_spd += 5*(1-dissent); unemployed_spd += 5*(1-dissent); workers_nsdap -= 2*(1-dissent); labor_strength += 4; labor_dissent -= 2; unemployed_nsdap -= 2*(1-dissent); new_middle_spd += 4*(1-dissent); old_middle_spd += 2*(1-dissent); rural_spd += 2*(1-dissent); dvp_relation -= 3; kpd_relation -= 2; referendum_support = spd_votes; referendum_support += ddp_votes if ddp_relation >= 75; referendum_support += (workers_z_normalized*(workers/(workers+unemployed+new_middle+old_middle+rural+catholics))) if z_relation >= 65; referendum_support += (workers_nsdap_normalized*(workers/(workers+unemployed+new_middle+old_middle+rural+catholics))); referendum_support += (unemployed_nsdap_normalized*(unemployed/(workers+unemployed+new_middle+old_middle+rural+catholics))); referendum_succeed = 1 if referendum_support >= 50; referendum_succeed = 0 if referendum_support < 50
+on-arrival: workers_spd += 5*(1-dissent); workers_spd += works_councils*(1-dissent); unemployed_spd += 5*(1-dissent); workers_nsdap -= 2*(1-dissent); labor_strength += 4; labor_dissent -= 2; unemployed_nsdap -= 3*(1-dissent); new_middle_spd += 4*(1-dissent); old_middle_spd += 2*(1-dissent); rural_spd += 2*(1-dissent); dvp_relation -= 3; kpd_relation -= 2; referendum_support = spd_votes; referendum_support += ddp_votes if ddp_relation >= 75; referendum_support += (workers_z_normalized*(workers/(workers+unemployed+new_middle+old_middle+rural+catholics))) if z_relation >= 65; referendum_support += (workers_nsdap_normalized*(workers/(workers+unemployed+new_middle+old_middle+rural+catholics))); referendum_support += (unemployed_nsdap_normalized*(unemployed/(workers+unemployed+new_middle+old_middle+rural+catholics))); referendum_support += ((workers*0.05)/workers+unemployed+new_middle+old_middle+rural+catholics) if works_councils == 1; referendum_support += ((workers*0.1)/workers+unemployed+new_middle+old_middle+rural+catholics) if works_councils == 2; referendum_support += ((workers*0.2)/workers+unemployed+new_middle+old_middle+rural+catholics) if works_councils == 3; referendum_support += works_councils*(labor_strength/(labor_strength+center_strength+reformist_strength+left_strength+neorevisionist_strength)); referendum_succeed = 1 if referendum_support >= 50; referendum_succeed = 0 if referendum_support < 50
 
-We initiate a petition for the implementation of Phase 1 of the WTB plan, rallying behind it. The ADGB spearheads our efforts, and the petition quickly gains the necessary signatures. Many of the NSDAP's working class supporters also support the petition, helping split some support off of the party.
+We initiate a petition for the implementation of Phase 1 of the WTB plan, rallying behind it. The ADGB spearheads our efforts [? if works_council >= 1 : and helps us organize in support of the petition through the works councils?], and the petition quickly gains the necessary signatures. Many of the NSDAP's working class supporters also support the petition, helping split some support off of the party.
 
 - @wtb_vote_success_surplus: The referendum succeeds.
 - @wtb_vote_success_deficit: The referendum succeeds.
