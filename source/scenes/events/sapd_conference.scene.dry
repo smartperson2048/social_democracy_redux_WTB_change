@@ -10,11 +10,11 @@ Q.kpd_good_faith = 0;
 Q.kpd_bad_faith = 0;
 
 if (Q.kpd_leader != "Conciliators") {
-    if (Q.peoples_party = 0 && kpd_relation >= 80) {
+    if (Q.peoples_party = 0 && Q.kpd_relation >= 80) {
         Q.kpd_good_faith = 1;
     }
-    if (Q.peoples_party = 1 || kpd_relation < 80) {
-        if ((kpd_relation >= 25) || (kpd_relation >= 40 && peoples_party == 0)) {
+    if (Q.peoples_party = 1 || Q.kpd_relation < 80) {
+        if ((Q.kpd_relation >= 25) || (Q.kpd_relation >= 40 && Q.peoples_party == 0)) {
             Q.kpd_bad_faith = 1;
         }
         else {
@@ -23,10 +23,10 @@ if (Q.kpd_leader != "Conciliators") {
     }
 }
 if (Q.kpd_leader == "Conciliators") {
-    if (Q.peoples_party = 0 && kpd_relation >= 35) {
+    if (Q.peoples_party = 0 && Q.kpd_relation >= 35) {
         Q.kpd_good_faith = 1;
     }
-    if (Q.peoples_party = 1 && kpd_relation >= 50) {
+    if (Q.peoples_party = 1 && Q.kpd_relation >= 50) {
         Q.kpd_good_faith = 1;
     }
     else {
