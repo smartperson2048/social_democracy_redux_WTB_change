@@ -12,19 +12,32 @@ As part of the Weimar constitution, petitions, if they gain enough signatures, m
 
 Should we initiate any petitions?
 
-- @land_reform_vote: We will push for a land reform program.
-- @nationalization_vote: We will push for a nationalization program.
-- @state_buyer_vote: We will push for the implementation of a state buyer program.
-- @wtb_vote: We will push for the implementation of Phase 1 of the WTB plan.
-- @abortion_vote: We will push for the legalization of abortion.
-- @constitutional_reform_vote: We will attempt to reform the constitution.
+- @petitions: Let's initiate a petition.
+- @easy_discard: No, we won't initiate any petitions.
+
+@petitions
+subtitle: -1 resource.
+on-arrival: resources -= 1
+choose-if: resources >= 1
+unavailable-subtitle: -1 resource. We don't have the resources to initiate a petition.
+
+We have a variety of options for laws to push for via petition. What should we petition for?
+
+- @land_reform_vote: Land reform.
+- @nationalization_vote: A nationalization program.
+- @state_buyer_vote: A state buyer program.
+- @wtb_vote: Implementation of the WTB plan.
+- @abortion_vote: The legalization of abortion.
+- @constitutional_reform_vote: Constitutional reforms.
 - @easy_discard
 
 @land_reform_vote
-choose-if: budget >= 1 and resources >= 1
-subtitle: -1 resource.
-unavailable-subtitle: -1 resource. [? if budget < 1 : The government doesn't have the budget to pursue this. ?]
-on-arrival: resources -= 1; kpd_relation += 5; rural_spd += 3*(1-dissent); rural_kpd += 1; rural_dnvp -= 2 if year < 1931; rural_nsdap -= 1 if year >= 1931; dvp_relation -= 5; z_relation -= 4; left_strength += 6; left_dissent -= 4; ddp_support = 1 if ddp_relation >= 75; referendum_support = (spd_votes + kpd_votes + sapd_votes); referendum_support += ddp_votes if ddp_support == 1; referendum_succeed = 1 if referendum_support >= 50; referendum_fail = 1 if referendum_support < 50
+subtitle: Break up the large aristocratic estates and give land to landless workers.
+choose-if: budget >= 1
+unavailable-subtitle: The government doesn't have the budget to pursue this.
+on-arrival: kpd_relation += 5; rural_spd += 3*(1-dissent); rural_kpd += 1; rural_dnvp -= 2 if year < 1931; rural_nsdap -= 1 if year >= 1931; dvp_relation -= 5; z_relation -= 4; left_strength += 6; left_dissent -= 4; ddp_support = 1 if ddp_relation >= 75; referendum_support = (spd_votes + kpd_votes + sapd_votes); referendum_support += ddp_votes if ddp_support == 1; referendum_succeed = 1 if referendum_support >= 50; referendum_fail = 1 if referendum_support < 50
+
+We initiate a petition for the implementation of a land reform program and launch a campaign through the countryside to get it the signatures it needs. Many of our grassroots members in their campaigning for the petition campaign alongside the Communists, who quickly involve themselves in the referendum [? if kpd_relation < 25 : despite their hostility toward Social Democracy ?]. Soon it gains enough signatures to be put to a referendum, which the DNVP aggressively campaigns against, leading to a decrease in their rural support as previously reactionary farmers turn against the party.
 
 - @land_reform_success: The referendum succeeds.
 - @land_reform_fail: The referendum fails.
@@ -38,15 +51,51 @@ The referendum has succeeded! The influence of reactionaries in the rural region
 @land_reform_fail
 view-if: referendum_fail
 
-Unfortunately, the referendum has failed. Nevertheless, our advocacy of it through the referendum has improved our ties with the KPD and our standing amongst rural regions.
+Unfortunately, the referendum has failed. Nevertheless, our advocacy of land reform through the referendum has improved our ties with the KPD and our standing amongst rural regions.
 
 @nationalization_vote
+view-if: (nationalization_adopted or socializations >= 2) and unemployed >= 20
+choose-if: budget >= (nationalize_budget/2)
+unavailable-subtitle: The government doesn't have the budget to pursue this.
+on-arrival: kpd_relation += 10; workers_spd += 3*(1-dissent); new_middle_spd -= 2; old_middle_spd -= 2; workers_spd += works_councils*(1-dissent) if works_councils >= 2; workers_kpd += 1; workers_kpd += 1 if sapd_consolidated == 0; workers_sapd += 1 if sapd_consolidated == 1; unemployed_spd += 2*(1-dissent); unemployed_kpd += 1; dvp_relation -= 8; z_relation -= 6; ddp_relation -= 3; reformist_dissent += 2; left_dissent -= 8; left_strength += 5; left_strength += 5 if left_split == 0; referendum support = (spd_votes + kpd_votes + sapd_votes); referendum_support -= (spd_votes*dissent); referendum_succeed = 1 if referendum_support >= 50; referendum_fail if referendum_support < 50
 
-placeholder
+We initiate a petition for the nationalization of large idle industry by the government and its bringing under the control of [? if works_councils >= 2 : national planning boards made up of works council and state representatives ?][? if works_councils < 2 : the government ?] in order to fix the economy. We launch a campaign for this petition through the industrial regions of Germany, from workplace to workplace [? if works_councils >= 2 : and works council to works council ?] as soon the KPD joins in our campaign. The petition quickly gains the required signatures and is put to a nationwide referendum.
+
+- @nationalization_success: The referendum succeeds.
+- @nationalization_fail: The referendum fails.
+
+@nationalization_success
+view-if: referendum_succeed
+on-arrival: nationalization_progress += 0.5; capital_strike_progress += 1; unemployed -= 1 if unemployed >= 6; old_middle_spd -= 1; unemployed -= 0.5 if works_councils >= 3; workers += 1; budget -= 2; works_program += 1; workers_spd += 3*(1-dissent); unemployed_spd += 2*(1-dissent); inflation += 0.8
+
+The referendum has succeeded! The nationalization program is implemented, though very reluctantly and shoddily by the Economic Minister, [+ economic_minister +], leaving the economy not nearly as repaired as it could otherwise have been. Though, as we are not in government, this still amounts to a victory for Social Democracy, which has managed to increase its publicity amongst the working class.
+
+@nationalization_fail
+view-if: referendum_fail
+
+Unfortunately, the referendum has failed. Nevertheless, our advocacy of nationalization through the referendum has improved our standing amongst the workers.
 
 @state_buyer_vote
+subtitle: Create a state monopoly for grain purchases, guaranteeing prices for farmers and stable prices for consumers.
+choose-if: budget >= 2
+unavailable-subtitle: The government doesn't have the budget to pursue this.
+on-arrival: rural_spd += 1*(1-dissent); rural_nsdap -= 1*(1-dissent); workers_spd += 2*(1-dissent); unemployed_spd += 3*(1-dissent); unemployed_kpd += 1; dvp_relation -= 5; z_relation -= 3; peoples_party_support += 1; referendum_support = (spd_votes + sapd_votes + (0.8*kpd_votes)); referendum_support += ddp_votes if ddp_relation >= 75; referendum_succeed if referendum_support >= 50; referendum_fail if referendum_support < 50
 
-placeholder
+We initiate a petition for the implementation of a state buyer program, campaigning for it in both the countryside for farmers and amongst the workers. The KPD joins in campaigning for the petition, though not significantly, and it soon gains the signatures it needs for a referendum.
+
+- @state_buyer_success: The referendum succeeds.
+- @state_buyer_fail: The referendum fails.
+
+@state_buyer_success
+view-if: referendum_succeed
+on-arrival: budget -= 2; state_buyer = 1; rural_spd += 2*(1-dissent); rural_nsdap -= 1*(1-dissent); workers_spd += 1*(1-dissent); unemployed_spd += 1*(1-dissent); rural_policy += 2; capital_strike_progress += 1
+
+The referendum has succeeded! A state buyer program is initialized, though with reluctance from the Economic Minister, [+ economic_minister +]. Let us hope that the farmers and workers remember that it is us who campaigned for this stabilization of prices and the market.
+
+@state_buyer_fail
+view-if: referendum_fail
+
+Unfortunately, the referendum has failed. Nevertheless, our standing amongst workers and farmers alike has improved somewhat.
 
 @wtb_vote
 
