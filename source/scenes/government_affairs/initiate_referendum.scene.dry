@@ -26,9 +26,9 @@ We have a variety of options for laws to push for via petition. What should we p
 
 - @land_reform_vote: Land reform.
 - @nationalization_vote: A nationalization program.
+- @wtb_vote: Implementation of the WTB plan.
 - @work_council_vote: The empowerment of works councils.
 - @state_buyer_vote: A state buyer program.
-- @wtb_vote: Implementation of the WTB plan.
 - @abortion_vote: The legalization of abortion.
 - @constitutional_reform_vote: Constitutional reforms.
 
@@ -47,12 +47,12 @@ We initiate a petition for the implementation of a land reform program and launc
 view-if: referendum_succeed
 on-arrival: budget -= 1; land_reform += 1; coalition_dissent += 1; rural_spd += 2*(1-dissent); rural_nsdap -= 3*(1-dissent); unemployed -= 1 if unemployed >= 5; left_strength += 2; left_dissent -= 1; rural_sol += 3; rural_policy += 1; coup_progress += 1
 
-The referendum has succeeded! The influence of reactionaries in the rural regions of our country has diminished as the estates of junkers are dismantled and redistributed, though quite reluctantly and shoddily by [+ agricultural_minister +], the agricultural minister.
+The referendum has succeeded with [+ referendum_support +]% of the vote! The influence of reactionaries in the rural regions of our country has diminished as the estates of junkers are dismantled and redistributed, though quite reluctantly and shoddily by [+ agricultural_minister +], the agricultural minister.
 
 @land_reform_fail
 view-if: referendum_fail
 
-Unfortunately, the referendum has failed. Nevertheless, our advocacy of land reform through the referendum has improved our ties with the KPD and our standing amongst rural regions.
+Unfortunately, the referendum has failed with [+ referendum_support +]% of the vote. Nevertheless, our advocacy of land reform through the referendum has improved our ties with the KPD and our standing amongst rural regions.
 
 @nationalization_vote
 view-if: (nationalization_adopted or socializations >= 2) and unemployed >= 20
@@ -70,12 +70,12 @@ We initiate a petition for the nationalization of large idle industry by the gov
 view-if: referendum_succeed
 on-arrival: nationalization_progress += 0.5; capital_strike_progress += 1; unemployed -= 1 if unemployed >= 6; old_middle_spd -= 1; unemployed -= 0.5 if works_councils >= 3; workers += 1; budget -= 2; works_program += 1; workers_spd += 3*(1-dissent); unemployed_spd += 2*(1-dissent); inflation += 0.8
 
-The referendum has succeeded! The nationalization program is implemented, though very reluctantly and shoddily by the Economic Minister, [+ economic_minister +], leaving the economy not nearly as repaired as it could otherwise have been. Though, as we are not in government, this still amounts to a victory for Social Democracy, which has managed to increase its publicity amongst the working class.
+The referendum has succeeded with [+ referendum_support +]% of the vote! The nationalization program is implemented, though very reluctantly and shoddily by the Economic Minister, [+ economic_minister +], leaving the economy not nearly as repaired as it could otherwise have been. Though, as we are not in government, this still amounts to a victory for Social Democracy, which has managed to increase its publicity amongst the working class.
 
 @nationalization_fail
 view-if: referendum_fail
 
-Unfortunately, the referendum has failed. Nevertheless, our advocacy of nationalization through the referendum has improved our standing amongst the workers.
+Unfortunately, the referendum has failed with [+ referendum_support +]% of the vote. Nevertheless, our advocacy of nationalization through the referendum has improved our standing amongst the workers.
 
 @work_council_vote
 view-if: works_councils < 3
@@ -91,12 +91,12 @@ We initiate a petition for the expansion of works councils in line with our prev
 view-if: referendum_succeed
 on-arrival: economic_democracy += 1; workers_spd += 2*(1-dissent); capital_strike_progress += 1; works_councils += 1; labor_dissent -= 2; labor_strength += 2
 
-The referendum has succeeded! [? if works_councils == 1 : Now, Germany will have worker representation on the boards of companies, giving them more influence in management decisions. ?][? if works_councils == 2 : National and sectorial workers councils have been part of the Weimar Constitution, but they were disempowered in the past, acting as nothing more than advisory bodies. With the success of this referendum, we can change that. ?][? if works_councils == 3 : Sectorial works councils can now negotiate wage and price policies for entire economic sectors, helping to both give workers more of a voice, and to rationalize the economy, smoothing over the anarchy of the market.?]
+The referendum has succeeded with [+ referendum_support +]% of the vote! [? if works_councils == 1 : Now, Germany will have worker representation on the boards of companies, giving them more influence in management decisions. ?][? if works_councils == 2 : National and sectorial workers councils have been part of the Weimar Constitution, but they were disempowered in the past, acting as nothing more than advisory bodies. With the success of this referendum, we can change that. ?][? if works_councils == 3 : Sectorial works councils can now negotiate wage and price policies for entire economic sectors, helping to both give workers more of a voice, and to rationalize the economy, smoothing over the anarchy of the market.?]
 
 @work_council_fail
 view-if: referendum_fail
 
-Unfortunately, the referendum has failed. Nevertheless, our ties with labor have strengthened, as has our position amongst the workers, thanks to our attempts to empower them.
+Unfortunately, the referendum has failed with [+ referendum_support +]% of the vote. Nevertheless, our ties with labor have strengthened, as has our position amongst the workers, thanks to our attempts to empower them.
 
 @state_buyer_vote
 subtitle: Call for the creation of a state monopoly for grain purchases, guaranteeing prices for farmers and stable prices for consumers.
@@ -113,12 +113,12 @@ We initiate a petition for the implementation of a state buyer program, campaign
 view-if: referendum_succeed
 on-arrival: budget -= 2; state_buyer = 1; rural_spd += 2*(1-dissent); rural_nsdap -= 1*(1-dissent); workers_spd += 1*(1-dissent); unemployed_spd += 1*(1-dissent); rural_policy += 2; capital_strike_progress += 1
 
-The referendum has succeeded! A state buyer program is initialized, though with reluctance from the Economic Minister, [+ economic_minister +]. Let us hope that the farmers and workers remember that it is us who campaigned for this stabilization of prices and the market.
+The referendum has succeeded with [+ referendum_support +]% of the vote! A state buyer program is initialized, though with reluctance from the Economic Minister, [+ economic_minister +]. Let us hope that the farmers and workers remember that it is us who campaigned for this stabilization of prices and the market.
 
 @state_buyer_fail
 view-if: referendum_fail
 
-Unfortunately, the referendum has failed. Nevertheless, our standing amongst workers and farmers alike has improved somewhat.
+Unfortunately, the referendum has failed with [+ referendum_support +]% of the vote. Nevertheless, our standing amongst workers and farmers alike has improved somewhat.
 
 @wtb_vote
 view-if: wtb_adopted == 1
@@ -135,13 +135,13 @@ We initiate a petition for the implementation of Phase 1 of the WTB plan, rallyi
 view-if: referendum_succeed and budget >= wtb_budget
 on-arrival: budget -= wtb_budget; works_program += 1; unemployed -= 3; workers_spd += 5*(1-dissent); unemployed_spd += 5*(1-dissent); wtb_implemented += 1; inflation += 3
 
-The referendum has succeeded! Money is beginning to flow through the economy via investments in large-scale public works, though the reluctant Economic Minister, [+ economic_minister +], is executing the plan less efficiently than we would be able to. Nevertheless, the economy seems to improve, and we claim credit.
+The referendum has succeeded with [+ referendum_support +]% of the vote! Money is beginning to flow through the economy via investments in large-scale public works, though the reluctant Economic Minister, [+ economic_minister +], is executing the plan less efficiently than we would be able to. Nevertheless, the economy seems to improve, and we claim credit.
 
 @wtb_vote_success_deficit
 view-if: referendum_succeed and budget < wtb_budget
 on-arrival: works_program += 1; budget -= wtb_budget; unemployed -= 3; workers += 2; workers_spd += 4*(1-dissent); unemployed_spd += 4*(1-dissent); capital_strike_progress += 1; wtb_implemented += 1; inflation += 4; welfare -= 2 if not spd_toleration; inflation -= 3 if not spd_toleration; unemployed += 2 if not spd_toleration; budget += 2 if not spd_toleration; 
 
-The referendum has succeeded! Money is beginning to flow through the economy via investments in large-scale public works, though a deficit manifests. The government plans to handle this deficit by, as always, cutting welfare, and they blame us for creating the necessity to do so. Of course, this argument is ridiculous, but it does dampen our celebrations. 
+The referendum has succeeded with [+ referendum_support +]% of the vote! Money is beginning to flow through the economy via investments in large-scale public works, though a deficit manifests. The government plans to handle this deficit by, as always, cutting welfare, and they blame us for creating the necessity to do so. Of course, this argument is ridiculous, but it does dampen our celebrations. 
 
 [? if spd_toleration : We can vote against the planned austerity measures and effectively bring down the government, though this will mean snap elections. ?][? if not spd_toleration : Unfortunately, there is nothing we can do to stop these austerity measures from being implemented. ?]
 
@@ -166,7 +166,7 @@ We do not take a stand against the government's new austerity measures, signific
 @wtb_vote_failure
 view-if: referendum_fail
 
-Unfortunately, the referendum has failed to pass. Nevertheless, our ties with the ADGB have been strengthened, as well as our standing amongst the working and even employing classes, while many former Nazi supporters have been introduced to Social Democracy through our advocacy of the WTB plan.
+Unfortunately, the referendum has failed to pass with only [+ referendum_support +]% of the vote. Nevertheless, our ties with the ADGB have been strengthened, as well as our standing amongst the working and even employing classes, while many former Nazi supporters have been introduced to Social Democracy through our advocacy of the WTB plan.
 
 @abortion_vote
 subtitle: We will push for the relaxation of restrictions on abortion.
@@ -181,12 +181,12 @@ We initiate a petition for the legalization of abortion, which quickly whips up 
 view-if: referendum_succeed
 on-arrival: abortion_rights += 1; womens_rights += 1; z_relation -= 3; catholics_spd -= 5; dvp_relation -= 5; new_middle_spd += 2*(1-dissent); new_middle_ddp += 1; workers_z += 3; new_middle_z += 3; old_middle_z += 3; old_middle_dnvp += 2; rural_dnvp += 2; workers_nsdap -= 3; new_middle_nsdap -= 3; old_middle_nsdap -= 1; rural_nsdap -= 1; unemployed_nsdap -= 2; unemployed_z += 3; unemployed_spd += 3*(1-dissent)
 
-The referendum succeeds! This has heartened our more progressive supporters, while hurting our relations with the Center Party. With the increasing political discourse around abortion, the religiously-oriented Center Party and DNVP have gained conservative votes at the expense of the NSDAP.
+The referendum succeeds with [+ referendum_support +]% of the vote! This has heartened our more progressive supporters, while hurting our relations with the Center Party. With the increasing political discourse around abortion, the religiously-oriented Center Party and DNVP have gained conservative votes at the expense of the NSDAP.
 
 @abortion_fail
 view-if: referendum_fail
 
-Unfortunately, the referendum has failed. This has disheartened the progressives who spearheaded the petition, who have decided to bide their time.
+Unfortunately, the referendum has failed with only [+ referendum_support +]% of the vote. This has disheartened the progressives who spearheaded the petition, who have decided to bide their time.
 
 @constitutional_reform_vote
 view-if: constitutional_reform_timer = 0 and neorevisionism and constitutional_reform < 3
