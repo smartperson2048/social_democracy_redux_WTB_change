@@ -183,6 +183,11 @@ on-arrival: abortion_rights += 1; womens_rights += 1; z_relation -= 3; catholics
 
 The referendum succeeds! This has heartened our more progressive supporters, while hurting our relations with the Center Party. With the increasing political discourse around abortion, the religiously-oriented Center Party and DNVP have gained conservative votes at the expense of the NSDAP.
 
+@abortion_fail
+view-if: referendum_fail
+
+Unfortunately, the referendum has failed. This has disheartened the progressives who spearheaded the petition, who have decided to bide their time.
+
 @constitutional_reform_vote
 view-if: constitutional_reform_timer = 0 and neorevisionism and constitutional_reform < 3
 choose-if: judicial_reform >= 4
