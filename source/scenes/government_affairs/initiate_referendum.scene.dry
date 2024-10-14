@@ -13,7 +13,8 @@ As part of the Weimar constitution, petitions, if they gain enough signatures, m
 Should we initiate any petitions?
 
 - @petitions: Let's initiate a petition.
-- @easy_discard: No, we won't initiate any petitions.
+- @no_petition: No, we won't initiate any petitions.
+- @easy_discard
 
 @petitions
 subtitle: -1 resource.
@@ -30,7 +31,6 @@ We have a variety of options for laws to push for via petition. What should we p
 - @wtb_vote: Implementation of the WTB plan.
 - @abortion_vote: The legalization of abortion.
 - @constitutional_reform_vote: Constitutional reforms.
-- @easy_discard
 
 @land_reform_vote
 subtitle: Call for breaking up the large aristocratic estates and giving land to landless workers.
@@ -194,3 +194,6 @@ choose-if: judicial_reform >= 4
 unavailable-subtitle: Pushing through constitutional reforms is unfeasable so long as the judiciary remains reactionary.
 go-to: constitutional_reform.reforms_menu
 
+@no_petition
+
+We will not attempt any referendums right now.
