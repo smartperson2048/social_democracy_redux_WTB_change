@@ -79,7 +79,7 @@ Unfortunately, the referendum has failed. Nevertheless, our advocacy of national
 subtitle: Create a state monopoly for grain purchases, guaranteeing prices for farmers and stable prices for consumers.
 choose-if: budget >= 2
 unavailable-subtitle: The government doesn't have the budget to pursue this.
-on-arrival: rural_spd += 1*(1-dissent); rural_nsdap -= 1*(1-dissent); workers_spd += 2*(1-dissent); unemployed_spd += 3*(1-dissent); unemployed_kpd += 1; dvp_relation -= 5; z_relation -= 3; peoples_party_support += 1; referendum_support = (spd_votes + sapd_votes + (0.8*kpd_votes)); referendum_support += ddp_votes if ddp_relation >= 75; referendum_succeed if referendum_support >= 50; referendum_fail if referendum_support < 50
+on-arrival: rural_spd += 1*(1-dissent); rural_nsdap -= 1*(1-dissent); workers_spd += 2*(1-dissent); unemployed_spd += 3*(1-dissent); unemployed_kpd += 1; dvp_relation -= 5; z_relation -= 3; peoples_party_support += 1; referendum_support = (spd_votes + sapd_votes + (0.8*kpd_votes)); referendum_support += ddp_votes if ddp_relation >= 75; referendum_succeed = 1 if referendum_support >= 50; referendum_fail = 1 if referendum_support < 50
 
 We initiate a petition for the implementation of a state buyer program, campaigning for it in both the countryside for farmers and amongst the workers. The KPD joins in campaigning for the petition, though not significantly, and it soon gains the signatures it needs for a referendum.
 
