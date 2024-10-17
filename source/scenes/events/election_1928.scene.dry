@@ -1278,6 +1278,7 @@ go-to: ministries
 
 
 @no_govt_3
+view-if: not (weimar_coalition < 50 and (grand_coalition < 50 or grand_coalition_failed == 1) and president = "Hindenburg" and far_right_coalition < 50) and not (president == Braun and (grand_coalition < 50 or grand_coalition_failed))
 title: We do not form a government.
 subtitle: [? if right_coalition >= 50 and right_coalition_failed == 0 : A right-wing coalition may form instead. ?] This will cause significant internal dissent, and will lead to increased distrust from the bourgeois parties.
 on-arrival: reformist_dissent += 5; center_dissent += 5; labor_dissent += 5; neorevisionist_dissent += 5
