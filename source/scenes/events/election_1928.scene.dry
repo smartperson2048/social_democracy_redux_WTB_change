@@ -1309,6 +1309,7 @@ What are our goals here, exactly?
 - @socialism: Revolutionary socialism is our goal.
 
 @majority
+on-arrival: kpd_relation += 5; communist_coalition += 1 if comintern_seen 
 go-to: no_govt_2
 
 @trap
@@ -1316,6 +1317,7 @@ on-arrival: radicalization += 1
 go-to: no_govt_2
 
 @socialism
+on-arrival: left_strength += 5; rb_militancy += 0.02
 go-to: no_govt_2
 
 
