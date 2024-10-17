@@ -349,6 +349,7 @@ There are some potential coalition arrangements.
 - @left_coalition
 - @popular_front_coalition
 - @no_majority_hitler
+- @no_govt_3
 
 # TODO: black-brown coalition
 
@@ -1276,7 +1277,15 @@ on-arrival: left_dissent += 2; z_relation += 6; ddp_relation += 3; kpd_relation 
 go-to: ministries
 
 
+@no_govt_3
+title: We do not form a government.
+subtitle: [? if right_coalition >= 50 and right_coalition_failed == 0 : A right-wing coalition may form instead. ?] This will cause significant internal dissent, and will lead to increased distrust from the bourgeois parties.
+on-arrival: reformist_dissent += 5; center_dissent += 5; labor_dissent += 5; neorevisionist_dissent += 5
 
+Are we sure about not participating in government? This will cause significant internal dissent, and will lead to increased distrust from the bourgeois parties. Even debating this option causes internal backlash. In addition, it is possible that the bourgeois and right-wing parties will also be unable to form a coalition government, leading to a regime appointed by President [+ president +].
+
+- @coalition_menu: What are the governing arrangements?
+- @no_govt_goals: Yes, we're sure.
 
 @no_govt
 title: We do not form the government.
@@ -1334,12 +1343,14 @@ We are seen as responsible for the failure to form a government, and many of our
 
 We can pick from any number of ministries. Controlling a ministry allows us to directly effect policy in that area. [? if in_left_front : Any ministry that we do not take will be given to the KPD. ?] [? if in_left_front and reichswehr_minister_party == "KPD" : If the KPD controls the Reichswehr Ministry, the army will most likely revolt. ?]
 
+[? if historical_mode : Labor expects us to take the Labor Ministry in order to represent their interests in government and will be upset if we do not. ?]
+
 - #mins_1928
 - #drop_mins_1928
 
 @labor
 title: Labor Ministry
-subtitle: Taking the Labor Ministry is expected of us.
+subtitle: Taking the Labor Ministry is expected of us. [? if historical_mode : Labor will be displeased if we do not. ?]
 unavailable-subtitle: We do not have enough leverage.
 tags: mins_1928
 choose-if: leverage >= 5
@@ -1438,6 +1449,7 @@ Julius Leber of the SPD has been appointed Reichswehr Minister.
 
 @no_more
 title: No more ministries.
+on-arrival: labor_dissent += 10 if historical_mode and labor_minister_party != "SPD"
 subtitle: [? if leverage >= 10 : We still have some more leverage to gain ministries. ?][? if leverage < 10 : We do not have much leverage left. ?]
 tags: mins_1928
 
