@@ -16,6 +16,7 @@ Many on our party's left-wing have called on us to join in the demonstration, bu
 
 @join
 choose-if: kpd_relation >= 30
+unavailable-subtitle: The KPD does not trust us enough.
 on-arrival: kpd_relation += 20; volksmai = 1; z_relation -= 25; dvp_relation -= 25; workers_spd += 3*(1-dissent); new_middle_spd -= 5; old_middle_spd -= 5; unemployed_spd += 3*(1-dissent); workers_kpd += 3; unemployed_kpd += 3; workers_z -= 3; workers_dnvp -= 3; communist_coalition += 2; reformist_strength -= 10; reformist_dissent += 25; neorevisionist_dissent += 25; left_strength += 10; rfb_banned = 1; rfb_strength -= 100; strife += 2
 achievement: die_rote_fahne
 face-image: img/blutmai.jpg
