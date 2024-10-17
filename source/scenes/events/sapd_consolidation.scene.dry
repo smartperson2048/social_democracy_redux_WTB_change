@@ -1,6 +1,6 @@
 title: The SAPD consolidates
 subtitle: As the SPD loses more and more of its base, the SAPD has increasingly consolidated as an alternative.
-view-if: sapd_formed == 1 and centrists_resign == 1 and (unions_independent == 1 or workers_spd_normalized < 0.35) 
+view-if: sapd_formed == 1 and centrists_resign == 1 and (unions_independent == 1 or workers_spd_normalized < 35) 
 on-arrival: sapd_consolidated = 1; {!
 Q.workers_spd -= 10;
 Q.workers_sapd += 10;
