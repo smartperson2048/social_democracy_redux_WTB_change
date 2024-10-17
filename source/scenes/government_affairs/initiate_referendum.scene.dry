@@ -17,9 +17,9 @@ Should we initiate any petitions?
 - @easy_discard
 
 @petitions
-subtitle: -2 resources
-on-arrival: resources -= 2
-choose-if: resources >= 2
+subtitle: [? if radio < 2 : -2 resources ?][? if radio >= 2 : -1 resource. Our investment into radio stations has made it easier to initiate petitions. ?]
+on-arrival: resources -= 2 if radio < 2; resources -= 1 if radio >= 2
+choose-if: (resources >= 2 and radio < 2) or (resources >= 1 and radio >= 2)
 unavailable-subtitle: -2 resource. We don't have the resources to initiate a petition.
 
 We have a variety of options for laws to push for via petition. What should we petition for?
