@@ -55,7 +55,7 @@ The Stalinists of the KPD insists on calling us "social fascists", suggesting th
 - @wittorf: Yes, let's contact the Soviets about the Wittorf Affair.
 - @nothing: We will not attempt to contact the Soviets on the matter.
 
-@Wittorf
+@wittorf
 view-if: wittorf_soviet_union != 1 and spd_in_government == 0 and dnvp_in_government == 1 and volksmai == 1 and comintern_seen >= 1 and wittorf_secret = 1 and ((year = 1929 and month < 7) or year = 1928) and wittorf_soviet_union = 0
 on-arrival: wittorf_soviet_union = 1; kpd_relation += 6*(1-dissent)
 
