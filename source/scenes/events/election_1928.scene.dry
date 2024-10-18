@@ -789,11 +789,11 @@ We have supported a minority government led by the Center Party under Chancellor
 
 
 @no_majority_papen
-on-arrival: pro_republic -= 10; next_election_time = time+3; next_election_month = month + 3; next_election_year = year; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12; workers_nsdap += 6; unemployed_nsdap += 6; old_middle_nsdap += 5; new_middle_nsdap += 5; rural_nsdap += 5; no_majority_papen_elections += 1; workers_spd -= 8 if pro_republic < 45; workers_spd *= 0.85 if pro_republic < 40; workers_nsdap += 5 if pro_republic < 40;
+on-arrival: pro_republic -= 10; next_election_time = time+3; next_election_month = month + 3; next_election_year = year; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12; workers_nsdap -= 12 if largest_party == "NSDAP"; unemployed_nsdap -= 12 if largest_party == "NSDAP"; old_middle_nsdap -= 10 if largest_party == "NSDAP"; new_middle_nsdap -= 10 if largest_party == "NSDAP"; rural_nsdap -= 10 if largest_party == "NSDAP"; unemployed_kpd += 4 if largest_party == "NSDAP"; workers_kpd += 3 if largest_party == "NSDAP"; old_middle_dnvp += 3 if largest_party == "NSDAP"; rural_dnvp += 3 if largest_party == "NSDAP"; new_middle_dnvp += 1 if largest_party == "NSDAP"; workers_nsdap += 6; unemployed_nsdap += 6; old_middle_nsdap += 5; new_middle_nsdap += 5; rural_nsdap += 5; no_majority_papen_elections += 1; workers_spd -= 8 if pro_republic < 45; workers_spd *= 0.85 if pro_republic < 40; workers_nsdap += 5 if pro_republic < 40;
 
 After the elections, Papen is still deeply unpopular, without any hint of coalition support, and there is a vote of no confidence called against him almost immediately. No matter how we vote, the measure would pass. The Reichstag is dissolved once more.
 
-New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+New elections have been set for [+ next_election_month : month +] [+ next_election_year +]. [? if largest_party == "NSDAP" : With the Nazis, despite becoming the largest party, failing to form a government, their movement loses steam and gives ground to the KPD and DNVP. ?]
 
 
 @no_majority_papen_2
