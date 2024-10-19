@@ -29,21 +29,22 @@ if (!Q.works_program) {
     Q.inflation -= 2;
     Q.catholics_z += 4;
     Q.workers -= 5;
-    Q.rural_dnvp -= 3;
-    Q.rural_other -= 2;
-    Q.rural_nsdap += 6; 
-    Q.new_middle_other -= 5;
-    Q.old_middle_other -= 5;
-    Q.new_middle_nsdap += 6; 
-    Q.old_middle_nsdap += 6;
-    Q.unemployed_nsdap += 10;
-    Q.workers_nsdap += 5;
-    Q.workers_kpd += 5;
+    Q.rural_dnvp -= 2;
+    Q.rural_other -= 1;
+    Q.rural_dvp -= 1;
+    Q.rural_nsdap += 4; 
+    Q.new_middle_other -= 2;
+    Q.old_middle_other -= 2;
+    Q.new_middle_nsdap += 4; 
+    Q.old_middle_nsdap += 4;
+    Q.unemployed_nsdap += 6;
+    Q.workers_nsdap += 2;
+    Q.workers_kpd += 2;
     Q.sa_strength += 200;
 } else if (Q.unemployed > 25) {
-    Q.rural_nsdap += 4;
-    Q.unemployed_nsdap += 6;
-    Q.old_middle_nsdap += 4;
+    Q.rural_nsdap += 5;
+    Q.unemployed_nsdap += 5;
+    Q.old_middle_nsdap += 5;
     Q.new_middle_nsdap += 4;
     Q.rural_other -= 1;
     Q.old_middle_other -= 2;
@@ -51,7 +52,7 @@ if (!Q.works_program) {
     Q.sa_strength += 50;
 } else if (Q.unemployed > 20) {
     Q.rural_nsdap += 2;
-    Q.unemployed_nsdap += 3;
+    Q.unemployed_nsdap += 2;
     Q.old_middle_nsdap += 2;
     Q.new_middle_nsdap += 2;
     Q.old_middle_other -= 1;
