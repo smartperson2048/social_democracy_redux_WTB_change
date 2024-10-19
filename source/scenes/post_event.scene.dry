@@ -113,6 +113,22 @@ if (Q.sapd_consolidated == 1 && Q.pro_republic >= 75 && Q.kpd_party_leader != "C
     Q.workers_kpd -= 1;
     Q.workers_sapd += 1;
 }
+if (Q.year == 1931 && !Q.works_program) {
+    Q.old_middle_dvp -= 0.5;
+    Q.old_middle_other -= 0.5;
+    Q.rural_dvp -= 0.5;
+    Q.rural_other -= 0.5;
+    Q.rural_nsdap += 1;
+    Q.old_middle_nsdap += 1;
+}
+if (Q.year == 1932 && !Q.works_program) {
+    Q.old_middle_dvp -= 1;
+    Q.old_middle_other -= 1;
+    Q.rural_dvp -= 1;
+    Q.rural_other -= 1;
+    Q.rural_nsdap += 1;
+    Q.old_middle_nsdap += 1;
+}
 
 // 1. update dates
 if (Q.month_actions >= 1) {
