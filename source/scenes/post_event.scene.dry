@@ -248,6 +248,8 @@ if (Q.month_actions >= 1) {
         Q.old_middle_z += 2/12;
         Q.new_middle_z += 2/12;
         if (!Q.works_program) {
+            Q.unemployed_kpd -= (Q.strife/12);
+            Q.unemployed_nsdap += (Q.strife/12);
             Q.rural_nsdap += 3/12;
             Q.old_middle_nsdap += 5/12;
             Q.workers_nsdap += 2/12;
@@ -272,6 +274,8 @@ if (Q.month_actions >= 1) {
         Q.rural_nsdap += 9/12;
         // TODO: economic policies should reduce NSDAP rurals
         if (!Q.works_program) {
+            Q.unemployed_kpd -= (Q.strife/12);
+            Q.unemployed_nsdap += (Q.strife/12);
             Q.old_middle_dvp -= 6/12;
             Q.new_middle_dvp -= 6/12;
             Q.rural_dvp -= 6/12;
