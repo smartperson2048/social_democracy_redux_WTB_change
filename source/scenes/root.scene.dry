@@ -399,6 +399,8 @@ Q.panzerkreuzer_seen = 0;
 Q.panzerkreuzer_funded = 0;
 Q.panzerkreuzer_failed = 0;
 Q.unemployment_insurance_seen = 0;
+// unemployment insurance event is seen if the unemployment level is at least 4 more than the threshold...
+Q.unemployment_insurance_threshold = 10;
 Q.blutmai = 0;
 
 // have we reformed these institutions to be more democratic?
@@ -434,10 +436,14 @@ Q.nationalize_budget = 4;
 Q.factory_takeovers = 0;
 // progress on the moderate economic plan
 Q.moderate_plan_progress = 0;
+// European Union negotiation process
+Q.eu = 0;
+Q.eu_progress = 0;
 
 // Tax rates relative to 1928 baseline
 Q.lower_tax_rates = 0;
 Q.upper_tax_rates = 0;
+Q.tariffs = 0;
 
 Q.electoral_threshold = 0;
 
@@ -465,7 +471,7 @@ Q.timers = ['advisor_action', 'confronting_nazis', 'crisis_program',
             'police', 'prussian_affairs', 'shuffle_cabinet', 'social_welfare',
             'homosexual_rights', 'economic_policy', 'coalition_affairs',
             'war_guilt', 'womens_rights', 'economic_democracy',
-            'dealing_with_toleration',
+            'dealing_with_toleration', 'labor_rights',
             'constitutional_reform', 'weimar_enacting', 'referendum',
             'land_referendum', 'nationalization_referendum', 'wtb_referendum',
             'council_referendum', 'abortion_referendum', 'buyer_referendum',
@@ -563,6 +569,7 @@ Q.baade_advisor = 0; // Fritz Baade
 Q.leipart_advisor = 0; // Theodor Leipart
 Q.aufhauser_advisor = 0; // Siegfried Aufhäuser
 Q.woytinsky_advisor = 0; // Wladimir Woytinsky (post-1930)
+Q.wissell_advisor = 0; // Rudolf Wissell
 
 // Revisionist advisors
 Q.mierendorff_advisor = 0; // Carlo Mierendorf (post-1930)
@@ -600,7 +607,7 @@ on-arrival: difficulty = 1; resources = 0; dues = 1; rb_strength = 1000; reformi
 go-to: 1928_main
 
 @1928_historical
-subtitle: Saving and loading will be disabled.
+subtitle: subtitle: Saving, loading, and polls will be disabled. [? if not achievement_game_completed: Not recommended for a first playthrough. ?]
 on-arrival: {!
 Q.difficulty = 2;
 Q.historical_mode = 1;

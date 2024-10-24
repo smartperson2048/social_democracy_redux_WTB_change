@@ -1,30 +1,13 @@
 title: 1929
 subtitle: A new year
 on-arrival: old_republic = pro_republic; {!
-Q.unemployed += 3;
-Q.inflation -= 1;
-if (Q.old_demographics) {
-    Q.catholics_z += 3;
-}
+// see post_event.scene.dry for changes.
+
 if (Q.pro_republic > 75 && Q.pro_republic > 59) {
     Q.new_middle_ddp += (Q.pro_republic - 59)
     Q.old_middle_ddp += ((Q.pro_republic - 59)/2)
     Q.new_middle_dvp += ((Q.pro_republic - 59)/2)
     Q.old_middle_dvp += (Q.pro_republic - 59)
-}
-// increase NSDAP vote share
-Q.new_middle_nsdap += 10;
-Q.old_middle_nsdap += 10;
-Q.new_middle_ddp -= 5;
-Q.new_middle_dvp -= 5;
-Q.workers_kpd += 5;
-Q.sa_strength += 50;
-Q.sh_strength += 100;
-Q.rural_dnvp -= 15;
-Q.rural_nsdap += 10;
-Q.unemployed_nsdap += 18;
-if (Q.dnvp_in_government == 1) {
-    Q.workers_spd += 5;
 }
 !}
 tags: event
