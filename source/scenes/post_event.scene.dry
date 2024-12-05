@@ -125,7 +125,7 @@ for (var party of Q.parties) {
     Q['proletariat_' + party + '_normalized'] += Q.rural_proletariat*(Q['rural_' + party + '_normalized']/100);
     Q['proletariat_' + party + '_normalized'] += Q.middle_proletariat*(Q['new_middle_' + party + '_normalized']/100);
     Q['proletariat_' + party + '_normalized'] += Q.catholic_proletariat*(Q['catholic_' + party + '_normalized']/100);
-    Q['proletariat_' + party + '_normalized'] = Math.roundQ['proletariat_' + party + '_normalized'];
+    Q['proletariat_' + party + '_normalized'] = Math.round(Q['proletariat_' + party + '_normalized']);
 }
 
 // 1. update dates
