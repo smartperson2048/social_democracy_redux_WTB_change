@@ -25,6 +25,7 @@ A constitutional reform requires either a two-thirds supermajority in the Reichs
 - @vote_threshold: Change the vote threshold.
 - @constructive_vonc: Ban non-constructive votes of no confidence.
 - @presidential_powers: Reduce presidential powers.
+- @supreme_soviet: Empower work councils to make them the new basis of governance.
 - @as_is: Do not pursue constitutional reform.
 - @easy_discard
 #- @constitutional_bans: Allow the banning of anti-constitutional parties.
@@ -123,7 +124,22 @@ achievement: verfassungsreform
 
 We have successfully passed a constitutional amendment to limit presidential powers! Hopefully this results in a less authoritarian Germany.
 
+@supreme_soviet
+view-if: nationalization_progress > 2 and works_councils >= 3 and (president != "Hindenburg" or presidential_powers == 1)
+on-arrival: reform_support = spd_normalized + kpd_normalized + sapd_normalized
 
+Our large-scale socializations of the economy and empowerment of works councils has laid the groundwork for a transition into a full dictatorship of the proletariat, effectively turning the Reichstag into a rump parliament with little genuine power. All to the left of and including most of the SPD will vote for, but we will face immense opposition from everyone else.
+
+- @supreme_soviet_2: Call a constitutional referendum to pass the reform!
+- @reforms_menu: See other reform options.
+
+@supreme_soviet_2
+choose-if: reform_support >= pass_threshold
+unavailable-subtitle: We do not have enough support for this policy. [? if pro_republic < 65 : We should have an additional margin for the referendum since we need a majority of voters, and many voters who do not support the republic will not participate. ?] [? if z_relation <= 49 and president != "Braun" : The Center Party does not trust us enough to support this policy. ?]
+on-arrival: constitutional_reform += 1; supreme_soviet = 1; coup_progress = 10; capital_strike_progress = 10; z_relation -= 15; ddp_relation -= 25; dvp_relation -= 50; coalition_dissent += 3
+achievement: raterrepublik
+
+We have successfully passed a constitutional amendment to effectively make works councils the dominant body of governance in the country. 
 
 @constitutional_bans
 
