@@ -114,6 +114,19 @@ if (Q.sapd_consolidated == 1 && Q.pro_republic >= 75 && Q.kpd_party_leader != "C
     Q.workers_sapd += 1;
 }
 
+Q.proletariat = Q.workers + (Q.rural/5) + (Q.new_middle/2);
+Q.catholic_proletariat = (Q.proletariat*0.3);
+Q.protestant_proletariat = (Q.proletariat*0.7);
+Q.urban_proletariat = ((Q.workers/Q.proletariat)*Q.protestant_proletariat);
+Q.rural_proletariat = (((Q.rural/5)/Q.proletariat)*Q.protestant_proletariat);
+Q.middle_proletariat = (((Q.new_middle/2)/Q.proletariat)*Q.protestant_proletariat);
+for (var party of Q.parties) {
+    Q['proletariat_' + party + '_normalized'] = Q.urban_proletariat*(Q['workers_' + party + '_normalized']/100);
+    Q['proletariat_' + party + '_normalized'] += Q.rural_proletariat*(Q['rural_' + party + '_normalized']/100);
+    Q['proletariat_' + party + '_normalized'] += Q.middle_proletariat*(Q['new_middle_' + party + '_normalized']/100);
+    Q['proletariat_' + party + '_normalized'] += Q.catholic_proletariat*(Q['catholic_' + party + '_normalized']/100);
+    Q['proletariat_' + party + '_normalized'] = Math.roundQ['proletariat_' + party + '_normalized'];
+}
 
 // 1. update dates
 if (Q.month_actions >= 1) {
