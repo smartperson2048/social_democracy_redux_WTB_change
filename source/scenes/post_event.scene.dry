@@ -117,8 +117,8 @@ if (Q.sapd_consolidated == 1 && Q.pro_republic >= 75 && Q.kpd_party_leader != "C
 Q.proletariat = Q.workers + (Q.rural/5) + (Q.new_middle/2);
 Q.catholic_proletariat = 30;
 Q.urban_proletariat = ((Q.workers/Q.proletariat)*70);
-Q.rural_proletariat = (((Q.rural/5)/Q.proletariat)*Q.70);
-Q.middle_proletariat = (((Q.new_middle/2)/Q.proletariat)*Q.70);
+Q.rural_proletariat = (((Q.rural/5)/Q.proletariat)*70);
+Q.middle_proletariat = (((Q.new_middle/2)/Q.proletariat)*70);
 for (var party of Q.parties) {
     Q['proletariat_' + party + '_normalized'] = Q.urban_proletariat*(Q['workers_' + party + '_normalized']/100);
     Q['proletariat_' + party + '_normalized'] += Q.rural_proletariat*(Q['rural_' + party + '_normalized']/100);
