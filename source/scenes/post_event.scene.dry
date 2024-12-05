@@ -114,38 +114,18 @@ if (Q.sapd_consolidated == 1 && Q.pro_republic >= 75 && Q.kpd_party_leader != "C
     Q.workers_sapd += 1;
 }
 
-Q.proletariat = Q.workers + (Q.rural / 5) + (Q.new_middle / 2);
-console.log("Calculated proletariat:", Q.proletariat);
-
-Q.catholic_proletariat = Q.proletariat * 0.3;
-console.log("Calculated catholic_proletariat:", Q.catholic_proletariat);
-
-Q.protestant_proletariat = Q.proletariat * 0.7;
-console.log("Calculated protestant_proletariat:", Q.protestant_proletariat);
-
-Q.urban_proletariat = (Q.workers / Q.proletariat) * Q.protestant_proletariat;
-console.log("Calculated urban_proletariat:", Q.urban_proletariat);
-
-Q.rural_proletariat = ((Q.rural / 5) / Q.proletariat) * Q.protestant_proletariat;
-console.log("Calculated rural_proletariat:", Q.rural_proletariat);
-
-Q.middle_proletariat = ((Q.new_middle / 2) / Q.proletariat) * Q.protestant_proletariat;
-console.log("Calculated middle_proletariat:", Q.middle_proletariat);
-
+Q.proletariat = Q.workers + (Q.rural/5) + (Q.new_middle/2);
+Q.catholic_proletariat = (Q.proletariat*0.3);
+Q.protestant_proletariat = (Q.proletariat*0.7);
+Q.urban_proletariat = ((Q.workers/Q.proletariat)*Q.protestant_proletariat);
+Q.rural_proletariat = (((Q.rural/5)/Q.proletariat)*Q.protestant_proletariat);
+Q.middle_proletariat = (((Q.new_middle/2)/Q.proletariat)*Q.protestant_proletariat);
 for (var party of Q.parties) {
-    console.log("Processing party:", party);
-    
-    Q['proletariat_' + party + '_normalized'] = Q.urban_proletariat * (Q['workers_' + party + '_normalized'] / 100);
-    console.log(`Proletariat ${party} normalized (urban):`, Q['proletariat_' + party + '_normalized']);
-    
-    Q['proletariat_' + party + '_normalized'] += Q.rural_proletariat * (Q['rural_' + party + '_normalized'] / 100);
-    console.log(`Proletariat ${party} normalized (rural added):`, Q['proletariat_' + party + '_normalized']);
-    
-    Q['proletariat_' + party + '_normalized'] += Q.middle_proletariat * (Q['new_middle_' + party + '_normalized'] / 100);
-    console.log(`Proletariat ${party} normalized (middle added):`, Q['proletariat_' + party + '_normalized']);
-    
-    Q['proletariat_' + party + '_normalized'] += Q.catholic_proletariat * (Q['catholic_' + party + '_normalized'] / 100);
-    console.log(`Proletariat ${party} normalized (catholic added):`, Q['proletariat_' + party + '_normalized']);
+    Q['proletariat_' + party + '_normalized'] = Q.urban_proletariat*(Q['workers_' + party + '_normalized']/100);
+    Q['proletariat_' + party + '_normalized'] += Q.rural_proletariat*(Q['rural_' + party + '_normalized']/100);
+    Q['proletariat_' + party + '_normalized'] += Q.middle_proletariat*(Q['new_middle_' + party + '_normalized']/100);
+    Q['proletariat_' + party + '_normalized'] += Q.catholic_proletariat*(Q['catholics_' + party + '_normalized']/100);
+    Q['proletariat_' + party + '_normalized'] = Math.round(Q['proletariat_' + party + '_normalized']);
 }
 
 // 1. update dates
