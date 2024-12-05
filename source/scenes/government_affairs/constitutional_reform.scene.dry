@@ -125,7 +125,7 @@ achievement: verfassungsreform
 We have successfully passed a constitutional amendment to limit presidential powers! Hopefully this results in a less authoritarian Germany.
 
 @supreme_soviet
-view-if: nationalization_progress > 2 and works_councils >= 3 and (president != "Hindenburg" or presidential_powers == 1)
+view-if: nationalization_progress >= 2 and works_councils >= 3 and (president != "Hindenburg" or presidential_powers == 1)
 on-arrival: reform_support = spd_normalized + kpd_normalized + sapd_normalized
 
 Our large-scale socializations of the economy and empowerment of works councils has laid the groundwork for a transition into a full dictatorship of the proletariat, effectively turning the Reichstag into a rump parliament with little genuine power. All to the left of and including most of the SPD will vote for, but we will face immense opposition from everyone else.
