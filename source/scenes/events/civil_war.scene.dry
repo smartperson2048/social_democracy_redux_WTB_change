@@ -255,7 +255,7 @@ We choose to allow Hindenburg's presidency to continue.
 - @agenda_gov: Continue...
 
 @resign
-on-arrival: pro_republic -= 5; z_relation -= 5; dvp_relation -= 10; president == "Braun" if ((year < 1932) or (year = 1932 and month < 12)); president == "Bumke" if ((year > 1932) or (year = 1932 and month >= 12))
+on-arrival: pro_republic -= 5; z_relation -= 5; dvp_relation -= 10; president = "Braun" if ((year < 1932) or (year = 1932 and month < 12)); president = "Bumke" if ((year > 1932) or (year = 1932 and month >= 12))
 
 Hindenburg is forced to resign by our forces. [? if president == "Bumke" : As is procedure, Erwin Bumke, president of the Supreme Court, is to succeed him as interim. ?][? if president == "Braun" : We pass a vote through the Reichstag to appoint Braun as President in his stead. ?]
 
