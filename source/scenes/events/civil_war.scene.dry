@@ -234,7 +234,7 @@ view-if: nazi_rebel = 1
 
 The defeat of the reactionaries presents to us a unique opportunity.
 
-@agenda_gov
+@agenda_reb
 view-if: spd_rebel = 1
 
 The defeat of the reactionaries presents to us a unique opportunity.
