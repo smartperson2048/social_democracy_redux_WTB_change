@@ -220,7 +220,7 @@ go-to: long_war_intervention
 Poland and Czechoslovakia are largely too absorbed in their own problems to be of much help, but weapons and volunteers filter through the parts of the borders that we control.
 
 @republic_victory
-on-arrival: nsdap_banned = 1; victory_republic = 1; unemployed_nsdap *= 0.6; new_middle_nsdap *= 0.8; old_middle_nsdap *= 0.9; workers_nsdap *= 0.8; old_middle_dnvp *= 0.8; rural_dnvp *= 0.8; new_middle_dnvp *= 0.8; old_middle_dvp += 5; new_middle_dvp += 5; sa_strength *= 0.2; sh_strength *= 0.2; sa_militancy *= 0.5; sh_militancy *= 0.5; rb_strength *= 0.8; rfb_strength *= 0.8; reichswehr_strength *= reichswehr_loyalty; reichswehr_loyalty += 0.15
+on-arrival: nsdap_banned = 1; chancellor = "N/A" if chancellor = "Hitler"; chancellor_party = "I" if chancellor_party = "NSDAP"; victory_republic = 1; unemployed_nsdap *= 0.6; new_middle_nsdap *= 0.8; old_middle_nsdap *= 0.9; workers_nsdap *= 0.8; old_middle_dnvp *= 0.8; rural_dnvp *= 0.8; new_middle_dnvp *= 0.8; old_middle_dvp += 5; new_middle_dvp += 5; sa_strength *= 0.2; sh_strength *= 0.2; sa_militancy *= 0.5; sh_militancy *= 0.5; rb_strength *= 0.8; rfb_strength *= 0.8; reichswehr_strength *= reichswehr_loyalty; reichswehr_loyalty += 0.15
 
 = Victory for the Republic
 
@@ -237,5 +237,365 @@ The defeat of the reactionaries presents to us a unique opportunity.
 @agenda_reb
 view-if: spd_rebel = 1
 
-The defeat of the reactionaries presents to us a unique opportunity.
+The defeat of the reactionaries presents to us a unique opportunity. We must address multiple issues.
 
+- @presidency: The presidency.
+- @chancellorship: The cabinet.
+- @constitution: The constitution.
+- @decrees: The country.
+- @communists: The KPD.
+
+@presidency
+view-if: not presidency_decided
+on-arrival: presidency_decided = 1
+
+[? if president == "Hindenburg" : As Hindenburg was a reactionary and enabled Hitler to take power, forcing his resignation is a popular idea amongst the party. ?][? if president == "Hitler" : With Hitler's defeat, the role of presidency has become vacant. Usual protocol is for a snap election to be held, but we hold the cards here. ?]
+
+- @snap_election: We will hold new presidential elections.
+- @braun: We will install Braun as President.
+- @provisional: The Reichstag will elect a provisional president to serve until the end of Hindenburg's term.
+- @abolish: We will abolish the Presidency entirely.
+
+@snap_election
+on-arrival: snap += 1
+
+[? if snap == 1: Haha...sorry that's a lot of work. I'll code it later. Pick something else. ?][? if snap == 2 : Did you not hear me? I'm lazy. Pick something else. ?][? if snap == 3 : Are you serious? Pick something else. ?][? if snap >= 4 : Pick something else. ?]
+
+- @aww: Aww, man.
+
+@aww
+go-to: presidency
+
+@braun
+on-arrival: president == "Braun"
+
+We have made Otto Braun the President of Germany.
+
+- @agenda_reb: Continue...
+
+@provisional
+on-arrival: president == "Wirth"
+
+We leave the election to the Reichstag, which elects Joseph Wirth of the Center as a compromise candidate.
+
+- @agenda_reb: Continue...
+
+@abolish
+on-arrival: president == "N/A"
+
+Wow. That's cool.
+
+- @agenda_reb: Continue...
+
+@chancellorship
+view-if: not chancellorship_decided
+on-arrival: leverage = spd_votes; chancellorship_decided = 1
+
+Having deposed the Nazi cabinet through our civil war, we must decide how to fill these roles. First comes the question of the Chancellorship.
+
+- @breitscheid: Appoint Rudolf Breitscheid.
+- @wels: Appoint Otto Wels.
+- @bruning: Appoint Heinrich Brüning of the Center.
+
+@breitscheid
+on-arrival: chancellor = "Breitscheid"; chancellor_party = "SPD"
+
+- @ministries: Now for the cabinet.
+
+@wels
+on-arrival: chancellor = "Wels"; chancellor_party = "SPD"
+
+- @ministries: Now for the cabinet.
+
+@bruning
+on-arrival: chancellor = "Brüning"; chancellor_party = "Z"; leverage += 5
+
+- @ministries: Now for the cabinet.
+
+@ministries
+
+We can pick from any number of ministries. Controlling a ministry allows us to directly effect policy in that area. [? if in_left_front : Any ministry that we do not take will be given to the KPD. ?] [? if in_left_front and reichswehr_minister_party == "KPD" : If the KPD controls the Reichswehr Ministry, the army will most likely revolt. ?]
+
+[? if historical_mode : Labor expects us to take the Labor Ministry in order to represent their interests in government and will be upset if we do not. ?]
+
+- #mins_1928
+- #drop_mins_1928
+
+@labor
+title: Labor Ministry
+subtitle: Taking the Labor Ministry is expected of us. [? if historical_mode : Labor will be displeased if we do not. ?]
+unavailable-subtitle: We do not have enough leverage.
+tags: mins_1928
+choose-if: leverage >= 5
+view-if: labor_minister_party != "SPD"
+on-arrival: leverage -= 5; labor_minister_party = "SPD"; labor_minister = "Wissell"
+go-to: ministries
+
+Rudolf Wissell of the SPD has been appointed labor minister.
+
+@interior
+title: Interior Ministry
+subtitle: Taking the Interior Ministry is expected of us. The Interior Ministry controls domestic security.
+unavailable-subtitle: We do not have enough leverage.
+tags: mins_1928
+choose-if: leverage >= 5
+view-if: interior_minister_party != "SPD"
+on-arrival: leverage -= 5; interior_minister_party = "SPD"; interior_minister = "Severing"
+go-to: ministries
+
+Carl Severing of the SPD has been appointed Interior Minister.
+
+@finance
+title: Finance Ministry
+subtitle: The Finance Ministry controls the government budget and taxes.
+unavailable-subtitle: We do not have enough leverage.
+tags: mins_1928
+choose-if: leverage >= 10 
+view-if: finance_minister_party != "SPD"
+on-arrival: leverage -= 10; finance_minister_party = "SPD"; finance_minister = "Hilferding"
+go-to: ministries
+
+Rudolf Hilferding of the SPD has been appointed Finance Minister.
+
+@economic
+title: Economic Ministry
+subtitle: The Economic Ministry controls broader economic policy.
+unavailable-subtitle: We do not have enough leverage.
+tags: mins_1928
+choose-if: leverage >= 10 
+view-if: economic_minister_party != "SPD"
+on-arrival: leverage -= 10; economic_minister_party = "SPD"; economic_minister = "Schmidt"
+go-to: ministries
+
+Robert Schmidt of the SPD has been appointed Economic Minister.
+
+@justice
+title: Justice Ministry
+subtitle: The Justice Ministry controls the courts.
+unavailable-subtitle: We do not have enough leverage.
+tags: mins_1928
+choose-if: leverage >= 10 
+view-if: justice_minister_party != "SPD"
+on-arrival: leverage -= 10; justice_minister_party = "SPD"; justice_minister = "Radbruch"
+go-to: ministries
+
+Gustav Radbruch of the SPD has been appointed Justice Minister.
+
+@foreign
+title: Foreign Ministry
+subtitle: This is usually the domain of Gustav Stresemann of the DVP.
+unavailable-subtitle: We do not have enough leverage.
+tags: mins_1928
+choose-if: leverage >= 10 
+view-if: foreign_minister_party != "SPD"
+on-arrival: leverage -= 10; foreign_minister_party = "SPD"; foreign_minister = "Breitscheid"
+go-to: ministries
+
+Rudolf Breitscheid of the SPD has been appointed Foreign Minister.
+
+
+@agriculture
+title: Agricultural Ministry
+subtitle: This is not our usual domain.
+unavailable-subtitle: We do not have enough leverage.
+choose-if: leverage >= 10 
+view-if: agriculture_minister_party != "SPD"
+on-arrival: leverage -= 10; agriculture_minister_party = "SPD"; agriculture_minister = "Baade"
+go-to: ministries
+tags: mins_1928
+
+Fritz Baade of the SPD has been appointed Agriculture Minister.
+
+@reichswehr
+title: Reichswehr Ministry
+subtitle: The Ministry responsible for the armed forces is not typically our domain; General Groener and the bourgeois-conservatives will be displeased.
+unavailable-subtitle: We do not have enough leverage.
+tags: mins_1928
+choose-if: leverage >= 15 
+view-if: reichswehr_minister_party != "SPD"
+on-arrival: leverage -= 15; reichswehr_minister_party = "SPD"; reichswehr_minister = "Leber"
+go-to: ministries
+
+Julius Leber of the SPD has been appointed Reichswehr Minister.
+
+
+
+@no_more
+title: No more ministries.
+on-arrival: labor_dissent += 10 if historical_mode and labor_minister_party != "SPD"
+subtitle: [? if leverage >= 10 : We still have some more leverage to gain ministries. ?][? if leverage < 10 : We do not have much leverage left. ?]
+tags: mins_1928
+go-to: agenda_reb
+
+This coalition arrangement is tolerable to all.
+
+@drop_labor
+title: Drop the Labor Ministry.
+view-if: labor_minister_party = "SPD"
+on-arrival: labor_minister_party = "Z"; labor_minister = "Stegerwald"; leverage += 5;
+tags: drop_mins_1928
+go-to: ministries
+
+@drop_interior
+title: Drop the Interior Ministry.
+view-if: interior_minister_party = "SPD"
+on-arrival: interior_minister_party = "Z"; interior_minister = "Wirth"; leverage += 5;
+tags: drop_mins_1928
+go-to: ministries
+
+@drop_finance
+title: Drop the Finance Ministry.
+view-if: finance_minister_party = "SPD"
+on-arrival: leverage += 10; finance_minister_party = "Z"; finance_minister = "Köhler"
+tags: drop_mins_1928
+go-to: ministries
+
+@drop_economic
+title: Drop the Economic Ministry.
+view-if: economic_minister_party = "SPD"
+on-arrival: leverage += 10; economic_minister_party = "DDP"; economic_minister = "Dietrich"
+tags: drop_mins_1928
+go-to: ministries
+
+@drop_justice
+title: Drop the Justice Ministry.
+view-if: justice_minister_party = "SPD"
+on-arrival: justice_minister_party = "DDP"; justice_minister = "Koch-Weser"; leverage += 10;
+tags: drop_mins_1928
+go-to: ministries
+
+@drop_foreign
+title: Drop the Foreign Ministry.
+view-if: foreign_minister_party = "SPD"
+on-arrival: leverage += 10; foreign_minister_party = "Z"; foreign_minister = "Wirth"
+tags: drop_mins_1928
+go-to: ministries
+
+@drop_agriculture
+title: Drop the Agriculture Ministry.
+view-if: agriculture_minister_party = "SPD"
+on-arrival: agriculture_minister_party = "DDP"; agriculture_minister = "Dietrich"; leverage += 10
+tags: drop_mins_1928
+go-to: ministries
+
+@drop_reichswehr
+title: Drop the Reichswehr Ministry.
+view-if: reichswehr_minister_party = "SPD"
+on-arrival: reichswehr_minister_party = "I"; reichswehr_minister = "Groener"; leverage += 15;
+tags: drop_mins_1928
+go-to: ministries
+
+@constitutional
+view-if: not constitution_decided 
+on-arrival: constitution_decided = 1
+
+We can push through as many constitutional reforms as we want now that we hold de-facto power.
+
+- @vote_threshold: Change the vote threshold.
+- @constructive_vonc: Ban non-constructive votes of no confidence.
+- @presidential_powers: Reduce presidential powers.
+- @supreme_soviet: Empower work councils to make them the new basis of governance.
+- @agenda_reb: We have done enough in this department. Next.
+#- @constitutional_bans: Allow the banning of anti-constitutional parties.
+#- @constitutional_convention: Hold a constitutional convention to draft a wholly new constitution for the country.
+
+@vote_threshold
+subtitle: Change the vote threshold to 5% for parties to be represented in the Reichstag.
+view-if: electoral_threshold = 0
+
+# The left is opposed to this.
+
+Some political thinkers believe that the proliferation of minor parties is responsible for the instability of the republic. They believe that a higher electoral threshold will reduce the influence of small radical parties. Parties that win a plurality in a constituency will maintain their representation, a gift to regional parties such as the BVP. 
+
+The smaller parties will obviously oppose this reform. [? if z_relation > 30 : The Center Party supports this reform, while their BVP partners oppose it. ?] [? if kpd_relation > 50 and kpd_normalized >= 0.1 : Perhaps surprisingly, the KPD supports this reform. ?] [? if nsdap_normalized >= 0.2 : The NSDAP supports this reform, as they believe they have something to gain. ?]
+
+The SPD Left opposes this change, as they believe it to be anti-democratic.
+
+- @vote_threshold_2: And so it shall be.
+- @constitutional: See other reform options.
+
+
+@vote_threshold_2
+on-arrival: constitutional_reform += 1; electoral_threshold = 5; ddp_relation -= 25; dvp_relation -= 25; left_dissent += 20; workers_other *= 0.1; new_middle_other *= 0.1; old_middle_other *= 0.1; rural_other *= 0.2; unemployed_other *= 0.2; catholics_other *= 0.1;
+achievement: verfassungsreform
+go-to: constitutional
+
+# this should result in a redistribution of votes - other parties should not get so many votes anymore. maybe ddp and dvp get a recovery of middle-class votes? or maybe they flow to the others.
+
+We have passed a constitutional amendment to increase the electoral threshold to 5%. This is likely to benefit the larger parties and harm the smaller ones.
+
+
+
+@constructive_vonc
+subtitle: Votes of no confidence can only be called if an alternative plan for government formation can be passed, greatly reducing their incidence.
+view-if: constructive_vonc = 0
+
+[? if z_relation >= 30 : The Weimar Coalition parties, the DDP and Center Party, support this reform, which will greatly improve the stability of the government. ?] [? if z_relation < 30 : The DDP supports this reform, but the Center Party does not trust us enough to support the constitutional referendum. ?] The more conservative and radical right-wing parties and the KPD are in opposition, as they seem to relish in the republican system's instability.
+
+- @constructive_vonc_2: And so it shall be.
+- @constitutional: See other reform options.
+
+@constructive_vonc_2
+on-arrival: constitutional_reform += 1; constructive_vonc = 1
+achievement: verfassungsreform
+go-to: constitutional
+
+We have successfully passed a constitutional amendment to ban votes of no confidence when a new government cannot be formed. Hopefully this increases the stability of our governments.
+
+@presidential_powers
+subtitle: The president can no longer dissolve the Reichstag at will, or call a *Reichsexekution* on state governments.
+view-if: presidential_powers = 0
+
+The wide-ranging presidential powers promised by the constitution are a potential gateway to authoritarianism. Thus, we can support reforms that limit the powers of the president, ending his power to unilaterally terminate an elected government and to remove state governments.
+
+The KPD is in favor of this reform, having been victims of the *Reichsexekution* in the past (when KPD-supported state governments in Thuringia and Saxony were removed). The democrats of the DDP also support this. [? if president == "Hindenburg": However, the opposition from conservatives is vehement, as they see a reduction in presidential powers as disrespectful to Hindenburg. ?] [? if z_relation <= 49 and president == "Hindenburg" : Thus, the Center Party has been influenced to oppose these reforms. ?] [? if z_relation > 49 and president == "Hindenburg" : Despite this, the Center Party supports the proposed reform. ?] [? if president == "Braun" : The Center Party supports this reform. ?]
+
+- @presidential_powers_2: And so it shall be.
+- @constitutional: See other reform options.
+
+@presidential_powers_2
+on-arrival: constitutional_reform += 1; presidential_powers = 1
+achievement: verfassungsreform
+go-to: constitutional
+
+We have successfully passed a constitutional amendment to limit presidential powers! Hopefully this results in a less authoritarian Germany.
+
+@supreme_soviet
+subtitle: Establish a new "Supreme Soviet" elected by the works councils to replace the Reichstag.
+view-if: nationalization_progress + socializations >= 3 and works_councils >= 3 and (president != "Hindenburg" or presidential_powers == 1)
+
+Our large-scale socializations of the economy and empowerment of works councils has laid the groundwork for a transition into a full dictatorship of the proletariat, effectively turning the Reichstag into a rump parliament with little genuine power. All to the left of and including most of the SPD will vote for, but we will face immense opposition from everyone else.
+
+- @supreme_soviet_2: And so it shall be.
+- @constitutional: See other reform options.
+
+@supreme_soviet_2
+on-arrival: constitutional_reform += 1; supreme_soviet = 1; capital_strike_progress = 10; z_relation -= 15; ddp_relation -= 25; dvp_relation -= 50; coalition_dissent += 3
+achievement: raterrepublik
+go-to: constitutional
+
+We have successfully passed a constitutional amendment to effectively make works councils the dominant body of governance in the country. 
+
+@decrees
+
+Sorry, WIP.
+
+TODO: Bunch of one off decrees to do, like instant land reform for high budget cost, economic plans, large scale seizure of wealth from the rich, etc.
+
+- @agenda_reb: Oh...
+
+@communists
+on-arrival: communists_decided = 1
+view-if: kpd_relation < 45 and not communists_decided 
+
+The communists did not help us in our uprising against Hitler. They also arguably contributed to his rise to power through their own extremist anticonstitutional rhetoric. We could ban the party as well as the NSDAP, though the Left is vehemently opposed.
+
+- @ban: Ban the KPD
+- @agenda_reb: We will allow the KPD to continue to exist.
+
+@ban
+on-arrival: kpd_banned = 1; left_dissent += 40; workers_spd -= 5; unemployed_spd -= 5; new_middle_spd += 2; old_middle_spd += 2; z_relation += 10; ddp_relation += 5; dvp_relation += 5
+
+We have banned the KPD. Many workers desert, agitated by the KPD to do so, while our party Left has become increasingly agitated with our party's policy.
+
+- @agenda_reb: Continue...
