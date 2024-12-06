@@ -365,7 +365,7 @@ if (Q.month_actions >= 1) {
             Q.new_middle_nsdap += 2/12;
         }
     }
-    if (Q.victory_republic && Q.dnvp_banned == 0) {
+    if (Q.victory_republic && Q.dnvp_banned != 1) {
         if (Q.workers_nsdap >= 0) {
             Q.workers_nsdap -= 5/12;
             Q.workers_dnvp += 3/12;
