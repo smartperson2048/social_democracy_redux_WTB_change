@@ -577,6 +577,8 @@ go-to: constitutional
 We have successfully passed a constitutional amendment to effectively make works councils the dominant body of governance in the country. 
 
 @decrees
+view-if: not decree_decided
+on-arrival: decree_decided = 1
 
 Sorry, WIP.
 
