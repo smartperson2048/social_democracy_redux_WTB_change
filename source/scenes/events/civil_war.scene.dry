@@ -267,21 +267,21 @@ on-arrival: snap += 1
 go-to: presidency
 
 @braun
-on-arrival: president == "Braun"
+on-arrival: president = "Braun"
 
 We have made Otto Braun the President of Germany.
 
 - @agenda_reb: Continue...
 
 @provisional
-on-arrival: president == "Wirth"
+on-arrival: president = "Wirth"
 
 We leave the election to the Reichstag, which elects Joseph Wirth of the Center as a compromise candidate.
 
 - @agenda_reb: Continue...
 
 @abolish
-on-arrival: president == "N/A"
+on-arrival: president = "N/A"
 
 Wow. That's cool.
 
