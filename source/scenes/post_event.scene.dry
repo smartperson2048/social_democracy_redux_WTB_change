@@ -365,6 +365,49 @@ if (Q.month_actions >= 1) {
             Q.new_middle_nsdap += 2/12;
         }
     }
+    if (Q.victory_republic && Q.dnvp_banned == 0) {
+        if (Q.workers_nsdap >= 0) {
+            Q.workers_nsdap -= 5/12;
+            Q.workers_dnvp += 3/12;
+            Q.workers_spd += 1/12;
+        }
+        if (Q.new_middle_nsdap >= 0) {
+            Q.new_middle_nsdap -= 7/12;
+            Q.new_middle_dnvp += 4/12;
+            Q.new_middle_dvp += 2/12;
+        }
+        if (Q.old_middle_nsdap >= 0) {
+            Q.old_middle_nsdap -= 8/12;
+            Q.old_middle_dnvp += 5/12;
+            Q.old_middle_dvp += 2/12;
+        }
+        if (Q.rural_nsdap >= 0) {
+            Q.rural_nsdap -= 3/12;
+            Q.rural_dnvp += 1/12;
+        }
+        Q.unemployed_nsdap -= 4/12;
+    }
+    if (Q.victory_republic && Q.dnvp_banned == 1) {
+        if (Q.workers_nsdap >= 0) {
+            Q.workers_nsdap -= 3/12;
+            Q.workers_dvp += 1/12;
+            Q.workers_spd += 1/12;
+        }
+        if (Q.new_middle_nsdap >= 0) {
+            Q.new_middle_nsdap -= 5/12;
+            Q.new_middle_dvp += 3/12;
+        }
+        if (Q.old_middle_nsdap >= 0) {
+            Q.old_middle_nsdap -= 5/12;
+            Q.old_middle_dvp += 3/12;
+        }
+        if (Q.rural_nsdap >= 0) {
+            Q.rural_nsdap -= 2/12;
+            Q.rural_dvp += 1/18;
+        }
+        Q.unemployed_nsdap -= 3/12;
+    }
+
 }
 Q.has_event = 0;
 // check if there are any cards in #event, and then go to main if not.
