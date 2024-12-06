@@ -239,7 +239,7 @@ The defeat of the reactionaries presents to us a unique opportunity. We have mul
 
 @hindenburg
 view-if: president == "Hindenburg" and not presidency_decided
-on-arrival: presidency_decided
+on-arrival: presidency_decided = 1
 subtitle: We may force Hindenburg to resign.
 
 The current President, Hindenburg, has undoubtedly through at the very least complacency enabled the emboldening and empowerment of reactionary forces. With these reactionary forces defeated, we may force his resignation. However, some warn against rocking the boat.
