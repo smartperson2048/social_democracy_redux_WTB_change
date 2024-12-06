@@ -74,6 +74,7 @@ The show of force has reinvigorated support for the republic and for the SPD, an
 
 
 @fight_2_pre_civil_war
+on-arrival: nazi_rebel = 1 if spd_in_government = 1; spd_rebel = 1 if spd_in_government = 0
 
 Our forces confront the fascists on the streets of Berlin, and armed fighting erupts. Neither side is dislodged from their positions.
 

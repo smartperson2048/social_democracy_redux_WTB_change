@@ -13,6 +13,7 @@ The Nazi government has decided to ban the Reichsbanner to assist in their ongoi
 
 
 @fight
+on-arrival: spd_rebel = 1
 
 Do we realize that this means civil war, against the full force of the state?
 
