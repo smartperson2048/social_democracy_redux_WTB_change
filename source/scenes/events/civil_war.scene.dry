@@ -220,7 +220,7 @@ go-to: long_war_intervention
 Poland and Czechoslovakia are largely too absorbed in their own problems to be of much help, but weapons and volunteers filter through the parts of the borders that we control.
 
 @republic_victory
-on-arrival: nsdap_banned = 1; chancellor = "N/A" if chancellor = "Hitler"; chancellor_party = "I" if chancellor_party = "NSDAP"; victory_republic = 1; unemployed_nsdap *= 0.6; new_middle_nsdap *= 0.8; old_middle_nsdap *= 0.9; workers_nsdap *= 0.8; old_middle_dnvp *= 0.8; rural_dnvp *= 0.8; new_middle_dnvp *= 0.8; old_middle_dvp += 5; new_middle_dvp += 5; sa_strength *= 0.2; sh_strength *= 0.2; sa_militancy *= 0.5; sh_militancy *= 0.5; rb_strength *= 0.8; rfb_strength *= 0.8; reichswehr_strength *= reichswehr_loyalty; reichswehr_loyalty += 0.15
+on-arrival: nsdap_banned = 1; party_bans = 1; chancellor = "N/A" if chancellor = "Hitler"; chancellor_party = "I" if chancellor_party = "NSDAP"; victory_republic = 1; unemployed_nsdap *= 0.6; new_middle_nsdap *= 0.8; old_middle_nsdap *= 0.9; workers_nsdap *= 0.8; old_middle_dnvp *= 0.8; rural_dnvp *= 0.8; new_middle_dnvp *= 0.8; old_middle_dvp += 5; new_middle_dvp += 5; sa_strength *= 0.2; sh_strength *= 0.2; sa_militancy *= 0.5; sh_militancy *= 0.5; rb_strength *= 0.8; rfb_strength *= 0.8; reichswehr_strength *= reichswehr_loyalty; reichswehr_loyalty += 0.15
 
 = Victory for the Republic
 
