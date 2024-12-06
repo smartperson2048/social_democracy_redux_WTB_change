@@ -220,7 +220,7 @@ go-to: long_war_intervention
 Poland and Czechoslovakia are largely too absorbed in their own problems to be of much help, but weapons and volunteers filter through the parts of the borders that we control.
 
 @republic_victory
-on-arrival: nsdap_banned = 1; party_bans = 1; chancellor = "N/A" if chancellor = "Hitler"; chancellor_party = "I" if chancellor_party = "NSDAP"; victory_republic = 1; unemployed_nsdap *= 0.6; new_middle_nsdap *= 0.8; old_middle_nsdap *= 0.9; workers_nsdap *= 0.8; old_middle_dnvp *= 0.8; rural_dnvp *= 0.8; new_middle_dnvp *= 0.8; old_middle_dvp += 5; new_middle_dvp += 5; sa_strength *= 0.2; sh_strength *= 0.2; sa_militancy *= 0.5; sh_militancy *= 0.5; rb_strength *= 0.8; rfb_strength *= 0.8; reichswehr_strength *= reichswehr_loyalty; reichswehr_loyalty += 0.15
+on-arrival: nsdap_banned = 1; party_bans = 1; pro_republic += 15; chancellor = "N/A" if chancellor = "Hitler"; chancellor_party = "I" if chancellor_party = "NSDAP"; victory_republic = 1; unemployed_nsdap *= 0.6; new_middle_nsdap *= 0.8; old_middle_nsdap *= 0.9; workers_nsdap *= 0.8; old_middle_dnvp *= 0.8; rural_dnvp *= 0.8; new_middle_dnvp *= 0.8; old_middle_dvp += 5; new_middle_dvp += 5; sa_strength *= 0.2; sh_strength *= 0.2; sa_militancy *= 0.5; sh_militancy *= 0.5; rb_strength *= 0.8; rfb_strength *= 0.8; reichswehr_strength *= reichswehr_loyalty; reichswehr_loyalty += 0.15
 
 = Victory for the Republic
 
@@ -232,12 +232,68 @@ The battle lines hold, and the SA, Stahlhelm, and pro-coup Reichswehr forces are
 @agenda_gov
 view-if: nazi_rebel = 1
 
-The defeat of the reactionaries presents to us a unique opportunity.
+The defeat of the reactionaries presents to us a unique opportunity. We have multiple issues to address.
+
+- @hindenburg: The presidency.
+- @government: The government.
+
+@hindenburg
+view-if: president == "Hindenburg" and not presidency_decided
+on-arrival: presidency_decided
+subtitle: We may force Hindenburg to resign.
+
+The current President, Hindenburg, has undoubtedly through at the very least complacency enabled the emboldening and empowerment of reactionary forces. With these reactionary forces defeated, we may force his resignation. However, some warn against rocking the boat.
+
+- @keep: Let Hindenburg stay President.
+- @resign: Demand Hindenburg's resignation.
+
+@keep
+on-arrival: left_dissent += 5; kpd_relation -= 5
+
+We choose to allow Hindenburg's presidency to continue.
+
+- @agenda_gov: Continue...
+
+@resign
+on-arrival: pro_republic -= 5; z_relation -= 5; dvp_relation -= 10; president == "Braun" if ((year < 1932) or (year = 1932 and month < 12)); president == "Bumke" if ((year > 1932) or (year = 1932 and month >= 12))
+
+Hindenburg is forced to resign by our forces. [? if president == "Bumke" : As is procedure, Erwin Bumke, president of the Supreme Court, is to succeed him as interim. ?][? if president == "Braun" : We pass a vote through the Reichstag to appoint Braun as President in his stead. ?]
+
+- @agenda_gov: Continue...
+
+# todo: hindenburg may refuse to resign, allowing the SPD to attempt to impeach him if judicial reform or otherwise referendum against, or just illegally depose him
+# todo: successor election if successfully deposed
+
+@government
+view-if: not government_decided
+on-arrival: government_decided = 1
+
+The reactionary forces may have been defeated, but they are far from being rooted out. Some have called for the transfer of governing powers temporarily to the cabinet through an "Enabling Act" to allow fast action by the government.
+
+- @enabling: We have no choice but to pass an Enabling Act with a six-month duration.
+- @enable_hindenburg: We have no choice but to pass an Enabling Act with a six-month duration.
+- @agenda_gov: We will operate entirely by the book in denazification of Germany.
+
+@enabling
+view-if: president != "Hindenburg"
+on-arrival: pro_republic -= 10; z_relation -= 5; z_relation -= 5 if z_party_leader == "Kaas"; ddp_relation -= 5; dvp_relation -= 10; enabling_act = 1
+
+We pass the Enabling Act with the signature of [+ president +] and a 2/3rds majority of Reichstag voters. This also allows us to pursue further decrees, if we wish.
+
+- @decrees: We must sign decrees.
+- @agenda_gov: That'll be enough.
+
+@enable_hindenburg
+view-if: president == "Hindenburg"
+
+President Hindenburg refuses to sign our Enabling Act, demanding it go to a referendum. What do we do?
+
+- @government: Absolutely nothing, I'm not coding this yet.
 
 @agenda_reb
 view-if: spd_rebel = 1
 
-The defeat of the reactionaries presents to us a unique opportunity. We must address multiple issues.
+The defeat of the reactionaries presents to us a unique opportunity. We have multiple issues to address.
 
 - @presidency: The presidency.
 - @chancellorship: The cabinet.
