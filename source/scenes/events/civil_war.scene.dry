@@ -1042,12 +1042,15 @@ go-to: constitutional
 We have successfully passed a constitutional amendment to limit presidential powers! Hopefully this results in a less authoritarian Germany.
 
 @decrees_kpd
+view-if: not decree_kpd_decided
+on-arrival: decree_kpd_decided = 1
 
 WIP!!!!
 
 - @the_agenda_kpd: Nice.
 
 @noske
+view-if: year = 1938
 
 I hate Noske sorry try another time.
 
