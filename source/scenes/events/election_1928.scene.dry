@@ -368,7 +368,7 @@ The constitutional bourgeois parties have enough votes to form a coalition on th
 
 @plead_grand
 subtitle: SPD + Z + BVP + DDP + DVP  ([+ grand_coalition +]%)
-unavailable: SPD + Z + BVP + DDP + DVP  ([+ grand_coalition +]%) - The DVP is unwilling to enter such a government[? if z_relation < 30 :, as is the Center party?].
+unavailable_subtitle: SPD + Z + BVP + DDP + DVP  ([+ grand_coalition +]%) - The DVP is unwilling to enter such a government[? if z_relation < 30 :, as is the Center party?].
 view-if: not grand_coalition_failed and grand_coalition >= 50
 choose-if: dvp_relation >= 30 and z_relation >= 30
 go-to: grand_coalition
