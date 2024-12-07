@@ -962,15 +962,14 @@ The KPD is outraged at our outright refusal, but somehow accepts it, very reluct
 
 The KPD is willing to hear out our proposals.
 
-- @vote_threshold: Change the vote threshold.
-- @constructive_vonc: Ban non-constructive votes of no confidence.
-- @presidential_powers: Reduce presidential powers.
-- @supreme_soviet: Empower work councils to make them the new basis of governance.
-- @agenda_reb: We have done enough in this department. Next.
+- @vote_threshold_kpd: Change the vote threshold.
+- @constructive_vonc_kpd: Ban non-constructive votes of no confidence.
+- @presidential_powers_kpd: Reduce presidential powers.
+- @the_agenda_kpd: We have done enough in this department. Next.
 #- @constitutional_bans: Allow the banning of anti-constitutional parties.
 #- @constitutional_convention: Hold a constitutional convention to draft a wholly new constitution for the country.
 
-@vote_threshold
+@vote_threshold_kpd
 subtitle: Change the vote threshold to 5% for parties to be represented in the Reichstag.
 view-if: electoral_threshold = 0
 
@@ -978,11 +977,11 @@ view-if: electoral_threshold = 0
 
 The KPD is generally ambivalent towards the idea of an electoral threshold, but is more than happy to accept it, if perhaps for different reasons than us. The Left has however convinced them to oppose the amendment, if just theatrically.
 
-- @vote_threshold_2: We will convince the KPD.
+- @vote_threshold_3: We will convince the KPD.
 - @other_amendments: See other reform options.
 
 
-@vote_threshold_2
+@vote_threshold_3
 choose-if: negotiating power >= (amendment_cost/2)
 unavailable_subtitle: We do not have the negotiating power to sway the KPD.
 on-arrival: constitutional_reform += 1; negotiating_power -= (amendment_cost/2); electoral_threshold = 5; ddp_relation -= 25; dvp_relation -= 25; left_dissent += 20; workers_other *= 0.1; new_middle_other *= 0.1; old_middle_other *= 0.1; rural_other *= 0.2; unemployed_other *= 0.2; catholics_other *= 0.1;
@@ -995,16 +994,16 @@ We have passed a constitutional amendment to increase the electoral threshold to
 
 
 
-@constructive_vonc
+@constructive_vonc_kpd
 subtitle: Votes of no confidence can only be called if an alternative plan for government formation can be passed, greatly reducing their incidence.
 view-if: constructive_vonc = 0
 
 [? if chancellor_party == "KPD" : The KPD is all too happy to accept this with the recent agreement for the position to be held by the KPD. ?][? if chancellor_party != "KPD" : The KPD does not have a strong stance on the idea, but is generally opposed for fear of it weakening their influence. ?]
 
-- @constructive_vonc_2: We will convince the KPD.
+- @constructive_vonc_3: We will convince the KPD.
 - @other_amendments: See other reform options.
 
-@constructive_vonc_2
+@constructive_vonc_3
 choose-if: (negotiating_power >= amendment_cost) or chancellor_party == "KPD"
 on-arrival: constitutional_reform += 1; constructive_vonc = 1; negotiating_power -= amendment_cost if chancellor_party != "KPD"
 achievement: verfassungsreform
@@ -1012,7 +1011,7 @@ go-to: constitutional
 
 We have successfully passed a constitutional amendment to ban votes of no confidence when a new government cannot be formed. Hopefully this increases the stability of our governments.
 
-@presidential_powers
+@presidential_powers_kpd
 subtitle: The president can no longer dissolve the Reichstag at will, or call a *Reichsexekution* on state governments.
 view-if: presidential_powers = 0
 on-arrival: multiplier = 3.5 if kpd_party_leader != "Conciliators"; multiplier = 2 if kpd_party_leader = "Conciliators"
@@ -1022,7 +1021,7 @@ The KPD is strongly opposed to the weakening of the presidency, viewing it as a 
 - @presidential_powers_2: We will convince the KPD.
 - @other_amendments: See other reform options.
 
-@presidential_powers_2
+@presidential_powers_3
 choose-if: negotiating_power >= (amendment_cost*multiplier)
 unavailable_subtitle: The KPD is not willing to accept this.
 on-arrival: constitutional_reform += 1; presidential_powers = 1; negotiating_power -= (amendment_cost*multiplier)
