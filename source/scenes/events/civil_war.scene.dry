@@ -377,6 +377,13 @@ on-arrival: chancellor = "Thälmann"; chancellor_party = "KPD"; z_relation -= 10
 
 - @cabinet_kpd: Now for the cabinet.
 
+@cabinet_kpd
+on-arrival: chancellorship_decided = 0
+
+Unfinished. Like, super. Unfinished. This is basically for when I eventually overhaul the post-war provisional government so you can have sole SPD government or work with the KPD too. Don't pick Thalmann please.
+
+- @chancellorship: Aw, ok.
+
 @ministries
 
 We can pick from any number of ministries. Controlling a ministry allows us to directly effect policy in that area. [? if in_left_front : Any ministry that we do not take will be given to the KPD. ?] [? if in_left_front and reichswehr_minister_party == "KPD" : If the KPD controls the Reichswehr Ministry, the army will most likely revolt. ?]
