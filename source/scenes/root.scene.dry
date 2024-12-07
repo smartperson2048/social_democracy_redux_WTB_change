@@ -636,10 +636,19 @@ subtitle: Enable or disable various features.
 For other, non-difficulty related tweaks.
 
 - @disable_end: Disable end in 1934.
+- @enable_end: Enable end in 1934.
 - @menu: Back.
 
 @disable_end
+view-if: end_disabled != 1
 on-arrival: end_disabled = 1
+go-to: menu
+
+The end date has been disabled.
+
+@enable_end
+view-if: end_disabled = 1
+on-arrival: end_disabled = 0
 go-to: menu
 
 The end date has been disabled.
