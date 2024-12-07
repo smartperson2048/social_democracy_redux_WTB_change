@@ -407,7 +407,25 @@ if (Q.month_actions >= 1) {
         }
         Q.unemployed_nsdap -= 4/12;
     }
-
+    if (Q.kpd_banned && Q.sapd_formed) {
+        if (Q.workers_kpd >= 0) {
+            Q.workers_kpd -= 9/12;
+            Q.workers_sapd += 6/12;
+        }
+        if (Q.unemployed_kpd >= 0) {
+            Q.unemployed_kpd -= 6/12;
+            Q.unemployed_sapd += 3/12;
+        }
+    }
+    if (Q.kpd_banned && Q.sapd_formed != 1) {
+        if (Q.workers_kpd >= 0) {
+            Q.workers_kpd -= 5/12;
+            Q.workers_spd += 2/12;
+        }
+        if (Q.unemployed_kpd >= 0) {
+            Q.unemployed_kpd -= 3/12;
+        }
+    }
 }
 Q.has_event = 0;
 // check if there are any cards in #event, and then go to main if not.
