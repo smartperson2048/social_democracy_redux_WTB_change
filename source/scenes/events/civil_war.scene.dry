@@ -853,7 +853,7 @@ We accept the KPD's choice, Hugo Eberlein, conceding significant control over th
 - @the_agenda_kpd: Interesting.
 
 @breitscheid_kpd
-choose-if: negotiating power >= 10
+choose-if: negotiating_power >= 10
 unavailable_subtitle: We lack the negotiating power to push for this.
 on-arrival: negotiating_power -= 10; chancellor_party = "SPD"; chancellor = "Breitscheid"
 
