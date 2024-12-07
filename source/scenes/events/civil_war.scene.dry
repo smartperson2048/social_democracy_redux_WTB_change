@@ -982,7 +982,7 @@ The KPD is generally ambivalent towards the idea of an electoral threshold, but 
 
 
 @vote_threshold_3
-choose-if: negotiating power >= (amendment_cost/2)
+choose-if: negotiating_power >= (amendment_cost/2)
 unavailable_subtitle: We do not have the negotiating power to sway the KPD.
 on-arrival: constitutional_reform += 1; negotiating_power -= (amendment_cost/2); electoral_threshold = 5; ddp_relation -= 25; dvp_relation -= 25; left_dissent += 20; workers_other *= 0.1; new_middle_other *= 0.1; old_middle_other *= 0.1; rural_other *= 0.2; unemployed_other *= 0.2; catholics_other *= 0.1;
 achievement: verfassungsreform
