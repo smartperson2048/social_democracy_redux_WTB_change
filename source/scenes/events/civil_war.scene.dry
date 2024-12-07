@@ -644,6 +644,7 @@ With our triumph over the reactionaries, we have for a short while near free-rei
 - @dnvp_ban: Ban the DNVP.
 - @dvp_ban: Ban the DVP.
 - @enable: A sixth-month long Enabling Act to speed denazification up.
+- @agenda_1: That is enough.
 
 @land_seizure
 view-if: land_reform < 4 and not land_seizure
@@ -652,7 +653,7 @@ on-arrival: budget -= land_seizure_cost; land_seizure = 1; land_reform += land_s
 
 In a sweeping program of land reform, we seize aristocratic estates and distribute them to the landless farmers working them. The bourgeois parties denounce this abuse of our post-war position, calling it unconstitutional, while the aristocrats who's lands we seize turn to the remaining Nazi insurgents for solasce.
 
-- @decrees: Excellent.
+- @decrees_2: Excellent.
 
 @mass_nationalization
 subtitle: -[+ nationalize_budget +] budget. [? if works_councils >= 3 : Our works councils have reduced the budget necessary for this program. ?] [? if socializations >= 2: Our existing socialization policies have reduced the budget necessary for this program. ?]
@@ -668,7 +669,7 @@ achievement: wirtschaftspolitik
 
 [? if nationalization_progress == 1 : The Left argues that this should only be a first step in the socialist transformation of the economy. Eventually, much of the economy must be brought under popular control. ?]
 
-- @decrees: Excellent.
+- @decrees_2: Excellent.
 
 @nationalize_deficit
 
@@ -696,7 +697,7 @@ achievement: wirtschaftspolitik
 
 [? if nationalization_progress > 1 : We purchase additional underutilized enterprises and run them in a coordinated socialist fashion with the works councils, hiring formerly laid off workers. A significant portion of the economy is now under public control. ?]
 
-- @decrees: Excellent.
+- @decrees_2: Excellent.
 
 @nationalize_without_compensation
 title: Nationalize without compensation.
@@ -712,7 +713,7 @@ The capitalists are, predictably, up in arms about our policy of nationalization
 
 [? if nationalization_progress > 1 : We acquired additional underutilized enterprises and run them in a coordinated socialist fashion with the works councils, hiring formerly laid off workers. A significant portion of the economy is now under public control. ?]
 
-- @decrees: Excellent.
+- @decrees_2: Excellent.
 
 @empower_workers
 title: Empower workers to take over factories.
@@ -724,7 +725,7 @@ achievement: wirtschaftspolitik
 
 The capitalists are, predictably, up in arms about our policy of legalizing factory occupations. They call it illegal expropriation, and it is. Nevertheless, it is clear that they have failed, and we must take radical action.
 
-- @decrees: Excellent.
+- @decrees_2: Excellent.
 
 @wealth_seizure
 view-if: not wealth_seized
@@ -733,7 +734,7 @@ on-arrival: wealth_seized = 1; upper_tax_rates += 3; coalition_dissent += 3; wor
 
 We seize the assets of the rich and even the Reichsbank in a mass redistribution of wealth, greatly increasing our budget. Of course, the bourgeoisie and their parties are immediately up in arms about this, threatening our provisional governing coalition.
 
-- @decrees: Excellent.
+- @decrees_2: Excellent.
 
 @dnvp_ban
 view-if: not dnvp_banned
@@ -742,7 +743,7 @@ on-arrival: dnvp_banned = 1; dvp_relation -= 5; z_relation -= 4 if z_party_leade
 
 Recognizing the DNVP's own participation in the far-right struggle against the Republic, we have banned their party as well, pre-empting a potential moderation in the absence of Hugenberg to lead them.
 
-- @decrees: Excellent.
+- @decrees_2: Excellent.
 
 @dvp_ban
 view-if: not dvp_banned and (left_strength > reformist_strength + center_strength) and dnvp_banned
@@ -751,7 +752,7 @@ on-arrival: dvp_banned = 1; reformist_dissent += 15; center_dissent += 5; z_rela
 
 We have banned the DVP, as well as many smaller adjacent bourgeois reactionary parties. To allow them to continue to exist in our new Republic is a threat to our socialist principles. Unfortunately, Zentrum and the DDP/DStP do not see it that way.
 
-- @decrees: Excellent.
+- @decrees_2: Excellent.
 
 @enable
 view-if: not enabling_act
@@ -760,7 +761,17 @@ on-arrival: pro_republic -= 10; z_relation -= 6; z_relation -= 6 if z_party_lead
 
 We pass an Enabling Act, giving the cabinet greatly heightened powers to combat the Nazis and whipe them out entirely. 
 
-- @decrees: Excellent.
+- @decrees_2: Excellent.
+
+@decrees_2
+go-to: decrees
+
+We may continue decrees.
+
+@agenda_1
+go-to: agenda_gov if not spd_rebel; agenda_reb if spd_rebel
+
+We have other items on our agenda.
 
 @communists
 on-arrival: communists_decided = 1
