@@ -810,7 +810,7 @@ The defeat of the reactionaries leaves us and our socialist partners in near unc
 
 @the_agenda_kpd
 view-if: president == "Thälmann" and presidential_powers != 1
-on-arrival: negotiating_power = kpd_relation; negotiating power += (spd_votes - kpd_votes); negotiating_power *= ((rb_strength*rb_militancy)/(rfb_strength*rfb_militancy)); negotiating power *= 1.25 if kpd_party_leader == "Conciliators"; negotiating_power *= 0.75 if peoples_party = 1
+on-arrival: negotiating_power = kpd_relation; negotiating_power += (spd_votes - kpd_votes); negotiating_power *= ((rb_strength*rb_militancy)/(rfb_strength*rfb_militancy)); negotiating_power *= 1.25 if kpd_party_leader == "Conciliators"; negotiating_power *= 0.75 if peoples_party = 1
 
 Unfortunately, we do not have much control over the agenda of the new Germany, as Thälmann is President and the Presidency retains its overarching powers. [? if kpd_party_leader == "Conciliators" : Luckily, the Conciliator leadership of the KPD will make them more amenable to moderation. ?]
 
