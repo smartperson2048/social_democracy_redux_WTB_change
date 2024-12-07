@@ -342,6 +342,7 @@ There are some potential coalition arrangements.
 - @spd_majority
 - @weimar_coalition
 - @grand_coalition
+- @bourgeois_coalition
 - @new_grand_coalition
 - @unity_government
 - @right_coalition
@@ -355,6 +356,30 @@ There are some potential coalition arrangements.
 
 # TODO: black-brown coalition
 
+@bourgeois_coalition
+title: A "Bourgeois" Coalition
+subtitle: Z + BVP + DDP + DVP + Others ([+ bourgeois_coalition +]%)
+view-if: bourgeois_coalition >= 50 and weimar_coalition < 50 and not dvp_banned
+
+The constitutional bourgeois parties have enough votes to form a coalition on their own, without even needing toleration from us. It is likely that such a government will be formed unless we act to prevent it.
+
+- @plead_grand: Plead for the Center to form a "Grand Coalition" with us instead.
+- @let_it_form: Let it form.
+
+@plead_grand
+subtitle: SPD + Z + BVP + DDP + DVP  ([+ grand_coalition +]%)
+unavailable: SPD + Z + BVP + DDP + DVP  ([+ grand_coalition +]%) - The DVP is unwilling to enter such a government[? if z_relation < 30 :, as is the Center party?].
+view-if: not grand_coalition_failed and grand_coalition >= 50
+choose-if: dvp_relation >= 30 and z_relation >= 30
+go-to: grand_coalition
+
+We have managed to convince Zentrum to instead support another Grand Coalition!
+
+@let_it_form
+subtitle: The Bourgeois Coalition will form.
+on-arrival: spd_in_government = 0; spd_toleration = 0; in_bourgeois_coalition = 1; chancellor = "Brüning"; chancellor_party = "Z"; foreign_minister_party = "DVP"; interior_minister_party = "Z"; justice_minister_party = "Z"; labor_minister_party = "Z"; reichswehr_minister_party = "DDP"; economic_minister_party = "Z"; finance_minister_party = "Z"; agriculture_minister_party = "Z"
+
+The Bourgeois Coalition is formed.
 
 @popular_front_coalition
 title: A new "Popular Front" coalition?
@@ -588,7 +613,7 @@ Even though the DNVP is very reluctant to participate in such a coalition, they 
 
 @no_majority
 title: There is no clear governing majority.
-view-if: weimar_coalition < 50 and (grand_coalition < 50 or grand_coalition_failed == 1) and president = "Hindenburg" and far_right_coalition < 50
+view-if: weimar_coalition < 50 and (grand_coalition < 50 or grand_coalition_failed == 1) and president = "Hindenburg" and far_right_coalition < 50 and (right_coalition < 50 or right_coalition_failed) and bourgeois_coalition < 50
 on-arrival: no_majority_elections += 1
 go-to: no_majority_bruning if chancellor = "Brüning" or chancellor = "Wirth"; no_majority_papen if chancellor = "Papen" and no_majority_papen_elections == 0; no_majority_papen_2 if chancellor == "Papen" and no_majority_papen_elections > 0; no_majority_schleicher if chancellor = "Schleicher"; no_majority_spd if chancellor_party = "SPD" or chancellor == "Marx"
 
@@ -1162,10 +1187,10 @@ Unfortunately, the DVP and BVP are unwilling to enter into another coalition wit
 - @no_majority: Thus, there is no clear majority.
 - @brauns_dilemma
 - @right_coalition_2: Perhaps a right-wing coalition may form.
+- @bourgeois_coalition: Perhaps a bourgeois coalition may form.
 - @beg_dvp: Perhaps we could ask the DVP to change their minds?
 - @unity_government
 - @coalition_menu: What are the other governing arrangements?
-
 
 @beg_dvp
 view-if: dvp_relation >= 15
