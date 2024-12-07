@@ -220,7 +220,7 @@ go-to: long_war_intervention
 Poland and Czechoslovakia are largely too absorbed in their own problems to be of much help, but weapons and volunteers filter through the parts of the borders that we control.
 
 @republic_victory
-on-arrival: nsdap_banned = 1; party_bans = 1; pro_republic += 25; chancellor = "N/A" if chancellor = "Hitler"; chancellor_party = "I" if chancellor_party = "NSDAP"; victory_republic = 1; unemployed_nsdap *= 0.6; new_middle_nsdap *= 0.8; old_middle_nsdap *= 0.9; workers_nsdap *= 0.8; old_middle_dnvp *= 0.8; rural_dnvp *= 0.8; new_middle_dnvp *= 0.8; old_middle_dvp += 5; new_middle_dvp += 5; sa_strength *= 0.2; sh_strength *= 0.2; sa_militancy *= 0.5; sh_militancy *= 0.5; rb_strength *= 0.8; rfb_strength *= 0.8; reichswehr_strength *= reichswehr_loyalty; reichswehr_loyalty += 0.15
+on-arrival: nsdap_banned = 1; party_bans = 1; pro_republic += 25; unemployed_spd += 10*(1-dissent); workers_spd += 6*(1-dissent); chancellor = "N/A" if chancellor = "Hitler"; chancellor_party = "I" if chancellor_party = "NSDAP"; victory_republic = 1; unemployed_nsdap *= 0.4; new_middle_nsdap *= 0.5; old_middle_nsdap *= 0.6; workers_nsdap *= 0.5; rural_nsdap *= 0.7; old_middle_dnvp *= 0.6; rural_dnvp *= 0.7; new_middle_dnvp *= 0.6; old_middle_dvp += 5; new_middle_dvp += 5; sa_strength *= 0.2; sh_strength *= 0.2; sa_militancy *= 0.5; sh_militancy *= 0.5; rb_strength *= 0.8; rfb_strength *= 0.8; reichswehr_strength *= reichswehr_loyalty; reichswehr_loyalty += 0.15
 
 = Victory for the Republic
 
@@ -228,9 +228,10 @@ The battle lines hold, and the SA, Stahlhelm, and pro-coup Reichswehr forces are
 
 - @agenda_gov: We must decide our new agenda.
 - @agenda_reb: We must decide our new agenda.
+- @agenda_kpd: We must decide our new agenda.
 
 @agenda_gov
-view-if: nazi_rebel = 1
+view-if: nazi_rebel = 1 and president != "Thälmann" and chancellor_party != "KPD"
 
 The defeat of the reactionaries presents to us a unique opportunity. We have multiple issues to address.
 
@@ -337,9 +338,9 @@ We leave the election to the Reichstag, which elects Joseph Wirth of the Center 
 - @agenda_reb: Continue...
 
 @abolish
-on-arrival: president = "N/A"
+on-arrival: presidency_abolished = 1; presidential_powers = 1; president = "N/A"
 
-Wow. That's cool.
+We choose to abolish the presidency entirely, in favor of a strictly parliamentary republic.
 
 - @agenda_reb: Continue...
 
@@ -352,6 +353,7 @@ Having deposed the Nazi cabinet through our civil war, we must decide how to fil
 - @breitscheid: Appoint Rudolf Breitscheid.
 - @wels: Appoint Otto Wels.
 - @bruning: Appoint Heinrich Brüning of the Center.
+- @thalmann: Appoint Ernst Thälmann of the Communists.
 
 @breitscheid
 on-arrival: chancellor = "Breitscheid"; chancellor_party = "SPD"
@@ -364,9 +366,16 @@ on-arrival: chancellor = "Wels"; chancellor_party = "SPD"
 - @ministries: Now for the cabinet.
 
 @bruning
-on-arrival: chancellor = "Brüning"; chancellor_party = "Z"; leverage += 5
+view-if: z_relation >= 45
+on-arrival: chancellor = "Brüning"; chancellor_party = "Z"; leverage += 5; z_relation += 5; kpd_relation -= 10
 
 - @ministries: Now for the cabinet.
+
+@thalmann
+view-if: kpd_relation >= 60 and left_strength > reformist_strength + center_strength + neorevisionist_strength
+on-arrival: chancellor = "Thälmann"; chancellor_party = "KPD"; z_relation -= 10; kpd_relation += 5; leverage *= 2
+
+- @cabinet_kpd: Now for the cabinet.
 
 @ministries
 
@@ -788,3 +797,242 @@ on-arrival: kpd_banned = 1; left_dissent += 40; workers_spd -= 5; unemployed_spd
 We have banned the KPD. Many workers desert, agitated by the KPD to do so, while our party Left has become increasingly agitated with our party's policy.
 
 - @agenda_reb: Continue...
+
+@agenda_kpd
+view-if: president == "Thälmann" or chancellor_party == "KPD"
+on-arrival: workers_kpd += 10; workers_spd -= 5; unemployed_kpd += 15; unemployed_spd -= 5; unemployed_nsdap -= 5; rfb_strength += 100; rb_strength -= 75; rfb_militancy += 0.05
+
+The defeat of the reactionaries leaves us and our socialist partners in near uncontested control over the country. [? if president == "Thälmann" : However, the KPD has a significant upper hand in this relationship, so we must be careful. ?]
+
+- @the_agenda_kpd: Now, the agenda.
+- @the_agenda_spd: Now, the agenda.
+- @the_agenda_power: Now, the agenda.
+
+@the_agenda_kpd
+view-if: president == "Thälmann" and presidential powers != 1
+on-arrival: negotiating_power = kpd_relation; negotiating power += (spd_votes - kpd_votes); negotiating_power *= ((rb_strength*rb_militancy)/(rfb_strength*rfb_militancy)); negotiating power *= 1.25 if kpd_party_leader == "Conciliators"; negotiating_power *= 0.75 if peoples_party = 1
+
+Unfortunately, we do not have much control over the agenda of the new Germany, as Thälmann is President and the Presidency retains its overarching powers. [? if kpd_party_leader == "Conciliators" : Luckily, the Conciliator leadership of the KPD will make them more amenable to moderation. ?]
+
+President Thälmann has prepared multiple decrees to pass via Article 48, and we will not be able to negotiate away all of them. 
+
+DEBUG: [+ negotiating_power +]
+
+- @chancellorship_kpd: The cabinet.
+- @party_legality: The parties.
+- @constitution: The constitution.
+- @decrees_kpd: The country.
+- @noske: It is clear negotiation won't work. We must crush the KPD.
+
+@chancellorship_kpd
+view-if: not chancellorship_decided
+on-arrival: chancellorship_decided = 1
+
+With the reactionaries rising up upon Thälmann's election, he never managed to appoint a true cabinet, or chancellor. We can allow the KPD to have the Chancellorship for more negotiating power, or nominate Breitscheid as is mostly expected by the KPD.
+
+- @pieck: Accept the KPD pick, Wilhelm Pieck.
+- @eberlein: Accept the KPD pick, Hugo Eberlein.
+- @breitscheid: Nominate Rudolf Breitscheid from our party.
+- @ossietzky: Perhaps the independent Carl von Ossietzky as a compromise?
+- @go_back: Back.
+
+@pieck
+view-if: kpd_party_leader != "Conciliators"
+on-arrival: negotiating_power += 10; chancellor_party = "KPD"; chancellor = "Pieck"; reformist_dissent += 5; neorevisionist_dissent += 5; center_dissent += 5
+
+We accept the KPD's choice, Wilhelm Pieck, conceding significant control over the cabinet to the KPD.
+
+- @the_agenda_kpd: Interesting.
+
+@eberlein
+view-if: kpd_party_leader == "Conciliators"
+on-arrival: negotiating_power += 10; chancellor_party = "KPD"; chancellor = "Eberlein"; reformist_dissent += 5; neorevisionist_dissent += 5
+
+We accept the KPD's choice, Hugo Eberlein, conceding significant control over the cabinet to the KPD.
+
+- @the_agenda_kpd: Interesting.
+
+@breitscheid
+choose-if: negotiating power >= 10
+unavailable_subtitle: We lack the negotiating power to push for this.
+on-arrival: negotiating_power -= 10; chancellor_party = "SPD"; chancellor = "Breitscheid"
+
+We nominate our own candidate, Rudolf Breitscheid, which the KPD accepts. Our party is reassured, though this gives us less power to object other moves by the KPD.
+
+- @the_agenda_kpd: Interesting.
+
+@ossietzky
+on-arrival: chancellor_party = "I"; chancellor = "Ossietzky"
+
+As a compromise, we have nominated Carl von Ossietzky, an independent socialist. The KPD is surprised, but cautiously accepts. Let's hope that Carl von Ossietzky doesn't have his own agenda and is happy to be a figurehead.
+
+- @the_agenda_kpd: Let's hope...
+
+@go_back
+on-arrival: chancellorship_decided = 0
+go-to: the_agenda_kpd
+
+@party_legality
+view-if: party_decided != 1
+on-arrival: party_decided = 1; party_stubborn = 25 if kpd_party_leader != "Conciliators"; party_stubborn = 10 if kpd_party_leader = "Conciliators"
+
+The KPD is adamant on banning the reactionary parties and is highly likely to push for equally harsh crackdowns on the bourgeois parties. [? if peoples_party : Our own status as a 'volkspartei' has even caused some in the KPD to call for us to be banned. ?]
+
+- @defend_joos: Stand up for the Center Party.
+- @defend_kaas: Stand up for the Center Party.
+- @defend_ddp: Stand up for the DDP/DStP.
+- @finalize_party: We're finished in this department.
+- @go_back_2: Back.
+
+@defend_joos
+view-if: z_party_leader == "Joos" and not z_safe
+subtitle: The dominance of trade unions in the party makes this easier.
+unavailable_subtitle: We lack the negotiating power to successfully protest this.
+choose-if: negotiating_power >= party_stubborn
+on-arrival: negotiating_power -= party_stubborn; z_relation += 5; z_safe = 1
+go-to: party_legality
+
+We argue that the Center Party is in a sense proletarian, thanks to the leadership of Joseph Joos, a Catholic trade unionist. They yield and reluctantly agree to allow the party to continue existing.
+
+@defend_kaas
+view-if: z_party_leader != "Joos" and not z_safe
+unavailable_subtitle: We lack the negotiating power to successfully protest this.
+choose-if: negotiating_power >= (party_stubborn*2)
+on-arrival: negotiating_power -= party_stubborn; party_stubborn += 5; z_relation += 5; kpd_relation -= 5; z_safe = 1
+go-to: party_legality
+
+We defend the Center Party in spite of what the Communists view as their enabling of the Nazi threat and opposition to the working class. Still, they concede, reluctantly
+
+@defend_ddp
+view-if: not ddp_safe
+unavailable_subtitle: We lack the negotiating power to successfully protest this.
+choose-if: negotiating_power >= (ddp_votes + (party_stubborn/2))
+on-arrival: negotiating_power -= (ddp_votes + (party_stubborn/2)); party_stubborn += 2; ddp_relation += 10; ddp_safe = 1
+go-to: party_legality
+
+We defend the DDP/DStP, to which the KPD theatrically objects but, not really viewing the DDP/DStP as a threat due to their electorally moribund nature, accepts. 
+
+@go_back_2
+view-if: z_safe + ddp_safe != 2
+on-arrival: party_decided = 0
+go-to: the_agenda_kpd
+
+@finalize_party
+on-arrival: z_banned = 1 if z_safe != 1; ddp_banned = 1 if ddp_safe != 1; dnvp_banned = 1; dvp_banned = 1; old_middle_dnvp *= 0.9; rural_dnvp *= 0.95; new_middle_dnvp *= 0.8; sh_strength *= 0.9; sh_militancy -= 0.05
+go-to: the_agenda_kpd
+
+@constitution
+view-if: not constitution_decided
+on-arrival: constitution_decided = 1; constitution_stubborn = 50; constitution_stubborn -= 10 if kpd_party_leader == "Conciliators"
+
+The KPD has many ideas for drastic changes to the German constitution, primarily for the transition to a council republic. With reactionaries crushed, it will be very difficult to convince the KPD not to transition to a council republic.
+
+- @accept_soviet: Accept the KPD's wishes for a council republic.
+- @conditional: We will agree if the KPD passes other constitutional amendments that we want.
+- @refuse_soviet: We will not compromise the foundations of our republic.
+- @go_back_3: Back.
+
+@accept_soviet
+on-arrival: amendment_cost = 20; reformist_dissent += 15; left_strength += 10; supreme_soviet = 1; z_relation -= 10; ddp_relation -= 10; dvp_relation -= 10; workers_kpd += 5
+
+We accept the KPD's demands for the move towards a council republic, satisfying them. We can push for other constitutional amendments, should we wish.
+
+- @other_amendments: Push for other constitutional amendments.
+- @the_agenda_kpd: The constitution is good as is.
+
+@conditional
+choose-if: negotiating_power >= constitution_stubborn
+unavailable_subtitle: We do not have the negotiating power to push for this.
+on-arrival: kpd_relation -= 10; negotiating_power -= constitution_stubborn; amendment_cost = 10
+
+The KPD is incensed that we refuse to give them a blank cheque to pursue their Soviet machinations, but agree to "consider" our other proposals first.
+
+- @other_amendments: So, first off...
+
+@refuse_soviet
+choose-if: negotiating_power >= (constitution_stubborn*2.5)
+unavailable_subtitle: The KPD is entirely unwilling to cede this.
+on-arrival: kpd_relation -= 15; negotiating_power -= (constitution_stubborn*2.5); rfb_strength += 25; rfb_militancy += 0.02; workers_spd -= 5; workers_kpd += 5
+
+The KPD is outraged at our outright refusal, but somehow accepts it, very reluctantly, perhaps due to our relative position of strength. They waste no time in publicizing our refusal and campaigning against us, and overall this does not bode well for cooperation.
+
+- @the_agenda_kpd: And so the constitution will remain unchanged...
+
+@other_amendments
+
+The KPD is willing to hear out our proposals.
+
+- @vote_threshold: Change the vote threshold.
+- @constructive_vonc: Ban non-constructive votes of no confidence.
+- @presidential_powers: Reduce presidential powers.
+- @supreme_soviet: Empower work councils to make them the new basis of governance.
+- @agenda_reb: We have done enough in this department. Next.
+#- @constitutional_bans: Allow the banning of anti-constitutional parties.
+#- @constitutional_convention: Hold a constitutional convention to draft a wholly new constitution for the country.
+
+@vote_threshold
+subtitle: Change the vote threshold to 5% for parties to be represented in the Reichstag.
+view-if: electoral_threshold = 0
+
+# The left is opposed to this.
+
+The KPD is generally ambivalent towards the idea of an electoral threshold, but is more than happy to accept it, if perhaps for different reasons than us. The Left has however convinced them to oppose the amendment, if just theatrically.
+
+- @vote_threshold_2: We will convince the KPD.
+- @other_amendments: See other reform options.
+
+
+@vote_threshold_2
+choose-if: negotiating power >= (amendment_cost/2)
+unavailable_subtitle: We do not have the negotiating power to sway the KPD.
+on-arrival: constitutional_reform += 1; negotiating_power -= (amendment_cost/2); electoral_threshold = 5; ddp_relation -= 25; dvp_relation -= 25; left_dissent += 20; workers_other *= 0.1; new_middle_other *= 0.1; old_middle_other *= 0.1; rural_other *= 0.2; unemployed_other *= 0.2; catholics_other *= 0.1;
+achievement: verfassungsreform
+go-to: constitutional
+
+# this should result in a redistribution of votes - other parties should not get so many votes anymore. maybe ddp and dvp get a recovery of middle-class votes? or maybe they flow to the others.
+
+We have passed a constitutional amendment to increase the electoral threshold to 5%. This is likely to benefit the larger parties and harm the smaller ones.
+
+
+
+@constructive_vonc
+subtitle: Votes of no confidence can only be called if an alternative plan for government formation can be passed, greatly reducing their incidence.
+view-if: constructive_vonc = 0
+
+[? if chancellor_party == "KPD" : The KPD is all too happy to accept this with the recent agreement for the position to be held by the KPD. ?][? if chancellor_party != "KPD" : The KPD does not have a strong stance on the idea, but is generally opposed for fear of it weakening their influence. ?]
+
+- @constructive_vonc_2: We will convince the KPD.
+- @other_amendments: See other reform options.
+
+@constructive_vonc_2
+choose-if: (negotiating_power >= amendment_cost) or chancellor_party == "KPD"
+on-arrival: constitutional_reform += 1; constructive_vonc = 1; negotiating_power -= amendment_cost if chancellor_party != "KPD"
+achievement: verfassungsreform
+go-to: constitutional
+
+We have successfully passed a constitutional amendment to ban votes of no confidence when a new government cannot be formed. Hopefully this increases the stability of our governments.
+
+@presidential_powers
+subtitle: The president can no longer dissolve the Reichstag at will, or call a *Reichsexekution* on state governments.
+view-if: presidential_powers = 0
+on-arrival: multiplier = 3.5 if kpd_party_leader != "Conciliators"; multiplier = 2 if kpd_party_leader = "Conciliators"
+
+The KPD is strongly opposed to the weakening of the presidency, viewing it as a direct attack on them and a push towards it as a signal of distrust. [? if kpd_party_leader == "Conciliators" : However, the Conciliator leadership of the KPD is more understanding, and will be easier to convince. ?]
+
+- @presidential_powers_2: We will convince the KPD.
+- @other_amendments: See other reform options.
+
+@presidential_powers_2
+choose-if: negotiating_power >= (amendment_cost*multiplier)
+unavailable_subtitle: The KPD is not willing to accept this.
+on-arrival: constitutional_reform += 1; presidential_powers = 1; negotiating_power -= (amendment_cost*multiplier)
+achievement: verfassungsreform
+go-to: constitutional
+
+We have successfully passed a constitutional amendment to limit presidential powers! Hopefully this results in a less authoritarian Germany.
+
+@decrees_kpd
+
+WIP!!!!
+
+- @the_agenda_kpd: Nice.
