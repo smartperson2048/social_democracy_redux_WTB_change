@@ -832,7 +832,7 @@ With the reactionaries rising up upon Thälmann's election, he never managed to 
 
 - @pieck: Accept the KPD pick, Wilhelm Pieck.
 - @eberlein: Accept the KPD pick, Hugo Eberlein.
-- @breitscheid: Nominate Rudolf Breitscheid from our party.
+- @breitscheid_kpd: Nominate Rudolf Breitscheid from our party.
 - @ossietzky: Perhaps the independent Carl von Ossietzky as a compromise?
 - @go_back: Back.
 
@@ -852,7 +852,7 @@ We accept the KPD's choice, Hugo Eberlein, conceding significant control over th
 
 - @the_agenda_kpd: Interesting.
 
-@breitscheid
+@breitscheid_kpd
 choose-if: negotiating power >= 10
 unavailable_subtitle: We lack the negotiating power to push for this.
 on-arrival: negotiating_power -= 10; chancellor_party = "SPD"; chancellor = "Breitscheid"
