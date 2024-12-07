@@ -965,6 +965,10 @@ The KPD is outraged at our outright refusal, but somehow accepts it, very reluct
 
 - @the_agenda_kpd: And so the constitution will remain unchanged...
 
+@go_back_3
+on-arrival: constitution_decided = 0
+go-to: the_agenda_kpd
+
 @other_amendments
 
 The KPD is willing to hear out our proposals.
