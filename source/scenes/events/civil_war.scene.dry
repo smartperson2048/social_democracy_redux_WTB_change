@@ -818,10 +818,13 @@ The defeat of the reactionaries leaves us and our socialist partners in near unc
 @the_agenda_kpd
 view-if: president == "Thälmann" and presidential_powers != 1
 on-arrival: negotiating_power = kpd_relation; negotiating_power += (spd_votes - kpd_votes); negotiating_power *= ((rb_strength*rb_militancy)/(rfb_strength*rfb_militancy)); negotiating_power -= ((left_strength/100)*left_dissent); negotiating_power *= 1.25 if kpd_party_leader == "Conciliators"; negotiating_power *= 0.75 if peoples_party = 1
+go-to: menu
 
 Unfortunately, we do not have much control over the agenda of the new Germany, as Thälmann is President and the Presidency retains its overarching powers. [? if kpd_party_leader == "Conciliators" : Luckily, the Conciliator leadership of the KPD will make them more amenable to moderation. ?]
 
 President Thälmann has prepared multiple decrees to pass via Article 48, and we will not be able to negotiate away all of them. 
+
+@menu
 
 DEBUG: [+ negotiating_power +]
 
@@ -901,10 +904,9 @@ We concede to the KPD's ministry demands, to their surprise. This will make nego
 choose-if: (negotiating_power >= (cabinet_stubborn/3)) or chancellor_party == "KPD"
 on-arrival: negotiating_power -= (cabinet_stubborn/3) if chancellor_party != "KPD"; individual_cabinet = ((cabinet_stubborn*(2/3))/5); labor_minister_party = "KPD"; economic_minister_party = "KPD"; interior_minister_party = "KPD"; foreign_minister_party = "KPD"; finance_minister_party = "KPD"; justice_minister_party = "SPD"; agriculture_minister_party = "SPD"; reichswehr_minister_party = "SPD"
 unavailable_subtitle: We do not have the negotiating power to negotiate them down from these demands.
+go-to: begin_ministries
 
 The KPD is happy to moderate their demands for ministries.
-
-- @begin_ministries: Excellent.
 
 @begin_ministries
 
@@ -1007,7 +1009,7 @@ We argue that the Center Party is in a sense proletarian, thanks to the leadersh
 view-if: z_party_leader != "Joos" and not z_safe
 unavailable_subtitle: We lack the negotiating power to successfully protest this.
 choose-if: negotiating_power >= (party_stubborn*2)
-on-arrival: negotiating_power -= party_stubborn; party_stubborn += 5; z_relation += 5; kpd_relation -= 5; z_safe = 1
+on-arrival: negotiating_power -= (party_stubborn*2); party_stubborn += 5; z_relation += 5; kpd_relation -= 5; z_safe = 1
 go-to: party_legality
 
 We defend the Center Party in spite of what the Communists view as their enabling of the Nazi threat and opposition to the working class. Still, they concede, reluctantly
@@ -1031,8 +1033,8 @@ on-arrival: z_banned = 1 if z_safe != 1; ddp_banned = 1 if ddp_safe != 1; dnvp_b
 go-to: the_agenda_kpd
 
 @constitution
-view-if: not constitution_decided
-on-arrival: constitution_decided = 1; constitution_stubborn = 80; constitution_stubborn -= 10 if kpd_party_leader == "Conciliators"
+view-if: not kpd_constitution_decided
+on-arrival: kpd_constitution_decided = 1; constitution_stubborn = 80; constitution_stubborn -= 10 if kpd_party_leader == "Conciliators"
 
 The KPD has many ideas for drastic changes to the German constitution, primarily for the transition to a council republic. With reactionaries crushed, it will be very difficult to convince the KPD not to transition to a council republic.
 
@@ -1068,7 +1070,7 @@ The KPD is outraged at our outright refusal, but somehow accepts it, very reluct
 - @the_agenda_kpd: And so the constitution will remain unchanged...
 
 @go_back_3
-on-arrival: constitution_decided = 0
+on-arrival: kpd_constitution_decided = 0
 go-to: the_agenda_kpd
 
 @other_amendments
@@ -1086,8 +1088,6 @@ The KPD is willing to hear out our proposals.
 subtitle: Change the vote threshold to 5% for parties to be represented in the Reichstag.
 view-if: electoral_threshold = 0
 
-# The left is opposed to this.
-
 The KPD is generally ambivalent towards the idea of an electoral threshold, but is more than happy to accept it, if perhaps for different reasons than us. The Left has however convinced them to oppose the amendment, if just theatrically.
 
 - @vote_threshold_3: We will convince the KPD.
@@ -1097,11 +1097,9 @@ The KPD is generally ambivalent towards the idea of an electoral threshold, but 
 @vote_threshold_3
 choose-if: negotiating_power >= (amendment_cost/2)
 unavailable_subtitle: We do not have the negotiating power to sway the KPD.
-on-arrival: constitutional_reform += 1; negotiating_power -= (amendment_cost/2); electoral_threshold = 5; ddp_relation -= 25; dvp_relation -= 25; left_dissent += 20; workers_other *= 0.1; new_middle_other *= 0.1; old_middle_other *= 0.1; rural_other *= 0.2; unemployed_other *= 0.2; catholics_other *= 0.1;
+on-arrival: constitutional_reform += 1; negotiating_power -= (amendment_cost/2); electoral_threshold = 5; ddp_relation -= 25; dvp_relation -= 25; left_dissent += 10; workers_other *= 0.1; new_middle_other *= 0.1; old_middle_other *= 0.1; rural_other *= 0.2; unemployed_other *= 0.2; catholics_other *= 0.1;
 achievement: verfassungsreform
 go-to: other_amendments
-
-# this should result in a redistribution of votes - other parties should not get so many votes anymore. maybe ddp and dvp get a recovery of middle-class votes? or maybe they flow to the others.
 
 We have passed a constitutional amendment to increase the electoral threshold to 5%. This is likely to benefit the larger parties and harm the smaller ones.
 
