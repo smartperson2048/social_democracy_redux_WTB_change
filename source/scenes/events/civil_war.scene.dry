@@ -880,7 +880,7 @@ As a compromise, we have nominated Carl von Ossietzky, an independent socialist.
 
 @go_back
 on-arrival: chancellorship_decided = 0
-go-to: the_agenda_kpd
+go-to: menu
 
 @cabinet_thalmann
 on-arrival: cabinet_stubborn = 50; cabinet_stubborn += 10 if kpd_party_leader == "Conciliators"; cabinet_stubborn -= 20 if chancellor_party == "KPD"; in_left_front = 1
@@ -898,11 +898,11 @@ on-arrival: kpd_relation += 10; negotiating_power += 10; negotiating_power += 10
 
 We concede to the KPD's ministry demands, to their surprise. This will make negotiating on other matters easier.
 
-- @the_agenda_kpd: Now, onwards...
+- @menu: Now, onwards...
 
 @negotiate
 choose-if: (negotiating_power >= (cabinet_stubborn/3)) or chancellor_party == "KPD"
-on-arrival: negotiating_power -= (cabinet_stubborn/3) if chancellor_party != "KPD"; individual_cabinet = ((cabinet_stubborn*(2/3))/5); labor_minister_party = "KPD"; economic_minister_party = "KPD"; interior_minister_party = "KPD"; foreign_minister_party = "KPD"; finance_minister_party = "KPD"; justice_minister_party = "SPD"; agriculture_minister_party = "SPD"; reichswehr_minister_party = "SPD"
+on-arrival: cabinet_spot = 0; negotiating_power -= (cabinet_stubborn/3) if chancellor_party != "KPD"; individual_cabinet = ((cabinet_stubborn*(2/3))/5); labor_minister_party = "KPD"; economic_minister_party = "KPD"; interior_minister_party = "KPD"; foreign_minister_party = "KPD"; finance_minister_party = "KPD"; justice_minister_party = "SPD"; agriculture_minister_party = "SPD"; reichswehr_minister_party = "SPD"
 unavailable_subtitle: We do not have the negotiating power to negotiate them down from these demands.
 go-to: begin_ministries
 
@@ -921,7 +921,7 @@ Which ministries will we pursuade them to drop?
 
 @sway_labor
 view-if: labor_minister_party == "KPD"
-choose-if: (negotiating_power >= individual_cabinet) and cabinet_spot < 5
+choose-if: (negotiating_power >= individual_cabinet) and cabinet_spot < 4
 unavailable_subtitle: The KPD is unwilling to negotiate any further.
 on-arrival: labor_minister_party = "SPD"; negotiating_power -= individual_cabinet; individual_cabinet += 5; cabinet_spot += 1
 
@@ -931,7 +931,7 @@ We have successfully convinced the KPD to let us have the Labor Ministry.
 
 @sway_interior
 view-if: interior_minister_party == "KPD"
-choose-if: (negotiating_power >= individual_cabinet) and cabinet_spot < 5
+choose-if: (negotiating_power >= individual_cabinet) and cabinet_spot < 4
 unavailable_subtitle: The KPD is unwilling to negotiate any further.
 on-arrival: interior_minister_party = "SPD"; negotiating_power -= individual_cabinet; individual_cabinet += 5; cabinet_spot += 1
 
@@ -941,7 +941,7 @@ We have successfully convinced the KPD to let us have the Interior Ministry.
 
 @sway_finance
 view-if: finance_minister_party == "KPD"
-choose-if: (negotiating_power >= individual_cabinet) and cabinet_spot < 5
+choose-if: (negotiating_power >= individual_cabinet) and cabinet_spot < 4
 unavailable_subtitle: The KPD is unwilling to negotiate any further.
 on-arrival: finance_minister_party = "SPD"; negotiating_power -= individual_cabinet; individual_cabinet += 5; cabinet_spot += 1
 
@@ -951,7 +951,7 @@ We have successfully convinced the KPD to let us have the Finance Ministry.
 
 @sway_economic
 view-if: economic_minister_party == "KPD"
-choose-if: (negotiating_power >= individual_cabinet) and cabinet_spot < 5
+choose-if: (negotiating_power >= individual_cabinet) and cabinet_spot < 4
 unavailable_subtitle: The KPD is unwilling to negotiate any further.
 on-arrival: economic_minister_party = "SPD"; negotiating_power -= individual_cabinet; individual_cabinet += 5; cabinet_spot += 1
 
@@ -961,7 +961,7 @@ We have successfully convinced the KPD to let us have the Economic Ministry.
 
 @sway_foreign
 view-if: foreign_minister_party == "KPD"
-choose-if: (negotiating_power >= individual_cabinet) and cabinet_spot < 5
+choose-if: (negotiating_power >= individual_cabinet) and cabinet_spot < 4
 unavailable_subtitle: The KPD is unwilling to negotiate any further.
 on-arrival: foreign_minister_party = "SPD"; negotiating_power -= individual_cabinet; individual_cabinet += 5; cabinet_spot += 1
 
@@ -971,7 +971,7 @@ We have successfully convinced the KPD to let us have the Foreign Ministry.
 
 @let_it_be
 view-if: cabinet_spot >= 1
-go-to: the_agenda_kpd
+go-to: menu
 
 We have concluded the cabinet talks.
 
@@ -981,7 +981,7 @@ on-arrival: negotiating_power -= (cabinet_stubborn*2); labor_minister_party = "S
 
 We manage to convince the KPD to allow us control over cabinet. Let's hope this will be worth it.
 
-- @the_agenda_kpd: Onwards...
+- @menu: Onwards...
 
 @party_legality
 view-if: party_decided != 1
@@ -1026,11 +1026,11 @@ We defend the DDP/DStP, to which the KPD theatrically objects but, not really vi
 @go_back_2
 view-if: z_safe + ddp_safe != 2
 on-arrival: party_decided = 0
-go-to: the_agenda_kpd
+go-to: menu
 
 @finalize_party
 on-arrival: z_banned = 1 if z_safe != 1; ddp_banned = 1 if ddp_safe != 1; dnvp_banned = 1; dvp_banned = 1; old_middle_dnvp *= 0.9; rural_dnvp *= 0.95; new_middle_dnvp *= 0.8; sh_strength *= 0.9; sh_militancy -= 0.05
-go-to: the_agenda_kpd
+go-to: menu
 
 @constitution
 view-if: not kpd_constitution_decided
@@ -1049,7 +1049,7 @@ on-arrival: amendment_cost = 30; reformist_dissent += 15; left_strength += 10; s
 We accept the KPD's demands for the move towards a council republic, satisfying them. We can push for other constitutional amendments, should we wish.
 
 - @other_amendments: Push for other constitutional amendments.
-- @the_agenda_kpd: The constitution is good as is.
+- @menu: The constitution is good as is.
 
 @conditional
 choose-if: negotiating_power >= constitution_stubborn
@@ -1067,11 +1067,11 @@ on-arrival: kpd_relation -= 15; negotiating_power -= (constitution_stubborn*2.5)
 
 The KPD is outraged at our outright refusal, but somehow accepts it, very reluctantly, perhaps due to our relative position of strength. They waste no time in publicizing our refusal and campaigning against us, and overall this does not bode well for cooperation.
 
-- @the_agenda_kpd: And so the constitution will remain unchanged...
+- @menu: And so the constitution will remain unchanged...
 
 @go_back_3
 on-arrival: kpd_constitution_decided = 0
-go-to: the_agenda_kpd
+go-to: menu
 
 @other_amendments
 
@@ -1080,7 +1080,7 @@ The KPD is willing to hear out our proposals.
 - @vote_threshold_kpd: Change the vote threshold.
 - @constructive_vonc_kpd: Ban non-constructive votes of no confidence.
 - @presidential_powers_kpd: Reduce presidential powers.
-- @the_agenda_kpd: We have done enough in this department. Next.
+- @menu: We have done enough in this department. Next.
 #- @constitutional_bans: Allow the banning of anti-constitutional parties.
 #- @constitutional_convention: Hold a constitutional convention to draft a wholly new constitution for the country.
 
@@ -1129,7 +1129,7 @@ on-arrival: multiplier = 3.5 if kpd_party_leader != "Conciliators"; multiplier =
 
 The KPD is strongly opposed to the weakening of the presidency, viewing it as a direct attack on them and a push towards it as a signal of distrust. [? if kpd_party_leader == "Conciliators" : However, the Conciliator leadership of the KPD is more understanding, and will be easier to convince. ?]
 
-- @presidential_powers_2: We will convince the KPD.
+- @presidential_powers_3: We will convince the KPD.
 - @other_amendments: See other reform options.
 
 @presidential_powers_3
@@ -1147,14 +1147,14 @@ on-arrival: decree_kpd_decided = 1
 
 WIP!!!!
 
-- @the_agenda_kpd: Nice.
+- @menu: Nice.
 
 @noske
 view-if: year = 1938
 
 I hate Noske sorry try another time.
 
-- @the_agenda_kpd: Aw man.
+- @menu: Aw man.
 
 @the_agenda_spd
 view-if: president != "Thälmann"
