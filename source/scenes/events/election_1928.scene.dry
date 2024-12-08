@@ -350,6 +350,7 @@ There are some potential coalition arrangements.
 - @no_majority
 - @brauns_dilemma
 - @left_coalition
+- @kpd_majority
 - @popular_front_coalition
 - @no_majority_hitler
 - @no_govt_3
@@ -584,7 +585,24 @@ In response to the KPD's entrance into the government, the right-wing immediatel
 - @civil_war: A civil war, then.
 
 
+@kpd_majority
+title: The KPD may govern alone.
+subtitle: KPD ([+ kpd_r +]%)
+view-if: kpd_r >= 50 and president == "Braun" or president == "Thälmann"
+go-to: kpd_thalmann if president == "Thälmann"; kpd_braun if president == "Braun"
 
+@kpd_thalmann
+
+The Communists have, somehow, won a majority on their own. President Thälmann appoints Wilhelm Pieck to preside over  KPD-only cabinet.
+
+- @game_over: The KPD is quick to consolidate power.
+
+@kpd_braun
+
+The Communists have, somehow, won a majority on their own. However, to actually take power, President Braun must appoint Thälmann Chancellor.
+
+- @game_over: We will appoint Thälmann as Chancellor.
+- @left_coalition: Perhaps they can include us?
 
 @right_coalition
 title: A right-wing coalition may be formed.
