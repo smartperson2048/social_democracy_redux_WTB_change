@@ -883,7 +883,7 @@ on-arrival: chancellorship_decided = 0
 go-to: menu
 
 @cabinet_thalmann
-on-arrival: cabinet_stubborn = 50; cabinet_stubborn += 10 if kpd_party_leader == "Conciliators"; cabinet_stubborn -= 20 if chancellor_party == "KPD"; in_left_front = 1
+on-arrival: cabinet_stubborn = 50; cabinet_stubborn += 10 if kpd_party_leader == "Conciliators"; cabinet_stubborn -= 20 if chancellor_party == "KPD"; in_left_front = 1; spd_toleration = 0; spd_in_government = 1
 
 The KPD, emboldened by their recent victories, has decided to themselves take positions on the cabinet rather than simply tolerate a Social Democratic one. 
 
@@ -1125,7 +1125,7 @@ We have successfully passed a constitutional amendment to ban votes of no confid
 @presidential_powers_kpd
 subtitle: The president can no longer dissolve the Reichstag at will, or call a *Reichsexekution* on state governments.
 view-if: presidential_powers = 0
-on-arrival: multiplier = 3.5 if kpd_party_leader != "Conciliators"; multiplier = 2 if kpd_party_leader = "Conciliators"
+on-arrival: multiplier = 3.5 if kpd_party_leader != "Conciliators"; multiplier = 2 if kpd_party_leader = "Conciliators"; multiplier += 0.5 if no_enabling
 
 The KPD is strongly opposed to the weakening of the presidency, viewing it as a direct attack on them and a push towards it as a signal of distrust. [? if kpd_party_leader == "Conciliators" : However, the Conciliator leadership of the KPD is more understanding, and will be easier to convince. ?]
 
@@ -1143,11 +1143,137 @@ We have successfully passed a constitutional amendment to limit presidential pow
 
 @decrees_kpd
 view-if: not decree_kpd_decided
+
+President Thälmann has many decrees planned which he intends to pass through Article 48 of the constitution. Many of these are likely non-negotiable to the KPD, but we can do our best to convince him not to pursue some of them.
+
+- @land_social_kpd: Mass socialization and collectivization of land.
+- @wealth_seizure_kpd: Mass seizure of wealth.
+- @mass_nationalize: Mass nationalizations of industry.
+- @enable_kpd: An "Enabling Act" to help eliminate the reactionaries.
+- @done: We have decided on everything.
+- @go_back_4: Back.
+
+@land_social_kpd
+view-if: land_decided != 1
+on-arrival: land_social_cost = (6 - land_reform); land_seizure_cost = (4 - land_reform); land_stubborn = 40; land_stubborn -= 10 if kpd_party_leader == "Conciliators"; land_stubborn += 10 if land_reform < 1
+
+The Communists have written up a comprehensive plan for the socialization and collectivization of land, going beyond simple redistribution to farmers but towards the complete revolutionizing of the countryside.
+
+Many in our party worry that such radical changes in land ownership may jeopardize our food security, however. What should we do?
+
+- @accept_social: Allow the decree.
+- @negotiate_social: Negotiate the Communists down to a simple land reform program.
+- @refuse_social: Convince the KPD to drop the decree altogether.
+
+@accept_social
+subtitle: -[+ land_social_cost +] budget.
+on-arrival: budget -= land_social_cost; land_decided = 1; socialized_land = 1; reformist_dissent += 5; negotiating_power += 10 if chancellor_party == "KPD"; land_reform += land_social_cost; pro_republic -= (4*land_social_cost); rural_kpd += land_social_cost; rural_nsdap -= (land_social_cost*2); unemployed -= land_social_cost if unemployed >= land_social_cost; dvp_relation -= (7*land_social_cost); z_relation -= (6*land_social_cost); ddp_relation -= (4*land_social_cost); left_strength += (10*land_social_cost); left_dissent -= (8*land_social_cost); rural_sol += land_social_cost; sa_strength += 50; sh_strength += 25; sa_militancy += 0.05
+
+The decree is signed, and a mass campaign of socialization and collectivization in the countrysides begins. For the time being, it proceeds largely without hickup, but many in the SPD are still wary.
+
+- @decrees_kpd: Next on the agenda...
+
+@negotiate_social
+subtitle: -[+ land_seizure_cost +] budget.
+unavailable_subtitle: The Communists are unwilling to concede on this issue.
+choose-if: negotiating_power >= (land_stubborn/2)
+on-arrival: negotiating_power -= (land_stubborn/2); budget -= land_seizure_cost; land_decided = 1; land_reform += land_seizure_cost; pro_republic -= (4*land_seizure_cost); rural_kpd += (land_seizure_cost*3); rural_spd += ((land_seizure_cost*2)*(1-dissent)); rural_nsdap -= land_seizure_cost*(4*(1-dissent)); unemployed -= land_seizure_cost if unemployed >= 5; dvp_relation -= (5*land_seizure_cost); z_relation -= (4*land_seizure_cost); left_strength += (8*land_seizure_cost); left_dissent -= (5*land_seizure_cost); rural_sol += (3*land_seizure_cost); rural_policy += land_seizure_cost; sa_strength += 25; sh_strength += 10; sa_militancy += 0.05
+
+The Communists yield and agree to a more moderate program of land seizure, still dismantling the reactionary powerbase in the countryside without as much upsetting the power balance there.
+
+- @decrees_kpd: Next on the agenda...
+
+@refuse_social
+subtitle: This may offend the KPD.
+choose-if: negotiating_power >= land_stubborn
+unavailable_subtitle: The Communists are unwilling to concede on this issue.
+on-arrival: negotiating_power -= land_stubborn; kpd_relation -= 5; kpd_coalition_dissent += 1 if chancellor_party != "KPD"; rural_spd -= 3; land_decided = 1
+
+The KPD is shocked at our unwillingness to pursue any agrarian reforms at the moment but concedes. They will surely demand other concessions if not this, however.
+
+- @decrees_kpd: Next on the agenda...
+
+@wealth_seizure_kpd
+view-if: wealth_decided != 1
+on-arrival: wealth_stubborn = 60; wealth_stubborn -= 20 if kpd_party_leader == "Conciliators"
+
+In order to finance their other programs, the KPD have made a plan for the seizure of assets from the rich, nationalization of the Reichsbank, and other such measures. Such an action would however surely provoke a confrontation with the capitalists.
+
+- @accept_seizure: Allow the decree.
+- @refuse_seizure: Convince the KPD to drop the decree.
+
+@accept_seizure
+on-arrival: wealth_decided = 1; wealth_seized = 1; upper_tax_rates += 3; workers_spd += 6*(1-dissent); unemployed_spd += 6*(1-dissent); z_relation -= 10; ddp_relation -= 12; dvp_relation -= 16; pro_republic -= 8; budget += 6; capital_strike_progress = 10; old_middle_spd *= 0.25; new_middle_spd *= 0.6
+
+We allow the KPD to go forward with the decree, greatly increasing the budget available to be spent by the government on other directives.
+
+- @decrees_kpd: Next on the agenda...
+
+@refuse_seizure
+choose-if: negotiating_power >= wealth_stubborn
+on-arrival: kpd_relation -= 5; kpd_coalition_dissent += 1 if chancellor_party != "KPD"; negotiating_power -= wealth_stubborn; left_dissent += 10; wealth_decided = 1
+
+- @decrees_kpd: Next on the agenda...
+
+@mass_nationalize
+view-if: left_decided != 1
+on-arrival: left_stubborn = 100; left_stubborn -= 10 if chancellor_party == "KPD" and kpd_party_leader != "Conciliators"
+
+Wanting to bring the economy under state control, the KPD has prepared a decree for the mass nationalizations of industry, claiming it will bring an end to the Great Depression and by dismantling capitalism ensure one never happens again.
+
+- @allow_nationalization: Allow the decree.
+- @refuse_nationalization: Convince the KPD to drop the decree.
+
+@allow_nationalization
+on-arrival: left_decided = 1; nationalization_progress += 1; pro_republic -= 6; capital_strike_progress += 2; unemployed -= 3.5 if unemployed >= 6; new_middle_kpd += 5 if economic_minister_party == "KPD"; unemployed -= 1.2 if works_councils >= 3; workers += 2.5; budget -= nationalize_budget; works_program += 1; workers_kpd += 6; unemployed_kpd += 4; coalition_dissent += 1; dvp_relation -= 4; left_dissent -= 5; old_middle_spd -= 2; economy_goal_completed += 1; inflation += 2
+
+We allow the decree to go ahead, with large swaths of the economy soon being quickly brought under public control. [? if economic_minister_party == "KPD" : Control over the state-run industries falls to the KPD-run Economic Ministry, leading to an expanding bureaucratic base of their party. ?]
+
+# TODO: distinction between deficit or no deficit
+
+- @decrees_kpd: Next on the agenda...
+
+@refuse_nationalization
+choose-if: negotiating_power >= left_stubborn
+unavailable_subtitle: The KPD will not back down on this matter.
+on-arrival: kpd_relation -= 10; left_dissent += 5; workers_spd -= 5; workers_kpd += 5; kpd_coalition_dissent += 1; kpd_coalition_dissent += 1 if chancellor_party != "KPD"; left_decided = 1; negotiating_power -= left_stubborn
+
+We convince the KPD not to go ahead with the mass nationalization, though they by no means have dropped the idea, and likely only backed down due to our position of relative strength in comparison. They campaign against us and overall this spat does not bode well for our cooperation long term.
+
+- @decrees_kpd: Next on the agenda...
+
+@enable_kpd
+view-if: enable_decided != 1
+on-arrival: enable_stubborn = 100; enable_stubborn -= 50 if kpd_party_leader == "Conciliators"; enable_stubborn *= 1.25 if presidential_powers == 1
+
+The KPD, arguing its necessity in rooting out the reactionaries for good, has drafted an "Enabling Act" giving even further sweeping powers to the presidency as well as the cabinet. [? if kpd_party_leader != "Conciliators" : The KPD is quite insistent on this proposal, leading many to believe it as a pretext for a consolidation of power into their hands. ?]
+
+- @accept_enabling: Allow the decree.
+- @refuse_enabling: Convince the KPD to drop the decree.
+
+@accept_enabling
+on-arrival: negotiating_power += 10 if chancellor_party == "KPD"; negotiating_power += 10 if presidential_powers != 1; enable_decided = 1; workers_kpd += 10; rfb_strength += 100; rfb_militancy += 0.05; reichswehr_militancy -= 0.05; unemployed_kpd += 10; unemployed_nsdap -= 10; new_middle_kpd += 10 if chancellor_party == "KPD"; old_middle_nsdap -= 10; new_middle_nsdap -= 10; rural_nsdap -= 10; strife += 1; pro_republic -= 10; z_relation -= 6; z_relation -= 6 if z_party_leader == "Kaas"; ddp_relation -= 5; dvp_relation -= 12; enabling_act = 1; reformist_dissent += 10; neorevisonist_dissent += 15
+
+We allow the KPD to go ahead with their Enabling Act. Immediately, mass crackdowns are launched on the remaining Nazi Party bases, while similar ones are prepared against the other right-wing parties that were banned. Reformists and Neorevisionists protest our compliance in what they view as blatant consolidation of power by the Soviets.
+
+- @decrees_kpd: Next on the agenda...
+
+@refuse_enabling
+choose-if: negotiating_power >= enable_stubborn
+on-arrival: negotiating_power -= enable_stubborn; kpd_relation -= 5 if kpd_party_leader != "Conciliators"; enable_decided = 1
+unavailable_subtitle: The KPD is not willing to budge on this demand.
+
+We convince the KPD not to pursue this decree, arguing that it would only bolster the conviction of anti-republican forces and make us appear no better than them. [? if kpd_party_leader != "Conciliators" : The KPD labels us as weak-willed constitutionalists and says that our inaction will allow reactionary resurgence, but backs down nonetheless. ?]
+
+- @decrees_kpd: Next on the agenda...
+
+@done
+view-if: land_decided == 1 and wealth_decided == 1 and left_decided == 1 and enable_decided == 1
 on-arrival: decree_kpd_decided = 1
 
-WIP!!!!
-
-- @menu: Nice.
+@go_back_4
+view-if: land_decided != 1 or wealth_decided != 1 or left_decided != 1 or enable_decided != 1
+on-arrival: decree_kpd_decided = 0
 
 @noske
 view-if: year = 1938
