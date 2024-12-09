@@ -1270,10 +1270,12 @@ We convince the KPD not to pursue this decree, arguing that it would only bolste
 @done
 view-if: land_decided == 1 and wealth_decided == 1 and left_decided == 1 and enable_decided == 1
 on-arrival: decree_kpd_decided = 1
+go-to: menu
 
 @go_back_4
 view-if: land_decided != 1 or wealth_decided != 1 or left_decided != 1 or enable_decided != 1
 on-arrival: decree_kpd_decided = 0
+go-to: menu
 
 @noske
 view-if: year = 1938
