@@ -62,7 +62,7 @@ header h2:before {
   border-top: 1px solid #000;
   height: 1px;
   width: 20%;
-  position: center;
+  clear: left;
 }
 #content h1:first-child {
   margin-top: 0.5em;
@@ -547,3 +547,7 @@ table {
     fill: #954B00;
 }
 
+.tooltip-text {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+}
