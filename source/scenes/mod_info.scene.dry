@@ -12,6 +12,7 @@ This mod adds a variety of changes to the base game, mostly in the form of flavo
 - @economics: Economic changes
 - @left: Left Plan flavor
 - @sapd: SAPD flavor
+- @civil_war_flavor: Civil War flavor
 - @weakened_presidency_hitler: Weakened Presidency + Hitler takeover flavor
 - @coalition_flavor: Coalition flavor
 - @minor_changes: Other minor changes
@@ -49,6 +50,14 @@ Somewhat a work in progress, there is also flavor for the Left Plan. If relation
 = SAPD flavor
 
 The SAPD is now a distinct party rather than being lumped in with the right-wing "Others"! It also has its own event allowing it to consolidate into an actually formidable force amongst workers if you lean too hard into Volkspartei rhetoric or if Labor, Left and Center all defect, and can then use its position to try and organize an Einheitsfront, with penalties for the SPD and KPD if they refuse.
+
+- @flavors: Back
+
+@civil_war_flavor
+
+= Civil War Flavor
+
+You can play even after a Victory for the Republic outcome in a civil war.
 
 - @flavors: Back
 
@@ -95,6 +104,8 @@ The mod also contains many small changes that I felt would be good additions to 
 **17/10/2024**: More balancing and changes to Direct Democracy; cooldown on certain topics for petitions, higher resource investment, but also higher support increases. Other bug fixes and tweaks.
 
 **19/10/2024**: WIP experimental changes to NSDAP popularity changes
+
+**10/12/2024**: Victory for the Republic made playable, including scenarios for where it results from a KPD presidency.
 
 - @flavors: Back
 
