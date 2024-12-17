@@ -6,6 +6,8 @@ on-arrival: workers_spd *= 0.9 if chancellor_party == "SPD"; workers_spd *= 0.9 
 tags: event
 max-visits: 1
 
+= The Hunger Chancellor
+
 People are calling Chancellor [+ chancellor +] the Hunger Chancellor because of his perceived callousness in the face of the depression. [? if chancellor_party == "SPD" : This is obviously a very bad sign for us. ?]
 
 [? if spd_toleration == 1 : As we are currently tolerating the [+ chancellor +] government, this could very well reflect badly on us. ?]

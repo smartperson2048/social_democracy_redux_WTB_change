@@ -1,0 +1,10 @@
+on-arrival: {!
+// Einigkeit - survive on easy without a civil war.
+// Einigkeit und Recht - survive on medium without a civil war.
+@@ -27,11 +21,6 @@ if (Q.difficulty >= 0 && Q.president == "Braun" && !(Q.chancellor == "Hitler") &
+if (!Q.economic_plan) {
+    this.achieve('freie_marktwirtschaft');
+}
+!}
+
+- @game_over: Game over.
