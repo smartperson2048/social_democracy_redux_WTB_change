@@ -5,6 +5,7 @@ tags: govt_affairs
 on-arrival: military_policy_timer += 6; month_actions += 1
 view-if: spd_in_government = 1 and reichswehr_minister_party = "SPD" and military_policy_timer <= 0
 card-image: img/portraits/LeberJulius.jpg
+#subtitle: Dealing with the Reichswehr.
 
 = Military Policy
 
@@ -15,6 +16,7 @@ The Reichswehr is a deeply reactionary institution that has been generally hosti
 - @reform: Conduct a thorough reform of the ranks, reducing the influence of reactionaries and making it more hospitable to us.
 - @root: No change to military policy.
 - @easy_discard
+- @cancel_advisor_action
 
 @increase_funding
 subtitle: -1 budget

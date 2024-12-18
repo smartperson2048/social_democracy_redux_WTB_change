@@ -5,6 +5,7 @@ view-if: spd_prussia = 1 and prussian_affairs_timer <= 0
 on-arrival: prussian_affairs_timer += 6; month_actions += 1
 tags: govt_affairs
 card-image: img/braun.jpg
+#subtitle: The state government of Prussia is a bulwark of democracy...
 
 = Prussian Affairs
 
@@ -25,6 +26,7 @@ We can enact policies in Prussia.
 - @sign_concordat: Sign a concordat with the Vatican.
 - @root: No new policies are needed.
 - @easy_discard
+- @cancel_advisor_action
 
 @police_loyalty
 view-if: prussian_police_loyalty < 1
