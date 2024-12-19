@@ -1,6 +1,7 @@
 title: Crisis in the Army
 subtitle: The Reichswehr refuses to follow the Communists...
 new-page: true
+tags: event
 view-if: reichswehr_minister_party == "KPD"
 
 A crisis! With the KPD taking control over the Reichswehr Ministry in our most recent coalition, generals in the army have openly refused to cooperate. Entire barracks and garrisons have effectively risen up in defiance, while the KPD, for their part, have prepared an extensive set of reforms which would effectively dissolve the Reichswehr entirely. 
