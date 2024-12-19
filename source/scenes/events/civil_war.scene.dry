@@ -231,7 +231,7 @@ The battle lines hold, and the SA, Stahlhelm, and pro-coup Reichswehr forces are
 - @agenda_kpd: We must decide our new agenda.
 
 @agenda_gov
-view-if: nazi_rebel = 1 and president != "Thälmann" and chancellor_party != "KPD"
+view-if: nazi_rebel = 1 and president != "Thälmann"
 
 The defeat of the reactionaries presents to us a unique opportunity. We have multiple issues to address.
 
@@ -346,14 +346,88 @@ We choose to abolish the presidency entirely, in favor of a strictly parliamenta
 
 @chancellorship
 view-if: not chancellorship_decided
-on-arrival: leverage = spd_votes; chancellorship_decided = 1; spd_in_government = 1; in_weimar_coalition = 1;
+on-arrival: leverage = spd_votes; chancellorship_decided = 1; spd_in_government = 1; spd_toleration = 0;
 
-Having deposed the Nazi cabinet through our civil war, we must decide how to fill these roles and distribute positions in our post-war provisional government. First comes the question of the Chancellorship.
+Having deposed the Nazi cabinet through our civil war, we must decide how to fill these roles and distribute positions in our post-war provisional government. Before anything else however, we must choose which party to build our provisional government with.
+
+- @kpd_coalition: Naturally, the Communists.
+- @weimar_coalition_: Naturally, our Weimar partners.
+- @antifa: Perhaps we can build one with both?
+- @no_allies: The SPD will govern alone.
+
+@kpd_coalition
+view-if: kpd_relation >= 45 and communist_coalition >= 3 and kpd_tried != 1
+go-to: chancellor_kpd if kpd_relation >= 60; sway_kpd if kpd relation < 60
+
+We can pursue the building of a provisional government with the Communists. They will be more likely to approve of radical changes that our Weimar partners would oppose.
+
+@chancellor_kpd
+on-arrival: in_left_front = 1; kpd_relation += 5; z_relation -= 5; ddp_relation -= 5; dvp_relation -= 10; leverage *= ((rb_strength*rb_militancy)/(rfb_strength*rfb_militancy)); time_to_election = 3
+call: set_next_election_time
+
+The Communists are happy to join our provisional government. Who should we choose to be chancellor?
+
+- @breitscheid_2: Appoint Rudolf Breitscheid.
+- @thalmann: Appoint Ernst Thälmann of the Communists.
+
+@sway_kpd
+on-arrival: z_relation -= 5; ddp_relation -= 5; dvp_relation -= 10
+on-departure: kpd_tried = 1
+
+The Communists are demanding the position of Chancellor as a prerequisite to participation in the provisional government. We can concede, look for other partners, or satisfy them in other ways.
+
+- @thalmann: We will concede the Chancellorship to Ernst Thälmann of the Communists.
+- @bribe: Smooth things over with our resources, and appoint Rudolf Breitscheid.
+- @chancellorship: The Communists are unworkable. We'll find other allies.
+
+@bribe
+subtitle: -3 resources.
+on-arrival: resources -= 3; unemployed_kpd += 3; workers_kpd += 3; chancellor = "Breitscheid"; chancellor_party = "SPD"; leverage *= ((rb_strength*rb_militancy)/(rfb_strength*rfb_militancy)); time_to_election = 3
+call: set_next_election_time
+go-to: cabinet_kpd
+
+The Communists concede, and agree to form a coalition.
+
+@weimar_coalition_
+view-if: z_relation >= 40 and ddp_relation >= 20
+on-arrival: in_weimar_coalition = 1; time_to_election = 3
+call: set_next_election_time
 
 - @breitscheid: Appoint Rudolf Breitscheid.
 - @wels: Appoint Otto Wels.
 - @bruning: Appoint Heinrich Brüning of the Center.
-- @thalmann: Appoint Ernst Thälmann of the Communists.
+
+@antifa
+view-if: ((((kpd_relation >= 65 and kpd_party_leader == "Thälmann") or (kpd_relation >= 45 and kpd_party_leader == "Conciliators")) and ((z_relation >= 45 and z_party_leader == "Joos") or (z_relation >= 65 and z_party_leader != "Joos" and kpd_party_leader != "Conciliators") or (z_relation >= 55 and z_party_leader != "Joos" and kpd_party_leader == "Conciliators")) and ddp_relation >= 50 and communist_coalition >= 3) or (z_party_leader == "Joos" and kpd_party_leader == "Conciliators" and z_relation >= 30 and kpd_relation >= 30))
+on-arrival: in_popular_front = 1; leverage *= 0.8; chancellor = "Breitscheid"; chancellor_party = "SPD"; antifa_gov = 1; time_to_election = 3
+call: set_next_election_time
+
+Surprisingly, both the Communists and the Center Party are willing to form a provisional Popular Front government headed by Breitscheid, and due to the changed circumstances the Communists are even willing to take a spot or two on the cabinet. The only position the Center Party is willing to concede to the Communists is the Interior or Labor Ministry.
+
+- @ministries: Let's see.
+
+@no_allies
+on-arrival: in_spd_majority = 1; pro_republic -= 10; rfb_strength += 100; sa_strength += 25; workers_spd -= 3; new_middle_spd -= 3; sh_strength += 50; rb_strength -= 100; z_relation -= 10; ddp_relation -= 10; dvp_relation -= 10; kpd_relation -= 10; coup_progress += 3; reichswehr_loyalty -= 0.05; labor_minister_party = "SPD"; interior_minister_party = "SPD"; finance_minister_party = "SPD"; justice_minister_party = "SPD"; economic_minister_party = "SPD"; foreign_minister_party = "SPD"; agriculture_minister_party = "SPD"; reichswehr_minister_party = "SPD"
+
+We have been forced to rule solely in our provisional govenrment. This has hurt confidence in the post-war government, and all the parties have scrambled to oppose us. At least we will be going ahead with snap elections, right?
+
+- @of_course: Of course.
+- @mocharooms: How can we hold elections in an environment this volatile?
+
+@of_course
+call: set_next_election_time
+on-arrival: time_to_election = 3
+
+We would never do something so blatantly undemocratic as to cancel elections, of course.
+
+- @agenda_reb: Indeed so. We would never.
+
+@mocharooms
+on-arrival: pro_republic -= 3; coup_progress += 2
+
+Are...are you s-sure about this, Mr. Braun? Really? Okay, if you say so...I'll get to it. We won't let those Nazis...we won't...why are you looking at me like that? Mr. Braun?
+
+- @agenda_reb: Let's move on.
 
 @breitscheid
 on-arrival: chancellor = "Breitscheid"; chancellor_party = "SPD"
@@ -373,16 +447,188 @@ on-arrival: chancellor = "Brüning"; chancellor_party = "Z"; leverage += 5; z_re
 
 @thalmann
 view-if: kpd_relation >= 60 and left_strength > reformist_strength + center_strength + neorevisionist_strength
-on-arrival: chancellor = "Thälmann"; chancellor_party = "KPD"; z_relation -= 10; kpd_relation += 5; leverage *= 2
+on-arrival: chancellor = "Thälmann"; chancellor_party = "KPD"; z_relation -= 10; reformist_dissent += 10; kpd_relation += 5; leverage *= (2*((rb_strength*rb_militancy)/(rfb_strength*rfb_militancy))); time_to_election = 3
+call: set_next_election_time
+
+- @cabinet_kpd: Now for the cabinet.
+
+@breitscheid_2
+on-arrival: chancellor = "Breitscheid"; chancellor_party = "SPD"
 
 - @cabinet_kpd: Now for the cabinet.
 
 @cabinet_kpd
-on-arrival: chancellorship_decided = 0
 
-Unfinished. Like, super. Unfinished. This is basically for when I eventually overhaul the post-war provisional government so you can have sole SPD government or work with the KPD too. Don't pick Thalmann please.
+Now we must build our provisional government, and decide which cabinet positions will go to whom. [? if chancellor_party == "KPD" : The Communists are satisfied by our concession of the Chancellorship and are less likely to demand many positions. ?]
 
-- @chancellorship: Aw, ok.
+Anything that we don't take will go to the KPD. 
+
+- #mins_kpd
+- #drop_mins_kpd
+
+@labor_kpd
+title: Labor Ministry
+subtitle: Taking the Labor Ministry is expected of us. [? if historical_mode : Labor will be displeased if we do not. ?]
+unavailable-subtitle: We do not have enough leverage.
+tags: mins_kpd
+choose-if: leverage >= 5
+view-if: labor_minister_party != "SPD"
+on-arrival: leverage -= 5; labor_minister_party = "SPD"; labor_minister = "Wissell"
+go-to: cabinet_kpd
+
+Rudolf Wissell of the SPD has been appointed labor minister.
+
+@interior_kpd
+title: Interior Ministry
+subtitle: Taking the Interior Ministry is expected of us. The Interior Ministry controls domestic security.
+unavailable-subtitle: We do not have enough leverage.
+tags: mins_kpd
+choose-if: leverage >= 5
+view-if: interior_minister_party != "SPD"
+on-arrival: leverage -= 5; interior_minister_party = "SPD"; interior_minister = "Severing"
+go-to: cabinet_kpd
+
+Carl Severing of the SPD has been appointed Interior Minister.
+
+@finance_kpd
+title: Finance Ministry
+subtitle: The Finance Ministry controls the government budget and taxes.
+unavailable-subtitle: We do not have enough leverage.
+tags: mins_kpd
+choose-if: leverage >= 10 
+view-if: finance_minister_party != "SPD"
+on-arrival: leverage -= 10; finance_minister_party = "SPD"; finance_minister = "Hilferding"
+go-to: cabinet_kpd
+
+Rudolf Hilferding of the SPD has been appointed Finance Minister.
+
+@economic_kpd
+title: Economic Ministry
+subtitle: The Economic Ministry controls broader economic policy.
+unavailable-subtitle: We do not have enough leverage.
+tags: mins_kpd
+choose-if: leverage >= 10 
+view-if: economic_minister_party != "SPD"
+on-arrival: leverage -= 10; economic_minister_party = "SPD"; economic_minister = "Schmidt"
+go-to: cabinet_kpd
+
+Robert Schmidt of the SPD has been appointed Economic Minister.
+
+@justice_kpd
+title: Justice Ministry
+subtitle: The Justice Ministry controls the courts.
+unavailable-subtitle: We do not have enough leverage.
+tags: mins_kpd
+choose-if: leverage >= 10 
+view-if: justice_minister_party != "SPD"
+on-arrival: leverage -= 10; justice_minister_party = "SPD"; justice_minister = "Radbruch"
+go-to: cabinet_kpd
+
+Gustav Radbruch of the SPD has been appointed Justice Minister.
+
+@foreign_kpd
+title: Foreign Ministry
+subtitle: This is usually the domain of Gustav Stresemann of the DVP.
+unavailable-subtitle: We do not have enough leverage.
+tags: mins_kpd
+choose-if: leverage >= 10 
+view-if: foreign_minister_party != "SPD"
+on-arrival: leverage -= 10; foreign_minister_party = "SPD"; foreign_minister = "Breitscheid"
+go-to: cabinet_kpd
+
+Rudolf Breitscheid of the SPD has been appointed Foreign Minister.
+
+
+@agriculture_kpd
+title: Agricultural Ministry
+subtitle: This is not our usual domain.
+unavailable-subtitle: We do not have enough leverage.
+choose-if: leverage >= 10 
+view-if: agriculture_minister_party != "SPD"
+on-arrival: leverage -= 10; agriculture_minister_party = "SPD"; agriculture_minister = "Baade"
+go-to: cabinet_kpd
+tags: mins_kpd
+
+Fritz Baade of the SPD has been appointed Agriculture Minister.
+
+@reichswehr_kpd
+title: Reichswehr Ministry
+subtitle: Leaving this to the Communists could lead to a coup.
+unavailable-subtitle: We do not have enough leverage.
+tags: mins_kpd
+choose-if: leverage >= 5 
+view-if: reichswehr_minister_party != "SPD"
+on-arrival: leverage -= 5; reichswehr_minister_party = "SPD"; reichswehr_minister = "Leber"
+go-to: cabinet_kpd
+
+Julius Leber of the SPD has been appointed Reichswehr Minister.
+
+
+
+@no_more_kpd
+title: No more ministries.
+on-arrival: labor_dissent += 10 if historical_mode and labor_minister_party != "SPD"
+subtitle: [? if leverage >= 10 : We still have some more leverage to gain ministries. ?][? if leverage < 10 : We do not have much leverage left. ?]
+tags: mins_kpd
+go-to: agenda_reb
+
+This coalition arrangement is tolerable to all.
+
+@drop_labor_kpd
+title: Drop the Labor Ministry.
+view-if: labor_minister_party = "SPD"
+on-arrival: labor_minister_party = "KPD"; leverage += 5;
+tags: drop_mins_kpd
+go-to: cabinet_kpd
+
+@drop_interior_kpd
+title: Drop the Interior Ministry.
+view-if: interior_minister_party = "SPD"
+on-arrival: interior_minister_party = "KPD"; leverage += 5;
+tags: drop_mins_kpd
+go-to: cabinet_kpd
+
+@drop_finance_kpd
+title: Drop the Finance Ministry.
+view-if: finance_minister_party = "SPD"
+on-arrival: leverage += 10; finance_minister_party = "KPD"
+tags: drop_mins_kpd
+go-to: cabinet_kpd
+
+@drop_economic_kpd
+title: Drop the Economic Ministry.
+view-if: economic_minister_party = "SPD"
+on-arrival: leverage += 10; economic_minister_party = "KPD"
+tags: drop_mins_kpd
+go-to: cabinet_kpd
+
+@drop_justice_kpd
+title: Drop the Justice Ministry.
+view-if: justice_minister_party = "SPD"
+on-arrival: justice_minister_party = "KPD"; leverage += 10;
+tags: drop_mins_kpd
+go-to: cabinet_kpd
+
+@drop_foreign_kpd
+title: Drop the Foreign Ministry.
+view-if: foreign_minister_party = "SPD"
+on-arrival: leverage += 10; foreign_minister_party = "KPD"
+tags: drop_mins_kpd
+go-to: cabinet_kpd
+
+@drop_agriculture_kpd
+title: Drop the Agriculture Ministry.
+view-if: agriculture_minister_party = "SPD"
+on-arrival: agriculture_minister_party = "KPD"; leverage += 10
+tags: drop_mins_kpd
+go-to: cabinet_kpd
+
+@drop_reichswehr_kpd
+title: Drop the Reichswehr Ministry.
+view-if: reichswehr_minister_party = "SPD"
+on-arrival: reichswehr_minister_party = "KPD"; leverage += 5;
+tags: drop_mins_kpd
+go-to: cabinet_kpd
 
 @ministries
 
@@ -494,7 +740,7 @@ Julius Leber of the SPD has been appointed Reichswehr Minister.
 
 @no_more
 title: No more ministries.
-on-arrival: labor_dissent += 10 if historical_mode and labor_minister_party != "SPD"
+on-arrival: labor_dissent += 10 if historical_mode and labor_minister_party != "SPD"; antifa_gov = 0
 subtitle: [? if leverage >= 10 : We still have some more leverage to gain ministries. ?][? if leverage < 10 : We do not have much leverage left. ?]
 tags: mins_emergency
 go-to: agenda_reb
@@ -504,14 +750,14 @@ This coalition arrangement is tolerable to all.
 @drop_labor
 title: Drop the Labor Ministry.
 view-if: labor_minister_party = "SPD"
-on-arrival: labor_minister_party = "Z"; labor_minister = "Stegerwald"; leverage += 5;
+on-arrival: labor_minister_party = "Z" if antifa_gov != 1; labor_minister = "Stegerwald" if antifa_gov != 1; leverage += 5; labor_minister_party = "KPD" if antifa_gov
 tags: drop_mins_emergency
 go-to: ministries
 
 @drop_interior
 title: Drop the Interior Ministry.
 view-if: interior_minister_party = "SPD"
-on-arrival: interior_minister_party = "Z"; interior_minister = "Wirth"; leverage += 5;
+on-arrival: interior_minister_party = "Z" if antifa_gov != 1; interior_minister = "Wirth" if antifa_gov != 1; leverage += 5; interior_minister_party = "KPD" if antifa_gov
 tags: drop_mins_emergency
 go-to: ministries
 
@@ -806,7 +1052,7 @@ We have banned the KPD. Many workers desert, agitated by the KPD to do so, while
 - @agenda_reb: Continue...
 
 @agenda_kpd
-view-if: president == "Thälmann" or chancellor_party == "KPD"
+view-if: president == "Thälmann"
 on-arrival: workers_kpd += 10; workers_spd -= 5; unemployed_kpd += 15; unemployed_spd -= 5; unemployed_nsdap -= 5; rfb_strength += 100; rb_strength -= 75; rfb_militancy += 0.05
 
 The defeat of the reactionaries leaves us and our socialist partners in near uncontested control over the country. [? if president == "Thälmann" : However, the KPD has a significant upper hand in this relationship, so we must be careful. ?]

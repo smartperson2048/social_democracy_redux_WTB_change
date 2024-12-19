@@ -259,8 +259,8 @@ if (Q.month_actions >= 1) {
         Q.old_middle_ddp -= 6/12;
         Q.new_middle_nsdap += 10/12;
         Q.old_middle_nsdap += 10/12;
-        Q.new_middle_other += 4/12;
-        Q.old_middle_other += 4/12;
+        Q.new_middle_other -= 3/12;
+        Q.old_middle_other -= 3/12;
         Q.unemployed_nsdap += 4/12;
         Q.rural_other += 5/12;
         if (!Q.sa_banned) {
@@ -293,8 +293,10 @@ if (Q.month_actions >= 1) {
         Q.sh_strength += 50/12;
         Q.sa_militancy += 0.1/12;
         Q.old_middle_nsdap += 10/12;
-        Q.rural_other -= 5/12;
+        Q.rural_other -= 10/12;
         Q.rural_nsdap += 9/12;
+        Q.new_middle_other -= 6/12;
+        Q.old_middle_other -= 6/12;
         // TODO: economic policies should reduce NSDAP rurals
         if (!Q.works_program) {
             Q.old_middle_dvp -= 6/12;
@@ -311,6 +313,8 @@ if (Q.month_actions >= 1) {
             Q.workers_kpd += 4/12;
             Q.sa_strength += 100/12;
             Q.sh_strength += 50/12;
+            Q.new_middle_other -= 10/12;
+            Q.old_middle_other -= 10/12;
             if (!Q.sa_banned) {
                 Q.unemployed_kpd -= (Q.strife/12);
                 Q.unemployed_nsdap += (Q.strife/12);
@@ -324,12 +328,16 @@ if (Q.month_actions >= 1) {
             Q.old_middle_nsdap += 4/12;
             Q.new_middle_nsdap += 4/12;
             Q.rural_nsdap += 4/12;
+            Q.rural_other -= 3/12;
+            Q.new_middle_other -= 2/12;
+            Q.old_middle_other -= 2/12;
         }
     }
     if (Q.year == 1932) {
-        Q.old_middle_other -= 7/12;
-        Q.rural_other -= 7/12;
-        Q.old_middle_nsdap += 7/12;
+        Q.old_middle_other -= 10/12;
+        Q.rural_other -= 10/12;
+        Q.new_middle_other -= 7/12;
+        Q.old_middle_nsdap += 10/12;
         Q.rural_nsdap += 7/12;
         Q.unemployed_nsdap += 4/12;
         if (!Q.works_program) {
@@ -351,6 +359,9 @@ if (Q.month_actions >= 1) {
             Q.new_middle_dvp -= 4/12;
             Q.old_middle_dvp -= 4/12;
             Q.rural_dvp -= 4/12;
+            Q.old_middle_other -= 4/12;
+            Q.rural_other -= 4/12;
+            Q.new_middle_other -= 3/12;
             if (!Q.sa_banned) {
                 Q.unemployed_nsdap += 3/12;
                 Q.unemployed_kpd -= 2/12;
@@ -361,6 +372,9 @@ if (Q.month_actions >= 1) {
             Q.old_middle_nsdap += 5/12;
             Q.new_middle_nsdap += 4/12;
             Q.sa_strength += 50/12;
+            Q.old_middle_other -= 2/12;
+            Q.rural_other -= 2/12;
+            Q.new_middle_other -= 1/12;
         } else if (Q.unemployed > 20) {
             Q.rural_nsdap += 2/12;
             Q.unemployed_nsdap += 3/12;
