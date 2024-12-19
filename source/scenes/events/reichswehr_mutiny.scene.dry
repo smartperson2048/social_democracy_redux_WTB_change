@@ -2,6 +2,7 @@ title: Crisis in the Army
 subtitle: The Reichswehr refuses to follow the Communists...
 new-page: true
 tags: event
+max-visits: 1
 view-if: reichswehr_minister_party == "KPD"
 
 A crisis! With the KPD taking control over the Reichswehr Ministry in our most recent coalition, generals in the army have openly refused to cooperate. Entire barracks and garrisons have effectively risen up in defiance, while the KPD, for their part, have prepared an extensive set of reforms which would effectively dissolve the Reichswehr entirely. 
@@ -37,10 +38,11 @@ The mutiny has successfully been suppressed. The officers involved are tried and
 The bourgeois parties have rallied against us, but their cries are ineffectual.
 
 @mutiny_victorious
-go-to: march_on_berlin
 on-arrival: nationalism += 10; pro_republic -= 7; sa_strength += 100; sh_strength += 100; rb_strength -= 200; reichswehr_loyalty = 0; rfb_strength -= 25; reichswehr_strength *= 0.95
 
 We send our forces against the mutinies, but, despite hard-fought victories against some garrisons, it quickly becomes clear that even with the full force of the government on our side, we have been unable to restore order. Our attempts at suppressing the Reichswehr mutinies have only fully turned it against us, and, once the initial fighting settles down, they are quick to mobilize and march on Berlin.
+
+- @civil_war: It is a civil war, then.
 
 @gegen_thalmann
 on-arrival: reichswehr_minister_party = "I"; kpd_relation -= 15; kpd_coalition_dissent += 4; coup_progress += 2; reichswehr_loyalty -= 0.05; chancellor = "Breitscheid" if chancellor_party == "KPD"; chancellor_party = "SPD" if chancellor_party == "KPD"; left_dissent += 15; rb_strength -= 200; rfb_strength += 100
