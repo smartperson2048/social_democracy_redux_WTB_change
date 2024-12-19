@@ -409,9 +409,9 @@ if (Q.Hitler_votes && Q.Seldte_votes) {
     if (Q.Hitler_votes > Q.Seldte_votes) {
         Q.dnvp_candidate = "Hitler";
         Q.other_candidate = "Hitler";
-        Q.Hitler_bonus = -0.25*Q.other_votes;
+        Q.Hitler_bonus = -((Q.pro_republic)/125)*Q.other_votes;
         if (Q.z_candidate == "Adenauer") {
-            Q.Adenauer_bonus += 0.25*Q.other_votes;
+            Q.Adenauer_bonus += ((Q.pro_republic)/125)*Q.other_votes;
         }
     } else {
         Q.nsdap_candidate = "Seldte";
@@ -599,7 +599,7 @@ Do we realize that this means civil war, against the full force of the state?
 @defeat_democratic
 on-arrival: {!
 Q.pro_democracy_votes = Q.spd_votes + Q.ddp_votes + Q.z_votes - (Q.sa_strength*Q.sa_militancy/10) + (Q.rb_strength*Q.rb_militancy/10);
-if (Q.pro_democracy >= 60) {
+if (Q.pro_republic >= 60) {
     Q.pro_democracy_votes += Q.kpd_votes;
     Q.pro_democracy_votes += Q.dvp_votes;
 }
