@@ -357,7 +357,7 @@ Having deposed the Nazi cabinet through our civil war, we must decide how to fil
 
 @kpd_coalition
 view-if: kpd_relation >= 45 and communist_coalition >= 3 and kpd_tried != 1
-go-to: chancellor_kpd if kpd_relation >= 60; sway_kpd if kpd relation < 60
+go-to: chancellor_kpd if kpd_relation >= 60; sway_kpd if kpd_relation < 60
 
 We can pursue the building of a provisional government with the Communists. They will be more likely to approve of radical changes that our Weimar partners would oppose.
 
