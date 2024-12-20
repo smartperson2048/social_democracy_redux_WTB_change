@@ -195,7 +195,7 @@ Unfortunately, the referendum has failed with only [+ referendum_support +]% of 
 view-if: constitutional_reform_timer = 0 and neorevisionism and constitutional_reform < 3
 choose-if: judicial_reform >= 4
 unavailable-subtitle: Pushing through constitutional reforms is unfeasable so long as the judiciary remains reactionary.
-go-to: constitutional_reform.reforms_menu
+go-to: constitutional_reform
 
 @no_petition
 
