@@ -194,8 +194,9 @@ Unfortunately, the referendum has failed with only [+ referendum_support +]% of 
 @constitutional_reform_vote
 view-if: constitutional_reform_timer = 0 and neorevisionism and constitutional_reform < 3
 choose-if: judicial_reform >= 4
+on-arrival: pass_threshold = 0.51; pass_threshold = 0.6 if pro_republic < 65
 unavailable-subtitle: Pushing through constitutional reforms is unfeasable so long as the judiciary remains reactionary.
-go-to: constitutional_reform
+go-to: constitutional_reform.reforms_menu
 
 @no_petition
 
