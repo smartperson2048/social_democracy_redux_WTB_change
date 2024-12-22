@@ -478,7 +478,7 @@ if (Q.month_actions >= 1) {
 if (Q.normalize_support) {
     for (var party of Q.parties) {
         for (var c of Q.classes) {
-            Q[c+'_'+party] = (Q[c+'_'+party+'_normalized']*2);
+            Q[c+'_'+party] = (Q[c+'_'+party+'_normalized']);
        } 
     }
 }
