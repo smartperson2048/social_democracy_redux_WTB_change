@@ -475,6 +475,13 @@ if (Q.month_actions >= 1) {
         }
     }
 }
+if (Q.normalize_support) {
+    for (var party of Q.parties) {
+        for (var c of Q.classes) {
+            Q[c+party] = (Q[c + party + '_normalized']*2);
+       } 
+    }
+}
 Q.has_event = 0;
 // check if there are any cards in #event, and then go to main if not.
 var scene = this.game.scenes['post_event.events_choice'];
