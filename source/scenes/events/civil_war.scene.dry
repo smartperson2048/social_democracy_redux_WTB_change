@@ -458,6 +458,7 @@ on-arrival: chancellor = "Breitscheid"; chancellor_party = "SPD"
 - @cabinet_kpd: Now for the cabinet.
 
 @cabinet_kpd
+on-arrival: labor_minister_party = "KPD"; interior_minister_party = "KPD"; finance_minister_party = "KPD"; economic_minister_party = "KPD"; justice_minister_party = "KPD"; foreign_minister_party = "KPD"; agriculture_minister_party = "KPD"; reichswehr_minister_party = "KPD"
 
 Now we must build our provisional government, and decide which cabinet positions will go to whom. [? if chancellor_party == "KPD" : The Communists are satisfied by our concession of the Chancellorship and are less likely to demand many positions. ?]
 
