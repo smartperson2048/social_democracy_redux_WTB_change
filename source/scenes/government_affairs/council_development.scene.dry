@@ -35,7 +35,7 @@ We form unemployed councils, expanding suffrage to the jobless workers and even 
 @expand_unemployed
 view-if: lumpenprole != 0 and lumpenprole < 1
 subtitle: -1 budget.
-on-arrival: budget -= 1; unemployed_spd += 2*(1-dissent); if sapd_consolidated != 1; lumpenprole += 0.1; unemployed_sapd += 2 if sapd_consolidated; unemployed_kpd += 3; unemployed_nsdap -= 2*(1-dissent); kpd_relation += 2; unemployed -= 0.3 if unemployed >= 8;
+on-arrival: budget -= 1; unemployed_spd += 2*(1-dissent) if sapd_consolidated != 1; lumpenprole += 0.1; unemployed_sapd += 2 if sapd_consolidated; unemployed_kpd += 3; unemployed_nsdap -= 2*(1-dissent); kpd_relation += 2; unemployed -= 0.3 if unemployed >= 8;
 
 @no_change
 
