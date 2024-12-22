@@ -117,16 +117,18 @@ if (Q.sapd_consolidated == 1 && Q.pro_republic >= 75 && Q.kpd_party_leader != "C
     Q.workers_sapd += 1;
 }
 
-Q.proletariat = Q.workers + (Q.rural/5) + (Q.new_middle/2);
+Q.proletariat = Q.workers + (Q.rural*Q.rural_prole) + (Q.new_middle*Q.middle_prole) + (Q.unemployed*Q.lumpenprole);
 Q.catholic_proletariat = 15;
 Q.urban_proletariat = ((Q.workers/Q.proletariat)*85);
-Q.rural_proletariat = (((Q.rural/5)/Q.proletariat)*85);
-Q.middle_proletariat = (((Q.new_middle/2)/Q.proletariat)*85);
+Q.rural_proletariat = (((Q.rural*Q.rural_prole)/Q.proletariat)*85);
+Q.middle_proletariat = (((Q.new_middle*Q.middle_prole)/Q.proletariat)*85);
+Q.lumpenproletariat = (((Q.unemployed*Q.lumpenprole)/Q.proletariat)*85);
 for (var party of Q.parties) {
     Q['proletariat_' + party + '_normalized'] = Q.urban_proletariat*(Q['workers_' + party + '_normalized']/100);
     Q['proletariat_' + party + '_normalized'] += Q.rural_proletariat*(Q['rural_' + party + '_normalized']/100);
     Q['proletariat_' + party + '_normalized'] += Q.middle_proletariat*(Q['new_middle_' + party + '_normalized']/100);
     Q['proletariat_' + party + '_normalized'] += Q.catholic_proletariat*(Q['catholics_' + party + '_normalized']/100);
+    Q['proletariat_' + party + '_normalized'] += Q.lumpenproletariat*(Q['unemployed_' + party + '_normalized']/100);
     Q['proletariat_' + party + '_normalized'] = Math.round(Q['proletariat_' + party + '_normalized']);
 }
 

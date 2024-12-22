@@ -294,6 +294,9 @@ Q.catholics_dnvp = 5;
 Q.catholics_nsdap = 0;
 Q.catholics_other = 12;
 
+Q.rural_prole = 0.2;
+Q.middle_prole = 0.5;
+Q.lumpenprole = 0;
 
 // Current Reichstag composition
 // % of Reichstag in Jan 1928
