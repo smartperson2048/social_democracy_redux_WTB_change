@@ -403,14 +403,16 @@ if (Q.month_actions >= 1) {
                 Q.catholics_z += 6/12;
             }
         }
-        if (Q.unemployed > 20) {
-            Q.rural_nsdap += 2/12;
-            Q.unemployed_nsdap += 3/12;
-            Q.old_middle_nsdap += 3/12;
-            Q.new_middle_nsdap += 2/12;
-            if (Q.spd_in_government) {
-                Q.workers_spd -= 4/12;
-            }
+        if (Q.unemployed <= 35) {
+            Q.rural_nsdap -= 3/12;
+            Q.unemployed_nsdap -= 5/12;
+            Q.old_middle_nsdap -= 3/12;
+            Q.new_middle_nsdap -= 2/12;
+            Q.workers_nsdap -= 2/12;
+        }
+        if (!Q.rfb_banned) {
+            Q.unemployed_kpd += 4/12;
+            Q.workers_kpd += 1/12;
         }
     }
     if (Q.victory_republic && Q.dnvp_banned != 1) {
