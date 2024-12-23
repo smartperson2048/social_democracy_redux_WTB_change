@@ -48,7 +48,7 @@ After a long and heated debate and vote, the Weimar Plan is narrowly reaffirmed 
 
 @joos_loss_wide
 on-arrival: workers_z -= 5; catholics_spd -= 3; new_middle_z -= 3; weimar_plan_adopted = 0; weimar_rejected = 1; left_dissent += 5; center_dissent += 5; labor_dissent += 2; pro_republic -= 6; z_relation -= 15; workers_sapd += 2 if sapd_consolidated; workers_z -= 3 if unemployed >= 13; z_relation += 10 if return_to_normalcy; pro_republic += 4 if return_to_normalcy; z_party_leader = "Kaas"
-view-if: right_strength >= joos_strength and (right_strength/joos_strength) < 1.1
+view-if: right_strength >= joos_strength and (right_strength/joos_strength) >= 1.1
 
 The Weimar Plan is defeated by a [+ joos_strength +]-[+ right_strength +] vote in the party congress, a safe margin. Joseph Joos resigns as party leader, with Ludwig Kaas being elected in his place. Demotivated, turnout amongst Catholic trade unionists decreases, with some even looking to other parties.
 
@@ -56,6 +56,7 @@ The Weimar Plan is defeated by a [+ joos_strength +]-[+ right_strength +] vote i
 
 @joos_loss_slim
 on-arrival: workers_z -= 10; new_middle_z -= 6; catholics_z -= 3; weimar_plan_adopted = 0; weimar_rejected = 1; left_dissent += 5; center_dissent += 5; labor_dissent += 2; pro_republic -= 6; z_relation -= 15; workers_sapd += 2 if sapd_consolidated; workers_z -= 3 if unemployed >= 13; z_relation += 10 if return_to_normalcy; pro_republic += 4 if return_to_normalcy; z_party_leader = "Kaas"
+view-if: right_strength >= joos_strength and (right_strength/joos_strength) < 1.1
 
 After a long and heated debate and vote, the Weimar Plan is narrowly defeated by a [+ joos_strength +]-[+ right_strength +] vote in the party congress. Joseph Joos resigns as party leader, with Ludwig Kaas being elected in his place. Many Catholic workers desert the party, with some turning to us.
 
