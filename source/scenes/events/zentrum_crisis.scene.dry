@@ -3,7 +3,7 @@ new-page: true
 subtitle: The Center Party is split on the Weimar Plan...
 tags: event
 view-if: weimar_dissent >= 8 and z_party_leader == "Joos"
-on-arrival: joos_strength = (z_relation/3); joos_strength += (((spd_votes + z_votes + ddp_votes)-50)*2) if ((spd_votes + z_votes + ddp_votes) > 50); joos_strength += catholics_spd_normalized; joos_strength += workers_z_normalized; joos_strength += (pro_republic/2); right_strength += ((100-pro_republic)/2); right_strength += (kpd_relation/3); right_strength += weimar_dissent; right_strength += economic_democracy; right_strength += land_reform; right_strength += womens_rights; right_strength += (homosexual_rights*2); right_strength += capital_strike_progress if not capital_strike_seen; right_strength += 15 if capital_strike_seen; right_strength += (coup_progress*2); right_strength += (rb_militancy*rb_militarization_cost*10); {!
+on-arrival: joos_strength = (z_relation/3); joos_strength += catholics_spd_normalized; joos_strength += workers_z_normalized; joos_strength += (pro_republic/2); right_strength += ((100-pro_republic)/2); right_strength += (kpd_relation/3); right_strength += weimar_dissent; right_strength += economic_democracy; right_strength += land_reform; right_strength += womens_rights; right_strength += (homosexual_rights*2); right_strength += capital_strike_progress if not capital_strike_seen; right_strength += 15 if capital_strike_seen; right_strength += (coup_progress*2); right_strength += (rb_militancy*rb_militarization_cost*10); {!
 Q.joos_strength = Math.round(Q.joos_strength);
 Q.right_strength = Math.round(Q.right_strength);
 !}
