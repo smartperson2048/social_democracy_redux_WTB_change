@@ -1,0 +1,21 @@
+title: Zentrum in Crisis
+new-page: true
+subtitle: The Center Party is split on the Weimar Plan...
+tags: event
+view-if: weimar_dissent >= 8 and z_party_leader == "Joos"
+on-arrival: joos_strength = (z_relation/3); joos_strength += catholics_spd_normalized; joos_strength += workers_z_normalized; joos_strength += (pro_republic/2); right_strength += ((100-pro_republic)/2); right_strength += (kpd_relation/3); right_strength += weimar_dissent; right_strength += economic_democracy; right_strength += land_reform; right_strength += womens_rights; right_strength += (homosexual_rights*2); {!
+Q.joos_strength = Math.round(Q.joos_strength);
+Q.right_strength = Math.round(Q.right_strength);
+!}
+max-visits: 1
+
+= Zentrum in Crisis
+
+As the crisis hitting Germany subsides, the necessity of the Weimar Plan has come into question. Despite Joos' best attempts to assuage concerns, the party right-wing has still turned on him and the plan, seeking to remove it from the party platform. For this task, a broad coalition has formed against Joos. It is impossible to say if Joos will win.
+
+- @vote: Let's hope for the best.
+
+@vote
+
+Pro-Weimar Delegates: [+ joos_strength +]
+Anti-Weimar Delegates: [+ right_strength +]
