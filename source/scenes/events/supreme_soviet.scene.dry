@@ -37,10 +37,13 @@ on-arrival: {!
 // election threshold constitutional reform
 // banning parties
 var new_party_sum = 0;
+
 for (var party of Q.parties) {
     Q['old_' + party + '_r'] = Q[party + '_r'];
     if (Q.constitutional_reform > 0) {
-        if (Q['proletariat_' + party + '_normalized'] < Q.electoral_threshold || (Q.electoral_threshold > 1 && party == 'other') || (Q[party + '_banned'] == 1)) {
+        if (Q['proletariat_' + party + '_normalized'] < Q.electoral_threshold || 
+            (Q.electoral_threshold > 1 && party === 'other') || 
+            (Q[party + '_banned'] === 1)) {
             Q[party + '_r'] = 0;
         } else {
             Q[party + '_r'] = Q['proletariat_' + party + '_normalized'];
@@ -50,18 +53,25 @@ for (var party of Q.parties) {
         Q[party + '_r'] = Q['proletariat_' + party + '_normalized'];
     }
     Q['change_' + party + '_r'] = Q[party + '_r'] - Q['old_' + party + '_r'];
-    var sign = Q['change_' + party + '_r'] > 0 ? '+'  : '';
-    Q['str_change_' + party] = sign + Q['change_' + party + '_r'];//.toFixed(1);
+    var sign = Q['change_' + party + '_r'] > 0 ? '+' : '';
+    Q['str_change_' + party] = sign + Q['change_' + party + '_r'];
 }
-// calculate new party sum if electoral reform
-if (Q.electoral_threshold && Q.electoral_threshold > 0 || Q.party_bans) {
-    for (var party of Q.parties) {
-        if (Q[party + '_r'] > 0) {
-            Q[party + '_r'] = Math.round(Q[party + '_r']*100/new_party_sum);
+
+// Avoid recalculating if new_party_sum is zero to prevent division by zero
+if ((Q.electoral_threshold && Q.electoral_threshold > 0) || Q.party_bans) {
+    if (new_party_sum > 0) {
+        for (var party of Q.parties) {
+            if (Q[party + '_r'] > 0) {
+                Q[party + '_r'] = Math.round(Q[party + '_r'] * 100 / new_party_sum);
+            } else {
+                Q[party + '_r'] = 0; // Ensure values don't go negative
+            }
+            Q['change_' + party + '_r'] = Q[party + '_r'] - Q['old_' + party + '_r'];
+            var sign = Q['change_' + party + '_r'] > 0 ? '+' : '';
+            Q['str_change_' + party] = sign + Q['change_' + party + '_r'];
         }
-        Q['change_' + party + '_r'] = Q[party + '_r'] - Q['old_' + party + '_r'];
-        var sign = Q['change_' + party + '_r'] > 0 ? '+'  : '';
-        Q['str_change_' + party] = sign + Q['change_' + party + '_r'];//.toFixed(1);
+    } else {
+        console.warn("new_party_sum is zero; skipping proportional adjustments to avoid division by zero.");
     }
 }
 
