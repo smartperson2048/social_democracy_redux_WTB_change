@@ -38,17 +38,18 @@ on-arrival: {!
 // banning parties
 var new_party_sum = 0;
 
+// First pass: Adjust parties based on bans or thresholds
 for (var party of Q.parties) {
     Q['old_' + party + '_r'] = Q[party + '_r'];
     if (Q.constitutional_reform > 0) {
         if (Q['proletariat_' + party + '_normalized'] < Q.electoral_threshold || 
             (Q.electoral_threshold > 1 && party === 'other') || 
             (Q[party + '_banned'] === 1)) {
-            Q[party + '_r'] = 0;
+            Q[party + '_r'] = 0; // Exclude party
         } else {
             Q[party + '_r'] = Q['proletariat_' + party + '_normalized'];
         }
-        new_party_sum += Q[party + '_r'];
+        new_party_sum += Q[party + '_r']; // Add valid votes to the sum
     } else {
         Q[party + '_r'] = Q['proletariat_' + party + '_normalized'];
     }
@@ -57,31 +58,40 @@ for (var party of Q.parties) {
     Q['str_change_' + party] = sign + Q['change_' + party + '_r'];
 }
 
-// Ensure that new_party_sum is not zero by distributing remaining values proportionally
+// Check for zero sum and adjust if needed
 if (new_party_sum === 0) {
+    console.warn("All parties excluded. Resetting to original normalized values.");
     for (var party of Q.parties) {
-        if (Q['proletariat_' + party + '_normalized'] > 0 && !(Q[party + '_banned'] === 1)) {
-            Q[party + '_r'] = Q['proletariat_' + party + '_normalized'];
-            new_party_sum += Q[party + '_r'];
-        }
+        Q[party + '_r'] = Q['proletariat_' + party + '_normalized'];
+        new_party_sum += Q[party + '_r'];
     }
 }
 
-// Recalculate proportions only if new_party_sum is now valid
+// Second pass: Normalize to 100%
 if ((Q.electoral_threshold && Q.electoral_threshold > 0) || Q.party_bans) {
     if (new_party_sum > 0) {
+        let normalized_sum = 0;
         for (var party of Q.parties) {
             if (Q[party + '_r'] > 0) {
-                Q[party + '_r'] = Math.round(Q[party + '_r'] * 100 / new_party_sum);
+                Q[party + '_r'] = Math.round((Q[party + '_r'] / new_party_sum) * 100);
+                normalized_sum += Q[party + '_r'];
             } else {
-                Q[party + '_r'] = 0; // Ensure values don't go negative
+                Q[party + '_r'] = 0;
             }
-            Q['change_' + party + '_r'] = Q[party + '_r'] - Q['old_' + party + '_r'];
-            var sign = Q['change_' + party + '_r'] > 0 ? '+' : '';
-            Q['str_change_' + party] = sign + Q['change_' + party + '_r'];
+        }
+
+        // Adjust rounding errors to ensure the sum is exactly 100%
+        let adjustment = 100 - normalized_sum;
+        if (adjustment !== 0) {
+            for (var party of Q.parties) {
+                if (Q[party + '_r'] > 0) {
+                    Q[party + '_r'] += adjustment;
+                    break;
+                }
+            }
         }
     } else {
-        console.warn("new_party_sum is zero after adjustment; this indicates an issue with input data.");
+        console.error("Failed to calculate valid new_party_sum after adjustment.");
     }
 }
 
