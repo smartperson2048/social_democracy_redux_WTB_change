@@ -476,6 +476,34 @@ if (Q.month_actions >= 1) {
             Q.unemployed_kpd -= 3/12;
         }
     }
+    if (Q.red_banner) {
+        Q.rfb_strength += (Q.unemployed_kpd_normalized+(Q.workers_kpd_normalized/2))/12;
+        Q.workers_kpd += 3/12;
+        Q.unemployed_kpd += 4/12;
+        Q.unemployed_nsdap -= 1/12;
+        if (Q.unemployed >= 20) {
+            Q.unemployed_kpd += 4/12;
+        }
+        if (Q.president == "Thälmann" && Q.presidential_powers != 1) {
+            Q.unemployed_kpd += 3/12;
+            Q.unemployed_nsdap -= 2/12;
+            Q.workers_kpd += 2/12;
+            Q.rfb_strength += 10/12;
+        }
+        if (Q.spd_relation < 35 && Q.kpd_party_leader != "Conciliators") {
+            Q.unemployed_spd -= 3/12;
+            Q.unemployed_kpd += 1/12;
+            Q.workers_spd -= 2/12;
+            Q.workers_kpd += 2/12;
+        }
+        if (Q.unions_independent) {
+            Q.workers_spd -= 2/12;
+        }
+        if (Q.pro_republic < 40) {
+            Q.workers_spd -= 1/12;
+            Q.unemployed_kpd += 1/12;
+        }
+    }
 }
 if (Q.normalize_support) {
     for (var party of Q.parties) {
