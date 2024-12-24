@@ -504,7 +504,7 @@ if (Q.month_actions >= 1) {
             Q.unemployed_kpd += 1/12;
         }
     }
-    if (Q.party_bans) {
+    if (Q.party_bans && !Q.constitutional_reform) {
         Q.constitutional_reform = 1;
     }
 }
