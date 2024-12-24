@@ -504,6 +504,9 @@ if (Q.month_actions >= 1) {
             Q.unemployed_kpd += 1/12;
         }
     }
+    if (Q.party_bans) {
+        Q.constitutional_reform = 1;
+    }
 }
 if (Q.normalize_support) {
     for (var party of Q.parties) {
