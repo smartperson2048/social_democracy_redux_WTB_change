@@ -57,7 +57,17 @@ for (var party of Q.parties) {
     Q['str_change_' + party] = sign + Q['change_' + party + '_r'];
 }
 
-// Avoid recalculating if new_party_sum is zero to prevent division by zero
+// Ensure that new_party_sum is not zero by distributing remaining values proportionally
+if (new_party_sum === 0) {
+    for (var party of Q.parties) {
+        if (Q['proletariat_' + party + '_normalized'] > 0 && !(Q[party + '_banned'] === 1)) {
+            Q[party + '_r'] = Q['proletariat_' + party + '_normalized'];
+            new_party_sum += Q[party + '_r'];
+        }
+    }
+}
+
+// Recalculate proportions only if new_party_sum is now valid
 if ((Q.electoral_threshold && Q.electoral_threshold > 0) || Q.party_bans) {
     if (new_party_sum > 0) {
         for (var party of Q.parties) {
@@ -71,7 +81,7 @@ if ((Q.electoral_threshold && Q.electoral_threshold > 0) || Q.party_bans) {
             Q['str_change_' + party] = sign + Q['change_' + party + '_r'];
         }
     } else {
-        console.warn("new_party_sum is zero; skipping proportional adjustments to avoid division by zero.");
+        console.warn("new_party_sum is zero after adjustment; this indicates an issue with input data.");
     }
 }
 
