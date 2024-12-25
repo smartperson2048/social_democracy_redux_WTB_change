@@ -479,6 +479,9 @@ if (Q.month_actions >= 1) {
             Q.unemployed_kpd -= 3/12;
         }
     }
+    if (Q.victory_republic && Q.kpd_relation >= 60) {
+        Q.rfb_strength += (Q.kpd_influence/12);
+    }
     if (Q.red_banner) {
         Q.rfb_strength += (Q.unemployed_kpd_normalized+(Q.workers_kpd_normalized/2))/12;
         Q.workers_kpd += 4/12;
