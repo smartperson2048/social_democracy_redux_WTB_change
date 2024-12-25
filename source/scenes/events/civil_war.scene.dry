@@ -1549,7 +1549,7 @@ on-arrival: decree_kpd_decided = 0
 go-to: menu
 
 @noske
-view-if: year = 1938
+view-if: month == 13
 
 I hate Noske sorry try another time.
 
