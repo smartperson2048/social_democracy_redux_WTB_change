@@ -24,7 +24,7 @@ We choose to crush the mutiny by force and stand by our coalition partners. The 
 
 @arm_workers
 subtitle: -1 budget.
-on-arrival: budget -= 1; kpd_relation += 5; government_strength += (rfb_strength * 0.1); rfb_militancy += 0.1; government_strength += (rb_strength * 0.05); rb_militancy += 0.05; government_strength += (spd_normalized + kpd_normalized)*unemployed; government_strength += ((spd_normalized + kpd_normalized)*unemployed)/2; z_relation -= 10; judicial_reform -= 1; interior_police_loyalty -= 0.05; reichswehr_loyalty -= 0.05; capital_strike_progress += 2
+on-arrival: budget -= 1; kpd_relation += 5; government_strength += (rfb_strength * 0.1); rfb_militancy += 0.1; government_strength += (rb_strength * 0.05); rb_militancy += 0.05; government_strength += (spd_normalized + kpd_normalized)*unemployed; government_strength += ((spd_normalized + kpd_normalized)*unemployed)/2; z_relation -= 10; judicial_reform -= 1; kpd_influence += 2; interior_police_loyalty -= 0.05; reichswehr_loyalty -= 0.05; capital_strike_progress += 2
 go-to: the_fight
 
 @the_fight
@@ -33,7 +33,7 @@ go-to: mutiny_suppressed if government_strength >= mutiny_strength; mutiny_victo
 We send our forces to suppress the mutiny and a confrontation quickly erupts.
 
 @mutiny_suppressed
-on-arrival: workers_kpd += 5; unemployed_kpd += 10; reichswehr_strength = 0; rb_militancy += 0.05; rfb_militancy += 0.15; coup_progress = 0; sa_strength *= 0.9 if sa_banned != 1; sh_strength *= 0.9 if sh_banned != 1; pro_republic += 2; nationalism -= 7
+on-arrival: workers_kpd += 5; unemployed_kpd += 10; reichswehr_strength = 0; kpd_influence += 3; rb_militancy += 0.05; rfb_militancy += 0.15; coup_progress = 0; sa_strength *= 0.9 if sa_banned != 1; sh_strength *= 0.9 if sh_banned != 1; pro_republic += 2; nationalism -= 7
 
 The mutiny has successfully been suppressed. The officers involved are tried and punished harshly while the Communists proceed with their plans, seeing the effective dissolution of the army. Arms are redirected towards our paramilitaries, though the RFB's is the most bolstered, receiving an influx of military grade equipment.
 

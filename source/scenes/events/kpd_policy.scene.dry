@@ -75,14 +75,20 @@ title: Finance Ministry
 subtitle: The Finance Ministry is increasing taxes on the rich.
 view-if: finance_minister_party = "KPD"
 
-The KPD-controlled Finance Ministry
+The KPD-controlled Finance Ministry is planning a policy of heavy tax hikes on the rich to fund their other programs and plans. [? if capital_strike_progress >= 6 and not capital_strike_seen : Supporting this policy could lead to a confrontation with the already upset capitalists. ?]
 
 - @finance_support: Yes, we support increasing taxes on the rich.
 - @finance_oppose: No, now is not the right time.
 
 @finance_support
+on-arrival: upper_tax_rates += 1; capital_strike_progress += 1; capital_strike_progress += 1 if upper_tax_rates > 1; capital_strike_progress += 1 if upper_tax_rates > 3; workers_spd += 2*(1-dissent); workers_kpd += 3*(1-dissent); old_middle_spd -= 4; new_middle_spd -= 3; coalition_dissent += 1; coalition_dissent += 1 if capital_strike_progress >= 5; budget += 2; dvp_relation -= 3; unemployed += 1; finance_goal_completed += 1; inflation -= 0.6; kpd_influence += 2
+
+We support the financial policy of the KPD-controlled Finance Ministry, which is popular amongst the workers and helps raise [? if budget <= 2 : much needed ?] funds for our other programs. Meanwhile, the bourgeois parties blame us for allowing these tax hikes to take place.
 
 @finance_oppose
+on-arrival: kpd_coalition_dissent += 1; workers_spd -= 3; workers_kpd += 3; kpd_relation -= 5; workers_spd -= 2 if budget < 0; workers_kpd += 2 if budget < 0
+
+We oppose the KPD's planned tax hikes on the rich, prompting them to launch a propaganda campaign against us. [? if budget < 0 : This propaganda campaign is bolstered by the fact that we are currently running a deficit. ?]
 
 @foreign
 title: Foreign Ministry
@@ -95,17 +101,31 @@ The KPD-controlled Foreign Ministry is planning to send economic aid to the Sovi
 - @foreign_oppose: No, this must be stopped.
 
 @foreign_support
+on-arrival: budget -= 1; soviet_relation += 2; coalition_dissent += 1; foreign_goal_completed += 1; kpd_influence += 2; rfb_militancy += 0.04; rfb_strength += 40; reformist_dissent += 5
+
+We support the KPD's sending of aid to the Soviet Union, and allow it to take place. Some on the right of the party suggest that the KPD are using the Foreign Ministry to plot with the Soviet Union against the Republic, but we dismiss these concerns.
 
 @foreign_oppose
+on-arrival: kpd_coalition_dissent += 1; kpd_relation -= 3; kpd_relation -= 2 if kpd_party_leader != "Conciliators"; soviet_relation -= 1
+
+We block the planned sending of aid to the Soviet Union, disappointing the Communists, as well as the Soviets themselves who had looked forward to the aid.
 
 @interior
 title: Interior Ministry
 subtitle: The Interior Ministry is engaged in a purge of the security services.
 view-if: interior_minister_party = "KPD"
 
+The KPD-controlled Interior Ministry has recently begun a purge of its security services, removing suspected fascists from servive and replacing them with communists and, less frequently, social democrats. They justify this as necessary to combat the reactionary threat to the republic.
+
 - @interior_support: Yes, we support purging the security services.
 - @interior_oppose: No, this seems to be a pretext for a KPD power grab.
 
 @interior_support
+on-arrival: interior_police_loyalty += 0.1; kpd_influence += 2; new_middle_kpd += 3; new_middle_nsdap -= 2; new_middle_dnvp -= 2; pro_republic += 3; reformist_dissent += 5; unemployed += 0.3; rfb_strength += 20; sa_strength -= 10; sh_strength -= 10
+
+We allow the KPD to proceed with the purges, significantly weakening the sway of reactionaries over our police forces. At the same time, however, Communist forces are bolstered. The right of our party warns that the police is just being turned from one anti-democratic force into another.
 
 @interior_oppose
+on-arrival: kpd_coalition_dissent += 1; kpd_relation -= 5; workers_spd -= 2; workers_kpd += 2; interior_police_loyalty -= 0.05;
+
+The purges are ended at our opposition, disappointing the Communists, who are quick to campaign on our refusal. Meanwhile, anticommunist sentiment in the police is strengthened by the attempted but blocked purge, and grows.

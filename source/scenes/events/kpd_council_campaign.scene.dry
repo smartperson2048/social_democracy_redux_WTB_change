@@ -1,7 +1,7 @@
 title: Red Banners Across Germany
 subtitle: The Communists surge through the new councils...
 new-page: true
-view-if: supreme_soviet = 1 and (rfb_strength*rfb_militancy) >= (rb_strength*rb_militancy) and not rfb_banned
+view-if: supreme_soviet = 1 and (rfb_strength*rfb_militancy) >= (rb_strength*rb_militancy*(1-dissent)) and not rfb_banned
 max-visits: 1
 tags: event
 on-arrival: red_banner = 1; workers_kpd += 4; unemployed_kpd += 8; rfb_strength += 50
