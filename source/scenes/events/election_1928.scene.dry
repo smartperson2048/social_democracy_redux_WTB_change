@@ -770,14 +770,21 @@ go-to: kpd_thalmann if president == "Thälmann"; kpd_braun if president == "Brau
 
 The Communists have, somehow, won a majority on their own. President Thälmann appoints Wilhelm Pieck to preside over  KPD-only cabinet.
 
-- @game_over: The KPD is quick to consolidate power.
+- @communist_victory: The KPD is quick to consolidate power.
 
 @kpd_braun
 
 The Communists have, somehow, won a majority on their own. However, to actually take power, President Braun must appoint Thälmann Chancellor.
 
-- @game_over: We will appoint Thälmann as Chancellor.
+- @communist_victory: We will appoint Thälmann as Chancellor.
 - @left_coalition: Perhaps they can include us?
+
+@communist_victory
+on-arrival: chancellor_party = "KPD"; chancellor = "Thälmann"
+
+The Communists quickly rebuild Germany in the Soviet image, bringing it into their sphere and rooting out reactionaries and liberals alike. The fascists have been successfully kept away from power, but are the communists really so much better? This is a question that has been debated within our party for a while, and only the next few years can tell.
+
+- @game_over: Game over.
 
 # todo: playable thalmann chancellorship
 
