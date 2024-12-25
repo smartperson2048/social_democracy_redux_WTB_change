@@ -511,7 +511,7 @@ if (Q.month_actions >= 1) {
             Q.workers_spd -= 2/12;
             Q.unemployed_kpd += 2/12;
         }
-        if ((Q.rfb_strength*Q.rfb_militancy) >= (rb_strength*rb_militancy)) {
+        if ((Q.rfb_strength*Q.rfb_militancy) >= (Q.rb_strength*Q.rb_militancy)) {
             Q.unemployed_kpd += 5/12;
             Q.workers_kpd += 3/12;
         }
