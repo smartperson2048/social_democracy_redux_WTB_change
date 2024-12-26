@@ -1058,7 +1058,8 @@ We have banned the KPD. Many workers desert, agitated by the KPD to do so, while
 - @agenda_reb: Continue...
 
 @council
-view-if: ((kpd_relation >= 60 and ((left_strength >= reformist_strength + neorevisionist_strength) or (in_left_front == 1))) and supreme_soviet != 1 and not (nationalization_progress + socializations >= 3 and works_councils >= 3 and (president != "Hindenburg" or presidential_powers == 1))) and chancellorship_decided and constitution_decided
+view-if: (((kpd_relation >= 60 and ((left_strength >= reformist_strength + neorevisionist_strength) or (in_left_front == 1))) and supreme_soviet != 1 and not (nationalization_progress + socializations >= 3 and works_councils >= 3 and (president != "Hindenburg" or presidential_powers == 1))) and chancellorship_decided and constitution_decided) and reichstag_decided != 1
+on-arrival: reichstag_decided = 1
 
 Many on our party's left as well as in the KPD blame the takeover of the country by the Nazis on liberal democracy itself and call for the dissolution of the Reichstag and its replacement with a "Supreme Soviet" of worker's councils. This idea is opposed by the right of our party, and our bourgeois partners.
 
