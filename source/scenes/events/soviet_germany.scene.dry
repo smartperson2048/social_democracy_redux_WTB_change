@@ -1,0 +1,34 @@
+title: A New Soviet Germany
+subtitle: The KPD has risen to the forefront of German politics...
+new-page: true
+view-if: kpd_influence >= 10 and (in_left_front or in_popular_front or (kpd_r >= 50 and chancellor_party == "KPD")) and (sa_banned and sh_banned)
+tags: event
+on-arrival: socialist_unity = 1 if left_strength >= (center_strength + reformist_strength + neorevisionist_strength) and left_strength >= labor_strength and ((kpd_party_leader == "Conciliators") or kpd_relation >= 80) 
+max-visits: 1
+
+= A New Soviet Germany
+
+Ever since the first entrance of the Communists into government they have worked to transform Germany into their image, to rebuild it from the ground up. These efforts finally seem to have come to fruition, as the Communists stand miraculously at the forefront of the German political arena, with none left to oppose them in their quest.
+
+Now, as the last state institutions are cleansed of anticommunists and bourgeois influences, the last reactionaries jailed or otherwise silenced, it seems that Germany truly shall join the USSR as the second Marxist-Leninist nation. All that remains to be asked is the fate of Social Democracy in this new future.
+
+- @sed: The reunification of our parties.
+- @kpd: The banning of the SPD.
+
+@sed
+view-if: socialist_unity
+
+A party congress is called, uniquely with the purpose of adopting a new party program - a joint party program. Indeed, this party congress is not of the SPD, or of the KPD, but of both. 
+
+In the following days, the process of reunification is completed, this time under the banner of the "Socialist Unity Party". Revisionist influences are expelled, and opposition parties suppressed. The fate of Germany is sealed under the direction of the SED. Let us hope it is a good one.
+
+- @game_over: Game over.
+
+@kpd
+view-if: not socialist_unity
+
+Eventually, our luck runs out. The Communists ban all opposition parties, including ours. We are lucky to be spared the worst of the crackdowns, though many on the former party's right are not so lucky. 
+
+The KPD has won the privilege of writing Germany's future. All we can do now is hope that the future they write will be a good one.
+
+- @game_over: Game over.
