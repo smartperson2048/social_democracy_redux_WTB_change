@@ -533,16 +533,28 @@ The KPD is still very reluctant to join a coalition, despite grassroots friendli
 @thalmann_chancellor
 choose-if: president == "Braun" and reformist_strength + neorevisionist_strength < left_strength
 unavailable-subtitle: [? if president != "Braun": President [+ president +] would never allow such a thing. ?] [? if reformist_strength >= left_strength : Most in the parliamentary party would not support Thälmann as chancellor. ?]
-on-arrival: chancellor = "Thälmann"; chancellor_party = "KPD"; kpd_relation = 80; in_left_front = 1; spd_in_government = 1; nazi_rebel = 1; kpd_goals_seen = 0; foreign_minister_party = "SPD"; interior_minister_party = "SPD"; justice_minister_party = "SPD"; labor_minister_party = "SPD"; reichswehr_minister_party = "SPD"; economic_minister_party = "SPD"; finance_minister_party = "SPD"; agriculture_minister_party = "SPD"; rfb_strength += 100; rfb_militancy += 0.02; workers_kpd += 5; unemployed_kpd += 5; reichswehr_loyalty -= 0.05
+on-arrival: chancellor = "Thälmann"; chancellor_party = "KPD"; in_left_front = 1; spd_in_government = 1; kpd_goals_seen = 0; rfb_strength += 100; rfb_militancy += 0.02; workers_kpd += 5; unemployed_kpd += 10; reichswehr_loyalty -= 0.05
+go-to: thalmann_war if not victory_republic; thalmann_no_war if victory_republic
 
 With great reluctance, President [+ president +] appoints [+ chancellor +] as chancellor.
 
 Immediately, [+ chancellor +] goes to work building a "Soviet Germany": consolidating as much power as possible in the KPD, purging state institutions of anti-communists, and sending street fighters against the "enemies of the people".
 
+@thalmann_war
+on-arrival: nazi_rebel = 1; foreign_minister_party = "SPD"; interior_minister_party = "SPD"; justice_minister_party = "SPD"; labor_minister_party = "SPD"; reichswehr_minister_party = "SPD"; economic_minister_party = "SPD"; finance_minister_party = "SPD"; agriculture_minister_party = "SPD"; kpd_relation = 80
+
 In response to [+ chancellor +] being appointed Chancellor, the right-wing forces launches almost immediately launch an attempted coup. Troops of the Stahlhelm and Nazi SA enter Berlin and immediately begin clashing with our supporters! Reactionary officers within the Reichswehr have taken their troops out of the barracks and joined them with the Stahlhelm to stop the KPD from taking power. We are forced to be on the same side as the KPD, whether we want to or not.
 
 - @civil_war
 
+@thalmann_no_war
+on-arrival: coup_progress += 5; leverage = ((spd_r/(spd_r+kpd_r))*kpd_relation); reformist_dissent += 5; neorevisionist_dissent += 5; z_relation -= 10; rfb_strength += 100; rb_strength -= 50; kpd_relation -= 10; kpd_influence += 5; kpd_influence -= 1 if kpd_party_leader == "Conciliators"
+go-to: postwar_left
+
+Despite our appointing of [+ chancellor +] as chancellor, there is no appetite for a civil war so soon after the last. [+ chancellor +] is unopposed as he attempts to consolidate power. There is still, however, the matter of cabinet talks.
+
+#- @communist_victory
+# todo: maybe until proper KPD content is made, just fade to black with communist victory ending? but then appointing thalmann after a civil war should too...
 
 @left_coalition_resources
 title: Use our resources to smooth things over.
@@ -560,8 +572,8 @@ go-to: left_coalition_success
 
 
 @left_coalition_success
-on-arrival: spd_in_government = 1; in_left_front = 1; chancellor = "Breitscheid"; chancellor_party = "SPD"; coup_progress += 3; capital_strike_progress += 2; in_popular_front = 0; in_grand_coalition = 0; in_weimar_coalition = 0; kpd_relation += 10
-go-to: left_coalition_civil_war if coup_progress >= 10; left_coalition_no_civil_war if coup_progress < 10 and not victory_republic; post_war_left_coalition if coup_progress < 10 and victory_republic
+on-arrival: spd_in_government = 1; in_left_front = 1; chancellor = "Breitscheid"; chancellor_party = "SPD"; coup_progress += 3; capital_strike_progress += 2; in_popular_front = 0; in_grand_coalition = 0; in_weimar_coalition = 0; kpd_relation += 10 if kpd_r < 50; kpd_relation -= 25 if kpd_r >= 50
+go-to: left_coalition_civil_war if coup_progress >= 10 and (sa_banned != 1 or sh_banned != 1); left_coalition_no_civil_war if (coup_progress < 10 or (sa_banned and sh_banned)) and not victory_republic; post_war_left_coalition if (coup_progress < 10 or (sa_banned and sh_banned)) and victory_republic
 achievement: einheitsfront
 
 Somehow, surprisingly, the left coalition is successfully formed, without appointing Thälmann as chancellor. The consensus choice for chancellor, accepted by the SPD, KPD, and President [+ president +], is Rudolf Breitscheid, who belongs to the centrist faction of the SPD, but was acceptable to the left due to his previous membership in the left-wing anti-war USPD.
@@ -585,7 +597,7 @@ In response to the KPD's entrance into the government, the right-wing immediatel
 - @civil_war: A civil war, then.
 
 @post_war_left_coalition
-on-arrival: kpd_goals_seen = 0; leverage = ((spd_r/(spd_r+kpd_r))*(kpd_relation/2)); leverage *= 0.9 if kpd_r > spd_r; foreign_minister_party = "KPD"; interior_minister_party = "KPD"; justice_minister_party = "KPD"; labor_minister_party = "KPD"; reichswehr_minister_party = "KPD"; economic_minister_party = "KPD"; finance_minister_party = "KPD"; agriculture_minister_party = "KPD";
+on-arrival: kpd_goals_seen = 0; leverage = ((spd_r/(spd_r+kpd_r))*(kpd_relation/2)); leverage *= 0.8 if kpd_r > spd_r; leverage *= 0.6 if kpd_r >= 50; foreign_minister_party = "KPD"; interior_minister_party = "KPD"; justice_minister_party = "KPD"; labor_minister_party = "KPD"; reichswehr_minister_party = "KPD"; economic_minister_party = "KPD"; finance_minister_party = "KPD"; agriculture_minister_party = "KPD";
 go-to: postwar_left
 
 In response to the KPD's entrance into the government, the right-wing takes a "wait-and-see" approach for now. They expect that our government will be unstable and incompetent, and will collapse of its own accord, discrediting the left and eventually enabling the destruction of the Weimar Republic. Our task is to prove them wrong.

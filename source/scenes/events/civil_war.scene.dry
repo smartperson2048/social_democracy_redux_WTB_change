@@ -220,7 +220,7 @@ go-to: long_war_intervention
 Poland and Czechoslovakia are largely too absorbed in their own problems to be of much help, but weapons and volunteers filter through the parts of the borders that we control.
 
 @republic_victory
-on-arrival: nsdap_banned = 1; party_bans = 1; sa_banned = 1; sh_banned = 1; pro_republic += 25; unemployed_spd += 10*(1-dissent); workers_spd += 6*(1-dissent); chancellor = "N/A" if chancellor = "Hitler"; chancellor_party = "I" if chancellor_party = "NSDAP"; victory_republic = 1; unemployed_nsdap *= 0.4; new_middle_nsdap *= 0.5; old_middle_nsdap *= 0.6; workers_nsdap *= 0.5; rural_nsdap *= 0.7; old_middle_dnvp *= 0.6; rural_dnvp *= 0.7; new_middle_dnvp *= 0.6; old_middle_dvp += 5; new_middle_dvp += 5; sa_strength *= 0.2; sh_strength *= 0.2; sa_militancy *= 0.5; sh_militancy *= 0.5; rb_strength *= 0.8; rfb_strength *= 0.8; reichswehr_strength *= reichswehr_loyalty; reichswehr_loyalty += 0.15
+on-arrival: nsdap_banned = 1; party_bans = 1; sa_banned = 1; sh_banned = 1; pro_republic += 25; unemployed_spd += 10*(1-dissent); workers_spd += 6*(1-dissent); chancellor = "N/A" if chancellor = "Hitler"; chancellor_party = "I" if chancellor_party = "NSDAP"; victory_republic = 1; unemployed_nsdap *= 0.4; new_middle_nsdap *= 0.5; old_middle_nsdap *= 0.6; workers_nsdap *= 0.5; rural_nsdap *= 0.7; old_middle_dnvp *= 0.6; rural_dnvp *= 0.7; new_middle_dnvp *= 0.6; old_middle_dvp += 5; new_middle_dvp += 5; sa_strength *= 0.2; sh_strength *= 0.2; sa_militancy *= 0.5; sh_militancy *= 0.5; rb_strength *= 0.8; rfb_strength *= 0.8; reichswehr_strength *= reichswehr_loyalty; reichswehr_loyalty += 0.2
 
 = Victory for the Republic
 
@@ -293,6 +293,7 @@ President Hindenburg refuses to sign our Enabling Act, demanding it go to a refe
 
 @agenda_reb
 view-if: spd_rebel = 1
+on-arrival: judicial_reform += 4
 
 The defeat of the reactionaries presents to us a unique opportunity. We have multiple issues to address.
 
