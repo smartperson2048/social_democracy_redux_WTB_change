@@ -480,7 +480,7 @@ if (Q.month_actions >= 1) {
         }
     }
     if (Q.victory_republic && Q.kpd_relation >= 60) {
-        Q.rfb_strength += (Q.kpd_influence/12);
+        Q.rfb_strength += (Q.kpd_influence/4);
     }
     if (Q.red_banner) {
         Q.rfb_strength += (Q.unemployed_kpd_normalized+(Q.workers_kpd_normalized/2))/12;
@@ -515,6 +515,8 @@ if (Q.month_actions >= 1) {
             Q.unemployed_kpd += 5/12;
             Q.workers_kpd += 3/12;
         }
+        Q.unemployed_kpd += Q.kpd_influence;
+        Q.workers_kpd += (Q.kpd_influence/2);
     }
     if (Q.party_bans && !Q.constitutional_reform) {
         Q.constitutional_reform = 1;
