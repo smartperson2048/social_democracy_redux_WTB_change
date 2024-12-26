@@ -590,7 +590,7 @@ go-to: real_cabinet_kpd
 @drop_interior_kpd
 title: Drop the Interior Ministry.
 view-if: interior_minister_party = "SPD"
-on-arrival: interior_minister_party = "KPD"; leverage += 5;
+on-arrival: interior_minister_party = "KPD"; leverage += 10;
 tags: drop_mins_kpd
 go-to: real_cabinet_kpd
 
@@ -604,7 +604,7 @@ go-to: real_cabinet_kpd
 @drop_economic_kpd
 title: Drop the Economic Ministry.
 view-if: economic_minister_party = "SPD"
-on-arrival: leverage += 10; economic_minister_party = "KPD"
+on-arrival: leverage += 15; economic_minister_party = "KPD"
 tags: drop_mins_kpd
 go-to: real_cabinet_kpd
 
@@ -625,7 +625,7 @@ go-to: real_cabinet_kpd
 @drop_agriculture_kpd
 title: Drop the Agriculture Ministry.
 view-if: agriculture_minister_party = "SPD"
-on-arrival: agriculture_minister_party = "KPD"; leverage += 10
+on-arrival: agriculture_minister_party = "KPD"; leverage += 5
 tags: drop_mins_kpd
 go-to: real_cabinet_kpd
 

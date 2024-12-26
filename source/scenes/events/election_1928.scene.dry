@@ -548,7 +548,7 @@ In response to [+ chancellor +] being appointed Chancellor, the right-wing force
 - @civil_war
 
 @thalmann_no_war
-on-arrival: coup_progress += 5; leverage = ((spd_r/(spd_r+kpd_r))*kpd_relation); reformist_dissent += 5; neorevisionist_dissent += 5; z_relation -= 10; rfb_strength += 100; rb_strength -= 50; kpd_relation -= 10; kpd_influence += 3
+on-arrival: coup_progress += 5; leverage = ((spd_r/(spd_r+kpd_r))*kpd_relation); reformist_dissent += 5; neorevisionist_dissent += 5; z_relation -= 10; rfb_strength += 100; rb_strength -= 50; kpd_relation -= 10; kpd_influence += 3; foreign_minister_party = "KPD"; interior_minister_party = "KPD"; justice_minister_party = "KPD"; labor_minister_party = "KPD"; reichswehr_minister_party = "KPD"; economic_minister_party = "KPD"; finance_minister_party = "KPD"; agriculture_minister_party = "KPD";
 go-to: postwar_left
 
 Despite our appointing of [+ chancellor +] as chancellor, there is no appetite for a civil war so soon after the last. [+ chancellor +] is unopposed as he attempts to consolidate power. There is still, however, the matter of cabinet talks.
@@ -726,7 +726,7 @@ go-to: postwar_left
 @drop_interior_left
 title: Drop the Interior Ministry.
 view-if: interior_minister_party = "SPD"
-on-arrival: interior_minister_party = "KPD"; leverage += 5;
+on-arrival: interior_minister_party = "KPD"; leverage += 10;
 tags: drop_mins_left
 go-to: postwar_left
 
@@ -740,7 +740,7 @@ go-to: postwar_left
 @drop_economic_left
 title: Drop the Economic Ministry.
 view-if: economic_minister_party = "SPD"
-on-arrival: leverage += 10; economic_minister_party = "KPD"
+on-arrival: leverage += 15; economic_minister_party = "KPD"
 tags: drop_mins_left
 go-to: postwar_left
 
@@ -761,7 +761,7 @@ go-to: postwar_left
 @drop_agriculture_left
 title: Drop the Agriculture Ministry.
 view-if: agriculture_minister_party = "SPD"
-on-arrival: agriculture_minister_party = "KPD"; leverage += 10
+on-arrival: agriculture_minister_party = "KPD"; leverage += 5
 tags: drop_mins_left
 go-to: postwar_left
 
