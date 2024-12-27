@@ -345,7 +345,7 @@ Unfortunately, we fail to turn them away from Hindenburg. [? if hindenburg_votes
 
 
 @round2_convince_kpd
-choose-if: spd_votes >= kpd_votes
+choose-if: (spd_votes + ddp_votes >= kpd_votes) or (spd_votes + ddp_votes + z_votes >= kpd_votes and z_support_braun)
 unavailable-subtitle: The KPD knows that they are more popular than us; they do not see a reason to support our candidate.
 view-if: braun_campaign > 0 and kpd_support_braun == 0 
 max-visits: 1
