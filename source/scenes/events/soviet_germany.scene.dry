@@ -1,7 +1,7 @@
 title: A New Soviet Germany
 subtitle: The KPD has risen to the forefront of German politics...
 new-page: true
-view-if: kpd_influence >= 10 and (in_left_front or in_popular_front or (kpd_r >= 50 and chancellor_party == "KPD")) and (sa_banned and sh_banned)
+view-if: kpd_influence >= 10 and (in_left_front or in_popular_front or (kpd_r >= 50 and chancellor_party == "KPD")) and (sa_banned and sh_banned) and ((president == "Münzenberg" or president == "Thälmann") or ((kpd_r*rfb_strength*rfb_militancy) >= (spd_r*rb_strength*rb_militancy*(1-dissent))))
 tags: event
 on-arrival: socialist_unity = 1 if left_strength >= (center_strength + reformist_strength + neorevisionist_strength) and left_strength >= labor_strength and ((kpd_party_leader == "Conciliators") or kpd_relation >= 80) 
 max-visits: 1

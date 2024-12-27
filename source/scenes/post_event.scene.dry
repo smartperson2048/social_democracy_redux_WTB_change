@@ -485,6 +485,9 @@ if (Q.month_actions >= 1) {
     if (!Q.victory_republic && Q.nsdap_votes >= 30) {
         Q.sa_strength += Q.unemployed_nsdap_normalized;
     }
+    if (Q.kpd_r < 50 && !Q.in_left_front && !Q.in_popular_front && Q.kpd_influence > 0 && Q.month = 6) {
+        Q.kpd_influence -= 1;
+    }
     if (Q.red_banner) {
         Q.rfb_strength += (Q.unemployed_kpd_normalized+(Q.workers_kpd_normalized/2))/12;
         Q.workers_kpd += 4/12;

@@ -25,6 +25,8 @@ SPD position: [? if spd_toleration : toleration ?][? if spd_in_government : in g
 
 Internal dissent: [+ dissent_percent : dissent +]
 
+[? if communist_influence_seen : KPD influence: [+ kpd_influence : kpd_influence +] ?]
+
 = Government
 
 President: [+ president +]
