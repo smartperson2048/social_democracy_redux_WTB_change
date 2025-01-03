@@ -184,6 +184,10 @@ if (Q.braun_campaign) {
     Q.braun_votes += Q.spd_normalized;
     Q.braun_votes += Q.ddp_normalized;
     Q.braun_votes += Q.sapd_normalized;
+    Q.braun_votes += (Q.pro_republic/10);
+    Q.braun_votes += (Q.democratization);
+    Q.braun_votes += Math.floor(Math.random() * 6);
+    Q.hindenburg_votes += ((100-Q.pro_republic)/10);
     if (Q.z_support_braun && Q.z_support_braun == 1) {
         Q.braun_votes += Q.z_normalized;
     } else {
@@ -206,11 +210,13 @@ if (Q.braun_campaign) {
     Q.hindenburg_votes += Q.z_normalized;
     Q.hindenburg_votes += Q.ddp_normalized;
     Q.hindenburg_votes += Q.dvp_normalized;
+    Q.hindenburg_votes += ((100-Q.pro_republic)/10);
 } else {
     Q.hindenburg_votes += Q.spd_normalized;
     Q.hindenburg_votes += Q.z_normalized;
     Q.hindenburg_votes += Q.ddp_normalized;
     Q.hindenburg_votes += Q.dvp_normalized;
+    Q.hindenburg_votes += (Q.pro_republic/10);
     Q.thalmann_votes += Q.kpd_normalized;
     Q.thalmann_votes += Q.sapd_normalized;
 }
@@ -218,6 +224,18 @@ if (Q.hitler_support_hindenburg) {
     Q.hitler_votes -= Q.nsdap_normalized;
     Q.hindenburg_votes += Q.nsdap_normalized;
 }
+if (!Q.kpd_support_braun) {
+    Q.thalmann_votes += ((100-Q.pro_republic)/10);
+    Q.thalmann_votes += Q.pacifism;
+    Q.thalmann_votes += Math.floor(Math.random() * 6);
+}
+if (!Q.hitler_support_hindenburg) {
+    Q.hitler_votes += ((100-Q.pro_republic)/10);
+    Q.hitler_votes += (Q.nationalism/10);
+    Q.hitler_votes += Math.floor(Math.random() * 6);
+}
+Q.hindenburg_votes += Math.floor(Math.random() * 6);
+Q.hindenburg_votes += (10-Q.democratization);
 
 if (Q.hindenburg_to_braun_bonus) {
     Q.hindenburg_votes -= Q.hindenburg_to_braun_bonus;
@@ -229,10 +247,16 @@ if (Q.thalmann_to_braun_bonus) {
 }
 
 // check for majority
-Q.hindenburg_votes = Math.round(Q.hindenburg_votes*1000)/10;
-Q.braun_votes = Math.round(Q.braun_votes*1000)/10;
-Q.hitler_votes = Math.round(Q.hitler_votes*1000)/10;
-Q.thalmann_votes = Math.round(Q.thalmann_votes*1000)/10;
+Q.total_votes_pres = Q.hindenburg_votes + Q.hitler_votes + Q.thalmann_votes + Q.braun_votes;
+Q.hindenburg_votes_normalized = (Q.hindenburg_votes/Q.total_votes_pres)*100;
+Q.hitler_votes_normalized = (Q.hitler_votes/Q.total_votes_pres)*100;
+Q.braun_votes_normalized = (Q.braun_votes/Q.total_votes_pres)*100;
+Q.thalmann_votes_normalized = (Q.thalmann_votes/Q.total_votes_pres)*100;
+
+Q.hindenburg_votes = Math.round(Q.hindenburg_votes_normalized*1000)/10;
+Q.braun_votes = Math.round(Q.braun_votes_normalized*1000)/10;
+Q.hitler_votes = Math.round(Q.hitler_votes_normalized*1000)/10;
+Q.thalmann_votes = Math.round(Q.thalmann_votes_normalized*1000)/10;
 
 Q.hindenburg_majority = (Q.hindenburg_votes >= 50);
 Q.thalmann_majority = (Q.thalmann_votes >= 50);
