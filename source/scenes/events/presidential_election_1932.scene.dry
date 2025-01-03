@@ -185,7 +185,7 @@ if (Q.braun_campaign) {
     Q.braun_votes += Q.ddp_normalized;
     Q.braun_votes += Q.sapd_normalized;
     Q.braun_votes += (Q.pro_republic/1000);
-    Q.braun_votes += (Q.democratization);
+    Q.braun_votes += (Q.democratization/100);
     Q.braun_votes += ((Math.floor(Math.random() * 6))/100);
     Q.hindenburg_votes += ((100-Q.pro_republic)/1000);
     if (Q.z_support_braun && Q.z_support_braun == 1) {
