@@ -76,6 +76,9 @@ if (Q.unemployed <= 1) {
 if (Q.reichswehr_strength < 0) {
     Q.reichswehr_strength = 0;
 }
+if (Q.rb_militancy < 0) {
+    Q.rb_militancy = 0;
+}
 
 // re-calculate dissent.
 var total_strength = Q.left_strength + Q.center_strength + Q.labor_strength + Q.reformist_strength + Q.neorevisionist_strength;
