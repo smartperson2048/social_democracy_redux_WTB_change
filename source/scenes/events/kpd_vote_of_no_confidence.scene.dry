@@ -25,7 +25,7 @@ How do we assuage the KPD?
 - @let_it_happen: Never mind. Let the vote happen.
 
 @thalmann
-choose-if: president == "Braun"
+choose-if: president == "Braun" or president == "Juchacz" or president == "Thälmann" or president == "Münzenberg"
 subtitle: This would be pretext for a right-wing coup.
 unavailable-subtitle: [? if president == "Hindenburg" : President Hindenburg would never allow this. ?]
 on-arrival: chancellor = "Thälmann"; chancellor_party = "KPD"; rfb_strength += 100; rfb_militancy += 0.02; workers_kpd += 5; unemployed_kpd += 10; reichswehr_loyalty -= 0.05
@@ -44,7 +44,6 @@ In response to [+ chancellor +] being appointed Chancellor, the right-wing force
 
 @thalmann_no_war
 on-arrival: coup_progress += 5; reformist_dissent += 5; neorevisionist_dissent += 5; z_relation -= 10; rfb_strength += 100; rb_strength -= 50; kpd_relation -= 10; kpd_influence += 3
-go-to: postwar_left
 
 Despite our appointing of [+ chancellor +] as chancellor, there is no appetite for a civil war so soon after the last. [+ chancellor +] is unopposed as he attempts to consolidate power.
 
