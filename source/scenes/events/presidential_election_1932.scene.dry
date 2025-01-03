@@ -248,10 +248,10 @@ if (Q.thalmann_to_braun_bonus) {
 
 // check for majority
 Q.total_votes_pres = Q.hindenburg_votes + Q.hitler_votes + Q.thalmann_votes + Q.braun_votes;
-Q.hindenburg_votes_normalized = (Q.hindenburg_votes/Q.total_votes_pres)*100;
-Q.hitler_votes_normalized = (Q.hitler_votes/Q.total_votes_pres)*100;
-Q.braun_votes_normalized = (Q.braun_votes/Q.total_votes_pres)*100;
-Q.thalmann_votes_normalized = (Q.thalmann_votes/Q.total_votes_pres)*100;
+Q.hindenburg_votes_normalized = (Q.hindenburg_votes/Q.total_votes_pres);
+Q.hitler_votes_normalized = (Q.hitler_votes/Q.total_votes_pres);
+Q.braun_votes_normalized = (Q.braun_votes/Q.total_votes_pres);
+Q.thalmann_votes_normalized = (Q.thalmann_votes/Q.total_votes_pres);
 
 Q.hindenburg_votes = Math.round(Q.hindenburg_votes_normalized*1000)/10;
 Q.braun_votes = Math.round(Q.braun_votes_normalized*1000)/10;
