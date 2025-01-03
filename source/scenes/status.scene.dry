@@ -110,6 +110,15 @@ if (Q.sa_strength) {
 }
 !}
 
+= Distribution of Power
+
+SA: [+ sa_force +]%
+Stalhelm: [+ sh_force +]%
+Reichsbanner: [+ rb_force +]%
+RFB: [+ rfb_force +]%
+Prussia: [+ prussia_force +]%
+Reichswehr: [+ army_force +]%
+
 = Paramilitaries
 
 Reichsbanner Strength: [+ rb_strength_2 +] thousand
