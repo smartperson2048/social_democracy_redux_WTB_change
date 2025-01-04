@@ -1676,10 +1676,10 @@ We can call their bluff, jeopardizing the coalition [? if bourgeois_coalition >=
 - @drop_foreign: Concede.
 
 @call_bluff
-go-to: right_coalition_2 if right_coalition >= 50 and bourgeois_coalition < 50 and dvp_relation < 60; let_it_form if bourgeois_coalition >= 50; new_elections_spd if bourgeois_coalition < 50 and right_coalition < 50 and dvp_relation < 40; ministries if dvp_relation >= 60 or dvp_relation >= 40 and bourgeois_coalition < 50 and right_coalition < 50
-on-departure: dvp_relation -= 10 if dvp_relation >= 60 or dvp_relation >= 40 and bourgeois_coalition < 50 and right_coalition < 50; coalition_dissent += 1 if dvp_relation >= 60 or dvp_relation >= 40 and bourgeois_coalition < 50 and right_coalition < 50
+go-to: right_coalition_2 if right_coalition >= 50 and bourgeois_coalition < 50 and dvp_relation < 60; let_it_form if bourgeois_coalition >= 50; new_elections_spd if bourgeois_coalition < 50 and right_coalition < 50 and dvp_relation < 40; ministries if (dvp_relation >= 60 and bourgeois_coalition < 50) or (dvp_relation >= 40 and bourgeois_coalition < 50 and right_coalition < 50)
+on-departure: (dvp_relation -= 10 if dvp_relation >= 60 and bourgeois_coalition < 50) or (dvp_relation >= 40 and bourgeois_coalition < 50 and right_coalition < 50); coalition_dissent += 1 if (dvp_relation >= 60 and bourgeois_coalition < 50) or (dvp_relation >= 40 and bourgeois_coalition < 50 and right_coalition < 50)
 
-[? if dvp_relation >= 60 or dvp_relation >= 40 and bourgeois_coalition < 50 and right_coalition < 50 : Rudolf Breitscheid of the SPD has been appointed Foreign Minister. ?]
+[? if (dvp_relation >= 60 and bourgeois_coalition < 50) or (dvp_relation >= 40 and bourgeois_coalition < 50 and right_coalition < 50) : Rudolf Breitscheid of the SPD has been appointed Foreign Minister. ?]
 
 @agriculture
 title: Agricultural Ministry
