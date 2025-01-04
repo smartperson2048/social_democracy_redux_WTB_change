@@ -1661,10 +1661,25 @@ tags: mins_1928
 choose-if: leverage >= 10 
 view-if: foreign_minister_party != "SPD"
 on-arrival: leverage -= 10; foreign_minister_party = "SPD"; foreign_minister = "Breitscheid"
-go-to: ministries
+go-to: ministries if (stresemann_dead = 1 or in_weimar_coalition or in_left_front or in_popular_front); foreign_fail if stresemann_dead != 1 and not (in_weimar_coalition or in_left_front or in_popular_front)
 
-Rudolf Breitscheid of the SPD has been appointed Foreign Minister.
+[? if stresemann_dead = 1 or in_weimar_coalition or in_left_front or in_popular_front : Rudolf Breitscheid of the SPD has been appointed Foreign Minister. ?]
 
+@foreign_fail
+on-arrival: dvp_relation -= 5
+
+With Gustav Stresemann as the main member of the DVP advocating a Grand Coalition with the SPD in the first place, under the expectation of being made foreign minister, our push for the ministry has caught him completely by surprise. The DVP has refused to cede the foreign ministry. 
+
+We can call their bluff, jeopardizing the coalition [? if bourgeois_coalition >= 50 and right_coalition < 50 : and risk a bourgeois coalition forming instead ?][? if right_coalition >= 50 : and risk a right-wing coalition [? if bourgeois_coalition >= 50 : or a bourgeois coalition ?] forming instead ?], or back down.
+
+- @call_bluff: Call their bluff.
+- @drop_foreign: Concede.
+
+@call_bluff
+go-to: right_coalition_2 if right_coalition >= 50 and bourgeois_coalition < 50 and dvp_relation < 60; let_it_form if bourgeois_coalition >= 50; new_elections_spd if bourgeois_coalition < 50 and right_coalition < 50 and dvp_relation < 40; ministries if dvp_relation >= 60 or dvp_relation >= 40 and bourgeois_coalition < 50 and right_coalition < 50
+on-departure: dvp_relation -= 10 if dvp_relation >= 60 or dvp_relation >= 40 and bourgeois_coalition < 50 and right_coalition < 50; coalition_dissent += 1 if dvp_relation -= 10 if dvp_relation >= 60 or dvp_relation >= 40 and bourgeois_coalition < 50 and right_coalition < 50
+
+[? if dvp_relation >= 60 or dvp_relation >= 40 and bourgeois_coalition < 50 and right_coalition < 50 : Rudolf Breitscheid of the SPD has been appointed Foreign Minister. ?]
 
 @agriculture
 title: Agricultural Ministry
