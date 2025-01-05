@@ -484,7 +484,6 @@ if (Q.month_actions >= 1) {
             Q.pro_republic -= Q.strife/12;
         }
     }
-    }
     if (Q.victory_republic && Q.dnvp_banned != 1) {
         if (Q.workers_nsdap >= 0) {
             Q.workers_nsdap -= 12/12;
