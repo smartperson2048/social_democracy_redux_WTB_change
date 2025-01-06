@@ -43,7 +43,7 @@ Demilitarization is preferred by our coalition partners and will be harder to ra
 @demilitarize
 choose-if: reichswehr_militancy >= 1
 unavailable-subtitle: The army is but a glorified police force now.
-on-arrival: reichswehr_militancy -= 0.5; coalition_dissent -= 0.5; dvp_relation += 2; sh_militancy += 0.05; rural_nsdap += 2; rural_dnvp += 1; old_middle_nsdap += 1; new_middle_nsdap += 1
+on-arrival: reichswehr_militancy -= 0.5; coalition_dissent -= 1 if coup_progress < 4; dvp_relation += 2; sh_militancy += 0.05; rural_nsdap += 2; rural_dnvp += 1; old_middle_nsdap += 1; new_middle_nsdap += 1
 
 The army has fewer guns, and the guns it does have are lower quality. The reaction from the right is muted by the less noticeable nature of our cuts, but the army remains angry that we are attacking their position, and weapons have gone missing from our stockpiles.
 
