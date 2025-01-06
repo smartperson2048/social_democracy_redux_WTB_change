@@ -451,8 +451,8 @@ if (Q.month_actions >= 1) {
         }
     }
     if (!Q.return_to_normalcy) {
-        Q.unemployed_nsdap += (((Q.sa_force/2)-Q.rfb_force)/10);
-        Q.unemployed_kpd -= (((Q.sa_force/2)-Q.rfb_force)/10);
+        Q.unemployed_nsdap += ((((Q.sa_force/2)-Q.rfb_force)/10)/12);
+        Q.unemployed_kpd -= ((((Q.sa_force/2)-Q.rfb_force)/10)/12);
         if (Q.sa_force + Q.sh_force >= 50 && Q.sa_force < 50 && Q.sh_force < 50 && Q.harzburg_front_seen) {
             Q.workers_kpd -= 2/12;
             Q.workers_spd -= 1/12;
@@ -465,7 +465,8 @@ if (Q.month_actions >= 1) {
             Q.rural_dnvp += 1/12;
             Q.unemployed_nsdap += 3/12;
             Q.strife += 1/12;
-            Q.rb_strength -= 10;
+            Q.rb_strength *= 0.996;
+            Q.rfb_strength *= 0.98;
             if (Q.month == 1) {
                 Q.pro_republic -= (Q.strife/2);
             }
@@ -480,8 +481,8 @@ if (Q.month_actions >= 1) {
             Q.old_middle_nsdap += 6/12;
             Q.rural_nsdap += 8/12;
             Q.unemployed_nsdap += 6/12;
-            Q.rb_strength -= 25;
-            Q.rfb_strength -= 10;
+            Q.rb_strength *= 0.99;
+            Q.rfb_strength -= *= 0.92;
             Q.strife += 3/12;
             if (Q.month == 1) {
                 Q.pro_republic -= Q.strife;
@@ -496,8 +497,8 @@ if (Q.month_actions >= 1) {
             Q.new_middle_dnvp += 2/12;
             Q.old_middle_dnvp += 2/12;
             Q.rural_dnvp += 2/12;
-            Q.rb_strength -= 25;
-            Q.rfb_strength -= 10;
+            Q.rb_strength *= 0.996;
+            Q.rfb_strength -= *= 0.94;
             Q.strife += 1/12;
             if (Q.month == 1) {
                 Q.pro_republic -= Q.strife;
