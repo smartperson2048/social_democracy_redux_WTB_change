@@ -450,7 +450,7 @@ if (Q.month_actions >= 1) {
             Q.workers_kpd += 1/12;
         }
     }
-    if (!Q.return_to_normalcy) {
+    if (!Q.return_to_normalcy && !Q.victory_republic) {
         Q.unemployed_nsdap += ((((Q.sa_force/2)-Q.rfb_force)/10)/12);
         Q.unemployed_kpd -= ((((Q.sa_force/2)-Q.rfb_force)/10)/12);
         if (Q.sa_force + Q.sh_force >= 50 && Q.sa_force < 50 && Q.sh_force < 50 && Q.harzburg_front_seen) {
