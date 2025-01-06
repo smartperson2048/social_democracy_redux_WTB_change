@@ -1291,7 +1291,7 @@ choose-if: president != "Hitler"
 unavailable-subtitle: SPD + Z + BVP + [+ ddp_name +] + DVP - [? if president == "Hitler" : Hitler refuses to appoint a chancellor under such a governing arrangement. ?]
 subtitle: SPD + Z + BVP + [+ ddp_name +] + DVP  ([+ grand_coalition +]%)
 on-arrival: in_grand_coalition = 1; in_popular_front = 0; in_left_front = 0
-go-to: grand_coalition_spd_lead if (n_elections <= 1 and largest_party == "SPD") or (largest_party == "SPD" and spd_r >= 30) or president = "Braun"; grand_coalition_z_lead if president != "Braun" and ((n_elections > 1 and spd_r < 30) or (n_elections <= 1 and largest_party != "SPD"))
+go-to: grand_coalition_spd_lead if ((n_elections <= 1 and largest_party == "SPD") or (largest_party == "SPD" and spd_r >= 30) and spd_sackings <= 0) or president = "Braun"; grand_coalition_z_lead if president != "Braun" and (spd_sackings > 0 or (n_elections > 1 and spd_r < 30) or (n_elections <= 1 and largest_party != "SPD"))
 
 # TODO: if there are enough votes to form a grand coalition, who leads? Does the SPD lead or does Brüning (Z) lead? In reality this depended on Hindenburg's will, basically, which in turn depended on what his camarilla supported.
 # In the first election, SPD always leads. In subsequent elections, if spd_r >= 29 then SPD leads, otherwise Z leads?
