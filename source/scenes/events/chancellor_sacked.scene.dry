@@ -10,6 +10,8 @@ tags: event
 
 It seems that in our attempts to pursue our policy plans and dismantle the power that the reactionaries hold over our republic, we have earned the ire of President Hindenburg, who has today unilaterally dismissed our government as is unfortunately legal by the German constitution. Some on the left of our party are calling to resist but this does not seem to be a coup, not yet anyway.
 
+# todo: hindenburg sacking bruning and replacing with bruning is weird. separate event for if z is chancellor, to be bruning sacking SPD ministers instead. this requires me to also change VONCs though...
+
 @bruning_right
 on-arrival: spd_in_government = 0; spd_toleration = 0; chancellor = "Brüning"; chancellor_party = "Z"; foreign_minister_party = "DVP"; interior_minister_party = "Z"; justice_minister_party = "Z"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = "Z"; finance_minister_party = "Z"; agriculture_minister_party = "Z"; in_right_coalition = 1
 
