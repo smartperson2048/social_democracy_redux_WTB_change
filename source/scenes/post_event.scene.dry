@@ -506,7 +506,9 @@ if (Q.month_actions >= 1) {
                 Q.pro_republic -= Q.strife;
             }
         }
-        Q.catholics_other -= 5/12;
+        if (Q.black_thursday_seen) {
+            Q.catholics_other -= 4/12;
+        }
     }
     if (Q.victory_republic && Q.dnvp_banned != 1) {
         if (Q.workers_nsdap >= 0) {
