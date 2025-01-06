@@ -45,7 +45,7 @@ choose-if: reichswehr_militancy >= 1
 unavailable-subtitle: The army is but a glorified police force now.
 on-arrival: reichswehr_militancy -= 0.5; coalition_dissent -= 1; dvp_relation += 2; sh_militancy += 0.05; rural_nsdap += 2; rural_dnvp += 1; old_middle_nsdap += 1; new_middle_nsdap += 1
 
-The army has fewer guns, and the guns it does have are lower quality. The reaction from the right is muted by the less noticeable nature of our cuts, but the army remains angry that we are attacking their position. 
+The army has fewer guns, and the guns it does have are lower quality. The reaction from the right is muted by the less noticeable nature of our cuts, but the army remains angry that we are attacking their position, and weapons have gone missing from our stockpiles.
 
 [? if coup_progress < 5 : There is no hint of a coup yet, but we do not know where the line will be drawn. ?][? if coup_progress >= 5 and coup_progress < 8 : Rumors of a coup have begun to spread around, though in terms of actual evidence, there is nothing yet. We must proceed with caution. ?][? if coup_progress >= 8 : Arms and ammunition seem to disappear mysteriously from military supplies, while reactionaries increasingly join the army. Officers meet through the nights, often with Harzburg Front officials as well, and the army's already huge degree of independence seems to somehow grow. Most damning of all is the Harzburg Front's recent condemnation of demilitarization, which seems almost a veiled threat aimed at the government. There can be no uncertainty: a coup plot is in motion, and we might not have much time to prevent it. ?]
 
