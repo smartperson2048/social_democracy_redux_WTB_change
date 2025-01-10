@@ -5,13 +5,13 @@ new-page: true
 max-visits: 4
 on-arrival: march_on_berlin_seen = 1; sa_strength += 40; sh_strength += 120; strife += 1; march_on_berlin_timer += 8
 go-to: ask_resign if spd_in_government and president != "Braun"; govt_menu if president = "Braun"; non_govt_menu if spd_in_government = 0 and president != "Braun"
-#tags: event
+tags: event
 
 = March on Berlin
 
 The far right is mobilizing. Paramilitary forces of the Stahlhelm and SA, organized under the Harzburg Front, have marched on Berlin, threatening to violently overthrow the government.
 
-They demand either immediate elections under the "supervision" of the nationalist paramilitaries, or else the immediate resignation of the government and appointment of a Harzburg Front cabinet. It is obvious that they are threatening a civil war if their demands are not met.
+They demand either immediate elections under the "supervision" of the nationalist paramilitaries, or else the immediate resignation of the government and appointment of a Harzburg Front cabinet headed by Franz Seldte of the Stalhelm. It is obvious that they are threatening a civil war if their demands are not met.
 
 @non_govt_menu
 
@@ -22,14 +22,24 @@ It appears that President [+ president +] is looking favorably upon the fascist 
 
 @accept
 title: There is nothing we can do.
-go-to: accept_schleicher
+go-to: accept_seldte
 
-@accept_schleicher
-on-arrival: chancellor = "Schleicher"; chancellor_party = "I"; labor_minister_party = "I"; interior_minister_party = "I"; finance_minister_party = "I"; justice_minister_party = "I"; economic_minister_party = "I"; foreign_minister_party = "I"; agriculture_minister_party = "I"; reichswehr_minister_party = "I"; spd_in_government = 0
+@accept_seldte
+on-arrival: chancellor = "Seldte"; chancellor_party = "DNVP"; labor_minister_party = "I"; interior_minister_party = "DNVP"; finance_minister_party = "I"; justice_minister_party = "DNVP"; economic_minister_party = "I"; foreign_minister_party = "I"; agriculture_minister_party = "DNVP"; reichswehr_minister_party = "I"; spd_in_government = 0; harzburg_r = dnvp_r + other_r; harzburg_r + dvp_r if dvp_relation + pro_republic < 70; harzburg_r + z_r if z_relation + pro_republic < 50 and z_party_leader != "Joos"; coup_progress *= 0.6
+go-to: harzburg_collapse if harzburg_r < 50; harzburg_survive if harzburg_r >= 50
 
-After the resignation of the chancellor, army general Kurt von Schleicher has been appointed chancellor, part of Hindenburg's camarilla. He forms a minority coalition with various Harzburg Front officials, primarily independents and DNVP. The Nazis refuse to back the government, straining the Harzburg Front's unity.
+After the resignation of the chancellor, Stalhelm leader Franz Seldte has been appointed chancellor, heading a highly reactionary Harzburg Front cabinet with army general Kurt von Schleicher being made Reichswehr Minister. Despite this development, the Nazis refuse to back or enter the government, straining the Harzburg Front's unity.
 
-A motion of no confidence soon brings Schleicher down. Though the coup has not lead to an outright destruction of democracy, the Stalhelm has spent this time harshly persecuting the political left, while minority rule by decree from the reactionaries has undone much of our reforms.
+@harzburg_collapse
+go-to: new_elections_2
+
+With only [+ harzburg_r +]% behind the coup-instated government, a motion of no confidence soon brings the minority Harzburg Cabinet down. Though the coup has not yet lead to an outright destruction of democracy, the Stalhelm spends this time harshly persecuting the political left, while continued minority rule by decree from the reactionaries threatens to undo much of our reforms.
+
+# todo: seldte reichsexekutes prussia? martial law?
+
+@harzburg_survive
+
+Somehow, the Harzburg Cabinet has cobbled together a majority in the Reichstag of [+ harzburg_r +]%, surviving a motion of no confidence. Immediately, harsh persecution of the political left is initiated by the Stalhelm while the state turns a blind eye, and our progressive reforms in government are undone.
 
 @ask_resign
 
@@ -59,7 +69,7 @@ The Reichsbanner number at [+ rb_strength +] thousand; many are in Berlin to cou
 
 
 @fight_2_win
-on-arrival: coup_progress = 0; sa_strength *= 0.6; sh_strength *= 0.6; rb_strength *= 0.9; workers_nsdap -= 12*(1-dissent); unemployed_nsdap -= 10*(1-dissent); new_middle_nsdap -= 6*(1-dissent); workers_spd += 8*(1-dissent); unemployed_spd += 6*(1-dissent); pro_republic += 15
+on-arrival: coup_progress = 0; sa_strength *= 0.8; sh_strength *= 0.5: rb_strength *= 0.9; workers_nsdap -= 8*(1-dissent); unemployed_nsdap -= 6*(1-dissent); new_middle_nsdap -= 4*(1-dissent); workers_spd += 8*(1-dissent); unemployed_spd += 6*(1-dissent); pro_republic += 15
 achievement: drei_pfeile
 
 Our forces confront the fascists, and somehow, the fascists retreat! They were overwhelmed by our display of strength, and have chosen to slink away. The attempted coup is over, at least for now.
@@ -139,13 +149,12 @@ We have resigned our positions in the government.
 
 
 
-@braun_appoints_hitler
-title: We cannot do anything but appoint Hitler chancellor.
+@braun_appoints_seldte
+title: We cannot do anything but appoint Seldte chancellor.
 view-if: president == "Braun"
-choose-if: nsdap_normalized >= 0.5 or largest_party == "NSDAP"
+choose-if: dnvp_votes + sh_force >= 50 or largest_party == "DNVP"
 unavailable-subtitle: There is no way President [+ president +] could do such a blatantly undemocratic act.
-on-arrival: chancellor = "Hitler"; chancellor_party = "NSDAP"; spd_in_government = 0
+on-arrival: chancellor = "Seldte"; chancellor_party = "DNVP"; spd_in_government = 0
+go-to: accept
 
-Threatened with a civil war, and unwilling to fight anymore, President [+ president +] dismisses the current government and appoints Hitler of the NSDAP as chancellor.
-
-- @hitler_takes_power
+Threatened with a civil war, and unwilling to fight anymore, President [+ president +] dismisses the current government and appoints Seldte of the Stalhelm as chancellor.
