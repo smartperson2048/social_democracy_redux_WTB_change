@@ -110,7 +110,7 @@ go-to: new_elections_braun_2 if nsdap_normalized + dnvp_normalized >= 0.5; new_e
 
 The fascists reject our offer of free and fair elections. They are demanding that President [+ president +] dismisses the current government and appoints Hitler chancellor.
 
-- @braun_appoints_hitler
+- @braun_appoints_seldte
 - @fight
 
 @new_elections_braun_2
