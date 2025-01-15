@@ -25,7 +25,7 @@ title: There is nothing we can do.
 go-to: accept_seldte
 
 @accept_seldte
-on-arrival: chancellor = "Seldte"; chancellor_party = "DNVP"; labor_minister_party = "I"; interior_minister_party = "DNVP"; finance_minister_party = "I"; justice_minister_party = "DNVP"; economic_minister_party = "I"; foreign_minister_party = "I"; agriculture_minister_party = "DNVP"; reichswehr_minister_party = "I"; spd_in_government = 0; harzburg_r = dnvp_r; harzburg_r += other_r; harzburg_r += dvp_r if dvp_relation + pro_republic < 85; harzburg_r += z_r if z_relation + pro_republic < 60 and z_party_leader != "Joos"; coup_progress *= 0.6
+on-arrival: chancellor = "Seldte"; chancellor_party = "DNVP"; labor_minister_party = "I"; interior_minister_party = "DNVP"; finance_minister_party = "I"; justice_minister_party = "DNVP"; economic_minister_party = "I"; foreign_minister_party = "I"; agriculture_minister_party = "DNVP"; reichswehr_minister_party = "I"; spd_in_government = 0; harzburg_r = dnvp_r; harzburg_r += other_r; harzburg_r += 3; harzburg_r += dvp_r if dvp_relation + pro_republic < 85; harzburg_r += z_r if z_relation + pro_republic < 60 and z_party_leader != "Joos"; coup_progress *= 0.6
 go-to: harzburg_collapse if harzburg_r < 50; harzburg_survive if harzburg_r >= 50
 
 After the resignation of the chancellor, Stalhelm leader Franz Seldte has been appointed chancellor, heading a highly reactionary Harzburg Front cabinet with army general Kurt von Schleicher being made Reichswehr Minister. Despite this development, the Nazis refuse to back or enter the government, straining the Harzburg Front's unity.
