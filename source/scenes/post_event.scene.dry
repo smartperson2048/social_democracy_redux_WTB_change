@@ -516,19 +516,19 @@ if (Q.month_actions >= 1) {
         }
     }
     if (Q.nazi_peak) {
-        Q.workers_nsdap -= 9/12;
-        Q.workers_kpd += 5/12;
-        Q.new_middle_nsdap -= 10/12;
-        Q.new_middle_dnvp += 4/12;
-        Q.old_middle_nsdap -= 9/12;
-        Q.old_middle_dnvp += 5/12;
-        Q.rural_nsdap -= 8/12;
-        Q.rural_dnvp += 6/12;
-        Q.unemployed_nsdap -= 10/12;
-        Q.unemployed_kpd += 6/12;
+        Q.workers_nsdap -= 9/6;
+        Q.workers_kpd += 5/6;
+        Q.new_middle_nsdap -= 10/6;
+        Q.new_middle_dnvp += 4/6;
+        Q.old_middle_nsdap -= 9/6;
+        Q.old_middle_dnvp += 5/6;
+        Q.rural_nsdap -= 8/6;
+        Q.rural_dnvp += 6/6;
+        Q.unemployed_nsdap -= 10/6;
+        Q.unemployed_kpd += 6/6;
         if (Q.sa_force >= 20) {
-           Q.sa_strength -= 50/12;
-           Q.sa_militancy -= 0.05/12;
+           Q.sa_strength -= 50/6;
+           Q.sa_militancy -= 0.05/6;
         }
     }
     if (Q.victory_republic && Q.dnvp_banned != 1) {
