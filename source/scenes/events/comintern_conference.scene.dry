@@ -28,7 +28,7 @@ on-arrival: third_period = 0; kpd_relation += 10; communist_coalition += 3
 
 @influence_popular_front
 subtitle: -1 resource
-view-if: ((kpd_party_leader != "Conciliators" and (communist_coalition*soviet_relation < 50) and not kpd_ally) or (kpd_relation <= 0 and rfb_banned == 1)) and (communist_seen >= 2 and (kpd_ally or kpd_party_leader == "Conciliators" or (communist_coalition*soviet_relation > 30) or kpd_relation >= 45))
+view-if: ((kpd_party_leader != "Conciliators" and (communist_coalition*soviet_relation < 50) and not kpd_ally) or (kpd_relation <= 0 and rfb_banned == 1)) and (communist_seen >= 2 and (kpd_ally or kpd_party_leader == "Conciliators" or (communist_coalition*soviet_relation > 30) or kpd_relation >= 55))
 choose-if: resources >= 1
 unavailable_subtitle: -1 resource. We lack the resources needed.
 on-arrival: resources -= 1; third_period = 0; kpd_relation += 10; communist_coalition += 3
