@@ -9,8 +9,8 @@ Following Germany’s defeat in the Great War, the Saarland was made into a Leag
 
 The vote to rejoin Germany is widely expected to succeed, though ultimately the highly Catholic population of the region will be the deciding factor. 
 
-@campaign_pro: Campaign in favor of rejoining Germany.
-@campaign_anti: Campaign against rejoining Germany.
+- @campaign_pro: Campaign in favor of rejoining Germany.
+- @campaign_anti: Campaign against rejoining Germany.
 
 @campaign_pro
 view-if: chancellor_party != “I” and chancellor_party != “NSDAP” and chancellor_party != “DNVP”
