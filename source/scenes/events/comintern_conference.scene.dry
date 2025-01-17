@@ -1,0 +1,34 @@
+title: 7th Comintern Congress
+subtitle: The Communist International convenes in Moscow...
+view-if: year == 1935 and month >= 7
+max-visits: 1
+tags: event
+new-page: true
+
+= 7th Comintern Congress
+
+The "7th World Congress of the Communist International" has begun in Moscow, seeing representatives from Communist nations around the world convene to discuss policy and strategy going forward.
+
+Previously, the Comintern adopted the "Third Period" thesis, positing an end to collaboration with "social fascists" to defend the position of the workers and instead the beginning of a revolutionary offensive against capitalism. Perhaps this will change with this congress.
+
+- @third_period: The Third Period thesis is maintained.
+- @popular_front: The Third Period thesis is abandoned in favor of the "Popular Front".
+- @influence_popular_front: Lobby the congress with our spies to abandon the Third Period thesis.
+
+@third_period
+view-if: (kpd_party_leader != "Conciliators" and (communist_coalition*soviet_relation < 50) and not kpd_ally) or (kpd_relation <= 0 and rfb_banned == 1)
+on-arrival: workers_spd -= 4; workers_kpd += 3; unemployed_spd -= 6; unemployed_kpd += 6; kpd_relation -= 10; third_period = 1
+
+With the threat from fascism deemed insufficient, the Third Period thesis is maintained by the Communist International. This will hurt any attempts of ours to ally the KPD, and weaken leftism worldwide.
+
+@popular_front
+choose-if: (kpd_party_leader == "Conciliators" or (communist_coalition*soviet_relation < 50) or kpd_ally) and (kpd_relation > 0 or rfb_banned != 1)
+unavailable_subtitle: There is insufficient support for a Popular Front.
+on-arrival: third_period = 0; kpd_relation += 10; communist_coalition += 3
+
+@influence_popular_front
+subtitle: -1 resource
+view-if: ((kpd_party_leader != "Conciliators" and (communist_coalition*soviet_relation < 50) and not kpd_ally) or (kpd_relation <= 0 and rfb_banned == 1)) and (communist_seen >= 2 and (kpd_ally or kpd_party_leader == "Conciliators" or (communist_coalition*soviet_relation > 30) or kpd_relation >= 45))
+choose-if: resources >= 1
+unavailable_subtitle: -1 resource. We lack the resources needed.
+on-arrival: resources -= 1; third_period = 0; kpd_relation += 10; communist_coalition += 3
