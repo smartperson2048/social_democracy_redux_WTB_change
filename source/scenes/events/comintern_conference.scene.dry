@@ -22,7 +22,7 @@ on-arrival: workers_spd -= 4; workers_kpd += 3; unemployed_spd -= 6; unemployed_
 With the threat from fascism deemed insufficient, the Third Period thesis is maintained by the Communist International. This will hurt any attempts of ours to ally the KPD, and weaken leftism worldwide.
 
 @popular_front
-choose-if: (kpd_party_leader == "Conciliators" or (communist_coalition*soviet_relation < 50) or kpd_ally) and (kpd_relation > 0 or rfb_banned != 1)
+choose-if: (kpd_party_leader == "Conciliators" or (communist_coalition*soviet_relation >= 50) or kpd_ally) and (kpd_relation > 0 or rfb_banned != 1)
 unavailable_subtitle: There is insufficient support for a Popular Front.
 on-arrival: third_period = 0; kpd_relation += 10; communist_coalition += 3
 
