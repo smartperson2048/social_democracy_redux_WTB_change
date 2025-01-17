@@ -1,6 +1,6 @@
 title: Saar Referendum
 subtitle: A referendum is to be held on the fate of the Saarland…
-view-if: year == 1935 and debug == 1
+view-if: year >= 1935
 max-visits: 1
 
 = Saar Referendum
