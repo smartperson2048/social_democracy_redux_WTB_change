@@ -32,7 +32,7 @@ With our control of the Foreign Ministry, it is up to us to control Germany's po
 subtitle: [? if eu : We can use the European Union to pressure Italy into backing down. ?][? if not eu : We can work with France and Britain to sanction Italy should they refuse. ?]
 unavailable_subtitle: [? if west_relation < 7 : France and Britain would never back this. ?][? if not eu : We lack the leverage over Italy necessary. ?]
 choose-if: (eu and west_relation >= 5) or (not eu and west_relation >= 7)
-on-arrival: unemployed += 1; west_relation -= 1; unemployed += 0.8 if not eu; inflation += 0.2; inflation += 0.6 if not eu; workers_spd += 6*(1-dissent); new_middle_spd += 3*(1-dissent); pacifism += 2; soviet_relation += 1; left_dissent -= 5; kpd_relation += 3; z_relation += 3
+on-arrival: unemployed += 1; west_relation -= 1; unemployed += 0.8 if not eu; inflation += 0.2; inflation += 0.6 if not eu; workers_spd += 6*(1-dissent); new_middle_spd += 3*(1-dissent); pacifism += 2; soviet_relation += 1; left_dissent -= 5; kpd_relation += 3; z_relation += 3; abysinnia = 1
 
 We act firmly and decisively to end Italian expansionism, and thanks to our good relations with France and Britain our plan is agreed upon. Sanctions are placed [? if eu : through the European Union ?] and the dispute is arbitrated firmly in Ethiopia's favor. Italy eventually backs down, thoroughly humbled and with its own fascist regime embarassed.
 
