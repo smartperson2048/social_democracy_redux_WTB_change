@@ -13,7 +13,7 @@ The vote to rejoin Germany is widely expected to succeed, though ultimately the 
 - @campaign_anti: Campaign against rejoining Germany.
 
 @campaign_pro
-view-if: chancellor_party != "I” and chancellor_party != "NSDAP” and chancellor_party != "DNVP”
+view-if: chancellor_party != "I" and chancellor_party != "NSDAP" and chancellor_party != "DNVP"
 on-arrival: spd_saar = 1; saar_pro = catholics_spd; saar_pro += catholics_z if z_relation >= 25; saar_anti += (progressive_coalition/3); saar_anti += (homosexual_rights*10); saar_anti += (womens_rights*5); saar_pro += 25 if concordat; saar_anti += 20/(west_relation+1); saar_pro += sa_force; {!
 var saar = Q.saar_pro + Q.saar_anti;
 Q.saar_pro = Math.round((Q.saar_pro/saar)*100);
@@ -26,7 +26,7 @@ Of course, we campaign in favor of reincorporation. [? if z_relation >= 25 : The
 - @defeat: [+ saar_pro +] vote in favor of rejoining Germany.
 
 @campaign_anti
-view-if: chancellor_party == "I” or chancellor_party == "NSDAP” or chancellor_party == "DNVP”
+view-if: chancellor_party == "I" or chancellor_party == "NSDAP" or chancellor_party == "DNVP"
 
 @victory
 on-arrival: saarland = 1; catholics += 1; workers_nsdap += 5 if (saar_pro-sa_force < saar_anti); workers_spd -= 3 if saar_pro < 70; dvp_relation -= 4 if saar_pro < 70
