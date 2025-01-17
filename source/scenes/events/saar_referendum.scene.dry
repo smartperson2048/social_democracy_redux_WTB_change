@@ -1,0 +1,41 @@
+title: Saar Referendum
+subtitle: A referendum is to be held on the fate of the Saarland…
+view-if: year == 1935 and debug == 1
+max-visits: 1
+
+= Saar Referendum
+
+Following Germany’s defeat in the Great War, the Saarland was made into a League of Nations mandate under de-facto French control. Now, however, a referendum is scheduled to take place to decide the future of the territory.
+
+The vote to rejoin Germany is widely expected to succeed, though ultimately the highly Catholic population of the region will be the deciding factor. 
+
+@campaign_pro: Campaign in favor of rejoining Germany.
+@campaign_anti: Campaign against rejoining Germany.
+
+@campaign_pro
+view-if: chancellor_party != “I” and chancellor_party != “NSDAP” and chancellor_party != “DNVP”
+on-arrival: spd_saar = 1; saar_pro = catholics_spd; saar_pro += catholics_z if z_relation >= 25; saar_anti += (progressive_coalition/3); saar_anti += (homosexual_rights*10); saar_anti += (womens_rights*5); saar_pro += 25 if concordat; saar_anti += 20/(west_relation+1); saar_pro += sa_force; {!
+var saar = Q.saar_pro + Q.saar_anti;
+Q.saar_pro = Math.round((Q.saar_pro/saar)*100);
+Q.saar_anti = Math.round((Q.saar_anti/saar)*100);
+!}
+
+Of course, we campaign in favor of reincorporation. [? if z_relation >= 25 : The Center Party does as well, helping swing the Catholics. ?]
+
+- @victory: [+ saar_pro +] vote in favor of rejoining Germany.
+- @defeat: [+ saar_pro +] vote in favor of rejoining Germany.
+
+@campaign_anti
+view-if: chancellor_party == “I” or chancellor_party == “NSDAP” or chancellor_party == “DNVP”
+
+@victory
+on-arrival: saarland = 1; catholics += 1; workers_nsdap += 5 if (saar_pro-sa_force < saar_anti); workers_spd -= 3 if saar_pro < 70; dvp_relation -= 4 if saar_pro < 70
+
+As expected, the vote to rejoin Germany wins with [+ saar_pro +]%. [? if (saar_pro-sa_force < saar_anti) : The Nazis were very active in the campaign, intimidating voters with their SA, and have claimed the victory as theirs. ?]
+
+[? if saar_pro < 70 : The margin of victory was surprisingly close for comfort, and our credibility is hurt as a result. ?]
+
+@defeat
+on-arrival: workers_spd -= 4 if spd_saar == 1; new_middle_spd -= 4 if spd_saar == 1; old_middle_spd -= 5 if spd_saar == 1; unemployed_spd -= 4 if spd_saar == 1; rural_spd -= 5 if spd_saar == 1; workers_nsdap -= 5 if spd_saar != 1; new_middle_nsdap -= 8 if spd_saar != 1; old_middle_nsdap -= 8 if spd_saar != 1; unemployed_nsdap -= 5 if nsdap_saar != 1; rural_nsdap -= 7 if nsdap_saar == 1; 
+
+Somehow, a majority have voted to stay as a League of Nations mandate. This is a great embarrassment to [? if spd_saar : us ?][? if not spd_saar : the NSDAP ?] as it was widely expected that the vast majority would favor Germany. 
