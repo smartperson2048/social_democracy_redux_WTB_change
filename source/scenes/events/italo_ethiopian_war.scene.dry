@@ -1,0 +1,10 @@
+title: Second Italo-Ethiopian War
+subtitle: Italian forces have invaded Ethiopia!
+view-if: year == 1936 and month >= 10
+max-visits: 1
+#tags: event
+new-page: true
+
+= Second Italo-Ethiopian War
+
+Italian forces have invaded Ethiopia from Eritrea, sparking a war between the two states. This comes following a prior crisis where Italian forces, operating a garrison well within Ethiopian territory, refused to cooperate with an Anglo-Ethiopian survey of the region and, after a standoff, attacked the Ethiopian encampment.
