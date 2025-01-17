@@ -2,6 +2,7 @@ title: Saar Referendum
 subtitle: A referendum is to be held on the fate of the Saarland…
 view-if: year >= 1935
 max-visits: 1
+tags: event
 
 = Saar Referendum
 
