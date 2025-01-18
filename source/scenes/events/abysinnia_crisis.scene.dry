@@ -4,7 +4,7 @@ view-if: year == 1934 and month >= 12
 max-visits: 1
 tags: event
 new-page: true
-on-arrival: abysinnia_timer = 8; unresolved_abysinnia = 1 if soviet_relation + kpd_influence + nationalization_progress > west_relation
+on-arrival: abysinnia_timer = 8; unresolved_abysinnia = 1 if ((soviet_relation + kpd_influence + nationalization_progress > west_relation) and (soviet_relation + kpd_influence + nationalization_progress > 2))
 go-to: non_govt if foreign_minister_party != "SPD"; control_foreign if foreign_minister_party == "SPD"
 
 = Abysinnia Crisis
