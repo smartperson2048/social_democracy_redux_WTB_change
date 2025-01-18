@@ -35,10 +35,13 @@ for (var c of Q.classes) {
         Q[c + '_' + party + '_normalized'] = 100*Q[c+'_'+party]/class_votes;
         Q[c + '_' + party + '_display'] = Math.round(100*Q[c+'_'+party]/class_votes);
     }
-    if (class_votes >= 200) {
+    if (class_votes >= 150) {
         Q[c+'_'+party] *= 0.99;
-        if (class_votes >= 300) {
-            Q[c+'_'+party] *= 0.96;
+        if (class_votes >= 200) {
+            Q[c+'_'+party] *= 0.98;
+            if (class_votes >= 250) {
+                Q[c+'_'+party] *= 0.96;
+            }
         }
     }
 }
@@ -241,31 +244,31 @@ if (Q.month_actions >= 1) {
     // if pro_republic is less than the support of the Weimar coalition, reduce SPD support...
     if (Q.pro_republic < (Q.spd_votes + Q.ddp_votes + Q.z_votes - 3)) {
         if (Q.new_middle_spd > 0) {
-            Q.new_middle_spd -= 1;
-            Q.new_middle_nsdap += 1;
+            Q.new_middle_spd -= 4/12;
+            Q.new_middle_nsdap += 4/12;
         }
         if (Q.rural_spd > 0) {
-            Q.rural_spd -= 1;
-            Q.rural_nsdap += 1;
+            Q.rural_spd -= 4/12;
+            Q.rural_nsdap += 4/12;
         }
         if (Q.old_middle_spd > 0) {
-            Q.old_middle_spd -= 1;
-            Q.old_middle_nsdap += 1;
+            Q.old_middle_spd -= 4/12;
+            Q.old_middle_nsdap += 4/12;
         }
         if (Q.workers_spd_normalized > 20) {
-            Q.workers_spd -= 1;
+            Q.workers_spd -= 4/12;
         }
         if (Q.new_middle_ddp > 0) {
-            Q.new_middle_ddp -= 1;
-            Q.new_middle_nsdap += 1;
+            Q.new_middle_ddp -= 4/12;
+            Q.new_middle_nsdap += 4/12;
         }
         if (Q.old_middle_ddp > 0) {
-            Q.old_middle_ddp -= 1;
-            Q.old_middle_nsdap += 1;
+            Q.old_middle_ddp -= 4/12;
+            Q.old_middle_nsdap += 4/12;
         }
         if (Q.rural_ddp > 0) {
-            Q.rural_ddp -= 1;
-            Q.rural_nsdap += 1;
+            Q.rural_ddp -= 4/12;
+            Q.rural_nsdap += 4/12;
         }
     }
     ////////////////////////// annual support changes
@@ -576,16 +579,41 @@ if (Q.month_actions >= 1) {
         }
     }
     if (Q.nazi_peak) {
-        Q.workers_nsdap -= 9/6;
-        Q.workers_kpd += 5/6;
-        Q.new_middle_nsdap -= 10/6;
-        Q.new_middle_dnvp += 4/6;
-        Q.old_middle_nsdap -= 9/6;
-        Q.old_middle_dnvp += 5/6;
-        Q.rural_nsdap -= 8/6;
-        Q.rural_dnvp += 6/6;
-        Q.unemployed_nsdap -= 10/6;
-        Q.unemployed_kpd += 6/6;
+        if (Q.workers_nsdap > 0) {
+            Q.workers_nsdap -= 9/6;
+            Q.workers_kpd += 2/6;
+            if (Q.unemployed >= 25) {
+                Q.workers_kpd += 3/6;
+            }
+        }
+        if (Q.new_middle_nsdap > 0) {
+            Q.new_middle_nsdap -= 10/6;
+            Q.new_middle_dnvp += 2/6;
+            if (Q.unemployed >= 25) {
+                Q.new_middle_dnvp += 2/6;
+            }
+        }
+        if (Q.old_middle_nsdap > 0) {
+            Q.old_middle_nsdap -= 9/6;
+            Q.old_middle_dnvp += 3/6;
+            if (Q.unemployed >= 25) {
+                Q.old_middle_dnvp += 2/6;
+            }
+        }
+        if (Q.rural_nsdap > 0) {
+            Q.rural_nsdap -= 8/6;
+            Q.rural_dnvp += 3/6;
+            if (Q.unemployed >= 25) {
+                Q.rural_dnvp += 3/6;
+            }
+        }
+        if (Q.unemployed_nsdap > 0) {
+            Q.unemployed_nsdap -= 10/6;
+            Q.unemployed_kpd += 2/6;
+            if (Q.unemployed >= 25) {
+                Q.unemployed_kpd += 4/6;
+            }
+        }
         if (Q.sa_force >= 20) {
            Q.sa_strength -= 50/6;
            Q.sa_militancy -= 0.05/6;
@@ -705,6 +733,18 @@ if (Q.month_actions >= 1) {
     }
     if (Q.party_bans && !Q.constitutional_reform) {
         Q.constitutional_reform = 1;
+    }
+    if (Q.spanish_civil_war) {
+        Q.republic_strength -= 1/12;
+        Q.national_strength -= 1/12;
+        if ((Q.republic_strength/(Q.republic_strength+Q.national_strength)) >= 0.7) {
+            Q.national_strength -= 1/12;
+        }
+        if ((Q.national_strength/(Q.republic_strength+Q.national_strength)) >= 0.7) {
+            Q.republic_strength -= 1/12;
+        }
+        Q.republic_strength -= Math.random() * (1 / 16 - 1 / 24) + 1 / 24;
+        Q.national_strength -= Math.random() * (1 / 16 - 1 / 24) + 1 / 24;
     }
 }
 if (Q.normalize_support) {
