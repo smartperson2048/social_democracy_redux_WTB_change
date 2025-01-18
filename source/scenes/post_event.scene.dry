@@ -35,6 +35,12 @@ for (var c of Q.classes) {
         Q[c + '_' + party + '_normalized'] = 100*Q[c+'_'+party]/class_votes;
         Q[c + '_' + party + '_display'] = Math.round(100*Q[c+'_'+party]/class_votes);
     }
+    if (class_votes >= 200) {
+        Q[c+'_'+party] *= 0.99;
+        if (class_votes >= 300) {
+            Q[c+'_'+party] *= 0.96;
+        }
+    }
 }
 // calculate support for each of the parties
 var total_support = 0; 
@@ -708,6 +714,7 @@ if (Q.normalize_support) {
        } 
     }
 }
+
 Q.has_event = 0;
 // check if there are any cards in #event, and then go to main if not.
 var scene = this.game.scenes['post_event.events_choice'];
