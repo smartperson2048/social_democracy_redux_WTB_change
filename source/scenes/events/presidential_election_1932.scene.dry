@@ -186,6 +186,7 @@ if (Q.braun_campaign) {
     Q.braun_votes += Q.sapd_normalized;
     Q.braun_votes += (Q.pro_republic/1000);
     Q.braun_votes += (Q.democratization/100);
+    Q.braun_votes += ((Q.works_program+Q.radio)/100);
     Q.braun_votes += ((Math.floor(Math.random() * 11))/350);
     Q.hindenburg_votes += ((100-Q.pro_republic)/1000);
     if (Q.z_support_braun && Q.z_support_braun == 1) {
@@ -227,7 +228,7 @@ if (Q.hitler_support_hindenburg) {
 }
 if (!Q.kpd_support_braun) {
     Q.thalmann_votes += ((100-Q.pro_republic)/1000);
-    Q.thalmann_votes += (Q.pacifism/150);
+    Q.thalmann_votes += (Q.pacifism/225);
     Q.thalmann_votes += ((Math.floor(Math.random() * 11))/350);
 }
 if (!Q.hitler_support_hindenburg) {
