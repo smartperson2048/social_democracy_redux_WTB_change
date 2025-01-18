@@ -16,10 +16,20 @@ Ethiopia has requested League of Nations arbitration, with both sides demanding 
 @non_govt
 
 - @no_foreign: The Foreign Ministry backs France and Britain in their mediation of the crisis.
+- @kpd_foreign: The Foreign Ministry condemns Italian actions.
 
 @no_foreign
+view-if: foreign_minister_party != "KPD"
 
 Influenced by France and Britain, and backed by Germany, the League of Nations absolves both sides of responsibility, though Italy has been warned to halt its military buildup in the region. [? if west_relation >= 3 : A general consensus has been reached between Germany and France to halt Italian expansion should they not relent in their ambitions on the region. ?]
+
+@kpd_foreign
+view-if: foreign_minister_party == "KPD"
+on-arrival: west_relation -= 2; workers_kpd += 3; new_middle_kpd += 2*; dvp_relation -= 3; soviet_relation += 1; unresolved_abysinnia = 1
+
+The Communist foreign ministry condemns Italian aggression and colonialism, though the League of Nations absolves both sides of responsibility anyway, with France and Britain unwilling to take a firm course of action against Italy.
+
+# todo: france and britain will also do the same if KPD-influenced germany, even if SPD foreign ministry
 
 @control_foreign
 
