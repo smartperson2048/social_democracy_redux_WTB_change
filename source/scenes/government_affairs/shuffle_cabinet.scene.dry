@@ -27,9 +27,12 @@ Reichswehr: [+ reichswehr_minister_party +]
 Agriculture: [+ agriculture_minister_party +]
 
 - @shuffle: Yes, do it.
+- @election_1928.coalition_menu: Can we change our governing coalition entirely?
 - @root: No, there is no need.
 - @easy_discard
 
 @shuffle
 on-arrival: coalition_dissent += 1; month_actions += 1
 go-to: election_1928.ministries
+
+#todo: changing coalitions should anger current coalition partners...
