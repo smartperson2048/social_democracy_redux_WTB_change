@@ -25,7 +25,7 @@ Influenced by France and Britain, and backed by Germany, the League of Nations a
 
 @kpd_foreign
 view-if: foreign_minister_party == "KPD"
-on-arrival: west_relation -= 2; workers_kpd += 3; new_middle_kpd += 2*; dvp_relation -= 3; soviet_relation += 1; unresolved_abysinnia = 1
+on-arrival: west_relation -= 2; workers_kpd += 3; new_middle_kpd += 2; dvp_relation -= 3; soviet_relation += 1; unresolved_abysinnia = 1
 
 The Communist foreign ministry condemns Italian aggression and colonialism, though the League of Nations absolves both sides of responsibility anyway, with France and Britain unwilling to take a firm course of action against Italy.
 
