@@ -1,6 +1,6 @@
 title: Second Italo-Ethiopian War
 subtitle: Italian forces have invaded Ethiopia!
-view-if: abysinnia_timer <= 0
+view-if: abysinnia_timer <= 0 and unresolved_abysinnia
 max-visits: 1
 tags: event
 new-page: true
