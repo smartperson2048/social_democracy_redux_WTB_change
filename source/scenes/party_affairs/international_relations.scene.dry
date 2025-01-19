@@ -81,7 +81,7 @@ The Socialist Party of America is tiny and has limited support. There is not muc
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: resources -= 1; republic_strength += 0.25; reformist_dissent += 4; left_strength += 2; left_dissent -= 3; rb_militancy -= 0.01, rb_strength -= 20
+on-arrival: resources -= 1; republic_strength += 0.25; reformist_dissent += 4; left_strength += 2; left_dissent -= 3; rb_militancy -= 0.01; rb_strength -= 20
 
 We send aid to the Republicans in Spain, redirecting resources from our Reichsbanner to their international brigades and encouraging volunteers to go and fight. How much we can help with just these resources is limited, but every little bit is appreciated.
 
