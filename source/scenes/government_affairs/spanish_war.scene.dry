@@ -4,6 +4,6 @@ is-card: true
 tags: govt_affairs
 on-arrival: spanish_war_timer = 6
 view-if: foreign_minister_party == "SPD" and spanish_war_timer <= 0 and spanish_civil_war and spain_involved
-card-image: img/spanish-civil-war.jpg
+card-image: img/spanish-civil-war-2.jpg
 
 WIP!
