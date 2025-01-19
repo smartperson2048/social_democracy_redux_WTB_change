@@ -21,6 +21,8 @@ What should our foreign policy priority be?
 - @negotiate
 - @reduce_reparations
 - @expose
+- @withdraw_nonintervention
+- @spanish_aid
 - @european_union
 - @european_union_2
 - @concordat_negotiate
@@ -142,6 +144,19 @@ The previous foreign ministry, despite its benevolent and peaceful face, was sec
 
 The Allies are grateful of our exposure and repudiation of militarism. Our partners in the coalition are less supportive.
 
+@withdraw_nonintervention
+title: Withdraw from the French non-intervention pact.
+subtitle: This will displease them greatly, and may upset our bourgeois partners.
+on-arrival: west_relation -= 2; coalition_dissent += 1; coalition_dissent += 1 if in_grand_coalition; coalition_dissent += 1 if z_party_leader == "Kaas"; z_relation -= 5; dvp_relation -= 5; coup_progress += 1; nonintervention = 0
+view-if: nonintervention and spd_intervention
+
+We have withdrawn from the non-intervention pact. Unfortunately, this leads to suspicion that we are planning to send aid to the Republicans. After all, why else would we?
+
+@spanish_aid
+title: Begin sending aid to the Spanish Republicans.
+subtitle: This violates Versailles[? if nonintervention : as well as the non-intervention pact ?].
+view-if: spanish_civil_war and (not nonintervention or spd_intervention)
+go-to: spanish_civil_war.aid
 
 @economic_conference
 title: Organize an international economic conference to deal with the Depression.

@@ -2,8 +2,14 @@ title: Spanish Civil War
 new-page: true
 is-card: true
 tags: govt_affairs
-on-arrival: spanish_war_timer = 6
+on-arrival: spanish_war_timer = 4
 view-if: foreign_minister_party == "SPD" and spanish_war_timer <= 0 and spanish_civil_war and spain_involved
 card-image: img/spanish-civil-war-2.jpg
+go-to: winning
 
-WIP!
+Since the Spanish Civil War broke out, we have been active in helping the efforts of the Republicans in combatting fascism. Intervention is popular within our party, but unfortunately much more controversial both in Germany as a whole and abroad. As it is against the Treaty of Versailles, our aid has been forced to remain secret, albeit somewhat of an open one.
+
+@winning
+on-arrival: republic_percent = (republic_strength/(republic_strength+national_strength))
+
+[? if republic_percent < 0.25 : Unfortunately, the situation is bleak for the Republicans. It would take a substantial change in the dynamic of the war to turn the tide. ?][? if republic_percent >= 0.75 : Thankfully, the Republicans are winning. The war may soon be over, unless something drastically changes. ?][? if republic_percent >= 0.6 and republic_percent < 0.75 : It is hard to say with certainty, but it seems that the Republicans have the upper hand. We will have to ensure that it stays that way. ?][? if republic_percent >= 0.4 and republic_percent < 0.6 : Both sides are currently on roughly even footing, but this could easily change. ?][? if republic_percent < 0.4 and republic_percent >= 0.25 : It is hard to say for certain, but it seems that the Nationalists have the upper hand. We should act to remedy this. ?]

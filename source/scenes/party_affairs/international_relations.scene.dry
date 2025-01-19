@@ -5,7 +5,7 @@ tags: party_affairs
 view-if: international_relations_timer <= 0
 on-arrival: month_actions += 1; international_relations_timer += 12;
 card-image: img/international.jpg
-max-visits: 3
+max-visits: 6
 #subtitle: Building ties with our fraternal socialist parties.
 
 At the Labor and Socialist International, we can forge contacts with our fraternal socialist parties in Europe and across the world.
@@ -15,6 +15,7 @@ At the Labor and Socialist International, we can forge contacts with our fratern
 - @scandi: Learn the path of economics and reform from the Scandinavian social democrats.
 - @comintern: Forget the second international - embed a spy in the Comintern's conference.
 - @america: Contact the Socialist party of America.
+- @spain: Send aid to the Spanish Republicans in their fight against fascism.
 - @return: We do not need international contacts at the moment.
 - @easy_discard
 - @cancel_advisor_action
@@ -75,6 +76,14 @@ unavailable-subtitle: Not enough resources.
 on-arrival: resources -= 1
 
 The Socialist Party of America is tiny and has limited support. There is not much we can do for them, and conversely, not much they can do for us.
+
+@spain
+subtitle: -1 resources
+choose-if: resources >= 1
+unavailable-subtitle: Not enough resources.
+on-arrival: resources -= 1; republic_strength += 0.25; reformist_dissent += 4; left_strength += 2; left_dissent -= 3; rb_militancy -= 0.01, rb_strength -= 20
+
+We send aid to the Republicans in Spain, redirecting resources from our Reichsbanner to their international brigades and encouraging volunteers to go and fight. How much we can help with just these resources is limited, but every little bit is appreciated.
 
 @reduce
 
