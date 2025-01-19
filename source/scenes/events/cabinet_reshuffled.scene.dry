@@ -85,8 +85,9 @@ Unable to bear the stress of keeping the coalition together, Wirth has announced
 
 @wirth_resign_hindenburg
 on-arrival: chancellor = "Brüning"; chancellor_party = "Z"
-go-to: menu
 
 Unable to bear the stress of keeping the coalition together, Wirth has announced his intentions to resign as chancellor.
 
 [+ president +] appoints Brüning from the Center Party as replacement, who immediately reforms the government.
+
+- @menu: Brüning sacks our ministers.
