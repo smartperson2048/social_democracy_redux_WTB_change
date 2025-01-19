@@ -1039,9 +1039,7 @@ We have supported a minority government led by the Center Party under Chancellor
 
 
 @no_majority_papen
-on-arrival: pro_republic -= 10; next_election_time = time+3; next_election_month = month + 3; next_election_year = year; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12; no_majority_papen_elections += 1; nazi_peak = 1; workers_ndap -= 3; new_middle_nsdap -= 3; old_middle_nsdap -= 3; rural_nsdap -= 3; unemployed_nsdap -= 3; workers_nsdap -= 2 if largest_party == "NSDAP"; unemployed_nsdap -= 2 if largest_party == "NSDAP"; old_middle_nsdap -= 2 if largest_party == "NSDAP"; new_middle_nsdap -= 2 if largest_party == "NSDAP"; rural_nsdap -= 2 if largest_party == "NSDAP"; {!
-Q.nazi_peak_timer = Math.round(Q.nsdap_votes/2);
-!}
+on-arrival: pro_republic -= 10; next_election_time = time+3; next_election_month = month + 3; next_election_year = year; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12; no_majority_papen_elections += 1; nazi_peak = 1; nazi_peak_timer = (nsdap_votes/2); workers_ndap -= 3; new_middle_nsdap -= 3; old_middle_nsdap -= 3; rural_nsdap -= 3; unemployed_nsdap -= 3; workers_nsdap -= 2 if largest_party == "NSDAP"; unemployed_nsdap -= 2 if largest_party == "NSDAP"; old_middle_nsdap -= 2 if largest_party == "NSDAP"; new_middle_nsdap -= 2 if largest_party == "NSDAP"; rural_nsdap -= 2 if largest_party == "NSDAP"; 
 
 After the elections, Papen is still deeply unpopular, without any hint of coalition support, and there is a vote of no confidence called against him almost immediately. No matter how we vote, the measure would pass. The Reichstag is dissolved once more.
 

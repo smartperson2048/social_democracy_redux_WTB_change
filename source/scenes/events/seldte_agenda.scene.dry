@@ -23,9 +23,7 @@ We mobilize our forces for an uprising against Seldte, and they are quickly met 
 - @civil_war: It is a civil war.
 
 @submit
-on-arrival: rb_strength *= 0.9; kpd_relation -= 15; left_dissent += 10; neorevisionist_dissent += 10; rb_militancy *= 0.95; rfb_strength *= 0.8; workers_spd -= 3; workers_kpd -= 5; unemployed_nsdap += 5; sh_strength += 20; sa_strengh += 40; new_middle_nsdap -= 5; old_middle_nsdap -= 5; {!
-Q.nazi_peak_timer = Math.round(Q.nsdap_votes/2);
-!}
+on-arrival: rb_strength *= 0.9; kpd_relation -= 15; left_dissent += 10; neorevisionist_dissent += 10; rb_militancy *= 0.95; rfb_strength *= 0.8; workers_spd -= 3; workers_kpd -= 5; unemployed_nsdap += 5; sh_strength += 20; sa_strengh += 40; new_middle_nsdap -= 5; old_middle_nsdap -= 5; nazi_peak_timer = (nsdap_votes/2);
 
 Realistically, there is nothing we can do at this stage but hope for the best. The reactionary consolidation of power continues, and we do nothing to stop it.
 

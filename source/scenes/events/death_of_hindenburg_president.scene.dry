@@ -666,8 +666,6 @@ achievement: bundesrepublik
 go-to: nazis_lose
 
 @nazis_lose
-on-arrival: nazi_peak = 1; nazi_decline = 1; pro_republic += 10; {!
-Q.nazi_peak_timer = Math.round(Q.nsdap_votes/2);
-!}
+on-arrival: nazi_peak = 1; nazi_peak_timer = (nsdap_votes/2); nazi_decline = 1; pro_republic += 10
 
 After its electoral defeat, the NSDAP-DNVP coalition is collapsing into infighting and financial insolvency. The far-right's moment has seemingly ended, at least for now.
