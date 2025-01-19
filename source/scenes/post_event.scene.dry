@@ -41,6 +41,9 @@ for (var c of Q.classes) {
             Q[c+'_'+party] *= 0.98;
             if (class_votes >= 250) {
                 Q[c+'_'+party] *= 0.96;
+                if (class_votes >= 300) {
+                    Q[c+'_'+party] *= 0.9;
+                }
             }
         }
     }
@@ -577,6 +580,13 @@ if (Q.month_actions >= 1) {
         if (Q.black_thursday_seen && !Q.works_program) {
             Q.catholics_other -= 3/12;
         }
+    }
+    if (Q.nazi_reform && Q.nazi_reform_timer > 0) {
+        Q.workers_nsdap += Q.nazi_reform_timer/18;
+        Q.new_middle_nsdap += Q.nazi_reform_timer/16;
+        Q.old_middle_nsdap += Q.nazi_reform_timer/12;
+        Q.rural_nsdap += Q.nazi_reform_timer/10;
+        Q.unemployed_nsdap += Q.nazi_reform_timer/16;
     }
     if (Q.nazi_decline) {
         Q.workers_nsdap -= 3/12;
