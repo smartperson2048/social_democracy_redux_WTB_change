@@ -154,8 +154,8 @@ We have withdrawn from the non-intervention pact. Unfortunately, this leads to s
 
 @spanish_aid
 title: Begin sending aid to the Spanish Republicans.
-subtitle: This violates Versailles[? if nonintervention : as well as the non-intervention pact ?].
-view-if: spanish_civil_war and (not nonintervention or spd_intervention)
+subtitle: -1 budget. This violates Versailles[? if nonintervention : as well as the non-intervention pact ?].
+view-if: spanish_civil_war and (not nonintervention or spd_intervention) and not spanish_aid
 go-to: spanish_civil_war.aid
 
 @economic_conference
