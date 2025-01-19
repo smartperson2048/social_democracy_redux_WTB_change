@@ -1,6 +1,6 @@
 title: 1933
 subtitle: A new year 
-on-arrival: older_republic = old_republic; old_republic = pro_republic; strife += 1; {!
+on-arrival: nazi_decline = 1 if (nsdap_votes+unemployed < pro__republic+spd_votes); older_republic = old_republic; old_republic = pro_republic; strife += 1; {!
 if (Q.pro_republic > 75 && Q.pro_republic > Q.older_republic) {
     Q.new_middle_ddp += (Q.pro_republic - Q.older_republic)
     Q.old_middle_ddp += ((Q.pro_republic - Q.older_republic)/2)
@@ -9,8 +9,10 @@ if (Q.pro_republic > 75 && Q.pro_republic > Q.older_republic) {
 }
 !}
 tags: event
-priority: 1
+priority: 2
 max-visits: 1
 view-if: year = 1933 and month = 1
 
 A new year begins. [? if president == "Braun" : With Hindenburg out of office and an SPD candidate at the helm, perhaps in this year Germany will overcome its crisis. It will be our job to ensure this. ?] [? if president == "Hindenburg" : President Hindenburg's presidency continues, though for how long remains uncertain as his health deteriorates. We can only hope that should he die we may take his place and not the Nazis. ?]
+
+[? if nazi_decline = 1 : The Nazis have begun to expend their limited financial resources, and their momentum has slowed. Perhaps their moment has passed. ?]

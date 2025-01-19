@@ -330,7 +330,7 @@ if (Q.month_actions >= 1) {
         }
         Q.sa_strength += 100/12;
         Q.sh_strength += 100/12;
-        if (Q.hitler_deported) {
+        if (Q.hitler_deported && !Q.nazi_peak && !Q.nazi_decline) {
            Q.rural_nsdap -= 6/12;
            Q.new_middle_nsdap -= 6/12;
            Q.old_middle_nsdap -= 6/12;
@@ -399,7 +399,7 @@ if (Q.month_actions >= 1) {
             Q.new_middle_other -= 2/12;
             Q.old_middle_other -= 2/12;
         }
-        if (Q.hitler_deported) {
+        if (Q.hitler_deported && !Q.nazi_peak && !Q.nazi_decline) {
            Q.rural_nsdap -= 8/12;
            Q.new_middle_nsdap -= 8/12;
            Q.old_middle_nsdap -= 8/12;
@@ -466,7 +466,7 @@ if (Q.month_actions >= 1) {
             Q.old_middle_nsdap += 3/12;
             Q.new_middle_nsdap += 2/12;
         }
-        if (Q.hitler_deported) {
+        if (Q.hitler_deported && !Q.nazi_peak && !Q.nazi_decline) {
            Q.rural_nsdap -= 5/12;
            Q.new_middle_nsdap -= 2/12;
            Q.old_middle_nsdap -= 2/12;
@@ -512,7 +512,7 @@ if (Q.month_actions >= 1) {
             Q.unemployed_kpd += 4/12;
             Q.workers_kpd += 1/12;
         }
-        if (Q.hitler_deported) {
+        if (Q.hitler_deported && !Q.nazi_peak && !Q.nazi_decline) {
            Q.rural_nsdap -= 3/12;
            Q.new_middle_nsdap -= 4/12;
            Q.old_middle_nsdap -= 4/12;
@@ -578,6 +578,13 @@ if (Q.month_actions >= 1) {
             Q.catholics_other -= 3/12;
         }
     }
+    if (Q.nazi_decline) {
+        Q.workers_nsdap -= 3/12;
+        Q.new_middle_nsdap -= 4/12;
+        Q.old_middle_nsdap -= 4/12;
+        Q.rural_nsdap -= 4/12;
+        Q.unemployed_nsdap -= 5/12;
+    }
     if (Q.nazi_peak) {
         if (Q.workers_nsdap > 0) {
             Q.workers_nsdap -= 9/6;
@@ -617,6 +624,10 @@ if (Q.month_actions >= 1) {
         if (Q.sa_force >= 20) {
            Q.sa_strength -= 50/6;
            Q.sa_militancy -= 0.05/6;
+        }
+        if (Q.nazi_peak_timer <= 0) {
+            Q.nazi_peak = 0;
+            Q.nazi_decline = 1;
         }
     }
     if (Q.victory_republic && Q.dnvp_banned != 1) {
