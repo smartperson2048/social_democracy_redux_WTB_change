@@ -5,7 +5,7 @@ max-visits: 1
 tags: event
 new-page: true
 go-to: govt_menu if foreign_minister_party != "SPD" and spd_in_government and foreign_minister_party != "KPD"; foreign_menu if foreign_minister_party = "SPD"; non_govt_menu if not spd_in_government; kpd_menu if foreign_minister_party = "KPD"
-on-arrival: spanish_civil_war = 1; republic_strength = 5; national_strength = 5; republic_strength -= 1 if third_period; republic_strength += 1 if z_relation >= 60; republic_strength += 1 if west_relation >= 5; national_strength += 1 if victory_republic; national_strength += 1 if not abysinnia; national_strength += 1 if reichswehr_loyalty <= 0.1; national_strength += 1 if nsdap_votes + dnvp_votes >= 35
+on-arrival: spanish_civil_war = 1; republic_strength = 6; national_strength = 6; republic_strength -= 1 if third_period; republic_strength += 1 if z_relation >= 60; republic_strength += 1 if west_relation >= 5; national_strength += 1 if victory_republic; national_strength += 1 if not abysinnia; national_strength += 1 if reichswehr_loyalty <= 0.1; national_strength += 1 if nsdap_votes + dnvp_votes >= 35
 
 = Spanish Civil War
 

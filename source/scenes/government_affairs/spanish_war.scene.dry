@@ -19,6 +19,7 @@ on-arrival: republic_percent = (republic_strength/(republic_strength+national_st
 - @volunteers: Smuggle volunteers to Spain to fight for the Republicans.
 - @offensive: Focus our aid on attacking the Nationalists.
 - @defensive: Focus our aid on defending the Republicans.
+- @easy_discard
 
 @increase_aid
 subtitle: -1 budget.
