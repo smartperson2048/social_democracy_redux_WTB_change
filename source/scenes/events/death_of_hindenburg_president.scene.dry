@@ -421,17 +421,17 @@ for (var k in candidate_votes) {
         Q.winner = k;
         Q.winner_votes = candidate_votes[k];
     }
-    if (candidate_votes[k] >= 0.5) {
-        Q.has_majority = 1;
-    }
 }
 for (var k in candidate_votes) {
     Q[k + '_votes'] = Math.round(1000*candidate_votes[k]/total_votes)/10;
     Q[k + '_votes_disp'] = Q[k + '_votes'].toFixed(1);
 }
-Q.winner_votes = Math.round(1000*Q.winner_votes/total_votes)/10;
+Q.winner_votes = Math.round(1000*(Q.winner_votes/total_votes))/10;
 Q.winner_votes_disp = Q.winner_votes.toFixed(1);
 Q.winner_desc = candidate_descs[Q.winner];
+if (Q.winner_votes > 50) {
+    Q.has_majority = 1;
+}
 
 Q.round += 1
 !}
