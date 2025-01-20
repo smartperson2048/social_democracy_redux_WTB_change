@@ -361,6 +361,61 @@ for (var k in candidate_votes) {
     if (Q[k + '_bonus']) {
         candidate_votes[k] += Q[k + '_bonus']/100;
     }
+    if (Q[k] == "Hitler" && Q[k+'_running']) {
+        candidate_votes[k] += (Q.nationalism/1000);
+        candidate_votes[k] += ((100-Q.pro_republic)/1000);
+        candidate_votes[k] += ((Math.floor(Math.random() * 11))/350);
+    }
+    if (Q[k] == "Goring" && Q[k+'_running']) {
+        candidate_votes[k] += ((10-Q.pacifism)/100);
+        candidate_votes[k] += ((100-Q.pro_republic)/1000);
+        candidate_votes[k] += ((Math.floor(Math.random() * 11))/350);
+    }
+    if (Q[k] == "Seldte" && Q[k+'_running']) {
+        candidate_votes[k] += ((10-Q.democratization)/100);
+        candidate_votes[k] += ((100-Q.pro_republic)/1000);
+        candidate_votes[k] += ((Math.floor(Math.random() * 11))/350);
+    }
+    if (Q[k] == "Eckener" && Q[k+'_running']) {
+        candidate_votes[k] += (Q.nationalism/1000);
+        candidate_votes[k] += (Q.pro_republic/1000);
+        candidate_votes[k] += ((Math.floor(Math.random() * 11))/350);
+    }
+    if (Q[k] == "Adenauer" && Q[k+'_running']) {
+        candidate_votes[k] += ((100-Q.nationalism)/1000);
+        candidate_votes[k] += (Q.pro_republic/1000);
+        candidate_votes[k] += ((Math.floor(Math.random() * 11))/350);
+    }
+    if (Q[k] == "Gessler" && Q[k+'_running']) {
+        candidate_votes[k] += ((10-Q.pacifism)/100);
+        candidate_votes[k] += (Q.pro_republic/1000);
+        candidate_votes[k] += ((Math.floor(Math.random() * 11))/350);
+    }
+    if (Q[k] == "Thalmann" && Q[k+'_running']) {
+        candidate_votes[k] += (Q.pacifism/225);
+        candidate_votes[k] += ((100-Q.pro_republic)/1000);
+        candidate_votes[k] += ((Math.floor(Math.random() * 11))/350);
+    }
+    if (Q[k] == "Munzenberg" && Q[k+'_running']) {
+        candidate_votes[k] += (Q.democratization/90);
+        candidate_votes[k] += ((100-Q.pro_republic)/1500);
+        candidate_votes[k] += ((Math.floor(Math.random() * 11))/350);
+    }
+    if (Q[k] == "Braun" && Q[k+'_running']) {
+        candidate_votes[k] += (Q.democratization/100);
+        candidate_votes[k] += (Q.pro_republic/1000);
+        candidate_votes[k] += ((Math.floor(Math.random() * 11))/350);
+    }
+    if (Q[k] == "Schumacher" && Q[k+'_running']) {
+        candidate_votes[k] += (Q.pacifism/150);
+        candidate_votes[k] += (Q.pro_republic/1000);
+        candidate_votes[k] += ((Math.floor(Math.random() * 11))/350);
+    }
+    if (Q[k] == "Juchacz" && Q[k+'_running']) {
+        candidate_votes[k] += ((Q.womens_rights+Q.homosexual_rights)/100);
+        candidate_votes[k] += (Q.pro_republic/1000);
+        candidate_votes[k] += ((Math.floor(Math.random() * 11))/350);
+    }
     total_votes += candidate_votes[k];
     if (candidate_votes[k] > Q.winner_votes) {
         Q.winner = k;
