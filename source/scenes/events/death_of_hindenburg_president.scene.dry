@@ -363,7 +363,11 @@ for (var k in candidate_votes) {
     }
     if (k == "Hitler" && Q[k+'_running']) {
         console.log(k, "votes before bonus:", candidate_votes[k]);
-        candidate_votes[k] += (Q.nationalism/1000);
+        if (Q.nsdap_votes+Q.sa_force > Q.dnvp_votes+Q.other_votes+Q.sh_force) {
+            candidate_votes[k] += (Q.nationalism/1000);
+        } else {
+            candidate_votes[k] += (Q.nationalism/2250);
+        }
         candidate_votes[k] += ((100-Q.pro_republic)/1000);
         candidate_votes[k] += ((Math.floor(Math.random() * 11))/350);
         console.log(k, "votes after bonus:", candidate_votes[k]);
@@ -372,14 +376,25 @@ for (var k in candidate_votes) {
         console.log(k, "votes before bonus:", candidate_votes[k]);
         candidate_votes[k] += ((10-Q.pacifism)/200);
         candidate_votes[k] += ((100-Q.pro_republic)/1000);
-        candidate_votes[k] += (Q.nationalism/1250);
+        if (Q.nsdap_votes+Q.sa_force > Q.dnvp_votes+Q.other_votes+Q.sh_force) {
+            candidate_votes[k] += (Q.nationalism/2250);
+        } else {
+            candidate_votes[k] += (Q.nationalism/3500);
+        }
         candidate_votes[k] += ((Math.floor(Math.random() * 11))/350);
         console.log(k, "votes after bonus:", candidate_votes[k]);
     }
     if (k == "Seldte" && Q[k+'_running']) {
         console.log(k, "votes before bonus:", candidate_votes[k]);
         candidate_votes[k] += ((10-Q.democratization)/150);
-        candidate_votes[k] += (Q.nationalism/1250);
+        if (Q.nsdap_votes+Q.sa_force <= Q.dnvp_votes+Q.other_votes+Q.sh_force) {
+            candidate_votes[k] += (Q.nationalism/1750);
+        } else {
+            candidate_votes[k] += (Q.nationalism/2500);
+        }
+        if (Q.nsdap_candidate == "Seldte") {
+            candidate_votes[k] += (Q.nationalism/1250);
+        }
         candidate_votes[k] += ((100-Q.pro_republic)/1000);
         candidate_votes[k] += ((Math.floor(Math.random() * 11))/350);
         console.log(k, "votes after bonus:", candidate_votes[k]);
@@ -424,7 +439,7 @@ for (var k in candidate_votes) {
         console.log(k, "votes before bonus:", candidate_votes[k]);
         candidate_votes[k] += (Q.democratization/100);
         candidate_votes[k] += (Q.pro_republic/1000);
-        candidate_votes[k] += ((100-Q.nationalism)/2000);
+        candidate_votes[k] += ((100-Q.nationalism)/2500);
         candidate_votes[k] += ((Math.floor(Math.random() * 11))/350);
         console.log(k, "votes after bonus:", candidate_votes[k]);
     }
@@ -432,7 +447,7 @@ for (var k in candidate_votes) {
         console.log(k, "votes before bonus:", candidate_votes[k]);
         candidate_votes[k] += (Q.pacifism/200);
         candidate_votes[k] += (Q.pro_republic/1000);
-        candidate_votes[k] += ((100-Q.nationalism)/1750);
+        candidate_votes[k] += ((100-Q.nationalism)/2250);
         candidate_votes[k] += ((Math.floor(Math.random() * 11))/350);
         console.log(k, "votes after bonus:", candidate_votes[k]);
     }
@@ -440,6 +455,7 @@ for (var k in candidate_votes) {
         console.log(k, "votes before bonus:", candidate_votes[k]);
         candidate_votes[k] += ((Q.womens_rights+Q.homosexual_rights)/150);
         candidate_votes[k] += (Q.pro_republic/1000);
+        candidate_votes[k] += ((100-Q.nationalism)/2500);
         candidate_votes[k] += ((Math.floor(Math.random() * 11))/350);
         console.log(k, "votes after bonus:", candidate_votes[k]);
     }
