@@ -53,6 +53,7 @@ on-arrival: advisor_action_timer = 6; next_election_time = time + 3 if next_elec
 We have called for new elections, set for [+ next_election_month : month +] [+ next_election_year +].
 
 @end_game
+title: End the game.
 view-if: end_disabled
 subtitle: We can end the game now.
 go-to: 1934_end
