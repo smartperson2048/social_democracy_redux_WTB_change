@@ -1,7 +1,7 @@
 title: [+ year +] Nazi Party Congress
 subtitle: The Nazis adopt a new strategy...
 view-if: year >= 1935 and nazi_decline == 1 and not nazi_peak and nsdap_votes < pro_republic and nsdap_votes < dnvp_votes + kpd_votes and nsdap_r + dnvp_r + other_r + dvp_r < 50 and nsdap_votes < spd_votes and sa_force + sh_force < 50
-on-arrival: nazi_reform = 1; nazi_reform_timer = (nationalism/10); z_relation -= 5; dvp_relation -= 5; nazi_decline = 0; old_middle_nsdap += 4; rural_nsdap += 5; new_middle_nsdap += 4; workers_spd -= 2; unemployed_spd -= 2
+on-arrival: nazi_reform = 1; nazi_reform_timer = (nationalism/5); z_relation -= 5; dvp_relation -= 5; nazi_decline = 0; old_middle_nsdap += 4; rural_nsdap += 5; new_middle_nsdap += 4; workers_spd -= 2; unemployed_spd -= 2
 max-visits: 1
 new-page: true
 tags: event
