@@ -508,48 +508,48 @@ if (Q.month_actions >= 1) {
             }
             if (Q.spd_votes > 35) {
                 if (Q.workers_spd_normalized > 75 || (Q.workers_spd_normalized > 60 && (Q.volkspartei || Q.sapd_formed))) {
-                    Q.workers_spd -= 2/12;
+                    Q.workers_spd -= 3/12;
                 }
                 if (Q.old_middle_spd_normalized > 20 || (Q.old_middle_spd_normalized > 10 && !Q.volkspartei)) {
-                    Q.old_middle_spd -= 3/12;
+                    Q.old_middle_spd -= 5/12;
                 }
                 if (Q.new_middle_spd_normalized > 25 || (Q.new_middle_spd_normalized > 40 && !Q.volkspartei)) {
-                    Q.new_middle_spd -= 3/12;
+                    Q.new_middle_spd -= 4/12;
                 }
                 if (Q.rural_spd_normalized > 50 || (Q.rural_spd_normalized > 25 && Q.rural_policy < 2)) {
-                    Q.rural_spd -= 3/12;
+                    Q.rural_spd -= 4/12;
                 }
                 if (Q.unemployed_spd_normalized > 40 && Q.works_program && Q.unemployed < 15) {
-                    Q.unemployed_spd -= 3/12;
+                    Q.unemployed_spd -= 4/12;
                 }
                 if (Q.catholics_spd_normalized > 25 || Q.z_relation < 40 || Q.homosexual_rights) {
-                    Q.catholics_spd -= 2/12;
+                    Q.catholics_spd -= 3/12;
                 }
                 if (Q.spd_votes > 40) {
                     if (Q.workers_spd_normalized > 75 || (Q.workers_spd_normalized > 60 && (Q.volkspartei || Q.sapd_formed))) {
-                        Q.workers_spd -= 1/12;
+                        Q.workers_spd -= 2/12;
                     }
                     if (Q.old_middle_spd_normalized > 20 || (Q.old_middle_spd_normalized > 10 && !Q.volkspartei)) {
-                        Q.old_middle_spd -= 2/12;
+                        Q.old_middle_spd -= 4/12;
                     }
                     if (Q.new_middle_spd_normalized > 40 || (Q.new_middle_spd_normalized > 25 && !Q.volkspartei)) {
-                        Q.new_middle_spd -= 2/12;
+                        Q.new_middle_spd -= 3/12;
                     }
                     if (Q.rural_spd_normalized > 50 || (Q.rural_spd_normalized > 25 && Q.rural_policy < 2)) {
-                        Q.rural_spd -= 2/12;
+                        Q.rural_spd -= 3/12;
                     }
                     if (Q.unemployed_spd_normalized > 40 && Q.works_program && Q.unemployed < 15) {
-                        Q.unemployed_spd -= 2/12;
+                        Q.unemployed_spd -= 3/12;
                     }
                     if (Q.catholics_spd_normalized > 25 || Q.z_relation < 40 || Q.homosexual_rights) {
-                        Q.catholics_spd -= 1/12;
+                        Q.catholics_spd -= 2/12;
                     }
             }
             }
             if (Q.other_votes < 8 && !Q.electoral_threshold) {
-                Q.new_middle_other += 3/12;
-                Q.old_middle_other += 3/12;
-                Q.rural_other += 3/12;
+                Q.new_middle_other += 4/12;
+                Q.old_middle_other += 4/12;
+                Q.rural_other += 4/12;
                 Q.catholics_other += 3/12;
                 Q.workers_other += 1/12;
                 Q.unemployed_other += 1/12;
@@ -589,6 +589,7 @@ if (Q.month_actions >= 1) {
             Q.rural_dnvp += 1/12;
             Q.unemployed_nsdap += 3/12;
             Q.strife += 1/12;
+            Q.coup_progress += 2/12;
             Q.rb_strength -= Q.rb_strength*0.004;
             Q.rfb_strength -= Q.rfb_strength*0.02;
             if (Q.month == 1) {
@@ -653,11 +654,11 @@ if (Q.month_actions >= 1) {
         }
     }
     if (Q.nazi_decline) {
-        Q.workers_nsdap -= 3/12;
-        Q.new_middle_nsdap -= 4/12;
-        Q.old_middle_nsdap -= 4/12;
-        Q.rural_nsdap -= 4/12;
-        Q.unemployed_nsdap -= 5/12;
+        Q.workers_nsdap -= 5/12;
+        Q.new_middle_nsdap -= 6/12;
+        Q.old_middle_nsdap -= 6/12;
+        Q.rural_nsdap -= 6/12;
+        Q.unemployed_nsdap -= 8/12;
     }
     if (Q.nazi_peak) {
         if (Q.workers_nsdap > 0) {
