@@ -243,6 +243,9 @@ if (Q.month_actions >= 1) {
     if (Q.inflation > 8 && Q.pro_republic > 40) {
         Q.pro_republic -= 1;
     }
+    if (Q.works_program && Q.unemployed < 15 && Q.inflation < 5) {
+        Q.pro_republic += 1;
+    }
     ///////////////////////////// change party support based on pro_republic
     // if pro_republic is less than the support of the Weimar coalition, reduce SPD support...
     if (Q.pro_republic < (Q.spd_votes + Q.ddp_votes + Q.z_votes - 3)) {
@@ -503,6 +506,16 @@ if (Q.month_actions >= 1) {
             if (Q.catholics_z_normalized < 40) {
                 Q.catholics_z += 6/12;
             }
+            if (Q.unemployed_spd_normalized > 40 && Q.works_program && Q.unemployed < 15) {
+                Q.unemployed_spd -= 3/12;
+            }
+            if (Q.other_votes < 8 && !Q.electoral_threshold) {
+                Q.new_middle_other += 3/12;
+                Q.old_middle_other += 3/12;
+                Q.rural_other += 3/12;
+                Q.catholics_other += 3/12;
+                Q.workers_other += 1/12;
+                Q.unemployed_other += 1/12;
         }
         if (Q.unemployed <= 35) {
             Q.rural_nsdap -= 3/12;
@@ -579,6 +592,7 @@ if (Q.month_actions >= 1) {
         }
         if (Q.black_thursday_seen && !Q.works_program) {
             Q.catholics_other -= 3/12;
+            Q.unemployed_other -= 2/12;
         }
     }
     if (Q.nazi_reform && Q.nazi_reform_timer > 0) {
@@ -587,6 +601,18 @@ if (Q.month_actions >= 1) {
         Q.old_middle_nsdap += Q.nazi_reform_timer/12;
         Q.rural_nsdap += Q.nazi_reform_timer/10;
         Q.unemployed_nsdap += Q.nazi_reform_timer/16;
+        if (Q.unemployed_spd > 0) {
+            Q.unemployed_spd -= Q.nazi_reform_timer/24;
+        }
+        if (Q.rural_dnvp > 0) {
+            Q.rural_dnvp -= Q.nazi_reform_timer/16;
+        }
+        if (Q.old_middle_dnvp > 0) {
+            Q.old_middle_dnvp -= Q.nazi_reform_timer/18;
+        }
+        if (Q.new_middle_dnvp > 0) {
+            Q.new_middle_dnvp -= Q.nazi_reform_timer/24;
+        }
     }
     if (Q.nazi_decline) {
         Q.workers_nsdap -= 3/12;
