@@ -1076,7 +1076,7 @@ Our rejection of the unity government has hurt our relations with the bourgeois 
 
 @toleration_wirth
 view-if: z_party_leader = "Joos" or wirth_lead = 1
-choose-if: president == "Braun"
+choose-if: president != "Hindenburg"
 unavailable-subtitle: President Hindenburg will not support a minority government led by Joseph Wirth.
 on-arrival: chancellor = "Wirth"; chancellor_party = "Z"; spd_in_government = 0; spd_toleration = 1; z_relation += 5; foreign_minister_party = "DVP"; interior_minister_party = "Z"; justice_minister_party = "I"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = ddp_name; finance_minister_party = "DVP"; agriculture_minister_party = "Z"; pro_republic -= 2;
 
