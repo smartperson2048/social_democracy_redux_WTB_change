@@ -3,7 +3,7 @@ new-page: true
 tags: event
 priority: -1
 view-if: ((year = next_election_year and month >= next_election_month) or (year > next_election_year)) and not supreme_soviet
-on-arrival: unity_refused = 0; dvp_willing = 0; dvp_willing = 1 if ((dvp_relation+spd_votes) >= ((100-pro_republic)+(capital_strike_progress*2)+coup_progress))
+on-arrival: unity_refused = 0; wirth_lead = 0; dvp_willing = 0; dvp_willing = 1 if ((dvp_relation+spd_votes) >= ((100-pro_republic)+(capital_strike_progress*2)+coup_progress))
 on-departure: month_actions += 1; in_election = 0; next_election_year = next_election_year + 4; n_elections += 1; next_election_time = time + 48; papen_chancellor_timer = 4;
 set-jump: post_election_1928
 
@@ -853,7 +853,7 @@ There is no path to an obviously workable majority. President Adenauer has given
 - @new_elections: We will have new elections.
 
 @wirth_lead
-on-arrival: chancellor = "Wirth"; chancellor_party = "Z"
+on-arrival: chancellor = "Wirth"; chancellor_party = "Z"; wirth_lead = 1
 
 There is no path to an obviously workable majority. President Adenauer has given Joseph Wirth of the Center Party the task of forming a government, tired of Brüning's repeated failures to govern and hoping that Wirth would be able to win over our support. Now the question remains, can he?
 
@@ -1075,7 +1075,7 @@ Our rejection of the unity government has hurt our relations with the bourgeois 
 
 
 @toleration_wirth
-view-if: z_party_leader = "Joos"
+view-if: z_party_leader = "Joos" or wirth_lead = 1
 choose-if: president == "Braun"
 unavailable-subtitle: President Hindenburg will not support a minority government led by Joseph Wirth.
 on-arrival: chancellor = "Wirth"; chancellor_party = "Z"; spd_in_government = 0; spd_toleration = 1; z_relation += 5; foreign_minister_party = "DVP"; interior_minister_party = "Z"; justice_minister_party = "I"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = ddp_name; finance_minister_party = "DVP"; agriculture_minister_party = "Z"; pro_republic -= 2;
