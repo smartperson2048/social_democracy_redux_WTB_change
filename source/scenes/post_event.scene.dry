@@ -516,6 +516,7 @@ if (Q.month_actions >= 1) {
                 Q.catholics_other += 3/12;
                 Q.workers_other += 1/12;
                 Q.unemployed_other += 1/12;
+            }
         }
         if (Q.unemployed <= 35) {
             Q.rural_nsdap -= 3/12;
