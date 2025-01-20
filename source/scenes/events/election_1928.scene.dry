@@ -3,7 +3,7 @@ new-page: true
 tags: event
 priority: -1
 view-if: ((year = next_election_year and month >= next_election_month) or (year > next_election_year)) and not supreme_soviet
-on-arrival: dvp_willing = 0; dvp_willing = 1 if ((dvp_relation+spd_votes) >= ((100-pro_republic)+(capital_strike_progress*2)+coup_progress))
+on-arrival: unity_refused = 0; dvp_willing = 0; dvp_willing = 1 if ((dvp_relation+spd_votes) >= ((100-pro_republic)+(capital_strike_progress*2)+coup_progress))
 on-departure: month_actions += 1; in_election = 0; next_election_year = next_election_year + 4; n_elections += 1; next_election_time = time + 48; papen_chancellor_timer = 4;
 set-jump: post_election_1928
 
@@ -349,6 +349,7 @@ There are some potential coalition arrangements.
 - @right_coalition
 - @far_right_coalition
 - @no_majority
+- @no_majority_adenauer
 - @brauns_dilemma
 - @left_coalition
 - @kpd_majority
@@ -824,7 +825,40 @@ on-arrival: spd_in_government = 0; spd_toleration = 0; chancellor = "Brüning"; 
 
 Even though the DNVP is very reluctant to participate in such a coalition, they still accede to President Hindenburg's wishes and to allow a government to be formed. Thus, a majority center-right coalition is formed, with Brüning as chancellor.
 
+@no_majority_adenauer
+title: There is no clear governing majority.
+view-if: weimar_coalition < 50 and (grand_coalition < 50 or grand_coalition_failed == 1 or dvp_willing != 1) and president = "Adenauer" and far_right_coalition < 50 and (right_coalition < 50 or right_coalition_failed) and bourgeois_coalition < 50
+on-arrival: no_majority_elections += 1
+go-to: bruning_lead if no_majority_elections < 3; stegerwald_lead if (((spd_relation + spd_r < z_r + dvp_r + other_r) or (spd_relation + spd_r < national_front and z_national_front == 1)) and bourgeois_coalition+far_right_coalition >= 50) and no_majority_elections >= 3; wirth_lead if (((spd_relation + spd_r >= z_r + dvp_r + other_r and z_national_front != 1) or (spd_relation + spd_r >= national_front)) or bourgeois_coalition+far_right_coalition < 50) and no_majority_elections >= 3
 
+@stegerwald_lead
+on-arrival: chancellor = "Stegerwald"; chancellor_party = "Z"
+
+There is no path to an obviously workable majority. President Adenauer has given Adam Stegerwald of the Center Party's right-wing the task of forming a government, tired of Brüning's repeated failures to govern and hoping that Stegerwald would be able to win over support from the far-right. For better or worse, it seems that this has failed, with the far-right unwilling or unable to back Stegerwald. Now the task falls on us to decide the fate of Stegerwald's government.
+
+- @toleration_stegerwald: We will tolerate Stegerwald.
+- @new_elections: We will have new elections.
+
+@toleration_stegerwald
+on-arrival: spd_in_government = 0; spd_toleration = 1; z_relation += 5; foreign_minister_party = "DVP"; interior_minister_party = "Z"; justice_minister_party = "I"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = ddp_name; finance_minister_party = "DVP"; agriculture_minister_party = "Z"; pro_republic -= 4; left_dissent += 5; labor_dissent += 5; reformist_dissent += 2; center_dissent += 3; workers_spd -= 4
+
+We have decided to tolerate Stegerwald's minority bourgeois government, a highly controversial decision in our party due to his right-leaning tendencies.
+
+@bruning_lead
+on-arrival: chancellor = "Brüning"; chancellor_party = "Z"
+
+There is no path to an obviously workable majority. President Adenauer has given Heinrich Brüning of the Center Party the task of forming a government. As the bourgeois parties lack a majority on their own, the task falls on us to decide the fate of Brüning's government.
+
+- @toleration_bruning: We will tolerate Brüning.
+- @new_elections: We will have new elections.
+
+@wirth_lead
+on-arrival: chancellor = "Wirth"; chancellor_party = "Z"
+
+There is no path to an obviously workable majority. President Adenauer has given Joseph Wirth of the Center Party the task of forming a government, tired of Brüning's repeated failures to govern and hoping that Wirth would be able to win over our support. Now the question remains, can he?
+
+- @toleration_wirth: We will tolerate Wirth.
+- @new_elections: We will have new elections.
 
 @no_majority
 title: There is no clear governing majority.
@@ -877,7 +911,7 @@ Do we realize that this means civil war, against the full force of the state?
 - @vote_against: We are not ready for war. Instead, we will vote against the nazis in the Reichstag.
 
 @vote_against
-on-arrival: z_no_confidence = 1 if z_relation > 60 or z_party_leader == "Joos"; other_no_confidence = 1 if (z_relation + dvp_relation)/2 > 70; no_confidence_votes = spd_r + kpd_r + sapd_r + ddp_r; no_confidence_votes += z_r if z_no_confidence; no_confidence_votes += other_r + dvp_r if other_no_confidence; no_confidence_succeeds = 1 if no_confidence_votes > 50
+on-arrival: z_no_confidence = 1 if z_relation > 60 or z_party_leader == "Joos" and z_relation > 40; other_no_confidence = 1 if (z_relation + dvp_relation)/2 > 70; no_confidence_votes = spd_r + kpd_r + sapd_r + ddp_r; no_confidence_votes += z_r if z_no_confidence; no_confidence_votes += other_r + dvp_r if other_no_confidence; no_confidence_succeeds = 1 if no_confidence_votes > 50
 
 A motion of no confidence is called against Hitler's government. 
 
@@ -1006,9 +1040,11 @@ view-if: z_party_leader == "Joos" and neo_weimar_coalition >= 50 and weimar_coal
 The Center Party leader, Joseph Joos, clearly sees the threat from the ascension of the anti-democratic extremist parties, and thus tries to negotiate a "Government of National Unity" to save the republic. This coalition would be led by Joseph Wirth, a left-leaning member of the Center Party and former chancellor, and would encompass all of the constitutional parties. Our role in this government might be limited, however.
 
 - @unity_government_2
+- @dvp_refuse
 - @reject_unity_government: No, we will not accept this offer.
 
 @unity_government_2
+view-if: dvp_willing or dvp_relation >= (100-pro_republic)
 title: Accept the offer!
 on-arrival: chancellor = "Wirth"; chancellor_party = "Z"; spd_in_government = 1; in_grand_coalition = 1; in_unity_government = 1; leverage = 15; z_relation += 5; dvp_relation += 4
 achievement: constitutional_coalition
@@ -1016,6 +1052,16 @@ go-to: ministries
 
 We have formed a new unity government of all the constitutional parties! We have a limited choice in ministries for this government.
 
+@dvp_refuse
+view-if: dvp_willing != 1 and dvp_relation < (100-pro_republic) and unity_refused != 1
+title: Accept the offer!
+on-arrival: z_relation += 5; dvp_relation -= 5; unity_refused = 1
+
+Despite our agreement, crucial components in the plan such as the DVP have become unwilling to enter into such a government. They are too set in their antidemocratic ways. We will have to find an alternative.
+
+- @no_majority: Thus, there is no clear majority.
+- @brauns_dilemma
+- @coalition_menu: Are there any alternative governments we can form?
 
 @reject_unity_government
 on-arrival: z_relation -= 8; ddp_relation -= 5; dvp_relation -= 5
@@ -1298,7 +1344,7 @@ Rudolf Breitscheid has been appointed chancellor.
 title: We can form a Grand Coalition.
 view-if: grand_coalition >= 50 and grand_coalition_failed == 0
 choose-if: president != "Hitler" and dvp_willing == 1
-unavailable-subtitle: SPD + Z + BVP + [+ ddp_name +] + DVP - [? if president == "Hitler" : Hitler refuses to appoint a chancellor under such a governing arrangement. ?][? if not dvp_willing : The DVP is unwilling to work with us. ?]
+unavailable-subtitle: SPD + Z + BVP + [+ ddp_name +] + DVP ([+ grand_coalition +]%) - [? if president == "Hitler" : Hitler refuses to appoint a chancellor under such a governing arrangement. ?][? if not dvp_willing : The DVP is unwilling to work with us. ?]
 subtitle: SPD + Z + BVP + [+ ddp_name +] + DVP  ([+ grand_coalition +]%)
 on-arrival: in_grand_coalition = 1; in_popular_front = 0; in_left_front = 0
 go-to: grand_coalition_spd_lead if ((n_elections <= 1 and largest_party == "SPD") or (largest_party == "SPD" and spd_r >= 30) and spd_sackings <= 0) or president = "Braun"; grand_coalition_z_lead if president != "Braun" and (spd_sackings > 0 or (n_elections > 1 and spd_r < 30) or (n_elections <= 1 and largest_party != "SPD"))
