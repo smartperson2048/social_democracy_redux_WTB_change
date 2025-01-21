@@ -81,7 +81,7 @@ We have decided to fund our economic plan through cuts to military spending. [? 
 @just_enact_1
 view-if: budget >= 2
 subtitle: -2 budget.
-on-arrival: budget -= 2; works_program += 1; unemployed -= 3 if unemployed >= 8; inflation += 1.5; workers_spd += 5*(1-dissent); workers_ddp += 1; unemployed_spd += 3*(1-dissent); unemployed_ddp += 1; new_middle_spd += 2*(1-dissent); new_middle_ddp += 1; old_middle_spd += 1*(1-dissent); old_middle_ddp += 1; rural_spd += 2*(1-dissent); moderate_plan_progress += 1; kpd_coalition_dissent += 1; inflation += 1 if unemployed < 10; kpd_relation -= 5 if in_popular_front or in_left_front; weimar_dissent += 1 if z_party_leader != "Joos"; economic_growth += 1.2.4;
+on-arrival: budget -= 2; works_program += 1; unemployed -= 3 if unemployed >= 8; inflation += 1.5; workers_spd += 5*(1-dissent); workers_ddp += 1; unemployed_spd += 3*(1-dissent); unemployed_ddp += 1; new_middle_spd += 2*(1-dissent); new_middle_ddp += 1; old_middle_spd += 1*(1-dissent); old_middle_ddp += 1; rural_spd += 2*(1-dissent); moderate_plan_progress += 1; kpd_coalition_dissent += 1; inflation += 1 if unemployed < 10; kpd_relation -= 5 if in_popular_front or in_left_front; weimar_dissent += 1 if z_party_leader != "Joos"; economic_growth += 1.2;
 
 We decide to delay a decision on how to raise additional funds as it is not yet necessary thanks to our current surplus that allows us to immediately implement the plan. This is fine by our coalition partners and implementation begins swiftly.
 
