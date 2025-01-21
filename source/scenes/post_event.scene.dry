@@ -668,7 +668,7 @@ if (Q.month_actions >= 1) {
                 Q.unemployed_other += 2/12;
             }
         }
-        if (Q.unemployed <= 35) {
+        if (Q.unemployed < 30 && !Q.nazi_peak && !Q.nazi_decline && !Q.nazi_reform) {
             Q.rural_nsdap -= 3/12;
             Q.unemployed_nsdap -= 5/12;
             Q.old_middle_nsdap -= 3/12;
@@ -679,7 +679,7 @@ if (Q.month_actions >= 1) {
             Q.unemployed_kpd += 4/12;
             Q.workers_kpd += 1/12;
         }
-        if (Q.hitler_deported && !Q.nazi_peak && !Q.nazi_decline) {
+        if (Q.hitler_deported && !Q.nazi_peak && !Q.nazi_decline && Q.nsdap_votes > 10) {
            Q.rural_nsdap -= 3/12;
            Q.new_middle_nsdap -= 4/12;
            Q.old_middle_nsdap -= 4/12;
