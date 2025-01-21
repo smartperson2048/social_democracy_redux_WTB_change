@@ -52,7 +52,7 @@ on-arrival: budget += 1 if works_program <= 2; unemployed -= 5 if (works_program
 
 Our spending on public works has resulted in a lower need for unemployment insurance and welfare, and increased tax receipts through the multiplier effect as the new money courses through the economy, recuperating some of our spending. We continue to invest most of the new revenue into the program.
 
-The economy is doing better, finally. Even the bourgeois parties are beginning to see the light[? if grand_coalition :, though the DVP continues to grumble about government intrusion into the economy].
+The economy is doing better, finally. Even the bourgeois parties are beginning to see the light[? if grand_coalition :, though the DVP continues to grumble about government intrusion into the economy ?].
 
 [? if in_popular_front or in_left_front: The KPD, however, still opposes our policy of "rescuing" capitalism. ?]
 
