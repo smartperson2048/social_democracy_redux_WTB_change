@@ -1,6 +1,8 @@
 title: Mod Info
 go-to: flavors
 
+Note: the base game's github is currently mid-update. I have updated the mod to match the github meaning some things might be slightly broken until the main game has finished updating.
+
 @flavors
 new-page: true
 
@@ -130,6 +132,10 @@ The mod also contains many small changes that I felt would be good additions to 
 **16/1/2025**: Support changes changed and Nazi peak implemented
 
 **18/1/2025**: Work in progress timeline extension to around 1937
+
+**20/1/2025**: Some changes to over the time support, including a soft cap on SPD support post return to normalcy
+
+**21/1/2025**: Eviler DVP (sorry guys)
 
 - @flavors: Back
 

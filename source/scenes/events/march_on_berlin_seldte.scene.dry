@@ -163,6 +163,13 @@ view-if: president == "Braun"
 choose-if: dnvp_votes + sh_force >= 50 or largest_party == "DNVP"
 unavailable-subtitle: There is no way President [+ president +] could do such a blatantly undemocratic act.
 on-arrival: chancellor = "Seldte"; chancellor_party = "DNVP"; spd_in_government = 0
-go-to: accept
+#go-to: enabling_act
 
 Threatened with a civil war, and unwilling to fight anymore, President [+ president +] dismisses the current government and appoints Seldte of the Stalhelm as chancellor.
+
+# TODO: needs to actually carry weight if braun is president
+
+#@enabling_act
+
+#Chancellor Seldte's first action is to put forward many decrees for [+ president +] to sign and force through via Article 48 of the Weimar Constitution. One of the most major ones, if signed, would suspend Articles 114, 115, 117, 118, 123, 124 and 153 of the German constitution, effectively turning Germany into a police state at the whims of the Harzburg Front and paving the way for rampant suppression of the political left.
+

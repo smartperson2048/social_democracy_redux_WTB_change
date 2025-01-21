@@ -5,6 +5,7 @@ on-arrival: older_republic = old_republic; old_republic = pro_republic; {!
 // increase NSDAP vote share 
 Q.unemployed += 6.8; 
 Q.inflation -= 4;
+// historical: -1.4
 Q.economic_growth -= 1;
 if (Q.pro_republic > 75 && Q.pro_republic > Q.older_republic) {
     Q.new_middle_ddp += (Q.pro_republic - Q.older_republic)

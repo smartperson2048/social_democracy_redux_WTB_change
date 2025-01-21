@@ -19,6 +19,7 @@ if (Q.pro_republic > 75 && Q.pro_republic > Q.older_republic) {
 if (!Q.works_program) {
     Q.unemployed += 5; 
     Q.inflation -= 2;
+    Q.economic_growth -= 1;
 }
 // moved demographic changes to post_event
 !}
