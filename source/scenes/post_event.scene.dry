@@ -46,7 +46,7 @@ for (var c of Q.classes) {
                 }
             }
         }
-        if (year >= 1934) {
+        if (Q.year >= 1934) {
             Q[c+'_'+party] *= 0.9;
         }
     }
