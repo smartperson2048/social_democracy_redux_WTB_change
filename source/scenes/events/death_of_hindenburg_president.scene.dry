@@ -142,6 +142,48 @@ go-to: r1_menu
 
 We have nominated Marie Juchacz as our presidential candidate, the first woman ever to be nominated for this position!
 
+@cultural_figure
+view-if: presidential_powers >= 1 and pro_democracy >= 60 and pacifism >= 3 and year == 2016
+
+Since the presidency has been made a largely ceremonial figure by our reforms, we might set a precedent by nominating a nonpartisan pro-democracy figure from the cultural, scientific, or literary worlds. There are many potential candidates...
+
+- @einstein_r1: Albert Einstein, scientist.
+- @mann_r1: Heinrich Mann, left-wing writer.
+- @ossietzky_r1: Carl von Ossietzky, left-wing journalist.
+- @candidate_menu: Actually, we should nominate someone else.
+
+@einstein_r1
+subtitle: -2 resources
+choose-if: resources >= 2
+on-arrival: spd_candidate = "Einstein"; ddp_candidate = "Einstein"; resources -= 2; is_unity_candidate = 0; is_cultural_candidate = 1;
+go-to: r1_menu
+
+Albert Einstein is a Nobel Prize-winning scientist, director of the Kaiser Wilhelm Institute for Physics, and international advocate for peace. He was a founding member of the German Democratic Party (whose successor would support him in the election), but has also expressed sympathy towards socialism.
+
+He did not wish to run for president, disliking the public nature of campaigning, but we have somehow convinced him that his candidacy will be crucial to the future of Germany and the world. As a Jewish German pacifist, his becoming president would be a repudiation of everything the Nazis stand for.
+
+The [+ ddp_name +] will endorse Einstein's candidacy.
+
+@mann_r1
+subtitle: -2 resources - He might be too far left for the bourgeois parties.
+choose-if: resources >= 2
+on-arrival: spd_candidate = "Mann"; resources -= 2; is_unity_candidate = 0; is_cultural_candidate = 1;
+go-to: r1_menu
+
+Heinrich Mann is a world-renowned novelist and poet who is also known to be a left-wing activist. His sympathies lie with . He has long lived in the shadow of his better-known brother, Thomas Mann.
+
+
+@ossietzky_r1
+view-if: weltbuhne_dropped = 1
+subtitle: -2 resources - He might be too far left for the bourgeois parties.
+choose-if: resources >= 2
+on-arrival: spd_candidate = "Ossietzky"; resources -= 2; is_unity_candidate = 0; is_cultural_candidate = 1;
+go-to: r1_menu
+
+Carl von Ossietzky is a left-wing journalist who is the publisher of the Weltbühne, a news magazine. He is most known for exposing the secret German rearmament program in 1929, which brought him international renown. In the 1932 presidential election, he endorsed the Communist Thälmann.
+
+Von Ossietzky is extremely reluctant to become a politician.
+
 
 @r1_menu
 view-if: round = 0
@@ -227,6 +269,7 @@ The Center are not satisfied with our arguments, but they are open to being conv
 
 - @pay_z: Give them the resources they need.
 - @r1_menu: Forget about the Center.
+- @r2_campaigning: Forget about the Center.
 
 @pay_z
 choose-if: resources >= 2
@@ -335,7 +378,10 @@ Thalmann: "Ernst Thälmann of the KPD",
 Munzenberg: "Willi Münzenberg of the KPD",
 Braun: "Otto Braun of the SPD",
 Schumacher: "Kurt Schumacher of the SPD",
-Juchacz: "Marie Juchacz of the SPD"
+Juchacz: "Marie Juchacz of the SPD",
+Einstein: "Albert Einstein, scientist",
+Mann: "Heinrich Mann, writer",
+Ossietzky: "Carl von Ossietzky, journalist"
 }
 for (var k in candidate_descs) {
     Q[k + '_running'] = 0;
