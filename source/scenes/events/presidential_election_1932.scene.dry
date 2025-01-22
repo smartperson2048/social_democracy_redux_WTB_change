@@ -1,5 +1,5 @@
 title: Presidential Election
-subtitle: Hindenburg runs for re-election...
+subtitle: President Hindenburg considers re-election...
 view-if: year = 1932 and (month = 4 or month = 5) and presidential_election_seen = 0 and presidency_abolished != 1 and president == "Hindenburg"
 frequency: 1000
 max-visits: 1
