@@ -31,6 +31,7 @@ We have a variety of options for laws to push for via petition. What should we p
 - @state_buyer_vote: A state buyer program.
 - @abortion_vote: The legalization of abortion.
 - @constitutional_reform_vote: Constitutional reforms.
+#- @no_petition: Nevermind. We will not initiate any petitions.
 
 @land_reform_vote
 subtitle: Call for breaking up the large aristocratic estates and giving land to landless workers.
@@ -69,7 +70,7 @@ We initiate a petition for the nationalization of large idle industry by the gov
 
 @nationalization_success
 view-if: referendum_succeed
-on-arrival: nationalization_progress += 1; capital_strike_progress += 1; unemployed -= 1 if unemployed >= 6; old_middle_spd -= 1; unemployed -= 0.5 if works_councils >= 3; workers += 1; budget -= 2; works_program += 1; workers_spd += 3*(1-dissent); unemployed_spd += 2*(1-dissent); inflation += 0.8
+on-arrival: nationalization_progress += 1; capital_strike_progress += 1; unemployed -= 1 if unemployed >= 6; old_middle_spd -= 1; unemployed -= 0.5 if works_councils >= 3; workers += 1; budget -= 2; works_program += 1; workers_spd += 3*(1-dissent); unemployed_spd += 2*(1-dissent); inflation += 0.8; economic_growth += 0.6 if economic_growth < 5;
 
 The referendum has succeeded with [+ referendum_support +]% of the vote! The nationalization program is implemented, though very reluctantly and shoddily by the Economic Minister, [+ economic_minister +], leaving the economy not nearly as repaired as it could otherwise have been. Though, as we are not in government, this still amounts to a victory for Social Democracy, which has managed to increase its publicity amongst the working class.
 
@@ -113,7 +114,7 @@ We initiate a petition for the implementation of a state buyer program, campaign
 
 @state_buyer_success
 view-if: referendum_succeed
-on-arrival: state_buyer_passed = 1; budget -= 2; state_buyer = 1; rural_spd += 3*(1-dissent); rural_nsdap -= 1*(1-dissent); workers_spd += 1*(1-dissent); unemployed_spd += 1*(1-dissent); rural_policy += 2; capital_strike_progress += 1
+on-arrival: state_buyer_passed = 1; budget -= 2; state_buyer = 1; rural_spd += 3*(1-dissent); rural_nsdap -= 1*(1-dissent); workers_spd += 1*(1-dissent); unemployed_spd += 1*(1-dissent); rural_policy += 2; capital_strike_progress += 1; economic_growth += 0.3
 
 The referendum has succeeded with [+ referendum_support +]% of the vote! A state buyer program is initialized, though with reluctance from the Economic Minister, [+ economic_minister +]. Let us hope that the farmers and workers remember that it is us who campaigned for this stabilization of prices and the market.
 
@@ -135,13 +136,13 @@ We initiate a petition for the implementation of Phase 1 of the WTB plan, rallyi
 
 @wtb_vote_success_surplus
 view-if: referendum_succeed and budget >= wtb_budget
-on-arrival: budget -= wtb_budget; works_program += 1; unemployed -= 3; workers_spd += 4*(1-dissent); unemployed_spd += 4*(1-dissent); wtb_implemented += 1; inflation += 3
+on-arrival: budget -= wtb_budget; works_program += 1; unemployed -= 3; workers_spd += 4*(1-dissent); unemployed_spd += 4*(1-dissent); wtb_implemented += 1; inflation += 3; economic_growth += 1.4; economic_growth -= 0.7 if economic_growth > 5
 
 The referendum has succeeded with [+ referendum_support +]% of the vote! Money is beginning to flow through the economy via investments in large-scale public works, though the reluctant Economic Minister, [+ economic_minister +], is executing the plan less efficiently than we would be able to. Nevertheless, the economy seems to improve, and we claim credit.
 
 @wtb_vote_success_deficit
 view-if: referendum_succeed and budget < wtb_budget
-on-arrival: works_program += 1; budget -= wtb_budget; unemployed -= 3; workers += 2; workers_spd += 3*(1-dissent); unemployed_spd += 3*(1-dissent); capital_strike_progress += 1; wtb_implemented += 1; inflation += 4; welfare -= 2 if not spd_toleration; inflation -= 3 if not spd_toleration; unemployed += 2 if not spd_toleration; budget += 2 if not spd_toleration; 
+on-arrival: works_program += 1; budget -= wtb_budget; unemployed -= 3; workers += 2; workers_spd += 3*(1-dissent); unemployed_spd += 3*(1-dissent); capital_strike_progress += 1; wtb_implemented += 1; inflation += 4; welfare -= 2 if not spd_toleration; inflation -= 3 if not spd_toleration; unemployed += 2 if not spd_toleration; budget += 2 if not spd_toleration; economic_growth += 1.4; economic_growth -= 0.7 if economic_growth > 5; economic_growth -= 0.4; 
 
 The referendum has succeeded with [+ referendum_support +]% of the vote! Money is beginning to flow through the economy via investments in large-scale public works, though a deficit manifests. The government plans to handle this deficit by, as always, cutting welfare, and they blame us for creating the necessity to do so. Of course, this argument is ridiculous, but it does dampen our celebrations. 
 
