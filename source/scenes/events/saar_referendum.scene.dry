@@ -45,6 +45,7 @@ Due to the threat of the Republic soon falling, we make the heavy handed decisio
 - @defeat: [+ saar_pro +]% vote in favor of rejoining Germany.
 
 @victory
+view-if: saar_pro >= 50
 on-arrival: saarland = 1; catholics += 1; workers_nsdap += 5 if ((saar_pro-sa_force) < 50); workers_spd -= 3 if saar_pro < 70; dvp_relation -= 4 if saar_pro < 70
 
 As expected, the vote to rejoin Germany wins with [+ saar_pro +]%. [? if ((saar_pro-sa_force) < 50) : The Nazis were very active in the campaign, intimidating voters with their SA, and have claimed the victory as theirs. ?]

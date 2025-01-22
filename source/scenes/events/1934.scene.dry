@@ -5,10 +5,16 @@ tags: event
 priority: 2
 view-if: year >= 1934 and month >= 1
 max-visits: 1
-on-arrival: {!
+on-arrival: older_republic = old_republic; old_republic = pro_republic; {!
 if (Q.unemployed >= 20) {
     Q.unemployed -= 2;
     Q.inflation += 1;
+}
+if (Q.pro_republic > 75 && Q.pro_republic > Q.older_republic) {
+    Q.new_middle_ddp += (Q.pro_republic - Q.older_republic)
+    Q.old_middle_ddp += ((Q.pro_republic - Q.older_republic)/2)
+    Q.new_middle_dvp += ((Q.pro_republic - Q.older_republic)/2)
+    Q.old_middle_dvp += (Q.pro_republic - Q.older_republic)
 }
 !}
 
