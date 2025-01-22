@@ -15,6 +15,9 @@ The Reichstag elections are to be held now.
 
 - @election_algorithm: May we do our best...
 - @cancel_elections
+#- @martial_law
+
+# secret noske path...
 
 @cancel_elections
 title: We cannot hold the elections now. Cancel the elections.
@@ -1204,7 +1207,7 @@ President Braun faces a dilemma. He desperately desires a socialist or at least 
 @emergency_braun
 title: We will form an emergency government with Braun's support.
 subtitle: This may have the effect of inflamming public sentiment against us, and the reactionaries will be against us each step of the way.
-on-arrival: sa_strength += 100; sh_strength += 100; in_emergency_government = 1;
+on-arrival: sa_strength += 100; sh_strength += 100; in_emergency_government = 1; z_no_confidence = 0; kpd_no_confidence = 0; dvp_no_confidence = 0; other_no_confidence = 0
 
 Yes, an emergency minority government, with the support of the SPD. Who should lead this emergency minority government?
 
