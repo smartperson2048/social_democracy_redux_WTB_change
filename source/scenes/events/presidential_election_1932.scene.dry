@@ -10,8 +10,14 @@ go-to: election_algorithm
 set-jump: pres_election
 
 @pres_election
+on-arrival: hindenburg_running = 1 if nsdap_votes > dnvp_votes + other_votes + dvp_votes + z_votes and dvp_relation < 50; else hindenburg_running = 0 
+go-to: hindenburg_runs if hindenburg_running; hindenburg_reluctant if not hindenburg_running
 
 The presidential election is coming up soon. [? if spd_in_government = 0 : While the position of Chancellor is typically more important, recent governments have depended on the president's emergency decree powers, making the office vital. ?] [? if hitler_deported==0 : The Nazis will run Hitler, while the KPD will run Thälmann. A victory for Hitler would mean the end of parliamentary democracy, and the beginning of an era of unspeakable horrors. ?][? if hitler_deported==1 : Since Hitler has been deported, the Nazis will run Hermann Göring in his stead. He is widely seen as a proxy for Hitler, who, despite his legal persecution, retains a popular base who wishes to see him returned to Germany. Meanwhile, the KPD will run Ernst Thälmann. ?]
+
+@hindenburg_runs
+
+Although there was previous speculation on whether or not Hindenburg would run for re-election, he has decided to, motivated by fears of a Nazi victory.
 
 # if hitler is deported, who would nsdap run? Duesterberg? or Goering?
 # Goering runs, essentially as a proxy for Hitler, who is now stateless.
@@ -35,10 +41,12 @@ Despite his known reactionary nature, Hindenburg has at least been keeping the N
 subtitle: This will cost us 2 resources.
 choose-if: resources >= 2
 unavailable-subtitle: Not enough resources.
-on-arrival: resources -= 2; braun_campaign = 1
+on-arrival: resources -= 2; braun_campaign = 1; hindenburg_motivated if not hindenburg_running and dvp_relation < 50; hindenburg_running = 1 if not hindenburg_running and dvp_relation < 50; hitler_support_hindenburg if hindenburg_running and largest_party != "NSDAP" and nsdap_votes < dnvp_votes + other_votes + dvp_votes + z_votes 
 go-to: braun_campaign
 
-It takes effort to run a somewhat unexpected campaign. First, Braun has to be convinced to run. He himself had supported voting for Hindenburg, and it takes a good deal of prodding to convince him of his destiny.
+It takes effort to run a somewhat unexpected campaign. First, Braun has to be convinced to run. He himself had supported [? if not hindenburg_motivated and dvp_relation < 50 : voting for Hindenburg?][? if hindenburg_motivated or dvp_relation >= 50 : running Hugo Eckener?], and it takes a good deal of prodding to convince him of his destiny.
+
+[? if hindenburg_motivated : Our decision to run Otto Braun has motivated Hindenburg to stay in the race and run for re-election with the backing of the remaining Bürgerblock, unwilling to allow a socialist into power. [? if hitler_support_hindenburg : He has even won the backing of the Nazis, who have chosen not to run after all and instead rally the reactionaries around Hindenburg. ?] ?]
 
 The miniscule remnants of the Democratic Party (now called the German State Party) will likely support us. Who else will? Can we convince the Center to support Braun? What about the Communists?
 
@@ -54,9 +62,9 @@ Supporting Thälmann is rather unpopular in our party, even if the Communists ac
 - @support_hindenburg: Support Hindenburg instead.
 
 @support_thalmann_2
-on-arrival: spd_support_thalmann = 1; reformist_dissent += 15; center_dissent += 10; labor_dissent += 5; neorevisionist_dissent += 10; catholics_spd -= 5; workers_spd -= 3; kpd_relation += 10; communist_coalition += 2; z_relation -= 15; dvp_relation -= 15; ddp_relation -= 10; weimar_dissent += 3
+on-arrival: spd_support_thalmann = 1; reformist_dissent += 15; center_dissent += 10; labor_dissent += 5; neorevisionist_dissent += 10; catholics_spd -= 5; workers_spd -= 3; kpd_relation += 10; communist_coalition += 2; z_relation -= 15; dvp_relation -= 15; ddp_relation -= 10; weimar_dissent += 3; hindenburg_motivated if not hindenburg_running; hindenburg_running = 1 if not hindenburg_running; hitler_support_hindenburg if hindenburg_running and largest_party != "NSDAP" and nsdap_votes < dnvp_votes + other_votes + dvp_votes + z_votes 
 
-Fine. We have thrown our support to Chairman Thälmann of the KPD.
+Fine. We have thrown our support to Chairman Thälmann of the KPD. [? if hindenburg_motivated : Our decision to rally behind Thälmann has motivated Hindenburg to stay in the race and run for re-election with the backing of the remaining Bürgerblock, horrified at the prospect of a communist in power. [? if hitler_support_hindenburg : He has even won the backing of the Nazis, who have chosen not to run after all and instead rally the reactionaries around Hindenburg. ?] ?]
 
 - @final_election: The final vote...
 
@@ -66,6 +74,21 @@ Fine. We have thrown our support to Chairman Thälmann of the KPD.
 - @convince_kpd: Convince the Communists.
 - @convince_liberals: Convince the remaining liberals, wherever they are.
 - @final_election: The final vote...
+
+@hindenburg_reluctant
+
+Importantly, it seems highly likely that President Hindenburg will not be running for re-election. He is yet to announce his candidacy, and unless we were to run a socialist and progressive candidate for the office ourselves, or back Thälmann, it seems that he is done with the idea.
+
+- @support_eckener: Support Hugo Eckener as a joint Weimar Coalition candidate.
+- @support_braun: Run Otto Braun of the SPD.
+- @support_thalmann: Support Ernst Thälmann of the KPD.
+
+@support_eckener
+subtitle: -1 resource - After nominating him, we still have to convince the other parties to support him.
+unavailable_subtitle: -1 resource - Not enough resources. 
+choose-if: resources >= 1
+on-arrival: eckener_campaign = 1; resources -= 1, deliberate bug so premature commit isn't counted
+go-to: eckener_campaign
 
 @convince_z
 choose-if: spd_votes >= z_votes
@@ -442,9 +465,20 @@ go-to: hindenburg_wins if hindenburg_plurality == 1; thalmann_wins if thalmann_p
 
 
 @hindenburg_wins
-on-arrival: president = "Hindenburg"
+on-arrival: president = "Hindenburg"; {!
+if (Q.braun_campaign && Q.hitler_support_hindenburg) {
+    Q.workers_spd += 5*(1-dissent);
+    Q.new_middle_spd += 3*(1-dissent);
+    Q.old_middle_spd += 2*(1-dissent);
+    Q.rural_spd += 2*(1-dissent);
+    Q.unemployed_spd += 3*(1-dissent);
+    Q.center_dissent -= 5;
+    Q.labor_dissent -= 5;
+    Q.reformist_dissent -= 5;
+}
+!}
 
-As expected, the incumbent Hindenburg wins the presidency. Let's hope he continues to keep the Nazis out of power.
+As expected, the incumbent Hindenburg wins the presidency[? if braun_campaign and hitler_support_hindenburg :, though our ability to unite the reactionaries behind Hindenburg and become the main opposition has bolstered morale in the party. ?]. Let's hope he continues to keep the Nazis out of power.
 
 @thalmann_wins
 on-arrival: president = "Thälmann"; kpd_relation = 80;
