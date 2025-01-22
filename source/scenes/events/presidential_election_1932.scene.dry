@@ -364,26 +364,26 @@ Q.braun_votes_normalized = (Q.braun_votes/Q.total_votes_pres);
 Q.thalmann_votes_normalized = (Q.thalmann_votes/Q.total_votes_pres);
 Q.eckener_votes_normalized = (Q.eckener_votes/Q.total_votes_pres);
 Q.gessler_votes_normalized = (Q.gessler_votes/Q.total_votes_pres);
-Q.duesterburg_votes_normalized = (Q.eckener_votes/Q.total_votes_pres);
-Q.seldte_votes_normalized = (Q.eckener_votes/Q.total_votes_pres);
+Q.duesterburg_votes_normalized = (Q.duesterburg_votes/Q.total_votes_pres);
+Q.seldte_votes_normalized = (Q.seldte_votes/Q.total_votes_pres);
 
 Q.hindenburg_votes = Math.round(Q.hindenburg_votes_normalized*1000)/10;
 Q.braun_votes = Math.round(Q.braun_votes_normalized*1000)/10;
 Q.hitler_votes = Math.round(Q.hitler_votes_normalized*1000)/10;
 Q.thalmann_votes = Math.round(Q.thalmann_votes_normalized*1000)/10;
 Q.eckener_votes = Math.round(Q.eckener_votes_normalized*1000)/10;
-Q.gessler_votes = Math.round(Q.thalmann_votes_normalized*1000)/10;
-Q.duesterburg_votes = Math.round(Q.thalmann_votes_normalized*1000)/10;
-Q.seldte_votes = Math.round(Q.thalmann_votes_normalized*1000)/10;
+Q.gessler_votes = Math.round(Q.gessler_votes_normalized*1000)/10;
+Q.duesterburg_votes = Math.round(Q.duesterburg_votes_normalized*1000)/10;
+Q.seldte_votes = Math.round(Q.seldte_votes_normalized*1000)/10;
 
 Q.hindenburg_majority = (Q.hindenburg_votes >= 50);
 Q.thalmann_majority = (Q.thalmann_votes >= 50);
 Q.hitler_majority = (Q.hitler_votes >= 50);
 Q.braun_majority = (Q.braun_votes >= 50);
-Q.eckener_majority = (Q.braun_votes >= 50);
-Q.gessler_majority = (Q.braun_votes >= 50);
-Q.duesterburg_majority = (Q.braun_votes >= 50);
-Q.seldte_majority = (Q.braun_votes >= 50);
+Q.eckener_majority = (Q.eckener_votes >= 50);
+Q.gessler_majority = (Q.gessler_votes >= 50);
+Q.duesterburg_majority = (Q.duesterburg_votes >= 50);
+Q.seldte_majority = (Q.seldte_votes >= 50);
 Q.any_majority = Q.hindenburg_majority | Q.thalmann_majority | Q.hitler_majority | Q.braun_majority | Q.eckener_majority | Q.gessler_majority | Q.duesterburg_majority | Q.seldte_majority;
 
 // check for plurality
