@@ -51,7 +51,7 @@ This has been a victory for peace in the world, and a defeat for fascists and mi
 @mediate
 subtitle: We will back the French and British opinions on the matter.
 
-Influenced by France and Britain, and backed by Germany, the League of Nations absolves both sides of responsibility, though Italy has been warned to halt its military buildup in the region. [? if west_relation >= 3 : A general consensus has been reached between Germany and France to halt Italian expansion should they not relent in their ambitions on the region. ?]
+Influenced by France and Britain, and backed by Germany, the League of Nations absolves both sides of responsibility[? if not unresolved_abysinnia :, though Italy has been warned to halt its military buildup in the region. ?][? if unresolved_abysinnia :. ?][? if west_relation >= 3 and not unresolved_abysinnia : A general consensus has been reached between Germany and France to halt Italian expansion should they not relent in their ambitions on the region. ?]
 
 
 # todo: followup event in 8 months: italy continues gradual escalation, and tries to convince britain and france to allow them some concessions. or, if firm hand, none at all.
