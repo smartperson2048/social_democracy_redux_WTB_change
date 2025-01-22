@@ -10,7 +10,7 @@ go-to: election_algorithm
 set-jump: pres_election
 
 @pres_election
-on-arrival: hindenburg_running = 1 if nsdap_votes > dnvp_votes + other_votes + dvp_votes + z_votes and dvp_relation < 50; else hindenburg_running = 0 
+on-arrival: hindenburg_running = 0; hindenburg_running = 1 if nsdap_votes > dnvp_votes + other_votes + dvp_votes + z_votes and dvp_relation < 50; 
 go-to: hindenburg_runs if hindenburg_running; hindenburg_reluctant if not hindenburg_running
 
 The presidential election is coming up soon. [? if spd_in_government = 0 : While the position of Chancellor is typically more important, recent governments have depended on the president's emergency decree powers, making the office vital. ?] [? if hitler_deported==0 : The Nazis will run Hitler, while the KPD will run Thälmann. A victory for Hitler would mean the end of parliamentary democracy, and the beginning of an era of unspeakable horrors. ?][? if hitler_deported==1 : Since Hitler has been deported, the Nazis will run Hermann Göring in his stead. He is widely seen as a proxy for Hitler, who, despite his legal persecution, retains a popular base who wishes to see him returned to Germany. Meanwhile, the KPD will run Ernst Thälmann. ?]
