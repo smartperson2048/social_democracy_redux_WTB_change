@@ -55,5 +55,7 @@ We have called for new elections, set for [+ next_election_month : month +] [+ n
 @end_game
 title: End the game.
 view-if: end_disabled
+choose-if: year >= 1935
 subtitle: We can end the game now.
+unavailable-subtitle: Breitscheid wants to keep playing.
 go-to: 1934_end
