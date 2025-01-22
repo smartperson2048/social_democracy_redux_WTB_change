@@ -3,7 +3,7 @@ new-page: true
 tags: event
 priority: -1
 view-if: ((year = next_election_year and month >= next_election_month) or (year > next_election_year)) and not supreme_soviet
-on-arrival: unity_refused = 0; wirth_lead = 0; dvp_willing = 0; dvp_willing = 1 if ((dvp_relation+spd_votes) >= ((100-pro_republic)+(capital_strike_progress*2)+coup_progress))
+on-arrival: unity_refused = 0; wirth_lead = 0; dvp_willing = 0; dvp_willing = 1 if ((dvp_relation+spd_votes+(pro_republic/4)) >= ((100-pro_republic)+capital_strike_progress+(coup_progress/2)))
 on-departure: month_actions += 1; in_election = 0; next_election_year = next_election_year + 4; n_elections += 1; next_election_time = time + 48; papen_chancellor_timer = 4;
 set-jump: post_election_1928
 
@@ -850,7 +850,7 @@ Even though the DNVP is very reluctant to participate in such a coalition, they 
 title: There is no clear governing majority.
 view-if: weimar_coalition < 50 and (grand_coalition < 50 or grand_coalition_failed == 1 or dvp_willing != 1) and president = "Adenauer" and far_right_coalition < 50 and (right_coalition < 50 or right_coalition_failed) and bourgeois_coalition < 50
 on-arrival: no_majority_elections += 1
-go-to: bruning_lead if no_majority_elections < 3; stegerwald_lead if (((spd_relation + spd_r < z_r + dvp_r + other_r) or (spd_relation + spd_r < national_front and z_national_front == 1)) and bourgeois_coalition+far_right_coalition >= 50) and no_majority_elections >= 3; wirth_lead if (((spd_relation + spd_r >= z_r + dvp_r + other_r and z_national_front != 1) or (spd_relation + spd_r >= national_front)) or bourgeois_coalition+far_right_coalition < 50) and no_majority_elections >= 3
+go-to: bruning_lead if no_majority_elections < 3; stegerwald_lead if (((z_relation + spd_r < z_r + dvp_r + other_r) or (z_relation + spd_r < national_front and z_national_front == 1)) and bourgeois_coalition+far_right_coalition >= 50) and no_majority_elections >= 3; wirth_lead if (((z_relation + spd_r >= z_r + dvp_r + other_r and z_national_front != 1) or (z_relation + spd_r >= national_front)) or bourgeois_coalition+far_right_coalition < 50) and no_majority_elections >= 3
 
 @stegerwald_lead
 on-arrival: chancellor = "Stegerwald"; chancellor_party = "Z"
