@@ -777,6 +777,9 @@ if (Q.month_actions >= 1) {
         Q.unemployed_nsdap -= 10/12;
     }
     if (Q.nazi_peak) {
+        if (Q.nazi_peaked) {
+            Q.nazi_peak = 0;
+        } 
         if (Q.workers_nsdap > 0) {
             Q.workers_nsdap -= 9/6;
             Q.workers_kpd += 2/6;
@@ -819,6 +822,7 @@ if (Q.month_actions >= 1) {
         if (Q.nazi_peak_timer <= 0) {
             Q.nazi_peak = 0;
             Q.nazi_decline = 1;
+            Q.nazi_peaked = 1;
         }
     }
     if (Q.victory_republic && Q.dnvp_banned != 1) {

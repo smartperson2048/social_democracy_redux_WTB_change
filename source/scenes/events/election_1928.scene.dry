@@ -865,6 +865,8 @@ There is no path to an obviously workable majority. President Adenauer has given
 - @new_elections: We will have new elections.
 
 @toleration_stegerwald
+choose-if: neo_weimar_coalition >= 50
+unavailable_subtitle: The parties supporting Stegerwald do not have a majority.
 on-arrival: spd_in_government = 0; spd_toleration = 1; z_relation += 5; foreign_minister_party = "DVP"; interior_minister_party = "Z"; justice_minister_party = "I"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = ddp_name; finance_minister_party = "DVP"; agriculture_minister_party = "Z"; pro_republic -= 4; left_dissent += 5; labor_dissent += 5; reformist_dissent += 2; center_dissent += 3; workers_spd -= 4
 
 We have decided to tolerate Stegerwald's minority bourgeois government, a highly controversial decision in our party due to his right-leaning tendencies.
@@ -878,6 +880,8 @@ There is no path to an obviously workable majority. President Adenauer has given
 - @new_elections: We will have new elections.
 
 @wirth_lead
+choose-if: neo_weimar_coalition >= 50
+unavailable_subtitle: The parties supporting Stegerwald do not have a majority.
 on-arrival: chancellor = "Wirth"; chancellor_party = "Z"; wirth_lead = 1
 
 There is no path to an obviously workable majority. President Adenauer has given Joseph Wirth of the Center Party the task of forming a government, tired of Brüning's repeated failures to govern and hoping that Wirth would be able to win over our support. Now the question remains, can he?
