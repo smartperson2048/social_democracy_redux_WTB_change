@@ -42,7 +42,7 @@ Despite his known reactionary nature, Hindenburg has at least been keeping the N
 subtitle: This will cost us 2 resources.
 choose-if: resources >= 2
 unavailable-subtitle: Not enough resources.
-on-arrival: resources -= 2; braun_campaign = 1; hindenburg_motivated = 1 if hindenburg_running != 1 and dvp_relation < 50; hindenburg_running = 1 if hindenburg_running != 1 and dvp_relation < 50; hitler_support_hindenburg = 1 if hindenburg_running and largest_party != "NSDAP" and nsdap_votes < dnvp_votes + other_votes + dvp_votes + z_votes 
+on-arrival: resources -= 2; braun_campaign = 1; hindenburg_motivated = 1 if hindenburg_running != 1 and dvp_relation < 50; hindenburg_running = 1 if hindenburg_running != 1 and dvp_relation < 50; hitler_support_hindenburg = 1 if hindenburg_running and largest_party != "NSDAP" and nsdap_votes < dnvp_votes + other_votes + dvp_votes + z_votes; hitler_dropped = 1 if hitler_support_hindenburg
 go-to: braun_campaign
 
 It takes effort to run a somewhat unexpected campaign. First, Braun has to be convinced to run. He himself had supported [? if not hindenburg_motivated and dvp_relation < 50 : voting for Hindenburg?][? if hindenburg_motivated or dvp_relation >= 50 : running Hugo Eckener?], and it takes a good deal of prodding to convince him of his destiny.
@@ -436,7 +436,7 @@ There is no majority in this round. In the second round, any candidate who wins 
 
 [? if not duesterburg_plurality : Duesterburg has dropped out of the race after realizing he was Jewish, a fact that completely destroyed his campaign. [? if not hindenburg_running : Replacing him is the other Stalhelm leader, Franz Seldte. ?] ?]
 
-[? if braun_plurality or thalmann_plurality and hindenburg_running : In order to consolidate the vote for the Right, and to prevent a socialist from becoming president, [+ nsdap_candidate +] is no longer running in the second round, and has switched his endorsement to Hindenburg. ?]
+[? if braun_plurality or thalmann_plurality and hindenburg_running and not hitler_dropped : In order to consolidate the vote for the Right, and to prevent a socialist from becoming president, [+ nsdap_candidate +] is no longer running in the second round, and has switched his endorsement to Hindenburg. ?]
 
 [? if braun_plurality or thalmann_plurality or gessler_plurality or eckener_plurality and not hindenburg_running : In order to consolidate the vote for the Right, [+ nsdap_candidate +] is no longer running in the second round, and has switched his endorsement to Seldte, who has entered the race in the second round in place of Duesterburg. ?]
 
