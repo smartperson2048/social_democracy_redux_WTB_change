@@ -3,11 +3,12 @@ new-page: true
 tags: event
 priority: -1
 view-if: ((year = next_election_year and month >= next_election_month) or (year > next_election_year)) and not supreme_soviet
-on-arrival: unity_refused = 0; wirth_lead = 0; dvp_willing = 0; dvp_willing = 1 if ((dvp_relation+spd_votes+(pro_republic/6)) >= ((100-pro_republic)+capital_strike_progress+(coup_progress/2)))
+on-arrival: unity_refused = 0; wirth_lead = 0; dvp_willing = 0; dvp_willing = 1 if ((dvp_relation+spd_votes+(pro_republic/6)) >= ((100-pro_republic)+capital_strike_progress+(coup_progress/2))); z_willing = 0; z_willing = 1 if z_coalition >= 50 or (z_relation >= 25 and bourgeois_coalition < 50)
 on-departure: month_actions += 1; in_election = 0; next_election_year = next_election_year + 4; n_elections += 1; next_election_time = time + 48; papen_chancellor_timer = 4;
 set-jump: post_election_1928
 
 # the low priority means that this event is only seen after all other events are resolved for the month.
+# note: z_coalition = z_relation + (pro_republic/2); z_coalition *= 1.25 if z_party_leader == "Joos";
 
 = Elections, [+ month : month +] [+ year +]
 
@@ -386,7 +387,7 @@ There are some potential coalition arrangements.
 @bourgeois_coalition
 title: A "Bourgeois" Coalition
 subtitle: Z + BVP + [+ ddp_name +] + DVP + Others ([+ bourgeois_coalition +]%)
-view-if: bourgeois_coalition >= 50 and weimar_coalition < 50 and not dvp_banned
+view-if: bourgeois_coalition >= 50 and (weimar_coalition < 50 or z_willing != 1) and not dvp_banned
 
 The constitutional bourgeois parties have enough votes to form a coalition on their own, without even needing toleration from us. It is likely that such a government will be formed unless we act to prevent it.
 
@@ -406,7 +407,7 @@ We have managed to convince Zentrum to instead support another Grand Coalition!
 subtitle: The Bourgeois Coalition will form.
 on-arrival: spd_in_government = 0; spd_toleration = 0; in_bourgeois_coalition = 1; chancellor = "Brüning"; chancellor_party = "Z"; foreign_minister_party = "DVP"; interior_minister_party = "Z"; justice_minister_party = "Z"; labor_minister_party = "Z"; reichswehr_minister_party = ddp_name; economic_minister_party = "Z"; finance_minister_party = "Z"; agriculture_minister_party = "Z"
 
-The Bourgeois Coalition is formed.
+The Bourgeois Coalition is formed, with Brüning as its chancellor. We will have to contend with opposition politics for the time being.
 
 @popular_front_coalition
 title: A new "Popular Front" coalition?
@@ -851,7 +852,7 @@ Even though the DNVP is very reluctant to participate in such a coalition, they 
 
 @no_majority_adenauer
 title: There is no clear governing majority.
-view-if: weimar_coalition < 50 and (grand_coalition < 50 or grand_coalition_failed == 1 or dvp_willing != 1) and president = "Adenauer" and far_right_coalition < 50 and (right_coalition < 50 or right_coalition_failed) and bourgeois_coalition < 50
+view-if: (weimar_coalition < 50 or not z_willing) and (grand_coalition < 50 or grand_coalition_failed == 1 or dvp_willing != 1) and president = "Adenauer" and far_right_coalition < 50 and (right_coalition < 50 or right_coalition_failed) and bourgeois_coalition < 50
 on-arrival: no_majority_elections += 1
 go-to: bruning_lead if no_majority_elections < 3; stegerwald_lead if (((z_relation + spd_r < z_r + dvp_r + other_r) or (z_relation + spd_r < national_front and z_national_front == 1)) and bourgeois_coalition+far_right_coalition >= 50) and no_majority_elections >= 3; wirth_lead if (((z_relation + spd_r >= z_r + dvp_r + other_r and z_national_front != 1) or (z_relation + spd_r >= national_front)) or bourgeois_coalition+far_right_coalition < 50) and no_majority_elections >= 3
 
@@ -886,7 +887,7 @@ There is no path to an obviously workable majority. President Adenauer has given
 
 @no_majority
 title: There is no clear governing majority.
-view-if: weimar_coalition < 50 and (grand_coalition < 50 or grand_coalition_failed == 1 or dvp_willing != 1) and president = "Hindenburg" and far_right_coalition < 50 and (right_coalition < 50 or right_coalition_failed) and bourgeois_coalition < 50
+view-if: (weimar_coalition < 50 or z_willing != 1) and (grand_coalition < 50 or grand_coalition_failed == 1 or dvp_willing != 1) and president = "Hindenburg" and far_right_coalition < 50 and (right_coalition < 50 or right_coalition_failed) and bourgeois_coalition < 50
 on-arrival: no_majority_elections += 1
 go-to: no_majority_bruning if chancellor = "Brüning" or chancellor = "Wirth"; no_majority_papen if chancellor = "Papen" and no_majority_papen_elections == 0; no_majority_papen_2 if chancellor == "Papen" and no_majority_papen_elections > 0; no_majority_schleicher if chancellor = "Schleicher"; no_majority_spd if chancellor_party = "SPD" or chancellor == "Marx"; no_majority_seldte if chancellor == "Seldte"
 
@@ -1348,11 +1349,14 @@ We have won the vote of no confidence, and are currently ruling under an SPD min
 @weimar_coalition
 title: We can form a Weimar Coalition.
 subtitle: SPD + Z + [+ ddp_name +] ([+ weimar_coalition +]%)
-choose-if: president != "Hitler"
-unavailable-subtitle: SPD + Z + [+ ddp_name +] ([+ weimar_coalition +]%) - [? if president == "Hitler" : Hitler refuses to appoint a chancellor under such a governing arrangement. ?]
+choose-if: president != "Hitler" and z_willing == 1
+unavailable-subtitle: SPD + Z + [+ ddp_name +] ([+ weimar_coalition +]%) - [? if president == "Hitler" : Hitler refuses to appoint a chancellor under such a governing arrangement. ?][? if not z_willing : The Center Party is unwilling to coalition with us. ?]
 view-if: weimar_coalition >= 50 or (weimar_coalition + sapd_r >= 50 and kpd_relations >= 30)
 on-arrival: leverage += 5; leverage += 5 if z_party_leader == "Joos"; in_weimar_coalition = 1; spd_in_government = 1; in_popular_front = 0; in_left_front = 0; foreign_minister_party = "Z"; interior_minister_party = "Z"; justice_minister_party = ddp_name; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = ddp_name; finance_minister_party = "Z"; agriculture_minister_party = "Z"; foreign_minister = "Wirth"; interior_minister = "Wirth"; justice_minister = "Koch-Weser"; labor_minister = "Stegerwald"; reichswehr_minister = "Groener"; economic_minister = "Dietrich"; finance_minister = "Köhler"; agriculture_minister = "Hermes";
 achievement: weimar_coalition
+go-to: weimar_normal if z_relation >= 40 and bourgeois_coalition < 50; weimar_z if z_relation < 40 or bourgeois_coalition >= 50
+
+@weimar_normal
 
 We have enough votes [? if weimar_coalition < 50 : with the SAPD's toleration accounted for ?] to form a "Weimar Coalition" government consisting of the SPD, Center (Z) and Democratic ([+ ddp_name +]) parties! This has been our preferred governing coalition. [? if weimar_coalition < 50 : We will need to take care not to offend the SAPD however. ?]
 
@@ -1374,6 +1378,29 @@ go-to: ministries
 
 Rudolf Breitscheid has been appointed chancellor.
 
+@weimar_z
+
+We have enough votes to form a "Weimar Coalition" government consisting of the SPD, Center (Z) and Democratic ([+ ddp_name +]) parties! This has been our preferred governing coalition. However, we have, one way or another, offended the Center Party, and they have demanded the position of Chancellor
+
+- @let_bruning: Let Brüning lead.
+- @let_wirth: Let Wirth lead.
+- @refuse_demand: No, the SPD must lead the government.
+
+@let_bruning
+view-if: z_party_leader != "Joos"
+choose-if: weimar_coalition >= 50
+unavailable_subtitle: The SAPD will not tolerate Brüning.
+on-arrival: chancellor_party = "Z"; chancellor = "Brüning"; left_dissent += 5
+go-to: ministries
+
+@let_wirth
+view-if: z_party_leader == "Joos"
+on-arrival: chancellor_party = "Z"; chancellor = "Wirth"
+go-to: ministries
+
+@refuse_demand
+on-arrival: z_relation -= 5; reformist_dissent += 2
+go-to: coalition_menu if bourgeois_coalition < 50; let_it_form if bourgeois_coalition >= 50
 
 @grand_coalition
 title: We can form a Grand Coalition.
