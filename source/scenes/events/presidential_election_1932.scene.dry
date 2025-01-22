@@ -260,6 +260,8 @@ if (Q.eckener_campaign) {
     Q.eckener_votes += (Q.pro_republic/1000);
     Q.eckener_votes += (Q.nationalism/1000);
     Q.braun_votes += ((Math.floor(Math.random() * 11))/350);
+    Q.thalmann_votes += Q.kpd_normalized;
+    Q.thalmann_votes += Q.sapd_normalized;
     if (Q.dvp_support_eckener) {
         Q.eckener_votes += Q.dvp_normalized;
     }
@@ -273,6 +275,8 @@ if (Q.burgerblock_campaign) {
         Q.gessler_votes += Q.spd_normalized;
         Q.gessler_votes += Q.z_normalized;
         Q.gessler_votes += Q.ddp_normalized;
+        Q.thalmann_votes += Q.kpd_normalized;
+        Q.thalmann_votes += Q.sapd_normalized;
     }
 }
 if (Q.braun_campaign) {
@@ -410,7 +414,7 @@ Results:
 
 [? if eckener_campaign : Eckener - [+ eckener_votes_disp +]% ?]
 
-[? if gessler_campaign : Gessler - [+ gessler_votes_disp +]% ?]
+[? if burgerblock_campaign : Gessler - [+ gessler_votes_disp +]% ?]
 
 [? if hindenburg_running : Hindenburg - [+ hindenburg_votes_disp +]% ?]
 
