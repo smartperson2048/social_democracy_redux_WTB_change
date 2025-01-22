@@ -38,7 +38,7 @@ on-arrival: republic_strength += 0.25; reichswehr_militancy -= 0.2; republic_str
 We send our top military advisors and officers to help the Republican forces in their fight.
 
 @volunteers
-subtitle: We will assist in the flow of socialists into the international brigades of Spain.
+subtitle: -1 resource. We will assist in the flow of socialists into the international brigades of Spain.
 go-to: international_relations.spain
 
 @offensive
