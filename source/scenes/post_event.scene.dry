@@ -947,6 +947,13 @@ if (Q.month_actions >= 1) {
         }
         Q.republic_strength -= Math.random() * (1 / 16 - 1 / 24) + 1 / 24;
         Q.national_strength -= Math.random() * (1 / 16 - 1 / 24) + 1 / 24;
+        if (Q.republic_strength < 0 && Q.national_strength < 0) {
+            if (Q.republic_strength >= Q.national_strength) {
+                Q.republic_strength = 0.1;
+            } else {
+                Q.national_strength = 0.1;
+            }
+        }
     }
 }
 if (Q.normalize_support) {
