@@ -97,7 +97,7 @@ go-to: eckener_campaign
 Hugo Eckener is originally reluctant to run, but when he hears that Hindenburg will not be running, he decides to enter as a bulwark against anti-democratic candidates. 
 
 @eckener_campaign
-on-arrival: dvp_support_eckener = 1 if dvp_relation > 40; else burgerblock_campaign = 1;
+on-arrival: dvp_support_eckener = 1 if dvp_relation > 40; burgerblock_campaign = 1 if dvp_relation <= 40;
 
 [? if dvp_support_eckener : The DVP has, thanks to our relatively good relations, dropped the idea of a Bürgerblock candidacy and endorsed Eckener. ?]
 
