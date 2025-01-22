@@ -234,12 +234,12 @@ if (Q.hindenburg_running) {
         Q.hindenburg_votes += Q.dnvp_normalized;
     }
 } else if (Q.duesterburg_campaign) {
-    Q.duesterburg_votes += (Q.dnvp_normalized/4);
-    Q.duesterburg_votes += ((Q.other_votes*((100-Q.pro_republic)/100))/3);
+    Q.duesterburg_votes += (Q.dnvp_normalized*0.3);
+    Q.duesterburg_votes += ((Q.other_normalized*((100-Q.pro_republic)/100))*0.1);
     Q.duesterburg_votes += ((Math.floor(Math.random() * 11))/350);
 } else if (Q.seldte_campaign) {
     Q.seldte_votes += Q.dnvp_normalized;
-    Q.seldte_votes += Q.other_votes*((100-Q.pro_republic)/100);
+    Q.seldte_votes += Q.other_normalized*((100-Q.pro_republic)/100);
     Q.seldte_votes += ((10-Q.democratization)/150);
     Q.seldte_votes += ((Math.floor(Math.random() * 11))/350);
     if (Q.hitler_support_seldte) {
@@ -248,9 +248,9 @@ if (Q.hindenburg_running) {
         Q.seldte_votes += (Q.nationalism/2500);
     }
     if (Q.eckener_campaign && Q.dvp_support_eckener) {
-        Q.eckener_votes += Q.other_votes*(Q.pro_republic/100);
+        Q.eckener_votes += Q.other_normalized*(Q.pro_republic/100);
     } else if (Q.burgerblock_campaign) {
-        Q.gessler_votes += Q.other_votes*(Q.pro_republic/100);
+        Q.gessler_votes += Q.other_normalized*(Q.pro_republic/100);
     }
 }
 if (Q.eckener_campaign) {
@@ -406,7 +406,7 @@ Q.thalmann_votes_disp = Q.thalmann_votes.toFixed(1);
 Q.eckener_votes_disp = Q.eckener_votes.toFixed(1);
 Q.gessler_votes_disp = Q.gessler_votes.toFixed(1);
 Q.duesterburg_votes_disp = Q.duesterburg_votes.toFixed(1);
-Q.seldte_votes_disp = Q.thalmann_votes.toFixed(1);
+Q.seldte_votes_disp = Q.seldte_votes.toFixed(1);
 !}
 go-to: hindenburg_wins if hindenburg_majority == 1; thalmann_wins if thalmann_majority == 1; hitler_wins if hitler_majority == 1; braun_wins if braun_majority == 1; eckener_wins if eckener_majority == 1; gessler_wins if gessler_majority == 1; duesterburg_wins if duesterburg_majority == 1; seldte_wins if seldte_majority == 1; no_majority_round1 if any_majority == 0 and election_round == 1; round2_results if election_round >= 2
 
