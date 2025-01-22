@@ -603,7 +603,7 @@ if (Q.braun_campaign && Q.hitler_support_hindenburg) {
 }
 !}
 
-As expected, the incumbent Hindenburg wins the presidency[? if braun_campaign and hitler_support_hindenburg :, though our ability to unite the reactionaries behind Hindenburg and become the main opposition has bolstered morale in the party. ?]. Let's hope he continues to keep the Nazis out of power.
+As expected, the incumbent Hindenburg wins the presidency[? if braun_campaign and hitler_support_hindenburg :, though our ability to unite the reactionaries behind Hindenburg and become the main opposition has bolstered morale in the party?]. Let's hope he continues to keep the Nazis out of power.
 
 @thalmann_wins
 on-arrival: president = "Thälmann"; kpd_relation = 80;
