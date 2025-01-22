@@ -109,7 +109,7 @@ on-arrival: spd_support_gessler = 1; burgerblock_campaign = 1
 
 We have chosen to back the rest of the Bürgerblock in campaigning for Otto Gessler. Despite his militarism, he will hopefully keep democracy safe.
 
-- @final_election
+- @final_election: The final vote...
 
 @convince_z
 choose-if: spd_votes >= z_votes
