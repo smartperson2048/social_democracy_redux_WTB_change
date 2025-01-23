@@ -375,6 +375,7 @@ There are some potential coalition arrangements.
 - @far_right_coalition
 - @no_majority
 - @no_majority_adenauer
+- @no_majority_gessler
 - @brauns_dilemma
 - @left_coalition
 - @kpd_majority
@@ -850,11 +851,47 @@ on-arrival: spd_in_government = 0; spd_toleration = 0; chancellor = "Brüning"; 
 
 Even though the DNVP is very reluctant to participate in such a coalition, they still accede to President Hindenburg's wishes and to allow a government to be formed. Thus, a majority center-right coalition is formed, with Brüning as chancellor.
 
+@no_majority_gessler
+title: There is no clear governing majority.
+view-if: (weimar_coalition < 50 or not z_willing) and (grand_coalition < 50 or grand_coalition_failed == 1 or dvp_willing != 1) and president = "Gessler" and far_right_coalition < 50 and (right_coalition < 50 or right_coalition_failed) and bourgeois_coalition < 50
+on-arrival: no_majority_elections += 1
+go-to: bruning_lead if no_majority_elections < 3; luther_lead if no_majority_elections >= 3 and (dvp_relation < 55 or bourgeois_coalition+far_right_coalition >= 50 or ddp_votes < 3); kulz_lead if dvp_relation >= 45 and bourgeois_coalition+far_right_coalition < 50 and ddp_votes >= 3
+
+@luther_lead
+on-arrival: chancellor = "Luther"; chancellor_party = "I"
+
+There is no path to an obviously workable majority. President Gessler has given Hans Luther, Reichsbank director formerly of the DVP, the task of forming a government, tired of Brüning's repeated failures to govern and hoping that Hans Luther would be able to gain broad Reichstag support.
+
+- @toleration_luther: We will tolerate Stegerwald.
+- @new_elections: We will have new elections.
+
+@toleration_luther
+choose-if: neo_weimar_coalition >= 50
+unavailable_subtitle: The parties supporting Luther do not have a majority.
+on-arrival: spd_in_government = 0; spd_toleration = 1; dvp_relation += 3; foreign_minister_party = "DVP"; interior_minister_party = "Z"; justice_minister_party = "I"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = ddp_name; finance_minister_party = "DVP"; agriculture_minister_party = "Z"; pro_republic -= 4; left_dissent += 3; labor_dissent += 5; workers_spd -= 4
+
+We have decided to tolerate Luther's minority bourgeois government, a controversial decision in our party due to deflationary monetary policy.
+
+@kulz_lead
+on-arrival: chancellor = "Külz"; chancellor_party = ddp_name
+
+There is no path to an obviously workable majority. President Gessler has given Wilhelm Külz, member of the [+ ddp_name +], the task of forming a government, tired of Brüning's repeated failures to govern and hoping to gain our backing.
+
+- @toleration_kulz: We will tolerate Külz.
+- @new_elections: We will have new elections.
+
+@toleration_kulz
+choose-if: neo_weimar_coalition >= 50 or (neo_weimar_coalition+sapd_r >= 50 and kpd_relation >= 30)
+unavailable_subtitle: The parties supporting Külz do not have a majority.
+on-arrival: spd_in_government = 0; spd_toleration = 1; ddp_relation += 5; foreign_minister_party = "DVP"; interior_minister_party = "Z"; justice_minister_party = "I"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = ddp_name; finance_minister_party = "DVP"; agriculture_minister_party = "Z"; pro_republic -= 2
+
+We have decided to tolerate Külz's minority bourgeois government.
+
 @no_majority_adenauer
 title: There is no clear governing majority.
 view-if: (weimar_coalition < 50 or not z_willing) and (grand_coalition < 50 or grand_coalition_failed == 1 or dvp_willing != 1) and president = "Adenauer" and far_right_coalition < 50 and (right_coalition < 50 or right_coalition_failed) and bourgeois_coalition < 50
 on-arrival: no_majority_elections += 1
-go-to: bruning_lead if no_majority_elections < 3; stegerwald_lead if (((z_relation + spd_r < z_r + dvp_r + other_r) or (z_relation + spd_r < national_front and z_national_front == 1)) and bourgeois_coalition+far_right_coalition >= 50) and no_majority_elections >= 3; wirth_lead if (((z_relation + spd_r >= z_r + dvp_r + other_r and z_national_front != 1) or (z_relation + spd_r >= national_front)) or bourgeois_coalition+far_right_coalition < 50) and no_majority_elections >= 3
+go-to: bruning_lead if no_majority_elections < 2; stegerwald_lead if (((z_relation + spd_r < z_r + dvp_r + other_r) or (z_relation + spd_r < national_front and z_national_front == 1)) and bourgeois_coalition+far_right_coalition >= 50) and no_majority_elections >= 2; wirth_lead if (((z_relation + spd_r >= z_r + dvp_r + other_r and z_national_front != 1) or (z_relation + spd_r >= national_front)) or bourgeois_coalition+far_right_coalition < 50) and no_majority_elections >= 2
 
 @stegerwald_lead
 on-arrival: chancellor = "Stegerwald"; chancellor_party = "Z"
@@ -874,7 +911,7 @@ We have decided to tolerate Stegerwald's minority bourgeois government, a highly
 @bruning_lead
 on-arrival: chancellor = "Brüning"; chancellor_party = "Z"
 
-There is no path to an obviously workable majority. President Adenauer has given Heinrich Brüning of the Center Party the task of forming a government. As the bourgeois parties lack a majority on their own, the task falls on us to decide the fate of Brüning's government.
+There is no path to an obviously workable majority. President [+ president +] has given Heinrich Brüning of the Center Party the task of forming a government. As the bourgeois parties lack a majority on their own, the task falls on us to decide the fate of Brüning's government.
 
 - @toleration_bruning: We will tolerate Brüning.
 - @new_elections: We will have new elections.
@@ -1642,7 +1679,7 @@ go-to: ministries
 
 
 @no_govt_3
-view-if: weimar_coalition >= 50 or (grand_coalition >= 50 and grand_coalition_failed != 1 and dvp_willing == 1)
+view-if: (weimar_coalition >= 50 and z_willing == 1) or (grand_coalition >= 50 and grand_coalition_failed != 1 and dvp_willing == 1)
 title: We do not form a government.
 subtitle: [? if right_coalition >= 50 and right_coalition_failed == 0 : A right-wing coalition may form instead. ?] This will cause significant internal dissent, and will lead to increased distrust from the bourgeois parties.
 on-arrival: reformist_dissent += 5; center_dissent += 5; labor_dissent += 5; neorevisionist_dissent += 5
