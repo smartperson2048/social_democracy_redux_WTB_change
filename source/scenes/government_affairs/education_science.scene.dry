@@ -60,7 +60,7 @@ The Kaiser Wilhelm Society is one of the most respected scientific research inst
 title: Fund applied research in economically useful technologies.
 subtitle: -1 budget
 choose-if: budget >= 1
-on-arrival: budget -= 1; science += 1; applied_research += 1; economic_growth += 0.5 if economic_growth <= 8 and applied_research <= 1; economic_growth += 3 if applied_research > 1; ; new_middle_spd += 5*(1-dissent); workers_spd += 3*(1-dissent); ddp_relation += 5*(1-dissent); unemployed -= 0.5 if unemployed >= 4; capital_strike_progress -= 1 if capital_strike_progress > 0; science_funding += 1
+on-arrival: budget -= 1; science += 1; applied_research += 1; economic_growth += 0.5 if economic_growth <= 8 and applied_research <= 1; economic_growth += 3 if applied_research > 1; new_middle_spd += 5*(1-dissent); workers_spd += 3*(1-dissent); ddp_relation += 5*(1-dissent); unemployed -= 0.5 if unemployed >= 4; capital_strike_progress -= 1 if capital_strike_progress > 0; science_funding += 1
 
 Our research program focuses on collaborating with industry to develop useful technologies, creating new research institutions for applied science. This collaboration is focused on economic growth and development.
 
