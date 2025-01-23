@@ -676,11 +676,14 @@ go-to: menu
 The end date has been enabled.
 
 @enable_normalize
+subtitle: NOT RECOMMENDED
 view-if: normalize_support != 1
 on-arrival: normalize_support = 1
 go-to: menu
 
 Experimental support changes enabled. These will likely lead to more uniform changes in support, rather than support becoming more static in the lategame. However, the game isn't currently adjusted for this, so it may also lead to unexpected margins.
+
+Note: After some playtests, they seem to inexplicably just lead to the Nazis never growing. Not recommended.
 
 @disable_normalize
 view-if: normalize_support = 1
