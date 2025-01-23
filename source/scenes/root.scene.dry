@@ -416,6 +416,7 @@ Q.unemployment_insurance_seen = 0;
 Q.unemployment_insurance_threshold = 10;
 Q.blutmai = 0;
 Q.return_to_normalcy = 0;
+Q.normalcy_month = Math.floor(Math.random() * 12) + 1;
 
 // have we reformed these institutions to be more democratic?
 Q.judicial_reform = 0;
