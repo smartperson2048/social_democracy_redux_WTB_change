@@ -555,7 +555,7 @@ if (Q.Hitler_votes && Q.Seldte_votes) {
     if (Q.Hitler_votes > Q.Seldte_votes) {
         Q.dnvp_candidate = "Hitler";
         Q.other_candidate = "Hitler";
-        Q.Hitler_bonus = (Q.Hitler_bonus || 0) - ((Q.pro_republic)/125)*Q.other_normalized; 
+        Q.Hitler_bonus = (Q.Hitler_bonus || 0) - ((Q.pro_republic)/125)*Q.other_votes; 
         if (Q.z_candidate == "Adenauer") {
             Q.Adenauer_bonus = (Q.Adenauer_bonus || 0) + ((Q.pro_republic)/125)*Q.normalized;
         }
@@ -580,12 +580,12 @@ if (Q.z_candidate == "Adenauer" && Q.ddp_candidate == "Gessler" && Q.z_candidate
         if (Q.dvp_candidate != Q.spd_candidate) {
             Q.dvp_candidate = "Adenauer";
         }
-        Q.Adenauer_bonus = (Q.Adenauer_bonus || 0) + 0.25*Q.other_normalized;
+        Q.Adenauer_bonus = (Q.Adenauer_bonus || 0) + 0.25*Q.other_votes;
         // todo: make it dynamic rather than 25%
     } else {
         Q.adenauer_drops_out = 1;
         Q.z_candidate = "Gessler";
-        Q.Gessler_bonus = 0.25*Q.other_normalized;
+        Q.Gessler_bonus = 0.25*Q.other_votes;
     }
 }
 // DVP drops out to favor the center candidate
