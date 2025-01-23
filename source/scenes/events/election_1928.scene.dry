@@ -524,7 +524,7 @@ President Braun faces a dilemma. Is it "democratic" to let democracy be destroye
 
 Alternatively, Braun could use the emergency powers of the presidency. Article 48 has been used by Hindenburg to promulgate anti-democratic and anti-worker policies; can Article 48 be used for good as well as evil?
 
-- @emergency_braun: We will form an emergency government with Braun's support.
+- @emergency_braun: We will form an emergency government with [+ president +]'s support.
 - @new_elections: We will have new elections.
 - @far_right_win: Let the Nazis form their government.
 
@@ -1232,12 +1232,12 @@ Otto Wels has become chancellor of the SPD majority.
 
 @brauns_dilemma
 title: There is no clear governing majority.
-subtitle: President Braun faces a dilemma.
-view-if: president == "Braun" and (grand_coalition < 50 or grand_coalition_failed == 1 or dvp_willing != 1)
+subtitle: President [+ president +] faces a dilemma.
+view-if: president == "Braun" or president == "Schumacher" or president == "Juchacz" and (grand_coalition < 50 or grand_coalition_failed == 1 or dvp_willing != 1)
 
-President Braun faces a dilemma. He desperately desires a socialist or at least democratic government, but the electoral results are not there for such. Article 48 has been used by Hindenburg to promulgate anti-democratic and anti-worker policies; can Article 48 be used for good as well as evil?
+President [+ president +] faces a dilemma. [? if president == "Braun" or president == "Schumacher" : He ?][? if president == "Juchacz" : She ?] desperately desires a socialist or at least democratic government, but the electoral results are not there for such. Article 48 has been used by Hindenburg to promulgate anti-democratic and anti-worker policies; can Article 48 be used for good as well as evil?
 
-- @emergency_braun: We will form an emergency government with Braun's support.
+- @emergency_braun: We will form an emergency government with [+ president +]'s support.
 - @new_elections: We will have new elections.
 - @new_grand_coalition
 - @left_coalition
@@ -1247,7 +1247,7 @@ President Braun faces a dilemma. He desperately desires a socialist or at least 
 
 
 @emergency_braun
-title: We will form an emergency government with Braun's support.
+title: We will form an emergency government with [+ president +]'s support.
 subtitle: This may have the effect of inflamming public sentiment against us, and the reactionaries will be against us each step of the way.
 on-arrival: sa_strength += 100; sh_strength += 100; in_emergency_government = 1; z_no_confidence = 0; kpd_no_confidence = 0; dvp_no_confidence = 0; other_no_confidence = 0
 go-to: emergency_menu
@@ -1257,13 +1257,14 @@ Yes, an emergency minority government, with the support of the SPD. Who should l
 @emergency_menu
 
 - @braun_emergency_chancellor: Otto Braun for Chancellor-President!
+- @braun_emergency_chancellor_2: Otto Braun for emergency Chancellor.
 - @breitscheid_emergency_chancellor: Rudolf Breitscheid for emergency Chancellor.
 - @bruning_emergency_chancellor: Brüning of the Center Party, as a goodwill gesture toward the bourgeoisie.
 - @wirth_emergency_chancellor: Joseph Wirth of the Center Party, as a gesture of republican unity.
 
 @braun_emergency_chancellor
 subtitle: This is unprecedented.
-view-if: not historical_mode or not spd_prussia
+view-if: (not historical_mode or not spd_prussia) and president == "Braun"
 on-arrival: chancellor = "Braun"; chancellor_party = "SPD"; spd_in_government = 1; pro_republic -= 5; foreign_minister_party = "SPD"; interior_minister_party = "SPD"; justice_minister_party = "SPD"; labor_minister_party = "SPD"; reichswehr_minister_party = "SPD"; economic_minister_party = "SPD"; finance_minister_party = "SPD"; agriculture_minister_party = "SPD"; reichswehr_loyalty -= 0.1; 
 
 Our experts have checked the constitution, and have discovered that there is no specific prohibition against the Chancellor also being the President (the President may not be a member of the Reichstag; there is no law saying that the Chancellor *must* be a member of the Reichstag).
@@ -1282,6 +1283,17 @@ We have appointed Rudolf Breitscheid as emergency chancellor. The Communists con
 - @far_right_coup
 - @emergency_no_confidence
 
+@braun_emergency_chancellor_2
+subtitle: He is an experienced moderate; perhaps what the country needs.
+view-if: (not historical_mode or not spd_prussia) and president != "Braun"
+choose-if: not braun_campaign and year < 1935
+unavailable-subtitle: Braun has mostly retired from politics.
+on-arrival: chancellor = "Braun"; chancellor_party = "SPD"; spd_in_government = 1; foreign_minister_party = "SPD"; interior_minister_party = "SPD"; justice_minister_party = "SPD"; labor_minister_party = "SPD"; reichswehr_minister_party = "SPD"; economic_minister_party = "SPD"; finance_minister_party = "SPD"; agriculture_minister_party = "SPD"; reichswehr_loyalty -= 0.05;
+
+We have appointed Rudolf Breitscheid as emergency chancellor. The Communists consider him less objectionable than the alternatives, although it is unclear whether they will tolerate this government.
+
+- @far_right_coup
+- @emergency_no_confidence
 
 @bruning_emergency_chancellor
 
@@ -1728,7 +1740,7 @@ go-to: no_govt_2
 
 @no_govt_2
 on-arrival: reformist_dissent += 25; center_dissent += 10; labor_dissent += 25; neorevisionist_dissent += 25; in_weimar_coalition = 0; in_grand_coalition = 0; chancellor = "Brüning" if chancellor == "Marx"; spd_in_government = 0; grand_coalition_failed = 1
-go-to: right_coalition_post_spd if right_coalition >= 50 and president != "Braun" and right_coalition_failed == 1; new_elections_spd if right_coalition < 50 and president != "Braun"; brauns_dilemma if president == "Braun"; right_coalition_2 if right_coalition_failed == 0 and right_coalition >= 50 and president == "Hindenburg"
+go-to: right_coalition_post_spd if right_coalition >= 50 and president != "Braun" and right_coalition_failed == 1; new_elections_spd if right_coalition < 50 and president != "Braun"; brauns_dilemma if president == "Braun" or president == "Schumacher" or president == "Juchacz"; right_coalition_2 if right_coalition_failed == 0 and right_coalition >= 50 and president == "Hindenburg"
 
 
 @right_coalition_post_spd
