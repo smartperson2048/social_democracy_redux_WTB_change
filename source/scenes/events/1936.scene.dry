@@ -39,6 +39,13 @@ if (Q.unemployed >= 20 && Q.economic_growth >= 3) {
         Q.inflation += 0.2;
     }
 }
+if (Q.economic_growth >= 4) {
+    Q.budget += 1;
+    if ((Q.upper_taxes_rates+Q.lower_tax_rates) >= 7) {
+        Q.budget += 1;
+        Q.economic_growth -= ((Q.upper_tax_rates+(Q.lower_tax_rates/2))/14);
+    }
+}
 if (Q.pro_republic > 75 && Q.pro_republic > Q.older_republic) {
     Q.new_middle_ddp += (Q.pro_republic - Q.older_republic)
     Q.old_middle_ddp += ((Q.pro_republic - Q.older_republic)/2)
@@ -47,6 +54,6 @@ if (Q.pro_republic > 75 && Q.pro_republic > Q.older_republic) {
 }
 !}
 
-The German economy continues its steady recovery. [? if nazi_reform : The Nazis continue their reformation, attempting to seize relevance once more, but all in all, it seems that the crisis has subsided. ?][? if not third_period : Around the world, left-leaning Popular Fronts see great success, winning elections left and right. This is a good sign for our foreign policy. ?]
+The German economy continues its steady recovery. [? if nazi_reform : The Nazis continue their reformation, attempting to seize relevance once more, but all in all, it seems that the crisis has subsided. ?][? if not third_period : Around the world, left-leaning Popular Fronts see great success, winning elections left and right. This is a good sign for our foreign policy. ?][? if budget > 0 and works_program and economic_growth >= 3 : We are running a surplus once again. It seems our works program is truly paying off. ?]
 
 [? if italo_ethiopian_war : The Italo-Ethiopian War rages on in Abysinnia. ?]
