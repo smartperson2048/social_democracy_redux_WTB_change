@@ -592,6 +592,18 @@ go-to: election_algorithm
 set-jump: post_election
 
 @round2_results
+on-arrival: {!
+if (Q.braun_plurality) {
+    var braun_margin_hindenburg = Q.braun_votes - Q.hindenburg_votes;
+    Q.election_invalidated = (braun_margin_hindenburg < 0.5 && Q.judicial_reform < 1 && (Q.rb_force+Q.prussia_force > 25));
+}
+if (Q.thalmann_plurality) {
+   var thalmann_margin_hindenburg = Q.thalmann_votes - Q.hindenburg_votes;
+   var thalmann_margin_hitler = Q.thalmann_votes - Q.hitler_votes;
+   Q.election_invalidated = ((thalmann_margin_hindenburg < 0.5 && Q.judicial_reform < 2) || (thalmann_margin_hitler < 0.5 && Q.judicial_reform < 1))
+}
+// todo: courts demand a rerun of the election if socialists beat reactionaries by narrow margin
+!}
 go-to: hindenburg_wins if hindenburg_plurality == 1; thalmann_wins if thalmann_plurality == 1; braun_wins if braun_plurality == 1; hitler_wins if hitler_plurality == 1; eckener_wins if eckener_plurality == 1; gessler_wins if gessler_plurality == 1; seldte_wins if seldte_plurality == 1; duesterburg_wins if duesterburg_plurality == 1
 
 
@@ -645,9 +657,19 @@ Thanks to our reforms weakening the presidency's powers and the banning of the S
 
 
 @braun_wins
-on-arrival: president = "Braun"; reformist_dissent -= 15; center_dissent -= 15; labor_dissent -= 15; left_dissent -= 5; workers_spd += 8*(1-dissent); old_middle_spd += 5*(1-dissent); new_middle_spd += 5*(1-dissent); rural_spd += 5*(1-dissent); unemployed_spd += 5*(1-dissent);
+on-arrival: president = "Braun"; coup_progress += 0.5; coup_progress += 1 if sa_force + sh_force >= 50; reformist_dissent -= 15; center_dissent -= 15; labor_dissent -= 15; left_dissent -= 5; workers_spd += 8*(1-dissent); old_middle_spd += 5*(1-dissent); new_middle_spd += 5*(1-dissent); rural_spd += 5*(1-dissent); unemployed_spd += 5*(1-dissent);
 
 Otto Braun of the SPD has won the presidency! This is a moment of celebration for our party, and his victory is able to bolster our support.
+
+- @far_right_coup: The Harzburg Front immediately initiates a coup...
+
+@far_right_coup
+view-if: coup_progress >= 10
+on-arrival: reichswehr_loyalty -= 0.1 if reichswehr_loyalty <= 0.05; reichswehr_loyalty += 0.1; reichswehr_loyalty += 0.15 if z_support_braun; reichswehr_loyalty -= 0.05 if kpd_support_braun; rb_strength += 100
+
+Immediately following the election, forces of the Stalhelm and SA organized across the country under the Harzburg Front storm government offices, communications, railway, and other important infrastructure, as reactionary officers begin taking their forces out of barracks and joining in the coup.
+
+- @civil_war: This is civil war.
 
 @eckener_wins
 on-arrival: president = "Eckener"; pro_republic += 5; reformist_dissent -= 5
