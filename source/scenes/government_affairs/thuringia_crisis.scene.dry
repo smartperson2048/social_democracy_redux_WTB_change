@@ -51,6 +51,10 @@ on-arrival: pro_republic -= 8; sa_strength += 100; sa_strength += 0.05; workers_
 
 Overwhelmed by the reactionary show of strength, we retreat and call the Reichsexekution off.
 
+@nazi_concede
+
+WIP
+
 # reichsexekute thuringia: nazis will either resist or dont resist. if they resist, you can call it off or risk civil war by forcing it. 
 #if thuringia is reichsexekuted, coup progress increases by 2 but nazis are weakened. 
 #if you dont reichsexekute thuringia, nazi populairty increase and coup progress increase and SA becomes stronger
