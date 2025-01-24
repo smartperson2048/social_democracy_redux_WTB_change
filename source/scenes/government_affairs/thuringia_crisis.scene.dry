@@ -1,10 +1,10 @@
 title: The Issue of Thuringia
-subtitle: The Nazis rule Thuringia, and are taking full advantage
+#subtitle: The Nazis rule Thuringia, and are taking full advantage
 new-page: true
 is-card: true
 view-if: (((nsdap_votes*(1 + (sa_force/100)))+(unemployed/1.5)) >= 50) and (president == "Braun" or president == "Schumacher" or president == "Juchacz") and dvp_relation < 50 and (not presidential_powers and not victory_republic)
 tags: govt_affairs
-card-image: reichsexekution.jpg
+card-image: img/reichsexekution.jpg
 max-visits: 1
 
 = The Issue of Thuringia
@@ -18,7 +18,7 @@ There is a strong argument to make that the Nazi excesses of this government are
 - @easy_discard
 
 @reichsexekute_thuringia
-go-to: nazi_resist if sa_force+sh_force >= rb_force+prussia_force+((army_force+(army_force*reichswehr_loyalty))/2); nazi_concede if sa_force+sh_force < rb_force+prussia_force+((army_force+(army_force*reichswehr_loyalty))/2)
+go-to: nazi_resist if sa_force+sh_force >= (rb_force*(1-dissent))+((army_force+(army_force*reichswehr_loyalty))/2); nazi_concede if sa_force+sh_force < (rb_force*(1-dissent))+((army_force+(army_force*reichswehr_loyalty))/2)
 
 @nazi_resist
 
