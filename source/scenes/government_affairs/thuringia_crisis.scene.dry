@@ -52,8 +52,14 @@ on-arrival: pro_republic -= 8; sa_strength += 100; sa_strength += 0.05; workers_
 Overwhelmed by the reactionary show of strength, we retreat and call the Reichsexekution off.
 
 @nazi_concede
+go-to: successful_reichsexekution
 
-WIP
+The order is signed, and the Reichsexekution begins. Reliable forces of the army and police enter Thuringia, moving swiftly to secure key government infrastructure. The Nazis are caught off guard, and before they have time to react government forces have secured control over Thuringia and placed it under direct federal authority. The Nazis cry Marxist consolidation of power, but at least we have stopped them from turning Thuringia into their backwards bulwark.
+
+@do_nothing
+on-arrival: sa_strength += 100; sa_militancy += 0.05; coup_progress += 1; reichswehr_loyalty -= 0.02; pro_republic -= 5; workers_nsdap += 3; unemployed_nsdap += 4; rural_nsdap += 4; old_middle_nsdap += 4; new_middle_nsdap += 3;
+
+We simply do not have the present ability to forcefully remove the Nazis from power in such a manner. We have no choice but to leave them be.
 
 # reichsexekute thuringia: nazis will either resist or dont resist. if they resist, you can call it off or risk civil war by forcing it. 
 #if thuringia is reichsexekuted, coup progress increases by 2 but nazis are weakened. 
