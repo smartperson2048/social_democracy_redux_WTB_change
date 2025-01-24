@@ -895,7 +895,7 @@ on-arrival: no_majority_elections += 1
 go-to: bruning_lead if no_majority_elections < 1; schacht_lead if investigate_far_right < 1 and spd_r < bourgeois_coalition + dnvp_r and no_majority_elections >= 1 and schacht_elections != 1; luther_lead if (investigate_far_right >= 1 or spd_r >= bourgeois_coalition + dnvp_r or schacht_election == 1) and no_majority_elections >= 1;
 
 @schacht_lead
-on-arrival: chancellor = "Schacht"; chancellor_party = "I"; schacht_stalhelm = 1 if sh_banned = 1; sh_banned = 0; welfare -= 1; judicial_reform -= 1 if judicial_reform >= 1; schacht_election = 1; next_election_time = time+3; next_election_month = month + 3; next_election_year = year; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12;
+on-arrival: chancellor = "Schacht"; chancellor_party = "I"; schacht_stalhelm = 1 if sh_banned; sh_banned = 0; welfare -= 1; judicial_reform -= 1 if judicial_reform >= 1; schacht_election = 1; next_election_time = time+3; next_election_month = month + 3; next_election_year = year; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12;
 
 There is no path to an obviously workable majority. President Eckener has decided to appoint former Reichsbank director, Hjalmar Schacht, to the position as head of a technocratic cabinet. Eckener expects us to tolerate him, but he is intolerable to most of the party. [? if schacht_stalhelm : He has already legalized the Stalhelm. ?]
 
