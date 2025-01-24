@@ -87,7 +87,7 @@ Importantly, it seems highly likely that President Hindenburg will not be runnin
 
 @support_eckener
 subtitle: -1 resource
-unavailable_subtitle: -1 resource - [? if resources < 1 : Not enough resources. ?][? if z_relation < 35 : The Center Party is unwilling to run a joint candidate. ?]
+unavailable-subtitle: -1 resource - [? if resources < 1 : Not enough resources. ?][? if z_relation < 35 : The Center Party is unwilling to run a joint candidate. ?]
 choose-if: resources >= 1 and z_relation >= 35
 on-arrival: eckener_campaign = 1; resources -= 1
 go-to: eckener_campaign

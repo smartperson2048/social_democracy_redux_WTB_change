@@ -40,7 +40,7 @@ With our control of the Foreign Ministry, it is up to us to control Germany's po
 
 @hardline
 subtitle: [? if eu : We can use the European Union to pressure Italy into backing down. ?][? if not eu : We can work with France and Britain to sanction Italy should they refuse. ?]
-unavailable_subtitle: [? if west_relation < 7 : France and Britain would never back this. ?][? if not eu : We lack the leverage over Italy necessary. ?][? if unresolved_abysinnia : France and Britain still view us as a threat. ?]
+unavailable-subtitle: [? if west_relation < 7 : France and Britain would never back this. ?][? if not eu : We lack the leverage over Italy necessary. ?][? if unresolved_abysinnia : France and Britain still view us as a threat. ?]
 choose-if: ((eu and west_relation >= 5) or (not eu and west_relation >= 7)) and not unresolved_abysinnia
 on-arrival: unemployed += 1; west_relation -= 1; unemployed += 0.8 if not eu; inflation += 0.2; inflation += 0.6 if not eu; workers_spd += 6*(1-dissent); new_middle_spd += 3*(1-dissent); pacifism += 2; soviet_relation += 1; left_dissent -= 5; kpd_relation += 3; z_relation += 3; abysinnia = 1
 

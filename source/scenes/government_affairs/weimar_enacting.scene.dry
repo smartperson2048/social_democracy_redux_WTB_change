@@ -33,7 +33,7 @@ Funding the plan by increasing taxes is certainly one option, though one that [+
 
 @convince
 choose-if: z_relation >= 70
-unavailable_subtitle: The Center Party is unwilling to be convinced.
+unavailable-subtitle: The Center Party is unwilling to be convinced.
 on-arrival: z_relation -= 5
 
 We have managed to convince [+ finance_minister +] to fund the plan with an increase in taxes. Now we must decide how to go about the tax hikes.

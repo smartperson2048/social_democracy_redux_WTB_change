@@ -398,7 +398,7 @@ The constitutional bourgeois parties have enough votes to form a coalition on th
 
 @plead_grand
 subtitle: SPD + Z + BVP + [+ ddp_name +] + DVP  ([+ grand_coalition +]%)
-unavailable_subtitle: SPD + Z + BVP + [+ ddp_name +] + DVP  ([+ grand_coalition +]%) - The DVP is unwilling to enter such a government[? if z_relation < 30 :, as is the Center party?].
+unavailable-subtitle: SPD + Z + BVP + [+ ddp_name +] + DVP  ([+ grand_coalition +]%) - The DVP is unwilling to enter such a government[? if z_relation < 30 :, as is the Center party?].
 view-if: not grand_coalition_failed and grand_coalition >= 50
 choose-if: dvp_relation >= 30 and z_relation >= 30
 go-to: grand_coalition
@@ -868,7 +868,7 @@ There is no path to an obviously workable majority. President [+ president +] ha
 
 @toleration_luther
 choose-if: neo_weimar_coalition >= 50
-unavailable_subtitle: The parties supporting Luther do not have a majority.
+unavailable-subtitle: The parties supporting Luther do not have a majority.
 on-arrival: spd_in_government = 0; spd_toleration = 1; dvp_relation += 3; foreign_minister_party = "DVP"; interior_minister_party = "Z"; justice_minister_party = "I"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = ddp_name; finance_minister_party = "DVP"; agriculture_minister_party = "Z"; pro_republic -= 4; left_dissent += 5; labor_dissent += 5; center_dissent += 3; reformist_dissent += 3; workers_spd -= 5; unemployed_spd -= 5
 
 We have decided to tolerate Luther's minority bourgeois government, a controversial decision in our party due to his economic policies and right-wing leanings.
@@ -883,7 +883,7 @@ There is no path to an obviously workable majority. President Gessler has given 
 
 @toleration_kulz
 choose-if: neo_weimar_coalition >= 50 or (neo_weimar_coalition+sapd_r >= 50 and kpd_relation >= 30)
-unavailable_subtitle: The parties supporting Külz do not have a majority.
+unavailable-subtitle: The parties supporting Külz do not have a majority.
 on-arrival: spd_in_government = 0; spd_toleration = 1; ddp_relation += 5; foreign_minister_party = "DVP"; interior_minister_party = "Z"; justice_minister_party = "I"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = ddp_name; finance_minister_party = "DVP"; agriculture_minister_party = "Z"; pro_republic -= 2
 
 We have decided to tolerate Külz's minority bourgeois government.
@@ -917,7 +917,7 @@ There is no path to an obviously workable majority. President Adenauer has given
 
 @toleration_stegerwald
 choose-if: neo_weimar_coalition >= 50
-unavailable_subtitle: The parties supporting Stegerwald do not have a majority.
+unavailable-subtitle: The parties supporting Stegerwald do not have a majority.
 on-arrival: spd_in_government = 0; spd_toleration = 1; z_relation += 5; foreign_minister_party = "DVP"; interior_minister_party = "Z"; justice_minister_party = "I"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = ddp_name; finance_minister_party = "DVP"; agriculture_minister_party = "Z"; pro_republic -= 4; left_dissent += 5; labor_dissent += 5; reformist_dissent += 2; center_dissent += 2; workers_spd -= 4; unemployed_spd -= 4
 
 We have decided to tolerate Stegerwald's minority bourgeois government, a controversial decision in our party due to his right-leaning tendencies and conservatism.
@@ -932,7 +932,7 @@ There is no path to an obviously workable majority. President [+ president +] ha
 
 @wirth_lead
 choose-if: neo_weimar_coalition >= 50
-unavailable_subtitle: The parties supporting Stegerwald do not have a majority.
+unavailable-subtitle: The parties supporting Stegerwald do not have a majority.
 on-arrival: chancellor = "Wirth"; chancellor_party = "Z"; wirth_lead = 1
 
 There is no path to an obviously workable majority. President Adenauer has given Joseph Wirth of the Center Party the task of forming a government, tired of Brüning's repeated failures to govern and hoping that Wirth would be able to win over our support. Now the question remains, can he?
@@ -1456,7 +1456,7 @@ We have enough votes to form a "Weimar Coalition" government consisting of the S
 @let_bruning
 view-if: z_party_leader != "Joos"
 choose-if: weimar_coalition >= 50
-unavailable_subtitle: The SAPD will not tolerate Brüning.
+unavailable-subtitle: The SAPD will not tolerate Brüning.
 on-arrival: chancellor_party = "Z"; chancellor = "Brüning"; left_dissent += 5
 go-to: ministries
 

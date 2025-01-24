@@ -84,9 +84,9 @@ subtitle: -1 resources
 view-if: spanish_civil_war
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: resources -= 1; republic_strength += 0.25; reformist_dissent += 4; left_strength += 2; left_dissent -= 3; rb_militancy -= 0.01; rb_strength -= 20
+on-arrival: resources -= 1; republic_strength += 0.1; republic_strength += 0.1 if smuggle_seen and foreign_minister_party == "SPD"; republic_strength += 0.05 if rb_force >= 25; reformist_dissent += 4; left_strength += 2; left_dissent -= 3; rb_militancy -= 0.01; rb_strength -= 20
 
-We send aid to the Republicans in Spain, redirecting resources from our Reichsbanner to their international brigades and encouraging volunteers to go and fight. How much we can help with just these resources is limited, but every little bit is appreciated.
+We send aid to the Republicans in Spain, redirecting resources from our Reichsbanner to their international brigades and encouraging volunteers to go and fight. How much we can help with just these resources is limited, but every little bit is appreciated. [? if smuggle_seen : The Foreign Ministry is helping smuggle these volunteers, allowing a greater flow. ?]
 
 @reduce
 
