@@ -669,11 +669,11 @@ if (Q.month_actions >= 1) {
             }
         }
         if (Q.unemployed < 30 && !Q.nazi_peak && !Q.nazi_reform && Q.nsdap_votes >= Q.nationalism/5) {
-            Q.rural_nsdap -= 3/12;
+            Q.rural_nsdap -= 2/12;
             Q.unemployed_nsdap -= 5/12;
             Q.old_middle_nsdap -= 3/12;
-            Q.new_middle_nsdap -= 2/12;
-            Q.workers_nsdap -= 2/12;
+            Q.new_middle_nsdap -= 3/12;
+            Q.workers_nsdap -= 3/12;
         }
         if (!Q.rfb_banned) {
             Q.unemployed_kpd += 4/12;
