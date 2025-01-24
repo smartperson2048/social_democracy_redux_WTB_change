@@ -251,6 +251,9 @@ if (Q.hindenburg_running) {
         Q.eckener_votes += Q.other_normalized*(Q.pro_republic/100);
     } else if (Q.burgerblock_campaign) {
         Q.gessler_votes += Q.other_normalized*(Q.pro_republic/100);
+        if (!Q.eckener_campaign) {
+            Q.seldte_votes += (Q.nationalism/2000)
+        }
     }
 }
 if (Q.eckener_campaign) {
@@ -342,6 +345,9 @@ if (!Q.hitler_support_hindenburg && !Q.hitler_support_seldte) {
     Q.hitler_votes += ((100-Q.pro_republic)/1000);
     Q.hitler_votes += (Q.nationalism/1000);
     Q.hitler_votes += ((Math.floor(Math.random() * 11))/350);
+    if (!Q.hindenburg_running && !Q.eckener_campaign) {
+        Q.hitler_votes += (Q.nationalism/2000);
+    } 
 }
 if (Q.hindenburg_running) {
     Q.hindenburg_votes += ((Math.floor(Math.random() * 11))/350);
