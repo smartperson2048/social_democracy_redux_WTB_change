@@ -657,7 +657,7 @@ For other, non-difficulty related tweaks.
 
 - @disable_end: Disable end in 1934.
 - @enable_end: Enable end in 1934.
-- @enable_normalize: Enable experimental support changes.
+- @enable_normalize: Enable experimental support changes (Not Recommended)
 - @disable_normalize: Disable experimental support changes.
 - @menu: Back.
 
@@ -676,7 +676,6 @@ go-to: menu
 The end date has been enabled.
 
 @enable_normalize
-subtitle: NOT RECOMMENDED
 view-if: normalize_support != 1
 on-arrival: normalize_support = 1
 go-to: menu
