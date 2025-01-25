@@ -435,7 +435,7 @@ Results:
 [? if braun_campaign > 0 : Braun - [+ braun_votes_disp +]% ?]
 
 @no_majority_round1
-on-arrival: hitler_support_hindenburg = 1 if (braun_plurality or thalmann_plurality) and hindenburg_running; hitler_support_seldte = 1 if (eckener_plurality or gessler_plurality or thalmann_plurality or braun_plurality); duesterburg_campaign = 0 if not duesterburg_pluality; seldte_campaign = 1 if not duesterburg_plurality and not hindenburg_running; dvp_support_eckener = 1 if hitler_plurality or thalmann_plurality and eckener_campaign and burgerblock_campaign; burgerblock_campaign = 0 if hitler_plurality or thalmann_plurality and eckener_campaign and burgerblock_campaign; 
+on-arrival: hitler_support_hindenburg = 1 if (braun_plurality or thalmann_plurality) and hindenburg_running; hitler_support_seldte = 1 if (eckener_plurality or gessler_plurality or thalmann_plurality or braun_plurality) and not hindenburg_running; duesterburg_campaign = 0 if not duesterburg_pluality; seldte_campaign = 1 if not duesterburg_plurality and not hindenburg_running; dvp_support_eckener = 1 if hitler_plurality or thalmann_plurality and eckener_campaign and burgerblock_campaign; burgerblock_campaign = 0 if hitler_plurality or thalmann_plurality and eckener_campaign and burgerblock_campaign; 
 go-to: round2_menu
 
 There is no majority in this round. In the second round, any candidate who wins a plurality will win overall. What should we do?
@@ -581,7 +581,7 @@ Fine. We have thrown our support to Chairman Thälmann of the KPD. The move send
 
 @round2_hindenburg
 view-if: braun_campaign > 0 or spd_support_thalmann > 0 and hindenburg_running
-on-arrival: braun_campaign = 0; spd_support_thalmann = 0
+on-arrival: braun_campaign = 0; spd_support_thalmann = 0; spd_support_hindenburg = 1
 
 We have switched our support to Hindenburg.
 
