@@ -10,7 +10,7 @@ tags: event
 
 It seems that in our attempts to pursue our policy plans and dismantle the power that the reactionaries hold over our republic, we have earned the ire of President Hindenburg, who has today unilaterally dismissed our government as is unfortunately legal by the German constitution. Some on the left of our party are calling to resist but this does not seem to be a coup, not yet anyway.
 
-[? if (in_weimar_coalition and spd_votes+ddp_votes+z_votes < (35+coup_progress+capital_strike_progress)) : Hindenburg claims this is due to the increasing unpopularity of our cabinet and inability to deal with the crisis effectively. ?]
+[? if (in_weimar_coalition and black_thursday_seen and (spd_votes+ddp_votes+(z_votes-3)) < (35+coup_progress+capital_strike_progress)) : Hindenburg claims this is due to the increasing unpopularity of our cabinet and inability to deal with the crisis effectively. ?]
 
 @bruning_right
 on-arrival: spd_in_government = 0; spd_toleration = 0; chancellor = "Brüning"; chancellor_party = "Z"; foreign_minister_party = "DVP"; interior_minister_party = "Z"; justice_minister_party = "Z"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = "Z"; finance_minister_party = "Z"; agriculture_minister_party = "Z"; in_right_coalition = 1
