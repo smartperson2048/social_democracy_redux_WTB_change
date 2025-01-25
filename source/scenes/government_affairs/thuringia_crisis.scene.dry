@@ -48,9 +48,9 @@ Our forces move against the fascist holdouts as bloodied firefights and clashes 
 - @civil_war: It is a civil war.
 
 @call_it_off
-on-arrival: pro_republic -= 8; sa_strength += 100; sa_strength += 0.05; workers_nsdap += 6; unemployed_nsdap += 6; new_middle_nsdap += 6; old_middle_nsdap += 6; rural_nsdap += 6; workers_spd -= 3
+on-arrival: coup_progress += 4; capital_strike_progress += 2; pro_republic -= 8; sa_strength += 200; sa_strength += 0.1; workers_nsdap += 6; unemployed_nsdap += 6; new_middle_nsdap += 6; old_middle_nsdap += 6; rural_nsdap += 6; workers_spd -= 3
 
-Overwhelmed by the reactionary show of strength, we retreat and call the Reichsexekution off.
+Overwhelmed by the reactionary show of strength, we retreat and call the Reichsexekution off. The Nazis declare a victory, bolstering their forces significantly and continuing to consolidate their hold over Thuringia while rallying against us and our incompetency. 
 
 @nazi_concede
 go-to: successful_reichsexekution
