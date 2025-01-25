@@ -848,7 +848,7 @@ However, the DNVP and its leader Hugenberg is refusing to partake in a coalition
 
 @right_coalition_2
 view-if: right_coalition_failed != 1 and right_coalition >= 50
-on-arrival: spd_in_government = 0; spd_toleration = 0; chancellor = "Brüning"; chancellor_party = "Z"; foreign_minister_party = "DVP"; interior_minister_party = "Z"; justice_minister_party = "Z"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = "Z"; finance_minister_party = "Z"; agriculture_minister_party = "Z"; in_right_coalition = 1; workers_spd -= 3; new_middle_spd -= 2
+on-arrival: spd_in_government = 0; spd_toleration = 0; chancellor = "Brüning"; chancellor_party = "Z"; foreign_minister_party = "DVP"; interior_minister_party = "Z"; justice_minister_party = "Z"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = "Z"; finance_minister_party = "Z"; agriculture_minister_party = "Z"; in_right_coalition = 1; workers_spd -= 3; new_middle_spd -= 2; judicial_reform -= 1; reichswehr_loyalty -= 0.05; interior_police_loyalty -= 0.05; welfare -= 1; budget += 1; nationalism += 6
 
 Even though the DNVP is very reluctant to participate in such a coalition, they still accede to President Hindenburg's wishes and to allow a government to be formed. Thus, a majority center-right coalition is formed, with Brüning as chancellor.
 
@@ -863,7 +863,7 @@ on-arrival: chancellor = "Luther"; chancellor_party = "I"
 
 There is no path to an obviously workable majority. President [+ president +] has given Hans Luther, Reichsbank director formerly of the DVP, the task of forming a government, tired of Brüning's repeated failures to govern and hoping that Hans Luther would be able to gain broad Reichstag support.
 
-- @toleration_luther: We will tolerate Stegerwald.
+- @toleration_luther: We will tolerate Luther.
 - @new_elections: We will have new elections.
 
 @toleration_luther
@@ -916,7 +916,7 @@ There is no path to an obviously workable majority. President Adenauer has given
 - @new_elections: We will have new elections.
 
 @toleration_stegerwald
-choose-if: neo_weimar_coalition >= 50
+choose-if: neo_weimar_coalition >= 50 
 unavailable-subtitle: The parties supporting Stegerwald do not have a majority.
 on-arrival: spd_in_government = 0; spd_toleration = 1; z_relation += 5; foreign_minister_party = "DVP"; interior_minister_party = "Z"; justice_minister_party = "I"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = ddp_name; finance_minister_party = "DVP"; agriculture_minister_party = "Z"; pro_republic -= 4; left_dissent += 5; labor_dissent += 5; reformist_dissent += 2; center_dissent += 2; workers_spd -= 4; unemployed_spd -= 4
 
@@ -932,7 +932,7 @@ There is no path to an obviously workable majority. President [+ president +] ha
 
 @wirth_lead
 choose-if: neo_weimar_coalition >= 50
-unavailable-subtitle: The parties supporting Stegerwald do not have a majority.
+unavailable-subtitle: The parties supporting Wirth do not have a majority.
 on-arrival: chancellor = "Wirth"; chancellor_party = "Z"; wirth_lead = 1
 
 There is no path to an obviously workable majority. President Adenauer has given Joseph Wirth of the Center Party the task of forming a government, tired of Brüning's repeated failures to govern and hoping that Wirth would be able to win over our support. Now the question remains, can he?
