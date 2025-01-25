@@ -1,6 +1,6 @@
 title: The Bloodhound Returns
 subtitle: Gustav Noske has approached us with an offer
-view-if: (year == 1934 and month >= 3 and (((nsdap_votes+dnvp_votes)*(1 - (sa_force+sh_force))) >= 50) (reformist_strength + neorevisionist_strength >= center_strength + labor_strength + left_strength*2) and (dvp_relation >= kpd_relation*2) and (nationalism >= 65 and pro_republic >= 45 and democratization < 2 and pacifism < 3)) and secret_mode
+view-if: (year == 1934 and month >= 3 and (((nsdap_votes+dnvp_votes)*(1 - (sa_force+sh_force))) >= 50) and (reformist_strength + neorevisionist_strength >= center_strength + labor_strength + left_strength*2) and (dvp_relation >= kpd_relation*2) and (nationalism >= 65 and pro_republic >= 45 and democratization < 2 and pacifism < 3)) and secret_mode
 max-visits: 1
 new-page: true
 tags: event
