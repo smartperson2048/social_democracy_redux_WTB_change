@@ -697,6 +697,7 @@ if (Q.month_actions >= 1) {
         }
         if (Q.in_popular_front) {
             Q.hindenburg_angry += 1;
+        }
         } else if (Q.in_left_front) {
             Q.hindenburg_angry += 3;
         }
