@@ -671,6 +671,50 @@ if (Q.month_actions >= 1) {
            Q.unemployed_nsdap -= 2/12;
         }
     }
+    if (president == "Hindenburg" && Q.spd_in_government && Q.secret_mode) {
+        if (Q.land_reform >= 1) {
+            Q.hindenburg_angry += (Q.land_reform * 4);
+        }
+        if (Q.judicial_reform >= 1) {
+            Q.hindenburg_angry += Q.judicial_reform;
+        }
+        if (Q.reichswehr_militancy*Q.reichswehr_strength < 500) {
+            Q.hindenburg_angry += (500-(Q.reichswehr_militancy*Q.reichswehr_strength))/100;
+        
+        if (Q.reichswehr_loyalty < 0.25) {
+            Q.hindenburg_angry += (1-Q.reichswehr_loyalty)*10;
+        } else if (Q.reichswehr_loyalty < 0.4) {
+            Q.hindenburg_angry += (1-Q.reichswehr_loyalty)*4;
+        }
+        if (Q.inflation > 3) {
+            Q.hindenburg_angry += Q.inflation/2;
+        }
+        if (Q.unemployed >= 15) {
+            Q.hindenburg_angry += Q.unemployed/10;
+        }
+        if (Q.economic_growth < 0) {
+            Q.hindenburg_angry += Q.economic_growth*(-1);
+        }
+        if (Q.in_popular_front) {
+            Q.hindenburg_angry += 1;
+        } else if (Q.in_left_front) {
+            Q.hindenburg_angry += 3;
+        }
+        Q.hindenburg_angry += Q.capital_strike_progress;
+        Q.hindenburg_angry += (Q.coup_progress*2);
+        if (Q.in_weimar_coalition && Q.black_thursday_seen && ((Q.spd_votes+Q.ddp_votes+Q.z_votes-3) < ((((Q.pro_republic/2)+35)/2)+Q.coup_progress+Q.capital_strike_progress))) {
+            Q.hindenburg_angry += (50-(Q.spd_votes+Q.ddp_votes+Q.z_votes-3))/10;
+        }
+        if (Q.in_grand_coalition) {
+            Q.hindenburg_angry -= Q.dvp_relation/10;
+        }
+        if (Q.chancellor_party != "SPD") {
+            Q.hindenburg_angry -= (4-Q.coalition_dissent);
+        }
+         if (Q.budget < 0) {
+            Q.hindenburg_angry += Q.budget*(-1);
+        }
+    }
     if (!Q.return_to_normalcy && !Q.victory_republic) {
         Q.unemployed_nsdap += ((((Q.sa_force/2)-Q.rfb_force)/10)/12);
         Q.unemployed_kpd -= ((((Q.sa_force/2)-Q.rfb_force)/10)/12);
