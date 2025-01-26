@@ -1,9 +1,10 @@
 title: [+ chancellor +]'s Economic Plan
 subtitle: The ruling cabinet takes a staunch pro-business stance
-view-if: year >= 1935 and (not spd_in_government or spd_toleration) and chancellor_party != "SPD" and chancellor_party != "KPD" and chancellor != "Wirth"
-on-arrival: welfare_cut = 1 if welfare >= 2; welfare -= 2 if welfare_cut; budget += 2 if welfare_cut; budget += welfare if not welfare_cut and welfare >= 0; welfare = 0 if not welfare_cut; tax_cut = 1 if budget >= 2 and upper_tax_rates >= 1; budget -= 2 if tax_cut; upper_tax_rates -= 1 if tax_cut; inflation -= 0.4; unemployed += 0.4; economic_growth += 0.5; economic_growth += 0.4 if economic_growth < 2; economic_growth += 0.3 if eu; workers -= 1; old_middle += 1
+view-if: year >= 1935 and papen_chancellor_timer <= 0 and (not spd_in_government or spd_toleration) and chancellor_party != "SPD" and chancellor_party != "KPD" and chancellor != "Wirth" and laissez_faire_timer <= 0
+on-arrival: welfare_cut = 1 if welfare >= 2; welfare -= 2 if welfare_cut; budget += 2 if welfare_cut; budget += welfare if not welfare_cut and welfare >= 0; welfare = 0 if not welfare_cut; tax_cut = 1 if budget >= 2 and upper_tax_rates >= 1; budget -= 2 if tax_cut; upper_tax_rates -= 1 if tax_cut; inflation -= 0.4; unemployed += 0.4; economic_growth += 0.5; economic_growth += 0.4 if economic_growth < 2; economic_growth += 0.3 if eu; workers -= 1; old_middle += 1; {! 
+Q.laissez_faire_timer = Math.floor(Math.random() * (14 - 8 + 1)) + 8;
+!}
 new-page: true
-max-visits: 1
 tags: event
 go-to: menu
 # todo: max visits 3, 12 month cooldown
@@ -18,7 +19,7 @@ on-arrival: old_middle_dvp += 5; workers_kpd += 3; unemployed_kpd += 5; new_midd
 - @bring_down: Bring down this government!
 - @no_choice: We have no choice but to continue toleration.
 - @support_strikes: Support the ADGB in striking against this government.
-- @rally.main_rally: Rally against the government!
+- @rally_: Rally against the government!
 
 @bring_down
 view-if: spd_toleration
@@ -35,8 +36,13 @@ We have no choice but to tolerate these actions for the preservation of democrac
 
 @support_strikes
 view-if: not unions_independent and not spd_toleration
+subtitle: -1 resource
 choose-if: resources >= 1
 unavailable-subtitle: -1 resource - We can't afford this.
 on-arrival: resources -= 1; workers_spd += 4*(1-dissent); labor_dissent -= 5; labor_strength += 5; unemployed_spd += 4*(1-dissent); workers_z -= 2; 
 
 We provide financial support to the ongoing strikes against the government, intensifying the class conflict that they have initiated and strengthening our relationship with the government.
+
+@rally_
+view-if: not spd_toleration
+go-to: rally.main_rally
