@@ -671,7 +671,7 @@ if (Q.month_actions >= 1) {
            Q.unemployed_nsdap -= 2/12;
         }
     }
-    if (president == "Hindenburg" && Q.spd_in_government && Q.secret_mode) {
+    if (Q.president == "Hindenburg" && Q.spd_in_government && Q.secret_mode) {
         if (Q.land_reform >= 1) {
             Q.hindenburg_angry += (Q.land_reform * 4);
         }
