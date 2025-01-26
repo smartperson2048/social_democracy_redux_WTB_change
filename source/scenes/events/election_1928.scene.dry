@@ -1587,9 +1587,8 @@ The people's faith in democracy is shaken by this ordeal. Of course, the Nazis a
 
 @new_elections_2
 view-if: anti_democratic_coalition >= 50
-on-arrival: time_to_election = 3;
 call: set_next_election_time
-on-arrival: strife += 0.5; pro_republic -= 5; rural_nsdap += 4; old_middle_nsdap += 3; new_middle_nsdap += 3
+on-arrival: time_to_election = 3; strife += 0.5; pro_republic -= 5; rural_nsdap += 4; old_middle_nsdap += 3; new_middle_nsdap += 3
 
 As the anti-democratic parties hold a majority, there is no path to a majority government. New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
 
