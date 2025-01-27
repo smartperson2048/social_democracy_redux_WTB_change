@@ -996,6 +996,8 @@ go-to: civil_war
 @nothing_to_do
 on-arrival: rb_militancy -= 0.05; rb_strength -= 100; left_dissent += 5; unemployed_nsdap += 5
 
+There is, unfortunately, nothing we can do. We will have to bide our time until we can recapture power.
+
 @martial_law
 
 Seeing the continuing collapse of order in Germany, and convinced that they would be able to quell any resistance, President [+ president +] and Chancellor Seldte have come together to declare a state of martial law in Germany. Though this is unconstitutional, the courts have little sway over the enthusiastic army.
