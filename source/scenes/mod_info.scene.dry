@@ -14,6 +14,7 @@ This mod adds a variety of changes to the base game, mostly in the form of flavo
 - @economics: Economic changes
 - @left: Left Plan + Council flavor
 - @sapd: SAPD flavor
+- @extension: Content to 1936
 - @civil_war_flavor: Civil War flavor
 - @weakened_presidency_hitler: Weakened Presidency + Hitler takeover flavor
 - @coalition_flavor: Coalition flavor
@@ -79,6 +80,12 @@ I have made it so that a right-wing coalition from Zentrum to the DNVP can form 
 
 - @flavors: Back
 
+@extension
+
+= Content to 1936
+
+Content to 1936 has been added in the form of events, including the Abysinnia Crisis and the Spanish Civil War
+
 @minor_changes
 
 = Minor Changes
@@ -136,6 +143,10 @@ The mod also contains many small changes that I felt would be good additions to 
 **20/1/2025**: Some changes to over the time support, including a soft cap on SPD support post return to normalcy
 
 **21/1/2025**: Eviler DVP (sorry guys)
+
+**24/1/2025**: Reichsexekuting Thuringia if SPD president added
+
+*27/1/2025**: Seldte martial law added and generally just more of the March on Berlin seldte variation content
 
 - @flavors: Back
 

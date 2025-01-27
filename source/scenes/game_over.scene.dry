@@ -230,11 +230,19 @@ The SPD is still in government, under Chancellor [+ chancellor +]. Given the cir
 
 @communist_victory
 title: Communist victory
-view-if: chancellor_party == "KPD" or president == "Thälmann" and total_defeat == 0 and long_war == 0
+view-if: chancellor_party == "KPD" or president == "Thälmann" or socialist_unity and total_defeat == 0 and long_war == 0
 tags: endings
 go-to: eg_menu
 
 The KPD has won power in Germany, with our assistance. They will try to remake Germany in the Soviet image. How much they succeed is yet to be determined.
+
+@reactionary_victory
+title: Reactionary victory
+view-if: chancellor == "Seldte"
+tags: endings
+go-to: eg_menu
+
+The reactionaries have won power in Germany and declared martial law. They will attempt to pull Germany back into the past and undo our hard-fought victories.
 
 @works_program
 title: Works program enacted!
