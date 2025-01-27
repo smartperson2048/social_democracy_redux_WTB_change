@@ -987,7 +987,7 @@ on-arrival: workers_spd -= 5; workers_kpd -= 5; workers_dnvp += 5; new_middle_dn
 Somehow, the Harzburg Cabinet has this time secured a majority mandate. The continued regression of Germany continues, as does suppression of the left.
 
 - @fight_harzburg: Rise up before it is too late!
-- @nothng_to_do: There's nothing we can do.
+- @nothing_to_do: There's nothing we can do.
 
 @fight_harzburg
 on-arrival: spd_rebel = 1
