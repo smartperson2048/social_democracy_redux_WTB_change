@@ -1,10 +1,10 @@
 title: March on Berlin
 subtitle: Right-wing militants are taking action...
-view-if: ((spd_in_government = 1 and coup_progress >= 10 and year >= 1929 and (year >= 1930 or month >= 6) and ((sa_banned=0 or sh_banned=0) or (sa_force + sh_force + army_force*(1-reichswehr_loyalty) >= 50))) or (year >= 1933 and month >= 2 and nsdap_normalized + dnvp_normalized >= 0.5)) and march_on_berlin_timer = 0 and (nsdap_votes + sa_force < dnvp_votes + other_votes + dvp_votes + sh_force)
+view-if: ((((spd_in_government = 1 and coup_progress >= 10) or (coup_progress >= 15)) and year >= 1929 and (year >= 1930 or month >= 6) and ((sa_banned=0 or sh_banned=0) or (sa_force + sh_force + army_force*(1-reichswehr_loyalty) >= 50))) or (year >= 1933 and month >= 2 and nsdap_votes + dnvp_votes + (sa_force+sh_force)/2 >= 50)) and march_on_berlin_timer = 0 and (nsdap_votes + sa_force < dnvp_votes + other_votes + dvp_votes + sh_force)
 new-page: true
 max-visits: 4
 on-arrival: march_on_berlin_seen += 1; sa_strength += 40; sh_strength += 120; strife += 1; march_on_berlin_timer += 8
-go-to: ask_resign if spd_in_government and president != "Braun"; govt_menu if president = "Braun"; non_govt_menu if spd_in_government = 0 and president != "Braun"
+go-to: ask_resign if spd_in_government and (president != "Braun" and president != "Schumacher" and president != "Juchacz" and president != "Thälmann" and president != "Münzenberg" and president != "Adenauer" and (president != "Gessler" or reichswehr_loyalty < 0.2)); govt_menu if president = "Braun" or president = "Schumacher" or president = "Juchacz"; non_govt_menu if spd_in_government = 0 and (president != "Braun" and president != "Schumacher" and president != "Juchacz" and president != "Adenauer" and president != "Thälmann" and president != "Münzenberg" and (president != "Gessler" or reichswehr_loyalty < 0.2)); presidential_support if (president == "Gessler" and reichswehr_loyalty >= 0.2) or president == "Adenauer" or president == "Thälmann" or president == "Münzenberg"
 tags: event
 
 = March on Berlin
@@ -107,7 +107,7 @@ The courts agree that President [+ president +] is wrong to dismiss us, and that
 @new_elections
 title: Call for new snap elections.
 subtitle: We will not resign at gunpoint, and we will attempt to maintain the integrity of the elections.
-go-to: new_elections_braun if president == "Braun"; new_elections_hindenburg if president != "Braun" and z_relation >= 40; new_elections_hindenburg_reject if president != "Braun" and z_relation < 40
+go-to: new_elections_braun if president == "Braun" or president == "Schumacher" or president == "Juchacz" or president == "Adenauer" or president == "Gessler" or president == "Thälmann" or president == "Münzenberg"; new_elections_hindenburg if (president != "Braun" and president != "Schumacher" and president != "Juchacz" and president != "Adenaeur" and president != "Thälmann" and president != "Münzenberg" and president != "Gessler") and (z_relation >= 40 or president == "Eckener"); new_elections_hindenburg_reject if new_elections_hindenburg if (president != "Braun" and president != "Schumacher" and president != "Juchacz" and president != "Adenaeur" and president != "Eckener" and president != "Gessler" and president != "Thälmann" and president != "Münzenberg") and z_relation < 40
 
 
 @new_elections_braun
@@ -116,7 +116,7 @@ go-to: new_elections_braun_2 if nsdap_normalized + dnvp_normalized >= 0.5; new_e
 
 @new_elections_braun_reject
 
-The fascists reject our offer of free and fair elections. They are demanding that President [+ president +] dismisses the current government and appoints Hitler chancellor.
+The fascists reject our offer of free and fair elections. They are demanding that President [+ president +] dismisses the current government and appoints Seldte chancellor.
 
 - @braun_appoints_seldte
 - @fight
@@ -139,7 +139,7 @@ on-arrival: next_election_time = time + 1 if next_election_time > time+1; next_e
 
 @new_elections_hindenburg_reject
 
-Influenced by his inner circle and by the fascists in the streets, President Hindenburg rejects our offer of new free and fair elections, and again demands that we resign. There is no arguing.
+Influenced by his inner circle and by the fascists in the streets, President [+ president +] rejects our offer of new free and fair elections, and again demands that we resign. There is no arguing.
 
 - @resign
 - @fight
@@ -159,17 +159,31 @@ We have resigned our positions in the government.
 
 @braun_appoints_seldte
 title: We cannot do anything but appoint Seldte chancellor.
-view-if: president == "Braun"
+view-if: president == "Braun" or president == "Schumacher" or president == "Juchacz"
 choose-if: dnvp_votes + sh_force >= 50 or largest_party == "DNVP"
 unavailable-subtitle: There is no way President [+ president +] could do such a blatantly undemocratic act.
-on-arrival: chancellor = "Seldte"; chancellor_party = "DNVP"; spd_in_government = 0
-#go-to: enabling_act
+on-arrival: chancellor = "Seldte"; chancellor_party = "DNVP"; spd_in_government = 0; reichswehr_loyalty -= 0.05; sh_militancy += 0.05; sh_strength += 25; workers_spd -= 6
+go-to: enabling_act
 
 Threatened with a civil war, and unwilling to fight anymore, President [+ president +] dismisses the current government and appoints Seldte of the Stalhelm as chancellor.
 
 # TODO: needs to actually carry weight if braun is president
 
-#@enabling_act
+@enabling_act
 
-#Chancellor Seldte's first action is to put forward many decrees for [+ president +] to sign and force through via Article 48 of the Weimar Constitution. One of the most major ones, if signed, would suspend Articles 114, 115, 117, 118, 123, 124 and 153 of the German constitution, effectively turning Germany into a police state at the whims of the Harzburg Front and paving the way for rampant suppression of the political left.
+Chancellor Seldte's first action is to put forward many decrees for [+ president +] to sign and force through via Article 48 of the Weimar Constitution. One of the most major ones, if signed, would suspend Articles 114, 115, 117, 118, 123, 124 and 153 of the German constitution, effectively turning Germany into a police state at the whims of the Harzburg Front and paving the way for rampant suppression of the political left. It is clear that he is threatening a civil war if his demands are not met.
 
+- @sign: We have no choice but to sign this decree.
+- @civil_war: Sack Seldte! This is unacceptable!
+
+@presidential_support
+
+Luckily, President [+ president +] is on our side in this crisis. He has recognized the coup for what it is, and is prepared to stand by our government if we resist.
+
+- @fight
+- @new_elections
+
+@sign
+on-arrival: seldte_enabled = 1
+
+Faced with the threat of civil war, we have caved to Seldte's demands.
