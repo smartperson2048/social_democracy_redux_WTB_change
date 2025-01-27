@@ -700,6 +700,9 @@ if (Q.month_actions >= 1) {
         if (Q.economic_growth < 0) {
             Q.hindenburg_angry += Q.economic_growth*(-1);
         }
+        if (Q.rb_force >= 15) {
+            Q.hindenburg_angry += Q.rb_force/10;
+        }
         if (Q.in_popular_front) {
             Q.hindenburg_angry += 1;
         }
