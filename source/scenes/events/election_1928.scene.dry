@@ -857,7 +857,6 @@ go-to: right_coalition_3 if dnvp_reform; right_coalition_old if not dnvp_reform
 Even though the DNVP is very reluctant to participate in such a coalition, they still accede to President Hindenburg's wishes and to allow a government to be formed. Thus, a majority center-right coalition is formed, with Brüning as chancellor.
 
 @right_coalition_3
-view-if: dnvp_reform
 
 With the DNVP's new more amicable position towards participation in parliamentary politics, the right-wing coalition is successfully formed.
 

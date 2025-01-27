@@ -505,7 +505,9 @@ for (var k in candidate_votes) {
     }
     if (k == "Juchacz" && Q[k+'_running']) {
         console.log(k, "votes before bonus:", candidate_votes[k]);
-        candidate_votes[k] += ((Q.womens_rights+Q.homosexual_rights)/150);
+        if (Q.homosexual_rights) {
+            candidate_votes[k] += ((Q.womens_rights+Q.homosexual_rights)/150);
+        }
         candidate_votes[k] += (Q.pro_republic/1000);
         candidate_votes[k] += ((100-Q.nationalism)/2500);
         candidate_votes[k] += ((Math.floor(Math.random() * 11))/350);
