@@ -48,7 +48,7 @@ We send our top military advisors and officers to help the Republican forces in 
 subtitle: After all, the best defense is a good offense.
 choose-if: aid_level >= 1
 unavailable-subtitle: Our aid has run dry. We would need to send more to be able to use it.
-on-arrival: republic_strength -= 0.1; national_strength -= 0.25;
+on-arrival: republic_strength -= 0.1; national_strength -= 0.25; aid_level -= 1
 
 We focus our military aid to the Republicans on offensive operations, hoping to bring a swift end to the conflict by striking at the Nationalists.
 
@@ -56,6 +56,6 @@ We focus our military aid to the Republicans on offensive operations, hoping to 
 subtitle: We will hold the line and wear the Nationalists out.
 choose-if: aid_level >= 1
 unavailable-subtitle: Our aid has run dry. We would need to send more to be able to use it.
-on-arrival: republic_strength += 0.25; national_strength += 0.1
+on-arrival: republic_strength += 0.25; national_strength += 0.1; aid_level -= 1
 
 We focus our military aid to the Republicans on defensive operations, hoping to wear out the Nationalists until they collapse.
