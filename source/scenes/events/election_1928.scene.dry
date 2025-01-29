@@ -561,7 +561,7 @@ The KPD is still very reluctant to join a coalition, despite grassroots friendli
 - @coalition_menu: Try a different governing arrangement.
 
 @thalmann_chancellor
-choose-if: president == "Braun" and reformist_strength + neorevisionist_strength < left_strength
+choose-if: (president == "Braun" or president == "Schumacher" or president == "Juchacz" or president == "Thälmann" or president == "Münzenberg") and reformist_strength + neorevisionist_strength < left_strength
 unavailable-subtitle: [? if president != "Braun": President [+ president +] would never allow such a thing. ?] [? if reformist_strength >= left_strength : Most in the parliamentary party would not support Thälmann as chancellor. ?]
 on-arrival: chancellor = "Thälmann"; chancellor_party = "KPD"; in_left_front = 1; spd_in_government = 1; kpd_goals_seen = 0; rfb_strength += 100; rfb_militancy += 0.02; workers_kpd += 5; unemployed_kpd += 10; reichswehr_loyalty -= 0.05
 go-to: thalmann_war if not victory_republic; thalmann_no_war if victory_republic

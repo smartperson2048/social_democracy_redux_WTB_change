@@ -26,7 +26,7 @@ How do we assuage the KPD?
 
 @thalmann
 view-if: chancellor_party != "KPD"
-choose-if: president == "Braun" or president == "Juchacz" or president == "Thälmann" or president == "Münzenberg"
+choose-if: (president == "Braun" or president == "Schumacher" or president == "Juchacz" or president == "Thälmann" or president == "Münzenberg")
 subtitle: This would be pretext for a right-wing coup.
 unavailable-subtitle: [? if president == "Hindenburg" : President Hindenburg would never allow this. ?]
 on-arrival: chancellor = "Thälmann"; chancellor_party = "KPD"; rfb_strength += 100; rfb_militancy += 0.02; workers_kpd += 5; unemployed_kpd += 10; reichswehr_loyalty -= 0.05
