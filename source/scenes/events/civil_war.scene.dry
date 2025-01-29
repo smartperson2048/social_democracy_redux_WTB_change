@@ -190,6 +190,7 @@ While we might want to call for foreign assistance, the foreign powers see the "
 - @west_aid: Perhaps we can receive aid from the Western powers, France and Britain.
 - @soviet_aid: Perhaps we can receive aid from the Soviet Union.
 - @east_aid: Perhaps our eastern neighbors, Poland and Czechoslovakia, can help us. If they know anything, they do not want fascists coming to power in Germany.
+- @austria_aid: Perhaps the SDAPÖ can help us in our fight?
 - @game_over: Game over.
 
 @west_aid
@@ -218,6 +219,14 @@ max-visits: 1
 go-to: long_war_intervention
 
 Poland and Czechoslovakia are largely too absorbed in their own problems to be of much help, but weapons and volunteers filter through the parts of the borders that we control.
+
+@austria_aid
+view-if: austria_victory
+on-arrival: austria_aid += 1
+max-visits: 1
+go-to: long_war_intervention
+
+The Austrian SDAPÖ is still preoccupied in rebuilding Austria and defending it from the continued activity of the Austrofascists and Nazis alike, but they have not forgotten how we helped them bring down Dollfuß. What men they have to spare cross the border, bringing with them much-needed supplies and knowledge on fighting fascism.
 
 @republic_victory
 on-arrival: nsdap_banned = 1; party_bans = 1; sa_banned = 1; sh_banned = 1; constitutional_reform += 1; rfb_banned = 0 if kpd_relation >= 60; kpd_ally = 1 if kpd_relation >= 60; pro_republic += 25; unemployed_spd += 10*(1-dissent); workers_spd += 6*(1-dissent); chancellor = "N/A" if chancellor = "Hitler"; chancellor_party = "I" if chancellor_party = "NSDAP"; victory_republic = 1; unemployed_nsdap *= 0.4; new_middle_nsdap *= 0.5; old_middle_nsdap *= 0.6; workers_nsdap *= 0.5; rural_nsdap *= 0.7; old_middle_dnvp *= 0.6; rural_dnvp *= 0.7; new_middle_dnvp *= 0.6; old_middle_dvp += 5; new_middle_dvp += 5; sa_strength *= 0.2; sh_strength *= 0.2; sa_militancy *= 0.5; sh_militancy *= 0.5; rb_strength *= 0.8; rfb_strength *= 0.8; reichswehr_strength *= reichswehr_loyalty; reichswehr_loyalty += 0.2
