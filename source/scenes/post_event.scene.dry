@@ -688,7 +688,7 @@ if (Q.month_actions >= 1) {
         
         if (Q.reichswehr_loyalty < 0.25) {
             Q.hindenburg_angry += (1-Q.reichswehr_loyalty)*6;
-        } else if (Q.reichswehr_loyalty < 0.4 and Q.reichswehr_loyalty >= 0.25) {
+        } else if (Q.reichswehr_loyalty < 0.4 && Q.reichswehr_loyalty >= 0.25) {
             Q.hindenburg_angry += (1-Q.reichswehr_loyalty)*2;
         }
         if (Q.inflation > 3) {
