@@ -711,7 +711,7 @@ if (Q.month_actions >= 1) {
         }
         Q.hindenburg_angry += (Q.capital_strike_progress/2);
         Q.hindenburg_angry += Q.coup_progress;
-        if (Q.in_weimar_coalition && Q.black_thursday_seen && ((Q.spd_votes+Q.ddp_votes+Q.z_votes-3) < ((((Q.pro_republic/2)+35)/2)+Q.coup_progress+Q.capital_strike_progress))) {
+        if (Q.in_weimar_coalition && Q.black_thursday_seen && ((Q.spd_votes+Q.ddp_votes+Q.z_votes-3) < (((((100-Q.pro_republic)/2)+35)/2)+Q.coup_progress+Q.capital_strike_progress))) {
             Q.hindenburg_angry += (50-(Q.spd_votes+Q.ddp_votes+Q.z_votes-3))/10;
         }
         if (Q.in_grand_coalition) {
