@@ -225,7 +225,7 @@ if (Q.month_actions >= 1) {
             Q.inflation -= 0.1;
         }
     }
-    if ((Q.budget <= -5 && Q.inflation >= 10) || (Q.hyperinflation >= 1 && Q.budget < 0)) {
+    if (((Q.budget <= -5 && Q.inflation >= 10) || (Q.hyperinflation >= 1 && Q.budget < 0))) {
         Q.inflation *= (1.2-(Q.unemployed/100)+((Q.budget*-1)/10)+Q.hyperinflation);
         Q.hyperinflation += 0.1;
         Q.workers_spd -= Q.hyperinflation;
@@ -245,9 +245,11 @@ if (Q.month_actions >= 1) {
         // economic growth
     if (Q.economic_growth < -0.5 && Q.unemployed <= 18) {
         Q.unemployed += 0.1;
+        Q.inflation -= 0.1;
     }
     if (Q.economic_growth < -5 && Q.unemployed <= 28) {
         Q.unemployed += 0.1;
+        Q.inflation -= 0.1;
     }
     if (Q.economic_growth >= 2 && Q.unemployed >= 17) {
         Q.unemployed -= 0.1;
@@ -270,11 +272,31 @@ if (Q.month_actions >= 1) {
     if (Q.economic_growth >= 7) {
         Q.economic_growth -= 0.1;
     }
-        if (Q.economic_growth >= 10) {
+    if (Q.economic_growth >= 10) {
         Q.economic_growth -= 0.2;
     }
     if (Q.economic_growth >= 12) {
         Q.economic_growth -= 0.3;
+    }
+    if (Q.inflation > 5) {
+        Q.economic_growth -= 0.1;
+        if (Q.inflation > 7) {
+            Q.economic_growth -= 0.2;
+            Q.inflation -= 0.1;
+        }
+    }
+    if (Q.inflation > 1 and Q.inflation < 3) {
+        Q.economic_growth += 0.1;
+    }
+    if (Q.inflation < 0) {
+        Q.economic_growth -= 0.1;
+        if (Q.inflation < -4) {
+            Q.economic_growth -= 0.2;
+            Q.unemployed += 0.1;
+        }
+    }
+    if (Q.unemployed < 7) {
+        Q.economic_growth += 0.1;
     }
     //////////////////////////////// Education & Science support/economic changes
     if (Q.major_curriculum && Q.major_curriculum == "democratic") {
