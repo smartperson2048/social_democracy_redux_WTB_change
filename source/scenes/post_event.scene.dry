@@ -298,6 +298,70 @@ if (Q.month_actions >= 1) {
     if (Q.unemployed < 7) {
         Q.economic_growth += 0.1;
     }
+    /// economy effects support
+    if (Q.unemployed >= 15 && !Q.spd_in_government) {
+        Q.workers_spd += (Q.unemployed/8)/12;
+        Q.workers_kpd += (Q.unemployed/10)/12;
+        Q.unemployed_spd += (Q.unemployed/12)/12;
+        Q.unemployed_kpd += (Q.unemployed/8)/12;
+        Q.unemployed_nsdap += (Q.unemployed/12)/12;
+        if (Q.economic_plan) {
+            Q.workers_kpd -= (Q.unemployed/12)/12;
+            Q.unemployed_kpd -= (Q.unemployed/12)/12;
+            Q.workers_spd += (Q.unemployed/12)/12;
+            Q.unemployed_spd += (Q.unemployed/12)/12;
+        }
+        if (Q.spd_toleration) {
+            Q.workers_spd -= (Q.unemployed/12)/12;
+            Q.unemployed_spd -= (Q.unemployed/12)/12;
+            Q.workers_kpd += (Q.unemployed/12)/12;
+            Q.unemployed_kpd += (Q.unemployed/12)/12;
+        }
+    } else if if (Q.unemployed >= 15 && Q.spd_in_government) {
+        Q.workers_spd -= (Q.unemployed/10)/12;
+        Q.workers_kpd += (Q.unemployed/8)/12;
+        Q.unemployed_spd -= (Q.unemployed/10)/12;
+        Q.unemployed_kpd += (Q.unemployed/10)/12;
+        Q.unemployed_nsdap += (Q.unemployed/12)/12;
+        if (Q.economic_plan) {
+            Q.workers_kpd -= (Q.unemployed/12)/12;
+            Q.unemployed_kpd -= (Q.unemployed/12)/12;
+            Q.workers_spd += (Q.unemployed/12)/12;
+            Q.unemployed_spd += (Q.unemployed/12)/12;
+        }
+    }
+    if (Q.inflation > 5) {
+        Q.new_middle_dvp += (Q.inflation/2)/12;
+        Q.new_middle_other += (Q.inflation/3)/12;
+        Q.old_middle_dvp += (Q.inflation/2)/12;
+        Q.old_middle_other += (Q.inflation/3)/12;
+        Q.rural_other += (Q.inflation/4)/12;
+        Q.workers_ddp += (Q.inflation/5)/12;
+        if (Q.spd_in_government) {
+            Q.new_middle_spd -= (Q.inflation/4)/12;
+            Q.new_middle_ddp += (Q.inflation/5)/12;
+            Q.old_middle_spd -= (Q.inflation/4)/12;
+            Q.old_middle_ddp += (Q.inflation/6)/12;
+            Q.rural_spd -= (Q.inflation/5)/12;
+            Q.workers_spd -= (Q.inflation/5)/12;
+        }
+    }
+    if (Q.economic_growth > 5 && Q.spd_in_government) {
+        Q.workers_spd += (Q.economic_growth/4)/12;
+        Q.new_middle_spd += (Q.economic_growth/2)/12;
+        Q.old_middle_spd += (Q.economic_growth/3)/12;
+        if (!Q.volkspartei) {
+            Q.old_middle_spd -= (Q.economic_growth/6)/12;
+        }
+        Q.rural_spd += (Q.economic_growth/5)/12;
+        Q.unemployed_spd += (Q.economic_growth/5)/12;
+    } else if (Q.economic_growth > 5 && !Q.spd_in_government) {
+        Q.workers_ddp += (Q.economic_growth/5)/12;
+        Q.new_middle_ddp += (Q.economic_growth/3)/12;
+        Q.new_middle_dvp += (Q.economic_growth/4)/12;
+        Q.old_middle_dvp += (Q.economic_growth/2)/12;
+        Q.rural_dvp += (Q.economic_growth/5)/12;
+    }
     //////////////////////////////// Education & Science support/economic changes
     if (Q.major_curriculum && Q.major_curriculum == "democratic") {
         if (Q.pro_republic < 60) {
