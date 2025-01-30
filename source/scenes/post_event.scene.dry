@@ -271,12 +271,15 @@ if (Q.month_actions >= 1) {
     }
     if (Q.economic_growth >= 7) {
         Q.economic_growth -= 0.1;
+        Q.inflation += 0.1;
     }
     if (Q.economic_growth >= 10) {
         Q.economic_growth -= 0.2;
+        Q.inflation += 0.1;
     }
     if (Q.economic_growth >= 12) {
         Q.economic_growth -= 0.3;
+        Q.inflation += 0.1;
     }
     if (Q.inflation > 5) {
         Q.economic_growth -= 0.1;
@@ -285,7 +288,7 @@ if (Q.month_actions >= 1) {
             Q.inflation -= 0.1;
         }
     }
-    if (Q.inflation > 1 && Q.inflation < 3) {
+    if (Q.inflation > 1 && Q.inflation < 3 && Q.year >= 1930) {
         Q.economic_growth += 0.1;
     }
     if (Q.inflation < 0) {
