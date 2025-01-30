@@ -178,7 +178,7 @@ Chancellor Seldte's first action is to put forward many decrees for [+ president
 
 @presidential_support
 
-Luckily, President [+ president +] is on our side in this crisis. He has recognized the coup for what it is, and is prepared to stand by our government if we resist.
+Luckily, President [+ president +] is on [? if spd_in_government : our ?][? if not spd_in_government : [+ chancellor +]'s ?] side in this crisis. He has recognized the coup for what it is, and is prepared to stand by the government if we resist.
 
 - @fight
 - @new_elections
