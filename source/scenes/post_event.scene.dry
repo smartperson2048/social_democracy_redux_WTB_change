@@ -225,7 +225,7 @@ if (Q.month_actions >= 1) {
             Q.inflation -= 0.1;
         }
     }
-    if (((Q.budget <= -5 && Q.inflation >= 10) || (Q.hyperinflation >= 1 && Q.budget < 0))) {
+    if ((Q.budget <= -5 && Q.inflation >= 10) || (Q.hyperinflation >= 1 && Q.budget < 0)) {
         Q.inflation *= (1.2-(Q.unemployed/100)+((Q.budget*-1)/10)+Q.hyperinflation);
         Q.hyperinflation += 0.1;
         Q.workers_spd -= Q.hyperinflation;
