@@ -225,7 +225,7 @@ if (Q.month_actions >= 1) {
             Q.inflation -= 0.1;
         }
     }
-    if ((Q.budget <= -5 && Q.inflation >= 10) || (Q.hyperinflation >= 1 && Q.budget < 0)) {
+    if (((Q.budget <= -5 && Q.inflation >= 10) || (Q.hyperinflation >= 1 && Q.budget < 0)) && Q.hyperinflation_enabled) {
         Q.inflation *= (1.2-(Q.unemployed/100)+((Q.budget*-1)/10)+Q.hyperinflation);
         Q.hyperinflation += 0.1;
         Q.workers_spd -= Q.hyperinflation;
@@ -339,6 +339,7 @@ if (Q.month_actions >= 1) {
         Q.old_middle_dvp += (Q.inflation/2)/12;
         Q.old_middle_other += (Q.inflation/3)/12;
         Q.rural_other += (Q.inflation/4)/12;
+        Q.rural_dvp += (Q.inflation/5)/12;
         Q.workers_ddp += (Q.inflation/5)/12;
         if (Q.spd_in_government) {
             Q.new_middle_spd -= (Q.inflation/4)/12;
