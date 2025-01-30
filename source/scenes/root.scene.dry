@@ -663,6 +663,8 @@ For other, non-difficulty related tweaks.
 - @enable_end: Enable end in 1934.
 - @enable_normalize: Enable experimental support changes (Not Recommended)
 - @disable_normalize: Disable experimental support changes.
+- @enable_hyperinflation: Enable hyperinflation (janky)
+- @disable_hyperinflation: Disable hyperinflation
 - @menu: Back.
 
 @disable_end
@@ -694,6 +696,20 @@ on-arrival: normalize_support = 0
 go-to: menu
 
 Experimental support changes disabled.
+
+@enable_hyperinflation
+view-if: hyperinflation_enabled != 1
+on-arrival: hyperinflation_enabled = 1
+go-to: menu
+
+Hyperinflation enabled.
+
+@disable_hyperinflation
+view-if: hyperinflation_enabled
+on-arrival: hyperinflation_enabled = 0
+go-to: menu
+
+Hyperinflation disabled.
 
 @menu
 
