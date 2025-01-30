@@ -317,7 +317,7 @@ if (Q.month_actions >= 1) {
             Q.workers_kpd += (Q.unemployed/12)/12;
             Q.unemployed_kpd += (Q.unemployed/12)/12;
         }
-    } else if if (Q.unemployed >= 15 && Q.spd_in_government) {
+    } else if (Q.unemployed >= 15 && Q.spd_in_government) {
         Q.workers_spd -= (Q.unemployed/10)/12;
         Q.workers_kpd += (Q.unemployed/8)/12;
         Q.unemployed_spd -= (Q.unemployed/10)/12;
