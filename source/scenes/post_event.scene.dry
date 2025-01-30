@@ -285,7 +285,7 @@ if (Q.month_actions >= 1) {
             Q.inflation -= 0.1;
         }
     }
-    if (Q.inflation > 1 and Q.inflation < 3) {
+    if (Q.inflation > 1 && Q.inflation < 3) {
         Q.economic_growth += 0.1;
     }
     if (Q.inflation < 0) {
