@@ -394,13 +394,13 @@ Q.any_majority = Q.hindenburg_majority | Q.thalmann_majority | Q.hitler_majority
 
 // check for plurality
 Q.hindenburg_plurality = (Q.hindenburg_votes >= Q.hitler_votes && Q.hindenburg_votes >= Q.braun_votes && Q.hindenburg_votes >= Q.thalmann_votes && Q.hindenburg_votes >= Q.duesterburg_votes);
-Q.thalmann_plurality = (Q.thalmann_votes >= Q.hindenburg_votes && Q.thalmann_votes >= Q.braun_votes && Q.thalmann_votes >= Q.hitler_votes && Q.thalmann_votes >= Q.eckener_votes && Q.thalmann_votes >= Q.gessler_votes && Q.thalmann_votes >= Q.duesterburg_votes && Q.thalmann_votes >= Q.seldte_votes);
-Q.hitler_plurality = (Q.hitler_votes >= Q.hindenburg_votes && Q.hitler_votes >= Q.braun_votes && Q.hitler_votes >= Q.thalmann_votes && Q.hitler_votes >= Q.eckener_votes && Q.hitler_votes >= Q.gessler_votes && Q.hitler_votes >= Q.duesterburg_votes && Q.hitler_votes >= Q.seldte_votes);
-Q.braun_plurality = (Q.braun_votes >= Q.hindenburg_votes && Q.braun_votes >= Q.hitler_votes && Q.braun_votes >= Q.thalmann_votes && Q.braun_votes >= Q.gessler_votes && Q.braun_votes >= Q.duesterburg_votes && Q.braun_votes >= Q.seldte_votes);
-Q.eckener_plurality = (Q.eckener_votes >= Q.thalmann_votes && Q.eckener_votes >= Q.hitler_votes && Q.eckener_votes >= Q.gessler_votes && Q.eckener_votes >= Q.duesterburg_votes && Q.eckener_votes >= Q.seldte_votes);
-Q.gessler_plurality = (Q.gessler_votes >= Q.thalmann_votes && Q.gessler_votes >= Q.hitler_votes && Q.gessler_votes >= Q.eckener_votes && Q.gessler_votes >= Q.duesterburg_votes && Q.gessler_votes >= Q.seldte_votes);
-Q.duesterburg_plurality = (Q.duesterburg_votes >= Q.thalmann_votes && Q.duesterburg_votes >= Q.hitler_votes && Q.duesterburg_votes >= Q.eckener_votes && Q.duesterburg_votes >= Q.gessler_votes && Q.duesterburg_votes >= Q.hindenburg_votes && Q.duesterburg_votes >= Q.braun_votes);
-Q.seldte_plurality = (Q.seldte_votes >= Q.thalmann_votes && Q.seldte_votes >= Q.hitler_votes && Q.seldte_votes >= Q.eckener_votes && Q.seldte_votes >= Q.gessler_votes && Q.seldte_votes >= Q.braun_votes);
+Q.thalmann_plurality = (Q.thalmann_votes >= Q.hindenburg_votes && Q.thalmann_votes >= Q.braun_votes && Q.thalmann_votes >= Q.hitler_votes && Q.thalmann_votes >= Q.eckener_votes && Q.thalmann_votes >= Q.gessler_votes && Q.thalmann_votes >= Q.duesterburg_votes && Q.thalmann_votes >= Q.seldte_votes && Q.hindenburg_running);
+Q.hitler_plurality = (Q.hitler_votes >= Q.hindenburg_votes && Q.hitler_votes >= Q.braun_votes && Q.hitler_votes >= Q.thalmann_votes && Q.hitler_votes >= Q.eckener_votes && Q.hitler_votes >= Q.gessler_votes && Q.hitler_votes >= Q.duesterburg_votes && Q.hitler_votes >= Q.seldte_votes && !Q.hitler_support_hindenburg && !Q.hitler_support_seldte);
+Q.braun_plurality = (Q.braun_votes >= Q.hindenburg_votes && Q.braun_votes >= Q.hitler_votes && Q.braun_votes >= Q.thalmann_votes && Q.braun_votes >= Q.gessler_votes && Q.braun_votes >= Q.duesterburg_votes && Q.braun_votes >= Q.seldte_votes && Q.braun_campaign);
+Q.eckener_plurality = (Q.eckener_votes >= Q.thalmann_votes && Q.eckener_votes >= Q.hitler_votes && Q.eckener_votes >= Q.gessler_votes && Q.eckener_votes >= Q.duesterburg_votes && Q.eckener_votes >= Q.seldte_votes && Q.eckener_campaign);
+Q.gessler_plurality = (Q.gessler_votes >= Q.thalmann_votes && Q.gessler_votes >= Q.hitler_votes && Q.gessler_votes >= Q.eckener_votes && Q.gessler_votes >= Q.duesterburg_votes && Q.gessler_votes >= Q.seldte_votes && Q.burgerblock_campaign);
+Q.duesterburg_plurality = (Q.duesterburg_votes >= Q.thalmann_votes && Q.duesterburg_votes >= Q.hitler_votes && Q.duesterburg_votes >= Q.eckener_votes && Q.duesterburg_votes >= Q.gessler_votes && Q.duesterburg_votes >= Q.hindenburg_votes && Q.duesterburg_votes >= Q.braun_votes && Q.duesterburg_campaign);
+Q.seldte_plurality = (Q.seldte_votes >= Q.thalmann_votes && Q.seldte_votes >= Q.hitler_votes && Q.seldte_votes >= Q.eckener_votes && Q.seldte_votes >= Q.gessler_votes && Q.seldte_votes >= Q.braun_votes && Q.seldte_campaign);
 // If no candidate gets above 50%, then there's a second round. In the second round, a plurality wins. 
 Q.election_round += 1;
 
