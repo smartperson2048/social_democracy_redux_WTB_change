@@ -289,16 +289,16 @@ if (Q.month_actions >= 1) {
         }
     }
     if (Q.inflation > 1 && Q.inflation < 3 && Q.year >= 1930) {
-        Q.economic_growth += 0.1;
+        Q.economic_growth += 0.05;
     }
-    if (Q.inflation < 0) {
+    if (Q.inflation < -3) {
         Q.economic_growth -= 0.1;
-        if (Q.inflation < -4) {
+        if (Q.inflation < -5) {
             Q.economic_growth -= 0.2;
             Q.unemployed += 0.1;
         }
     }
-    if (Q.unemployed < 7) {
+    if (Q.unemployed < 5) {
         Q.economic_growth += 0.1;
     }
     /// economy effects support
@@ -810,8 +810,14 @@ if (Q.month_actions >= 1) {
         if (Q.chancellor_party != "SPD") {
             Q.hindenburg_angry -= (4-Q.coalition_dissent);
         }
-         if (Q.budget < 0) {
+        if (Q.budget < 0) {
             Q.hindenburg_angry += Q.budget*(-1);
+        }
+        if (Q.dvp_relation + Q.z_relation >= 100) {
+            Q.hindenburg_angry -= (Q.dvp_relation+Q.z_relation)/10;
+        }
+        if (Q.reichswehr_loyalty > 0.25) {
+            Q.hindenburg_angry += (Q.reichswehr_loyalty*5);
         }
     }
     if (!Q.return_to_normalcy && !Q.victory_republic) {
