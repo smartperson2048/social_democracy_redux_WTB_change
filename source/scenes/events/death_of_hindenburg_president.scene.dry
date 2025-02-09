@@ -515,7 +515,7 @@ for (var k in candidate_votes) {
     }
     if (k == "Einstein" && Q[k+'_running']) {
         console.log(k, "votes before bonus:", candidate_votes[k]);
-        candidate_votes[k] += (Q.education_sciene/10);
+        candidate_votes[k] += (Q.education_science/10);
         candidate_votes[k] += (Q.pro_republic/2500);
         candidate_votes[k] += ((Math.floor(Math.random() * 11))/350);
         console.log(k, "votes after bonus:", candidate_votes[k]);
