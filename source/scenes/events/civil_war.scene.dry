@@ -265,9 +265,9 @@ We choose to allow Hindenburg's presidency to continue.
 - @agenda_gov: Continue...
 
 @resign
-on-arrival: pro_republic -= 5; z_relation -= 5; dvp_relation -= 10; president = "Braun" if ((year < 1932) or (year = 1932 and month < 12)); president = "Bumke" if ((year > 1932) or (year = 1932 and month >= 12))
+on-arrival: pro_republic -= 5; z_relation -= 5; dvp_relation -= 10; presidential_timer = 1 if year < 1933; president = "Bumke" if year >= 1933 and judicial_reform < 4; president = "Großmann" if year >= 1933 and judicial_reform >= 4; presidential_timer = 3 if year >= 1933
 
-Hindenburg is forced to resign by our forces. [? if president == "Bumke" : As is procedure, Erwin Bumke, president of the Supreme Court, is to succeed him as interim. ?][? if president == "Braun" : We pass a vote through the Reichstag to appoint Braun as President in his stead. ?]
+Hindenburg is forced to resign by our forces. [As is procedure, the president of the Supreme Court is to succeed him as interim.
 
 - @agenda_gov: Continue...
 
@@ -320,19 +320,15 @@ on-arrival: presidency_decided = 1
 [? if president == "Hindenburg" : As Hindenburg was a reactionary and enabled Hitler to take power, forcing his resignation is a popular idea amongst the party. ?][? if president == "Hitler" : With Hitler's defeat, the role of presidency has become vacant. Usual protocol is for a snap election to be held, but we hold the cards here. ?]
 
 - @snap_election: We will hold new presidential elections.
-- @braun: We will install Braun as President.
-- @provisional: The Reichstag will elect a provisional president to serve until the end of Hindenburg's term.
+#- @braun: We will install Braun as President.
+- @provisional: The Reichstag will elect a provisional president to serve until elections can be held.
 - @abolish: We will abolish the Presidency entirely.
 
 @snap_election
-on-arrival: snap += 1
+on-arrival: presidential_timer = 6
+go-to: agenda_reb
 
-[? if snap == 1: Haha...sorry that's a lot of work. I'll code it later. Pick something else. ?][? if snap == 2 : Did you not hear me? I'm lazy. Pick something else. ?][? if snap == 3 : Are you serious? Pick something else. ?][? if snap >= 4 : Pick something else. ?]
-
-- @aww: Aww, man.
-
-@aww
-go-to: presidency
+New presidential elections have been scheduled for shortly.
 
 @braun
 on-arrival: president = "Braun"
@@ -342,7 +338,7 @@ We have made Otto Braun the President of Germany.
 - @agenda_reb: Continue...
 
 @provisional
-on-arrival: president = "Wirth"
+on-arrival: president = "Wirth"; presidential_timer = 12
 
 We leave the election to the Reichstag, which elects Joseph Wirth of the Center as a compromise candidate.
 

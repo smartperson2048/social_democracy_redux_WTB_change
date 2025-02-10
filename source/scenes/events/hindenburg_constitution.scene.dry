@@ -44,7 +44,7 @@ Our forces clash with Hitler's in the streets as the referendum is held, and, sh
 - @results_unimpeded: Now the results…
 
 @prevention_failure
-on-arrival: rb_strength -= 50; workers_spd -= 2; unemployed_spd -= 2; {!
+on-arrival: rb_strength -= 50; workers_spd -= 5; unemployed_spd -= 5; {!
 Q.reform_support = Q.nsdap_normalized + Q.dnvp_normalized + (Q.others_normalized/(Q.pro_republic/100));
 if (Q.dvp_relation < 30) {
      Q.reform_support += Q.dvp_normalized;
