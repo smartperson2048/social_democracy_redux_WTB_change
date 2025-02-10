@@ -610,3 +610,48 @@ on-arrival: spd_support_munzenburg = 1; kpd_relation += 5; reformist_dissent += 
 We have endorsed Willi Münzenberg of the KPD.
 
 - @round2_vote: Let the second round of voting begin...
+
+@braun_wins
+on-arrival: president = "Braun"
+
+Otto Braun of the SPD has won the election!
+
+@schumacher_wins
+on-arrival: president = "Schumacher"
+
+Kurt Schumacher of the SPD has won the election!
+
+@thalmann_wins
+on-arrival: president = "Thälmann"
+
+Ernst Thälmann of the KPD has won the election!
+
+@munzenburg_wins
+on-arrival: president = "Münzenberg"
+
+Willi Münzenberg of the KPD has won the election!
+
+@gessler_wins
+on-arrival: president = "Gessler"
+
+Otto Gessler of the liberal bloc has won the election!
+
+@luther_wins
+on-arrival: president = "Luther"
+
+Hans Luther of the DVP has won the elections.
+
+@hergt_wins
+on-arrival: president = "Hergt"
+
+Oskar Hergt of the DNVP has won the elections, somehow, even after we crushed the reactionaries in a civil war.
+
+@adenauer_wins
+on-arrival: president = "Adenauer"
+
+Konrad Adenauer of the Center Party has won the elections!
+
+@wirth_wins
+on-arrival: president = "Wirth"
+
+Joseph Wirth of the Center Party has won the elections!
