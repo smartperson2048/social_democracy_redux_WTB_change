@@ -378,6 +378,16 @@ Q.wirth_majority = (Q.wirth_votes >= 50);
 Q.any_majority = Q.braun_majority | Q.schumacher_majority | Q.thalmann_majority | Q.munzenburg_majority | Q.gessler_majority | Q.luther_majority | Q.hergt_majority | Q.adenauer_majority | Q.wirth_majority;
 
 // check for plurality
+Q.braun_plurality = 0;
+Q.schumacher_plurality = 0;
+Q.thalmann_plurality = 0;
+Q.munzenburg_plurality = 0;
+Q.gessler_plurality = 0;
+Q.luther_plurality = 0;
+Q.hergt_plurality = 0;
+Q.adenauer_plurality = 0;
+Q.wirth_plurality = 0;
+
 Q.braun_plurality = (Q.braun_votes >= Q.schumacher_votes && Q.braun_votes >= Q.thalmann_votes && Q.braun_votes >= Q.munzenburg_votes && Q.braun_votes >= Q.gessler_votes && Q.braun_votes >= Q.luther_votes && Q.braun_votes >= Q.hergt_votes && Q.braun_votes >= Q.adenauer_votes && Q.braun_votes >= Q.wirth_votes);
 Q.schumacher_plurality = (Q.schumacher_votes >= Q.braun_votes && Q.schumacher_votes >= Q.thalmann_votes && Q.schumacher_votes >= Q.munzenburg_votes && Q.schumacher_votes >= Q.gessler_votes && Q.schumacher_votes >= Q.luther_votes && Q.schumacher_votes >= Q.hergt_votes && Q.schumacher_votes >= Q.adenauer_votes && Q.schumacher_votes >= Q.wirth_votes);
 Q.thalmann_plurality = (Q.thalmann_votes >= Q.braun_votes && Q.thalmann_votes >= Q.schumacher_votes && Q.thalmann_votes >= Q.munzenburg_votes && Q.thalmann_votes >= Q.gessler_votes && Q.thalmann_votes >= Q.luther_votes && Q.thalmann_votes >= Q.hergt_votes && Q.thalmann_votes >= Q.adenauer_votes && Q.thalmann_votes >= Q.wirth_votes);
@@ -506,7 +516,7 @@ The Center Party isn't currently backing our candidate, but is willing to be con
 
 @relation_z2
 choose-if: z_relation >= 45
-on-arrival: adenauer_campaign = 0; z_support_braun = 1 if braun_campaign; z_support_schumacher = 1 if schumacher_campaign; z_support_luther = 0; z_support_gessler = 0
+on-arrival: adenauer_campaign = 0; z_support_braun = 1 if braun_campaign; z_support_schumacher = 1 if schumacher_campaign; z_support_luther = 0; z_support_gessler = 0; braun_plurality = 1 if braun_campaign and z_votes + braun_votes >= plurality_votes; schumacher_plurality = 1 if schumacher_campaign = 1 and z_votes + schumacher_votes >= plurality_votes
 go-to: no_majority_round1
 
 The Center Party has endorsed our candidate and dropped out of the race.
@@ -514,7 +524,7 @@ The Center Party has endorsed our candidate and dropped out of the race.
 @pay_z2
 choose-if: resources >= 2
 unavailable_subtitle: We don't have the resources.
-on-arrival: resources -= 2; adenauer_campaign = 0; z_support_braun = 1 if braun_campaign; z_support_schumacher = 1 if schumacher_campaign; z_support_luther = 0; z_support_gessler = 0
+on-arrival: resources -= 2; adenauer_campaign = 0; z_support_braun = 1 if braun_campaign; z_support_schumacher = 1 if schumacher_campaign; z_support_luther = 0; z_support_gessler = 0; braun_plurality = 1 if braun_campaign and z_votes + braun_votes >= plurality_votes; schumacher_plurality = 1 if schumacher_campaign = 1 and z_votes + schumacher_votes >= plurality_votes
 go-to: no_majority_round1
 
 The Center Party has endorsed our candidate and dropped out of the race.
@@ -523,7 +533,7 @@ The Center Party has endorsed our candidate and dropped out of the race.
 choose-if: z_relation >= 40
 view-if: hergt_plurality
 unavailable_subtitle: The Center Party doesn't trust us enough.
-on-arrival: adenauer_campaign = 0; z_support_gessler = 0; z_support_luther = 0; z_support_braun = 1 if braun_campaign; z_support_schumacher = 1 if schumacher_campaign
+on-arrival: adenauer_campaign = 0; z_support_gessler = 0; z_support_luther = 0; z_support_braun = 1 if braun_campaign; z_support_schumacher = 1 if schumacher_campaign; braun_plurality = 1 if braun_campaign and z_votes + braun_votes >= plurality_votes; schumacher_plurality = 1 if schumacher_campaign = 1 and z_votes + schumacher_votes >= plurality_votes
 go-to: no_majority_round1
 
 The Center Party has endorsed our candidate and dropped out of the race.
@@ -543,7 +553,7 @@ The Communists are not currently backing our candidate, but are willing to be co
 
 @use_relations2
 choose-if: kpd_relation >= 60 or (kpd_relation >= 50 and kpd_party_leader == "Conciliators")
-on-arrival: communist_coalition += 1; thalmann_campaign = 0; munzenburg_campaign = 0; kpd_support_braun = 1 if braun_campaign; kpd_support_schumacher = 1 if schumacher_campaign;
+on-arrival: communist_coalition += 1; thalmann_campaign = 0; munzenburg_campaign = 0; kpd_support_braun = 1 if braun_campaign; kpd_support_schumacher = 1 if schumacher_campaign; braun_plurality = 1 if braun_campaign and kpd_votes + braun_votes >= plurality_votes; schumacher_plurality = 1 if schumacher_campaign = 1 and kpd_votes + schumacher_votes >= plurality_votes
 unavailable_subtitle: We do not have good enough relations.
 go-to: no_majority_round1
 
@@ -552,7 +562,7 @@ The KPD has endorsed our candidate and dropped out of the race.
 @pay_kpd2
 choose-if: resources >= 2
 unavailable_subtitle: We don't have the resources.
-on-arrival: resources -= 2; thalmann_campaign = 0; munzenburg_campaign = 0; kpd_support_braun = 1 if braun_campaign; kpd_support_schumacher = 1 if schumacher_campaign
+on-arrival: resources -= 2; thalmann_campaign = 0; munzenburg_campaign = 0; kpd_support_braun = 1 if braun_campaign; kpd_support_schumacher = 1 if schumacher_campaign; braun_plurality = 1 if braun_campaign and kpd_votes + braun_votes >= plurality_votes; schumacher_plurality = 1 if schumacher_campaign = 1 and kpd_votes + schumacher_votes >= plurality_votes
 go-to: no_majority_round1
 
 The KPD has endorsed our candidate and dropped out of the race.
@@ -561,7 +571,7 @@ The KPD has endorsed our candidate and dropped out of the race.
 choose-if: kpd_relation >= 40
 view-if: hergt_plurality
 unavailable_subtitle: The Communist Party doesn't trust us enough.
-on-arrival: thalmann_campaign = 0; munzenburg_campaign = 0; kpd_support_braun = 1 if braun_campaign; kpd_support_schumacher = 1 if schumacher_campaign
+on-arrival: thalmann_campaign = 0; munzenburg_campaign = 0; kpd_support_braun = 1 if braun_campaign; kpd_support_schumacher = 1 if schumacher_campaign; braun_plurality = 1 if braun_campaign and kpd_votes + braun_votes >= plurality_votes; schumacher_plurality = 1 if schumacher_campaign = 1 and kpd_votes + schumacher_votes >= plurality_votes
 go-to: no_majority_round1
 
 The KPD has endorsed our candidate and dropped out of the race.
@@ -610,6 +620,13 @@ on-arrival: spd_support_munzenburg = 1; kpd_relation += 5; reformist_dissent += 
 We have endorsed Willi Münzenberg of the KPD.
 
 - @round2_vote: Let the second round of voting begin...
+
+@round2_vote
+go-to: election_algorithm
+set-jump: post_election
+
+@round2_results
+go-to: braun_wins if braun_plurality; schumacher_wins if schumacher_plurality; thalmann_wins if thalmann_plurality; munzenburg_wins if munzenburg_plurality; gessler_wins if gessler_plurality; luther_wins if luther_plurlity == 1; hergt_wins if hergt_plurality; adenauer_wins if adenauer_plurality; wirth_wins if wirth_plurality
 
 @braun_wins
 on-arrival: president = "Braun"
