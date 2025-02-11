@@ -5,7 +5,9 @@ new-page: true
 #tags: event
 max-visits: 1
 on-arrival: coup_progress += no_majority_elections/2
-go-to: gessler_crisis if president == "Gessler" and not presidential_powers; adenauer_crisis if president == "Adenauer" and not presidential_powers; eckener_crisis if president == "Eckener" and not presidential_powers; nothing_to_do if presidential_powers
+go-to: gessler_crisis if president == "Gessler" and not presidential_powers; 
+
+#adenauer_crisis if president == "Adenauer" and not presidential_powers; eckener_crisis if president == "Eckener" and not presidential_powers; nothing_to_do if presidential_powers
 
 = Political Crisis
 
