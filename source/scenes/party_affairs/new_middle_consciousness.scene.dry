@@ -26,3 +26,7 @@ unavailable_subtitle: [? if radio < 2 and not aufhauser_advisor : -1 resource. ?
 on-arrival: new_middle_spd += 10*(1-dissent); reformist_dissent += 2; labor_dissent += 3; left_strength += 5; socialism += 4*(1-dissent); new_middle_conscious = 1
 
 We have taken advantage of the situation, and awoken the class character of the white collar workers. Increasingly, they flock to our party.
+
+@refute
+
+We will not do this.
