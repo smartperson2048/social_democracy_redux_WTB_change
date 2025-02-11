@@ -1,0 +1,20 @@
+title: Political Crisis
+subtitle: A political crisis wreaks havoc in Germany...
+view-if: political_crisis_progress >= 4
+new-page: true
+#tags: event
+max-visits: 1
+on-arrival: coup_progress += no_majority_elections/2
+go-to: gessler_crisis if president == "Gessler" and not presidential_powers; adenauer_crisis if president == "Adenauer" and not presidential_powers; eckener_crisis if president == "Eckener" and not presidential_powers; nothing_to_do if presidential_powers
+
+= Political Crisis
+
+For multiple elections in a row now, no government has been able to be formed. This has been destroying the trust of the German people in their democracy, and all eyes turn to the president to see what he will do.
+
+@gessler_crisis
+on-arrival: chancellor = "Groener"; chancellor_party = "I"; time_to_election = 12+strife; strife -= 3; 
+call: set_next_election_time
+
+Otto Gessler has become increasingly influenced by his inner cadre of military men and seeing the total inability of the Reichstag to form a government has caved to their increasing calls for martial law. 
+
+He has asked Wilhelm Groener to lead a temporary military government and, wielding the powers of Article 48 of the German constitution, declared martial law and cancelled the next elections. 

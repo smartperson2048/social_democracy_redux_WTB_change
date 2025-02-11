@@ -1429,6 +1429,7 @@ In total, [+ no_confidence_votes +]% of the Reichstag is against us. [? if no_co
 on-arrival: {!
 Q.in_emergency_government = 1;
 Q.no_majority_elections += 1;
+Q.political_crisis_progress += 1;
 Q.next_election_month = Q.month + 6;
 Q.next_election_time = Q.time + 6;
 if (Q.next_election_month > 12) {
@@ -1584,7 +1585,7 @@ If we do not at least "tolerate" the government, there will be new elections in 
 
 
 @new_elections
-view-if: anti_democratic_coalition <= 50 and not nazi_decline and not nazi_peak
+view-if: anti_democratic_coalition+sapd_r <= 50 and not nazi_decline and not nazi_peak
 on-arrival: {!
 Q.next_election_month = Q.month + 3;
 Q.next_election_time = Q.time + 3;
@@ -1639,6 +1640,9 @@ if (Q.far_right_coalition >= 50) {
     Q.sh_strength += 100;
     Q.coup_progress += 3;
 }
+if (Q.no_majority_elections >= 2) {
+    Q.political_crisis_progress += 1
+}
 !}
 
 There is no path to a workable Reichstag majority or minority government. The next elections are set for [+ next_election_month : month +] [+ next_election_year +].
@@ -1649,7 +1653,7 @@ The people's faith in democracy is shaken by this ordeal. Of course, the Nazis a
 @new_elections_2
 view-if: anti_democratic_coalition > 50 or nazi_decline or nazi_peak
 call: set_next_election_time
-on-arrival: time_to_election = 3; strife += 0.5; pro_republic -= 5; rural_nsdap += 4; old_middle_nsdap += 3; new_middle_nsdap += 3
+on-arrival: time_to_election = 3; strife += 0.5; pro_republic -= 5; rural_nsdap += 4; old_middle_nsdap += 3; new_middle_nsdap += 3; political_crisis_progress += 1
 
 As the anti-democratic parties hold a majority, there is no path to a majority government. New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
 

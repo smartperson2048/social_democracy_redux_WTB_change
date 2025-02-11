@@ -1098,6 +1098,9 @@ if (Q.month_actions >= 1) {
     if (Q.party_bans && !Q.constitutional_reform) {
         Q.constitutional_reform = 1;
     }
+    if (Q.spd_toleration || Q.spd_in_government || Q.in_right_coalition || Q.in_bourgeois_coalition) {
+        Q.political_crisis = 0;
+    }
     if (Q.spanish_civil_war) {
         Q.republic_strength -= 1/12;
         Q.national_strength -= 1/12;
