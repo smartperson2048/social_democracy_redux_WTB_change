@@ -245,23 +245,39 @@ if (Q.month_actions >= 1) {
         // economic growth
     if (Q.economic_growth < -0.5 && Q.unemployed <= 18) {
         Q.unemployed += 0.1;
-        Q.inflation -= 0.1;
+        if (Q.inflation >= -2) {
+            Q.inflation -= 0.1;
+        }
     }
     if (Q.economic_growth < -5 && Q.unemployed <= 28) {
         Q.unemployed += 0.1;
-        Q.inflation -= 0.1;
+        if (Q.inflation >= -5) {
+            Q.inflation -= 0.1;
+        }
     }
     if (Q.economic_growth >= 2 && Q.unemployed >= 17) {
         Q.unemployed -= 0.1;
+        if (Q.inflation < 3) {
+            Q.inflation += 0.1;
+        }
     }
     if (Q.economic_growth >= 4 && Q.unemployed >= 12) {
         Q.unemployed -= 0.1;
+        if (Q.inflation < 4) {
+            Q.inflation += 0.1;
+        }
     }
     if (Q.economic_growth >= 6 && Q.unemployed >= 7) {
         Q.unemployed -= 0.1;
+        if (Q.inflation < 6) {
+            Q.inflation += 0.1;
+        }
     }
     if (Q.economic_growth >= 8 && Q.unemployed >= 3) {
         Q.unemployed -= 0.1;
+        if (Q.inflation < 8) {
+            Q.inflation += 0.1;
+        }
     }
     if (Q.economic_growth >= 4 && Q.inflation >= 7.5) {
         Q.economic_growth -= 0.1;
@@ -281,9 +297,9 @@ if (Q.month_actions >= 1) {
         Q.economic_growth -= 0.3;
         Q.inflation += 0.1;
     }
-    if (Q.inflation > 5) {
+    if (Q.inflation > 5 && Q.economic_growth >= 1) {
         Q.economic_growth -= 0.1;
-        if (Q.inflation > 7) {
+        if (Q.inflation > 7 && Q.economic_growth >= 0) {
             Q.economic_growth -= 0.2;
             Q.inflation -= 0.1;
         }
@@ -291,15 +307,18 @@ if (Q.month_actions >= 1) {
     if (Q.inflation > 1 && Q.inflation < 3 && Q.year >= 1930) {
         Q.economic_growth += 0.05;
     }
-    if (Q.inflation < -3) {
+    if (Q.inflation < -4 && Q.economic_growh >= -4) {
         Q.economic_growth -= 0.1;
-        if (Q.inflation < -5) {
-            Q.economic_growth -= 0.2;
+        if (Q.inflation < -6 && Q.economic_growth >= -6) {
+            Q.economic_growth -= 0.1;
             Q.unemployed += 0.1;
         }
     }
-    if (Q.unemployed < 5) {
+    if (Q.unemployed < 5 && Q.economic_growth < 5) {
         Q.economic_growth += 0.1;
+    }
+    if (Q.unemployed >= 20 && Q.inflation >= -4) {
+        Q.inflation -= 0.1;
     }
     /// economy effects support
     if (Q.unemployed >= 15 && !Q.spd_in_government) {
