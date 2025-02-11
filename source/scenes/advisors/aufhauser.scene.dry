@@ -55,5 +55,6 @@ title: Radicalize the new middle class.
 subtitle: Awaken the class consciousness of the white collar worker.
 choose-if: socialism >= 54 and new_middle_spd_normalized >= 10
 unavailable-subtitle: They are not yet radical enough.
+max-visits: 1
 on-arrival: advisor_action_timer = 6; last_advisor_action = 1
 go-to: new_middle_consciousness
