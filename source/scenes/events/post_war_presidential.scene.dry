@@ -48,6 +48,8 @@ on-arrival: z_relation += 5
 
 Joseph Wirth, after some consideration, agrees to run for re-election as the Weimar candidate, with backing from us, [+ ddp_name +], and of course the Center Party.
 
+- @final_election: The final results...
+
 @support_thalmann
 subtitle: Thälmann is very unpopular among the reformists.
 view-if: kpd_party_leader != "Conciliators"
@@ -64,6 +66,8 @@ on-arrival: spd_support_thalmann = 1; reformist_dissent += 15; center_dissent +=
 
 Fine. We have thrown our support to Chairman Thälmann of the KPD.
 
+- @final_election: The final results...
+
 @support_munzenburg
 subtitle: Supporting Münzenberg is unpopular among the reformists, but less so than Thälmann would've been.
 view-if: kpd_party_leader == "Conciliators"
@@ -73,6 +77,8 @@ on-arrival: spd_support_munzenburg = 1; kpd_relation += 5; reformist_dissent += 
 
 We have endorsed Willi Münzenberg of the KPD.
 
+- @final_election: The final results...
+
 @support_gessler
 subtitle: Otto Gessler is running as the DVP's candidate.
 view-if: not dvp_banned and gessler_campaign and not wirth_campaign
@@ -80,12 +86,16 @@ on-arrival: left_dissent += 5; spd_support_gessler = 1; z_support_gessler = 1 if
 
 We have endorsed Otto Gessler of the Bürgerblock. [? if z_relation >= 45 : The Center Party soon follows suite. ?]
 
+- @final_election: The final results...
+
 @support_adenauer
 subtitle: Konrad Adenauer may run as the Center Party's candidate.
 view-if: not wirth_campaign
 on-arrival: spd_support_adenauer = 1; adenauer_campaign = 1
 
 We have endorsed Konrad Adenauer of the Center Party.
+
+- @final_election: The final results...
 
 ## todo: center support should be based on risks, so Z backs gessler alongside SPD if KPD strong, runs with SPD if DNVP/DVP strong, otherwise runs alone even if good relations
 
@@ -477,7 +487,7 @@ go-to: no_majority_round1
 Hans Luther of the DVP has dropped out to consolidate the vote for the bourgeois parties, endorsing Adenauer of the Center Party.
 
 @hergt_drop_out
-on-arrival: hergt_campaign = 0
+on-arrival: hergt_campaign = 0; dvp_support_adenauer = 1 if dvp_support_hergt; dvp_support_hergt = 0;
 go-to: no_majority_round1
 
 Oskar Hergt of the DNVP has dropped out, leaving the right-wing parties to rally behind[? if luther_campaign : Luther?][? if gessler_campaign : Gessler ?][? if adenauer_campaign and not gessler_campaign and not luther_campaign : Adenauer ?][? if not adenauer_campaign and not gessler_campaign and not luther_campaign and wirth_campaign : Wirth ?].
