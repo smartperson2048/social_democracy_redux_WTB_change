@@ -28,7 +28,7 @@ Finally, as the country emerges from civil war, presidential elections will be h
 @support_braun
 subtitle: -2 resources.
 choose-if: not old_braun and spd_prussia
-unailable-subtitle: He's sleepy.
+unavailable-subtitle: He's sleepy.
 on-arrival: resources -= 2; braun_campaign = 1; wirth_campaign = 0; motivate_adenauer = 1 if z_relation < 50 and president == "Wirth"; adenauer_campaign = 1 if z_relation < 50; z_support_braun = 1 if z_relation >= 50
 go-to: spd_presidential
 
