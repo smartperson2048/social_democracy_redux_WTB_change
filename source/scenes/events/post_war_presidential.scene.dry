@@ -5,7 +5,7 @@ frequency: 1000
 max-visits: 1
 new-page: true
 on-arrival: old_braun = braun_campaign; braun_campaign = 0; spd_support_thalmann = 0; spd_support_gessler = 0; kpd_support_braun = 0; z_support_braun = 0; wirth_campaign = 1 if president == "Wirth"; hergt_campaign = 1 if dnvp_banned != 1; luther_campaign = 1 if dvp_banned != 1 and dvp_relation < 35; gessler_campaign = 1 if dvp_banned != 1 and dvp_relation >= 35; thalmann_campaign = 1 if kpd_party_leader != "Conciliators" and kpd_banned != 1; munzenburg_campaign = 1 if kpd_party_leader == "Conciliators" and kpd_banned != 1; adenauer_campaign = 1 if z_relation < 50 and president != "Wirth"
-#tags: event
+tags: event
 go-to: election_algorithm
 set-jump: pres_election
 
