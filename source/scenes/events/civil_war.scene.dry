@@ -325,7 +325,7 @@ on-arrival: presidency_decided = 1
 - @abolish: We will abolish the Presidency entirely.
 
 @snap_election
-on-arrival: presidential_timer = 6
+on-arrival: presidential_timer = 2; president = "Bumke" if year >= 1933 and judicial_reform < 4; president = "Großmann" if year >= 1933 and judicial_reform >= 4; president = "N/A" if year < 1933; presidential_timer -= 1 if year < 1933
 go-to: agenda_reb
 
 New presidential elections have been scheduled for shortly.
