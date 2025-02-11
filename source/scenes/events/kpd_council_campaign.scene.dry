@@ -4,7 +4,7 @@ new-page: true
 view-if: supreme_soviet = 1 and ((rfb_strength*rfb_militancy)*(1+(kpd_influence/10))) >= ((rb_strength*rb_militancy)*(1-dissent)) and not rfb_banned
 max-visits: 1
 tags: event
-on-arrival: red_banner = 1; workers_kpd += 4; unemployed_kpd += 8; rfb_strength += 50
+on-arrival: red_banner = 1; workers_kpd += 4; unemployed_kpd += 8; rfb_strength += 50; socialism += 5
 
 = Red Banners Across Germany
 
