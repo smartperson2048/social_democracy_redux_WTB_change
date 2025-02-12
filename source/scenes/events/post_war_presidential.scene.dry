@@ -666,6 +666,7 @@ Ernst Thälmann of the KPD has won the election!
 
 @munzenburg_wins
 on-arrival: president = "Münzenberg"
+achievement: rote_millionar
 
 Willi Münzenberg of the KPD has won the election!
 
