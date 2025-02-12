@@ -147,11 +147,11 @@ set-jump: election_projections
 
 **Public Opinion**
 
-#Support for Socialism: [+ socialism +]%
-
-#Support for Nationalism: [+ nationalism +]%
-
 Support for the Republic: [+ pro_republic_disp +]%
+
+Support for Socialism: [+ socialism_disp +]%
+
+Support for Nationalism: [+ nationalism_disp +]%
 
 
 @election_projections

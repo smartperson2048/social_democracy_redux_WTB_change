@@ -10,16 +10,23 @@ for (var c of Q.classes) {
         }
     }
 }
-
-Q.pro_republic = Math.round(Q.pro_republic);
-Q.nationalism = Math.round(Q.nationalism);
-Q.socialism = Math.round(Q.socialism);
-
 if (Q.pro_republic < 0) {
     Q.pro_republic = 0;
 }
 if (Q.pro_republic >= 100) {
     Q.pro_republic = 99;
+}
+if (Q.socialism < 0) {
+    Q.socialism = 0;
+}
+if (Q.socialism >= 100) {
+    Q.socialism = 99;
+}
+if (Q.nationalism < 0) {
+    Q.nationalism = 0;
+}
+if (Q.pro_republic >= 100) {
+    Q.nationalism = 99;
 }
 // re-calculate party support
 // calculate normalized class voting for the achievements
