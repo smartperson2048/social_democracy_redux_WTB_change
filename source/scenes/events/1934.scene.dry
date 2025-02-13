@@ -23,6 +23,7 @@ if (Q.pro_republic > 75 && Q.pro_republic > Q.older_republic) {
     Q.new_middle_dvp += ((Q.pro_republic - Q.older_republic)/2)
     Q.old_middle_dvp += (Q.pro_republic - Q.older_republic)
 }
+window.dendryUI.dendryEngine.state.visits = {}
 !}
 
 = 1934
