@@ -198,12 +198,16 @@ if (Q.braun_campaign) {
     if (Q.kpd_support_braun) {
         Q.braun_votes += Q.kpd_normalized;
         Q.braun_votes += Q.sapd_normalized;
-        Q.braun_votes += (Q.rfb_force/2500);
+        if (Q.rfb_force) {
+            Q.braun_votes += (Q.rfb_force/2500);
+        }
     }
     Q.braun_votes += (Q.pro_republic/1000);
     Q.braun_votes += ((100-Q.nationalism)/2500);
     Q.braun_votes += (Q.democratization/100);
-    Q.braun_votes += (Q.rb_force/3500);
+    if (Q.rb_force) {
+        Q.braun_votes += (Q.rb_force/3500);
+    }
     Q.braun_votes += ((Math.floor(Math.random() * 11))/350);
 }
 if (Q.schumacher_campaign) {
@@ -217,12 +221,16 @@ if (Q.schumacher_campaign) {
     }
     if (Q.kpd_support_schumacher) {
         Q.schumacher_votes += Q.kpd_normalized;
-        Q.schumacher_votes += (Q.rfb_force/2500);
+        if (Q.rfb_force) {
+            Q.schumacher_votes += (Q.rfb_force/2500);
+        }
     }
     Q.schumacher_votes += (Q.pacifism/200);
     Q.schumacher_votes += (Q.pro_republic/1000);
     Q.schumacher_votes += ((100-Q.nationalism)/2250);
-    Q.schumacher_votes += (Q.rb_force/3000);
+    if (Q.rb_force) {
+        Q.schumacher_votes += (Q.rb_force/3000);
+    }
     Q.schumacher_votes += ((Math.floor(Math.random() * 11))/350);
 }
 if (Q.thalmann_campaign) {
