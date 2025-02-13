@@ -399,6 +399,37 @@ if (Q.month_actions >= 1) {
         Q.old_middle_dvp += (Q.economic_growth/2)/12;
         Q.rural_dvp += (Q.economic_growth/5)/12;
     }
+    // factions!
+    if (Q.left_dissent < 50) {
+        Q.left_dissent += 4/12;
+        if (Q.reformist_strength >= 50) {
+            Q.left_dissent += 4/12;
+        }
+    }
+    if (Q.center_dissent < 50) {
+        Q.center_dissent += 4/12;
+        if (Q.labor_strength >= 50) {
+            Q.center_dissent += 3/12;
+        }
+    }
+    if (Q.reformist_dissent < 50) {
+        Q.reformist_dissent += 4/12;
+        if (Q.left_strength >= 50) {
+            Q.reformist_dissent += 4/12;
+        }
+    }
+    if (Q.labor_dissent < 50) {
+        Q.labor_dissent += 3/12;
+    }
+    if (Q.center_strength >= 50) {
+        if (Q.left_dissent >= 30) {
+            Q.left_dissent -= 2/12;
+        }
+        if (Q.reformist_dissent >= 30) {
+            Q.reformist_dissent -= 2/12;
+        }
+    }
+    // factions.
     //////////////////////////////// Education & Science support/economic changes
     if (Q.major_curriculum && Q.major_curriculum == "democratic") {
         if (Q.pro_republic < 60) {
