@@ -401,19 +401,19 @@ if (Q.month_actions >= 1) {
     }
     // factions!
     if (Q.left_dissent < 50) {
-        Q.left_dissent += 4/12;
+        Q.left_dissent += 5/12;
         if (Q.reformist_strength >= 50) {
             Q.left_dissent += 6/12;
         }
     }
     if (Q.center_dissent < 50) {
-        Q.center_dissent += 4/12;
+        Q.center_dissent += 3/12;
         if (Q.labor_strength >= 50) {
             Q.center_dissent += 5/12;
         }
     }
     if (Q.reformist_dissent < 50) {
-        Q.reformist_dissent += 4/12;
+        Q.reformist_dissent += 5/12;
         if (Q.left_strength >= 50) {
             Q.reformist_dissent += 6/12;
         }
@@ -427,6 +427,9 @@ if (Q.month_actions >= 1) {
         }
         if (Q.reformist_dissent >= 30) {
             Q.reformist_dissent -= 4/12;
+        }
+        if (Q.center_dissent >= 30) {
+            Q.center_dissent -= 3/12;
         }
     }
     // factions.
