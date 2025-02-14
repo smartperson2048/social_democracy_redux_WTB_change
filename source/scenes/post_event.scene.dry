@@ -316,6 +316,7 @@ if (Q.month_actions >= 1) {
         Q.inflation -= 0.1;
         if (Q.inflation >= 10) {
             Q.inflation -= 0.1;
+        }
     }
     if (Q.works_program && !Q.return_to_normalcy) {
         if (Q.economic_growth < 0) {
