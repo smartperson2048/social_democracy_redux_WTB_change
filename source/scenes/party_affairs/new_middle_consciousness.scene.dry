@@ -17,6 +17,7 @@ As socialism grows increasingly popular around the country, it has begun to take
 - @cancel_advisor_action
 
 @easy_discard_1
+view-if: last_advisor_action = 0
 go-to: easy_discard
 
 @awaken
