@@ -317,6 +317,19 @@ if (Q.month_actions >= 1) {
         if (Q.inflation >= 10) {
             Q.inflation -= 0.1;
     }
+    if (Q.works_program && !Q.return_to_normalcy) {
+        if (Q.economic_growth < 0) {
+            Q.economic_growth += Q.works_program/20;
+        }
+        if (Q.inflation < 2) {
+            Q.inflation += Q.works_program/10;
+            if (Q.inflation < -5) {
+                Q.inflation += Q.works_program/20;
+            }
+        }
+        if (Q.unemployed >= 15) {
+            Q.unemployed -= Q.works_program/12;
+        }
     }
     if (Q.inflation > 1 && Q.inflation < 3 && Q.year >= 1930) {
         Q.economic_growth += 0.05;
