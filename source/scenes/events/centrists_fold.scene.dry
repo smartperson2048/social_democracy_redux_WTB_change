@@ -1,6 +1,6 @@
 title: The Centrists concede!
 subtitle: Hilferding has come around to an economic plan
-view-if: year >= 1931 and not economic_plan and left_strength < 50 and labor_strength < 50 and reformist_strength < 50 and center_strength >= 20 and not centrists_resign and spd_votes < 28 and nazi_urgency >= 1 and (dissent_percent+unemployed-inflation-economic_growth >= 50)
+view-if: year >= 1931 and not economic_plan and left_strength < 50 and labor_strength < 50 and reformist_strength < 50 and center_strength >= 20 and not centrists_resign and spd_votes < 28 and nazi_urgency >= 1 and ((dissent_percent+unemployed+(inflation*-1)+(economic_growth*-1)) >= 50)
 max-visits: 1
 tags: event
 new-page: true
