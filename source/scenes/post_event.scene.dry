@@ -321,7 +321,7 @@ if (Q.month_actions >= 1) {
     if (Q.inflation > 1 && Q.inflation < 3 && Q.year >= 1930) {
         Q.economic_growth += 0.05;
     }
-    if (Q.inflation < -4 && Q.economic_growh >= -4) {
+    if (Q.inflation < -4 && Q.economic_growth >= -4) {
         Q.economic_growth -= 0.1;
         if (Q.inflation < -6 && Q.economic_growth >= -6) {
             Q.economic_growth -= 0.1;
