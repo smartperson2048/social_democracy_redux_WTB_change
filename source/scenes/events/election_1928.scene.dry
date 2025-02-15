@@ -902,7 +902,7 @@ We have decided to tolerate Külz's minority bourgeois government.
 title: There is no clear governing majority.
 view-if: (weimar_coalition < 50 or not z_willing) and (grand_coalition < 50 or grand_coalition_failed == 1 or dvp_willing != 1) and president = "Eckener" and far_right_coalition < 50 and (right_coalition < 50 or right_coalition_failed) and bourgeois_coalition < 50
 on-arrival: no_majority_elections += 1
-go-to: bruning_lead if no_majority_elections < 1; schacht_lead if investigate_far_right < 1 and spd_r < bourgeois_coalition + dnvp_r and no_majority_elections >= 1 and schacht_elections != 1; luther_lead if (investigate_far_right >= 1 or spd_r >= bourgeois_coalition + dnvp_r or schacht_election == 1) and no_majority_elections >= 1
+go-to: bruning_lead if no_majority_elections < 1; schacht_lead if investigate_far_right < 1 and spd_r < bourgeois_coalition + dnvp_r and no_majority_elections >= 1 and schacht_election != 1; luther_lead if (investigate_far_right >= 1 or spd_r >= bourgeois_coalition + dnvp_r or schacht_election == 1) and no_majority_elections >= 1
 
 @schacht_lead
 on-arrival: chancellor = "Schacht"; chancellor_party = "I"; schacht_stalhelm = 1 if sh_banned; sh_banned = 0; welfare -= 1; judicial_reform -= 1 if judicial_reform >= 1; schacht_election = 1; next_election_time = time+3; next_election_month = month + 3; next_election_year = year; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12;
