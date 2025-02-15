@@ -56,7 +56,7 @@ With our hard work, we have finally convinced the majority of the party to adopt
 subtitle: Call for increased public works and fiscal stimulus.
 unavailable-subtitle: The Labor faction is not strong enough.
 choose-if: historical_mode == 0 or (labor_strength >= left_strength and labor_strength >= center_strength and labor_strength >= reformist_strength)
-on-arrival: center_dissent += 10; left_dissent += 5; labor_strength += 5; wtb_support += 1;
+on-arrival: center_dissent += 10; left_dissent += 5; labor_strength += 5; wtb_support += 1; wtb_support += 1 if labor_strength >= 50
 go-to: plan_adopted if wtb_support >= 3; plan_support if wtb_support < 3
 
 @plan_support
@@ -74,7 +74,7 @@ With our hard work, we have finally convinced the majority of the party to adopt
 subtitle: Call for mass nationalizations and the transformation of the economy.
 unavailable-subtitle: The Left faction is not strong enough.
 choose-if: historical_mode == 0 or (left_strength >= labor_strength and left_strength >= center_strength and left_strength >= reformist_strength)
-on-arrival: left_strength += 10; reformist_dissent += 5; labor_dissent += 5; nationalization_support += 2
+on-arrival: left_strength += 10; reformist_dissent += 5; labor_dissent += 5; nationalization_support += 2; nationalization_support += 1 if left_strength >= 50
 go-to: support_left_progress if nationalization_support < 3; adopt_left if nationalization_support >= 3
 
 @support_left_progress
@@ -92,7 +92,7 @@ With our hard work, we have convinced the majority of the party to adopt the soc
 subtitle: Call for a limited program of job creation without deficit spending.
 unavailable-subtitle: The Reformist faction is not strong enough.
 choose-if: historical_mode == 0 or (reformist_strength >= left_strength and reformist_strength >= center_strength and reformist_strength >= labor_strength)
-on-arrival: moderate_plan_support += 1; reformist_strength += 8; reformist_dissent -= 5; left_dissent += 6; labor_dissent += 5
+on-arrival: moderate_plan_support += 1; reformist_strength += 8; reformist_dissent -= 5; left_dissent += 6; labor_dissent += 5; moderate_plan_support += 1 if reformist_strength >= 50
 go-to: adopt_moderate if moderate_plan_support >= 2; support_moderate_progress if moderate_plan_support < 2
 
 @support_moderate_progress
