@@ -41,3 +41,8 @@ Infuriated by this action, the Nazi SA launches an armed insurrection, attemptin
 - @civil_war: Nonetheless, it is a civil war.
 
 # todo: SPD response section if no fascist uprising, eg general strike against martial law..?
+
+@nothing_to_do
+on-arrival: reichswehr_loyalty -= 0.1; sh_strength += 100; sa_strength += 100; pro_republic -= 5; coup_progress += no_majority_elections/2
+
+With presidential powers weakened, there is nothing that can be done. The republic may not last much longer.
