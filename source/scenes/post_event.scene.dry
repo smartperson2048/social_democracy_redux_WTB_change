@@ -348,6 +348,15 @@ if (Q.month_actions >= 1) {
     if (Q.unemployed >= 20 && Q.inflation >= -4) {
         Q.inflation -= 0.1;
     }
+    // economy health rating - vibes based
+    Q.economic_health = Q.economic_growth*10;
+    Q.economic_health -= Q.unemployed;
+    if (Q.inflation < 0) {
+        Q.economic_health += Q.inflation;
+    }
+    if (Q.inflation >= 3) {
+        Q.economic_health -= (Q.inflation-3);
+    }
     /// economy effects support
     if (Q.unemployed >= 15 && !Q.spd_in_government) {
         Q.workers_spd += (Q.unemployed/8)/12;
