@@ -994,6 +994,8 @@ if (Q.month_actions >= 1) {
         Q.old_middle_nsdap -= 12/12;
         Q.rural_nsdap -= 10/12;
         Q.unemployed_nsdap -= 14/12;
+        Q.sa_strength -= 50/12;
+        Q.sa_militancy -= 0.05/12;
     }
     if (Q.nazi_peak) {
         if (Q.nazi_peaked) {
