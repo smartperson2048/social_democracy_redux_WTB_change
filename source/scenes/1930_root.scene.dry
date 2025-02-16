@@ -1,7 +1,7 @@
 title: 1930 root
 on-arrival: {!
 Q.started = 1;
-Q.1930_seen = 1;
+Q.year_seen = 1;
 // time elapsed (in months)
 Q.time = 24;
 Q.year = 1930;
