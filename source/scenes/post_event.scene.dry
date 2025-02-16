@@ -1029,43 +1029,43 @@ if (Q.month_actions >= 1) {
             Q.nazi_peak = 0;
         } 
         if (Q.workers_nsdap > 0) {
-            Q.workers_nsdap -= 9/6;
-            Q.workers_kpd += 2/6;
+            Q.workers_nsdap -= 10/5;
+            Q.workers_kpd += 2/5;
             if (Q.unemployed >= 25) {
-                Q.workers_kpd += 3/6;
+                Q.workers_kpd += 3/5;
             }
         }
         if (Q.new_middle_nsdap > 0) {
-            Q.new_middle_nsdap -= 10/6;
-            Q.new_middle_dnvp += 2/6;
+            Q.new_middle_nsdap -= 11/5;
+            Q.new_middle_dnvp += 3/5;
             if (Q.unemployed >= 25) {
-                Q.new_middle_dnvp += 2/6;
+                Q.new_middle_dnvp += 2/5;
             }
         }
         if (Q.old_middle_nsdap > 0) {
-            Q.old_middle_nsdap -= 9/6;
-            Q.old_middle_dnvp += 3/6;
+            Q.old_middle_nsdap -= 11/5;
+            Q.old_middle_dnvp += 3/5;
             if (Q.unemployed >= 25) {
-                Q.old_middle_dnvp += 2/6;
+                Q.old_middle_dnvp += 3/5;
             }
         }
         if (Q.rural_nsdap > 0) {
-            Q.rural_nsdap -= 8/6;
-            Q.rural_dnvp += 3/6;
+            Q.rural_nsdap -= 9/5;
+            Q.rural_dnvp += 4/5;
             if (Q.unemployed >= 25) {
-                Q.rural_dnvp += 3/6;
+                Q.rural_dnvp += 3/5;
             }
         }
         if (Q.unemployed_nsdap > 0) {
-            Q.unemployed_nsdap -= 10/6;
-            Q.unemployed_kpd += 2/6;
+            Q.unemployed_nsdap -= 12/5;
+            Q.unemployed_kpd += 3/5;
             if (Q.unemployed >= 25) {
-                Q.unemployed_kpd += 4/6;
+                Q.unemployed_kpd += 5/5;
             }
         }
         if (Q.sa_force >= 20) {
-           Q.sa_strength -= 50/6;
-           Q.sa_militancy -= 0.05/6;
+           Q.sa_strength -= 50/5;
+           Q.sa_militancy -= 0.05/5;
         }
         if (Q.nazi_peak_timer <= 0) {
             Q.nazi_peak = 0;
