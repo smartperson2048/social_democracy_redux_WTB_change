@@ -396,6 +396,7 @@ Q.panzerkreuzer_failed = 0;
 Q.unemployment_insurance_seen = 0;
 Q.black_thursday_seen = 1;
 Q.stresemann_dead = 1;
+Q.levi_dead = 1;
 // unemployment insurance event is seen if the unemployment level is at least 4 more than the threshold...
 Q.unemployment_insurance_threshold = 10;
 Q.blutmai = 1;
