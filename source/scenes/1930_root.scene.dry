@@ -122,11 +122,11 @@ Q.rb_strength = 2000;
 Q.rb_militancy = 0.01;
 Q.women_in_rb = 0;
 Q.rb_banned = 0;
-Q.sh_strength = 600;
+Q.sh_strength = 700;
 Q.sh_militancy = 0.5;
 Q.sh_banned = 0;
 Q.sh_banned_prussia = 0;
-Q.sa_strength = 180;
+Q.sa_strength = 230;
 Q.sa_militancy = 0.5;
 Q.sa_banned = 0;
 Q.sa_banned_prussia = 0;
@@ -141,7 +141,7 @@ Q.interior_police_loyalty = 0.5;
 
 Q.prussian_police_strength = 90;
 Q.prussian_police_militancy = 1;
-Q.prussian_police_loyalty = 0.55;
+Q.prussian_police_loyalty = 0.6;
 
 // strength includes actual military and de facto reserves?
 Q.reichswehr_strength = 100;
@@ -153,11 +153,11 @@ Q.reichswehr_loyalty = 0.2;
 // popular opinion
 // national ideology - on a binary scale
 // nationalism vs internationalism or pacifism or non-nationalism
-Q.nationalism = 67;
+Q.nationalism = 57;
 // socialism vs capitalism
 Q.socialism = 44;
 // pro-republic vs anti-republic
-Q.pro_republic = 59;
+Q.pro_republic = 63;
 
 Q.emergency_rule = 0;
 
@@ -176,7 +176,7 @@ Q.nsdap_banned = 0;
 
 // coups and capital strikes happen when you upset the right or the capitalists too much with your policies. they're an additional check on your policies, when purely electoral checks don't suffice.
 // when coup_progress reaches 10 or capital_strike_progress reaches 10, there's a special event that launches the coup.
-Q.coup_progress = 0;
+Q.coup_progress = 1;
 Q.coup_info = 0;
 Q.capital_strike_progress = 0;
 Q.nazi_rage_progress = 0;
@@ -221,15 +221,15 @@ Q.parties = ['spd', 'sapd', 'kpd', 'z', 'ddp', 'dvp', 'dnvp', 'nsdap', 'other'];
 
 // Support for party by social group
 // they don't have to sum to 100 since the electoral calculations will be normalized.
-Q.workers_spd = 60;
+Q.workers_spd = 50;
 Q.workers_sapd = 0;
-Q.workers_kpd = 20;
-Q.workers_z = 5;
+Q.workers_kpd = 25;
+Q.workers_z = 6;
 Q.workers_ddp = 0;
 Q.workers_dvp = 0;
-Q.workers_dnvp = 5;
-Q.workers_nsdap = 0;
-Q.workers_other = 10;
+Q.workers_dnvp = 0;
+Q.workers_nsdap = 5;
+Q.workers_other = 6;
 
 Q.old_middle_spd = 5;
 Q.old_middle_sapd = 0;
@@ -238,18 +238,18 @@ Q.old_middle_z = 5;
 Q.old_middle_ddp= 10;
 Q.old_middle_dvp = 25;
 Q.old_middle_dnvp = 25;
-Q.old_middle_nsdap = 10;
-Q.old_middle_other = 10;
+Q.old_middle_nsdap = 20;
+Q.old_middle_other = 7;
 
 Q.new_middle_spd = 5;
 Q.new_middle_sapd = 0;
 Q.new_middle_kpd = 1;
 Q.new_middle_z = 10;
-Q.new_middle_ddp= 25;
-Q.new_middle_dvp = 25;
+Q.new_middle_ddp = 20;
+Q.new_middle_dvp = 20;
 Q.new_middle_dnvp = 10;
-Q.new_middle_nsdap = 5;
-Q.new_middle_other = 15;
+Q.new_middle_nsdap = 15;
+Q.new_middle_other = 12;
 
 Q.rural_spd = 10;
 Q.rural_sapd = 0;
@@ -257,19 +257,19 @@ Q.rural_kpd = 0;
 Q.rural_z = 5;
 Q.rural_ddp= 5;
 Q.rural_dvp = 15;
-Q.rural_dnvp = 45;
-Q.rural_nsdap = 5;
-Q.rural_other = 10;
+Q.rural_dnvp = 26;
+Q.rural_nsdap = 17;
+Q.rural_other = 8;
 
-Q.unemployed_spd = 25;
+Q.unemployed_spd = 24;
 Q.unemployed_sapd = 0;
-Q.unemployed_kpd = 55;
+Q.unemployed_kpd = 57;
 Q.unemployed_z = 1;
 Q.unemployed_ddp = 0;
 Q.unemployed_dvp = 0;
 Q.unemployed_dnvp = 5;
-Q.unemployed_nsdap = 15;
-Q.unemployed_other = 9;
+Q.unemployed_nsdap = 25;
+Q.unemployed_other = 7;
 
 Q.catholics_spd = 15;
 Q.catholics_sapd = 0;
@@ -291,26 +291,26 @@ Q.lumpenprole = 0;
 // note: the Z figures also include the BVP (Bavarian people's party)
 // since they were ideologically similar, but they were separate parties.
 // They did not have a CDU/CSU-style relationship.
-Q.spd_r = 26;
+Q.spd_r = 29;
 Q.sapd_r = 0;
-Q.kpd_r = 9;
-Q.z_r = 17;
-Q.ddp_r = 6;
-Q.dvp_r = 10;
-Q.dnvp_r = 20;
+Q.kpd_r = 11;
+Q.z_r = 16;
+Q.ddp_r = 5;
+Q.dvp_r = 9;
+Q.dnvp_r = 16;
 Q.nsdap_r = 3;
-Q.other_r = 9;
+Q.other_r = 11;
 
 // diff from prev
-Q.old_spd_r = 26;
+Q.old_spd_r = 29;
 Q.old_sapd_r = 0;
-Q.old_kpd_r = 9;
-Q.old_z_r = 17;
-Q.old_ddp_r = 6;
-Q.old_dvp_r = 10;
-Q.old_dnvp_r = 20;
+Q.old_kpd_r = 11;
+Q.old_z_r = 16;
+Q.old_ddp_r = 5;
+Q.old_dvp_r = 9;
+Q.old_dnvp_r = 16;
 Q.old_nsdap_r = 3;
-Q.old_other_r = 9;
+Q.old_other_r = 11;
 
 // for changing the DDP's name to the DStP
 Q.ddp_name = "DDP";
@@ -329,13 +329,13 @@ Q.economic_records = [];
 // State of the government
 Q.president = "Hindenburg";
 // starting chancellor: Wilhelm Marx
-Q.chancellor = "Marx";
-Q.chancellor_party = 'Z';
-Q.spd_in_government = 0;
+Q.chancellor = "Müller";
+Q.chancellor_party = 'SPD';
+Q.spd_in_government = 1;
 Q.z_in_government = 1;
-Q.ddp_in_government = 0;
+Q.ddp_in_government = 1;
 Q.dvp_in_government = 1;
-Q.dnvp_in_government = 1;
+Q.dnvp_in_government = 0;
 Q.kpd_in_government = 0;
 Q.nsdap_in_government = 0;
 
@@ -344,7 +344,7 @@ Q.in_right_coalition = 0;
 Q.in_weimar_coalition = 0;
 // Grand coalition = SPD + Z + BVP + DDP + DVP
 // also includes the "new grand coalition" of SPD + Z + BVP + DDP + DVP + Others
-Q.in_grand_coalition = 0;
+Q.in_grand_coalition = 1;
 // Popular front = SPD + KPD + Z + DDP
 Q.in_popular_front = 0;
 // left coalition = SPD + KPD + left-splinters
@@ -359,7 +359,7 @@ Q.in_minority_government = 0;
 // national unity governmet
 
 // if you're in a coalition, this is an incremental counter for how many times dissent has happened from the right.
-Q.coalition_dissent = 0;
+Q.coalition_dissent = 2;
 // dissent from the KPD, in a popular front or left front government
 Q.kpd_coalition_dissent = 0;
 
@@ -372,31 +372,33 @@ Q.minority_government = 0;
 // ministries - which parties control the ministries?
 // starting with the 4th Marx cabinet https://en.wikipedia.org/wiki/Fourth_Marx_cabinet
 // is the agricultural ministry useful at all?
-Q.foreign_minister = 'Streseman';
+Q.foreign_minister = 'Curtius';
 Q.foreign_minister_party = 'DVP';
-Q.interior_minister = 'von Keudell';
-Q.interior_minister_party = 'DNVP';
-Q.justice_minister = 'Hergt';
-Q.justice_minister_party = 'DNVP';
-Q.labor_minister = 'Brauns';
-Q.labor_minister_party = 'Z';
+Q.interior_minister = 'Severing';
+Q.interior_minister_party = 'SPD';
+Q.justice_minister = 'Koch-Weser';
+Q.justice_minister_party = Q.ddp_name;
+Q.labor_minister = 'Wissel';
+Q.labor_minister_party = 'SPD';
 Q.reichswehr_minister = 'Groener';
 Q.reichswehr_minister_party = 'I';
-Q.economic_minister = 'Curtius';
-Q.economic_minister_party = 'DVP';
-Q.finance_minister = 'Köhler';
-Q.finance_minister_party = 'Z';
-Q.agriculture_minister = 'Schiele';
-Q.agriculture_minister_party = 'DNVP';
+Q.economic_minister = 'Schmidt';
+Q.economic_minister_party = 'SPD';
+Q.finance_minister = 'Moldenhauer';
+Q.finance_minister_party = 'DVP';
+Q.agriculture_minister = 'Dietrich';
+Q.agriculture_minister_party = 'DDP';
 
 // Events: what has occurred?
-Q.panzerkreuzer_seen = 0;
-Q.panzerkreuzer_funded = 0;
+Q.panzerkreuzer_seen = 1;
+Q.panzerkreuzer_funded = 1;
 Q.panzerkreuzer_failed = 0;
 Q.unemployment_insurance_seen = 0;
+Q.black_thursday_seen = 1;
+Q.stresemann_dead = 1;
 // unemployment insurance event is seen if the unemployment level is at least 4 more than the threshold...
 Q.unemployment_insurance_threshold = 10;
-Q.blutmai = 0;
+Q.blutmai = 1;
 Q.return_to_normalcy = 0;
 Q.normalcy_month = Math.floor(Math.random() * 12) + 1;
 
@@ -404,7 +406,7 @@ Q.normalcy_month = Math.floor(Math.random() * 12) + 1;
 Q.judicial_reform = 0;
 Q.bureaucratic_reform = 0;
 Q.military_reform = 0;
-Q.womens_rights = 0;
+Q.womens_rights = 1;
 // level of welfare relative to 1928 (can go negative)
 Q.welfare = 0;
 // level of support for farmers
@@ -414,16 +416,16 @@ Q.land_reform = 0;
 Q.works_program = 0;
 Q.wtb_implemented = 0;
 // Relations with the Western countries (France, UK).
-Q.west_relation = 0;
+Q.west_relation = -1;
 // Relations with the Eastern countries (Poland, Czechoslovakia)
-Q.east_relation = 0;
+Q.east_relation = -1;
 // Relations with the Soviet Union
 Q.soviet_relation = 0;
 // How much have we exposed the secret rearmament programs?
 Q.rearmament_exposed = 0;
 // reparations vs baseline: young plan is -1.
 Q.reparations = 0;
-Q.reparations_negotiation = 0;
+Q.reparations_negotiation = -1;
 // nationalization_progress is part of the left economic plan.
 Q.nationalization_progress = 0;
 // socializations is part of the economic democracy card.
@@ -501,14 +503,14 @@ Q.streetfighting_timer = 0;
 Q.peoples_party_timer = 0;
 Q.weimar_plan_timer = 0;
 // n_elections is the number of elections that have happened since the start of the game.
-Q.n_elections = 0;
+Q.n_elections = 1;
 // number of elections without a clear majority.
 Q.no_majority_elections = 0;
 // elections are not on a timer, but rather there is an indicator for whether you're in an electoral cycle.
-Q.in_election = 1;
-Q.next_election_year = 1928;
+Q.in_election = 0;
+Q.next_election_year = 1932;
 Q.next_election_month = 5;
-Q.next_election_time = 5;
+Q.next_election_time = 50;
 // government affairs timers
 Q.agricultural_policy_timer = 0;
 Q.domestic_enemies_timer = 0;
