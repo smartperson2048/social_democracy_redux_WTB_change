@@ -669,6 +669,8 @@ For other, non-difficulty related tweaks.
 - @disable_normalize: Disable experimental support changes.
 - @enable_hyperinflation: Enable hyperinflation (janky)
 - @disable_hyperinflation: Disable hyperinflation
+- @1930: Begin the game in 1930. (WIP)
+- @1928: Begin the game in 1928.
 - @menu: Back.
 
 @disable_end
@@ -714,6 +716,15 @@ on-arrival: hyperinflation_enabled = 0
 go-to: menu
 
 Hyperinflation disabled.
+
+@1930
+view-if: year != 1930
+go-to: 1930_root
+set-jump: root.menu
+
+@1928
+view-if: year != 1928
+go-to: start_menu_2
 
 @menu
 

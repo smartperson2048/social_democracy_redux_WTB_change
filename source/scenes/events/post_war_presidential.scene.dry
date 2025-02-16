@@ -235,8 +235,12 @@ if (Q.schumacher_campaign) {
 }
 if (Q.thalmann_campaign) {
     Q.thalmann_votes += Q.kpd_normalized;
-    Q.thalmann_votes += (Q.rfb_force/1000);
-    Q.thalmann_votes += (Q.kpd_influence/100);
+    if (Q.rfb_force) {
+        Q.thalmann_votes += (Q.rfb_force/1000);
+    }
+    if (Q.kpd_influence) {
+        Q.thalmann_votes += (Q.kpd_influence/100);
+    }
     if (Q.spd_support_thalmann) {
         Q.thalmann_votes += Q.spd_normalized;
         Q.thalmann_votes += Q.sapd_normalized;
@@ -253,8 +257,12 @@ if (Q.thalmann_campaign) {
 if (Q.munzenburg_campaign) {
     Q.munzenburg_votes += Q.kpd_normalized;
     Q.munzenburg_votes += Q.sapd_normalized;
-    Q.munzenburg_votes += (Q.rfb_force/1500);
-    Q.munzenburg_votes += (Q.kpd_influence/150);
+    if (Q.rfb_force) {
+        Q.munzenburg_votes += (Q.rfb_force/1500);
+    }
+    if (Q.kpd_influence) {
+        Q.munzenburg_votes += (Q.kpd_influence/150);
+    }
     if (Q.spd_support_munzenburg) {
         Q.munzenburg_votes += Q.spd_normalized;
         if (Q.gessler_campaign) {
