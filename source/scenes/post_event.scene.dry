@@ -1210,7 +1210,7 @@ if (Q.month_actions >= 1) {
             }
         }
     }
-    if (Q.chancellor = "Gessler") {
+    if (Q.chancellor == "Groener") {
         Q.workers_nsdap -= 5/12;
         Q.unemployed_nsdap -= 6/12;
         Q.new_middle_nsdap -= 5/12;
