@@ -23,7 +23,7 @@ if (Q.budget > 0) {
 // moved demographic changes to post_event
 !}
 tags: event
-view-if: year = 1930 and month = 1 
+view-if: year = 1930 and month = 1 and 1930_seen != 1
 priority: 2
 max-visits: 1
 
