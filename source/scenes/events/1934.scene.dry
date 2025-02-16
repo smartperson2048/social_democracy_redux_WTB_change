@@ -10,6 +10,10 @@ if (Q.unemployed >= 20) {
     Q.unemployed -= 2;
     Q.inflation += 1;
 }
+if (Q.inflation < -5) {
+    Q.unemployed -= 1;
+    Q.inflation += 2;
+}
 if (Q.economic_growth > 2) {
     Q.budget += 1;
     if ((Q.upper_taxes_rates+Q.lower_tax_rates) >= 5) {
