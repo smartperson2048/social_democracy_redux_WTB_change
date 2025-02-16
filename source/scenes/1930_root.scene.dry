@@ -2,9 +2,9 @@ title: 1930 root
 on-arrival: {!
 Q.started = 1;
 // time elapsed (in months)
-Q.time = 26;
+Q.time = 24;
 Q.year = 1930;
-Q.month = 3;
+Q.month = 1;
 // how many actions have been taken this month?
 Q.month_actions = 0;
 
@@ -61,9 +61,9 @@ Q.radicalization = 0;
 // Support for the WTB plan and proto-Keynesian works creation plans in general
 Q.wtb_support = 0;
 // Support for Pacifism within the SPD relative to 1928
-Q.pacifism = 0;
+Q.pacifism = 2;
 // Support for democratic reform within the SPD relative to 1928
-Q.democratization = 0;
+Q.democratization = 2;
 // Support for a communist coalition relative to 1928
 Q.communist_coalition = 0;
 // economic_plan: have we adopted *any* economic plan?
@@ -91,10 +91,10 @@ Q.weimar_willingness = 0
 // organizations
 
 // inter-party relations
-Q.z_relation = 42;
-Q.kpd_relation = 10;
+Q.z_relation = 45;
+Q.kpd_relation = 15;
 Q.ddp_relation = 60;
-Q.dvp_relation = 25;
+Q.dvp_relation = 28;
 // DNVP and NSDAP are invariably hostile
 Q.DNVP_relation = 10;
 Q.NSDAP_relation = 0;
@@ -207,7 +207,7 @@ Q.inflation = -3.8;
 Q.economic_growth = -1.5;
 
 
-Q.strife = 0;
+Q.strife = 2;
 
 // quality of life (as % of 1928 - currently unused - should be welfare-adjusted.)
 Q.workers_qol = 100;
@@ -237,8 +237,8 @@ Q.old_middle_kpd = 0;
 Q.old_middle_z = 5;
 Q.old_middle_ddp = 9;
 Q.old_middle_dvp = 24;
-Q.old_middle_dnvp = 24;
-Q.old_middle_nsdap = 24;
+Q.old_middle_dnvp = 25;
+Q.old_middle_nsdap = 23;
 Q.old_middle_other = 9;
 
 Q.new_middle_spd = 3;
@@ -247,8 +247,8 @@ Q.new_middle_kpd = 1;
 Q.new_middle_z = 10;
 Q.new_middle_ddp = 20;
 Q.new_middle_dvp = 20;
-Q.new_middle_dnvp = 10;
-Q.new_middle_nsdap = 18;
+Q.new_middle_dnvp = 11;
+Q.new_middle_nsdap = 17;
 Q.new_middle_other = 12;
 
 Q.rural_spd = 8;
@@ -257,8 +257,8 @@ Q.rural_kpd = 0;
 Q.rural_z = 5;
 Q.rural_ddp = 5;
 Q.rural_dvp = 10;
-Q.rural_dnvp = 22;
-Q.rural_nsdap = 28;
+Q.rural_dnvp = 23;
+Q.rural_nsdap = 27;
 Q.rural_other = 10;
 
 Q.unemployed_spd = 25;
@@ -396,7 +396,6 @@ Q.panzerkreuzer_failed = 0;
 Q.unemployment_insurance_seen = 0;
 Q.black_thursday_seen = 1;
 Q.stresemann_dead = 1;
-Q.levi_dead = 1;
 // unemployment insurance event is seen if the unemployment level is at least 4 more than the threshold...
 Q.unemployment_insurance_threshold = 10;
 Q.blutmai = 1;
