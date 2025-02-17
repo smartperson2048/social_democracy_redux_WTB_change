@@ -10,11 +10,13 @@ new-page: true
 
 This mod adds a variety of changes to the base game, mostly in the form of flavor and minor improvements.
 
+- @left: Left Plan + Council flavor
+- @centrist: Center flavor
 - @moderate: Reformist Plan flavor
 - @economics: Economic changes
-- @left: Left Plan + Council flavor
 - @sapd: SAPD flavor
 - @extension: Content to 1936
+- @start_dates: 1930 start date
 - @civil_war_flavor: Civil War flavor
 - @weakened_presidency_hitler: Weakened Presidency + Hitler takeover flavor
 - @coalition_flavor: Coalition flavor
@@ -47,6 +49,18 @@ I have added hyperinflation if you have a big budget deficit and high inflation,
 You can rally alongside the KPD for the Left Plan on May Day, leading to confrontations with the fascists and bourgeois outrage. Additionally, you can transition into a full Soviet Republic through a constitutional amendment that comes after the Left Plan.
 
 - @flavors: Back
+
+@centrist
+
+= Centrist flavor
+
+The Centrists now fill their historical niche of being acceptable to both sides of the party and controlling dissent, and you might find the party a lot less stable without them. Furthermore, if the crisis gets too bad, Hilferding may eventually concede to the necessity of an economic plan.
+
+@start_dates
+
+= 1930 start date
+
+You can now start the game in January 1930 for a real challenge. The depression has already hit and your coalition is on the verge of collapse.
 
 @sapd
 
@@ -152,9 +166,11 @@ The mod also contains many small changes that I felt would be good additions to 
 
 **11/2/2025**: Post civil war elections added & new mechanic to radicalize the new middle class, increasing support and making them less offended by leftist actions
 
+**13/2/2025**: Minor faction rework, changing dissent to emphasize the historical Centrist niche of keeping the party together
+
 **14/2/2025**: Hilferding eventually concedes to the necessity of an economic plan...
 
-**17/2/2025**: 1930 start date
+**17/2/2025**: 1930 start date for those who want a challenge!
 
 - @flavors: Back
 
