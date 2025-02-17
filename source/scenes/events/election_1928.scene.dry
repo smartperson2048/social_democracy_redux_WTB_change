@@ -1109,7 +1109,7 @@ go-to: no_majority_bruning_toleration if (no_majority_elections <= 3 and anti_de
 
 
 @hindenburg_appoints_papen
-on-arrival: chancellor = "Papen"; chancellor_party = "I"; next_election_time = time+3; next_election_month = month + 3; next_election_year = year; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12; sa_banned = 0; pro_republic -= 8; finance_minister_party = "I"; interior_minister_party = "I"; economic_minister_party = "I"; labor_minister_party = "I"; foreign_minister_party = "I"; agriculture_minister_party = "I"; reichswehr_minister = "I";
+on-arrival: chancellor = "Papen"; chancellor_party = "I"; next_election_time = time+3; next_election_month = month + 3; next_election_year = year; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12; sa_banned = 0; pro_republic -= 8; finance_minister_party = "I"; interior_minister_party = "I"; economic_minister_party = "I"; labor_minister_party = "I"; foreign_minister_party = "I"; agriculture_minister_party = "I"; reichswehr_minister = "I"; papen_two_term = 1;
 
 There is no path to a majority government. President Hindenburg is tired of the chaos, and appoints Franz von Papen as chancellor instead of Brüning. Papen is a indenpendent formerly from the Center Party, and is significantly to the right of the majority of the Center Party.
 
@@ -1229,6 +1229,7 @@ We have supported a minority government led by the Center Party under Chancellor
 
 @no_majority_papen
 on-arrival: pro_republic -= 10; next_election_time = time+3; next_election_month = month + 3; next_election_year = year; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12; no_majority_papen_elections += 1; nazi_peak = 1; nazi_peak_timer = 2; nazi_peak_timer += (nsdap_votes/5); workers_ndap -= 6; new_middle_nsdap -= 6; old_middle_nsdap -= 6; rural_nsdap -= 6; unemployed_nsdap -= 6; workers_nsdap -= 3 if largest_party == "NSDAP"; unemployed_nsdap -= 3 if largest_party == "NSDAP"; old_middle_nsdap -= 3 if largest_party == "NSDAP"; new_middle_nsdap -= 3 if largest_party == "NSDAP"; rural_nsdap -= 3 if largest_party == "NSDAP"; 
+go-to: papen_second_term if papen_two_term
 
 After the elections, Papen is still deeply unpopular, without any hint of coalition support, and there is a vote of no confidence called against him almost immediately. No matter how we vote, the measure would pass. The Reichstag is dissolved once more.
 
@@ -1236,6 +1237,10 @@ New elections have been set for [+ next_election_month : month +] [+ next_electi
 
 Nazi refusal to support Papen's government has lead to confusion and disappointment amongst its far-right base.
 
+@papen_second_term
+on-arrival: judicial_reform -= 2 if judicial_reform >= 2; reichswehr_loyalty -= 0.05; workers_dnvp += 3; new_middle_dnvp += 6; old_middle_dnvp += 8; rural_dnvp += 8; catholics_dnvp += 4; sh_strength += 50; workers_spd -= 3; workers_kpd -= 3; unemployed_kpd -= 2; dvp_relation -= 5; 
+
+Papen has spent this time passing, with Hindenburg's consent, decree after decree that has launched his primary backers in the DNVP back into the forefront of reactionary politics and dismantled our democratic reforms across the country.
 
 @no_majority_papen_2
 on-arrival: chancellor = "Schleicher"; pro_republic -= 10; next_election_time = time+5; next_election_month = month + 5; next_election_year = year; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12; finance_minister_party = "I"; interior_minister_party = "I"; economic_minister_party = "I"; labor_minister_party = "I"; foreign_minister_party = "I"; agriculture_minister_party = "I"; reichswehr_minister = "I";
