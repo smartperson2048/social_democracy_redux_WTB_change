@@ -3,7 +3,7 @@ new-page: true
 is-card: true
 card-image: img/petition_referendum.jpg
 view-if: referendum_timer = 0 and (spd_in_government == 0 or spd_toleration == 1)
-on-arrival: referendum_timer += 6; month_actions += 1
+on-arrival: referendum_timer += 6; month_actions += 1;
 tags: govt_affairs
 
 = Direct Democracy
@@ -18,7 +18,7 @@ Should we initiate any petitions?
 
 @petitions
 subtitle: [? if radio < 2 : -2 resources ?][? if radio >= 2 : -1 resource. Our investment into radio stations has made it easier to initiate petitions. ?]
-on-arrival: resources -= 2 if radio < 2; resources -= 1 if radio >= 2
+on-arrival: resources -= 2 if radio < 2; resources -= 1 if radio >= 2; petition_initiated = 1;
 choose-if: (resources >= 2 and radio < 2) or (resources >= 1 and radio >= 2)
 unavailable-subtitle: [? if radio < 2 : -2 resources. ?][? if radio >= 2 : -1 resource. ?] We don't have the resources to initiate a petition.
 
@@ -215,6 +215,6 @@ unavailable-subtitle: Pushing through constitutional reforms is unfeasable so lo
 go-to: constitutional_reform.reforms_menu
 
 @no_petition
-on-arrival: resources += 1 if radio >= 2; resources += 2 if radio < 2
+on-arrival: resources += 1 if radio >= 2 and petition_initiated; resources += 2 if radio < 2 and petition_initiated; petition_initiated = 0
 
 We will not attempt any referendums right now.
