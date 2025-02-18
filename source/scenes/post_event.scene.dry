@@ -781,12 +781,18 @@ if (Q.month_actions >= 1) {
            Q.new_middle_other += 2/12;
            Q.old_middle_other += 2/12;
         }
-        if (Q.economic_plan){
+        if (Q.economic_plan) {
             Q.workers_spd += 4*(1-Q.dissent)/12;
             Q.unemployed_spd += 4*(1-Q.dissent)/12;
         }
     }
     if (Q.year >= 1933) {
+        if (Q.largest_party != "NSDAP" && Q.pro_republic < 55) {
+            Q.pro_republic += 5/12;
+            if (Q.spd_toleration || Q.spd_in_government) {
+                Q.pro_republic += 4/12*(1-Q.dissent)
+            }
+        }
         if (Q.return_to_normalcy) {
             // return to normalcy -> voters return to the base
             if (Q.new_middle_ddp_normalized < 40) {
@@ -1028,6 +1034,7 @@ if (Q.month_actions >= 1) {
         if (Q.nazi_peaked) {
             Q.nazi_peak = 0;
         } 
+        Q.pro_republic += 2/5;
         if (Q.workers_nsdap > 0) {
             Q.workers_nsdap -= 10/5;
             Q.workers_kpd += 2/5;
