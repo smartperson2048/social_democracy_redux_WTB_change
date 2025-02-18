@@ -165,7 +165,7 @@ Threatened with a civil war, and unwilling to fight anymore, President [+ presid
 - @hitler_takes_power
 
 @presidential_support
-on-arrival: reichswehr_loyalty += 0.1 if president == "Gessler; reichswehr_loyalty += 0.2 if chancellor == "Groener";
+on-arrival: reichswehr_loyalty += 0.1 if president == "Gessler"; reichswehr_loyalty += 0.2 if chancellor == "Groener";
 
 Luckily, President [+ president +] is on our side in this crisis. He has recognized the coup for what it is, and is prepared to stand by the government if we resist.
 
