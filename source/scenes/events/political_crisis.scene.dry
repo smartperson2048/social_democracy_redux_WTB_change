@@ -14,7 +14,7 @@ go-to: gessler_crisis if president == "Gessler" and not presidential_powers; ade
 For multiple elections in a row now, no government has been able to be formed. This has been destroying the trust of the German people in their democracy, and all eyes turn to the president to see what he will do.
 
 @gessler_crisis
-on-arrival: chancellor = "Groener"; spd_toleration = 0; chancellor_party = "I"; time_to_election = 12+strife; strife -= 3; sa_militancy -= 0.1; rb_militancy -= 0.1 if rb_militancy >= 0.1; rfb_militancy -= 0.1; sh_militancy -= 0.05; 
+on-arrival: chancellor = "Groener"; spd_toleration = 0; chancellor_party = "I"; time_to_election = 12+strife; strife -= 3; sa_militancy -= 0.1; rb_militancy -= 0.1 if rb_militancy >= 0.1; rfb_militancy -= 0.1; sh_militancy -= 0.05; reichswehr_loyalty += 0.1;
 go-to: fascist_uprising if coup_progress >= 10 and sa_force+sh_force >= 50 and nsdap_r+dnvp_r >= 40; next_election_time if coup_progress < 10 or sa_force+sh_force < 45 or nsdap_r+dnvp_r < 35
 
 Otto Gessler has become increasingly influenced by his inner cadre of military men and seeing the total inability of the Reichstag to form a government has caved to their increasing calls for martial law. 
@@ -28,7 +28,7 @@ go-to: next_election_time
 Adenauer, tired of the chaos, sacks the current chancellor and replaces him with Adam Stegerwald, who has launched a sweeping campaign for the Center Party, calling for law and order and harshly attacking the Nazis as being, in a sense, 'posers', for throwing Germany into disarray while claiming to desire nothing but its greatness.
 
 @eckener_crisis
-on-arrival: chancellor = "Groener"; spd_toleration = 0; chancellor_party = "I"; time_to_election = 6+strife; strife -= 3; sa_militancy -= 0.1; rb_militancy -= 0.1 if rb_militancy >= 0.1; rfb_militancy -= 0.1; sh_militancy -= 0.05; 
+on-arrival: chancellor = "Groener"; spd_toleration = 0; chancellor_party = "I"; time_to_election = 6+strife; strife -= 3; sa_militancy -= 0.1; rb_militancy -= 0.1 if rb_militancy >= 0.1; rfb_militancy -= 0.1; sh_militancy -= 0.05; reichswehr_loyalty += 0.05;
 go-to: fascist_uprising if coup_progress >= 10 and sa_force+sh_force >= 45 and nsdap_r+dnvp_r >= 35; next_election_time if coup_progress < 10 or sa_force+sh_force < 45 or nsdap_r+dnvp_r < 35
 
 Hugo Eckener, seeing the devolving situation in Germany and convinced that a strong hand is needed, appoints Wilhelm Groener chancellor of a temporary military cabinet and declared martial law, swearing this as a temporary measure to secure Germany's future.
