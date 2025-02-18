@@ -4,7 +4,7 @@ view-if: year >= 1931 and not economic_plan and left_strength < 50 and labor_str
 max-visits: 1
 tags: event
 new-page: true
-on-arrival: crisis_program_timer = 0
+on-arrival: crisis_program_timer = 0; crisis_urgency += 1
 
 = Centrists concede
 
