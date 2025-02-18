@@ -992,7 +992,7 @@ if (Q.month_actions >= 1) {
             Q.catholics_other -= 3/12;
             Q.unemployed_other -= 2/12;
         }
-        if (Q.black_thursday_seen && Q.nazi_urgency && !Q.return_to_normalcy) {
+        if (Q.black_thursday_seen && Q.nazi_urgency && !Q.return_to_normalcy && !Q.capital_nazi && Q.kpd_relation < 39) {
             Q.kpd_relation += Q.nazi_urgency/3;
         }
     }
