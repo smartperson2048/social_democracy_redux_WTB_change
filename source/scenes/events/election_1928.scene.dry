@@ -1238,7 +1238,7 @@ New elections have been set for [+ next_election_month : month +] [+ next_electi
 Nazi refusal to support Papen's government has lead to confusion and disappointment amongst its far-right base.
 
 @papen_second_term
-on-arrival: judicial_reform -= 2 if judicial_reform >= 2; reichswehr_loyalty -= 0.05; workers_dnvp += 3; new_middle_dnvp += 6; old_middle_dnvp += 8; rural_dnvp += 8; catholics_dnvp += 4; sh_strength += 50; workers_spd -= 3; workers_kpd -= 3; unemployed_kpd -= 2; dvp_relation -= 5; 
+on-arrival: judicial_reform -= 2 if judicial_reform >= 2; reichswehr_loyalty -= 0.05; workers_dnvp += 2; new_middle_dnvp += 5; old_middle_dnvp += 6; rural_dnvp += 6; catholics_dnvp += 3; sh_strength += 50; workers_spd -= 3; workers_kpd -= 3; unemployed_kpd -= 2; dvp_relation -= 5; 
 
 Papen has spent this time passing, with Hindenburg's consent, decree after decree that has launched his primary backers in the DNVP back into the forefront of reactionary politics and dismantled our democratic reforms across the country.
 

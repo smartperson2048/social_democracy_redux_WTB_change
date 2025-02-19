@@ -1221,19 +1221,19 @@ if (Q.month_actions >= 1) {
         }
     }
     if (Q.chancellor == "Groener") {
-        Q.workers_nsdap -= 5/12;
-        Q.unemployed_nsdap -= 6/12;
-        Q.new_middle_nsdap -= 5/12;
-        Q.old_middle_nsdap -= 5/12;
-        Q.rural_nsdap -= 4/12;
-        Q.workers_other += 3/12;
-        Q.new_middle_other += 4/12;
-        Q.old_middle_other += 4/12;
-        Q.rural_other += 4/12;
-        Q.workers_kpd -= 3/12;
-        Q.workers_spd -= 1/12;
-        Q.unemployed_kpd -= 3/12;
-        Q.unemployed_spd -= 1/12;
+        Q.workers_nsdap -= 8/12;
+        Q.unemployed_nsdap -= 12/12;
+        Q.new_middle_nsdap -= 8/12;
+        Q.old_middle_nsdap -= 8/12;
+        Q.rural_nsdap -= 6/12;
+        Q.workers_other += 4/12;
+        Q.new_middle_other += 6/12;
+        Q.old_middle_other += 6/12;
+        Q.rural_other += 6/12;
+        Q.workers_kpd -= 2/12;
+        Q.workers_spd -= 2/12;
+        Q.unemployed_kpd -= 2/12;
+        Q.unemployed_spd -= 2/12;
         Q.sa_strength -= 20/12;
         Q.sa_militancy -= 0.05/12;
         Q.coup_progress += 2/12;
