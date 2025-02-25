@@ -1192,8 +1192,10 @@ if (Q.month_actions >= 1) {
             Q.unemployed_kpd += 5/12;
             Q.workers_kpd += 3/12;
         }
-        Q.unemployed_kpd += Q.kpd_influence;
-        Q.workers_kpd += (Q.kpd_influence/2);
+        if (Q.kpd_influence) {
+            Q.unemployed_kpd += Q.kpd_influence;
+            Q.workers_kpd += (Q.kpd_influence/2);
+        }
     }
     if (Q.party_bans && !Q.constitutional_reform) {
         Q.constitutional_reform = 1;
