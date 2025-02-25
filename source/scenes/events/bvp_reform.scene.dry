@@ -2,6 +2,8 @@ title: The Bavarian...Workers' Party?
 subtitle: The Bavarians adjust to the new political climate.
 tags: event
 view-if: supreme_soviet and not z_banned
+max-visits: 1
+new-page: true
 on-arrival: bvp_name = "BAP"
 
 = The Bavarian Workers' Party
