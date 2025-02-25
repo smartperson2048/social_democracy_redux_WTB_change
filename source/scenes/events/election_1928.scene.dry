@@ -214,8 +214,8 @@ if (Q.sapd_formed == 1) {
         },
         {
             "id": "bvp",
-            "legend": "BVP",
-            "name": "BVP",
+            "legend": Q.bvp_name,
+            "name": Q.bvp_name,
             "seats": 3*5,
         },
         {
@@ -336,7 +336,7 @@ go-to: coalition_menu
 
 {!<tr><td><div class="box" style='background-color:#000'> </div> !} Z: {!</td><td>!} [+ z_minus_bvp_r +]% {!</td><td>!} [+ str_change_z +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#69A2BE'> </div> !} BVP: {!</td><td>!} 3% {!</td><td>!} 0 {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#69A2BE'> </div> !} [+ bvp_name +]: {!</td><td>!} 3% {!</td><td>!} 0 {!</td></tr>!}
 
 {!<tr><td><div class="box" style='background-color:#D5AC27'> </div> !} DVP: {!</td><td>!} [+ dvp_r +]% {!</td><td>!} [+ str_change_dvp +] {!</td></tr>!}
  
@@ -351,11 +351,11 @@ go-to: coalition_menu
 
 Weimar Coalition (SPD + Z + [+ ddp_name +]): [+ weimar_coalition +]%
 
-Grand Coalition (SPD + Z + BVP + [+ ddp_name +] + DVP): [+ grand_coalition +]%
+Grand Coalition (SPD + Z + [+ bvp_name +] + [+ ddp_name +] + DVP): [+ grand_coalition +]%
 
-Bourgeois Coalition (Z + BVP + [+ ddp_name +] + DVP + Others): [+ bourgeois_coalition +]%
+Bourgeois Coalition (Z + [+ bvp_name +] + [+ ddp_name +] + DVP + Others): [+ bourgeois_coalition +]%
 
-Right-wing Coalition (Z + BVP + DVP + Others + DNVP): [+ right_coalition +]%
+Right-wing Coalition (Z + [+ bvp_name +] + DVP + Others + DNVP): [+ right_coalition +]%
 
 [? if nazi_urgency <= 1 and nsdap_r >= 15 : The rapid rise in NSDAP votes is extremely worrying. Many had believed that the party was moribound; now, some of us consider it to be the greatest threat to democracy in Germany. ?]
 
@@ -397,8 +397,8 @@ The constitutional bourgeois parties have enough votes to form a coalition on th
 - @let_it_form: Let it form.
 
 @plead_grand
-subtitle: SPD + Z + BVP + [+ ddp_name +] + DVP  ([+ grand_coalition +]%)
-unavailable-subtitle: SPD + Z + BVP + [+ ddp_name +] + DVP  ([+ grand_coalition +]%) - The DVP is unwilling to enter such a government[? if z_relation < 30 :, as is the Center party?].
+subtitle: SPD + Z + [+ bvp_name +] + [+ ddp_name +] + DVP  ([+ grand_coalition +]%)
+unavailable-subtitle: SPD + Z + [+ bvp_name +] + [+ ddp_name +] + DVP  ([+ grand_coalition +]%) - The DVP is unwilling to enter such a government[? if z_relation < 30 :, as is the Center party?].
 view-if: not grand_coalition_failed and grand_coalition >= 50
 choose-if: dvp_relation >= 30 and z_relation >= 30
 go-to: grand_coalition
@@ -832,13 +832,13 @@ The Communists quickly rebuild Germany in the Soviet image, bringing it into the
 
 @right_coalition
 title: A right-wing coalition may be formed.
-subtitle: Z + BVP + DVP + DNVP + Others ([+ right_coalition +]%)
+subtitle: Z + [+ bvp_name +] + DVP + DNVP + Others ([+ right_coalition +]%)
 unavailable-subtitle: The DNVP is not interested in a coalition with the Center.
 view-if: right_coalition >= 50
 choose-if: year < 1928 or dnvp_reform
 go-to: no_right_coalition if year >= 1930 and not dnvp_reform; right_coalition_2 if year <= 1929 and not dnvp_reform; right_coalition_3 if dnvp_reform
 
-There are enough votes for a right-wing coalition of the Center (+ BVP), DVP, DNVP, and minor conservative parties.
+There are enough votes for a right-wing coalition of the Center (+ [+ bvp_name +]), DVP, DNVP, and minor conservative parties.
 
 @no_right_coalition
 go-to: no_majority
@@ -1134,10 +1134,10 @@ The third option is to have new elections.
 
 @new_grand_coalition
 title: A "New Grand Coalition" of all the constitutional parties?
-subtitle: SPD + Z + BVP + [+ ddp_name +] + DVP + Others ([+ neo_weimar_coalition +]%)
+subtitle: SPD + Z + [+ bvp_name +] + [+ ddp_name +] + DVP + Others ([+ neo_weimar_coalition +]%)
 view-if: neo_weimar_coalition >= 50 and grand_coalition < 50
 choose-if: z_relation >= 50 and dvp_relation >= 30 and president != "Hitler"
-unavailable-subtitle: SPD + Z + BVP + [+ ddp_name +] + DVP + Others ([+ neo_weimar_coalition +]%) - [? if z_relation < 50 : We do not have adequate relations with the Center Party. ?][? if dvp_relation < 30 : We do not have adequate relations with the DVP. ?][? if president == "Hitler" : Hitler refuses to appoint a chancellor under such a governing arrangement. ?]
+unavailable-subtitle: SPD + Z + [+ bvp_name +] + [+ ddp_name +] + DVP + Others ([+ neo_weimar_coalition +]%) - [? if z_relation < 50 : We do not have adequate relations with the Center Party. ?][? if dvp_relation < 30 : We do not have adequate relations with the DVP. ?][? if president == "Hitler" : Hitler refuses to appoint a chancellor under such a governing arrangement. ?]
 
 How do we convince vehemently anti-socialist parties to allow us to form a majority coalition? Our largely benevolent relations with the Center and DVP may allow us some leverage.
 
@@ -1175,8 +1175,8 @@ We have assembled a new coalition under Otto Braun.
 
 @unity_government
 title: The Center Party offers a "Government of National Unity" under Chancellor Joseph Wirth.
-subtitle: SPD + Z + BVP + [+ ddp_name +] + DVP + Others ([+ neo_weimar_coalition +]%)
-unavailable-subtitle: SPD + Z + BVP + [+ ddp_name +] + DVP + Others ([+ neo_weimar_coalition +]%) - [? if president == "Hitler" : Hitler refuses to appoint a chancellor under such a governing arrangement. ?]
+subtitle: SPD + Z + [+ bvp_name +] + [+ ddp_name +] + DVP + Others ([+ neo_weimar_coalition +]%)
+unavailable-subtitle: SPD + Z + [+ bvp_name +] + [+ ddp_name +] + DVP + Others ([+ neo_weimar_coalition +]%) - [? if president == "Hitler" : Hitler refuses to appoint a chancellor under such a governing arrangement. ?]
 choose-if: president != "Hitler"
 view-if: z_party_leader == "Joos" and neo_weimar_coalition >= 50 and weimar_coalition < 50  and z_relation >= 10 and (anti_democratic_coalition + unemployed) >= 50 and unity_refused != 1
 
@@ -1543,8 +1543,8 @@ go-to: coalition_menu if bourgeois_coalition < 50; let_it_form if bourgeois_coal
 title: We can form a Grand Coalition.
 view-if: grand_coalition >= 50 and grand_coalition_failed == 0
 choose-if: president != "Hitler" and dvp_willing == 1
-unavailable-subtitle: SPD + Z + BVP + [+ ddp_name +] + DVP ([+ grand_coalition +]%) - [? if president == "Hitler" : Hitler refuses to appoint a chancellor under such a governing arrangement. ?][? if not dvp_willing : The DVP is unwilling to work with us. ?]
-subtitle: SPD + Z + BVP + [+ ddp_name +] + DVP  ([+ grand_coalition +]%)
+unavailable-subtitle: SPD + Z + [+ bvp_name +] + [+ ddp_name +] + DVP ([+ grand_coalition +]%) - [? if president == "Hitler" : Hitler refuses to appoint a chancellor under such a governing arrangement. ?][? if not dvp_willing : The DVP is unwilling to work with us. ?]
+subtitle: SPD + Z + [+ bvp_name +] + [+ ddp_name +] + DVP  ([+ grand_coalition +]%)
 on-arrival: in_grand_coalition = 1; in_popular_front = 0; in_left_front = 0
 go-to: grand_coalition_spd_lead if ((n_elections <= 1 and largest_party == "SPD") or (largest_party == "SPD" and spd_r >= 30) and spd_sackings <= 0) or president = "Braun"; grand_coalition_z_lead if president != "Braun" and (spd_sackings > 0 or (n_elections > 1 and spd_r < 30) or (n_elections <= 1 and largest_party != "SPD"))
 
@@ -1554,7 +1554,7 @@ go-to: grand_coalition_spd_lead if ((n_elections <= 1 and largest_party == "SPD"
 @grand_coalition_z_lead
 go-to: grand_coalition_z_lead_2 if dvp_relation >= 30; grand_coalition_fail if dvp_relation < 30
 
-There are enough votes to form a majority coalition consisting of the SPD, Center (Z), Bavarian People's (BVP), Democratic ([+ ddp_name +]), and People's (DVP) parties. Given our rather weak electoral performance, [? if spd_no_confidence = 1 : and our previous vote of no confidence against the government, ?][? if no_confidence_against_spd = 1 : and the vote of no confidence against us, ?] President Hindenburg has asked the Center Party to take the lead role in forming a government.
+There are enough votes to form a majority coalition consisting of the SPD, Center (Z), Bavarian People's ([+ bvp_name +]), Democratic ([+ ddp_name +]), and People's (DVP) parties. Given our rather weak electoral performance, [? if spd_no_confidence = 1 : and our previous vote of no confidence against the government, ?][? if no_confidence_against_spd = 1 : and the vote of no confidence against us, ?] President Hindenburg has asked the Center Party to take the lead role in forming a government.
 
 # TODO: if the SPD participated in bringing down the previous government via a vote-of-no-confidence, or if we were essentially removed from government by our coalition partners, we should be more reluctant to participate in a new government.
 
@@ -1672,7 +1672,7 @@ We have decided to tolerate Brüning's government. This means that we will vote 
 @grand_coalition_fail
 on-arrival: grand_coalition_failed = 1
 
-Unfortunately, the DVP and BVP are unwilling to enter into another coalition with the SPD, so the grand coalition is unable to be formed.
+Unfortunately, the DVP and [+ bvp_name +] are unwilling to enter into another coalition with the SPD, so the grand coalition is unable to be formed.
 
 - @no_majority: Thus, there is no clear majority.
 - @brauns_dilemma
@@ -1689,7 +1689,7 @@ go-to: dvp_conservative if stresemann_dead == 1; dvp_majority if stresemann_dead
 @dvp_majority
 go-to: join_bruning
 
-Under the influence of Gustav Stresemann, the DVP agrees to allow us into the coalition, and so does the BVP.
+Under the influence of Gustav Stresemann, the DVP agrees to allow us into the coalition, and so does the [+ bvp_name +].
 
 
 @dvp_conservative
@@ -1723,7 +1723,7 @@ As expected, the DVP is too set in their anti-democratic ways.
 @grand_coalition_spd_lead
 on-arrival: leverage -= 15 if dvp_relation < 20
 
-As expected, the SPD is the largest party, and this time, we are expected to take the lead role in the formation of the next government, including selecting the chancellor. President [+ president +] has asked us to form a majority coalition with the Center (Z), Bavarian People's (BVP), Democratic ([+ ddp_name +]), and People's (DVP) parties.
+As expected, the SPD is the largest party, and this time, we are expected to take the lead role in the formation of the next government, including selecting the chancellor. President [+ president +] has asked us to form a majority coalition with the Center (Z), Bavarian People's ([+ bvp_name +]), Democratic ([+ ddp_name +]), and People's (DVP) parties.
 
 [? if dvp_relation < 20 : As our relation with the DVP is poor, they are demanding more minister posts in order to remain part of the coalition. ?]
 
