@@ -243,8 +243,8 @@ else {
         },
         {
             "id": "bvp",
-            "legend": Q.bvp_name,
-            "name": Q.bvp_name,
+            "legend": "BAP",
+            "name": "BAP",
             "seats": 3*5,
         },
         {
