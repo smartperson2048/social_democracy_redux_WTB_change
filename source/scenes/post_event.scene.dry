@@ -1147,7 +1147,7 @@ if (Q.month_actions >= 1) {
             Q.unemployed_kpd -= 3/12;
         }
     }
-    if (Q.victory_republic && Q.kpd_relation >= 60) {
+    if (Q.victory_republic && Q.kpd_relation >= 60 && Q.kpd_influence) {
         Q.rfb_strength += (Q.kpd_influence/4);
     }
     if (Q.dvp_relation >= 50 && Q.capital_strike_progress > 0 && Q.in_grand_coalition) {
