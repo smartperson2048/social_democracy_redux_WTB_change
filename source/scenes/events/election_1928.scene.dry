@@ -1739,8 +1739,8 @@ However, the DVP and SPD significantly diverge on the matter of the budget. Whil
 
 - @postpone: Postpone the issue until after the Young Plan's ratification, preserving the status quo until then.
 - @austerity: Agree to moderate tax increases across the board, and no further modifications.
-- @blow_up: Withdraw from talks, and refuse to form a government.
 - @resign_prussia: Surrender Prussia to the bourgeoisie and delay making a committment.
+- @blow_up: Withdraw from talks, and refuse to form a government.
 
 @postpone
 on-arrival: left_dissent += 5; status_quo = 1; budget_resolved = 1
@@ -1751,7 +1751,7 @@ The DVP has agreed to this compromise. Our party's left-wing is upset, but what 
 
 @austerity
 on-arrival: left_dissent += 5; labor_dissent += 5; upper_tax_rates += 1; lower_tax_rates += 1; budget += 2; workers_spd -= 4; unemployed_spd -= 4; status_quo = 1; budget_resolved = 1; dvp_relation += 4*(1-dissent); kpd_relation -= 3
-subtitle: The bourgeois parties will be pleasantly pleased, but our actions in government will be highly constrained. Left and Labor are both opposed.
+subtitle: +3 Budget. The bourgeois parties will be pleasantly pleased, but our actions in government will be highly constrained. Left and Labor are both opposed.
 go-to: grand_coalition_spd_lead
 
 The DVP has agreed to this compromise. Our party's left-wing and the ADGB are both upset, but what must be done must be done.
