@@ -662,7 +662,7 @@ Q.z_relation = 41;
 Q.kpd_relation = 16;
 Q.dvp_relation = 31;
 Q.budget = 0;
-Q.status_quo;
+Q.status_quo = 1;
 Q.budget_resolved = 1;
 this.state.disableSaves = true;
 !}
