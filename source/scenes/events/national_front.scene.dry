@@ -15,7 +15,7 @@ The moderate right, of course, believes that they are using the NSDAP's Reichsta
 - @worrying: Worrying.
 
 @worrying
-on-arrival:{!
+on-arrival: {!
 var national_gain = Q.nationalism/4;
 var nazi_portion = (100-Q.pro_republic)/4;
 nazi_portion += Q.nazi_urgency;
