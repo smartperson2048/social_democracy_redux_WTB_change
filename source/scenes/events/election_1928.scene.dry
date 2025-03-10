@@ -3,7 +3,7 @@ new-page: true
 tags: event
 priority: -1
 view-if: ((year = next_election_year and month >= next_election_month) or (year > next_election_year)) and not supreme_soviet
-on-arrival: reichswehr_loyalty -= 0.2 if reichswehr_loyalty >= 0.4 and chancellor == "Groener"; old_economic_health = economic_health; hindenburg_angry = 0; unity_refused = 0; wirth_lead = 0; dvp_willing = 0; dvp_willing = 1 if ((dvp_relation+spd_votes+(pro_republic/6)) >= ((100-pro_republic)+capital_strike_progress+(coup_progress/2))); z_willing = 0; z_willing = 1 if z_relation >= 50 or (z_relation >= 25 and bourgeois_coalition < 50)
+on-arrival: status_quo = 0; reichswehr_loyalty -= 0.2 if reichswehr_loyalty >= 0.4 and chancellor == "Groener"; old_economic_health = economic_health; hindenburg_angry = 0; unity_refused = 0; wirth_lead = 0; dvp_willing = 0; dvp_willing = 1 if ((dvp_relation+spd_votes+(pro_republic/6)) >= ((100-pro_republic)+capital_strike_progress+(coup_progress/2))); z_willing = 0; z_willing = 1 if z_relation >= 50 or (z_relation >= 25 and bourgeois_coalition < 50)
 on-departure: month_actions += 1; in_election = 0; next_election_year = next_election_year + 4; n_elections += 1; next_election_time = time + 48; papen_chancellor_timer = 4;
 set-jump: post_election_1928
 
@@ -1731,12 +1731,48 @@ go-to: no_majority
 
 As expected, the DVP is too set in their anti-democratic ways.
 
+@budget_dispute
 
+As expected, the SPD is the largest party, and this time, we are expected to take the lead role in the formation of the next government, including selecting the chancellor. President [+ president +] has asked us to form a majority coalition with the Center (Z), Bavarian People's ([+ bvp_name +]), Democratic ([+ ddp_name +]), and People's (DVP) parties.
+
+However, the DVP and SPD significantly diverge on the matter of the budget. While the DVP would like to dismantle the welfare state in order to save Germany's finances, this is obviously unacceptable to us. And while we would be happy to increase taxes on the rich, they would not have that. Before a government can be formed, this dispute must be resolved.
+
+- @postpone: Postpone the issue until after the Young Plan's ratification, preserving the status quo until then.
+- @austerity: Agree to moderate tax increases across the board, and no further modifications.
+- @blow_up: Withdraw from talks, and refuse to form a government.
+- @resign_prussia: Surrender Prussia to the bourgeoisie and delay making a committment.
+
+@postpone
+on-arrival: left_dissent += 5; status_quo = 1; budget_resolved = 1
+subtitle: We won't need to make a commitment for now, but our freedom in government will be severely constrained. The Left is opposed.
+go-to: grand_coalition_spd_lead
+
+The DVP has agreed to this compromise. Our party's left-wing is upset, but what must be done must be done.
+
+@austerity
+on-arrival: left_dissent += 5; labor_dissent += 5; upper_tax_rates += 1; lower_tax_rates += 1; budget += 2; workers_spd -= 4; unemployed_spd -= 4; status_quo = 1; budget_resolved = 1; dvp_relation += 4*(1-dissent); kpd_relation -= 3
+subtitle: The bourgeois parties will be pleasantly pleased, but our actions in government will be highly constrained. Left and Labor are both opposed.
+go-to: grand_coalition_spd_lead
+
+The DVP has agreed to this compromise. Our party's left-wing and the ADGB are both upset, but what must be done must be done.
+
+@blow_up
+subtitle: The right-wing parties will likely form a coalition.
+on-arrival: dvp_relation -= 5; z_relation -= 3; left_strength += 5; left_dissent -= 5;
+go-to: right_coalition_2
+
+@resign_prussia
+subtitle: Is surrendering such a bulwark of democracy worth it for one government?
+on-arrival: reformist_dissent += 5; spd_prussia = 0; labor_dissent += 5; center_dissent += 5
+go-to: grand_coalition_spd_lead
+
+Braun has resigned as Minister-President of Prussia. The bourgeois parties accept this concession for now, and the budget issue is left unresolved.
 
 @grand_coalition_spd_lead
 on-arrival: leverage -= 15 if dvp_relation < 20
+go-to: budget_dispute if not budget_resolved and historical_mode
 
-As expected, the SPD is the largest party, and this time, we are expected to take the lead role in the formation of the next government, including selecting the chancellor. President [+ president +] has asked us to form a majority coalition with the Center (Z), Bavarian People's ([+ bvp_name +]), Democratic ([+ ddp_name +]), and People's (DVP) parties.
+[? if n_elections <= 1 : As expected, the SPD is the largest party, and this time, we are expected to take the lead role in the formation of the next government, including selecting the chancellor. President [+ president +] has asked us to form a majority coalition with the Center (Z), Bavarian People's ([+ bvp_name +]), Democratic ([+ ddp_name +]), and People's (DVP) parties. ?]
 
 [? if dvp_relation < 20 : As our relation with the DVP is poor, they are demanding more minister posts in order to remain part of the coalition. ?]
 
