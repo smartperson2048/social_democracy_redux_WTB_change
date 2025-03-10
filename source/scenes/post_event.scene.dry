@@ -863,6 +863,17 @@ if (Q.month_actions >= 1) {
                 Q.workers_other += 2/12;
                 Q.unemployed_other += 2/12;
             }
+            if (Q.nazi_reform && Q.dnvp_reform && Q.dvp_relation < 35) {
+                if (Q.spanish_civil_war && Q.spain_involved) {
+                    Q.national_front_progress += Q.total_aid;
+                }
+                Q.national_front_progress += Q.nationalism/10;
+                Q.national_front_progress += Q.capital_strike_progress;
+                Q.national_front_progress += Q.nsdap_r+Q.dnvp_r;
+                Q.national_front_progress += Q.nationalization_progress;
+                Q.national_front_progress += Q.homosexual_rights;
+                Q.national_front_progress += Q.inflation;
+            }
         }
         if (Q.unemployed < 30 && !Q.nazi_peak && !Q.nazi_reform && Q.nsdap_votes >= Q.nationalism/5) {
             Q.rural_nsdap -= 2/12;

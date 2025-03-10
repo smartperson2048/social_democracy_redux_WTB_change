@@ -99,7 +99,7 @@ if (Q.nsdap_r >= Q.spd_r && Q.nsdap_r >= Q.kpd_r) {
 if (Q.kpd_r >= Q.spd_r && Q.kpd_r >= Q.nsdap_r) {
     Q.largest_party = 'KPD';
 }
-
+Q.z_minus_bvp_r = Q.z_r - 3;
 // coalitions
 Q.weimar_coalition = Q.spd_r + Q.ddp_r + Q.z_r - 3;
 Q.grand_coalition = Q.spd_r + Q.ddp_r + Q.z_r + Q.dvp_r;
@@ -117,6 +117,11 @@ Q.neo_weimar_coalition = Q.spd_r + Q.ddp_r + Q.z_r + Q.dvp_r + Q.other_r;
 Q.hitler_right_coalition = Q.z_r + Q.dnvp_r + Q.nsdap_r;
 // Progressive coalition isn't going to be implemented as a distinct coalition but it's the coalition that lets you pass improved women's rights/gay rights
 Q.progressive_coalition = Q.spd_r + Q.sapd_r + Q.kpd_r + Q.ddp_r;
+// nationaal front
+Q.national_front_r = Q.nsdap_r + Q.dnvp_r + Q.dvp_r + Q.other_r + 3;
+if (Q.z_national) {
+    Q.national_front_r += Q.z_minus_bvp_r;
+}
 
 Q.leverage = Q.spd_r;
 
@@ -165,8 +170,6 @@ Q.interior_goal_completed = 0;
 Q.reichswehr_goal_completed = 0;
 
 Q.strike_term_seen = 0;
-
-Q.z_minus_bvp_r = Q.z_r - 3;
 
 // understanding the enemy
 if (Q.nsdap_r >= 15) {
@@ -381,10 +384,20 @@ There are some potential coalition arrangements.
 - @left_coalition
 - @kpd_majority
 - @popular_front_coalition
+- @national_front_coalition
 - @no_majority_hitler
 - @no_govt_3
 
 # TODO: black-brown coalition
+
+@national_front_coalition
+title: A "National Front" coalition
+view-if: national_front
+choose-if: national_front_r >= 50
+subtitle: [? if z_national : Z + ?]BVP + DVP + Others + DNVP + NSDAP ([+ national_front_r +])
+unavailable_subtitle: [? if z_national : Z + ?]BVP + DVP + Others + DNVP + NSDAP ([+ national_front_r +]) - The National Front lacks a majority.
+on-arrival: started = 0
+go-to: root
 
 @bourgeois_coalition
 title: A "Bourgeois" Coalition
@@ -915,7 +928,7 @@ Luckily, the difficult decision has been made for us, as regardless of how we vo
 title: There is no clear governing majority.
 view-if: (weimar_coalition < 50 or not z_willing) and (grand_coalition < 50 or grand_coalition_failed == 1 or dvp_willing != 1) and president = "Adenauer" and far_right_coalition < 50 and (right_coalition < 50 or right_coalition_failed) and bourgeois_coalition < 50
 on-arrival: no_majority_elections += 1
-go-to: bruning_lead if no_majority_elections < 2; stegerwald_lead if (((z_relation + spd_r < z_r + dvp_r + other_r) or (z_relation + spd_r < national_front and z_national_front == 1)) and bourgeois_coalition+far_right_coalition >= 50) and no_majority_elections >= 2; wirth_lead if (((z_relation + spd_r >= z_r + dvp_r + other_r and z_national_front != 1) or (z_relation + spd_r >= national_front)) or bourgeois_coalition+far_right_coalition < 50) and no_majority_elections >= 2
+go-to: bruning_lead if no_majority_elections < 2; stegerwald_lead if (((z_relation + spd_r < z_r + dvp_r + other_r) or (z_relation + spd_r < national_front and z_national == 1)) and bourgeois_coalition+far_right_coalition >= 50) and no_majority_elections >= 2; wirth_lead if (((z_relation + spd_r >= z_r + dvp_r + other_r and z_national != 1) or (z_relation + spd_r >= national_front)) or bourgeois_coalition+far_right_coalition < 50) and no_majority_elections >= 2
 
 @stegerwald_lead
 on-arrival: chancellor = "Stegerwald"; chancellor_party = "Z"
