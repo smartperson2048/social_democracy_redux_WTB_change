@@ -51,10 +51,11 @@ Q.rural_other -= 4;
 Q.rural_dnvp -= 2;
 Q.new_middle_dnvp -= 2;
 Q.old_middle_dnvp -= 2;
-if (Q.peoples_party) {
-    Q.new_middle_spd -= 6;
-    Q.old_middle_spd -= 8;
-    Q.rural_spd -= 8;
+if (Q.peoples_party || Q.spd_votes >= 30) {
+    Q.new_middle_spd -= 8;
+    Q.old_middle_spd -= 10;
+    Q.rural_spd -= 10;
+    Q.catholics_spd -= 4;
 } 
 !}
 
