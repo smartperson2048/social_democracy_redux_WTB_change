@@ -34,9 +34,9 @@ Q.new_middle_nsdap += 10;
 Q.old_middle_nsdap += 10; 
 Q.unemployed_nsdap += 10; 
 Q.unemployed_kpd -= 12; 
-Q.rural_dnvp += 6;
-Q.old_middle_dnvp += 5;
-Q.new_middle_dnvp += 5;
+Q.rural_dnvp += 3;
+Q.old_middle_dnvp += 2;
+Q.new_middle_dnvp += 2;
 Q.workers -= 5;
 !}
 
