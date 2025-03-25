@@ -611,6 +611,7 @@ The Center Party isn't so easily convinced by our arguments, and wants more than
 
 - @bribe_z: Give them the resources they need.
 - @joos_clutch: Surely Joos can convince his party?
+- @concordat_kaas: Remind Kaas of the Concordat.
 - @failure_z: We've done all we can.
 
 @bribe_z
@@ -627,6 +628,13 @@ on-arrival: against_enable += z_r; z_voted = 1
 go-to: enabling_menu
 
 Despite initial resistance, Joseph Joos eventually convinces a majority of his party to vote against the Enabling Act.
+
+@concordat_kaas
+view-if: z_party_leader == "Kaas" and reichskonkordat
+on-arrival: against_enable += z_r; z_voted = 1
+go-to: enabling_menu
+
+We remind Kaas of the Reichskonkordat that Breitscheid brought about, removing a significant reason for the Center Party to side with the Nazis. Reminded, they promise to vote against.
 
 @failure_z
 on-arrival: z_relation -= 10; enabling_r += z_r; z_voted = 1
