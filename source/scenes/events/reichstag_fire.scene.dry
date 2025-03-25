@@ -31,7 +31,7 @@ Q.rb_strength -= 250;
 Q.rfb_banned = 1; 
 Q.rfb_militancy -= 0.1; 
 Q.sa_militancy += 0.05; 
-Q.workers_kpd -= 10; 
+Q.workers_kpd -= 8;
 Q.workers_nsdap += 10;
 Q.new_middle_nsdap += 12;
 Q.old_middle_nsdap += 12;
@@ -40,13 +40,16 @@ Q.unemployed_kpd -= 10;
 Q.catholics_nsdap += 8;
 Q.catholics_spd -= 6;
 Q.catholics -= 1;
-Q.workers -= 4;
-Q.new_middle_dvp -= 3;
-Q.old_middle_dvp -= 3;
-Q.rural_dvp -= 3;
-Q.new_middle_other -= 2;
-Q.old_middle_other -= 2;
-Q.rural_other -= 2;
+Q.workers -= 3;
+Q.new_middle_dvp -= 4;
+Q.old_middle_dvp -= 4;
+Q.rural_dvp -= 4;
+Q.new_middle_other -= 4;
+Q.old_middle_other -= 4;
+Q.rural_other -= 4;
+Q.rural_dnvp -= 2;
+Q.new_middle_dnvp -= 2;
+Q.old_middle_dnvp -= 2;
 !}
 
 What can we do? With Prussia gone, there is no way we can resist by force. We will just have to try and deny the Nazis an electoral majority.
