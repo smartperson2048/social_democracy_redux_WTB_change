@@ -1,0 +1,23 @@
+title: Reichstag Fire!
+subtitle: The Reichstag has been burned down, and the Nazis are using this as a pretext to consolidate power.
+view-if: impending_fire and (month = hitler_month + 1 or (year = hitler_year + 1 and hitler_month = 12))
+tags: event
+max-visits: 1
+
+= Reichstag Fire
+
+The Reichstag has been burned to the ground, ostensibly by a foreign communist. Whether their accusations are true or not, the Nazis have used this as a pretext to consolidate power as [+ president +] signs the **Decree of the Reich President for the Protection of People and State**, or **Reichstag Fire Decree** suspending essential civil liberties under the pretext of preventing communist revolution. 
+
+This decree gives [+ chancellor +] wide-ranging powers with which to suppress us and arrest our leaders in the leadup to the [+ next_election_month : months +] election. Despite its blatantly dictatorial nature, there is not much we can do about it.
+
+- @fight: Except fight, before it is too late.
+- @lib: We will have to hope for the best.
+
+@fight
+on-arrival: spd_rebel = 1
+go-to: civil_war
+
+@lib
+on-arrival: rb_militancy = 0; rb_banned = 1; rb_strength -= 250; rfb_banned = 1; rfb_militancy -= 0.1; sa_militancy += 0.05; workers_kpd -= 8; workers_nsdap += 6; new_middle_nsdap += 6; old_middle_nsdap += 6; unemployed_nsdap += 8; unemployed_kpd -= 10; rural_dnvp += 4; old_middle_dnvp += 4; new_middle_dnvp += 2; workers -= 4
+
+What can we do? With Prussia gone, there is no way we can resist by force. We will just have to try and deny the Nazis an electoral majority.
