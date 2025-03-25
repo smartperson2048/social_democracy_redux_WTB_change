@@ -1114,11 +1114,29 @@ There is no path to an obviously workable majority. President Adenauer has given
 title: There is no clear governing majority.
 view-if: (weimar_coalition < 50 or z_willing != 1) and (grand_coalition < 50 or grand_coalition_failed == 1 or dvp_willing != 1) and president = "Hindenburg" and far_right_coalition < 50 and (right_coalition < 50 or right_coalition_failed) and bourgeois_coalition < 50
 on-arrival: no_majority_elections += 1
-go-to: no_majority_bruning if chancellor = "Brüning" or chancellor = "Wirth"; no_majority_papen if chancellor = "Papen" and no_majority_papen_elections == 0; no_majority_papen_2 if chancellor == "Papen" and no_majority_papen_elections > 0; no_majority_schleicher if chancellor = "Schleicher"; no_majority_spd if chancellor_party = "SPD" or chancellor == "Marx"; no_majority_seldte if chancellor == "Seldte"
+go-to: no_majority_bruning if chancellor = "Brüning" or chancellor = "Wirth"; no_majority_papen if chancellor = "Papen" and no_majority_papen_elections == 0; no_majority_papen_2 if chancellor == "Papen" and no_majority_papen_elections > 0; no_majority_schleicher if chancellor = "Schleicher"; no_majority_spd if chancellor_party = "SPD" or chancellor == "Marx"; no_majority_seldte if chancellor == "Seldte"; no_majority_nsdap if hitler_seen and chancellor_party == "NSDAP"
 
 # TODO: if there is an anti-democratic coalition majority, you should appoint Papen.
 
 # either new elections, or Hindenburg appoints either Brüning, Papen, Schleicher, or Hitler.
+
+@no_majority_nsdap
+
+Following the election, despite heavy rigging, [+ chancellor +] still lacks a majority. However, with many communists and even some socialists jailed, can a no confidence vote still pass?
+
+- @can_it_pass: Let's see.
+
+@can_it_pass
+on-arrival: against_hitler += spd_r*(1-(left_strength/100)); against_hitler += ddp_r if ddp_relation >= 55; against_hitler += z_r if z_relation >= 55; against_hitler += dvp_r if dvp_relation >= 60
+go-to: far_right_incumbent if against_hitler < 50; hitler_defeated if against_hitler >= 50
+
+[? if against_hitler < 50 : The motion of no confidence against Hitler is defeated, allowing the far-right coalition to, despite lacking a majority, govern nonetheless. ?]
+
+@hitler_defeated
+on-arrival: chancellor = "Papen"; chancellor_party = "I"; time_to_election = 3; workers -= 2; catholics -= 1; workers_nsdap += 4; new_middle_nsdap += 8; old_middle_nsdap += 8; rural_nsdap += 8; catholics_nsdap += 4; unemployed_nsdap += 6; old_middle_dnvp += 5; rural_dnvp += 5; new_middle_dnvp += 4; catholics_dnvp += 4
+call: set_next_election_time
+
+The motion of no confidence in Hitler succeeds, and he is replaced by vice-chancellor Papen, who calls snap elections. The Nazis, still controlling most state governments after the Reichstag Fire Decree, continue to consolidate, hoping to gain in the next elections, while Papen looks to the Reichswehr in the hopes of declaring martial law.
 
 @no_majority_seldte
 go-to: martial_law if army_force+sh_force >= 50 and dnvp+sh_force < 50 and reichswehr_loyalty < 0.3 and strife >= 4 and not presidential_powers and (president == "Hindenburg" or (president == "Gessler" and reichswehr_loyalty < 0.15)); switch_to_papen if president != "Gessler" and (harzburg_r < 25 or seldte_times >= 1) and not (army_force+sh_force >= 50 and dnvp+sh_force < 50 and reichswehr_loyalty < 0.3 and strife >= 4 and not presidential_powers and (president == "Hindenburg" or (president == "Gessler" and reichswehr_loyalty < 0.15))); seldte_continue if (harzburg_r >= 25 and seldte_times < 1) and not (army_force+sh_force >= 50 and dnvp+sh_force < 50 and reichswehr_loyalty < 0.3 and strife >= 4 and not presidential_powers and (president == "Hindenburg" or (president == "Gessler" and reichswehr_loyalty < 0.15)))
