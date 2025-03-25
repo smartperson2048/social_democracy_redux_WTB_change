@@ -31,7 +31,7 @@ Do we realize that this means civil war, against the full force of the state?
 - @give_up: We are not ready for war. Instead, we will vote against the nazis in the Reichstag.
 
 @give_up
-on-arrival: next_election_time = time+2; next_election_month = month+2; next_election_year = year; next_election_year += 1 if month >= 12; next_election_month -= 12 if month >= 12; impending_fire = 1; rb_militancy -= 0.1 if rb_militancy >= 0.1; rb_strength -= 250; sa_strength += 100; sa_militancy += 0.05; workers_nsdap += 6; new_middle_nsdap += 4; old_middle_nsdap += 4; rural_nsdap += 5; unemployed_nsdap += 8; workers_kpd -= 3; workers_spd -= 3; kpd_relation += 10; unemployed_kpd -= 6; unemployed_spd -= 4
+on-arrival: impending_fire = 1; rb_militancy -= 0.1 if rb_militancy >= 0.1; rb_strength -= 250; sa_strength += 100; sa_militancy += 0.05; workers_nsdap += 6; new_middle_nsdap += 4; old_middle_nsdap += 4; rural_nsdap += 5; unemployed_nsdap += 8; workers_kpd -= 3; workers_spd -= 3; kpd_relation += 10; unemployed_kpd -= 6; unemployed_spd -= 4
 
 Speeches are made. Votes are held. Bullets fly in the streets. Some socialists are killed or jailed. Others flee the country. What can votes even do at this juncture?
 
