@@ -377,7 +377,7 @@ There are some potential coalition arrangements.
 - @right_coalition
 - @far_right_coalition
 - @no_majority
-- @no_majority_seldte
+- @no_majority_seldte2
 - @no_majority_adenauer
 - @no_majority_gessler
 - @no_majority_eckener
@@ -1064,7 +1064,7 @@ on-arrival: spd_in_government = 0; spd_toleration = 1; ddp_relation += 5; foreig
 
 We have decided to tolerate Külz's minority bourgeois government.
 
-@no_majority_seldte
+@no_majority_seldte2
 title: There is no clear governing majority.
 view-if: president == "Seldte"
 go-to: no_majority_nsdap
