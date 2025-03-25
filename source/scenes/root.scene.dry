@@ -661,9 +661,7 @@ Q.center_dissent = 25;
 Q.z_relation = 41;
 Q.kpd_relation = 16;
 Q.dvp_relation = 31;
-Q.budget = 0;
-Q.status_quo = 1;
-Q.budget_resolved = 1;
+Q.budget = 2;
 this.state.disableSaves = true;
 !}
 go-to: 1928_main
@@ -695,6 +693,8 @@ Q.z_relation -= 9;
 Q.kpd_relation -= 5;
 Q.dvp_relation -= 9;
 Q.budget -= 2;
+Q.status_quo = 1;
+Q.budget_resolved = 1;
 this.state.disableSaves = true;
 !}
 go-to: 1930_main
@@ -710,7 +710,7 @@ For other, non-difficulty related tweaks.
 - @disable_normalize: Disable experimental support changes.
 - @enable_hyperinflation: Enable hyperinflation (janky)
 - @disable_hyperinflation: Disable hyperinflation
-- @1930: Begin the game in 1930. (WIP)
+- @1930: Begin the game in 1930.
 - @1928: Begin the game in 1928.
 - @menu: Back.
 
