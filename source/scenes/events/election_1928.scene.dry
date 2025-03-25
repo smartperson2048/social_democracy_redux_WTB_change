@@ -684,7 +684,7 @@ Germany is lost.
 @enabling_act_failed
 on-arrival: sa_militancy -= 0.15; sa_strength -= 200; reichswehr_loyalty += 0.25; rb_militancy += 0.1; rb_strength += 500; kpd_relation += 25
 
-Somehow, we have stopped Hitler from passing his Enabling Act, with only [+ enabling_r +] present voting for! Growing frustrated with the chaos on the streets Hitler himself is unleashing, Hindenburg turns on him and demands his resignation while he attempts to call a constitutional referendum to pass the Enabling Act instead. The Reichsbanner swells and fighting in the streets erupts, while the army is deployed, not for but against Hitler as civil war engulfs the nation.
+Somehow, we have stopped Hitler from passing his Enabling Act, with only [+ enabling_r +]% present voting for! Growing frustrated with the chaos on the streets Hitler himself is unleashing, Hindenburg turns on him and demands his resignation while he attempts to call a constitutional referendum to pass the Enabling Act instead. The Reichsbanner swells and fighting in the streets erupts, while the army is deployed, not for but against Hitler as civil war engulfs the nation.
 
 - @civil_war: To victory!
 
