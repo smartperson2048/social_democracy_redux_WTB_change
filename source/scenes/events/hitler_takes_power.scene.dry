@@ -55,7 +55,7 @@ Q.unemployed_spd -= 4;
 
 Speeches are made. Votes are held. Bullets fly in the streets. Some socialists are killed or jailed. Others flee the country. What can votes even do at this juncture?
 
-Snap elections are called, for [+ next_election_month : months +], [+ next_election_year +]. The SA and Stalhelm begin a campaign of violent intimidation in the streets, determined to win the next elections by whatever means it takes. 
+Snap elections are called, for [+ next_election_month : month +] [+ next_election_year +]. The SA and Stalhelm begin a campaign of violent intimidation in the streets, determined to win the next elections by whatever means it takes. 
 
 @prussian_overthrow
 
