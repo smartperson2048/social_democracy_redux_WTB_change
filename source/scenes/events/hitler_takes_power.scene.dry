@@ -42,15 +42,15 @@ Q.rb_strength -= 250;
 Q.sa_strength += 100; 
 Q.sa_militancy += 0.05; 
 Q.workers_nsdap += 6; 
-Q.new_middle_nsdap += 4; 
-Q.old_middle_nsdap += 4; 
-Q.rural_nsdap += 5; 
-Q.unemployed_nsdap += 8; 
-Q.workers_kpd -= 3; 
-Q.workers_spd -= 3; 
+Q.new_middle_nsdap += 8; 
+Q.old_middle_nsdap += 8; 
+Q.rural_nsdap += 10; 
+Q.unemployed_nsdap += 12;
+Q.workers_kpd -= 6;
+Q.workers_spd -= 6;
 Q.kpd_relation += 10; 
-Q.unemployed_kpd -= 6; 
-Q.unemployed_spd -= 4;
+Q.unemployed_kpd -= 8;
+Q.unemployed_spd -= 6;
 !}
 
 Speeches are made. Votes are held. Bullets fly in the streets. Some socialists are killed or jailed. Others flee the country. What can votes even do at this juncture?
