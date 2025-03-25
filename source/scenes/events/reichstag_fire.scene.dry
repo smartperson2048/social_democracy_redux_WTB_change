@@ -23,6 +23,9 @@ We mobilize what's left of the Reichsbanner and ADGB to resist this blatant crac
 @lib
 on-arrival: {!
 Q.rb_militancy = 0;
+Q.nazi_peak = 0;
+Q.nazi_peaked = 1;
+Q.nazi_decline = 0;
 Q.rb_banned = 1; 
 Q.rb_strength -= 250; 
 Q.rfb_banned = 1; 
@@ -37,7 +40,14 @@ Q.unemployed_kpd -= 12;
 Q.rural_dnvp += 3;
 Q.old_middle_dnvp += 2;
 Q.new_middle_dnvp += 2;
+Q.catholics_nsdap += 4;
 Q.workers -= 5;
+Q.new_middle_dvp -= 3;
+Q.old_middle_dvp -= 3;
+Q.rural_dvp -= 3;
+Q.new_middle_other -= 2;
+Q.old_middle_other -= 2;
+Q.rural_other -= 2;
 !}
 
 What can we do? With Prussia gone, there is no way we can resist by force. We will just have to try and deny the Nazis an electoral majority.
