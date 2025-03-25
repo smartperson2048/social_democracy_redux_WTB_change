@@ -2,6 +2,7 @@ title: Reichstag Fire!
 subtitle: The Reichstag has been burned down, and the Nazis are using this as a pretext to consolidate power.
 view-if: impending_fire and (month = hitler_month + 1 or (year = hitler_year + 1 and hitler_month = 12))
 tags: event
+new-page: true
 max-visits: 1
 
 = Reichstag Fire
@@ -14,10 +15,29 @@ This decree gives [+ chancellor +] wide-ranging powers with which to suppress us
 - @lib: We will have to hope for the best.
 
 @fight
-on-arrival: spd_rebel = 1
+on-arrival: spd_rebel = 1; kpd_relation += 20
 go-to: civil_war
 
+We mobilize what's left of the Reichsbanner and ADGB to resist this blatant crackdown. [? if kpd_party_leader != "Conciliators" : The KPD, seeing its leaders jailed, is more inclined to join us in our final fight against fascism, but will it be enough? ?]
+
 @lib
-on-arrival: rb_militancy = 0; rb_banned = 1; rb_strength -= 250; rfb_banned = 1; rfb_militancy -= 0.1; sa_militancy += 0.05; workers_kpd -= 8; workers_nsdap += 6; new_middle_nsdap += 6; old_middle_nsdap += 6; unemployed_nsdap += 8; unemployed_kpd -= 10; rural_dnvp += 4; old_middle_dnvp += 4; new_middle_dnvp += 2; workers -= 4
+on-arrival: {!
+Q.rb_militancy = 0;
+Q.rb_banned = 1; 
+Q.rb_strength -= 250; 
+Q.rfb_banned = 1; 
+Q.rfb_militancy -= 0.1; 
+Q.sa_militancy += 0.05; 
+Q.workers_kpd -= 8; 
+Q.workers_nsdap += 6; 
+Q.new_middle_nsdap += 6; 
+Q.old_middle_nsdap += 6; 
+Q.unemployed_nsdap += 8; 
+Q.unemployed_kpd -= 10; 
+Q.rural_dnvp += 4; 
+Q.old_middle_dnvp += 4; 
+Q.new_middle_dnvp += 2; 
+Q.workers -= 4;
+!}
 
 What can we do? With Prussia gone, there is no way we can resist by force. We will just have to try and deny the Nazis an electoral majority.
