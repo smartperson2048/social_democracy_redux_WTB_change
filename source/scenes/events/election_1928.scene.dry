@@ -509,7 +509,7 @@ The Center manages to diffuse some of the hostility from the Reichswehr and the 
 title: Far-right coalition
 subtitle: NSDAP + DNVP ([+ far_right_coalition +]%)
 view-if: far_right_coalition >= 50
-go-to: far_right_win if (year >= 1932 or nsdap_r >= 44) and president != "Braun"; far_right_fail if (year < 1932 and nsdap_r < 44) and president != "Braun"; far_right_braun if president == "Braun"
+go-to: far_right_win if (year >= 1932 or nsdap_r >= 44) and president != "Braun" and not hitler_seen; far_right_fail if (year < 1932 and nsdap_r < 44) and president != "Braun" and not hitler_seen; far_right_braun if president == "Braun"; far_right_incumbent if hitler_seen
 priority: 2
 
 There are enough votes for the Nazis and the DNVP to form a coalition. [+ nsdap_leader +] has made his participation in government contingent on being appointed chancellor. It is up to President [+ president +] to decide.
@@ -543,6 +543,150 @@ Alternatively, Braun could use the emergency powers of the presidency. Article 4
 - @new_elections_2: We will have new elections.
 - @far_right_win: Let the Nazis form their government.
 
+@far_right_incumbent
+on-arrival: enabling_r += dnvp_r; enabling_r += nsdap_r; enabling_r += other_r; enabling_r += dvp_r if dvp_relation < 45; enabling_r += z_r if z_relation < 30; against_enable += spd_r*(1-(left_strength/100)); against_enable += dvp_r if dvp_relation >= 70; against_enable += z_r if z_relation >= 65; dvp_voted = 1 if dvp_relation >= 70 or dvp_relation < 45; z_voted = 1 if z_relation >= 65 or z_relation < 30
+go-to: enabling_menu
+
+Through their violent electioneering, the Nazis have, together with the DNVP, won a majority. But it is not enough, and Hitler desires total and absolute power. To this end, he has proposed an act - the "Enabling Act" - that would give him and his cabinet legislative powers, bypassing the Reichstag entirely. To pass, it requires a 2/3rds majority vote, though the KPD's deputies are under arrest, preventing them from voting against, as are our own deputies on the party's left-wing.
+
+The key link now is the Center Party. They have been a valuable partner in upholding the Weimar Constitution - will they stand by us to stop Hitler from destroying it? [? if dvp_relation >= 60 : The DVP too has been surprisingly friendly towards us. Can we convince them to stop Hitler? ?]
+
+@enabling_menu
+
+- @contact_ddp: Can we convince the [+ ddp_name +] to vote against?
+- @contact_z: Can we convince the Center Party to vote against?
+- @contact_dvp: Can we convince the DVP to vote against?
+- @voting_results: We have done all we can. Now we must vote against.
+
+@contact_dvp
+choose-if: dvp_relation >= 45 and dvp_relation < 70
+unavailable-subtitle: They've already made their decision.
+max-visits: 1
+on-arrival: dvp_relation += 5
+go-to: success_dvp if dvp_relation >= 70; partial_dvp if dvp_relation >= 52 and dvp_relation < 70; failure_dvp if dvp_relation < 52
+
+@success_dvp
+on-arrival: dvp_relation += 5; against_enable += dvp_r; dvp_voted = 1
+go-to: enabling_menu
+
+Thanks to our good relations, the DVP promises to vote against.
+
+@partial_dvp
+
+The DVP isn't convinced by our arguments, and wants more than just ideological nations of antifascism.
+
+- @bribe_dvp: Give them the resources they need.
+- @failure_dvp: We've done all we can.
+
+@bribe_dvp
+choose-if: resources >= 1
+subtitle: -1 resource
+on-arrival: resources -= 1; against_enable += dvp_r; dvp_voted = 1
+go-to: enabling_menu
+
+With our resources as well as our arguments, the DVP is convinced, and promises to vote against.
+
+@failure_dvp
+on-arrival: dvp_relation -= 10; enabling_r += dvp_r; dvp_voted = 1;
+go-to: enabling_menu
+
+Despite our best efforts, the DVP is not convinced. We'll have to hope we can lobby a majority without them.
+
+@contact_z
+choose-if: z_relation >= 30 and z_relation < 65
+unavailable-subtitle: They've already made their decision.
+max-visits: 1
+on-arrival: z_relation += 5
+go-to: success_z if z_relation >= 60; partial_z if z_relation >= 40 and z_relation < 60; failure_z if z_relation < 40
+
+@success_z
+on-arrival: z_relation += 5; against_enable += z_r; z_voted = 1;
+go-to: enabling_menu
+
+Thanks to our good relations, the Center Party promises to vote against.
+
+@partial_z
+
+The Center Party isn't so easily convinced by our arguments, and wants more than just ideological nations of antifascism.
+
+- @bribe_z: Give them the resources they need.
+- @joos_clutch: Surely Joos can convince his party?
+- @failure_z: We've done all we can.
+
+@bribe_z
+choose-if: resources >= 1
+subtitle: -1 resource
+on-arrival: resources -= 1; against_enable += z_r; z_voted = 1;
+go-to: enabling_menu
+
+With our resources as well as our arguments, the Center Party is convinced, and promises to vote against.
+
+@joos_clutch
+view-if: z_party_leader == "Joos"
+on-arrival: against_enable += z_r; z_voted = 1
+go-to: enabling_menu
+
+Despite initial resistance, Joseph Joos eventually convinces a majority of his party to vote against the Enabling Act.
+
+@failure_z
+on-arrival: z_relation -= 10; enabling_r += z_r; z_voted = 1
+go-to: enabling_menu
+
+Despite our best efforts, the Center Party is not convinced. We'll have to hope we can lobby a majority without them.
+
+@contact_ddp
+max-visits: 1
+on-arrival: ddp_relation += 5
+go-to: success_ddp if ddp_relation >= 70; partial_ddp if ddp_relation >= 45 and ddp_relation < 70; failure_ddp if ddp_relation < 45
+
+@success_ddp
+on-arrival: ddp_relation += 5; against_enable += ddp_r; ddp_voted = 1;
+go-to: enabling_menu
+
+Thanks to our good relations, the [+ ddp_name +] promises to vote against.
+
+@partial_ddp
+
+The [+ ddp_name +] isn't so easily convinced by our arguments, and wants more than just ideological nations of antifascism.
+
+- @bribe_ddp: Give them the resources they need.
+- @failure_ddp: We've done all we can.
+
+@bribe_ddp
+choose-if: resources >= 1
+subtitle: -1 resource
+on-arrival: resources -= 1; against_enable += ddp_r; ddp_voted = 1
+go-to: enabling_menu
+
+With our resources as well as our arguments, the [+ ddp_name +] is convinced, and promises to vote against.
+
+@failure_ddp
+on-arrival: ddp_relation -= 10; enabling_r += ddp_r; ddp_voted = 1
+go-to: enabling_menu
+
+Despite our best efforts, the [+ ddp_name +] is not convinced. We'll have to hope we can lobby a majority without them.
+
+@voting_results
+on-arrival: enabling_r += dvp_r if not dvp_voted; enabling_r += z_r if not z_voted; enabling_r += ddp_r if not ddp_voted; {!
+var total_r = Q.enabling_r+Q.against_enable;
+Q.enabling_r = Math.round((Q.enabling_r/total_r)*100);
+!}
+go-to: enabling_act_passed if enabling_r >= 67; enabling_act_failed if enabling_r < 67
+
+@enabling_act_passed
+
+Despite our best efforts...the Enabling Act has passed with [+ enabling_r +]% of the votes. [+ chancellor +] has near limitless power, and will begin the process of eliminating any remaining roadblocks.
+
+Germany is lost.
+
+- @game_over: Game over.
+
+@enabling_act_failed
+on-arrival: sa_militancy -= 0.15; sa_strength -= 200; reichswehr_loyalty += 0.25; rb_militancy += 0.1; rb_strength += 500; kpd_relation += 25
+
+Somehow, we have stopped Hitler from passing his Enabling Act! Growing frustrated with the chaos on the streets Hitler himself is unleashing, Hindenburg turns on him and demands his resignation while he attempts to call a constitutional referendum to pass the Enabling Act instead. The Reichsbanner swells and fighting in the streets erupts, while the army is deployed, not for but against Hitler as civil war engulfs the nation.
+
+- @civil_war: To victory!
 
 @left_coalition
 title: Is a United Left coalition possible?

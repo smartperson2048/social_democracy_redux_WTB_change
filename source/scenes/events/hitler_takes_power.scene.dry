@@ -47,10 +47,10 @@ Q.old_middle_nsdap += 8;
 Q.rural_nsdap += 10; 
 Q.unemployed_nsdap += 12;
 Q.workers_kpd -= 6;
-Q.workers_spd -= 6;
+Q.workers_spd -= 3;
 Q.kpd_relation += 10; 
 Q.unemployed_kpd -= 8;
-Q.unemployed_spd -= 6;
+Q.unemployed_spd -= 4;
 !}
 
 Speeches are made. Votes are held. Bullets fly in the streets. Some socialists are killed or jailed. Others flee the country. What can votes even do at this juncture?
