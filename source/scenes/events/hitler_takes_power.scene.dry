@@ -32,7 +32,7 @@ on-arrival: {!
 Q.next_election_time = Q.time+2;
 Q.next_election_month = Q.month+2; 
 Q.next_election_year = Q.year; 
-if (Q.month >= 12) {
+if (Q.month > 12) {
     Q.next_election_year += 1;
     Q.next_election_month -= 12;
 } 
