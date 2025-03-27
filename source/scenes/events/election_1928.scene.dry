@@ -1153,7 +1153,7 @@ As expected, the negotiations go nowhere. The Nazis are too intransingent and un
 - @no_majority: Thus, there is no clear majority.
 
 @black_brown_goring
-on-arrival: in_right_coalition = 1; judicial_reform -= 2; reichswehr_loyalty -= 0.1; pro_republic -= 5; sa_militancy -= 0.05; new_middle_nsdap += 3; old_middle_nsdap += 6; rural_nsdap += 6; new_middle_spd += 4*(1-dissent); workers_nsdap -= 4*(1-dissent); unemployed_nsdap -= 6*(1-dissent); coup_progress += political_crisis_progress; coup_progress += 2; collapse_month = month+5; collapse_year = year; collapse_year += 1 if collapse_month > 12; collapse_month -= 12 if collapse_month > 12
+on-arrival: in_right_coalition = 1; nsdap_toleration = 1; judicial_reform -= 2; reichswehr_loyalty -= 0.1; pro_republic -= 5; sa_militancy -= 0.05; new_middle_nsdap += 3; old_middle_nsdap += 6; rural_nsdap += 6; new_middle_spd += 4*(1-dissent); workers_nsdap -= 4*(1-dissent); unemployed_nsdap -= 6*(1-dissent); coup_progress += political_crisis_progress; coup_progress += 2; collapse_month = month+5; collapse_year = year; collapse_year += 1 if collapse_month > 12; collapse_month -= 12 if collapse_month > 12
 
 Somehow, the NSDAP has agreed to join Brüning's government. The breaking of the de-facto cordon sanitaire against them significantly helps to legitimize them as a constructive political party in the country, though their association with Brüning's austerity measures simultaneously helps us to break their support amongst the working class.
 
