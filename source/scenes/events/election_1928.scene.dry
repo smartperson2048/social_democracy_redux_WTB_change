@@ -3,7 +3,7 @@ new-page: true
 tags: event
 priority: -1
 view-if: ((year = next_election_year and month >= next_election_month) or (year > next_election_year)) and not supreme_soviet
-on-arrival: status_quo = 0; reichswehr_loyalty -= 0.2 if reichswehr_loyalty >= 0.4 and chancellor == "Groener"; old_economic_health = economic_health; hindenburg_angry = 0; unity_refused = 0; wirth_lead = 0; dvp_willing = 0; dvp_willing = 1 if ((dvp_relation+spd_votes+(pro_republic/6)) >= ((100-pro_republic)+capital_strike_progress+(coup_progress/2))); z_willing = 0; z_willing = 1 if z_relation >= 50 or (z_relation >= 25 and bourgeois_coalition < 50)
+on-arrival: bb_failed = 0; status_quo = 0; reichswehr_loyalty -= 0.2 if reichswehr_loyalty >= 0.4 and chancellor == "Groener"; old_economic_health = economic_health; hindenburg_angry = 0; unity_refused = 0; wirth_lead = 0; dvp_willing = 0; dvp_willing = 1 if ((dvp_relation+spd_votes+(pro_republic/6)) >= ((100-pro_republic)+capital_strike_progress+(coup_progress/2))); z_willing = 0; z_willing = 1 if z_relation >= 50 or (z_relation >= 25 and bourgeois_coalition < 50)
 on-departure: month_actions += 1; in_election = 0; next_election_year = next_election_year + 4; n_elections += 1; next_election_time = time + 48; papen_chancellor_timer = 4;
 set-jump: post_election_1928
 
@@ -1147,7 +1147,7 @@ Negotiations are long and tense, with Hitler refusing to concede the position of
 - @hitler_takes_power: What do we do now?
 
 @black_brown_failure
-on-arrival: rural_nsdap += 3; old_middle_nsdap += 3; new_middle_nsdap += 3; workers_spd += 4*(1-dissent); workers_z -= 3; unemployed_nsdap -= 3*(1-dissent); workers_nsdap -= 3*(1-dissent);
+on-arrival: bb_failed = 1; rural_nsdap += 3; old_middle_nsdap += 3; new_middle_nsdap += 3; workers_spd += 4*(1-dissent); workers_z -= 3; unemployed_nsdap -= 3*(1-dissent); workers_nsdap -= 3*(1-dissent);
 
 As expected, the negotiations go nowhere. The Nazis are too intransingent and uncompromising for the bürgerblock to stomach, and inversely the bürgerblock are too demanding and picky for the Nazis. 
 
@@ -1162,7 +1162,7 @@ Immediately, democratic reforms are undone as the cabinet sets to work sending G
 
 @no_majority
 title: There is no clear governing majority.
-view-if: (weimar_coalition < 50 or z_willing != 1) and (grand_coalition < 50 or grand_coalition_failed == 1 or dvp_willing != 1) and president = "Hindenburg" and far_right_coalition < 50 and (right_coalition < 50 or right_coalition_failed) and (hitler_right_coalition < 50 or left_strength < 50 or political_crisis_progress < 1 or chancellor != "Brüning") and bourgeois_coalition < 50
+view-if: (weimar_coalition < 50 or z_willing != 1) and (grand_coalition < 50 or grand_coalition_failed == 1 or dvp_willing != 1) and president = "Hindenburg" and far_right_coalition < 50 and (right_coalition < 50 or right_coalition_failed) and (hitler_right_coalition < 50 or left_strength < 50 or political_crisis_progress < 1 or chancellor != "Brüning" or bb_failed) and bourgeois_coalition < 50
 on-arrival: no_majority_elections += 1
 go-to: no_majority_bruning if chancellor = "Brüning" or chancellor = "Wirth"; no_majority_papen if chancellor = "Papen" and no_majority_papen_elections == 0; no_majority_papen_2 if chancellor == "Papen" and no_majority_papen_elections > 0 and not resisted_hitler; no_majority_schleicher if chancellor = "Schleicher"; no_majority_spd if chancellor_party = "SPD" or chancellor == "Marx"; no_majority_seldte if chancellor == "Seldte"; no_majority_nsdap if hitler_seen and chancellor_party == "NSDAP"; no_majority_bruning_back if chancellor == "Papen" and resisted_hitler
 
