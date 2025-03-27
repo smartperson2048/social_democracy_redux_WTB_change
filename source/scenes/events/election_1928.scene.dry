@@ -378,6 +378,7 @@ There are some potential coalition arrangements.
 - @far_right_coalition
 - @no_majority
 - @no_majority_seldte2
+- @no_majority_hitler2
 - @no_majority_adenauer
 - @no_majority_gessler
 - @no_majority_eckener
@@ -1069,6 +1070,11 @@ title: There is no clear governing majority.
 view-if: president == "Seldte"
 go-to: no_majority_nsdap
 
+@no_majority_hitler2
+title: There is no clear governing majority.
+view-if: president == "Hitler" or president == "Göring"
+go-to: no_majority_nsdap
+
 @no_majority_eckener
 title: There is no clear governing majority.
 view-if: (weimar_coalition < 50 or not z_willing) and (grand_coalition < 50 or grand_coalition_failed == 1 or dvp_willing != 1) and president = "Eckener" and far_right_coalition < 50 and (right_coalition < 50 or right_coalition_failed) and bourgeois_coalition < 50
@@ -1221,7 +1227,7 @@ There is no path to an obviously workable majority. Since President Hindenburg i
 @no_majority_hitler
 title: Hitler appoints himself chancellor.
 on-arrival: chancellor = "Hitler"; chancellor_party = "NSDAP"; foreign_minister_party = "NSDAP"; interior_minister_party = "NSDAP"; justice_minister_party = "NSDAP"; labor_minister_party = "NSDAP"; reichswehr_minister_party = "NSDAP"; economic_minister_party = "NSDAP"; finance_minister_party = "NSDAP"; agriculture_minister_party = "NSDAP"; spd_in_government = 0; spd_toleration = 0
-view-if: president == "Hitler" and far_right_coalition < 50
+view-if: president == "Hitler" and presidential_powers and far_right_coalition < 50
 
 Despite the weakened powers of the presidency, appointing a chancellor has remained the duty of the president and Hitler wastes no time in appointing himself chancellor in an unprecedented move.
 
