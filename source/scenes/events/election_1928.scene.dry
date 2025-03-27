@@ -1795,7 +1795,7 @@ If we do not at least "tolerate" the government, there will be new elections in 
 
 
 @new_elections
-view-if: anti_democratic_coalition+sapd_r <= 50 and not nazi_decline and not nazi_peak
+view-if: neo_weimar_coalition >= 50
 on-arrival: {!
 Q.next_election_month = Q.month + 3;
 Q.next_election_time = Q.time + 3;
@@ -1809,41 +1809,66 @@ if (Q.chancellor == "Brüning") {
     Q.z_relation -= 5;
     Q.dvp_relation -= 5;
 }
-Q.pro_republic -= 6;
-Q.workers_spd -= 3;
+Q.pro_republic -= 4;
 Q.new_middle_spd -= 3;
 Q.old_middle_spd -= 3;
 Q.rural_spd -= 3;
 Q.catholics_spd -= 2;
-Q.new_middle_dvp -= 6;
-Q.old_middle_dvp -= 6;
-Q.new_middle_ddp -= 4;
-Q.old_middle_ddp -= 6;
-Q.rural_dnvp -= 3;
-Q.workers_nsdap += 4;
+Q.new_middle_dvp -= 5;
+Q.old_middle_dvp -= 5;
+Q.new_middle_ddp -= 5;
+Q.old_middle_ddp -= 5;
+Q.rural_dnvp -= 4;
+Q.workers_nsdap += 3;
 Q.old_middle_nsdap += 5;
 Q.new_middle_nsdap += 5;
 Q.rural_nsdap += 5;
 Q.unemployed_nsdap += 3;
 // Thresholds are kind of arbitrary - adjusted because of negative economic effects on pro_republic
 if (Q.pro_republic < 45 && Q.pro_republic >= 36) {
-    Q.workers_spd -= 4;
+    Q.workers_spd -= 2;
 }
-if (Q.pro_republic < 36) {
+if (Q.pro_republic < 36 && Q.left_strength < 50) {
     // TODO: if you pursue a consistently revolutionary course, you might avoid this? But you might also cause a coalition between Hitler and the Center.
-    Q.z_relation -= 3;
-    Q.dvp_relation -= 3;
-    Q.workers_spd -= 6;
+    Q.z_relation -= 5;
+    Q.dvp_relation -= 5;
+    Q.ddp_relation -= 3;
+    Q.workers_spd -= 3;
     Q.unemployed_spd -= 3;
-    Q.new_middle_spd -= 4;
-    Q.old_middle_spd -= 4;
-    Q.rural_spd -= 4;
-    Q.catholics_spd -= 2;
-    Q.workers_nsdap += 6;
+    Q.new_middle_spd -= 5
+    Q.old_middle_spd -= 6;
+    Q.rural_spd -= 6;
+    Q.catholics_spd -= 3;
+    Q.workers_nsdap += 3;
     Q.old_middle_nsdap += 6;
     Q.new_middle_nsdap += 6;
     Q.rural_nsdap += 6;
-    Q.unemployed_nsdap += 6;    
+    Q.unemployed_nsdap += 4;
+}
+if (Q.left_strength >= 50) {
+    Q.z_relation -= 8;
+    Q.dvp_relation -= 8;
+    Q.ddp_relation -= 4;
+    Q.new_middle_nsdap += 4;
+    Q.old_middle_nsdap += 6;
+    Q.rural_nsdap += 6;
+    Q.rural_dnvp += 2;
+    Q.rural_dvp -= 4;
+    Q.old_middle_dvp -= 4;
+    Q.new_middle_dvp -= 4;
+    Q.new_middle_ddp -= 2;
+    Q.old_middle_other -= 2;
+    Q.rural_other -= 2;
+    Q.new_middle_other -= 2;
+    Q.sa_militancy += 0.01;
+    Q.workers_spd += Q.radicalization;
+    Q.unemployed_spd += Q.radicalization;
+    Q.old_middle_spd -= Q.radicalization;
+    Q.rural_spd -= Q.radicalization;
+    Q.pro_republic -= 4;
+    Q.unemployed_kpd += Q.strife;
+    Q.unemployed_nsdap -= Q.strife;
+    Q.coup_progress += Q.political_crisis_progress;
 }
 if (Q.far_right_coalition >= 50) {
     Q.sa_strength += 100;
@@ -1859,11 +1884,12 @@ There is no path to a workable Reichstag majority or minority government. The ne
 
 The people's faith in democracy is shaken by this ordeal. Of course, the Nazis are exploiting the instability to claim that democracy is unworkable, and that Germany needs a strong leader.
 
+[? if left_strength >= 50 : Bourgeois voters and financial backers are increasingly turning to the Nazis as defenders from potential socialist revolution, though as a result Nazi support amongst the working class is diminished. ?]
 
 @new_elections_2
-view-if: anti_democratic_coalition+sapd_r > 50 or nazi_decline or nazi_peak
+view-if: neo_weimar_coalition < 50
 call: set_next_election_time
-on-arrival: time_to_election = 3; strife += 0.5; pro_republic -= 5; rural_nsdap += 4; old_middle_nsdap += 3; new_middle_nsdap += 3; political_crisis_progress += 1
+on-arrival: time_to_election = 3; strife += 0.5; pro_republic -= 5; rural_nsdap += 2; old_middle_nsdap += 2; new_middle_nsdap += 2; political_crisis_progress += 1
 
 As the anti-democratic parties hold a majority, there is no path to a majority government. New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
 
