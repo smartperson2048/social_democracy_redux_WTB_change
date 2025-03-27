@@ -377,6 +377,7 @@ There are some potential coalition arrangements.
 - @right_coalition
 - @far_right_coalition
 - @no_majority
+- @black_brown
 - @no_majority_seldte2
 - @no_majority_hitler2
 - @no_majority_adenauer
@@ -1129,6 +1130,34 @@ There is no path to an obviously workable majority. President Adenauer has given
 - @toleration_wirth: We will tolerate Wirth.
 - @new_elections: We will have new elections.
 - @new_elections_2: We will have new elections.
+
+@black_brown
+title: Brüning turns to his right for coalition support.
+subtitle: With we on the left firmly refusing to support his government, Brüning considers a deal with the devil.
+view-if: hitler_right_coalition >= 50 and left_strength >= 50 and political_crisis_progress >= 1 and president == "Hindenburg" and chancellor == "Brüning"
+on-arrival: nazi_chance = nsdap_r; nazi_chance += left_coalition if communist_coalition >= 3 and kpd_relation >= 50; nazi_chance += rb_force+rfb_force; nazi_chance -= sa_force; nazi_chance += radicalization*political_crisis_progress*coup_progress;
+go-to: black_brown_success if nazi_chance >= 200 and not hitler_deported; black_brown_failure if nazi_chance < 150 or (nazi_chance < 200 and not hitler_deported); black_brown_goring if hitler_deported and nazi_chance >= 150
+
+@black_brown_success
+on-arrival: sa_militancy -= 0.1 if rb_force < 15; sa_strength *= 0.9 if rb_force < 15; z_relation -= 25; dvp_relation -= 25; ddp_relation -= 15
+
+Negotiations are long and tense, with Hitler refusing to concede the position of chancellor. Eventually, somehow, to prevent more elections in which we socialists may gain, the Center Party agrees to allow Hitler as chancellor in return for the majority of cabinet positions, the gradual disarmament of the SA, and assurances of safety for Catholics. Brüning reluctantly steps aside, and Hitler is sworn in as chancellor.
+
+- @hitler_takes_power: What do we do now?
+
+@black_brown_failure
+on-arrival: rural_nsdap += 3; old_middle_nsdap += 3; new_middle_nsdap += 3; workers_spd += 4*(1-dissent); workers_z -= 3; unemployed_nsdap -= 3*(1-dissent); workers_nsdap -= 3*(1-dissent);
+
+As expected, the negotiations go nowhere. The Nazis are too intransingent and uncompromising for the bürgerblock to stomach, and inversely the bürgerblock are too demanding and picky for the Nazis. 
+
+- @no_majority: Thus, there is no clear majority.
+
+@black_brown_goring
+on-arrival: in_right_coalition = 1; judicial_reform -= 2; reichswehr_loyalty -= 0.1; pro_republic -= 5; sa_militancy -= 0.05; new_middle_nsdap += 3; old_middle_nsdap += 6; rural_nsdap += 6; new_middle_spd += 4*(1-dissent); workers_nsdap -= 4*(1-dissent); unemployed_nsdap -= 6*(1-dissent); coup_progress += political_crisis_progress; coup_progress += 2; collapse_month = month+5; collapse_year = year; collapse_year += 1 if collapse_month > 12; collapse_month -= 12 if collapse_month > 12
+
+Somehow, the NSDAP has agreed to join Brüning's government. The breaking of the de-facto cordon sanitaire against them significantly helps to legitimize them as a constructive political party in the country, though their association with Brüning's austerity measures simultaneously helps us to break their support amongst the working class.
+
+Immediately, democratic reforms are undone as the cabinet sets to work sending Germany back into the dark ages. For now, democracy is being preserved, but the Nazis are sure to take their first opportunity to fully destroy it.
 
 @no_majority
 title: There is no clear governing majority.
