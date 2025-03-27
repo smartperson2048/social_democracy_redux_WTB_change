@@ -2011,7 +2011,7 @@ go-to: right_coalition_2
 
 @resign_prussia
 subtitle: Is surrendering such a bulwark of democracy worth it for one government?
-on-arrival: reformist_dissent += 5; spd_prussia = 0; labor_dissent += 5; center_dissent += 5
+on-arrival: reformist_dissent += 5; spd_prussia = 0; budget_resolved = 1; labor_dissent += 5; center_dissent += 5
 go-to: grand_coalition_spd_lead
 
 Braun has resigned as Minister-President of Prussia. The bourgeois parties accept this concession for now, and the budget issue is left unresolved.
