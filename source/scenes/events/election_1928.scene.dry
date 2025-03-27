@@ -114,7 +114,7 @@ Q.anti_democratic_coalition = Q.kpd_r + Q.nsdap_r + Q.dnvp_r;
 // aka everyone except nazi, kpd, dnvp
 Q.neo_weimar_coalition = Q.spd_r + Q.ddp_r + Q.z_r + Q.dvp_r + Q.other_r;
 // Hitler + Right-wing parties (only comes into effect if you've alienated Z too badly)
-Q.hitler_right_coalition = Q.z_r + Q.dnvp_r + Q.nsdap_r;
+Q.hitler_right_coalition = Q.z_r + Q.dnvp_r + Q.nsdap_r + Q.dvp_r + Q.other_r;
 // Progressive coalition isn't going to be implemented as a distinct coalition but it's the coalition that lets you pass improved women's rights/gay rights
 Q.progressive_coalition = Q.spd_r + Q.sapd_r + Q.kpd_r + Q.ddp_r;
 // nationaal front
@@ -1141,7 +1141,7 @@ go-to: black_brown_success if nazi_chance >= 200 and not hitler_deported; black_
 @black_brown_success
 on-arrival: sa_militancy -= 0.1 if rb_force < 15; sa_strength *= 0.9 if rb_force < 15; z_relation -= 25; dvp_relation -= 25; ddp_relation -= 15
 
-Negotiations are long and tense, with Hitler refusing to concede the position of chancellor. Eventually, somehow, to prevent more elections in which we socialists may gain, the Center Party agrees to allow Hitler as chancellor in return for the majority of cabinet positions, the gradual disarmament of the SA, and assurances of safety for Catholics. Brüning reluctantly steps aside, and Hitler is sworn in as chancellor.
+Negotiations are long and tense, with Hitler refusing to concede the position of chancellor. Eventually, somehow, to prevent more elections in which we socialists may gain, the Center Party agrees to allow Hitler as chancellor in return for the majority of cabinet positions, the gradual disarmament of the SA, and assurances of safety for Catholics. Brüning reluctantly steps aside, and Hitler is sworn in as chancellor with [+ hitler_right_coalition +]% behind him.
 
 - @hitler_takes_power: What do we do now?
 
@@ -1155,7 +1155,7 @@ As expected, the negotiations go nowhere. The Nazis are too intransingent and un
 @black_brown_goring
 on-arrival: in_right_coalition = 1; nsdap_toleration = 1; judicial_reform -= 2; reichswehr_loyalty -= 0.1; pro_republic -= 5; sa_militancy -= 0.05; new_middle_nsdap += 3; old_middle_nsdap += 6; rural_nsdap += 6; new_middle_spd += 4*(1-dissent); workers_nsdap -= 4*(1-dissent); unemployed_nsdap -= 6*(1-dissent); coup_progress += political_crisis_progress; coup_progress += 2; collapse_month = month+5; collapse_year = year; collapse_year += 1 if collapse_month > 12; collapse_month -= 12 if collapse_month > 12
 
-Somehow, the NSDAP has agreed to join Brüning's government. The breaking of the de-facto cordon sanitaire against them significantly helps to legitimize them as a constructive political party in the country, though their association with Brüning's austerity measures simultaneously helps us to break their support amongst the working class.
+Somehow, the NSDAP has agreed to join Brüning's government, giving it [+ hitler_right_coalition +]% of the Reichstag. The breaking of the de-facto cordon sanitaire against them significantly helps to legitimize them as a constructive political party in the country, though their association with Brüning's austerity measures simultaneously helps us to break their support amongst the working class.
 
 Immediately, democratic reforms are undone as the cabinet sets to work sending Germany back into the dark ages. For now, democracy is being preserved, but the Nazis are sure to take their first opportunity to fully destroy it.
 
