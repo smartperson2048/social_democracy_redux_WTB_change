@@ -608,7 +608,7 @@ if (Q.month_actions >= 1) {
     }
     if (Q.year == 1930) {
         Q.rural_nsdap += 10/12;
-        Q.rural_dnvp -= 7/12;
+        Q.rural_dnvp -= 5/12;
         Q.new_middle_dvp -= 5/12;
         Q.old_middle_dvp -= 6/12;
         Q.new_middle_ddp -= 5/12;
@@ -680,6 +680,7 @@ if (Q.month_actions >= 1) {
         Q.new_middle_dvp -= 8/12;
         Q.old_middle_ddp -= 8/12;
         Q.new_middle_ddp -= 8/12;
+        Q.rural_dnvp += 1/12;
         Q.sa_strength += 75/12;
         Q.sh_strength += 25/12;
         Q.sa_militancy += 0.1/12;
@@ -769,6 +770,7 @@ if (Q.month_actions >= 1) {
     if (Q.year == 1932) {
         Q.old_middle_other -= 7/12;
         Q.rural_other -= 7/12;
+        Q.rural_dnvp += 3/12;
         Q.new_middle_other -= 4/12;
         Q.old_middle_nsdap += 4/12;
         Q.rural_nsdap += 4/12;
@@ -1115,35 +1117,35 @@ if (Q.month_actions >= 1) {
             Q.workers_nsdap -= 10/5;
             Q.workers_kpd += 2/5;
             if (Q.unemployed >= 25) {
-                Q.workers_kpd += 3/5;
+                Q.workers_kpd += 2/5;
             }
         }
         if (Q.new_middle_nsdap > 0) {
             Q.new_middle_nsdap -= 11/5;
-            Q.new_middle_dnvp += 3/5;
+            Q.new_middle_dnvp += 2/5;
             if (Q.unemployed >= 25) {
                 Q.new_middle_dnvp += 3/5;
             }
         }
         if (Q.old_middle_nsdap > 0) {
             Q.old_middle_nsdap -= 11/5;
-            Q.old_middle_dnvp += 4/5;
+            Q.old_middle_dnvp += 2/5;
             if (Q.unemployed >= 25) {
-                Q.old_middle_dnvp += 3/5;
+                Q.old_middle_dnvp += 1/5;
             }
         }
         if (Q.rural_nsdap > 0) {
             Q.rural_nsdap -= 9/5;
-            Q.rural_dnvp += 5/5;
+            Q.rural_dnvp += 4/5;
             if (Q.unemployed >= 25) {
-                Q.rural_dnvp += 3/5;
+                Q.rural_dnvp += 2/5;
             }
         }
         if (Q.unemployed_nsdap > 0) {
             Q.unemployed_nsdap -= 12/5;
             Q.unemployed_kpd += 3/5;
             if (Q.unemployed >= 25) {
-                Q.unemployed_kpd += 5/5;
+                Q.unemployed_kpd += 4/5;
                 Q.unemployed_dnvp += 1/5;
             }
         }
