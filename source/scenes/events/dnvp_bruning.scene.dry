@@ -27,7 +27,7 @@ We stand to potentially be able to bring Brüning down by voting to override his
 - @vote_against: Motion in the Reichstag to override Brüning's budget cuts.
 
 @vote_against
-on-arrival: dnvp_r -= pro_bruning; other_r += pro_bruning; bourgeois_coalition += pro_bruning; rural_dnvp -= 5; old_middle_dnvp -= 3; new_middle_dnvp -= 3
+on-arrival: bourgeois_coalition += pro_bruning; rural_dnvp -= 5; old_middle_dnvp -= 3; new_middle_dnvp -= 3; catholics_dnvp -= 2; rural_other += 3; old_middle_other += 2; catholics_other += 2
 go-to: successful_motion if bourgeois_coalition < 50; failed_motion if bourgeois_coalition >= 50
 
 Of course, we will not stand idly by as the bourgeois first expel us from government and then unleash austerity upon the nation. We owe nothing to them after they blew our government up.

@@ -279,7 +279,7 @@ Q.catholics_kpd = 2;
 Q.catholics_z = 50;
 Q.catholics_ddp = 0;
 Q.catholics_dvp = 5;
-Q.catholics_dnvp = 0;
+Q.catholics_dnvp = 2;
 Q.catholics_nsdap = 0;
 Q.catholics_other = 15;
 
