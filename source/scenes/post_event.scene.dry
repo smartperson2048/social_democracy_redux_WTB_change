@@ -601,7 +601,7 @@ if (Q.month_actions >= 1) {
                 Q.old_middle_nsdap += Q.coalition_dissent/12;
                 Q.rural_nsdap += Q.coalition_dissent/12;
                 Q.unemployed_nsdap += Q.coalition_dissent/12;
-        }
+            }
         }
     }
     if (Q.year == 1930) {
