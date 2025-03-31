@@ -1136,7 +1136,7 @@ There is no path to an obviously workable majority. President Adenauer has given
 title: Brüning turns to his right for coalition support.
 subtitle: With we on the left firmly refusing to support his government, Brüning considers a deal with the devil.
 view-if: hitler_right_coalition >= 50 and left_strength >= 50 and political_crisis_progress >= 1 and president == "Hindenburg" and chancellor == "Brüning"
-on-arrival: nazi_chance = nsdap_r; nazi_chance += left_coalition if communist_coalition >= 3 and kpd_relation >= 50; nazi_chance += rb_force+rfb_force; nazi_chance -= sa_force; nazi_chance += radicalization*political_crisis_progress*coup_progress;
+on-arrival: nazi_chance = nsdap_r; nazi_chance += socialism; nazi_chance += nationalism; nazi_chance -= pro_republic; nazi_chance += left_coalition if communist_coalition >= 3 and kpd_relation >= 50; nazi_chance += rb_force+rfb_force; nazi_chance -= sa_force; nazi_chance += (radicalization+capital_strike_progress+coup_progress)*political_crisis_progress;
 go-to: black_brown_success if nazi_chance >= 200 and not hitler_deported; black_brown_failure if nazi_chance < 150 or (nazi_chance < 200 and not hitler_deported); black_brown_goring if hitler_deported and nazi_chance >= 150
 
 @black_brown_success

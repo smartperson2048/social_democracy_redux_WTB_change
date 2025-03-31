@@ -762,7 +762,7 @@ if (Q.month_actions >= 1) {
            Q.sa_strength -= 25/12;
            Q.sh_strength += 10/12;
         }
-        if (Q.economic_plan && !Q.spd_in_government) {
+        if (Q.economic_plan && !Q.spd_in_government && !Q.spd_toleration) {
             Q.workers_spd += 4*(1-Q.dissent)/12;
             Q.unemployed_spd += 4*(1-Q.dissent)/12;
         }
@@ -810,11 +810,11 @@ if (Q.month_actions >= 1) {
             Q.new_middle_other -= 4/12;
             Q.sa_strength += 60/12;
             if (!Q.spd_in_government) {
-                Q.workers_spd += 2/12;
-                Q.unemployed_spd += 2/12;
+                Q.workers_spd += 1/12;
+                Q.unemployed_spd += 1/12;
                 if (!Q.spd_toleration) {
                     Q.workers_spd += 2/12;
-                    Q.unemployed_spd += 2/12;
+                    Q.unemployed_spd += 1/12;
                 }
             }
         } else if (Q.unemployed > 25) {
@@ -848,7 +848,7 @@ if (Q.month_actions >= 1) {
            Q.new_middle_other += 2/12;
            Q.old_middle_other += 2/12;
         }
-        if (Q.economic_plan && !Q.spd_in_government) {
+        if (Q.economic_plan && !Q.spd_in_government && !Q.spd_toleration) {
             Q.workers_spd += 5*(1-Q.dissent)/12;
             Q.unemployed_spd += 5*(1-Q.dissent)/12;
         }
