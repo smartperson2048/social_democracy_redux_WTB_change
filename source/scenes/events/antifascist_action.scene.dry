@@ -15,7 +15,7 @@ What remains of the party's right-wing is highly opposed, but doing this would s
 - @literally_why_would_anyone_whos_at_this_point_in_the_game_choose_this_like_what: We'll have to turn the offer down.
 
 @form_uf
-on-arrival: antifa_formed = 1; kpd_relation += 10; rb_militancy += 0.03; rfb_militancy += 0.04; coup_progress += communist_coalition; workers_kpd += 2; workers_spd += 4*(1-dissent); unemployed_kpd += 3; unemployed_spd += 3*(1-dissent); new_middle_spd += 4*(1-dissent) if new_middle_conscious; workers_nsdap -= 2; new_middle_nsdap -= 2; unemployed_nsdap -= 2
+on-arrival: antifa_formed = 1; kpd_relation += 10; rb_militancy += 0.03; rfb_militancy += 0.04; coup_progress += communist_coalition; workers_kpd += 4; workers_spd += 6*(1-dissent); unemployed_kpd += 5; unemployed_spd += 5*(1-dissent); new_middle_spd += 5*(1-dissent) if new_middle_conscious; workers_nsdap -= 2; new_middle_nsdap -= 2; unemployed_nsdap -= 2
 go-to: uf_menu
 
 We have formed a United Front, composed of the KPD and SPD's various affiliate organizations through which to fight the class war against the increasingly fascistic bourgeoisie.
