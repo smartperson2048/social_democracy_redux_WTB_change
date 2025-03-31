@@ -15,7 +15,7 @@ What remains of the party's right-wing is highly opposed, but doing this would s
 - @literally_why_would_anyone_whos_at_this_point_in_the_game_choose_this_like_what: We'll have to turn the offer down.
 
 @form_uf
-on-arrival: antifa_formed = 1; rb_militancy += 0.03; rfb_militancy += 0.04; coup_progress += communist_coalition; workers_kpd += 2; workers_spd += 4*(1-dissent); unemployed_kpd += 3; unemployed_spd += 3*(1-dissent); new_middle_spd += 4*(1-dissent) if new_middle_conscious; workers_nsdap -= 2; new_middle_nsdap -= 2; unemployed_nsdap -= 2
+on-arrival: antifa_formed = 1; kpd_relation += 10; rb_militancy += 0.03; rfb_militancy += 0.04; coup_progress += communist_coalition; workers_kpd += 2; workers_spd += 4*(1-dissent); unemployed_kpd += 3; unemployed_spd += 3*(1-dissent); new_middle_spd += 4*(1-dissent) if new_middle_conscious; workers_nsdap -= 2; new_middle_nsdap -= 2; unemployed_nsdap -= 2
 go-to: uf_menu
 
 We have formed a United Front, composed of the KPD and SPD's various affiliate organizations through which to fight the class war against the increasingly fascistic bourgeoisie.
@@ -63,6 +63,8 @@ We rally the AfA-bund behind the United Front, taking advantage of the recent in
 
 @done
 on-arrival: old_middle_nsdap += uf_strength; rural_nsdap += uf_strength/2; new_middle_nsdap += uf_strength/4 if not new_middle_conscious;
+
+That is enough to get the United Front off of its feet and ready to fight fascism. United through this new organization, we shall stand strong.
 
 @literally_why_would_anyone_whos_at_this_point_in_the_game_choose_this_like_what
 on-arrival: communist_coalition -= 1; kpd_relation -= 5; left_dissent += 15; reformist_strength += 10; reformist_dissent -= 20; sa_militancy += 0.02
