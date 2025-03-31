@@ -1149,7 +1149,7 @@ Negotiations are long and tense, with Hitler refusing to concede the position of
 
 @secret_path
 view-if: hitler_seen or presidential_powers
-on-arrival: chancellor = "Hitler"; chancellor_party == "NSDAP"; rb_militancy -= 0.1 if rb_militancy >= 0.1; reichswehr_loyalty = 0 if reichswehr_loyalty > 0
+on-arrival: chancellor = "Hitler"; chancellor_party = "NSDAP"; rb_militancy -= 0.1 if rb_militancy >= 0.1; reichswehr_loyalty = 0 if reichswehr_loyalty > 0
 go-to: slow_consolidation if hitler_seen
 
 [? if hitler_seen : This being Hitler's second tenure as chancellor, he is much more cautious, instead opting to slowly consolidate power. ?][? if presidential_powers : The limitations on presidential powers prevent Hitler from immediately consolidating power. ?]
