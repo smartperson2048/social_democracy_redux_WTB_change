@@ -57,6 +57,7 @@ We rally the Iron Front behind the United Front, increasing the SPD's strength c
 max-visits: 1
 view-if: new_middle_conscious
 on-arrival: uf_strength += 2; new_middle_spd += 5*(1-dissent); new_middle_nsdap -= 3*(1-dissent); workers_spd -= 1; workers_kpd += 1; unemployed_spd -= 2; unemployed_kpd += 2;
+go-to: uf_menu
 
 We rally the AfA-bund behind the United Front, taking advantage of the recent inclination of the new middle class to align with the rest of the proletariat to put an end to Nazi gains in the demographic. As a consequence, however, we have allowed the KPD to grow further in traditional working class groups.
 
