@@ -64,7 +64,7 @@ We rally the AfA-bund behind the United Front, taking advantage of the recent in
 @done
 on-arrival: old_middle_nsdap += uf_strength; rural_nsdap += uf_strength/2; new_middle_nsdap += uf_strength/4 if not new_middle_conscious;
 
-That is enough to get the United Front off of its feet and ready to fight fascism. United through this new organization, we shall stand strong.
+That is enough to get the United Front off of its feet and ready to fight fascism. United through this new organization, we shall stand strong. The Nazis grow further amongst the bourgeoisie, who are frightened by our unity, but it is in vain.
 
 @literally_why_would_anyone_whos_at_this_point_in_the_game_choose_this_like_what
 on-arrival: communist_coalition -= 1; kpd_relation -= 5; left_dissent += 15; reformist_strength += 10; reformist_dissent -= 20; sa_militancy += 0.02
