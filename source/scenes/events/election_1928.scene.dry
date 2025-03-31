@@ -1140,7 +1140,7 @@ on-arrival: black_brown_seen = 1; nazi_chance = nsdap_r; nazi_chance += socialis
 go-to: black_brown_success if nazi_chance >= 200 and not hitler_deported; black_brown_failure if nazi_chance < 150 or (nazi_chance < 200 and not hitler_deported); black_brown_goring if hitler_deported and nazi_chance >= 150
 
 @black_brown_success
-on-arrival: sa_militancy -= 0.1 if rb_force < 15; sa_strength *= 0.9 if rb_force < 15; z_relation -= 25; dvp_relation -= 25; ddp_relation -= 15
+on-arrival: chancellor = "Hitler"; chancellor_party = "NSDAP"; sa_militancy -= 0.1 if rb_force < 15; sa_strength *= 0.9 if rb_force < 15; z_relation -= 25; dvp_relation -= 25; ddp_relation -= 15
 
 Negotiations are long and tense, with Hitler refusing to concede the position of chancellor. Eventually, somehow, to prevent more elections in which we socialists may gain, the Center Party agrees to allow Hitler as chancellor in return for the majority of cabinet positions, the gradual disarmament of the SA, and assurances of safety for Catholics. Brüning reluctantly steps aside, and Hitler is sworn in as chancellor with [+ hitler_right_coalition +]% behind him.
 
@@ -1149,7 +1149,7 @@ Negotiations are long and tense, with Hitler refusing to concede the position of
 
 @secret_path
 view-if: hitler_seen or presidential_powers
-on-arrival: chancellor = "Hitler"; chancellor_party = "NSDAP"; rb_militancy -= 0.1 if rb_militancy >= 0.1; reichswehr_loyalty = 0 if reichswehr_loyalty > 0
+on-arrival: rb_militancy -= 0.1 if rb_militancy >= 0.1; reichswehr_loyalty = 0 if reichswehr_loyalty > 0
 go-to: slow_consolidation if hitler_seen
 
 [? if hitler_seen : This being Hitler's second tenure as chancellor, he is much more cautious, instead opting to slowly consolidate power. ?][? if presidential_powers : The limitations on presidential powers prevent Hitler from immediately consolidating power. ?]
