@@ -1145,6 +1145,22 @@ on-arrival: sa_militancy -= 0.1 if rb_force < 15; sa_strength *= 0.9 if rb_force
 Negotiations are long and tense, with Hitler refusing to concede the position of chancellor. Eventually, somehow, to prevent more elections in which we socialists may gain, the Center Party agrees to allow Hitler as chancellor in return for the majority of cabinet positions, the gradual disarmament of the SA, and assurances of safety for Catholics. Brüning reluctantly steps aside, and Hitler is sworn in as chancellor with [+ hitler_right_coalition +]% behind him.
 
 - @hitler_takes_power: What do we do now?
+- @secret_path: What do we do now?
+
+@secret_path
+view-if: hitler_seen or presidential_powers
+on-arrival: chancellor = "Hitler"; chancellor_party == "NSDAP"; rb_militancy -= 0.1 if rb_militancy >= 0.1; reichswehr_loyalty = 0 if reichswehr_loyalty > 0
+go-to: slow_consolidation if hitler_seen
+
+[? if hitler_seen : This being Hitler's second tenure as chancellor, he is much more cautious, instead opting to slowly consolidate power. ?][? if presidential_powers : The limitations on presidential powers prevent Hitler from immediately consolidating power. ?]
+
+@slow_consolidation
+on-arrival: sneaky_hitler = 1; impending_fire = 1; time_to_election = 3; z_relation += 10 if not uf_formed; nazi_peak = 0; nazi_decline = 0; labor_dissent += 10 if labor_strength < center_strength; rb_strength -= 200*(dissent); new_middle_nsdap += 4; old_middle_nsdap += 3; catholics_nsdap += 3; rural_nsdap += 4; workers_nsdap += 6; unemployed_nsdap += 10; budget -= 3; economic_growth += 1; economic_growth += 1.5 if economic_growth < 0; inflation += 2; inflation += 1.5 if inflation < 0; unemployed -= 2; unemployed -= 4 if unemployed >= 30
+call: set_next_election_time
+
+A public works program is initiated by the Nazis, alongside subsidies for struggling businesses. Meanwhile, the Nazis contact the ADGB, attempting to turn them against us. Pre-empting a potential betrayal by the Center Party, Hitler dissolves the Reichstag, calling new elections for [+ next_election_month : month +] [+ next_election_year +].
+
+Hitler is sure to have ideas once the Reichstag next convenes...
 
 @black_brown_failure
 on-arrival: bb_failed = 1; rural_nsdap += 3; old_middle_nsdap += 3; new_middle_nsdap += 3; workers_spd += 4*(1-dissent); workers_z -= 3; unemployed_nsdap -= 3*(1-dissent); workers_nsdap -= 3*(1-dissent);
