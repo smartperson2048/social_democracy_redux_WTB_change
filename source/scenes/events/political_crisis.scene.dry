@@ -7,7 +7,7 @@ max-visits: 1
 on-arrival: coup_progress += no_majority_elections/2; {!
 Q.strife = Math.round(Q.strife);
 !}
-go-to: hindenburg_crisis if president == "HIndenburg" and not presidential_powers; gessler_crisis if president == "Gessler" and not presidential_powers; adenauer_crisis if president == "Adenauer" and not presidential_powers; eckener_crisis if president == "Eckener" and not presidential_powers; nothing_to_do if presidential_powers
+go-to: hindenburg_crisis if president == "Hindenburg" and not presidential_powers; gessler_crisis if president == "Gessler" and not presidential_powers; adenauer_crisis if president == "Adenauer" and not presidential_powers; eckener_crisis if president == "Eckener" and not presidential_powers; nothing_to_do if presidential_powers
 
 = Political Crisis
 
