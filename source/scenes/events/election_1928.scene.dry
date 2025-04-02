@@ -1180,11 +1180,21 @@ Immediately, democratic reforms are undone as the cabinet sets to work sending G
 title: There is no clear governing majority.
 view-if: (weimar_coalition < 50 or z_willing != 1) and (grand_coalition < 50 or grand_coalition_failed == 1 or dvp_willing != 1) and president = "Hindenburg" and far_right_coalition < 50 and (right_coalition < 50 or right_coalition_failed) and (hitler_right_coalition < 50 or left_strength < 50 or political_crisis_progress < 1 or chancellor != "Brüning" or bb_failed) and bourgeois_coalition < 50
 on-arrival: no_majority_elections += 1
-go-to: no_majority_bruning if chancellor = "Brüning" or chancellor = "Wirth"; no_majority_papen if chancellor = "Papen" and no_majority_papen_elections == 0; no_majority_papen_2 if chancellor == "Papen" and no_majority_papen_elections > 0 and not resisted_hitler; no_majority_schleicher if chancellor = "Schleicher"; no_majority_spd if chancellor_party = "SPD" or chancellor == "Marx"; no_majority_seldte if chancellor == "Seldte"; no_majority_nsdap if hitler_seen and chancellor_party == "NSDAP"; no_majority_bruning_back if chancellor == "Papen" and resisted_hitler
+go-to: no_majority_scholz if chancellor = "Scholz"; no_majority_bruning if chancellor = "Brüning" or chancellor = "Wirth"; no_majority_papen if chancellor = "Papen" and no_majority_papen_elections == 0; no_majority_papen_2 if chancellor == "Papen" and no_majority_papen_elections > 0 and not resisted_hitler; no_majority_schleicher if chancellor = "Schleicher"; no_majority_spd if chancellor_party = "SPD" or chancellor == "Marx"; no_majority_seldte if chancellor == "Seldte"; no_majority_nsdap if hitler_seen and chancellor_party == "NSDAP"; no_majority_bruning_back if chancellor == "Papen" and resisted_hitler
 
 # TODO: if there is an anti-democratic coalition majority, you should appoint Papen.
 
 # either new elections, or Hindenburg appoints either Brüning, Papen, Schleicher, or Hitler.
+
+@no_majority_scholz
+on-arrival: chancellor = "Brüning"; chancellor_party = "Z"
+
+With health issues plaguing Ernst Scholz and his seeming inability to command a majority, the mantle has transferred to Brüning of the Center Party.
+
+- @toleration_bruning: We will tolerate Brüning.
+- @new_grand_coalition: We will try to form a new grand coalition.
+- @new_elections: We will have new elections.
+- @new_elections_2: We will have new elections.
 
 @no_majority_bruning_back
 on-arrival: chancellor = "Brüning"; chancellor_party = "Z"
