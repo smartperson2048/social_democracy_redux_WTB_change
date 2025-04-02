@@ -58,8 +58,8 @@ Unfortunately, we must accept this ultimatum if we are to maintain this coalitio
 The workers are furious at our betrayal, as are a good portion of our membership throughout the factions. Our loss is the KPD's gain, and even the NSDAP, those lapdogs of the bourgeoisie, have joined in criticizing us for our austerity.
 
 @compromise
-unavailable-subtitle: We do not have good enough relations with the right-wing parties.
-choose-if: dvp_relation >= 35
+unavailable-subtitle: We do not have good enough relations with the right-wing parties. [? if chancellor == "Scholz" : Chancellor Scholz refuses to compromise. ?]
+choose-if: dvp_relation >= 35 and chancellor != "Scholz"
 
 Thanks to our good relations, the DVP have offered a compromise that raises some taxes on the wealthy, along with lesser welfare cuts. Our members have mixed opinions on accepting this compromise. Reformists and Centrists support maintaining our government to keep the fascists and communists out, while Labor generally opposes any cuts, and the Left is opposed to compromises with the bourgeoisie.
 

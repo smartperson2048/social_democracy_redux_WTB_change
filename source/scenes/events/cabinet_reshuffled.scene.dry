@@ -2,7 +2,7 @@ title: The Right is expelling us from their government!
 subtitle: We have angered our coalition partners too much...
 new-page: true
 on-arrival: tried_supporting_kpd = 0; weimar_dissent += 1 if weimar_plan_adopted
-view-if: chancellor_party != "SPD" and chancellor_party != "KPD" and spd_in_government = 1 and ((in_grand_coalition = 1 or in_popular_front = 1 or in_minority_government = 1) and coalition_dissent >= 3) or (in_weimar_coalition = 1 and coalition_dissent >= 4) and spd_r < 50
+view-if: chancellor_party != "SPD" and chancellor_party != "KPD" and spd_in_government = 1 and ((in_grand_coalition = 1 or in_popular_front = 1 or in_minority_government = 1) and (coalition_dissent >= 3 or (chancellor == "Scholz" and coalition_dissent >= 2))) or (in_weimar_coalition = 1 and coalition_dissent >= 4) and spd_r < 50
 tags: event
 go-to: menu if chancellor != "Wirth"; wirth_resign_hindenburg if chancellor == "Wirth" and (president == "Hindenburg" or president == "Adenauer" or president == "Gessler" or president == "Eckener"); wirth_resign_braun if chancellor == "Wirth" and (president == "Braun" or president == "Schumacher" or president == "Juchacz")
 
@@ -22,6 +22,8 @@ go-to: menu if chancellor != "Wirth"; wirth_resign_hindenburg if chancellor == "
 - @no_tolerate: Bring down this new backstabbing government!
 
 @try_assuage
+choose-if: chancellor != "Scholz" or dvp_relation >= 55
+unavailable-subtitle: Chancellor Scholz sees no room for compromise.
 
 How do we assuage our partners?
 

@@ -2261,6 +2261,7 @@ With Gustav Stresemann as the main member of the DVP advocating a Grand Coalitio
 We can call their bluff, jeopardizing the coalition [? if bourgeois_coalition >= 50 and right_coalition < 50 : and risk a bourgeois coalition forming instead ?][? if right_coalition >= 50 : and risk a right-wing coalition [? if bourgeois_coalition >= 50 : or a bourgeois coalition ?] forming instead ?], or back down.
 
 - @call_bluff: Call their bluff.
+- @scholz_chancellor: Offer to make Ernst Scholz of the DVP chancellor.
 - @drop_foreign: Concede.
 
 @call_bluff
@@ -2268,6 +2269,12 @@ go-to: right_coalition_2 if right_coalition >= 50 and bourgeois_coalition < 50 a
 on-departure: dvp_relation -= 10 if (dvp_relation >= 55 and bourgeois_coalition < 50) or (dvp_relation >= 35 and bourgeois_coalition < 50 and right_coalition < 50); coalition_dissent += 1 if (dvp_relation >= 55 and bourgeois_coalition < 50) or (dvp_relation >= 35 and bourgeois_coalition < 50 and right_coalition < 50)
 
 [? if (dvp_relation >= 60 and bourgeois_coalition < 50) or (dvp_relation >= 40 and bourgeois_coalition < 50 and right_coalition < 50) : Rudolf Breitscheid of the SPD has been appointed Foreign Minister. ?]
+
+@scholz_chancellor
+on-arrival: dvp_relation -= 10; chancellor = "Scholz"; chancellor_party = "DVP"; left_dissent += 15; labor_dissent += 10; center_dissent += 5; workers_spd -= 4; new_middle_dvp += 2; old_middle_dvp += 3
+go-to: ministries
+
+In exchange for the Chancellory going to Ernst Scholz, we have been granted the Foreign Ministry. Our party is in upheaval over this concession.
 
 @agriculture
 title: Agricultural Ministry
