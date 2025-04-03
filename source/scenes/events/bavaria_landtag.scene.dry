@@ -108,8 +108,8 @@ if (Q.electoral_threshold && Q.electoral_threshold > 0 || Q.party_bans) {
 
 Q.old_bb_bl = Q.bb_bl;
 
-var pro_bb = 60;
-var anti_bb = 40;
+var pro_bb = 90;
+var anti_bb = 10;
 pro_bb += Q.pro_republic;
 anti_bb += Q.nationalism;
 var total_blother = pro_bb+anti_bb;
