@@ -631,10 +631,11 @@ if (Q.month_actions >= 1) {
             Q.prussia_nsdap += 0.05/12;
             Q.prussia_dnvp -= 0.02/12;
         }
-        Q.bavaria_nsdap -= 0.35/12;
+        Q.bavaria_nsdap -= 0.4/12;
         Q.bavaria_z += 0.05/12;
         Q.bavaria_spd -= 0.1/12;
-        Q.bavaria_others += 0.15/12;
+        Q.bavaria_others += 0.2/12;
+        Q.bavaria_dnvp += 0.02/12;
         Q.workers_z += 1/12;
         Q.old_middle_z += 2/12;
         Q.new_middle_z += 2/12;
