@@ -627,15 +627,15 @@ Q.prussia_z = 1.05;
 Q.prussia_other = 0.6;
 Q.prussia_nsdap = 0.65;
 
-Q.bavaria_spd = 0.5;
+Q.bavaria_spd = 0.6;
 Q.bavaria_sapd = 0.5;
-Q.bavaria_kpd = 0.5;
+Q.bavaria_kpd = 0.4;
 Q.bavaria_ddp = 0.55;
-Q.bavaria_dvp = 0.4;
+Q.bavaria_dvp = 0.35;
 Q.bavaria_dnvp = 0.35;
-Q.bavaria_z = 1.35;
+Q.bavaria_z = 1.3;
 Q.bavaria_other = 0.25;
-Q.bavaria_nsdap = 2;
+Q.bavaria_nsdap = 1.75;
 
 Q.prussia_election_year = 1928;
 Q.prussia_election_month = 5;
