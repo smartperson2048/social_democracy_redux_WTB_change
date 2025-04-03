@@ -625,7 +625,7 @@ Q.prussia_dvp = 1;
 Q.prussia_dnvp = 1.1;
 Q.prussia_z = 1;
 Q.prussia_other = 0.6;
-Q.prussia_nsdap = 0.8;
+Q.prussia_nsdap = 0.7;
 
 Q.prussia_election_year = 1928;
 Q.prussia_election_month = 5;
