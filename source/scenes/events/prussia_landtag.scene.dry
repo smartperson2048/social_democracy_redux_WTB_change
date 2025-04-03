@@ -16,7 +16,7 @@ The Prussian elections are to be held now.
 
 - @election_algorithm: May we do our best...
 
-@post_election_1928
+@prussia_election_1928
 on-arrival: {!
 var total_prussia = 0;
 // normalize prussian votes
