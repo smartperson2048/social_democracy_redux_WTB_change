@@ -616,6 +616,18 @@ Q.schumacher_advisor = 0; // Kurt Schumacher (post-1930)
 Q.hirschfeld_advisor = 0; // Magnus Hirschfeld
 Q.radbruch_advisor = 0; // Gustav Radbruch
 Q.stampfer_advisor = 0; // Friedrich Stampfer
+
+Q.prussia_spd = 1;
+Q.prussia_kpd = 1;
+Q.prussia_ddp = 1.05;
+Q.prussia_dvp = 1.05;
+Q.prussia_dnvp = 0.95;
+Q.prussia_z = 1;
+Q.prussia_other = 0.95;
+Q.prussia_nsdap = 1;
+
+Q.prussia_election_year = 1928;
+Q.prussia_election_month = 5;
 !}
 set-bg: img/map_2.jpg
 new-page: true
@@ -713,6 +725,8 @@ For other, non-difficulty related tweaks.
 - @disable_normalize: Disable experimental support changes.
 - @enable_hyperinflation: Enable hyperinflation (janky)
 - @disable_hyperinflation: Disable hyperinflation
+- @enable_landtags: Enable WIP landtags (very WIP).
+- @disable_landtags: Disable WIP landtags (very WIP).
 - @1930: Begin the game in 1930.
 - @1928: Begin the game in 1928.
 - @menu: Back.
@@ -760,6 +774,20 @@ on-arrival: hyperinflation_enabled = 0
 go-to: menu
 
 Hyperinflation disabled.
+
+@enable_landtags
+view-if: landtags_enabled != 1
+on-arrival: landtags_enabled = 1
+go-to: menu
+
+Landtags have been enabled.
+
+@enable_landtags
+view-if: landtags_enabled
+on-arrival: landtags_enabled = 0
+go-to: menu
+
+Landtags have been disabled.
 
 @1930
 view-if: year != 1930
