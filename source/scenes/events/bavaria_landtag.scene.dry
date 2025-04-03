@@ -136,7 +136,7 @@ if (Q.kpd_bl >= Q.spd_bl && Q.kpd_bl >= Q.nsdap_bl) {
 // coalitions
 Q.b_weimar_coalition = Q.spd_bl + Q.ddp_bl + Q.z_bl;
 Q.b_grand_coalition = Q.spd_bl + Q.ddp_bl + Q.z_bl + Q.dvp_bl;
-Q.b_bourgeois_coalition = Q.ddp_bl + Q.z_bl + Q.dvp_bl + Q.other_bl;
+Q.b_bourgeois_coalition = Q.z_bl + Q.bb_bl + Q.other_bl;
 Q.b_center_right_coalition = Q.z_bl + Q.ddp_bl + Q.dvp_bl + Q.other_bl + Q.dnvp_bl;
 Q.b_right_coalition = Q.z_bl + Q.dvp_bl + Q.other_bl + Q.dnvp_bl;
 Q.b_far_right_coalition = Q.dnvp_bl + Q.nsdap_bl;
@@ -343,12 +343,10 @@ There are some potential coalition arrangements.
 
 @coalition_menu
 
-- @weimar_bavaria
+- @bourgeois_bavaria
 
-@weimar_bavaria
-title: The incumbent Weimar Coalition.
-subtitle: SPD + Z + [+ ddp_name +] - [+ b_weimar_coalition +]%. [? if spd_bavaria and weimar_coalition < 50 : We retain bavaria through the constructive VONC. ?]
-choose-if: spd_bavaria or weimar_coalition >= 50
-unavailable-subtitle: We lack the votes.
+@bourgeois_bavaria
+title: The incumbent bourgeois coalition.
+subtitle: BVP + BB + Others ([+ b_bourgeois_coalition +]%)
 
 Nothing ever happens.

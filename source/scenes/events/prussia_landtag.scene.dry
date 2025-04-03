@@ -299,7 +299,7 @@ There are some potential coalition arrangements.
 
 @weimar_prussia
 title: The incumbent Weimar Coalition.
-subtitle: SPD + Z + [+ ddp_name +] - [+ p_weimar_coalition +]%. [? if spd_prussia and weimar_coalition < 50 : We retain Prussia through the constructive VONC. ?]
+subtitle: SPD + Z + [+ ddp_name +] ([+ p_weimar_coalition +]%) [? if spd_prussia and p_weimar_coalition < 50 : - We retain Prussia through the constructive VONC. ?]
 choose-if: spd_prussia or weimar_coalition >= 50
 unavailable-subtitle: We lack the votes.
 
