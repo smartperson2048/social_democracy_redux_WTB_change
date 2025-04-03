@@ -617,12 +617,12 @@ Q.hirschfeld_advisor = 0; // Magnus Hirschfeld
 Q.radbruch_advisor = 0; // Gustav Radbruch
 Q.stampfer_advisor = 0; // Friedrich Stampfer
 
-Q.prussia_spd = 1;
+Q.prussia_spd = 0.95;
 Q.prussia_sapd = 1;
-Q.prussia_kpd = 1;
+Q.prussia_kpd = 1.05;
 Q.prussia_ddp = 1;
-Q.prussia_dvp = 1;
-Q.prussia_dnvp = 1.1;
+Q.prussia_dvp = 0.95;
+Q.prussia_dnvp = 1.15;
 Q.prussia_z = 1;
 Q.prussia_other = 0.6;
 Q.prussia_nsdap = 0.7;
