@@ -642,6 +642,26 @@ Q.prussia_election_month = 5;
 
 Q.bavaria_election_year = 1928;
 Q.bavaria_election_month = 5;
+
+Q.spd_pl = 25;
+Q.dnvp_pl = 24;
+Q.z_pl = 18;
+Q.dvp_pl = 10;
+Q.kpd_pl = 10;
+Q.ddp_pl = 6;
+Q.nsdap_pl = 2;
+Q.other_pl = 6;
+
+Q.spd_bl = 17;
+Q.z_bl = 33;
+Q.nsdap_bl = 17;
+Q.dnvp_bl = 9;
+Q.dvp_bl = 0;
+Q.kpd_bl = 8;
+Q.bb_bl = 7;
+Q.ddp_bl = 3;
+Q.other_bl = 5;
+
 !}
 set-bg: img/map_2.jpg
 new-page: true
