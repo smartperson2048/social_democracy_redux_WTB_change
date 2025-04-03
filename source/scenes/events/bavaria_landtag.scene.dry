@@ -221,9 +221,9 @@ else {
             "seats": Q.ddp_bl*2,
         },
         {
-            "id": "z",
-            "legend": "Center",
-            "name": "Center",
+            "id": "bvp",
+            "legend": "BVP",
+            "name": "BVP",
             "seats": Q.z_bl*2,
         },
         {
