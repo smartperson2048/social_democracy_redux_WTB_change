@@ -627,6 +627,10 @@ if (Q.month_actions >= 1) {
             Q.unemployed_nsdap += (Q.strife/20);
             Q.unemployed_nsdap += Q.sa_force/100;
         }
+        if (Q.prussia_nsdap < 1) {
+            Q.prussia_nsdap += 0.05/12;
+            Q.prussia_dnvp -= 0.02/12;
+        }
         Q.workers_z += 1/12;
         Q.old_middle_z += 2/12;
         Q.new_middle_z += 2/12;
@@ -690,8 +694,11 @@ if (Q.month_actions >= 1) {
         Q.new_middle_other -= 10/12;
         Q.old_middle_other -= 10/12;
         Q.workers_other -= 4/12;
+        if (Q.prussia_nsdap < 1) {
+            Q.prussia_nsdap += 0.1/12;
+        }
         if (!Q.spd_in_government) {
-            Q.workers_spd += 2/12;
+            Q.workers_spd += 1/12;
         }
         if (Q.sa_force) {
             Q.unemployed_kpd -= (Q.strife/24);
@@ -787,6 +794,9 @@ if (Q.month_actions >= 1) {
             Q.workers_spd += Q.nazi_urgency/12;
         }
         if (!Q.works_program) {
+            if (Q.prussia_nsdap < 1) {
+                Q.prussia_nsdap += 0.1/12;
+            }
             Q.unemployed += 5/12;
             Q.inflation -= 2/12;
             Q.catholics_z += 2/12;

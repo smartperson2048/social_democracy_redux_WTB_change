@@ -3,12 +3,12 @@ new-page: true
 tags: event
 priority: -1
 view-if: landtags_enabled and ((year = prussia_election_year and month >= prussia_election_month) or (year > prussia_election_year)) and not supreme_soviet
-on-arrival: dvp_willing = 0; dvp_willing = 1 if ((dvp_plelation+spd_votes+(pro_plepublic/6)) >= ((100-pro_plepublic)+capital_strike_progress+(coup_progress/2))); z_willing = 0; z_willing = 1 if z_plelation >= 50 or (z_plelation >= 25 and bourgeois_coalition < 50)
+on-arrival: dvp_willing = 0; dvp_willing = 1 if ((dvp_plelation+spd_votes+(pro_republic/6)) >= ((100-pro_republic)+capital_strike_progress+(coup_progress/2))); z_willing = 0; z_willing = 1 if z_plelation >= 50 or (z_plelation >= 25 and bourgeois_coalition < 50)
 on-departure: month_actions += 1; in_election = 0; prussia_election_year = prussia_election_year + 4; p_elections += 1; prussia_election_time = time + 48;
 set-jump: prussia_election_1928
 
 # the low priority means that this event is only seen after all other events are resolved for the month.
-# note: z_coalition = z_plelation + (pro_plepublic/2); z_coalition *= 1.25 if z_party_leader == "Joos";
+# note: z_coalition = z_plelation + (pro_republic/2); z_coalition *= 1.25 if z_party_leader == "Joos";
 
 = Prussian Elections, [+ month : month +] [+ year +]
 
@@ -46,7 +46,7 @@ console.log("Normalization complete. Total Prussian votes:", total_prussia);
 var new_party_sum = 0;
 for (var party of Q.parties) {
     Q['old_' + party + '_pl'] = Q[party + '_pl'];
-    if (Q.constitutional_pleform > 0) {
+    if (Q.constitutional_reform > 0) {
         if (Q[party + '_votes_prussia'] < Q.electoral_threshold || (Q.electoral_threshold > 1 && party == 'other') || (Q[party + '_banned'] == 1)) {
             Q[party + '_pl'] = 0;
         } else {
@@ -113,7 +113,7 @@ Q.p_anti_democratic_coalition = Q.kpd_pl + Q.nsdap_pl + Q.dnvp_pl;
 // aka everyone except nazi, kpd, dnvp
 Q.p_neo_weimar_coalition = Q.spd_pl + Q.ddp_pl + Q.z_pl + Q.dvp_pl + Q.other_pl;
 // Hitler + Right-wing parties (only comes into effect if you've alienated Z too badly)
-Q.p_other_nazi = Math.round(Q.other_pl*(1-(Q.pro_plepublic/100)));
+Q.p_other_nazi = Math.round(Q.other_pl*(1-(Q.pro_republic/100)));
 Q.p_hitler_right_coalition = Q.z_pl + Q.dnvp_pl + Q.nsdap_pl + Q.dvp_pl + Q.other_nazi;
 // Progressive coalition isn't going to be implemented as a distinct coalition but it's the coalition that lets you pass improved women's rights/gay rights
 Q.p_progressive_coalition = Q.spd_pl + Q.sapd_pl + Q.kpd_pl + Q.ddp_pl;
