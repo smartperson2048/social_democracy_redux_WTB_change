@@ -20,7 +20,6 @@ The Prussian elections are to be held now.
 on-arrival: {!
 var total_prussia = 0;
 console.log("Starting normalization of Prussian votes...");
-
 // normalize prussian votes
 for (var party of Q.parties) {
     Q[party+'_votes_prussia'] = 0;
@@ -33,11 +32,11 @@ for (var party of Q.parties) {
 
         console.log(`  Class: ${c}, Votes: ${votes}, Cumulative Total: ${Q[party+'_votes_prussia']}`);
     }
-
+}
+for (var party of Q.parties) {
     Q[party+'_votes_prussia'] = Math.round((Q[party+'_votes_prussia'] / total_prussia) * 100);
     console.log(`Final percentage for ${party}: ${Q[party+'_votes_prussia']}%`);
 }
-
 console.log("Normalization complete. Total Prussian votes:", total_prussia);
 
 
