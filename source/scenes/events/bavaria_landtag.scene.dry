@@ -106,6 +106,21 @@ if (Q.electoral_threshold && Q.electoral_threshold > 0 || Q.party_bans) {
     }
 }
 
+Q.old_bb_bl = Q.bb_bl;
+
+var pro_bb = 60;
+var anti_bb = 40;
+pro_bb += Q.pro_republic;
+anti_bb += Q.nationalism;
+var total_blother = pro_bb+anti_bb;
+pro_bb = pro_bb/total_bb;
+Q.bb_bl = Math.round(Q.other_bl*pro_bb);
+Q.other_bl -= Q.bb_bl;
+
+Q.change_bb_bl = Q.bb_bl - Q.old_bb_bl;
+var sign_bb = Q.change_bb_bl > 0 ? '+'  : '';
+Q.stbl_change_bb = sign_bb + Q.change_bb_bl;//.toFixed(1);
+
 // get change arrows and signs
 
 
@@ -170,6 +185,12 @@ if (Q.sapd_formed == 1) {
             "seats": Q.ddp_bl*2,
         },
         {
+            "id": "bb",
+            "legend": "BB",
+            "name": "BB",
+            "seats": Q.bb_bl*2,
+        },
+        {
             "id": "bvp",
             "legend": "BVP",
             "name": "BVP",
@@ -219,6 +240,12 @@ else {
             "legend": Q.ddp_name,
             "name": Q.ddp_name,
             "seats": Q.ddp_bl*2,
+        },
+        {
+            "id": "bb",
+            "legend": "BB",
+            "name": "BB",
+            "seats": Q.bb_bl*2,
         },
         {
             "id": "bvp",
@@ -284,6 +311,8 @@ go-to: coalition_menu
 {!<tr><td><div class="box" style='background-color:#8B0000'> </div> !}KPD: {!</td><td>!} [+ kpd_bl +]% {!</td><td>!} [+ stbl_change_kpd +] {!</td></tr>!}
 
 {!<tr><td><div class="box" style='background-color:#DCCA4A'> </div> !} [+ ddp_name +]: {!</td><td>!} [+ ddp_bl +]% {!</td><td>!} [+ stbl_change_ddp +] {!</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#38C538'> </div> !} BB: {!</td><td>!} [+ bb_bl +]% {!</td><td>!} [+ stbl_change_bb +] {!</td></tr>!}
 
 {!<tr><td><div class="box" style='background-color:#69A2BE'> </div> !} BVP: {!</td><td>!} [+ z_bl +]% {!</td><td>!} [+ stbl_change_z +] {!</td></tr>!}
 
