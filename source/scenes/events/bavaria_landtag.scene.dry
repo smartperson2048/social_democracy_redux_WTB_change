@@ -173,13 +173,13 @@ if (Q.kpd_bl >= Q.spd_bl && Q.kpd_bl >= Q.nsdap_bl) {
 // coalitions
 Q.b_weimar_coalition = Q.spd_bl + Q.ddp_bl + Q.z_bl;
 Q.b_grand_coalition = Q.spd_bl + Q.ddp_bl + Q.z_bl + Q.dvp_bl;
-Q.b_bourgeois_coalition = Q.z_bl + Q.bb_bl + Q.other_bl;
+Q.b_bourgeois_coalition = Q.z_bl + Q.bb_bl + Q.other_bl + Q.dnvp_bl;
 Q.b_center_right_coalition = Q.z_bl + Q.ddp_bl + Q.dvp_bl + Q.other_bl + Q.dnvp_bl;
 Q.b_right_coalition = Q.z_bl + Q.dvp_bl + Q.other_bl + Q.dnvp_bl;
 Q.b_far_right_coalition = Q.dnvp_bl + Q.nsdap_bl;
 Q.b_left_coalition = Q.spd_bl + Q.kpd_bl;
 // this is an absurd concept lol
-Q.b_popular_front_coalition = Q.spd_bl + Q.kpd_bl + Q.z_bl + Q.ddp_bl;
+Q.b_popular_front_coalition = Q.spd_bl + Q.kpd_bl + Q.ddp_bl;
 Q.b_anti_democratic_coalition = Q.kpd_bl + Q.nsdap_bl + Q.dnvp_bl;
 // aka everyone except nazi, kpd, dnvp
 Q.b_neo_weimar_coalition = Q.spd_bl + Q.ddp_bl + Q.z_bl + Q.dvp_bl + Q.other_bl;
@@ -381,9 +381,31 @@ There are some potential coalition arrangements.
 @coalition_menu
 
 - @bourgeois_bavaria
+- @nazi_bavaria
+- @left_bavaria
 
 @bourgeois_bavaria
-title: The incumbent bourgeois coalition.
-subtitle: BVP + BB + Others ([+ b_bourgeois_coalition +]%)
+title: A bourgeois-right coalition.
+subtitle: BVP + BB + DNVP + Others ([+ b_bourgeois_coalition +]%)
+choose-if: nsdap_bl < 50 and b_popular_front_coalition < 50
+unavailable-subtitle: BVP + BB + DNVP + Others ([+ b_bourgeois_coalition +]%) - An alternative government can be formed.
 
-Nothing ever happens.
+Heinrich Held, the leader of the BVP's parliamentary delegation, has been re-elected Minister-President of Bavaria. [? if b_bourgeois_coalition < 50 : He has survived as a minority government thanks to the constructive VONC of the Bavarian constitution. ?]
+
+@nazi_bavaria
+title: A Nazi majority government.
+subtitle: NSDAP ([+ nsdap_bl +]%)
+view-if: nsdap_bl >= 50
+on-arrival: rural_nsdap += 6; old_middle_nsdap += 4; catholics_nsdap += 3; bavaria_other -= 0.2; bavaria_nsdap += 0.3; coup_progress += 2; sa_militancy += 0.05; sa_strength += 20
+
+Somehow, the Nazis have won a majority in Bavaria. Epp has been made Minister-President and now leads an all-Nazi coalition government, which quickly sets to work consolidating power within the state.
+
+@left_bavaria
+title: A "Popular Front" of all parties on the Bavarian left.
+subtitle: KPD + SPD + [+ ddp_name +] ([+ b_popular_front_coalition +]%)
+unavailable-subtitle: KPD + SPD + [+ ddp_name +] ([+ b_popular_front_coalition +]%) - [? if ddp_relation < 45 : The [+ ddp_name +] won't vote for us. ?][? if kpd_relation < 55 or communist_coalition < 3 : The KPD won't vote for us. ?]
+view-if: b_popular_front_coalition >= 50
+choose-if: ((kpd_relation >= 55 and communist_coalition >= 3) or (spd_bl+ddp_bl >= 50 and ddp_relation >= 45)) and ((ddp_relation >= 45) or (kpd_bl+spd_bl >= 50 and kpd_relation >= 55 and communist_coalition >= 3))
+on-arrival: spd_bavaria = 1; workers_spd += 4*(1-dissent); catholics_spd += 4*(1-dissent); rural_spd += 4*(1-dissent); sh_militancy -= 0.05; rb_militancy += 0.05; coup_progress += 1; capital_strike_progress += 2
+
+Somehow, a "Popular Front" of the KPD, [+ ddp_name +] and us has been able to outvote the right-wing parties for rulership of Bavaria, instating a social democrat as Minister-President.
