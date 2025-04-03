@@ -19,29 +19,15 @@ The Prussian elections are to be held now.
 @prussia_election_1928
 on-arrival: {!
 var total_prussia = 0;
-console.log("Initial total_prussia:", total_prussia);
-
-// Normalize Prussian votes
+// normalize prussian votes
 for (var party of Q.parties) {
-    Q[party + '_votes_prussia'] = 0;
-    console.log(`Processing party: ${party}`);
-    
+    Q[party+'_votes_prussia'] = 0;
     for (var c of Q.classes) {
-        let contribution = Q[c + '_prussia'] * Q[c + '_' + party + '_normalized'] * Q['prussia_' + party];
-        console.log(`Class: ${c}, Contribution to ${party}:`, contribution);
-
-        Q[party + '_votes_prussia'] += contribution;
-        total_prussia += contribution;
+        Q[party+'_votes_prussia'] += Q['prussia_'+c]*Q[c+'_'+party+'_normalized']*Q['prussia_'+party];
+        total_prussia += Q['prussia_'+c]*Q[c+'_'+party+'_normalized']*Q['prussia_'+party];
     }
-
-    console.log(`Total votes for ${party} before rounding:`, Q[party + '_votes_prussia']);
-    console.log(`Total prussia after processing ${party}:`, total_prussia);
-
-    Q[party + '_votes_prussia'] = Math.round((Q[party + '_votes_prussia'] / total_prussia) * 100);
-    console.log(`Final normalized votes for ${party}:`, Q[party + '_votes_prussia']);
+    Q[party+'_votes_prussia'] = Math.round((Q[party+'_votes_prussia']/total_prussia)*100);
 }
-
-console.log("Final total_prussia:", total_prussia);
 
 // set old results
 // election threshold constitutional reform
