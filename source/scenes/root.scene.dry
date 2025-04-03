@@ -782,7 +782,7 @@ go-to: menu
 
 Landtags have been enabled.
 
-@enable_landtags
+@disable_landtags
 view-if: landtags_enabled
 on-arrival: landtags_enabled = 0
 go-to: menu
