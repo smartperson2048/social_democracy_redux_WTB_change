@@ -19,15 +19,27 @@ The Prussian elections are to be held now.
 @prussia_election_1928
 on-arrival: {!
 var total_prussia = 0;
+console.log("Starting normalization of Prussian votes...");
+
 // normalize prussian votes
 for (var party of Q.parties) {
     Q[party+'_votes_prussia'] = 0;
+    console.log(`Processing party: ${party}`);
+    
     for (var c of Q.classes) {
-        Q[party+'_votes_prussia'] += Q['prussia_'+c]*Q[c+'_'+party+'_normalized']*Q['prussia_'+party];
-        total_prussia += Q['prussia_'+c]*Q[c+'_'+party+'_normalized']*Q['prussia_'+party];
+        let votes = Q['prussia_'+c] * Q[c+'_'+party+'_normalized'] * Q['prussia_'+party];
+        Q[party+'_votes_prussia'] += votes;
+        total_prussia += votes;
+
+        console.log(`  Class: ${c}, Votes: ${votes}, Cumulative Total: ${Q[party+'_votes_prussia']}`);
     }
-    Q[party+'_votes_prussia'] = Math.round((Q[party+'_votes_prussia']/total_prussia)*100);
+
+    Q[party+'_votes_prussia'] = Math.round((Q[party+'_votes_prussia'] / total_prussia) * 100);
+    console.log(`Final percentage for ${party}: ${Q[party+'_votes_prussia']}%`);
 }
+
+console.log("Normalization complete. Total Prussian votes:", total_prussia);
+
 
 // set old results
 // election threshold constitutional reform
