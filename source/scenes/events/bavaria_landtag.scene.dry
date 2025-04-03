@@ -122,6 +122,10 @@ Q.change_bb_bl = Q.bb_bl - Q.old_bb_bl;
 var sign_bb = Q.change_bb_bl > 0 ? '+'  : '';
 Q.stbl_change_bb = sign_bb + Q.change_bb_bl;//.toFixed(1);
 
+Q.change_other_bl = Q.other_bl - Q.old_other_bl;
+var sign_other = Q.change_other_bl > 0 ? '+'  : '';
+Q.stbl_change_other = sign_other + Q.change_other_bl;//.toFixed(1);
+
 if (Q.other_bl < Q.bavaria_threshold) {
     new_party_sum = (100-Q.other_bl);
     if (Q.use_decimals) {
