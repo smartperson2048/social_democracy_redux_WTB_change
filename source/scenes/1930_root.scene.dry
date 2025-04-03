@@ -597,7 +597,29 @@ Q.hirschfeld_advisor = 0; // Magnus Hirschfeld
 Q.radbruch_advisor = 0; // Gustav Radbruch
 Q.stampfer_advisor = 0; // Friedrich Stampfer
 
-Q.prussia_election_year = 1928;
-Q.prussia_election_month = 5;
+Q.prussia_election_year = 1932;
+Q.prussia_election_month = 4;
+
+Q.bavaria_election_year = 1932;
+Q.bavaria_election_month = 4;
+
+Q.spd_pl = 29;
+Q.dnvp_pl = 18;
+Q.z_pl = 15;
+Q.dvp_pl = 9;
+Q.kpd_pl = 11;
+Q.ddp_pl = 6;
+Q.nsdap_pl = 2;
+Q.other_pl = 11;
+
+Q.spd_bl = 26;
+Q.z_bl = 35;
+Q.nsdap_bl = 9;
+Q.dnvp_bl = 9;
+Q.dvp_bl = 4;
+Q.kpd_bl = 3;
+Q.bb_bl = 11;
+Q.ddp_bl = 0;
+Q.other_bl = 5;
 !}
 go-to: root.menu
