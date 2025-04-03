@@ -17,7 +17,7 @@ The Bavarian elections are to be held now.
 - @election_algorithm: May we do our best...
 
 @bavaria_election_1928
-on-arrival: {!
+on-arrival: check_please = 0; {!
 var total_bavaria = 0;
 console.log("Starting normalization of bavarian votes...");
 // normalize bavarian votes
@@ -65,9 +65,12 @@ if (Q.z_votes_bavaria < 30) {
 var new_party_sum = 0;
 for (var party of Q.parties) {
     Q['old_' + party + '_bl'] = Q[party + '_bl'];
-    if (Q.constitutional_reform > 0) {
-        if (Q[party + '_votes_bavaria'] < Q.electoral_threshold || (Q.electoral_threshold > 1 && party == 'other') || (Q[party + '_banned'] == 1)) {
+    if (Q.constitutional_reform > 0 || Q[party + '_votes_bavaria'] < 3) {
+        if (Q[party + '_votes_bavaria'] < (Q.electoral_threshold || 3) || (Q.electoral_threshold > 1 && party == 'other') || (Q[party + '_banned'] == 1)) {
             Q[party + '_bl'] = 0;
+            if (Q[party + '_votes_bavaria'] < (Q.electoral_threshold || 3)) {
+                Q.check_please = 1;
+        }
         } else {
             Q[party + '_bl'] = Q[party + '_votes_bavaria'];
         }
@@ -86,7 +89,7 @@ for (var party of Q.parties) {
     Q['stbl_change_' + party] = sign + Q['change_' + party + '_bl'];//.toFixed(1);
 }
 // calculate new party sum if electoral reform
-if (Q.electoral_threshold && Q.electoral_threshold > 0 || Q.party_bans) {
+if (Q.electoral_threshold && Q.electoral_threshold > 0 || Q.party_bans || Q.check_please) {
     for (var party of Q.parties) {
         if (Q[party + '_bl'] > 0) {
             if (Q.use_decimals) {
