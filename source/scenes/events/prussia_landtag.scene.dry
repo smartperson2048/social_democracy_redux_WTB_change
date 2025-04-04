@@ -359,8 +359,9 @@ Adam Stegerwald has been confirmed as Minister-President of Prussia.
 @right_prussia
 title: A right-wing government, headed by Stegerwald.
 subtitle: Z + DVP + Others + DNVP ([+ p_right_coalition +]%)
+unavailable-subtitle:  Z + DVP + Others + DNVP ([+ p_right_coalition +]%) - The DNVP is unwilling.
 view-if: p_right_coalition >= 50 or z_prussia
-choose-if: (p_right_coalition >= 50 or (z_prussia and not (p_left_coalition >= 50 and kpd_relation >= 55 and communist_coalition >= 3))) and (z_relation < 35 or (z_relation < 45 and (p_left_coalition >= 50 and kpd_relation >= 55 and communist_coalition >= 3)))
+choose-if: (p_right_coalition >= 50 or (z_prussia and not (p_left_coalition >= 50 and kpd_relation >= 55 and communist_coalition >= 3))) and (z_relation < 35 or (z_relation < 45 and (p_left_coalition >= 50 and kpd_relation >= 55 and communist_coalition >= 3))) and (dnvp_reform or year < 1930)
 on-departure: z_prussia = 1; spd_prussia = 0; prussia_spd -= 0.1 if prussia_spd >= 0.8; prussia_dnvp += 0.1 if prussia_dnvp < 1.2; prussian_police_loyalty -= 0.25; prussia_other += 0.05 if prussia_other < 1.2; prussia_z -= 0.05 if prussia_z >= 0.8; prussia_dvp -= 0.1 if prussia_dvp >= 0.8; prussia_ddp += 0.05 if prussia_ddp < 1.1; prussia_kpd += 0.05 if prussia_kpd < 1.1; prussia_nsdap -= 0.1 if prussia_nsdap >= 0.7
 
 [? if spd_prussia : Otto Braun has been de-seated and replaced by Adam Stegerwald. ?][? if z_prussia : Adam Stegerwald has been re-elected M-P of Prussia. ?]
@@ -371,7 +372,7 @@ on-departure: z_prussia = 1; spd_prussia = 0; prussia_spd -= 0.1 if prussia_spd 
 title: A "United Front" of the left-wing parties.
 subtitle: KPD + SPD ([+ p_left_coalition +]%)
 view-if: spd_prussia or p_left_coalition >= 50
-choose-if: (spd_prussia and (p_right_coalition < 50 or z_relation >= 45)) or p_left_coalition >= 50 and kpd_relation >= 55 and communist_coalition >= 3
+choose-if: (spd_prussia and (p_right_coalition < 50 or z_relation >= 45 or not dnvp_reform or year >= 1930)) or p_left_coalition >= 50 and kpd_relation >= 55 and communist_coalition >= 3
 unavailable-subtitle: KPD + SPD ([+ p_left_coalition +]%) - [? if p_left_coalition < 50 : We lack the votes. ?][? if kpd_relation < 55 or communist_coalition < 3 : The KPD is unwilling. ?]
 on-arrival: dvp_relation -= 10; z_relation -= 5; dvp_relation -= 5 if dvp_prussia; z_relation -= 5 if z_prussia;
 on-departure: dvp_prussia = 0; kpd_prussia = 1; spd_prussia = 1; z_prussia = 0; prussia_kpd += 0.1 if prussia_kpd < 1.3; prussia_spd += 0.05 if prussia_spd < 1.1; coup_progress += 4; capital_strike_progress += 1
@@ -384,7 +385,7 @@ We have enough votes to form a United Front with the KPD. [? if dvp_prussia : Th
 title: Is a "Popular Front" possible?
 subtitle: KPD + SPD + [+ ddp_name +] + Z ([+ p_popular_front_coalition +]%)
 view-if: spd_prussia or p_popular_front_coalition >= 50
-choose-if: (spd_prussia and (p_right_coalition < 50 or z_relation >= 40)) or p_popular_front_coalition >= 50 and kpd_relation >= 60 and z_relation >= 60 and communist_coalition >= 3
+choose-if: (spd_prussia and (p_right_coalition < 50 or z_relation >= 40 or not dnvp_reform or year >= 1930)) or p_popular_front_coalition >= 50 and kpd_relation >= 60 and z_relation >= 60 and communist_coalition >= 3
 unavailable-subtitle: KPD + SPD + [+ ddp_name +] + Z ([+ p_popular_front_coalition +]%) - [? if p_popular_front_coalition < 50 : We lack the votes. ?][? if kpd_relation < 60 or communist_coalition < 3 : The KPD is unwilling. ?][? if z_relation < 60 : The Center Party is unwilling. ?]
 on-arrival: dvp_relation -= 5; dvp_relation -= 5 if dvp_prussia
 on-departure: dvp_prussia = 0; kpd_prussia = 1; spd_prussia = 1; z_prussia = 0; prussia_kpd += 0.05 if prussia_kpd < 1.2; prussia_spd -= 0.05 if prussia_spd >= 0.9; coup_progress += 3; capital_strike_progress += 1
@@ -397,14 +398,14 @@ We have enough votes to form a Popular Front with the KPD and Z. [? if dvp_pruss
 
 @no_majority_braun
 title: Otto Braun's cabinet falls apart.
-view-if: spd_prussia and not ((spd_prussia and (p_right_coalition < 50 or z_relation >= 40)) or p_popular_front_coalition >= 50 and kpd_relation >= 60 and z_relation >= 60 and communist_coalition >= 3) and not ((spd_prussia and (p_right_coalition < 50 or z_relation >= 45)) or p_left_coalition >= 50 and kpd_relation >= 55 and communist_coalition >= 3) and not ((p_right_coalition >= 50 or (z_prussia and not (p_left_coalition >= 50 and kpd_relation >= 55 and communist_coalition >= 3))) and (z_relation < 35 or (z_relation < 45 and (p_left_coalition >= 50 and kpd_relation >= 55 and communist_coalition >= 3)))) and not ((spd_prussia or (z_prussia and z_relation >= 45)) or p_grand_coalition >= 50 and dvp_relation >= 40 and z_relation >= 40) and not ((spd_prussia or (z_prussia and z_relation >= 50)) or (p_weimar_coalition >= 50 and z_relation >= 35))
+view-if: spd_prussia and not ((spd_prussia and (p_right_coalition < 50 or z_relation >= 40 or not dnvp_reform or year >= 1930)) or p_popular_front_coalition >= 50 and kpd_relation >= 60 and z_relation >= 60 and communist_coalition >= 3) and not ((spd_prussia and (p_right_coalition < 50 or z_relation >= 45 or not dnvp_reform or year >= 1930)) or p_left_coalition >= 50 and kpd_relation >= 55 and communist_coalition >= 3) and not ((p_right_coalition >= 50 or (z_prussia and not (p_left_coalition >= 50 and kpd_relation >= 55 and communist_coalition >= 3))) and (z_relation < 35 or (z_relation < 45 and (p_left_coalition >= 50 and kpd_relation >= 55 and communist_coalition >= 3))) and (dnvp_reform or year < 1930)) and not ((spd_prussia or (z_prussia and z_relation >= 45)) or p_grand_coalition >= 50 and dvp_relation >= 40 and z_relation >= 40) and not ((spd_prussia or (z_prussia and z_relation >= 50)) or (p_weimar_coalition >= 50 and z_relation >= 35))
 on-arrival: prussian_crisis = 1; prussia_nsdap += 0.1; pro_republic -= 5
 
 No clear government can be formed, even despite the constructive VONC. Braun remains as M-P due to the inability to dislodge him, but effectively as the head of an SPD minority government, and the reactionaries may use this as a pretext to perform a *Reichsexekution* on the government.
 
 @no_majority_stegerwald
 title: Adam Stegerwald's cabinet falls apart.
-view-if: z_prussia and not ((spd_prussia and (p_right_coalition < 50 or z_relation >= 40)) or p_popular_front_coalition >= 50 and kpd_relation >= 60 and z_relation >= 60 and communist_coalition >= 3) and not ((spd_prussia and (p_right_coalition < 50 or z_relation >= 45)) or p_left_coalition >= 50 and kpd_relation >= 55 and communist_coalition >= 3) and not ((p_right_coalition >= 50 or (z_prussia and not (p_left_coalition >= 50 and kpd_relation >= 55 and communist_coalition >= 3))) and (z_relation < 35 or (z_relation < 45 and (p_left_coalition >= 50 and kpd_relation >= 55 and communist_coalition >= 3)))) and not ((spd_prussia or (z_prussia and z_relation >= 45)) or p_grand_coalition >= 50 and dvp_relation >= 40 and z_relation >= 40) and not ((spd_prussia or (z_prussia and z_relation >= 50)) or (p_weimar_coalition >= 50 and z_relation >= 35))
+view-if: z_prussia and not ((spd_prussia and (p_right_coalition < 50 or z_relation >= 40  or not dnvp_reform or year >= 1930)) or p_popular_front_coalition >= 50 and kpd_relation >= 60 and z_relation >= 60 and communist_coalition >= 3) and not ((spd_prussia and (p_right_coalition < 50 or z_relation >= 45 or not dnvp_reform or year >= 1930)) or p_left_coalition >= 50 and kpd_relation >= 55 and communist_coalition >= 3) and not ((p_right_coalition >= 50 or (z_prussia and not (p_left_coalition >= 50 and kpd_relation >= 55 and communist_coalition >= 3))) and (z_relation < 35 or (z_relation < 45 and (p_left_coalition >= 50 and kpd_relation >= 55 and communist_coalition >= 3)))  and (dnvp_reform or year < 1930)) and not ((spd_prussia or (z_prussia and z_relation >= 45)) or p_grand_coalition >= 50 and dvp_relation >= 40 and z_relation >= 40) and not ((spd_prussia or (z_prussia and z_relation >= 50)) or (p_weimar_coalition >= 50 and z_relation >= 35))
 on-arrival: prussian_crisis = 1; prussia_nsdap += 0.1; pro_republic -= 5
 
 No clear government can be formed, even despite the constructive VONC. Stegerwald remains as M-P due to the inability to dislodge him, but effectively as the head of a Zentrum minority government. Let's just hope he doesn't turn to the Nazis for backing.
