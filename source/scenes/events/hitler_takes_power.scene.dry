@@ -4,7 +4,7 @@ view-if: (chancellor == "Hitler" or president == "Hitler" or chancellor_party ==
 on-arrival: spd_in_government = 0; hitler_seen = 1; hitler_month = month; hitler_year = year;
 tags: event
 new-page: true
-go-to: choose if not spd_prussia; prussian_overthrow if spd_prussia
+go-to: choose if not spd_prussia and not z_prussia; prussian_overthrow if spd_prussia or z_prussia
 
 [? if hitler_deported and president != "Hitler" and chancellor != "Hitler": The first act that Chancellor [+ chancellor +] takes upon assuming office is bringing Adolf Hitler back to Germany, and giving him citizenship and an official cabinet position. ?]
 

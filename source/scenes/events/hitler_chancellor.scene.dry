@@ -4,7 +4,7 @@ view-if: year >= 1933 and president = "Hindenburg" and (chancellor = "Papen" or 
 on-departure: chancellor = "Hitler"; chancellor_party = "NSDAP"; hitler_seen = 1; hitler_month = month; hitler_year = year;
 tags: event
 new-page: true
-go-to: choose if not spd_prussia; prussian_overthrow if spd_prussia
+go-to: choose if not spd_prussia and not z_prussia; prussian_overthrow if spd_prussia or z_prussia
 
 = Hitler Appointed Chancellor!
 
