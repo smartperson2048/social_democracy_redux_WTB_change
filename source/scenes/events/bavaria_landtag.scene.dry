@@ -4,7 +4,7 @@ tags: event
 priority: -1
 view-if: landtags_enabled and ((year = bavaria_election_year and month >= bavaria_election_month) or (year > bavaria_election_year)) and not supreme_soviet
 on-arrival: dvp_willing = 0; dvp_willing = 1 if ((dvp_blelation+spd_votes+(pro_republic/6)) >= ((100-pro_republic)+capital_strike_progress+(coup_progress/2))); z_willing = 0; z_willing = 1 if z_blelation >= 50 or (z_blelation >= 25 and bourgeois_coalition < 50)
-on-departure: month_actions += 1; in_election = 0; bavaria_election_year += 4; bavaria_election_month -= 1; bavaria_election_year -= 1 if bavaria_election_month < 1; bavaria_election_month += 12 if bavaria_election_month < 1; b_elections += 1; bavaria_election_time = time + 47;
+on-departure: in_election = 0; bavaria_election_year += 4; bavaria_election_month -= 1; bavaria_election_year -= 1 if bavaria_election_month < 1; bavaria_election_month += 12 if bavaria_election_month < 1; b_elections += 1; bavaria_election_time = time + 47;
 set-jump: bavaria_election_1928
 
 # the low priority means that this event is only seen after all other events are resolved for the month.
