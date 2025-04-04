@@ -633,6 +633,7 @@ if (Q.month_actions >= 1) {
         }
         Q.bavaria_nsdap -= 0.6/12;
         Q.bavaria_spd -= 0.1/12;
+        Q.bavaria_z -= 0.05/12;
         Q.bavaria_others += 0.3/12;
         Q.workers_z += 1/12;
         Q.old_middle_z += 2/12;
@@ -702,7 +703,8 @@ if (Q.month_actions >= 1) {
         }
         Q.bavaria_spd -= 0.05/12;
         Q.bavaria_nsdap -= 0.5/12;
-        Q.bavaria_others += 0.4/12;
+        Q.bavaria_z -= 0.05/12;
+        Q.bavaria_others += 0.5/12;
         if (!Q.spd_in_government) {
             Q.workers_spd += 1/12;
         }
