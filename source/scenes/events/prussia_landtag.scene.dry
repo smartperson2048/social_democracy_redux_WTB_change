@@ -296,11 +296,98 @@ There are some potential coalition arrangements.
 @coalition_menu
 
 - @weimar_prussia
+- @groko_prussia
+- @right_prussia
+- @left_prussia
 
 @weimar_prussia
-title: The incumbent Weimar Coalition.
+title: The Weimar Coalition, traditionally dominant in Prussia.
 subtitle: SPD + Z + [+ ddp_name +] ([+ p_weimar_coalition +]%) [? if spd_prussia and p_weimar_coalition < 50 : - We retain Prussia through the constructive VONC. ?]
-choose-if: spd_prussia or weimar_coalition >= 50
+choose-if: (spd_prussia or (z_prussia and z_relation >= 50)) or (p_weimar_coalition >= 50 and z_relation >= 35)
 unavailable-subtitle: We lack the votes.
+on-arrival: dvp_relation -= 5 if dvp_prussia
+on-departure: dvp_prussia = 0; kpd_prussia = 0;
 
-Nothing ever happens.
+We have enough votes to form a Weimar Coalition. [? if dvp_prussia : The DVP's exclusion from government has upset them. ?]
+
+[? if p_weimar_coalition < 50 : We have retained this position thanks to the constructive VONC. ?]
+
+- @braun_weimar: Otto Braun will lead the Weimar Coalition.
+- @stegerwald_weimar: Adam Stegerwald will lead the Weimar Coalition.
+
+@braun_weimar
+choose-if: p_weimar_coalition >= 50 or spd_prussia
+on-arrival: spd_prussia = 1; z_prussia = 0
+
+Otto Braun has been confirmed as Minister-President of Prussia.
+
+@stegerwald_weimar
+choose-if: p_weimar_coalition >= 50 or z_prussia
+on-arrival: z_prussia = 1; spd_prussia = 0
+
+Adam Stegerwald has been confirmed as Minister-President of Prussia.
+
+@groko_prussia
+title: A "Grand Coalition", including the DVP in government.
+subtitle: SPD + Z + [+ ddp_name +] + DVP ([+ p_grand_coalition +]%)
+choose-if: (spd_prussia or (z_prussia and z_relation >= 45)) or p_grand_coalition >= 50 and dvp_relation >= 40 and z_relation >= 40
+unavailable-subtitle: [? if p_grand_coalition < 50 : We lack the votes. ?][? if dvp_relation < 40 : The DVP is unwilling. ?][? if z_relation < 40 : The Center Party is unwilling. ?]
+on-arrival: kpd_prussia = 0; dvp_relation += 5; left_dissent += 5; kpd_relation -= 5; dvp_prussia = 1; democratization -= 1; stalhelm_militancy += 0.05; prussian_police_loyalty -= 0.1; prussia_dvp += 0.05 if prussia_dvp < 1.25; prussia_dnvp -= 0.1 if prussia_dnvp >= 0.7; prussia_nsdap += 0.05 if prussia_nsdap < 1.25
+
+The DVP has been included in government to foster goodwill. The left is upset by this.
+
+[? if p_grand_coalition < 50 : We have retained this position thanks to the constructive VONC. ?]
+
+- @braun_groko: Otto Braun will lead the Grand Coalition.
+- @stegerwald_groko: Adam Stegerwald will lead the Grand Coalition.
+
+@braun_groko
+choose-if: p_grand_coalition >= 50 or spd_prussia
+on-arrival: spd_prussia = 1; z_prussia = 0
+
+Otto Braun has been confirmed as Minister-President of Prussia.
+
+@stegerwald_weimar
+choose-if: p_grand_coalition >= 50 or z_prussia
+on-arrival: z_prussia = 1; spd_prussia = 0
+
+Adam Stegerwald has been confirmed as Minister-President of Prussia.
+
+@right_prussia
+title: A right-wing government, headed by Stegerwald.
+subtitle: Z + DVP + Others + DNVP ([+ p_right_coalition +])
+view-if: p_right_coalition >= 50 or z_prussia
+choose-if: (p_right_coalition >= 50 or (z_prussia and not (p_left_coalition >= 50 and kpd_relation >= 55 and communist_coalition >= 3))) and (z_relation < 35 or (z_relation < 45 and (p_left_coalition >= 50 and kpd_relation >= 55 and communist_coalition >= 3)))
+on-departure: z_prussia = 1; spd_prussia = 0; prussia_spd -= 0.1 if prussia_spd >= 0.8; prussia_dnvp += 0.1 if prussia_dnvp < 1.2; prussian_police_loyalty -= 0.25; prussia_other += 0.05 if prussia_other < 1.2; prussia_z -= 0.05 if prussia_z >= 0.8; prussia_dvp -= 0.1 if prussia_dvp >= 0.8; prussia_ddp += 0.05 if prussia_ddp < 1.1; prussia_kpd += 0.05 if prussia_kpd < 1.1; prussia_nsdap -= 0.1 if prussia_nsdap >= 0.7
+
+[? if spd_prussia : Otto Braun has been de-seated and replaced by Adam Stegerwald. ?][? if z_prussia : Adam Stegerwald has been re-elected M-P of Prussia. ?]
+
+[? if p_right_coalition < 50 : The right-wing government has been retained thanks to the constructive VONC. ?]
+
+@left_prussia
+title: A "United Front" of the left-wing parties.
+subtitle: KPD + SPD ([+ p_left_coalition +])
+view-if: spd_prussia or p_left_coalition >= 50
+choose-if: (spd_prussia and (p_right_coalition < 50 or z_relation >= 45)) or p_left_coalition >= 50 and kpd_relation >= 55 and communist_coalition >= 3
+unavailable-subtitle: [? if p_left_coalition < 50 : We lack the votes. ?][? if kpd_relation < 55 or communist_coalition < 3 : The KPD is unwilling. ?]
+on-arrival: dvp_relation -= 10; z_relation -= 5; dvp_relation -= 5 if dvp_prussia; z_relation -= 5 if z_prussia;
+on-departure: dvp_prussia = 0; kpd_prussia = 1; spd_prussia = 1; z_prussia = 0; prussia_kpd += 0.1 if prussia_kpd < 1.3; prussia_spd += 0.05 if prussia_spd < 1.1; coup_progress += 4; capital_strike_progress += 1
+
+We have enough votes to form a United Front with the KPD. [? if dvp_prussia : The DVP's exclusion from government has upset them. ?]
+
+[? if p_left_coalition < 50 : We have retained this position thanks to the constructive VONC. ?]
+
+@popular_front_prussia
+title: Is a "Popular Front" possible?
+subtitle: KPD + SPD ([+ p_popular_front_coalition +])
+view-if: spd_prussia or p_popular_front_coalition >= 50
+choose-if: (spd_prussia and (p_right_coalition < 50 or z_relation >= 40)) or p_popular_front_coalition >= 50 and kpd_relation >= 60 and z_relation >= 60 and communist_coalition >= 3
+unavailable-subtitle: [? if p_popular_front_coalition < 50 : We lack the votes. ?][? if kpd_relation < 60 or communist_coalition < 3 : The KPD is unwilling. ?][? if z_relation < 60 : The Center Party is unwilling. ?]
+on-arrival: dvp_relation -= 5; dvp_relation -= 5 if dvp_prussia
+on-departure: dvp_prussia = 0; kpd_prussia = 1; spd_prussia = 1; z_prussia = 0; prussia_kpd += 0.05 if prussia_kpd < 1.2; prussia_spd -= 0.05 if prussia_spd >= 0.9; coup_progress += 3; capital_strike_progress += 1
+
+We have enough votes to form a Popular Front with the KPD and Z. [? if dvp_prussia : The DVP's exclusion from government has upset them. ?]
+
+[? if p_popular_front_coalition < 50 : We have retained this position thanks to the constructive VONC. ?]
+
+## todo: should have an actual thing for choosing M-Ps rather than messily assigning based on who is probably maybe incumbent...
