@@ -692,6 +692,13 @@ Despite our best efforts...the Enabling Act has passed with [+ enabling_r +]% of
 Germany is lost.
 
 - @game_over: Game over.
+- @fight_enabling: We can still stop Hitler! Mobilize the Reichsbanner.
+
+@fight_enabling
+choose-if: rb_force >= 10
+unavailable-subtitle: We lack the force.
+on-arrival: spd_rebel = 1
+go-to: civil_war
 
 @enabling_act_failed
 on-arrival: spd_rebel = 1; sa_militancy -= 0.2; sa_strength *= 0.8; reichswehr_loyalty += 0.25; rb_militancy += 0.1; rb_strength += 500; kpd_relation += 25
