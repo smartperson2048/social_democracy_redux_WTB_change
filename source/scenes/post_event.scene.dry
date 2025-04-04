@@ -631,6 +631,15 @@ if (Q.month_actions >= 1) {
             Q.prussia_nsdap += 0.05/12;
             Q.prussia_dnvp -= 0.02/12;
         }
+        Q.thuringia_other -= 0.1/12;
+        Q.thuringia_dnvp -= 0.05/12;
+        Q.thuringia_kpd += 0.05/12;
+        Q.thuringia_nsdap += 0.05/12;
+        if (Q.nazi_thuringia) {
+            Q.thuringia_other -= 0.05/12;
+            Q.thuringia_nsdap += 0.2/12;
+            Q.thuringia_spd -= 0.05/12;
+        }
         Q.bavaria_nsdap -= 0.6/12;
         Q.bavaria_spd -= 0.1/12;
         Q.bavaria_z -= 0.05/12;

@@ -13,7 +13,7 @@ The Thuringian government, a coalition of the bourgeois parties with the Nazis, 
 - @thuringia_spd: It is in the hands of the Thuringian SPD.
 
 @thuringia_spd
-go-to: new_elections if left_strength >= 40 or uf_formed; toleration if left_strength < 40 and not uf_formed
+go-to: new_elections if left_strength >= 30 or uf_formed; toleration if left_strength < 30 and not uf_formed
 
 @new_elections
 on-arrival: thuringia_spd += 0.05; thuringia_dvp += 0.05; thuringia_dnvp -= 0.1; thuringia_other -= 0.05; thuringia_election_month = month+4; thuringia_election_year -= 1 if thuringia_election_month > 12; thuringia_election_month -= 12 if thuringia_election_month > 12
@@ -34,6 +34,6 @@ on-arrival: left_dissent += 10; left_strength -= 5; reformist_dissent -= 10; cen
 We oppose this anti-toleration stance the Thuringian SPD has taken, assuaging the concerns of our reformists but upsetting the left.
 
 @toleration
-on-arrival: thuringia_spd -= 0.05; thuringia_toleration = 1; thuringia_kpd += 0.05; left_dissent += 3
+on-arrival: thuringeration_timer = 10-(left_strength/10); thuringia_spd -= 0.05; thuringia_toleration = 1; thuringia_kpd += 0.05; left_dissent += 3
 
 The Thuringian SPD provides toleration to the local bourgeois parties as to prevent new elections.
