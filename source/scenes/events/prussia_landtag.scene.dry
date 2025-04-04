@@ -281,15 +281,19 @@ go-to: coalition_menu
 
 Weimar Coalition (SPD + Z + [+ ddp_name +]): [+ p_weimar_coalition +]%
 
-Grand Coalition (SPD + Z + [+ bvp_name +] + [+ ddp_name +] + DVP): [+ p_grand_coalition +]%
+Grand Coalition (SPD + Z + [+ ddp_name +] + DVP): [+ p_grand_coalition +]%
 
-Bourgeois Coalition (Z + [+ bvp_name +] + [+ ddp_name +] + DVP + Others): [+ p_bourgeois_coalition +]%
+Bourgeois Coalition (Z + [+ ddp_name +] + DVP + Others): [+ p_bourgeois_coalition +]%
 
-Right-wing Coalition (Z + [+ bvp_name +] + DVP + Others + DNVP): [+ p_right_coalition +]%
+Right-wing Coalition (Z + DVP + Others + DNVP): [+ p_right_coalition +]%
 
 [? if nazi_urgency <= 1 and nsdap_pl >= 15 : The rapid rise in NSDAP votes is extremely worrying. Many had believed that the party was moribound; now, some of us consider it to be the greatest threat to democracy in Germany. ?]
 
-[? if p_anti_democratic_coalition >= 50 : Together, the anti-democratic KPD, DNVP, and NSDAP have a majority in the Reichstag. A stable governing majority will be almost impossible. ?]
+[? if p_anti_democratic_coalition >= 50 : Together, the anti-democratic KPD, DNVP, and NSDAP have a majority in the Landtag. A stable governing majority will be almost impossible. ?]
+
+[? if spd_prussia : Prussia as a state is currently governed by Minister-President Otto Braun, giving him control over the cabinet, control which cannot be revoked unless a majority for an alternative government is found. This grants the SPD significant power in the state, power the bourgeoisie are keen on stripping. ?]
+
+[? if z_prussia : Prussia as a state is currently governed by Minister-President Adam Stegerwald, giving him control over the cabinet, which cannot be revoked unless a majority for an alternative government is found. This grants the bourgeois significant power in the state, including the power to at will exclude us from government and leave us incapable of fighting back unless we and the KPD can both win a majority and agree on a common candidate. ?]
 
 There are some potential coalition arrangements.
 
@@ -320,15 +324,19 @@ We have enough votes to form a Weimar Coalition. [? if dvp_prussia : The DVP's e
 
 @braun_weimar
 choose-if: p_weimar_coalition >= 50 or spd_prussia
+unavailable-subtitle: We do not have the votes.
+subtitle: This will retain our control over Prussia.
 on-arrival: spd_prussia = 1; z_prussia = 0
 
 Otto Braun has been confirmed as Minister-President of Prussia.
 
 @stegerwald_weimar
 choose-if: p_weimar_coalition >= 50 or z_prussia
-on-arrival: z_prussia = 1; spd_prussia = 0
+subtitle: The bourgeois will control Prussia.
+unavailable-subtitle: We do not have the votes.
+on-arrival: z_prussia = 1; spd_prussia = 0; left_dissent += 10; center_dissent += 5; labor_dissent += 5
 
-Adam Stegerwald has been confirmed as Minister-President of Prussia.
+Adam Stegerwald has been confirmed as Minister-President of Prussia, to the protest of our party's left.
 
 @groko_prussia
 title: A "Grand Coalition", including the DVP in government.
@@ -346,15 +354,19 @@ The DVP has been included in government to foster goodwill. The left is upset by
 
 @braun_groko
 choose-if: p_grand_coalition >= 50 or spd_prussia
+unavailable-subtitle: We do not have the votes.
+subtitle: This will retain our control over Prussia.
 on-arrival: spd_prussia = 1; z_prussia = 0
 
 Otto Braun has been confirmed as Minister-President of Prussia.
 
 @stegerwald_groko
 choose-if: p_grand_coalition >= 50 or z_prussia
-on-arrival: z_prussia = 1; spd_prussia = 0
+on-arrival: z_prussia = 1; spd_prussia = 0; left_dissent += 10; center_dissent += 5; labor_dissent += 5
+subtitle: The bourgeois will control Prussia.
+unavailable-subtitle: We do not have the votes.
 
-Adam Stegerwald has been confirmed as Minister-President of Prussia.
+Adam Stegerwald has been confirmed as Minister-President of Prussia, to the protest of our party's left.
 
 @right_prussia
 title: A right-wing government, headed by Stegerwald.
