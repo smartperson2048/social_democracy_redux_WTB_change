@@ -637,15 +637,15 @@ Q.bavaria_z = 1.2;
 Q.bavaria_other = 1.1;
 Q.bavaria_nsdap = 1.85;
 
-Q.thuringia_spd = 1.05;
+Q.thuringia_spd = 1.2;
 Q.thuringia_sapd = 1;
-Q.thuringia_kpd = 1.1;
-Q.thuringia_ddp = 0.9;
-Q.thuringia_dvp = 1.2;
-Q.thuringia_dnvp = 0.7;
-Q.thuringia_z = 0.9;
-Q.thuringia_other = 1.6;
-Q.thuringia_nsdap = 1.1;
+Q.thuringia_kpd = 1;
+Q.thuringia_ddp = 0.8;
+Q.thuringia_dvp = 1.4;
+Q.thuringia_dnvp = 0.5;
+Q.thuringia_z = 0.4;
+Q.thuringia_other = 2;
+Q.thuringia_nsdap = 0.9;
 
 Q.prussia_election_year = 1928;
 Q.prussia_election_month = 5;
