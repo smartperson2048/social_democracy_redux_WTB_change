@@ -375,7 +375,7 @@ on-arrival: thuringia_election_month += 5; thuringia_election_year += 1 if thuri
 It turns out that it is not only out of our hands but the Thuringian SPD's as well. New elections are called, as there is no viable majority.
 
 @refused_toleration
-on-arrival: reformist_dissent += 5; center_dissent += 2; thuringia_election_month += 5; thuringia_election_year += 1 if thuringia_election_month > 12; thuringia_election_month -= 12 if thuringia_election_month > 12; thuringia_dvp -= 0.1 if thuringia_dvp >= 0.5; thuringia_other -= 0.25 if thuringia_other >= 0.9; thuringia_ddp -= 0.1 if thuringia_ddp >= 0.7; thuringia_nsdap += 0.1 if thuringia_nsdap < 1.3; thuringia_spd -= 0.1 if thuringia_spd >= 0.8;
+on-arrival: dvp_relation -= 5; reformist_dissent += 5; center_dissent += 2; thuringia_election_month += 5; thuringia_election_year += 1 if thuringia_election_month > 12; thuringia_election_month -= 12 if thuringia_election_month > 12; thuringia_dvp -= 0.1 if thuringia_dvp >= 0.5; thuringia_other -= 0.25 if thuringia_other >= 0.9; thuringia_ddp -= 0.1 if thuringia_ddp >= 0.7; thuringia_nsdap += 0.1 if thuringia_nsdap < 1.3; thuringia_spd -= 0.1 if thuringia_spd >= 0.8;
 
 The Thuringian SPD, heavily influenced by our party's left-wing, refuses to tolerate a bourgeois government. New elections are called.
 
@@ -394,3 +394,8 @@ We oppose this anti-toleration stance the Thuringian SPD has taken, assuaging th
 
 ## TODO: nazi government collapses in april 1931, similar thing where SPD decides whether to tolerate or not based on internal politics rather than direct influence
 ## TODO: add post_event changes to thuringia_other thuringia_nsdap etc both on their own and from nazi_thuringia
+
+@accepted_toleration
+on-arrival: thuringia_kpd += 0.05 if thuringia_kpd < 1.1; thuringia_spd -= 0.05 if thuringia_spd >= 1; left_dissent += 5; reformist_strength += 5
+
+The Thuringian SPD, following the direction of the party away from the left, has decided to tolerate the bourgeois parties in order to prevent the entry of Nazis into government.
