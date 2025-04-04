@@ -69,10 +69,10 @@ Q.bavaria_catholics = Q.catholics*1.5;
 
 Q.thuringia_workers = Q.workers*1.1;
 Q.thuringia_new_middle = Q.new_middle*0.75;
-Q.thuringia_old_middle = Q.old_middle*1.15;
-Q.thuringia_unemployed = Q.unemployed*1.25;
-Q.thuringia_rural = Q.rural*0.85;
-Q.thuringia_catholics = Q.catholics*0.15;
+Q.thuringia_old_middle = Q.old_middle*1.2;
+Q.thuringia_unemployed = Q.unemployed*1.2;
+Q.thuringia_rural = Q.rural*1;
+Q.thuringia_catholics = Q.catholics*0.2;
 
 !}
 go-to: jumpScene
