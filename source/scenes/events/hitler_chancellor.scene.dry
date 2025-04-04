@@ -12,7 +12,7 @@ Internal scheming by the camarilla surrounding the president has caused Presiden
 
 He has promised a campaign of revenge against the socialists, and the Nazis have already spilled blood. In his published manifesto, he promises a campaign of unspeakable horror against Jews, and endless wars of violent expansion that will ruin all of Europe.
 
-[? if spd_prussia : As his first move towards consolidating total power, Hitler has ordered the dismissal of the Prussian state government in a procedyre known as the *Reichsexekution*. Many of our members are ready to resist, as caving would surely mean the end. ?]
+[? if spd_prussia or z_prussia : As his first move towards consolidating total power, Hitler has ordered the dismissal of the Prussian state government in a procedyre known as the *Reichsexekution*. Many of our members are ready to resist, as caving would surely mean the end. ?]
 
 What are we to do now?
 
