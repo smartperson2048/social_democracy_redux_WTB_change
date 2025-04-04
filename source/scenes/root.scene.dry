@@ -619,7 +619,7 @@ Q.stampfer_advisor = 0; // Friedrich Stampfer
 
 Q.prussia_spd = 0.95;
 Q.prussia_sapd = 1;
-Q.prussia_kpd = 1;
+Q.prussia_kpd = 1.05;
 Q.prussia_ddp = 1;
 Q.prussia_dvp = 0.95;
 Q.prussia_dnvp = 1.15;
@@ -637,11 +637,24 @@ Q.bavaria_z = 1.2;
 Q.bavaria_other = 1.1;
 Q.bavaria_nsdap = 1.85;
 
+Q.thuringia_spd = 1.05;
+Q.thuringia_sapd = 1;
+Q.thuringia_kpd = 1.1;
+Q.thuringia_ddp = 0.9;
+Q.thuringia_dvp = 1.2;
+Q.thuringia_dnvp = 0.7;
+Q.thuringia_z = 0.9;
+Q.thuringia_other = 1.6;
+Q.thuringia_nsdap = 1.1;
+
 Q.prussia_election_year = 1928;
 Q.prussia_election_month = 5;
 
 Q.bavaria_election_year = 1928;
 Q.bavaria_election_month = 5;
+
+Q.thuringia_election_year = 1929;
+Q.thuringia_election_month = 12;
 
 Q.spd_pl = 25;
 Q.dnvp_pl = 24;
@@ -661,6 +674,15 @@ Q.kpd_bl = 8;
 Q.bb_bl = 7;
 Q.ddp_bl = 3;
 Q.other_bl = 5;
+
+Q.spd_tl = 33;
+Q.z_tl = 0;
+Q.nsdap_tl = 3;
+Q.dnvp_tl = 23;
+Q.dvp_tl = 11;
+Q.kpd_tl = 14;
+Q.ddp_tl = 3;
+Q.other_tl = 12;
 
 !}
 set-bg: img/map_2.jpg
