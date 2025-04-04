@@ -2031,9 +2031,9 @@ go-to: grand_coalition_spd_lead
 The DVP has agreed to this compromise. Our party's left-wing and the ADGB are both upset, but what must be done must be done.
 
 @blow_up
-subtitle: The right-wing parties will likely form a coalition.
+subtitle: [? if right_coalition >= 50 and not right_coalition_failed : The right-wing parties will likely form a coalition. ?][? if right_coalition < 50 or right_coalition_failed : There is no clear majority. ?]
 on-arrival: dvp_relation -= 5; z_relation -= 3; left_strength += 5; left_dissent -= 5;
-go-to: right_coalition_2
+go-to: right_coalition_2 if right_coalition >= 50 and not right_coalition_failed; no_majority if right_coalition < 50 or right_coalition_failed
 
 @resign_prussia
 subtitle: Is surrendering such a bulwark of democracy worth it for one government?
