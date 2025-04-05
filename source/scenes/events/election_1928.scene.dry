@@ -399,7 +399,7 @@ title: A "National Front" coalition
 view-if: national_front
 choose-if: national_front_r >= 50
 subtitle: [? if z_national : Z + ?]BVP + DVP + Others + DNVP + NSDAP ([+ national_front_r +])
-unavailable_subtitle: [? if z_national : Z + ?]BVP + DVP + Others + DNVP + NSDAP ([+ national_front_r +]) - The National Front lacks a majority.
+unavailable-subtitle: [? if z_national : Z + ?]BVP + DVP + Others + DNVP + NSDAP ([+ national_front_r +]) - The National Front lacks a majority.
 on-arrival: started = 0
 go-to: root
 
