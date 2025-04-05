@@ -10,4 +10,4 @@ on-arrival: saxon_dispute = 0; saxony_election_year = year; saxony_election_mont
 
 Following the Saxon delegation to the Reichsrat's support for the Young Plan's ratification, the DNVP[? if s_center_right_coalition < 50 and not saxony_toleration : and NSDAP?] have withdrawn their confidence in the bourgeois cabinet.
 
-New elections have been called for [+ saxony_election_year +] [saxony_election_month : month +].
+New elections have been called for [+ saxony_election_year +] [+ saxony_election_month : month +].
