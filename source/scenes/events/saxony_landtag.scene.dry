@@ -109,8 +109,8 @@ if (Q.saxony_threshold && Q.saxony_threshold > 0 || Q.party_bans) {
 
 Q.old_aspd_tl = Q.aspd_tl;
 
-var pro_aspd = 5
-var anti_aspd = 95;
+var pro_aspd = 0;
+var anti_aspd = 100;
 pro_aspd += Q.nationalism/15;
 anti_aspd += Q.socialism/5;
 pro_aspd += Q.left_strength/10;
@@ -118,6 +118,7 @@ anti_aspd += Q.reformist_strength/5;
 pro_aspd += Q.reformist_dissent/10;
 anti_aspd += Q.left_dissent/5;
 anti_aspd += Q.unemployed;
+pro_aspd = pro_aspd*(Q.left_strength+(Q.center_strength/2))/100;
 var total_spd = pro_aspd+anti_aspd;
 pro_aspd = pro_aspd/total_tlother;
 Q.aspd_tl = Math.round(Q.spd_tl*pro_aspd);
