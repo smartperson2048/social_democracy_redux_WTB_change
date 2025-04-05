@@ -706,7 +706,7 @@ Q.dvp_sl = 12;
 Q.kpd_sl = 15;
 Q.ddp_sl = 5;
 Q.other_sl = 5;
-Q.aspd_tl = 4;
+Q.aspd_sl = 4;
 
 !}
 set-bg: img/map_2.jpg
