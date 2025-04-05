@@ -319,6 +319,7 @@ There are some potential coalition arrangements.
 - @bourgeois_coalition
 - @evil_coalition
 - @left_coalition
+- @spd_majority
 - @no_majority_thuringia
 
 @bourgeois_coalition
@@ -351,6 +352,14 @@ unavailable-subtitle: The KPD doesn't trust us enough.
 on-arrival: thuringia_kpd += 0.2 if thuringia_kpd < 1.5; coup_progress += 2; capital_strike_progress += 2; red_thuringia = 1; thuringia_nsdap -= 0.1 if thuringia_nsdap >= 0.7; workers_spd += 4*(1-dissent); unemployed_spd += 3*(1-dissent)
 
 Together with the KPD, we have won a majority. The bourgeois parties are up in arms at the prospect of a return to socialist Thuringia, and scramble to oppose the government.
+
+@spd_majority
+title: The SPD may govern alone.
+subtitle: SPD ([+ spd_tl +]%)
+view-if: spd_tl >= 50
+on-arrival: thuringia_spd -= 0.1; workers_spd += 3*(1-dissent); unemployed_spd += 3*(1-dissent)
+
+We have won a majority in Thuringia alone.
 
 @no_majority_thuringia
 view-if: (t_left_coalition < 50 or kpd_relation < 45 or communist_coalition < 2) and (frick_coalition < 50 or dvp_relation >= 60) and (t_bourgeois_coalition < 50)

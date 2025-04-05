@@ -635,6 +635,8 @@ if (Q.month_actions >= 1) {
         Q.thuringia_dnvp -= 0.1/12;
         Q.thuringia_kpd += 0.05/12;
         Q.thuringia_nsdap -= 0.05/12;
+        Q.thuringia_spd -= 0.05/12;
+        Q.thuringia_ddp += 0.05/12;
         if (Q.nazi_thuringia) {
             Q.thuringia_nsdap += 0.05/12;
             Q.thuringia_spd -= 0.05/12;
@@ -713,7 +715,6 @@ if (Q.month_actions >= 1) {
         Q.thuringia_other += 0.1/12;
         Q.thuringia_dnvp -= 0.05/12;
         Q.thuringia_nsdap -= 0.05/12;
-        Q.thuringia_dvp -= 0.05/12;
         Q.thuringia_ddp += 0.05/12;
         if (Q.nazi_thuringia) {
             Q.thuringia_nsdap += 0.05/12;
@@ -817,7 +818,7 @@ if (Q.month_actions >= 1) {
         Q.thuringia_ddp += 0.05/12;
         if (Q.nazi_thuringia) {
             Q.thuringia_nsdap += 0.05/12;
-            Q.thuringia_dvp -= 0.05/12;
+            Q.thuringia_dnvp -= 0.05/12;
         }
         if (Q.sa_force) {
             Q.unemployed_kpd -= (Q.strife/20);
