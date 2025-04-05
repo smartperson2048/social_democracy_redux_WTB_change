@@ -120,7 +120,7 @@ anti_aspd += Q.left_dissent/5;
 anti_aspd += Q.unemployed;
 pro_aspd = pro_aspd*(Q.left_strength+(Q.center_strength/2))/100;
 var total_spd = pro_aspd+anti_aspd;
-pro_aspd = pro_aspd/total_tlother;
+pro_aspd = pro_aspd/total_spd;
 Q.aspd_tl = Math.round(Q.spd_tl*pro_aspd);
 Q.spd_tl -= Q.aspd_tl;
 
