@@ -76,8 +76,8 @@ Q.thuringia_catholics = Q.catholics*0.2;
 
 Q.saxony_workers = Q.workers*1.1;
 Q.saxony_new_middle = Q.new_middle*0.6;
-Q.saxony_old_middle = Q.old_middle*1.75;
-Q.saxony_unemployed = Q.unemployed*1.1;
+Q.saxony_old_middle = Q.old_middle*1.8;
+Q.saxony_unemployed = Q.unemployed*1;
 Q.saxony_rural = Q.rural*0.6;
 Q.saxony_catholics = Q.catholics*0.1;
 
