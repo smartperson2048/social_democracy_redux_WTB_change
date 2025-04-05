@@ -651,12 +651,12 @@ Q.thuringia_nsdap = 0.85;
 Q.saxony_spd = 0.75;
 Q.saxony_sapd = 0.7;
 Q.saxony_kpd = 0.7;
-Q.saxony_ddp = 0.95;
+Q.saxony_ddp = 0.9;
 Q.saxony_dvp = 1.25;
-Q.saxony_dnvp = 0.5;
+Q.saxony_dnvp = 0.45;
 Q.saxony_z = 0.25;
 Q.saxony_other = 1.55;
-Q.saxony_nsdap = 1;
+Q.saxony_nsdap = 0.8;
 
 Q.prussia_election_year = 1928;
 Q.prussia_election_month = 5;
