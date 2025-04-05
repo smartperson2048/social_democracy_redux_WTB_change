@@ -111,12 +111,13 @@ Q.old_aspd_tl = Q.aspd_tl;
 
 var pro_aspd = 5
 var anti_aspd = 95;
-pro_aspd += Q.nationalism/10;
+pro_aspd += Q.nationalism/15;
 anti_aspd += Q.socialism/5;
 pro_aspd += Q.left_strength/10;
 anti_aspd += Q.reformist_strength/5;
 pro_aspd += Q.reformist_dissent/10;
 anti_aspd += Q.left_dissent/5;
+anti_aspd += Q.unemployed;
 var total_spd = pro_aspd+anti_aspd;
 pro_aspd = pro_aspd/total_tlother;
 Q.aspd_tl = Math.round(Q.spd_tl*pro_aspd);
