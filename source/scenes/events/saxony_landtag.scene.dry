@@ -107,56 +107,28 @@ if (Q.saxony_threshold && Q.saxony_threshold > 0 || Q.party_bans) {
     }
 }
 
-Q.old_bb_tl = Q.bb_tl;
+Q.old_aspd_tl = Q.aspd_tl;
 
-var pro_bb = 90;
-var anti_bb = 10;
-pro_bb += Q.pro_republic;
-anti_bb += Q.nationalism;
-var total_tlother = pro_bb+anti_bb;
-pro_bb = pro_bb/total_tlother;
-Q.bb_tl = Math.round(Q.other_tl*pro_bb);
-Q.other_tl -= Q.bb_tl;
+var pro_aspd = 5
+var anti_aspd = 95;
+pro_aspd += Q.nationalism/10;
+anti_aspd += Q.socialism/5;
+pro_aspd += Q.left_strength/10;
+anti_aspd += Q.reformist_strength/5;
+pro_aspd += Q.reformist_dissent/10;
+anti_aspd += Q.left_dissent/5;
+var total_spd = pro_aspd+anti_aspd;
+pro_aspd = pro_aspd/total_tlother;
+Q.aspd_tl = Math.round(Q.spd_tl*pro_aspd);
+Q.spd_tl -= Q.aspd_tl;
 
-Q.change_bb_tl = Q.bb_tl - Q.old_bb_tl;
-var sign_bb = Q.change_bb_tl > 0 ? '+'  : '';
-Q.stbl_change_bb = sign_bb + Q.change_bb_tl;//.toFixed(1);
+Q.change_aspd_tl = Q.aspd_tl - Q.old_aspd_tl;
+var sign_aspd = Q.change_aspd_tl > 0 ? '+'  : '';
+Q.stbl_change_aspd = sign_aspd + Q.change_aspd_tl;//.toFixed(1);
 
-Q.change_other_tl = Q.other_tl - Q.old_other_tl;
-var sign_other = Q.change_other_tl > 0 ? '+'  : '';
-Q.stbl_change_other = sign_other + Q.change_other_tl;//.toFixed(1);
-
-if (Q.other_tl < Q.saxony_threshold) {
-    new_party_sum = (100-Q.other_tl);
-    if (Q.use_decimals) {
-        Q.bb_tl = Math.round(Q.bb_tl*1000/new_party_sum)/10;
-    } else {
-        Q.bb_tl = Math.round(Q.bb_tl*100/new_party_sum);
-    }
-    Q.other_tl = Q.bb_tl+Q.other_tl;
-    Q.other_tl -= Q.bb_tl;
-    new_party_sum = (100-Q.other_tl);
-    for (var party of Q.parties) {
-        if (Q[party + '_tl'] > 0) {
-            if (Q.use_decimals) {
-                Q[party + '_tl'] = Math.round(Q[party + '_tl']*1000/new_party_sum)/10;
-            } else {
-                Q[party + '_tl'] = Math.round(Q[party + '_tl']*100/new_party_sum);
-            }
-        }
-        if (Q.use_decimals) {
-            Q[party + '_tl_disp'] = Q[party+'_tl'].toFixed(1);
-        } else {
-            Q[party + '_tl_disp'] = Q[party+'_tl'];
-        }
-        Q['change_' + party + '_tl'] = Q[party + '_tl'] - Q['old_' + party + '_tl'];
-        var sign = Q['change_' + party + '_tl'] > 0 ? '+'  : '';
-        Q['stbl_change_' + party] = sign + Q['change_' + party + '_tl'];//.toFixed(1);
-    }
-    Q.change_bb_tl = Q.bb_tl - Q.old_bb_tl;
-    var sign_bb = Q.change_bb_tl > 0 ? '+'  : '';
-    Q.stbl_change_bb = sign_bb + Q.change_bb_tl;//.toFixed(1);
-}
+Q.change_spd_tl = Q.spd_tl - Q.old_spd_tl;
+var sign_spd = Q.change_spd_tl > 0 ? '+'  : '';
+Q.stbl_change_spd = sign_spd + Q.change_spd_tl;//.toFixed(1);
 
 // get change arrows and signs
 
@@ -173,7 +145,7 @@ if (Q.kpd_tl >= Q.spd_tl && Q.kpd_tl >= Q.nsdap_tl) {
 // coalitions
 Q.t_weimar_coalition = Q.spd_tl + Q.ddp_tl + Q.z_tl;
 Q.t_grand_coalition = Q.spd_tl + Q.ddp_tl + Q.z_tl + Q.dvp_tl;
-Q.t_bourgeois_coalition = Q.z_tl + Q.bb_tl + Q.other_tl + Q.dnvp_tl;
+Q.t_bourgeois_coalition = Q.z_tl + Q.aspd_tl + Q.other_tl + Q.dnvp_tl;
 Q.t_center_right_coalition = Q.z_tl + Q.ddp_tl + Q.dvp_tl + Q.other_tl + Q.dnvp_tl;
 Q.t_right_coalition = Q.z_tl + Q.dvp_tl + Q.other_tl + Q.dnvp_tl;
 Q.t_far_right_coalition = Q.dnvp_tl + Q.nsdap_tl;
@@ -216,16 +188,16 @@ if (Q.sapd_formed == 1) {
             "seats": Q.spd_tl*2,
         },
         {
+            "id": "aspd",
+            "legend": "ASPD",
+            "name": "ASPD",
+            "seats": Q.aspd_tl*2,
+        },
+        {
             "id": "ddp",
             "legend": Q.ddp_name,
             "name": Q.ddp_name,
             "seats": Q.ddp_tl*2,
-        },
-        {
-            "id": "bb",
-            "legend": "BB",
-            "name": "BB",
-            "seats": Q.bb_tl*2,
         },
         {
             "id": "z",
@@ -273,16 +245,16 @@ else {
             "seats": Q.spd_tl*2,
         },
         {
+            "id": "aspd",
+            "legend": "ASPD",
+            "name": "ASPD",
+            "seats": Q.aspd_tl*2,
+        },
+        {
             "id": "ddp",
             "legend": Q.ddp_name,
             "name": Q.ddp_name,
             "seats": Q.ddp_tl*2,
-        },
-        {
-            "id": "bb",
-            "legend": "BB",
-            "name": "BB",
-            "seats": Q.bb_tl*2,
         },
         {
             "id": "z",
@@ -343,13 +315,13 @@ go-to: coalition_menu
 {!<tr><td>Party</td><td>Vote share</td><td>% Change</td></tr>!}
 {!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div> !} **SPD:** {!</td><td>!} **[+ spd_tl +]%** {!</td><td>!} **[+ stbl_change_spd +]** {!</td></tr>!}
 
-[? if sapd_formed == 1 : {!<tr><td><div class="box" style='background-color:#FF7F50'> </div> !}SAPD: {!</td><td>!} [+ sapd_tl +]% {!</td><td>!} [+ stbl_change_sapd +] {!</td></tr>!} ?]
+[? if sapd_formed == 1 : {!<tr><td><div class="box" style='background-color:#C40000'> </div> !}SAPD: {!</td><td>!} [+ sapd_tl +]% {!</td><td>!} [+ stbl_change_sapd +] {!</td></tr>!} ?]
 
 {!<tr><td><div class="box" style='background-color:#8B0000'> </div> !} KPD: {!</td><td>!} [+ kpd_tl +]% {!</td><td>!} [+ stbl_change_kpd +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#DCCA4A'> </div> !} [+ ddp_name +]: {!</td><td>!} [+ ddp_tl +]% {!</td><td>!} [+ stbl_change_ddp +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#FF6F61'> </div> !} ASPD: {!</td><td>!} [+ aspd_tl +]% {!</td><td>!} [+ stbl_change_aspd +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#38C538'> </div> !} BB: {!</td><td>!} [+ bb_tl +]% {!</td><td>!} [+ stbl_change_bb +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#DCCA4A'> </div> !} [+ ddp_name +]: {!</td><td>!} [+ ddp_tl +]% {!</td><td>!} [+ stbl_change_ddp +] {!</td></tr>!}
 
 {!<tr><td><div class="box" style='background-color:#000'> </div> !} Z: {!</td><td>!} [+ z_tl +]% {!</td><td>!} [+ stbl_change_z +] {!</td></tr>!}
 
