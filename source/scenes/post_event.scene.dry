@@ -631,19 +631,18 @@ if (Q.month_actions >= 1) {
             Q.prussia_nsdap += 0.05/12;
             Q.prussia_dnvp -= 0.02/12;
         }
-        Q.thuringia_other -= 0.1/12;
-        Q.thuringia_dnvp -= 0.05/12;
+        Q.thuringia_other += 0.2/12;
+        Q.thuringia_dnvp -= 0.1/12;
         Q.thuringia_kpd += 0.05/12;
-        Q.thuringia_nsdap += 0.05/12;
+        Q.thuringia_nsdap -= 0.05/12;
         if (Q.nazi_thuringia) {
-            Q.thuringia_other -= 0.05/12;
-            Q.thuringia_nsdap += 0.2/12;
+            Q.thuringia_nsdap += 0.05/12;
             Q.thuringia_spd -= 0.05/12;
         }
         Q.bavaria_nsdap -= 0.6/12;
         Q.bavaria_spd -= 0.1/12;
-        Q.bavaria_z -= 0.05/12;
-        Q.bavaria_others += 0.3/12;
+        Q.bavaria_z -= 0.1/12;
+        Q.bavaria_others += 0.35/12;
         Q.workers_z += 1/12;
         Q.old_middle_z += 2/12;
         Q.new_middle_z += 2/12;
@@ -697,7 +696,8 @@ if (Q.month_actions >= 1) {
         Q.new_middle_dvp -= 8/12;
         Q.old_middle_ddp -= 8/12;
         Q.new_middle_ddp -= 8/12;
-        Q.rural_dnvp += 1/12;
+        Q.rural_dnvp += 3/12;
+        Q.old_middle_dnvp += 2/12;
         Q.sa_strength += 75/12;
         Q.sh_strength += 25/12;
         Q.sa_militancy += 0.1/12;
@@ -709,6 +709,15 @@ if (Q.month_actions >= 1) {
         Q.workers_other -= 4/12;
         if (Q.prussia_nsdap < 1) {
             Q.prussia_nsdap += 0.1/12;
+        }
+        Q.thuringia_other += 0.1/12;
+        Q.thuringia_dnvp -= 0.05/12;
+        Q.thuringia_nsdap -= 0.05/12;
+        Q.thuringia_dvp -= 0.05/12;
+        Q.thuringia_ddp += 0.05/12;
+        if (Q.nazi_thuringia) {
+            Q.thuringia_nsdap += 0.05/12;
+            Q.thuringia_dvp -= 0.05/12;
         }
         Q.bavaria_spd -= 0.05/12;
         Q.bavaria_nsdap -= 0.5/12;
@@ -795,6 +804,7 @@ if (Q.month_actions >= 1) {
         Q.old_middle_other -= 7/12;
         Q.rural_other -= 7/12;
         Q.rural_dnvp += 3/12;
+        Q.old_middle_dnvp += 2/12;
         Q.new_middle_other -= 4/12;
         Q.old_middle_nsdap += 4/12;
         Q.rural_nsdap += 4/12;
@@ -803,6 +813,12 @@ if (Q.month_actions >= 1) {
         Q.unemployed_kpd += 1/12;
         Q.bavaria_others += 0.2/12;
         Q.bavaria_nsdap -= 0.5/12;
+        Q.thuringia_nsdap -= 0.05/12;
+        Q.thuringia_ddp += 0.05/12;
+        if (Q.nazi_thuringia) {
+            Q.thuringia_nsdap += 0.05/12;
+            Q.thuringia_dvp -= 0.05/12;
+        }
         if (Q.sa_force) {
             Q.unemployed_kpd -= (Q.strife/20);
             Q.unemployed_nsdap += (Q.strife/20);
