@@ -335,12 +335,13 @@ There are some potential coalition arrangements.
 - @bourgeois_saxony
 - @anticommunist_coalition
 - @red_saxony
+- @no_majority_saxony
 
 @bourgeois_saxony
 title: A center-right bourgeois coalition.
 subtitle: [+ ddp_name +] + Z + DVP + Others + DNVP ([+ s_center_right_coalition +]%)
 view-if: s_center_right_coalition >= 50 or s_anticommunist_coalition >= 50
-choose-if: s_center_right_coalition >= 50
+choose-if: s_center_right_coalition >= 50 and (year < 1930 or dnvp_reform)
 unavailable-subtitle: Toleration from the NSDAP and/or ASPD is required.
 on-arrival: saxon_dispute = 1
 
@@ -350,8 +351,8 @@ Surprisingly, the center-right bourgeois parties are capable of a lone majority!
 title: An anticommunist coalition, of the bourgeois and their sympathizers.
 subtitle: ASPD + [+ ddp_name +] + Z + DVP + Others + DNVP + NSDAP ([+ s_anticommunist_coalition +]%)
 view-if: s_anticommunist_coalition >= 50 or s_elections <= 1
-choose-if: s_anticommunist_coalition >= 50 and s_center_right_coalition < 50
-unavailable-subtitle: ASPD + [+ ddp_name +] + Z + DVP + Others + DNVP + NSDAP ([+ s_anticommunist_coalition +]%)[? if s_center_right_coalition >= 50 : - the bourgeois don't need the Nazis. ?]
+choose-if: s_anticommunist_coalition >= 50 and s_center_right_coalition < 50 and (year < 1930 or dnvp_reform and nazi_reform)
+unavailable-subtitle: ASPD + [+ ddp_name +] + Z + DVP + Others + DNVP + NSDAP ([+ s_anticommunist_coalition +]%)[? if s_center_right_coalition >= 50 : - the bourgeois don't need the Nazis. ?][? if year >= 1930 : The bourgeois and the reactionaries are no longer open to cooperation. ?]
 on-arrival: saxon_dispute = 1; saxony_nsdap += 0.05 if saxony_nsdap < 1.2; reformist_strength -= 2; nazi_saxony = 1 if nsdap_sl >= s_center_right_coalition; saxony_nsdap += 0.05 if nazi_saxony; saxony_spd -= 0.05 if nazi_saxony; kpd_relation += 5 if nazi_saxony; nazi_urgency += 1 if nazi_saxony;
 
 With the bourgeois parties in Saxony deeply distrusting the regional SPD due to its intense left-wing leanings and a history of class war in the state unlike that of other states, an anticommunist coalition is formed. 
@@ -360,7 +361,7 @@ With the bourgeois parties in Saxony deeply distrusting the regional SPD due to 
 
 @red_saxony
 title: A "United Front" with the KPD.
-subtitle: KPD + SPD ([ + s_left_coalition +]%)
+subtitle: KPD + SPD ([+ s_left_coalition +]%)
 view-if: s_left_coalition >= 50
 choose-if: kpd_relation >= 40 and communist_coalition >= 2
 unavailable-subtitle: The KPD doesn't trust us enough.
@@ -370,14 +371,14 @@ Together with the KPD, we have won a majority. The bourgeois parties are up in a
 
 @spd_majority
 title: The SPD may govern alone.
-subtitle: SPD ([+ spd_tl +]%)
-view-if: spd_tl >= 50
+subtitle: SPD ([+ spd_sl +]%)
+view-if: spd_sl >= 50
 on-arrival: saxony_spd -= 0.1; workers_spd += 3*(1-dissent); unemployed_spd += 3*(1-dissent)
 
 We have won a majority in Saxony alone.
 
 @no_majority_saxony
-view-if: (t_left_coalition < 50 or kpd_relation < 45 or communist_coalition < 2) and (frick_coalition < 50 or dvp_relation >= 60) and (t_bourgeois_coalition < 50)
+view-if: (s_left_coalition < 50 or kpd_relation < 40 or communist_coalition <2) and (s_anticommunist_coalition < 50 or s_center_right_coalition < 50 or (year >= 1930 and not (nazi_reform and dnvp_reform))) and (s_center_right_coalition < 50 or (year >= 1930 and not dnvp_reform)) and (spd_sl < 50)
 title: There is no clear majority.
 
 There is no clear majority in the Landtag. As Saxony allows new elections to be called by simple majority vote in the Landtag, something must be done to prevent new elections.
