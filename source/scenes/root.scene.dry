@@ -658,14 +658,14 @@ Q.saxony_z = 0.25;
 Q.saxony_other = 1.55;
 Q.saxony_nsdap = 0.8;
 
-Q.schaumburg_lippe_spd = 1.1;
-Q.schaumburg_lippe_sapd = 0.6;
-Q.schaumburg_lippe_kpd = 0.4;
+Q.schaumburg_lippe_spd = 1.25;
+Q.schaumburg_lippe_sapd = 0.5;
+Q.schaumburg_lippe_kpd = 0.2;
 Q.schaumburg_lippe_ddp = 1.4;
 Q.schaumburg_lippe_dvp = 0.75;
-Q.schaumburg_lippe_dnvp = 1.2;
+Q.schaumburg_lippe_dnvp = 1.15;
 Q.schaumburg_lippe_z = 0.1;
-Q.schaumburg_lippe_other = 1.4;
+Q.schaumburg_lippe_other = 1.3;
 Q.schaumburg_lippe_nsdap = 0;
 
 Q.prussia_election_year = 1928;
