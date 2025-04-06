@@ -591,7 +591,6 @@ if (Q.month_actions >= 1) {
             Q.unemployed_kpd -= Q.sa_force/100;
             Q.unemployed_nsdap += Q.sa_force/50;
         }
-        Q.saxony_spd += 0.2/12;
         if (Q.spd_in_government) {
             Q.workers_spd -= 5/12;
             Q.unemployed_spd -= 5/12;

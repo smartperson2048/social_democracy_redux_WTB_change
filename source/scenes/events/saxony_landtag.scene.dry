@@ -38,30 +38,11 @@ for (var party of Q.parties) {
     console.log(`Final percentage for ${party}: ${Q[party+'_votes_saxony']}%`);
 }
 console.log("Normalization comblete. Total Saxon votes:", total_saxony);
-if (Q.z_votes_saxony < 30) {
-    Q.prussia_z += 0.1;
-    for (var party of Q.parties) {
-        Q[party+'_votes_saxony'] = 0;
-        console.log(`Processing party: ${party}`);
-    
-        for (var c of Q.classes) {
-            let votes = Q['saxony_'+c] * Q[c+'_'+party+'_normalized'] * Q['saxony_'+party];
-            Q[party+'_votes_saxony'] += votes;
-            total_saxony += votes;
-
-            console.log(`  Class: ${c}, Votes: ${votes}, Cumulative Total: ${Q[party+'_votes_saxony']}`);
-        }
-    }
-    for (var party of Q.parties) {
-        Q[party+'_votes_saxony'] = Math.round((Q[party+'_votes_saxony'] / total_saxony) * 100);
-        console.log(`Final percentage for ${party}: ${Q[party+'_votes_saxony']}%`);
-    }
-}
 
 
 // set old results
 // election threshold constitutional reform
-Q.saxony_threshold = 2;
+Q.saxony_threshold = 1;
 // banning parties
 var new_party_sum = 0;
 for (var party of Q.parties) {

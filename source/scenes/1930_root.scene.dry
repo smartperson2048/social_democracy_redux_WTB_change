@@ -612,6 +612,8 @@ Q.saxony_election_month = 6;
 Q.nazi_thuringia = 1;
 Q.t_elections = 1;
 
+Q.saxon_dispute = 1;
+
 Q.spd_pl = 29;
 Q.dnvp_pl = 18;
 Q.z_pl = 15;
