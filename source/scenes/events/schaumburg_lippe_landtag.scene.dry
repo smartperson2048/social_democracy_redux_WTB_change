@@ -4,7 +4,7 @@ tags: event
 priority: -1
 view-if: landtags_enabled and ((year = schaumburg_lippe_election_year and month >= schaumburg_lippe_election_month) or (year > schaumburg_lippe_election_year)) and not supreme_soviet
 on-arrival: dvp_willing = 0; dvp_willing = 1 if ((dvp_schlelation+spd_votes+(pro_republic/6)) >= ((100-pro_republic)+capital_strike_progress+(coup_progress/2))); z_willing = 0; z_willing = 1 if z_schlelation >= 50 or (z_schlelation >= 25 and bourgeois_coalition < 50)
-on-departure: in_election = 0; schaumburg_lippe_election_year += 4; schaumburg_lippe_election_month -= 1; schaumburg_lippe_election_year -= 1 if schaumburg_lippe_election_month < 1; schaumburg_lippe_election_month += 12 if schaumburg_lippe_election_month < 1; b_elections += 1; schaumburg_lippe_election_time = time + 47;
+on-departure: in_election = 0; schaumburg_lippe_election_year += 3; schaumburg_lippe_election_month += 1; schaumburg_lippe_election_year += 1 if schaumburg_lippe_election_month > 12; schaumburg_lippe_election_month -= 12 if schaumburg_lippe_election_month > 12; sch_elections += 1; schaumburg_lippe_election_time = time + 37;
 set-jump: schaumburg_lippe_election_1928
 
 # the low priority means that this event is only seen after all other events are resolved for the month.
