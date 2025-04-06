@@ -141,7 +141,7 @@ Q.s_neo_weimar_coalition = Q.spd_sl + Q.ddp_sl + Q.z_sl + Q.dvp_sl + Q.other_sl;
 Q.s_other_nazi = Math.round(Q.other_sl*(1-(Q.pro_republic/100)));
 Q.s_hitler_right_coalition = Q.z_sl + Q.dnvp_sl + Q.nsdap_sl + Q.dvp_sl + Q.other_nazi;
 // Progressive coalition isn't going to be imblemented as a distinct coalition but it's the coalition that lets you pass improved women's rights/gay rights
-Q.s_progressive_coalition = Q.spd_sl + Q.sapd_sl + Q.kpd_sl + Q.ddp_sl;
+Q.s_progressive_coalition = Q.spd_sl + Q.aspd_sl + Q.sapd_sl;
 // nationaal front
 Q.s_national_front_sl = Q.nsdap_sl + Q.dnvp_sl + Q.dvp_sl + Q.other_sl;
 if (Q.z_national) {
@@ -332,10 +332,19 @@ There are some potential coalition arrangements.
 
 @coalition_menu
 
+- @socdem_saxony
 - @bourgeois_saxony
 - @anticommunist_coalition
 - @red_saxony
 - @no_majority_saxony
+
+@socdem_saxony
+title: A progressive coalition.
+subtitle: SPD + ASPD[? if sapd_formed : + SAPD?] ([+ s_progressive_coalition +]%)
+view-if: s_progressive_coalition >= 50 and spd_sl < 50
+on-arrival: workers_spd += 2*(1-dissent); left_dissent -= 5; reformist_dissent -= 5
+
+A moderate socialist coalition is formed with the backing of the ASPD[? if sapd_formed : and SAPD?].
 
 @bourgeois_saxony
 title: A center-right bourgeois coalition.
@@ -351,7 +360,7 @@ Surprisingly, the center-right bourgeois parties are capable of a lone majority!
 title: An anticommunist coalition, of the bourgeois and their sympathizers.
 subtitle: ASPD + [+ ddp_name +] + Z + DVP + Others + DNVP + NSDAP ([+ s_anticommunist_coalition +]%)
 view-if: s_anticommunist_coalition >= 50 or s_elections <= 1
-choose-if: s_anticommunist_coalition >= 50 and s_center_right_coalition < 50 and (year < 1930 or dnvp_reform and nazi_reform)
+choose-if: s_anticommunist_coalition >= 50 and s_center_right_coalition < 50 and s_progressive_coalition < 50 and (year < 1930 or dnvp_reform and nazi_reform)
 unavailable-subtitle: ASPD + [+ ddp_name +] + Z + DVP + Others + DNVP + NSDAP ([+ s_anticommunist_coalition +]%)[? if s_center_right_coalition >= 50 : - the bourgeois don't need the Nazis. ?][? if year >= 1930 : The bourgeois and the reactionaries are no longer open to cooperation. ?]
 on-arrival: saxon_dispute = 1; saxony_nsdap += 0.05 if saxony_nsdap < 1.2; reformist_strength -= 2; nazi_saxony = 1 if nsdap_sl >= s_center_right_coalition; saxony_nsdap += 0.05 if nazi_saxony; saxony_spd -= 0.05 if nazi_saxony; kpd_relation += 5 if nazi_saxony; nazi_urgency += 1 if nazi_saxony;
 
@@ -378,7 +387,7 @@ on-arrival: saxony_spd -= 0.1; workers_spd += 3*(1-dissent); unemployed_spd += 3
 We have won a majority in Saxony alone.
 
 @no_majority_saxony
-view-if: (s_left_coalition < 50 or kpd_relation < 40 or communist_coalition <2) and (s_anticommunist_coalition < 50 or s_center_right_coalition < 50 or (year >= 1930 and not (nazi_reform and dnvp_reform))) and (s_center_right_coalition < 50 or (year >= 1930 and not dnvp_reform)) and (spd_sl < 50)
+view-if: (s_left_coalition < 50 or kpd_relation < 40 or communist_coalition <2) and (s_anticommunist_coalition < 50 or s_center_right_coalition < 50 or (year >= 1930 and not (nazi_reform and dnvp_reform))) and (s_center_right_coalition < 50 or (year >= 1930 and not dnvp_reform)) and (spd_sl < 50) and (s_progressive_coalition < 50)
 title: There is no clear majority.
 
 There is no clear majority in the Landtag. As Saxony allows new elections to be called by simple majority vote in the Landtag, something must be done to prevent new elections.
