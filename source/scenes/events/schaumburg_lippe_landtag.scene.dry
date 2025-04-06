@@ -154,12 +154,6 @@ if (Q.sapd_formed == 1) {
             "seats": Math.round(Q.ddp_schl*0.15),
         },
         {
-            "id": "z",
-            "legend": "Center",
-            "name": "Center",
-            "seats": Math.round(Q.z_schl*0.15),
-        },
-        {
             "id": "dvp",
             "legend": "DVP",
             "name": "DVP",
@@ -203,12 +197,6 @@ else {
             "legend": Q.ddp_name,
             "name": Q.ddp_name,
             "seats": Math.round(Q.ddp_schl*0.15),
-        },
-        {
-            "id": "z",
-            "legend": "Center",
-            "name": "Center",
-            "seats": Math.round(Q.z_schl*0.15),
         },
         {
             "id": "dvp",

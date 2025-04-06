@@ -74,17 +74,17 @@ Q.thuringia_unemployed = Q.unemployed*1.2;
 Q.thuringia_rural = Q.rural*1;
 Q.thuringia_catholics = Q.catholics*0.2;
 
-Q.saxony_workers = Q.workers*1.2;
+Q.saxony_workers = Q.workers*1.1;
 Q.saxony_new_middle = Q.new_middle*0.6;
 Q.saxony_old_middle = Q.old_middle*1.8;
-Q.saxony_unemployed = Q.unemployed*0.9;
+Q.saxony_unemployed = Q.unemployed*1;
 Q.saxony_rural = Q.rural*0.6;
 Q.saxony_catholics = Q.catholics*0.1;
 
-Q.schaumburg_lippe_workers = Q.workers*1.6;
+Q.schaumburg_lippe_workers = Q.workers*1.7;
 Q.schaumburg_lippe_new_middle = Q.new_middle*0.7;
 Q.schaumburg_lippe_old_middle = Q.old_middle*3.5;
-Q.schaumburg_lippe_unemployed = Q.unemployed*1;
+Q.schaumburg_lippe_unemployed = Q.unemployed*0.8;
 Q.schaumburg_lippe_rural = Q.rural*0.6;
 Q.schaumburg_lippe_catholics = Q.catholics*0;
 
