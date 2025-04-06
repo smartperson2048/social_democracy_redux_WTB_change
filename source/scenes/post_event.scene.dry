@@ -371,9 +371,9 @@ if (Q.month_actions >= 1) {
             Q.unemployed_spd += (Q.unemployed/12)/12;
         }
         if (Q.spd_toleration) {
-            Q.workers_spd -= (Q.unemployed/12)/12;
+            Q.workers_spd -= (Q.unemployed/14)/12;
             Q.unemployed_spd -= (Q.unemployed/12)/12;
-            Q.workers_kpd += (Q.unemployed/12)/12;
+            Q.workers_kpd += (Q.unemployed/14)/12;
             Q.unemployed_kpd += (Q.unemployed/12)/12;
         }
     } else if (Q.unemployed >= 15 && Q.spd_in_government) {

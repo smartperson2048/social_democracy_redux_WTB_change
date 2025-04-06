@@ -33,7 +33,7 @@ In the face of the banking crisis, we have taken emergency action to stabilize t
 
 @austerity
 view-if: spd_in_government = 0
-on-arrival: welfare -= 1; workers_spd -= 3 if spd_toleration; unemployed_spd -= 3 if spd_toleration; left_dissent += 10 if spd_toleration; workers_spd += 3 if not spd_toleration; unemployed_spd += 3 if not spd_toleration; pro_republic -= 3; economic_growth -= 1;
+on-arrival: welfare -= 1; workers_spd -= 2 if spd_toleration; unemployed_spd -= 3 if spd_toleration; left_dissent += 10 if spd_toleration; workers_spd += 3 if not spd_toleration; unemployed_spd += 3 if not spd_toleration; pro_republic -= 3; economic_growth -= 1;
 
 Chancellor [+ chancellor +] responds to the banking crisis with more cuts to welfare.
 
