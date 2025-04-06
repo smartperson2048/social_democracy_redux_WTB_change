@@ -321,7 +321,7 @@ A "Social-Liberal" coalition has been formed, including the [+ ddp_name +]. [? i
 @huh 
 title: ...Huh.
 subtitle: SPD + [+ ddp_name +] + DNVP ([+ sch_huh +]%)
-view-if: huh >= 50 and (year < 1930 or dnvp_reform)
+view-if: sch_huh >= 50 and (year < 1930 or dnvp_reform)
 
 That's...peculiar. [? if spd_schl >= 50 : The SPD, despite holding a lone majority, has gone out of its way to...include the DNVP? ?][? if spd_schl < 50 and sch_social_liberal >= 50 : The SPD, despite holding a majority with just the [+ ddp_name +], has gone out of its way to...include the DNVP? ?]
 

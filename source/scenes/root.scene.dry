@@ -658,7 +658,7 @@ Q.saxony_z = 0.25;
 Q.saxony_other = 1.55;
 Q.saxony_nsdap = 0.8;
 
-Q.schaumburg_lippe_spd = 0.95;
+Q.schaumburg_lippe_spd = 1.1;
 Q.schaumburg_lippe_sapd = 0.6;
 Q.schaumburg_lippe_kpd = 0.4;
 Q.schaumburg_lippe_ddp = 1.4;
