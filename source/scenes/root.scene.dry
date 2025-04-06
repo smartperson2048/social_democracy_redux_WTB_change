@@ -650,7 +650,7 @@ Q.thuringia_nsdap = 0.85;
 
 Q.saxony_spd = 0.8;
 Q.saxony_sapd = 0.7;
-Q.saxony_kpd = 0.7;
+Q.saxony_kpd = 0.65;
 Q.saxony_ddp = 0.85;
 Q.saxony_dvp = 1.25;
 Q.saxony_dnvp = 0.45;
