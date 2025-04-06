@@ -38,25 +38,6 @@ for (var party of Q.parties) {
     console.log(`Final percentage for ${party}: ${Q[party+'_votes_thuringia']}%`);
 }
 console.log("Normalization comblete. Total thuringian votes:", total_thuringia);
-if (Q.z_votes_thuringia < 30) {
-    Q.prussia_z += 0.1;
-    for (var party of Q.parties) {
-        Q[party+'_votes_thuringia'] = 0;
-        console.log(`Processing party: ${party}`);
-    
-        for (var c of Q.classes) {
-            let votes = Q['thuringia_'+c] * Q[c+'_'+party+'_normalized'] * Q['thuringia_'+party];
-            Q[party+'_votes_thuringia'] += votes;
-            total_thuringia += votes;
-
-            console.log(`  Class: ${c}, Votes: ${votes}, Cumulative Total: ${Q[party+'_votes_thuringia']}`);
-        }
-    }
-    for (var party of Q.parties) {
-        Q[party+'_votes_thuringia'] = Math.round((Q[party+'_votes_thuringia'] / total_thuringia) * 100);
-        console.log(`Final percentage for ${party}: ${Q[party+'_votes_thuringia']}%`);
-    }
-}
 
 
 // set old results

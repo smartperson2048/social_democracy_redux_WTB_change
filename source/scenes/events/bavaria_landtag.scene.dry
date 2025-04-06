@@ -39,7 +39,7 @@ for (var party of Q.parties) {
 }
 console.log("Normalization comblete. Total bavarian votes:", total_bavaria);
 if (Q.z_votes_bavaria < 30) {
-    Q.prussia_z += 0.1;
+    Q.bavaria_z += 0.1;
     for (var party of Q.parties) {
         Q[party+'_votes_bavaria'] = 0;
         console.log(`Processing party: ${party}`);
