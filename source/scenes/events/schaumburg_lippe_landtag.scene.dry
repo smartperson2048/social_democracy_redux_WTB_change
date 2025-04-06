@@ -300,7 +300,7 @@ unavailable-subtitle: SPD ([+ spd_schl +]%) - The SPD wants to include the bourg
 @social_liberal
 title: A "Social-Liberal" Coalition
 subtitle: SPD + [+ ddp_name +] ([+ sch_social_liberal +]%)
-view-if: sch_social_liberal >= 50
+view-if: sch_social_liberal >= 50 or (sch_social_liberal < 50 and spd_schl < 50 and (sch_huh < 50 or (year >= 1930 and not dnvp_reform)))
 choose-if: year >= 1930 and not dnvp_reform
 unavailable-subtitle: SPD + [+ ddp_name +] ([+ sch_social_liberal +]%) - They want to include the DNVP in government.
 
