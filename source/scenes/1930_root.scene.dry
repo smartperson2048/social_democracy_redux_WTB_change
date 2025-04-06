@@ -606,8 +606,11 @@ Q.bavaria_election_month = 4;
 Q.thuringia_election_year = 1933;
 Q.thuringia_election_month = 11;
 
-Q.saxony_election_year = 1930;
-Q.saxony_election_month = 6;
+Q.saxony_election_year = 1933;
+Q.saxony_election_month = 4;
+
+Q.schaumburg_lippe_election_year = 1931;
+Q.schaumburg_lippe_election_month = 5;
 
 Q.nazi_thuringia = 1;
 Q.t_elections = 1;

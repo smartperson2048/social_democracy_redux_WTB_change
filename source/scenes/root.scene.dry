@@ -658,6 +658,16 @@ Q.saxony_z = 0.25;
 Q.saxony_other = 1.55;
 Q.saxony_nsdap = 0.8;
 
+Q.schaumburg_lippe_spd = 0.95;
+Q.schaumburg_lippe_sapd = 0.6;
+Q.schaumburg_lippe_kpd = 0.4;
+Q.schaumburg_lippe_ddp = 1.4;
+Q.schaumburg_lippe_dvp = 0.75;
+Q.schaumburg_lippe_dnvp = 1.2;
+Q.schaumburg_lippe_z = 0.1;
+Q.schaumburg_lippe_other = 1.4;
+Q.schaumburg_lippe_nsdap = 0;
+
 Q.prussia_election_year = 1928;
 Q.prussia_election_month = 5;
 
@@ -669,6 +679,9 @@ Q.thuringia_election_month = 12;
 
 Q.saxony_election_year = 1929;
 Q.saxony_election_month = 5;
+
+Q.schaumburg_lippe_election_year = 1928;
+Q.schaumburg_lippe_election_month = 4;
 
 Q.spd_pl = 25;
 Q.dnvp_pl = 24;
@@ -707,6 +720,15 @@ Q.kpd_sl = 15;
 Q.ddp_sl = 5;
 Q.other_sl = 5;
 Q.aspd_sl = 4;
+
+Q.spd_schl = 45;
+Q.z_schl = 0;
+Q.nsdap_schl = 0;
+Q.dnvp_schl = 25;
+Q.dvp_schl = 9;
+Q.kpd_schl = 2;
+Q.ddp_schl = 7;
+Q.other_schl = 11;
 
 !}
 set-bg: img/map_2.jpg
