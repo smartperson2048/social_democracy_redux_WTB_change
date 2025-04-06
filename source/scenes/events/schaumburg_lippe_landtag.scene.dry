@@ -295,14 +295,14 @@ title: The SPD has won a majority.
 subtitle: SPD ([+ spd_schl +]%)
 view-if: spd_schl >= 50
 choose-if: never
-unavailable-subtitle: The SPD wants to include the bourgeois in government.
+unavailable-subtitle: SPD ([+ spd_schl +]%) - The SPD wants to include the bourgeois in government.
 
 @social_liberal
 title: A "Social-Liberal" Coalition
 subtitle: SPD + [+ ddp_name +] ([+ sch_social_liberal +]%)
 view-if: sch_social_liberal >= 50
 choose-if: year >= 1930 and not dnvp_reform
-unavailable-subtitle: They want to include the DNVP in government.
+unavailable-subtitle: SPD + [+ ddp_name +] ([+ sch_social_liberal +]%) - They want to include the DNVP in government.
 
 A "Social-Liberal" coalition has been formed, including the [+ ddp_name +]. [? if spd_schl >= 50 : This is despite the SPD holding a majority. How queer. ?]
 
