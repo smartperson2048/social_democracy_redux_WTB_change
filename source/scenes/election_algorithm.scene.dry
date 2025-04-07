@@ -88,6 +88,13 @@ Q.schaumburg_lippe_unemployed = Q.unemployed*0.7;
 Q.schaumburg_lippe_rural = Q.rural*0.6;
 Q.schaumburg_lippe_catholics = Q.catholics*0.05;
 
+Q.hamburg_workers = Q.workers*1.05;
+Q.hamburg_new_middle = Q.new_middle*1.5;
+Q.hamburg_old_middle = Q.old_middle*1.5;
+Q.hamburg_unemployed = Q.unemployed*1.1;
+Q.hamburg_rural = Q.rural*0.5;
+Q.hamburg_catholics = Q.catholics*0.1;
+
 !}
 go-to: jumpScene
 

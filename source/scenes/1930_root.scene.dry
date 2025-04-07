@@ -612,6 +612,9 @@ Q.saxony_election_month = 4;
 Q.schaumburg_lippe_election_year = 1931;
 Q.schaumburg_lippe_election_month = 5;
 
+Q.hamburg_election_year = 1931;
+Q.hamburg_election_month = 9;
+
 Q.nazi_thuringia = 1;
 Q.t_elections = 1;
 
