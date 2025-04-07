@@ -671,11 +671,11 @@ Q.schaumburg_lippe_nsdap = 0;
 Q.hamburg_spd = 1;
 Q.hamburg_sapd = 1.05;
 Q.hamburg_kpd = 1.2;
-Q.hamburg_ddp = 1.4;
-Q.hamburg_dvp = 1;
+Q.hamburg_ddp = 1.6;
+Q.hamburg_dvp = 1.1;
 Q.hamburg_dnvp = 0.95;
-Q.hamburg_z = 0.25;
-Q.hamburg_other = 0.3;
+Q.hamburg_z = 0.2;
+Q.hamburg_other = 0.25;
 Q.hamburg_nsdap = 0.6;
 
 Q.prussia_election_year = 1928;
