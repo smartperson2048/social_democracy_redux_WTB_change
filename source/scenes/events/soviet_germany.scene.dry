@@ -120,7 +120,8 @@ Eventually, the communists emerge victorious. [? if chancellor_party != "KPD" : 
 - @conclusion: We tried our best.
 
 @victory
-on-arrival: kpd_influence = 0; communist_coalition -= 3; kpd_relation -= 60; rfb_militancy -= 0.5; rfb_strength *= 0.6; workers_kpd *= 0.7; unemployed_kpd *= 0.9; new_middle_kpd *= 0.9;
+on-arrival: in_left_front = 0; in_popular_front = 0; time_to_election = 3; kpd_influence = 0; communist_coalition -= 3; kpd_relation -= 60; rfb_militancy -= 0.5; rfb_strength *= 0.6; workers_kpd *= 0.7; unemployed_kpd *= 0.9; new_middle_kpd *= 0.9;
+call: set_next_election_time
 
 Eventually, the RFB's forces fall, and putschist soviets brought under the Iron Front's control. The capital is secured, and all communist ministers sacked as the coup falls apart. Social Democracy has prevailed.
 
