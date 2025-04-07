@@ -348,14 +348,6 @@ on-arrival: workers_spd += 2*(1-dissent); left_dissent -= 5; reformist_dissent -
 
 A moderate socialist coalition is formed with the backing of the ASPD[? if sapd_formed : and SAPD?].
 
-@spd_majority
-title: The SPD has won a majority.
-subtitle: SPD ([+ spd_sl +]%)
-view-if: spd_sl >= 50
-on-arrival: workers_spd += 4*(1-dissent)
-
-The SPD has won a majority in the state of Saxony.
-
 @bourgeois_saxony
 title: A center-right bourgeois coalition.
 subtitle: [+ ddp_name +] + Z + DVP + Others + DNVP ([+ s_center_right_coalition +]%)
