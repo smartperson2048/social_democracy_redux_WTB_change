@@ -140,7 +140,7 @@ What's done is done. We don't need to ban the KPD, they have exhausted the threa
 @cave
 go-to: conclusion
 
-[? if chancellor_party != "KPD" : [+ chancellor +] resigns before the wishes of the [? if supreme_soviet : soviet ?][? if not supreme_soviet : Reichstag ?] and RFB, following the Reichsbanner's capitulation to the latter. ?][? if president != "Thälmann" and president != "Münzenberg" and not presidential_powers : The President is stripped of their powers by a constitutional amendment. ?][? if spd_r >= kpd_r : A snap election is called, in which the communists win. ?
+[? if chancellor_party != "KPD" : [+ chancellor +] resigns before the wishes of the [? if supreme_soviet : soviet ?][? if not supreme_soviet : Reichstag ?]and RFB, following the Reichsbanner's capitulation to the latter. ?][? if president != "Thälmann" and president != "Münzenberg" and not presidential_powers : The President is stripped of their powers by a constitutional amendment. ?][? if spd_r >= kpd_r : A snap election is called, in which the communists win. ?]
 
 Germany's transformation is begun, and Social Democracy stands not in its way.
 
