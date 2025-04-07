@@ -303,7 +303,7 @@ There are some potential coalition arrangements.
 - @groko_prussia
 - @right_prussia
 - @left_prussia
-#- @far_right_prussia
+- @far_right_prussia
 - @no_majority_braun
 - @no_majority_stegerwald
 
@@ -410,14 +410,14 @@ We have enough votes to form a Popular Front with the KPD and Z. [? if dvp_pruss
 
 @no_majority_braun
 title: Otto Braun's cabinet falls apart.
-view-if: spd_prussia and not ((spd_prussia and (p_right_coalition < 50 or z_relation >= 40 or not dnvp_reform or year >= 1930)) or p_popular_front_coalition >= 50 and kpd_relation >= 60 and z_relation >= 60 and communist_coalition >= 3) and not ((spd_prussia and (p_right_coalition < 50 or z_relation >= 45 or not dnvp_reform or year >= 1930)) or p_left_coalition >= 50 and kpd_relation >= 55 and communist_coalition >= 3) and not ((p_right_coalition >= 50 or (z_prussia and not (p_left_coalition >= 50 and kpd_relation >= 55 and communist_coalition >= 3))) and (z_relation < 35 or (z_relation < 45 and (p_left_coalition >= 50 and kpd_relation >= 55 and communist_coalition >= 3))) and (dnvp_reform or year < 1930)) and not ((spd_prussia or (z_prussia and z_relation >= 45)) or p_grand_coalition >= 50 and dvp_relation >= 40 and z_relation >= 40) and not ((spd_prussia or (z_prussia and z_relation >= 50)) or (p_weimar_coalition >= 50 and z_relation >= 35))
+view-if: spd_prussia and not ((p_far_right_coalition >= 50) or (spd_prussia and (p_right_coalition < 50 or z_relation >= 40 or not dnvp_reform or year >= 1930)) or p_popular_front_coalition >= 50 and kpd_relation >= 60 and z_relation >= 60 and communist_coalition >= 3) and not ((spd_prussia and (p_right_coalition < 50 or z_relation >= 45 or not dnvp_reform or year >= 1930)) or p_left_coalition >= 50 and kpd_relation >= 55 and communist_coalition >= 3) and not ((p_right_coalition >= 50 or (z_prussia and not (p_left_coalition >= 50 and kpd_relation >= 55 and communist_coalition >= 3))) and (z_relation < 35 or (z_relation < 45 and (p_left_coalition >= 50 and kpd_relation >= 55 and communist_coalition >= 3))) and (dnvp_reform or year < 1930)) and not ((spd_prussia or (z_prussia and z_relation >= 45)) or p_grand_coalition >= 50 and dvp_relation >= 40 and z_relation >= 40) and not ((spd_prussia or (z_prussia and z_relation >= 50)) or (p_weimar_coalition >= 50 and z_relation >= 35))
 on-arrival: prussian_crisis = 1; prussia_nsdap += 0.1; pro_republic -= 5
 
 No clear government can be formed, even despite the constructive VONC. Braun remains as M-P due to the inability to dislodge him, but effectively as the head of an SPD minority government, and the reactionaries may use this as a pretext to perform a *Reichsexekution* on the government.
 
 @no_majority_stegerwald
 title: Adam Stegerwald's cabinet falls apart.
-view-if: z_prussia and not ((spd_prussia and (p_right_coalition < 50 or z_relation >= 40  or not dnvp_reform or year >= 1930)) or p_popular_front_coalition >= 50 and kpd_relation >= 60 and z_relation >= 60 and communist_coalition >= 3) and not ((spd_prussia and (p_right_coalition < 50 or z_relation >= 45 or not dnvp_reform or year >= 1930)) or p_left_coalition >= 50 and kpd_relation >= 55 and communist_coalition >= 3) and not ((p_right_coalition >= 50 or (z_prussia and not (p_left_coalition >= 50 and kpd_relation >= 55 and communist_coalition >= 3))) and (z_relation < 35 or (z_relation < 45 and (p_left_coalition >= 50 and kpd_relation >= 55 and communist_coalition >= 3)))  and (dnvp_reform or year < 1930)) and not ((spd_prussia or (z_prussia and z_relation >= 45)) or p_grand_coalition >= 50 and dvp_relation >= 40 and z_relation >= 40) and not ((spd_prussia or (z_prussia and z_relation >= 50)) or (p_weimar_coalition >= 50 and z_relation >= 35))
+view-if: z_prussia and not ((p_far_right_coalition >= 50) or (spd_prussia and (p_right_coalition < 50 or z_relation >= 40  or not dnvp_reform or year >= 1930)) or p_popular_front_coalition >= 50 and kpd_relation >= 60 and z_relation >= 60 and communist_coalition >= 3) and not ((spd_prussia and (p_right_coalition < 50 or z_relation >= 45 or not dnvp_reform or year >= 1930)) or p_left_coalition >= 50 and kpd_relation >= 55 and communist_coalition >= 3) and not ((p_right_coalition >= 50 or (z_prussia and not (p_left_coalition >= 50 and kpd_relation >= 55 and communist_coalition >= 3))) and (z_relation < 35 or (z_relation < 45 and (p_left_coalition >= 50 and kpd_relation >= 55 and communist_coalition >= 3)))  and (dnvp_reform or year < 1930)) and not ((spd_prussia or (z_prussia and z_relation >= 45)) or p_grand_coalition >= 50 and dvp_relation >= 40 and z_relation >= 40) and not ((spd_prussia or (z_prussia and z_relation >= 50)) or (p_weimar_coalition >= 50 and z_relation >= 35))
 on-arrival: prussian_crisis = 1; prussia_nsdap += 0.1; pro_republic -= 5
 
 No clear government can be formed, even despite the constructive VONC. Stegerwald remains as M-P due to the inability to dislodge him, but effectively as the head of a Zentrum minority government. Let's just hope he doesn't turn to the Nazis for backing.
@@ -436,3 +436,12 @@ Stegerwald has announced a reorganization of the Prussian cabinet to include mul
 view-if: not black_brown_seen or p_hitler_right_coalition < 50
 
 As if Stegerwald would do such a thing. He may be bourgeois, but he is republican.
+
+@far_right_prussia
+view-if: p_far_right_coalition >= 50
+subtitle: NSDAP + DNVP ([+ p_far_right_coalition +]%)
+on-arrival: coup_progress += 5; sa_militancy += 0.2; rb_militancy -= 0.1; rfb_militancy -= 0.1; prussia_nsdap += 0.2; spd_prussia = 0; z_prussia = 0; kpd_prussia = 0; dvp_prussia = 0; pro_republic -= 6; socialism -= 3; nationalism += 5; workers_spd -= 4; workers_kpd -= 4; workers -= 2; new_middle_nsdap += 8; old_middle_nsdap += 6; rural_nsdap += 5; workers_nsdap += 3; unemployed_nsdap += 3; prussia_kpd -= 0.25; prussian_police_loyalty -= 1; 
+
+Disaster has struck - the reactionaries have won a majority, taking away from us the bulwark of democracy we have for so long held dear. Now it is converted into a bulwark of reaction.
+
+Mass persecution of the SPD and even moreso the KPD is commenced within the state. It may never be democratic again.
