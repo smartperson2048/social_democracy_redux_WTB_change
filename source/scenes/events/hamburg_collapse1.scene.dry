@@ -4,7 +4,7 @@ new-page: true
 tags: event
 max-visits: 1
 view-if: in_hamburg_groko and not in_grand_coalition and dvp_relation < 40 and year == 1931 and month >= 6 and landtags_enabled
-on-arrival: dissolve_hl += dvp_hl; dissolve_hl += nsdap_hl; dissolve_hl += dnvp_hl; dissolve_hl += other_hl; dissolve_hl += z_hl if z_relation < 40; dissolve_hl += kpd_hl if ((kpd_relation < 70 and kpd_party_leader != "Conciliators") or (kpd_relation < 50 and kpd_party_leader == "Conciliators))
+on-arrival: dissolve_hl += dvp_hl; dissolve_hl += nsdap_hl; dissolve_hl += dnvp_hl; dissolve_hl += other_hl; dissolve_hl += z_hl if z_relation < 40; dissolve_hl += kpd_hl if ((kpd_relation < 70 and kpd_party_leader != "Conciliators") or (kpd_relation < 50 and kpd_party_leader == "Conciliators"))
 go-to: landtag_dissolved if dissolve_hl >= 50; landtag_not_dissolved if dissolve_hl < 50
 
 = Dissolution of the Hamburg Landtag
