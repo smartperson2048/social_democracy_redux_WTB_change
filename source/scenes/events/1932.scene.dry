@@ -22,6 +22,10 @@ if (!Q.works_program) {
     Q.economic_growth -= 1;
 }
 Q.schaumburg_lippe_ddp -= 10;
+Q.hamburg_ddp += 5;
+if (Q.ddp_votes <= 1) {
+    Q.hamburg_ddp += 15;
+}
 // moved demographic changes to post_event
 !}
 tags: event

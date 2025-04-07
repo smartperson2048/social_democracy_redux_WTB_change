@@ -734,6 +734,9 @@ if (Q.month_actions >= 1) {
                 Q.prussia_z -= 0.05/12;
             }
         }
+        if (Q.new_middle_ddp <= 1) {
+            Q.new_middle_ddp = 1;
+        }
         Q.thuringia_other += 0.15/12;
         Q.thuringia_dvp += 0.05/12;
         Q.thuringia_nsdap -= 0.05/12;
