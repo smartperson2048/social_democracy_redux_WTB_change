@@ -668,15 +668,15 @@ Q.schaumburg_lippe_z = 0;
 Q.schaumburg_lippe_other = 1.25;
 Q.schaumburg_lippe_nsdap = 0;
 
-Q.hamburg_spd = 0.95;
-Q.hamburg_sapd = 1;
-Q.hamburg_kpd = 1.05;
-Q.hamburg_ddp = 1.2;
+Q.hamburg_spd = 1.05;
+Q.hamburg_sapd = 1.05;
+Q.hamburg_kpd = 1.1;
+Q.hamburg_ddp = 1.35;
 Q.hamburg_dvp = 1.1;
-Q.hamburg_dnvp = 1.2;
-Q.hamburg_z = 0.3;
+Q.hamburg_dnvp = 0.95;
+Q.hamburg_z = 0.25;
 Q.hamburg_other = 0.3;
-Q.hamburg_nsdap = 0.7;
+Q.hamburg_nsdap = 0.6;
 
 Q.prussia_election_year = 1928;
 Q.prussia_election_month = 5;
@@ -742,6 +742,15 @@ Q.dvp_schl = 9;
 Q.kpd_schl = 2;
 Q.ddp_schl = 7;
 Q.other_schl = 11;
+
+Q.spd_hl = 38;
+Q.z_hl = 2;
+Q.nsdap_hl = 2;
+Q.dnvp_hl = 15;
+Q.dvp_hl = 11;
+Q.kpd_hl = 17;
+Q.ddp_hl = 10;
+Q.other_hl = 5;
 
 !}
 set-bg: img/map_2.jpg

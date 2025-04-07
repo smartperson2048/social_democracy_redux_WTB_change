@@ -638,5 +638,15 @@ Q.kpd_bl = 3;
 Q.bb_bl = 11;
 Q.ddp_bl = 0;
 Q.other_bl = 5;
+
+Q.spd_hl = 36;
+Q.z_hl = 1;
+Q.nsdap_hl = 2;
+Q.dnvp_hl = 14;
+Q.dvp_hl = 13;
+Q.kpd_hl = 17;
+Q.ddp_hl = 13;
+Q.other_hl = 3;
+
 !}
 go-to: root.menu
