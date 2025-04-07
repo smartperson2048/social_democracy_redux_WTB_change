@@ -133,6 +133,38 @@ on-arrival: kpd_banned = 1; party_bans = 1; left_dissent += 25
 
 Putschism cannot be forgiven. The communists at our mercy, we put an end to their aspirations once and for all by banning the party. 
 
+- @unban_bourgeois: Unban the [+ ddp_name +] and Center.
+- @unban_ddp: Unban the [+ ddp_name +].
+- @unban_z: Unban the Center Party.
+- @maintain: Now and forever, Social Democracy shall reign.
+
+@unban_bourgeois
+view-if: ddp_banned and z_banned
+on-arrival: ddp_banned = 0; z_banned = 0
+subtitle: We must begin to undo the damage that the KPD has done.
+
+Of course, we re-legalize the moderate liberal parties. The KPD fought hard to stifle democracy, and now we shall let it flourish again.
+
+@maintain
+view-if: ddp_banned or z_banned
+subtitle: Was it worth it?
+on-arrival: reformist_dissent += 20
+go-to: root
+
+@unban_ddp
+view-if: ddp_banned and not z_banned
+on-arrival: ddp_banned = 0
+subtitle: We must begin to undo the damage that the KPD has done.
+
+Of course, we re-legalize the [+ ddp_name +]. The KPD fought hard to stifle democracy, and now we shall let it flourish again.
+
+@unban_z
+view-if: z_banned and not ddp_banned
+on-arrival: z_banned = 0
+subtitle: We must begin to undo the damage that the KPD has done.
+
+Of course, we re-legalize the Center Party. The KPD fought hard to stifle democracy, and now we shall let it flourish again.
+
 @forgive
 on-arrival: kpd_relation += 10
 
