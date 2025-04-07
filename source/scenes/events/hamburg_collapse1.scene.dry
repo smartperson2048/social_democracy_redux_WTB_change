@@ -14,10 +14,10 @@ Following the collapse of our national cooperation and further declining relatio
 @landtag_dissolved
 on-arrival: hamburg_election_year = year; hamburg_election_month = month+3; hamburg_election_year += 1 if hamburg_election_month > 12; hamburg_election_month -= 12 if hamburg_election_month > 12
 
-Ultimately, with [+ dissolve_hl +]% in favor, the Landtag is dissolved. [? if not ((kpd_relation < 70 and kpd_party_leader != "Conciliators") or (kpd_relation < 50 and kpd_party_leader == "Conciliators)) : This is due to the KPD's crucial vote to dissolve the Landtag. ?]
+Ultimately, with [+ dissolve_hl +]% in favor, the Landtag is dissolved. [? if not ((kpd_relation < 70 and kpd_party_leader != "Conciliators") or (kpd_relation < 50 and kpd_party_leader == "Conciliators")) : This is due to the KPD's crucial vote to dissolve the Landtag. ?]
 
 New elections have been called for [+ hamburg_election_month : month +] [+ hamburg_election_year +].
 
 @landtag_not_dissolved
 
-Surprisingly, the motion fails, with only [+ dissolve_hl +]% in favor. [? if ((kpd_relation < 70 and kpd_party_leader != "Conciliators") or (kpd_relation < 50 and kpd_party_leader == "Conciliators))  : This is due to the KPD's crucial vote not to dissolve the Landtag. ?]
+Surprisingly, the motion fails, with only [+ dissolve_hl +]% in favor. [? if ((kpd_relation < 70 and kpd_party_leader != "Conciliators") or (kpd_relation < 50 and kpd_party_leader == "Conciliators"))  : This is due to the KPD's crucial vote not to dissolve the Landtag. ?]
