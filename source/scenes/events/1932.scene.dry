@@ -21,6 +21,7 @@ if (!Q.works_program) {
     Q.inflation -= 2;
     Q.economic_growth -= 1;
 }
+Q.schaumburg_lippe_ddp -= 10;
 // moved demographic changes to post_event
 !}
 tags: event
