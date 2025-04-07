@@ -316,7 +316,7 @@ title: A "Social-Liberal" coalition.
 subtitle: SPD + [+ ddp_name +] ([+ h_social_liberal_coalition +]%)
 view-if: h_social_liberal_coalition >= 50 or in_hamburg_soclib
 choose-if: h_social_liberal_coalition >= 50 or (in_hamburg_soclib and not nsdap_hl >= 50)
-on-arrival: in_hamburg_soclib = 1; in_hamburg_groko = 0; in_hamburg_left = 0; in_spd_hamburg = 0; in_nazi_hamburg = 0; workers_spd += 3*(1-dissent); workers_ddp += 2
+on-arrival: in_hamburg_soclib = 1; in_hamburg_groko = 0; in_hamburg_left = 0; in_spd_hamburg = 0; in_nazi_hamburg = 0; workers_spd += 2*(1-dissent)
 
 The SPD enters a coalition with the [+ ddp_name +]. [? if h_social_liberal_coalition < 50 : This is despite it lacking a majority. ?]
 
