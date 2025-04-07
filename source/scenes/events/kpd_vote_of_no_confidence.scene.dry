@@ -97,7 +97,7 @@ The vote succeeds, and our coalition has collapsed. Chancellor [+ kpd_chancellor
 New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
 
 @let_it_happen_generic
-on-arrival: next_election_time = time + 3 if next_election_time >= time + 3; next_election_month = month + 3 if next_election_time >= time + 3; next_election_year = year if next_election_time >= time+3; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12;
+on-arrival: next_election_time = time + 3 if next_election_time >= time + 3; next_election_month = month + 3 if next_election_time >= time + 3; next_election_year = year if next_election_time >= time+3; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12; spd_in_government = 0; in_popular_front = 0; in_left_front = 0;
 
 The vote succeeds, and our coalition has collapsed. [+ chancellor +] remains head of an acting government.
 
