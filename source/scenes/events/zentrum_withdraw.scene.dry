@@ -2,7 +2,7 @@ title: The Weimar Plan Collapses!
 new-page: true
 subtitle: The Center Party has abandoned the Weimar Plan...
 tags: event
-view-if: weimar_dissent >= 6 and z_party_leader != "Joos"
+view-if: weimar_dissent >= 6 and z_party_leader != "Joos" and weimar_plan_adopted
 on-arrival: weimar_plan_adopted = 0; weimar_rejected = 1; left_dissent += 5; center_dissent += 5; labor_dissent += 2; workers_spd -= 3; workers_z -= 2; new_middle_spd -= 2; new_middle_ddp -= 1; pro_republic -= 6; z_relation -= 15; workers_sapd += 2 if sapd_consolidated; workers_z -= 3 if unemployed >= 13; z_relation += 10 if return_to_normalcy; pro_republic += 4 if return_to_normalcy
 max-visits: 1
 
