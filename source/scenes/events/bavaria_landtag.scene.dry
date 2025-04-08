@@ -275,8 +275,8 @@ else {
         {
             "id": "ddp",
             "legend": Q.ddp_name,
-            "name": Math.round(Q.ddp_name,
-            "seats": Q.ddp_bl*1.28),
+            "name": Q.ddp_name,
+            "seats": Math.round(Q.ddp_bl*1.28),
         },
         {
             "id": "bb",
