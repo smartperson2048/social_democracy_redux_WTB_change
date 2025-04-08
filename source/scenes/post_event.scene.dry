@@ -589,10 +589,10 @@ if (Q.month_actions >= 1) {
     if (Q.ddp_votes_schaumburg_lippe >= ((Q.ddp_votes+(Q.pro_republic/10))*1.3)) {
         Q.schaumburg_lippe_ddp -= 0.25/12;
     }
-    if (z_votes_bavaria >= (35+(Q.z_votes/2)+(Q.nationalism/10)-(Q.pro_republic/10))) {
+    if (Q.z_votes_bavaria >= (35+(Q.z_votes/2)+(Q.nationalism/10)-(Q.pro_republic/10))) {
         Q.bavaria_z -= 0.1/12;
     }
-    if (z_votes_bavaria < (25+(Q.z_votes/2)+(Q.nationalism/10)-(Q.pro_republic/10))) {
+    if (Q.z_votes_bavaria < (25+(Q.z_votes/2)+(Q.nationalism/10)-(Q.pro_republic/10))) {
         Q.bavaria_z += 0.1/12;
     }
     ///////////////////////////// change party support based on pro_republic
