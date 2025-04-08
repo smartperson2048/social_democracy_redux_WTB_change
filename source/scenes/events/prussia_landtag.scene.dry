@@ -229,7 +229,7 @@ else {
             "id": "nsdap",
             "legend": "NSDAP",
             "name": "NSDAP",
-            "seats": Math.round(_plQ.nsdap_pl*4.5),
+            "seats": Math.round(Q.nsdap_pl*4.5),
         },
     ];
 }
