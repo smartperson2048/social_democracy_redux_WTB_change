@@ -717,7 +717,10 @@ if (Q.month_actions >= 1) {
         Q.hamburg_dnvp -= 0.2/12;
         if (Q.new_middle_ddp <= 1) {
             Q.new_middle_ddp = 1;
-            Q.hamburg_ddp += 20/12;
+            Q.hamburg_ddp += 5/12;
+            if (Q.ddp_votes_hamburg >= 11) {
+                Q.hamburg_ddp += 15/12;
+            }
         }
         Q.thuringia_other += 0.2/12;
         Q.thuringia_dnvp -= 0.1/12;
