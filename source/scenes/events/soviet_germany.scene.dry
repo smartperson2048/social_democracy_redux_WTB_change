@@ -90,7 +90,7 @@ if (Q.finance_minister_party == "KPD") {
     Q.communist_strength += (Q.economic_democracy)/2;
 }
 if (Q.economic_minister_party == "KPD") {
-    Q.communist_strength += (Q.nationalizations)/2;
+    Q.communist_strength += (Q.nationalization_progress)/2;
 }
 if (Q.justice_minister_party == "KPD") {
     Q.communist_strength += (Q.judicial_reform)/3;
@@ -99,7 +99,7 @@ if (Q.foreign_minister_party == "KPD") {
     Q.communist_strength += (Q.soviet_relation)/3;
 }
 if (Q.agriculture_minister_party == "KPD") {
-    Q.communist_strength += (Q.rural_policy)/3;
+    Q.communist_strength += (Q.land_reform)/3;
 }
 if (Q.chancellor_party == "KPD") {
     Q.communist_strength += Q.kpd_votes/4;
