@@ -13,4 +13,5 @@ Q.catholics_vonc = 0;
 Q.vonc_relation = 0;
 Q.vonc_r = 0;
 
+Q.landtags_enabled = 0;
 !}

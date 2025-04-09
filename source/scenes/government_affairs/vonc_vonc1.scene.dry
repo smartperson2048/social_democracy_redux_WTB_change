@@ -18,7 +18,8 @@ choose-if: never
 unavailable-subtitle:   
 
 @what2
-on-arrival: chancellor = "&nbsp;"; chancellor_party = "VONC"
+call: set_next_election_time
+on-arrival: time_to_election = 3; chancellor = "&nbsp;"; chancellor_party = "VONC"
 
 The vote succeeds, and our government has resigned. Chancellor <span style="color: transparent;">VONC</span> has been appointed as the head of an acting government, consisting solely of the Voncspartei.
 

@@ -1520,7 +1520,7 @@ if (Q.normalize_support) {
     }
 }
 
-if (Q.advisor_loss_timer < 0 && Q.in_vonc_coalition) {
+if (Q.advisor_loss_timer <= 0 && Q.in_vonc_coalition) {
     Q.go_to_advisor_loss = 1;
 } else {
     Q.go_to_advisor_loss = 0;
