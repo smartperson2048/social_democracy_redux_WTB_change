@@ -18,8 +18,8 @@ choose-if: never
 unavailable-subtitle:   
 
 @what2
-on-arrival: chancellor = "<span style="color: transparent;">VONC</span>  "; chancellor_party = "VONC"
+on-arrival: chancellor = "&nbsp;"; chancellor_party = "VONC"
 
-The vote succeeds, and our government has resigned. Chancellor <span style="color: transparent;">VONC</span>   has been appointed as the head of an acting government, consisting solely of the Voncspartei.
+The vote succeeds, and our government has resigned. Chancellor <span style="color: transparent;">VONC</span> has been appointed as the head of an acting government, consisting solely of the Voncspartei.
 
 New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
