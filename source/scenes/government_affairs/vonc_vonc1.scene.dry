@@ -10,8 +10,8 @@ frequency: 2000
 
 A motion of no confidence has been tabled against the SPD by the Voncspartei. They do not see any room for negotiation. [+ chancellor +] must resign.
 
-- @what:       
-- @what2:         
+- @what:      
+- @what2:      
 
 @what
 choose-if: never
