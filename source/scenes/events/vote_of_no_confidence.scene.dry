@@ -47,6 +47,7 @@ view-if: secularized = 0
 unavailable-subtitle: We do not have enough resources.
 subtitle: -3 resources
 on-arrival: resources -= 3; coalition_dissent -= 1;
+go-to: vonc_formation if (fun_value == 3 and year >= 1935)
 
 By transferring resources to our coalition partners, we can reduce their dissent against our policies. This is a crude, but effective solution.
 

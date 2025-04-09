@@ -552,6 +552,9 @@ table {
 .seat.nsdap {
     fill: #954B00;
 }
+.seat.vonc {
+  fill: #ffffff00;
+}
 
 .tooltip-text {
   text-decoration: underline;

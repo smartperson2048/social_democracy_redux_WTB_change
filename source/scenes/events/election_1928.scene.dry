@@ -204,6 +204,14 @@ if (Q.sapd_formed == 1) {
             "name": "SPD",
             "seats": Q.spd_r*5,
         },
+        if (Q.vonc_r && Q.vonc_formed) {
+            data.push({
+                "id": "vonc",
+                "legend": "VONC",
+                "name": "VONC",
+                "seats": Q.vonc_r*5,
+            });
+        }
         {
             "id": "ddp",
             "legend": Q.ddp_name,
@@ -261,6 +269,14 @@ else {
             "name": "SPD",
             "seats": Q.spd_r*5,
         },
+        if (Q.vonc_r && Q.vonc_formed) {
+            data.push({
+                "id": "vonc",
+                "legend": "VONC",
+                "name": "VONC",
+                "seats": Q.vonc_r*5,
+            });
+        }
         {
             "id": "ddp",
             "legend": Q.ddp_name,
@@ -322,7 +338,7 @@ if (window && d3) {
     d3.select("#reichstag").datum(data).call(parliament);
 }
 !}
-go-to: coalition_menu
+go-to: coalition_menu if not vonc_formed; coalition_vonc if vonc_formed
 
 = Election results
 
@@ -366,6 +382,20 @@ Right-wing Coalition (Z + [+ bvp_name +] + DVP + Others + DNVP): [+ right_coalit
 [? if anti_democratic_coalition >= 50 : Together, the anti-democratic KPD, DNVP, and NSDAP have a majority in the Reichstag. A stable governing majority will be almost impossible. ?]
 
 There are some potential coalition arrangements.
+
+@coalition_vonc
+
+- @vonc_coalition:   
+
+@vonc_coalition
+on-arrival: in_vonc_coalition = 1; spd_in_government = 1; in_spd_majority = 1; 
+
+As expected, the 
+
+- @braun_majority_chancellor: Otto Braun for Chancellor.
+- @breitscheid_majority_chancellor: Rudolf Breitscheid for Chancellor.
+- @muller_majority_chancellor: Hermann Müller for Chancellor.
+- @wels_majority_chancellor: Otto Wels for Chancellor.
 
 @coalition_menu
 
