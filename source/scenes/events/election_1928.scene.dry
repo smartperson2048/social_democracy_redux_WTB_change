@@ -204,6 +204,7 @@ if (Q.sapd_formed == 1) {
             "name": "SPD",
             "seats": Q.spd_r*5,
         },
+];
         if (Q.vonc_r && Q.vonc_formed) {
             data.push({
                 "id": "vonc",
@@ -212,6 +213,8 @@ if (Q.sapd_formed == 1) {
                 "seats": Q.vonc_r*5,
             });
         }
+
+    data = [
         {
             "id": "ddp",
             "legend": Q.ddp_name,
@@ -269,6 +272,7 @@ else {
             "name": "SPD",
             "seats": Q.spd_r*5,
         },
+];
         if (Q.vonc_r && Q.vonc_formed) {
             data.push({
                 "id": "vonc",
@@ -277,6 +281,8 @@ else {
                 "seats": Q.vonc_r*5,
             });
         }
+    
+    data = [
         {
             "id": "ddp",
             "legend": Q.ddp_name,
