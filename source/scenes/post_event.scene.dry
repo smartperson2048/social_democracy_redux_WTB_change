@@ -929,6 +929,9 @@ if (Q.month_actions >= 1) {
             Q.thuringia_kpd -= 0.05/12;
             Q.thuringia_spd -= 0.05/12;
         }
+        if (Q.new_middle_ddp <= 1) {
+            Q.new_middle_ddp = 1;
+        }
         if (Q.sa_force) {
             Q.unemployed_kpd -= (Q.strife/20);
             Q.unemployed_nsdap += (Q.strife/20);
