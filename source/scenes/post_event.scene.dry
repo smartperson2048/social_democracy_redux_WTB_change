@@ -841,6 +841,13 @@ if (Q.month_actions >= 1) {
             }
         }
         Q.wurttemberg_ddp += 5/12;
+        Q.wurttemberg_dvp += 0.2/12;
+        Q.wurttemberg_other += 0.2/12;
+        Q.wurttemberg_dnvp += 0.1/12;
+        Q.wurttemberg_nsdap += 0.5/12;
+        Q.wurttemberg_z -= 0.3/12;
+        Q.wurttemberg_spd -= 0.2/12;
+        Q.wurttemberg_kpd -= 0.2/12;
         if (Q.ddp_votes_wurttemberg < 6) {
             Q.wurttemberg_ddp += 10/12;
             if (Q.ddp_votes_wurttemberg < 3) {
