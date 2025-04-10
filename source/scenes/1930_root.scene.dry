@@ -615,6 +615,11 @@ Q.schaumburg_lippe_election_month = 5;
 Q.hamburg_election_year = 1931;
 Q.hamburg_election_month = 9;
 
+Q.in_hamburg_groko = 1;
+
+Q.wurttemberg_election_year = 1932;
+Q.wurttemberg_election_month = 4;
+
 Q.h_elections = 1;
 
 Q.nazi_thuringia = 1;

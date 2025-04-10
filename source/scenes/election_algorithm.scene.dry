@@ -95,6 +95,13 @@ Q.hamburg_unemployed = Q.unemployed*1.1;
 Q.hamburg_rural = Q.rural*0.5;
 Q.hamburg_catholics = Q.catholics*0.1;
 
+Q.wurttemberg_workers = Q.workers*0.8;
+Q.wurttemberg_new_middle = Q.new_middle*1.05;
+Q.wurttemberg_old_middle = Q.old_middle*1.15;
+Q.wurttemberg_unemployed = Q.unemployed*0.9;
+Q.wurttemberg_rural = Q.rural*1.1;
+Q.wurttemberg_catholics = Q.catholics*1.5;
+
 !}
 go-to: jumpScene
 

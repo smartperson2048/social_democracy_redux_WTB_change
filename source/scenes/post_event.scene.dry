@@ -227,6 +227,13 @@ Q.hamburg_new_middle = Q.new_middle*1.5;
 Q.hamburg_old_middle = Q.old_middle*1.5;
 Q.hamburg_unemployed = Q.unemployed*1.1;
 
+Q.wurttemberg_workers = Q.workers*0.8;
+Q.wurttemberg_new_middle = Q.new_middle*1.05;
+Q.wurttemberg_old_middle = Q.old_middle*1.15;
+Q.wurttemberg_unemployed = Q.unemployed*0.9;
+Q.wurttemberg_rural = Q.rural*1.1;
+Q.wurttemberg_catholics = Q.catholics*1.5;
+
 for (var state of Q.states) {
     total_state = 0;
 
@@ -598,6 +605,15 @@ if (Q.month_actions >= 1) {
     if ((Q.ddp_votes_schaumburg_lippe >= ((Q.ddp_votes+(Q.pro_republic/10))*1.3)) && Q.ddp_votes >= 1 && Q.schaumburg_lippe_ddp > 2) {
         Q.schaumburg_lippe_ddp *= 0.9;
     }
+    if (Q.ddp_votes_hamburg < 0) {
+        Q.hamburg_ddp = 0;
+    }
+    if (Q.ddp_votes_hamburg < 0) {
+        Q.schaumburg_lippe_ddp = 0;
+    }
+    if (Q.ddp_votes_wurttemberg < 0) {
+        Q.wurttemberg_ddp = 0;
+    }
     if (Q.z_votes_bavaria >= (35+(Q.z_votes/2)+(Q.nationalism/10)-(Q.pro_republic/10))) {
         Q.bavaria_z -= 0.1/12;
     }
@@ -718,6 +734,10 @@ if (Q.month_actions >= 1) {
                 Q.prussia_z -= 0.1/12;
             }
         }
+        Q.wurttemberg_ddp += 5/12;
+        if (Q.ddp_votes_wurttemberg < 7) {
+            Q.wurttemberg_ddp += 10/12;
+        }
         Q.hamburg_spd -= 0.25/12;
         Q.hamburg_kpd -= 0.35/12;
         Q.hamburg_ddp += 10/12;
@@ -818,6 +838,13 @@ if (Q.month_actions >= 1) {
             Q.prussia_dnvp -= 0.05/12;
             if (Q.prussia_z >= 1) {
                 Q.prussia_z -= 0.05/12;
+            }
+        }
+        Q.wurttemberg_ddp += 5/12;
+        if (Q.ddp_votes_wurttemberg < 6) {
+            Q.wurttemberg_ddp += 10/12;
+            if (Q.ddp_votes_wurttemberg < 3) {
+                Q.wurttemberg_ddp += 20/12;
             }
         }
         if (Q.new_middle_ddp <= 1) {
@@ -933,6 +960,13 @@ if (Q.month_actions >= 1) {
         Q.thuringia_other += 0.05/12;
         Q.thuringia_ddp += 0.05/12;
         Q.prussia_z -= 0.05/12;
+        Q.wurttemberg_ddp += 5/12;
+        if (Q.ddp_votes_wurttemberg < 5) {
+            Q.wurttemberg_ddp += 5/12;
+            if (Q.ddp_votes_wurttemberg < 2) {
+                Q.wurttemberg_ddp += 20/12;
+            }
+        }
         if (Q.nazi_thuringia) {
             Q.thuringia_nsdap += 0.05/12;
             Q.thuringia_kpd -= 0.05/12;

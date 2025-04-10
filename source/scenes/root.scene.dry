@@ -683,6 +683,16 @@ Q.hamburg_z = 0.2;
 Q.hamburg_other = 0.25;
 Q.hamburg_nsdap = 0.6;
 
+Q.wurttemberg_spd = 0.9;
+Q.wurttemberg_sapd = 0.85;
+Q.wurttemberg_kpd = 0.75;
+Q.wurttemberg_ddp = 2.5;
+Q.wurttemberg_dvp = 0.6;
+Q.wurttemberg_dnvp = 0.5;
+Q.wurttemberg_z = 1.2;
+Q.wurttemberg_other = 2.2;
+Q.wurttemberg_nsdap = 0;
+
 Q.prussia_election_year = 1928;
 Q.prussia_election_month = 5;
 
@@ -700,6 +710,9 @@ Q.schaumburg_lippe_election_month = 4;
 
 Q.hamburg_election_year = 1928;
 Q.hamburg_election_month = 2;
+
+Q.wurttemberg_election_year = 1928;
+Q.wurttemberg_election_month = 5;
 
 Q.spd_pl = 25;
 Q.dnvp_pl = 24;
@@ -756,6 +769,15 @@ Q.dvp_hl = 11;
 Q.kpd_hl = 17;
 Q.ddp_hl = 10;
 Q.other_hl = 5;
+
+Q.spd_wl = 16;
+Q.z_wl = 21;
+Q.nsdap_wl = 0;
+Q.dnvp_wl = 10;
+Q.dvp_wl = 5;
+Q.kpd_wl = 12;
+Q.ddp_wl = 11;
+Q.other_wl = 24;
 
 !}
 set-bg: img/map_2.jpg
