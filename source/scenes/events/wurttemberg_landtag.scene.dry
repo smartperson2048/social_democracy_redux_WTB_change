@@ -42,12 +42,13 @@ console.log("Normalization complete. Total Württemberg votes:", total_wurttembe
 
 // set old results
 // election threshold constitutional reform
+Q.wurttemberg_threshold = 2;
 // banning parties
 var new_party_sum = 0;
 for (var party of Q.parties) {
     Q['old_' + party + '_wl'] = Q[party + '_wl'];
-    if (Q.constitutional_reform > 0) {
-        if (Q[party + '_votes_wurttemberg'] < Q.electoral_threshold || (Q.electoral_threshold > 1 && party == 'other') || (Q[party + '_banned'] == 1)) {
+    if (Q.constitutional_reform > 0 || Q.wurttemberg_threshold) {
+        if (Q[party + '_votes_wurttemberg'] < Q.wurttemberg_threshold || (Q[party + '_banned'] == 1)) {
             Q[party + '_wl'] = 0;
         } else {
             Q[party + '_wl'] = Q[party + '_votes_wurttemberg'];
@@ -67,7 +68,7 @@ for (var party of Q.parties) {
     Q['stwl_change_' + party] = sign + Q['change_' + party + '_wl'];//.toFixed(1);
 }
 // calculate new party sum if electoral reform
-if (Q.electoral_threshold && Q.electoral_threshold > 0 || Q.party_bans) {
+if (Q.wurttemberg_threshold && Q.wurttemberg_threshold > 0 || Q.party_bans) {
     for (var party of Q.parties) {
         if (Q[party + '_wl'] > 0) {
             if (Q.use_decimals) {

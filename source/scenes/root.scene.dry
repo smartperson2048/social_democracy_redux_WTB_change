@@ -685,13 +685,13 @@ Q.hamburg_nsdap = 0.6;
 
 Q.wurttemberg_spd = 0.9;
 Q.wurttemberg_sapd = 0.85;
-Q.wurttemberg_kpd = 0.75;
-Q.wurttemberg_ddp = 2.5;
-Q.wurttemberg_dvp = 0.6;
-Q.wurttemberg_dnvp = 0.5;
-Q.wurttemberg_z = 1.2;
-Q.wurttemberg_other = 2.2;
-Q.wurttemberg_nsdap = 0;
+Q.wurttemberg_kpd = 0.8;
+Q.wurttemberg_ddp = 2.3;
+Q.wurttemberg_dvp = 0.55;
+Q.wurttemberg_dnvp = 0.45;
+Q.wurttemberg_z = 1;
+Q.wurttemberg_other = 2.3;
+Q.wurttemberg_nsdap = 0.1;
 
 Q.prussia_election_year = 1928;
 Q.prussia_election_month = 5;
