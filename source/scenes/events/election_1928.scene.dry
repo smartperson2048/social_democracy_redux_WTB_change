@@ -282,7 +282,7 @@ else {
             });
         }
     
-    data.push = (
+    data = data.concat([
         {
             "id": "ddp",
             "legend": Q.ddp_name,
@@ -325,7 +325,7 @@ else {
             "name": "NSDAP",
             "seats": Q.nsdap_r*5,
         },
-    );
+    ]);
 }
 if (window && d3) {
     var width = 500; 
