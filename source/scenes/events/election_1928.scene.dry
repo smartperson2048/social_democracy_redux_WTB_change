@@ -214,7 +214,7 @@ if (Q.sapd_formed == 1) {
             });
         }
 
-    data = data.concat = ([
+    data = data.concat([
         {
             "id": "ddp",
             "legend": Q.ddp_name,
