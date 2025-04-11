@@ -20,180 +20,94 @@ Except, of course, what remains of our forces - the Reichsbanner, the ministries
 
 @resist
 on-arrival: socialist_unity = 0; {!
-console.log("Initial Forces:");
-console.log("RFB Force:", Q.rfb_force);
-console.log("RB Force:", Q.rb_force);
-console.log("Dissent:", Q.dissent);
-
 Q.communist_strength = Q.rfb_force;
-Q.republican_strength = Q.rb_force * (1 - Q.dissent);
-
-console.log("Initial Communist Strength:", Q.communist_strength);
-console.log("Initial Republican Strength:", Q.republican_strength);
-
-Q.communist_strength += (Q.kpd_r / 2);
-console.log("Added KPD R:", Q.kpd_r / 2);
-
-Q.republican_strength += (Q.spd_r / 2);
-console.log("Added SPD R:", Q.spd_r / 2);
-
-let republican_addition = ((100 - (Q.kpd_r + Q.spd_r)) / 4);
-Q.republican_strength += republican_addition;
-console.log("Added to Republican Strength (Neutral Factor):", republican_addition);
-
-Q.republican_strength += Q.sh_force / 5;
-console.log("Added SH Force:", Q.sh_force / 5);
-
-Q.republican_strength += Q.sa_force / 5;
-console.log("Added SA Force:", Q.sa_force / 5);
+Q.republican_strength = Q.rb_force*(1-Q.dissent);
+Q.communist_strength += (Q.kpd_r/2);
+Q.republican_strength += (Q.spd_r/2);
+Q.republican_strength += ((100-(Q.kpd_r+Q.spd_r))/4);
+Q.republican_strength += Q.sh_force/5;
+Q.republican_strength += Q.sa_force/5;
 
 var kpd_army = 10;
 var spd_army = 30;
-
 if (Q.chancellor_party == "KPD") {
     kpd_army += 20;
-    console.log("Chancellor is KPD: +20 KPD army");
-} else {
+}
+if (Q.chancellor_party != "KPD") {
     spd_army += 10;
-    console.log("Chancellor is not KPD: +10 SPD army");
 }
-
-switch (Q.president) {
-    case "Thälmann":
-        kpd_army += 20;
-        console.log("President Thälmann: +20 KPD army");
-        break;
-    case "Münzenberg":
-        kpd_army += 15;
-        console.log("President Münzenberg: +15 KPD army");
-        break;
-    case "Schumacher":
-        spd_army += 20;
-        console.log("President Schumacher: +20 SPD army");
-        break;
-    case "Braun":
-        spd_army += 10;
-        console.log("President Braun: +10 SPD army");
-        break;
-    case "Juchacz":
-        spd_army += 10;
-        console.log("President Juchacz: +10 SPD army");
-        break;
+if (Q.president == "Thälmann") {
+    kpd_army += 20;
 }
-
+if (Q.president == "Münzenberg") {
+    kpd_army += 15;
+}
+if (Q.president == "Schumacher") {
+    spd_army += 20;
+}
+if (Q.president == "Braun") {
+    spd_army += 10;
+}
+if (Q.president == "Juchacz") {
+    spd_army += 10;
+}
 if (Q.reichswehr_minister_party == "SPD") {
     spd_army += 15;
-    console.log("Reichswehr Minister SPD: +15 SPD army");
 }
 if (Q.reichswehr_minister_party == "KPD") {
     kpd_army += 10;
-    console.log("Reichswehr Minister KPD: +10 KPD army");
 }
-
-var total_army = spd_army + kpd_army;
+var total_army = spd_army+kpd_army;
 spd_army = (spd_army / total_army);
 kpd_army = (kpd_army / total_army);
 
-console.log("Army distribution:");
-console.log("SPD Army Ratio:", spd_army);
-console.log("KPD Army Ratio:", kpd_army);
+Q.republican_strength += Q.army_force*spd_army;
+Q.communist_strength += Q.army_force*kpd_army;
 
-Q.republican_strength += Q.army_force * spd_army;
-console.log("Added Army SPD Force:", Q.army_force * spd_army);
-
-Q.communist_strength += Q.army_force * kpd_army;
-console.log("Added Army KPD Force:", Q.army_force * kpd_army);
-
-Q.communist_strength += Q.workers_kpd_normalized / 4;
-console.log("Added Workers KPD Normalized:", Q.workers_kpd_normalized / 4);
-
-Q.republican_strength += Q.workers_spd_normalized / 4;
-console.log("Added Workers SPD Normalized:", Q.workers_spd_normalized / 4);
+Q.communist_strength += Q.workers_kpd_normalized/4;
+Q.republican_strength += Q.workers_spd_normalized/4;
 
 if (Q.spd_prussia) {
-    let prussiaBonus = Q.prussia_force * Q.prussian_police_loyalty;
-    Q.republican_strength += prussiaBonus;
-    console.log("SPD controls Prussia, added:", prussiaBonus);
+    Q.republican_strength += Q.prussia_force*Q.prussian_police_loyalty;
 }
-
 if (Q.sapd_formed && !Q.supreme_soviet) {
-    let sapdBonus = Q.workers_sapd_normalized / 6;
-    Q.communist_strength += sapdBonus;
-    console.log("SAPD formed, not Supreme Soviet, added to Communist:", sapdBonus);
+    Q.communist_strength += Q.workers_sapd_normalized/6;
 }
-
 if (Q.sapd_formed && Q.supreme_soviet) {
-    let sapdBonusRepublican = Q.workers_sapd_normalized / 6;
-    Q.republican_strength += sapdBonusRepublican;
-    console.log("SAPD formed under Supreme Soviet, added to Republican:", sapdBonusRepublican);
+    Q.republican_strength += Q.workers_sapd_normalized/6;
 }
-
 if (Q.red_banner) {
-    let redBannerBonus = Q.unemployed * (Q.unemployed_kpd_normalized / 100);
-    Q.communist_strength += redBannerBonus;
-    console.log("Red Banner effect, added to Communist:", redBannerBonus);
+    Q.communist_strength += Q.unemployed*(Q.unemployed_kpd_normalized/100);
 }
 
 if (Q.labor_minister_party == "KPD") {
-    let laborBonus = (Q.workers * (Q.workers_kpd_normalized / 100)) / 5;
-    Q.communist_strength += laborBonus;
-    console.log("Labor Minister KPD, added:", laborBonus);
+    Q.communist_strength += (Q.workers*(Q.workers_kpd_normalized/100))/5;
 }
-
 if (Q.interior_minister_party == "KPD") {
-    let interiorBonus = (Q.interior_police_strength * Q.interior_police_militancy * Q.interior_police_loyalty) / 5;
-    Q.communist_strength += interiorBonus;
-    console.log("Interior Minister KPD, added:", interiorBonus);
+    Q.communist_strength += (Q.interior_police_strength*Q.interior_police_militancy*Q.interior_police_loyalty)/5;
 }
-
 if (Q.finance_minister_party == "KPD") {
-    let financeBonus = Q.economic_democracy / 2;
-    Q.communist_strength += financeBonus;
-    console.log("Finance Minister KPD, added:", financeBonus);
+    Q.communist_strength += (Q.economic_democracy)/2;
 }
-
 if (Q.economic_minister_party == "KPD") {
-    let economicBonus = Q.nationalization_progress / 2;
-    Q.communist_strength += economicBonus;
-    console.log("Economic Minister KPD, added:", economicBonus);
+    Q.communist_strength += (Q.nationalization_progress)/2;
 }
-
 if (Q.justice_minister_party == "KPD") {
-    let justiceBonus = Q.judicial_reform / 3;
-    Q.communist_strength += justiceBonus;
-    console.log("Justice Minister KPD, added:", justiceBonus);
+    Q.communist_strength += (Q.judicial_reform)/3;
 }
-
 if (Q.foreign_minister_party == "KPD") {
-    let foreignBonus = Q.soviet_relation / 3;
-    Q.communist_strength += foreignBonus;
-    console.log("Foreign Minister KPD, added:", foreignBonus);
+    Q.communist_strength += (Q.soviet_relation)/3;
 }
-
 if (Q.agriculture_minister_party == "KPD") {
-    let agricultureBonus = Q.land_reform / 3;
-    Q.communist_strength += agricultureBonus;
-    console.log("Agriculture Minister KPD, added:", agricultureBonus);
+    Q.communist_strength += (Q.land_reform)/3;
 }
-
 if (Q.chancellor_party == "KPD") {
-    let chancellorVotesBonus = Q.kpd_votes / 4;
-    let newMiddleBonus = Q.new_middle * (Q.kpd_new_middle_normalized / 100);
-    Q.communist_strength += chancellorVotesBonus;
-    Q.communist_strength += newMiddleBonus;
-    console.log("Chancellor KPD, votes bonus:", chancellorVotesBonus);
-    console.log("Chancellor KPD, new middle bonus:", newMiddleBonus);
+    Q.communist_strength += Q.kpd_votes/4;
+    Q.communist_strength += (Q.new_middle*(Q.new_middle_kpd_normalized/100));
 }
-
 if (Q.chancellor_party == "SPD") {
-    let chancellorSpdBonus = Q.spd_votes / 4;
-    Q.republican_strength += chancellorSpdBonus;
-    console.log("Chancellor SPD, votes bonus:", chancellorSpdBonus);
+    Q.republican_strength += Q.spd_votes/4;
 }
-
-console.log("Final Strengths:");
-console.log("Communist Strength:", Q.communist_strength);
-console.log("Republican Strength:", Q.republican_strength);
 !}
 go-to: defeat if republican_strength < communist_strength; victory if republican_strength >= communist_strength 
 
