@@ -749,9 +749,11 @@ if (Q.month_actions >= 1) {
             Q.rural_other -= 5/12;
             Q.rural_z += 6/12;
             Q.new_middle_z += 3/12;
+            Q.new_middle_other -= 2/12;
             Q.old_middle_z += 3/12;
+            Q.old_middle_other -= 2/12;
             Q.workers_z += 3/12;
-            Q.workers_other -= 1/12;
+            Q.workers_other -= 2/12;
         }
         if (Q.sa_force) {
             Q.unemployed_kpd -= (Q.strife/20);
@@ -868,20 +870,23 @@ if (Q.month_actions >= 1) {
         if (Q.z_party_leader == "Stegerwald") {
             Q.catholics_z -= 2/12;
             Q.catholics_other += 2/12;
-            Q.rural_other += 8/12;
-            Q.rural_z -= 3/12;
-            Q.new_middle_other += 6/12;
-            Q.old_middle_other += 6/12;
-            Q.new_middle_z -= 3/12;
-            Q.old_middle_z -= 3/12;
+            Q.rural_nsdap -= 4/12;
+            Q.rural_z += 2/12;
+            Q.old_middle_nsdap -= 4/12;
+            Q.new_middle_z += 1/12;
+            Q.old_middle_z += 2/12;
             if (Q.pro_republic < 45) {
                 Q.rural_z -= 2/12;
                 Q.new_middle_z -= 2/12;
                 Q.old_middle_z -= 2/12;
+                Q.rural_nsdap += 2/12;
+                Q.old_middle_nsdap += 2/12;
                 if (Q.pro_republic < 35) {
                     Q.rural_z -= 2/12;
                     Q.new_middle_z -= 2/12;
                     Q.old_middle_z -= 2/12;
+                    Q.rural_nsdap += 2/12;
+                    Q.old_middle_nsdap += 2/12;
                 }
             }
         }
@@ -1013,12 +1018,11 @@ if (Q.month_actions >= 1) {
         Q.workers_other -= 2/12;
         Q.unemployed_kpd += 1/12;
         if (Q.z_party_leader == "Stegerwald") {
-            Q.rural_other += 5/12;
-            Q.rural_z -= 3/12;
-            Q.new_middle_other += 2/12;
-            Q.old_middle_other += 5/12;
-            Q.new_middle_z -= 2/12;
-            Q.old_middle_z -= 3/12;
+            Q.rural_z += 1/12;
+            Q.rural_nsdap -= 2/12;
+            Q.old_middle_z += 1/12;
+            Q.old_middle_nsdap -= 2/12;
+            Q.new_middle_nsdap -= 1/12;
             if (Q.pro_republic < 45) {
                 Q.rural_z -= 2/12;
                 Q.new_middle_z -= 2/12;
@@ -1147,8 +1151,14 @@ if (Q.month_actions >= 1) {
             if (Q.rural_dnvp_normalized < 40) {
                 Q.rural_dnvp += 6/12;
             }
-            if (Q.catholics_z_normalized < 40) {
+            if (Q.catholics_z_normalized < 40 && !Q.z_party_leader == "Stegerwald") {
                 Q.catholics_z += 6/12;
+            }
+            if (Q.z_party_leader == "Stegerwald" && Q.z_votes < 25) {
+                Q.old_middle_z += 4/12;
+                Q.new_middle_z += 4/12;
+                Q.rural_z += 3/12;
+                Q.workers_z += 2/12;
             }
             if (Q.spd_votes > 35) {
                 if (Q.workers_spd_normalized > 65 || (Q.workers_spd_normalized > 50 && (Q.volkspartei || Q.sapd_formed))) {
@@ -1195,7 +1205,7 @@ if (Q.month_actions >= 1) {
                 Q.rural_spd -= 2/12;
                 Q.unemployed_spd -= 2/12;
             }
-            if (Q.other_votes < 8 && !Q.electoral_threshold) {
+            if (Q.other_votes < 8 && !Q.electoral_threshold && Q.z_party_leader != "Stegerwald") {
                 Q.new_middle_other += 5/12;
                 Q.old_middle_other += 5/12;
                 Q.rural_other += 5/12;
