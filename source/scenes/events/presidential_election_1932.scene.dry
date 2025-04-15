@@ -611,11 +611,11 @@ go-to: hindenburg_wins if hindenburg_plurality == 1; thalmann_wins if thalmann_p
 @hindenburg_wins
 on-arrival: president = "Hindenburg"; {!
 if (Q.braun_campaign && Q.hitler_support_hindenburg) {
-    Q.workers_spd += 5*(1-dissent);
-    Q.new_middle_spd += 3*(1-dissent);
-    Q.old_middle_spd += 2*(1-dissent);
-    Q.rural_spd += 2*(1-dissent);
-    Q.unemployed_spd += 3*(1-dissent);
+    Q.workers_spd += 5*(1-Q.dissent);
+    Q.new_middle_spd += 3*(1-Q.dissent);
+    Q.old_middle_spd += 2*(1-Q.dissent);
+    Q.rural_spd += 2*(1-Q.dissent);
+    Q.unemployed_spd += 3*(1-Q.dissent);
     Q.center_dissent -= 5;
     Q.labor_dissent -= 5;
     Q.reformist_dissent -= 5;
