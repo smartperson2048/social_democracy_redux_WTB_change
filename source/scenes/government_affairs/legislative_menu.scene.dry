@@ -169,4 +169,24 @@ We give concessions to the DVP enough that they agree to vote in favor of our bi
 @motion_fails
 on-arrival: left_dissent += 5; center_dissent += 5; reformist_dissent += 5; neorevisionist_dissent += 5; labor_dissent += 5
 
-The motion fails and is withdrawn.
+KPD: [+ kpd_vote : vote_display +]
+
+[? if sapd_formed : SAPD: [+ sapd_vote : vote_display +] ?]
+
+SPD: [? if not spd_split : For ?][? if spd_split : Mixed ?]
+
+[+ ddp_name +]: [+ ddp_vote : vote_display +]
+
+Z: [+ z_vote : vote_display +]
+
+BVP: [+ bvp_vote : vote_display +]
+
+DVP: [+ dvp_vote : vote_display +]
+
+Others: [? if not other_split : [+ other_vote : vote_display +] ?][? if other_split : Mixed ?]
+
+DNVP: [+ dnvp_vote : vote_display +]
+
+NSDAP: [+ nsdap_vote : vote_display +]
+
+With but [+ bill_support +]% in favor, the motion fails and is withdrawn.
