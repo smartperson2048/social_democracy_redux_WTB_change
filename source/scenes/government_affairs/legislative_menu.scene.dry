@@ -190,24 +190,28 @@ We give concessions to the KPD enough that they agree to vote in favor of our bi
 @sway_sapd
 view-if: in_left_front or in_popular_front or in_weimar_coalition and not welfare_cut_vote and not sapd_vote and sapd_formed
 on-arrival: bill_support += sapd_r; sapd_vote = 1; reformist_dissent += 10; left_strength += 5; workers_spd -= 2; workers_sapd += 2
+go-to: success if bill_support >= 50; swaying_menu if bill_support < 50
 
 We give concessions to the SAPD enough that they agree to vote in favor of our bill.
 
 @sway_ddp
 view-if: in_popular_front or in_weimar_coalition or in_grand_coalition and not ddp_vote
 on-arrival: bill_support += ddp_r; ddp_vote = 1; left_dissent += 5; new_middle_spd -= 1; new_middle_ddp += 1
+go-to: success if bill_support >= 50; swaying_menu if bill_support < 50
 
 WWe give concessions to the [+ ddp_name +] enough that they agree to vote in favor of our bill.
 
 @sway_z
 view-if: in_popular_front or in_weimar_coalition or in_grand_coalition and not z_vote
 on-arrival: bill_support += z_minus_bvp_r; z_vote = 1; left_dissent += 5; catholics_spd -= 1; catholics_z += 1
+go-to: success if bill_support >= 50; swaying_menu if bill_support < 50
 
 We give concessions to the Z enough that they agree to vote in favor of our bill.
 
 @sway_dvp
 view-if: in_grand_coalition and not dvp_vote
 on-arrival: bill_support += dvp_r; dvp_vote = 1; bill_support += 3 if not bvp_vote; bvp_vote = 1; left_dissent += 10; old_middle_spd -= 2; old_middle_dvp += 2; workers_spd -= 1
+go-to: success if bill_support >= 50; swaying_menu if bill_support < 50
 
 We give concessions to the DVP enough that they agree to vote in favor of our bill.
 
