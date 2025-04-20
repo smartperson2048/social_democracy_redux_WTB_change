@@ -1,0 +1,146 @@
+title: Legislative menu
+on-arrival: {!
+
+if (Q.welfare_cut_vote) {
+
+    Q.kpd_vote = 0;
+    
+    Q.sapd_vote = 0;
+
+    Q.spd_split = 1;
+
+    if ((Q.budget < 0 || Q.welfare > 2) && Q.welfare > -2) {
+        Q.ddp_vote = 1;
+    } else {
+        Q.ddp_vote = 0;
+    }
+
+    if ((Q.budget < 0 || Q.welfare > -1) && Q.welfare > -4 && (Q.z_party_leader != "Joos" || Q.z_relation >= 60)) {
+        Q.z_vote = 1;
+    } else {
+        Q.z_vote = 0;
+    }
+
+    if ((Q.budget < 0 || Q.welfare > -2) && Q.in_grand_coalition) {
+        Q.bvp_vote = 1;
+    } else {
+        Q.bvp_vote = 0;
+    }
+
+    if (Q.budget < 0 || Q.welfare > -3) {
+        Q.dvp_vote = 1;
+        Q.other_vote = 1;
+    } else {
+        Q.dvp_vote = 0;
+        Q.other_vote = 0;
+    }
+
+    Q.dnvp_vote = 0;
+
+    Q.nsdap_vote = 0;
+
+}
+
+Q.bill_support = 0;
+if (Q.spd_split) {
+    Q.bill_support += Q.spd_r*(1-Q.dissent);
+} else {
+    Q.bill_support += Q.spd_r;
+}
+if (Q.kpd_vote) {
+    Q.bill_support += Q.kpd_r;
+}
+if (Q.sapd_vote) {
+    Q.bill_support += Q.sapd_r;
+}
+if (Q.ddp_vote) {
+    Q.bill_support += Q.ddp_r;
+}
+if (Q.z_vote) {
+    Q.bill_support += Q.z_minus_bvp_r;
+}
+if (Q.bvp_vote) {
+    Q.bill_support += 3;
+}
+if (Q.bvp_vote) {
+    Q.bill_support += 3;
+}
+if (Q.other_vote) {
+    Q.bill_support += Q.other_r;
+} else if (other_split) {
+    var pro_tariff = (Q.rural_other_normalized)*Q.rural;
+    var anti_tariff = (Q.new_middle_other_normalized)*Q.new_middle; 
+    var anti_tariff += (Q.old_middle_other_normalized)*Q.old_middle; 
+    var total_tariff = pro_tariff+anti_tariff;
+    var pro_tariff = (pro_tariff/total_tariff)*Q.other_r;
+    var anti_tariff = (anti_tariff/total_tariff)*Q.other_r;
+    if (Q.tariff_cut_vote) {
+        Q.bill_support += anti_tariff;
+    }
+    if (Q.tariff_hike_vote) {
+        Q.bill_support += pro_tariff;
+    }
+}
+if (Q.dnvp_vote) {
+    Q.bill_support += Q.dnvp_r;
+}
+if (Q.nsdap_vote) {
+    Q.bill_support += Q.nsdap_r;
+}
+
+!}
+go-to: swaying_menu if bill_support < 50; success if bill_support >= 50
+
+@swaying_menu
+on-arrival: {!
+Q.bill_support = Math.round(Q.bill_support);
+!}
+
+Currently, [+ bill_support +]% is in favor of our bill.
+
+- @sway_kpd: Convince the KPD.
+- @sway_sapd: Convince the SAPD.
+- @sway_ddp: Convince the [+ ddp_name +].
+- @sway_z: Convince the Z.
+- @sway_dvp: Convince the DVP.
+- @motion_fails: The motion fails.
+
+@success
+go-to: social_welfare.welfare_cut if welfare_cut_vote
+on-departure: welfare_cut_vote = 0
+
+@sway_kpd
+view-if: in_left_front or in_popular_front and not welfare_cut_vote and not kpd_vote
+on-arrival: bill_support += kpd_r; kpd_coalition_dissent += 1; kpd_vote = 1; kpd_relation -= 5; reformist_dissent += 10; left_strength += 5; workers_spd -= 2; workers_kpd += 2; unemployed_spd -= 1; unemployed_kpd += 1
+go-to: success if bill_support >= 50; swaying_menu if bill_support < 50
+
+We give concessions to the KPD enough that they agree to vote in favor of our bill.
+
+@sway_sapd
+view-if: in_left_front or in_popular_front or in_weimar_coalition and not welfare_cut_vote and not sapd_vote and sapd_formed
+on-arrival: bill_support += sapd_r; sapd_vote = 1; reformist_dissent += 10; left_strength += 5; workers_spd -= 2; workers_sapd += 2
+
+We give concessions to the SAPD enough that they agree to vote in favor of our bill.
+
+@sway_ddp
+view-if: in_popular_front or in_weimar_coalition or in_grand_coalition and not ddp_vote
+on-arrival: bill_support += ddp_r; ddp_vote = 1; left_dissent += 5; new_middle_spd -= 1; new_middle_ddp += 1
+
+WWe give concessions to the [+ ddp_name +] enough that they agree to vote in favor of our bill.
+
+@sway_z
+view-if: in_popular_front or in_weimar_coalition or in_grand_coalition and not z_vote
+on-arrival: bill_support += z_minus_bvp_r; z_vote = 1; left_dissent += 5; catholics_spd -= 1; catholics_z += 1
+
+We give concessions to the Z enough that they agree to vote in favor of our bill.
+
+@sway_dvp
+view-if: in_grand_coalition and not dvp_vote
+on-arrival: bill_support += dvp_r; dvp_vote = 1; bill_support += 3 if not bvp_vote; bvp_vote = 1; left_dissent += 10; old_middle_spd -= 2; old_middle_dvp += 2; workers_spd -= 1
+
+We give concessions to the DVP enough that they agree to vote in favor of our bill.
+
+@motion_fails
+on-arrival: left_dissent += 5; center_dissent += 5; reformist_dissent += 5; neorevisionist_dissent += 5; labor_dissent += 5
+
+The motion fails and is withdrawn.
