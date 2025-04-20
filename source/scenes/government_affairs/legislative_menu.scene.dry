@@ -107,6 +107,10 @@ Currently, [+ bill_support +]% is in favor of our bill.
 
 @success
 go-to: social_welfare.welfare_cut if welfare_cut_vote
+on-arrival: {!
+Q.bill_support = Math.round(Q.bill_support);
+!}
+
 on-departure: welfare_cut_vote = 0
 
 With [+ bill_support +]% in favor, the vote succeeds.
