@@ -115,7 +115,7 @@ on-departure: welfare_cut_vote = 0
 
 KPD: [+ kpd_vote : vote_display +]
 
-SAPD: [+ sapd_vote : vote_display +]
+[? if sapd_formed : SAPD: [+ sapd_vote : vote_display +] ?]
 
 SPD: [? if not spd_split : For ?][? if spd_split : Mixed ?]
 
