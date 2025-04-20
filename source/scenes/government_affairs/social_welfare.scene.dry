@@ -49,6 +49,12 @@ We have increased welfare spending. Our proletarian base is pleased.
 @increase_spending_post_depression
 view-if: unemployed > 15
 choose-if: budget > 0 and not status_quo
+on-arrival: welfare_fund_post_depression_vote = 1
+go-to: welfare_funded_post_depression if not legislature_enabled; legislative_menu if legislature_enabled
+
+We propose a bill to fund welfare.
+
+@welfare_funded_post_depression
 on-arrival: budget -= 1; workers_spd += 3*(1-dissent); unemployed_spd += 3*(1-dissent); coalition_dissent += 1 if welfare > 0; welfare_goal_completed += 1; inflation += 0.3
 subtitle: The increased levels of unemployment necessitate more spending on aid to maintain the same benefits. -1 Budget [? if status_quo : - We have agreed to leave the budget untouched. ?]
 
