@@ -132,6 +132,39 @@ if (Q.welfare_fund_post_depression_vote || (Q.women_vote && Q.unemployed >= 15))
 
 }
 
+if (Q.council_vote_1 || Q.council_vote_2 || Q.council_vote_3) {
+
+    Q.kpd_vote = 1;
+    
+    Q.sapd_vote = 1;
+
+    Q.spd_split = 0;
+
+    if ((Q.works_councils < 1) || Q.ddp_relation >= 60) {
+        Q.ddp_vote = 1;
+    } else {
+        Q.ddp_vote = 0;
+    }
+
+    if ((Q.z_relation > 50 && Q.works_councils < 2) || (Q.z_relation > 30 && Q.z_party_leader == "Joos")) {
+        Q.z_vote = 1;
+    } else {
+        Q.z_vote = 0;
+    }
+
+    Q.bvp_vote = 0;
+
+    Q.dvp_vote = 0;
+
+    Q.other_split = 0;
+    Q.other_vote = 0;
+
+    Q.dnvp_vote = 0;
+
+    Q.nsdap_vote = 0;
+
+}
+
 Q.bill_support = 0;
 if (Q.spd_split) {
     Q.bill_support += Q.spd_r*(1-Q.dissent);
@@ -197,11 +230,11 @@ Currently, [+ bill_support +]% is in favor of our bill.
 - @motion_fails: The motion fails.
 
 @success
-go-to: social_welfare.welfare_cut if welfare_cut_vote; social_welfare.welfare_funded_pre_depression if welfare_fund_pre_depression_vote; social_welfare.welfare_funded_post_depression if welfare_fund_post_depression_vote; womens_rights.women_funded if women_vote
+go-to: social_welfare.welfare_cut if welfare_cut_vote; social_welfare.welfare_funded_pre_depression if welfare_fund_pre_depression_vote; social_welfare.welfare_funded_post_depression if welfare_fund_post_depression_vote; womens_rights.women_funded if women_vote; economic_democracy.council_expanded_1 if council_vote_1; economic_democracy.council_expanded_2 if council_vote_2; economic_democracy.council_expanded_3 if council_vote_3  
 on-arrival: {!
 Q.bill_support = Math.round(Q.bill_support);
 !}
-on-departure: welfare_cut_vote = 0; welfare_fund_pre_depression_vote = 0; welfare_fund_post_depression_vote = 0; women_vote = 0
+on-departure: welfare_cut_vote = 0; welfare_fund_pre_depression_vote = 0; welfare_fund_post_depression_vote = 0; women_vote = 0; council_vote_1 = 0; council_vote_2 = 0; council_vote_3 = 0;
 
 KPD: [+ kpd_vote : vote_display +]
 
@@ -268,7 +301,7 @@ We give concessions to the DVP enough that they agree to vote in favor of our bi
 
 @motion_fails
 on-arrival: left_dissent += 5; center_dissent += 5; reformist_dissent += 5; neorevisionist_dissent += 5; labor_dissent += 5
-on-departure: welfare_cut_vote = 0; welfare_fund_pre_depression_vote = 0; welfare_fund_post_depression_vote = 0; women_vote = 0;
+on-departure: welfare_cut_vote = 0; welfare_fund_pre_depression_vote = 0; welfare_fund_post_depression_vote = 0; women_vote = 0; council_vote_1 = 0; council_vote_2 = 0; council_vote_3 = 0;
 
 KPD: [+ kpd_vote : vote_display +]
 
