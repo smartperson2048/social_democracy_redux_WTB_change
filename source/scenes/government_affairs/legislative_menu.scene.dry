@@ -62,18 +62,18 @@ if (Q.z_vote) {
 if (Q.bvp_vote) {
     Q.bill_support += 3;
 }
-if (Q.bvp_vote) {
-    Q.bill_support += 3;
+if (Q.dvp_vote) {
+    Q.bill_support += Q.dvp_r;
 }
 if (Q.other_vote) {
     Q.bill_support += Q.other_r;
 } else if (other_split) {
     var pro_tariff = (Q.rural_other_normalized)*Q.rural;
     var anti_tariff = (Q.new_middle_other_normalized)*Q.new_middle; 
-    var anti_tariff += (Q.old_middle_other_normalized)*Q.old_middle; 
+    anti_tariff += (Q.old_middle_other_normalized)*Q.old_middle; 
     var total_tariff = pro_tariff+anti_tariff;
-    var pro_tariff = (pro_tariff/total_tariff)*Q.other_r;
-    var anti_tariff = (anti_tariff/total_tariff)*Q.other_r;
+    pro_tariff = (pro_tariff/total_tariff)*Q.other_r;
+    anti_tariff = (anti_tariff/total_tariff)*Q.other_r;
     if (Q.tariff_cut_vote) {
         Q.bill_support += anti_tariff;
     }
