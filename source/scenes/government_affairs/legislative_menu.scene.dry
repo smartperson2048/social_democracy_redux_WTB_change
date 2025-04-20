@@ -109,6 +109,8 @@ Currently, [+ bill_support +]% is in favor of our bill.
 go-to: social_welfare.welfare_cut if welfare_cut_vote
 on-departure: welfare_cut_vote = 0
 
+With [+ bill_support +]% in favor, the vote succeeds.
+
 @sway_kpd
 view-if: in_left_front or in_popular_front and not welfare_cut_vote and not kpd_vote
 on-arrival: bill_support += kpd_r; kpd_coalition_dissent += 1; kpd_vote = 1; kpd_relation -= 5; reformist_dissent += 10; left_strength += 5; workers_spd -= 2; workers_kpd += 2; unemployed_spd -= 1; unemployed_kpd += 1
