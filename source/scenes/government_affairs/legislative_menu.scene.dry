@@ -152,7 +152,7 @@ Currently, [+ bill_support +]% is in favor of our bill.
 - @motion_fails: The motion fails.
 
 @success
-go-to: social_welfare.welfare_cut if welfare_cut_vote; social_welfare.welfare_funded_pre_depression if welfare_fund_pre_depression_vote;
+go-to: social_welfare.welfare_cut if welfare_cut_vote; social_welfare.welfare_funded_pre_depression if welfare_fund_pre_depression_vote
 on-arrival: {!
 Q.bill_support = Math.round(Q.bill_support);
 !}
