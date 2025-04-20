@@ -377,7 +377,7 @@ if (Q.dvp_vote) {
 }
 if (Q.other_vote) {
     Q.bill_support += Q.other_r;
-} else if (other_split) {
+} else if (Q.other_split) {
     var pro_tariff = (Q.rural_other_normalized)*Q.rural;
     var anti_tariff = (Q.new_middle_other_normalized)*Q.new_middle; 
     anti_tariff += (Q.old_middle_other_normalized)*Q.old_middle; 
