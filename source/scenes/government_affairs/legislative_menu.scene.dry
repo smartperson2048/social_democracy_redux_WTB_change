@@ -460,13 +460,13 @@ if (Q.cut_vote) {
         Q.z_vote = 0;
     }
 
-    if (Q.budget > 3 || (Q.budget > 2 && Q.in_grand_coalition)) {
+    if (Q.budget > 4 || (Q.budget > 3 && Q.in_grand_coalition)) {
         Q.bvp_vote = 1;
     } else {
         Q.bvp_vote = 0;
     }
 
-    if (Q.budget > 3 || (Q.budget > 2 && Q.in_grand_coalition)) {
+    if (Q.budget > 4 || (Q.budget > 3 && Q.in_grand_coalition)) {
         Q.dvp_vote = 1;
     } else {
         Q.dvp_vote = 0;
