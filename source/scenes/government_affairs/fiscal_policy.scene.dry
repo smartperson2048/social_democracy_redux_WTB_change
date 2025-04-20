@@ -34,6 +34,12 @@ Lower-income tax rates: [+ lower_tax_rates : taxation +]
 @raise_progressive
 subtitle: This does not change overall revenue. [? if lower_tax_rates < -5 : Lower-class tax rates are too low to cut anymore. ?] [? if upper_tax_rates > 5 : Upper-class tax rates are too high to increase. ?][? if status_quo : We have agreed to leave the budget untouched. ?]
 choose-if: lower_tax_rates >= -5 and upper_tax_rates <= 5 and not status_quo
+on-arrival: progressive_tax_vote = 1
+go-to: progressive_tax_done if not legislature_enabled; legislative_menu if legislature_enabled
+
+We propose a bill to make taxation more progressive.
+
+@progressive_tax_done
 on-arrival: workers_spd += 6*(1-dissent); old_middle_spd -= 3; new_middle_spd -= 3; new_middle_spd += 1 if new_middle_conscious; coalition_dissent += 1 if in_grand_coalition; dvp_relation -= 4; finance_goal_completed += 1; upper_tax_rates += 1; lower_tax_rates -= 1; capital_strike_progress += 1; capital_strike_progress += 1 if upper_tax_rates > 1; capital_strike_progress += 1 if upper_tax_rates > 3; socialism += 2
 
 Making the tax system more progressive is popular among our base, but it upsets our bourgeois coalition partners, as well as our minimal number of bourgeois voters.
@@ -42,6 +48,12 @@ Making the tax system more progressive is popular among our base, but it upsets 
 subtitle: +2 budget
 unavailable-subtitle: [? if not status_quo : Tax rates are already too high. ?][? if status_quo : We have agreed to leave the budget untouched. ?]
 choose-if: upper_tax_rates <= 5 and not status_quo
+on-arrival: raise_rich_vote = 1
+go-to: raise_rich_done if not legislature_enabled; legislative_menu if legislature_enabled
+
+We propose a bill to raise taxes on higher income earners.
+
+@raise_rich_done
 on-arrival: upper_tax_rates += 1; capital_strike_progress += 1; capital_strike_progress += 1 if upper_tax_rates > 1; capital_strike_progress += 1 if upper_tax_rates > 3; workers_spd += 4*(1-dissent); old_middle_spd -= 4; new_middle_spd -= 4; new_middle_spd += 1 if new_middle_conscious; coalition_dissent += 1 if in_grand_coalition; coalition_dissent += 1 if capital_strike_progress >= 5; budget += 2; dvp_relation -= 4; unemployed += 1; finance_goal_completed += 1; inflation -= 0.6; economic_growth -= 0.4; socialism += 1
 
 Raising taxes on the rich is popular among our base, but it alienates the bourgeoisie. Increasing taxes also decreases economic demand, which may lead to more unemployment.
@@ -51,6 +63,12 @@ view-if: wtb_adopted == 0 or budget >= 2
 subtitle: -2 budget
 unavailable-subtitle: -2 budget - [? if upper_tax_rates < -5 or lower_tax_rates < -5 : Tax rates are already too low. ?][? if status_quo : We have agreed to leave the budget untouched. ?]
 choose-if: budget >= 2 and upper_tax_rates >= -5 and lower_tax_rates >= -5 and not status_quo
+on-arrival: cut_vote = 1
+go-to: cut_done if not legislature_enabled; legislative_menu if legislature_enabled
+
+We propose a bill to lower taxes across the board.
+
+@cut_done
 on-arrival: budget -= 2; upper_tax_rates -= 1; lower_tax_rates -= 1; new_middle_spd += 5*(1-dissent); old_middle_spd += 4*(1-dissent); workers_spd += 3*(1-dissent); coalition_dissent += 1 if budget <= 2; dvp_relation += 5*(1-dissent) if budget > 2; z_relation += 5*(1-dissent) if budget > 2; unemployed -= 1 if unemployed >= 5; capital_strike_progress -= 1 if upper_tax_rates < 0; inflation += 0.4; economic_growth += 0.4; socialism -= 1
 
 Cutting taxes benefits most the rich and middle-class, who pay more taxes than the working class. Our coalition partners are happy at our orthodox economic course.
@@ -59,6 +77,12 @@ Cutting taxes benefits most the rich and middle-class, who pay more taxes than t
 view-if: wtb_adopted == 1 and budget < 2
 choose-if: upper_tax_rates >= -5 and lower_tax_rates >= -5 and not status_quo
 subtitle: -2 budget. We will enter deficit spending. [? if upper_tax_rates < -5 or lower_tax_rates < -5 : Tax rates are already too low. ?][? if status_quo : We have agreed to leave the budget untouched. ?]
+on-arrival: cut_vote = 1
+go-to: cut_done_wtb if not legislature_enabled; legislative_menu if legislature_enabled
+
+We propose a bill to lower taxes across the board.
+
+@cut_done_wtb
 on-arrival: budget -= 2; upper_tax_rates -= 1; lower_tax_rates -= 1; new_middle_spd += 5*(1-dissent); old_middle_spd += 4*(1-dissent); workers_spd += 3*(1-dissent); dvp_relation -= 3; z_relation -= 2; unemployed -= 1 if unemployed >= 5; unemployed -= 1 if works_program > 1; capital_strike_progress -= 1 if upper_tax_rates < 0; inflation += 0.7; hyperinflation += 0.1; coalition_dissent += 1 if in_grand_coalition; center_dissent += 5; economic_growth_rate += 0.6; socialism -= 2
 
 Cutting taxes benefits most the rich and middle-class, who pay more taxes than the working class. Our coalition partners are upset at our deficit spending, warning that it will lead to a repeat of the hyperinflation in the early history of our republic. The Center Marxists join in these warnings.
@@ -67,6 +91,12 @@ Cutting taxes benefits most the rich and middle-class, who pay more taxes than t
 subtitle: +3 budget
 unavailable-subtitle: [? if not status_quo or welfare < 1 : Tax rates are already too high. ?][? if status_quo or welfare >= 1 : We have agreed to leave the budget untouched. ?]
 choose-if: upper_tax_rates <= 5 and lower_tax_rates <= 5 and (not status_quo or welfare < 1)
+on-arrival: raise_vote = 1
+go-to: raise_done if not legislature_enabled; legislative_menu if legislature_enabled
+
+We propose a bill to lower taxes across the board.
+
+@raise_done
 on-arrival: budget += 3; new_middle_spd -= 4; old_middle_spd -= 4; workers_spd -= 3; rural_spd -= 3; unemployed += 2; kpd_coalition_dissent += 1; coalition_dissent += 1 if welfare > 1; coalition_dissent += 1 if budget >= 6; lower_tax_rates += 1; upper_tax_rates += 1; capital_strike_progress += 1 if upper_tax_rates > 1; capital_strike_progress += 1 if upper_tax_rates > 2; workers_spd -= 5 if lower_tax_rates > 1; inflation -= 1.1; economic_growth -= 0.6;
 
 Raising taxes hurts our support among all those who pay taxes. [? if in_grand_coalition or in_weimar_coalition : However, our coalition partners are more supportive of the idea of "shared sacrifice" than simply taxing the rich. ?] Increasing taxes also decreases economic demand, which may lead to more unemployment.
