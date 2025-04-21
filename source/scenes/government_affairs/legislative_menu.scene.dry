@@ -473,7 +473,7 @@ if (Q.cut_vote) {
     }
 
     Q.other_split = 0;
-    if (Q.budget >= 2) {
+    if (Q.budget > 3) {
         Q.other_vote = 1;
     } else {
         Q.other_vote = 0;
@@ -513,20 +513,20 @@ if (Q.raise_vote) {
         Q.z_vote = 0;
     }
 
-    if (Q.budget < 1 || (Q.budget < 2 && Q.in_grand_coalition && Q.z_relation >= 50)) {
+    if (Q.budget <= 2 || (Q.budget < 4 && Q.in_grand_coalition && Q.z_relation >= 40)) {
         Q.bvp_vote = 1;
     } else {
         Q.bvp_vote = 0;
     }
 
-    if (Q.budget < 0 || (Q.budget < 2 && Q.in_grand_coalition && Q.dvp_relation >= 50)) {
+    if (Q.budget <= 2 || (Q.budget < 4 && Q.in_grand_coalition && (Q.dvp_relation >= 40 || Q.upper_tax_rates < 2))) {
         Q.dvp_vote = 1;
     } else {
         Q.dvp_vote = 0;
     }
 
     Q.other_split = 0;
-    if (Q.budget < 1) {
+    if (Q.budget < 0) {
         Q.other_vote = 1;
     } else {
         Q.other_vote = 0;
