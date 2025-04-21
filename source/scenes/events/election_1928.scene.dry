@@ -1435,6 +1435,7 @@ The third option is to have new elections.
 - @toleration_bruning: We will tolerate Brüning.
 - @new_grand_coalition: We will try to form a new grand coalition.
 - @new_elections: We will have new elections.
+- @new_elections_2: We will have new elections.
 - @unity_government
 
 
