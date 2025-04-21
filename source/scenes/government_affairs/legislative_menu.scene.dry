@@ -885,7 +885,7 @@ if (Q.wtb_deficit_vote) {
 
     if (Q.ddp_relation+Q.unemployed >= 120) {
         Q.ddp_vote = 1;
-    }  else {
+    } else {
         Q.ddp_vote = 0;
     }
 
@@ -910,18 +910,22 @@ if (Q.wtb_deficit_vote) {
 
 if (Q.nationalize_vote) {
 
-    Q.kpd_vote = 0;
+    Q.kpd_vote = 1;
     
-    Q.sapd_vote = 0;
+    Q.sapd_vote = 1;
 
     Q.spd_split = 0;
 
     if (Q.ddp_relation+Q.unemployed >= 120 && Q.budget > Q.nationalize_budget) {
         Q.ddp_vote = 1;
+    } else {
+        Q.ddp_vote = 0;
     }
 
     if ((Q.z_relation+Q.unemployed >= 140 || (Q.z_relation+Q.unemployed >= 110 && Q.z_party_leader == "Joos")) && Q.budget > Q.nationalize_budget) {
         Q.z_vote = 1;
+    } else {
+        Q.z_vote = 0;
     }
 
     Q.bvp_vote = 0;
@@ -929,6 +933,51 @@ if (Q.nationalize_vote) {
     Q.dvp_vote = 0;
 
     Q.other_vote = 0;
+    Q.other_split = 0;
+
+    Q.dnvp_vote = 0;
+
+    Q.nsdap_vote = 0;
+
+}
+
+if (Q.reformist_vote) {
+
+    Q.kpd_vote = 0;
+    
+    Q.sapd_vote = 0;
+
+    Q.spd_split = 0;
+
+    if (Q.ddp_relation+Q.unemployed >= 75 || Q.weimar_plan_adopted) {
+        Q.ddp_vote = 1;
+    } else {
+        Q.ddp_vote = 0;
+    }
+
+    if ((Q.z_relation+Q.unemployed >= 90 || (Q.z_relation+Q.unemployed >= 70 && Q.z_party_leader == "Joos")) || Q.weimar_plan_adopted) {
+        Q.z_vote = 1;
+    } else {
+        Q.z_vote = 0;
+    }
+
+    if (Q.z_relation+Q.unemployed >= 100 && Q.in_grand_coalition) {
+        Q.bvp_vote = 1;
+    } else {
+        Q.bvp_vote = 0;
+    }
+
+    if (Q.dvp_relation+Q.unemployed >= 100 && Q.in_grand_coalition) {
+        Q.dvp_vote = 1;
+    } else {
+        Q.dvp_vote = 0;
+    }
+
+    if (Q.dvp_relation+Q.unemployed >= 80 && Q.in_grand_coalition && Q.grand_coalition < 50) {
+        Q.other_vote = 1;
+    } else {
+        Q.other_vote = 0;
+    }
     Q.other_split = 0;
 
     Q.dnvp_vote = 0;
