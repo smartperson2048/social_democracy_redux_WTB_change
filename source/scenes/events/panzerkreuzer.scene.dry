@@ -16,7 +16,7 @@ We campaigned on food for children instead of battlecruisers. Will we really bet
 - @abstain: Abstain from the vote.
 
 @vote_yes
-on-arrival: bill_support = bourgeois_coalition+far_right_coalition; bill_support += spd_r*(0.75-dissent); left_dissent += 10; labor_dissent += 5; center_dissent += 5; reformist_dissent += 5; neorevisionist_dissent += 5; panzerkreuzer_funded = 1; kpd_coalition_dissent += 1; kpd_relation -= 6; workers_spd -= 3; socialism -= 3; {!
+on-arrival: bill_support = bourgeois_coalition+far_right_coalition; bill_support += spd_r*(0.75-dissent); bill_support = 100*(bill_support/(100-(spd_r*dissent))); left_dissent += 10; labor_dissent += 5; center_dissent += 5; reformist_dissent += 5; neorevisionist_dissent += 5; panzerkreuzer_funded = 1; kpd_coalition_dissent += 1; kpd_relation -= 6; workers_spd -= 3; socialism -= 3; {!
 Q.bill_support = Math.round(Q.bill_support);
 !}
 
@@ -113,7 +113,7 @@ NSDAP: For
 With [+ bill_support +]% in favor, the vote succeeds.
 
 @abstain
-on-arrival: bill_support = 100*((bourgeois_coalition+far_right_coalition)/(100-spd_r)); dvp_relation -= 5; z_relation -= 3; left_dissent += 5; labor_dissent += 5; panzerkreuzer_funded = 1; kpd_relation -= 3; {!
+on-arrival: bill_support = 100*((bourgeois_coalition+far_right_coalition)/(100-(spd_r*(1-dissent)))); dvp_relation -= 5; z_relation -= 3; left_dissent += 5; labor_dissent += 5; panzerkreuzer_funded = 1; kpd_relation -= 3; {!
 Q.bill_support = Math.round(Q.bill_support);
 !}
 

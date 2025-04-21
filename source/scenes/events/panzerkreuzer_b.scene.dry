@@ -17,7 +17,7 @@ Much of our party is deeply opposed to rearmament, while the center and right pa
 - @ministry: Use the Reichswehr Ministry to prevent the construction.
 
 @vote_yes
-on-arrival: bill_support = bourgeois_coalition+far_right_coalition; bill_support += spd_r*(0.75-dissent) if not panzerkreuzer_funded; bill_support += spd_r if panzerkreuzer_funded; left_dissent += 10; labor_dissent += 5; center_dissent += 5; reformist_dissent += 5 if not panzerkreuzer_funded; neorevisionist_dissent += 5 if not panzerkreuzer_funded; panzerkreuzer_b_funded = 1; kpd_coalition_dissent += 1; kpd_relation -= 6; workers_spd -= 4; socialism -= 3; {!
+on-arrival: bill_support = bourgeois_coalition+far_right_coalition; bill_support += spd_r*(0.75-dissent) if not panzerkreuzer_funded; bill_support += spd_r*(1-dissent) if panzerkreuzer_funded; bill_support = 100*(bill_support/(100-(spd_r*dissent))); left_dissent += 10; labor_dissent += 5; center_dissent += 5; reformist_dissent += 5 if not panzerkreuzer_funded; neorevisionist_dissent += 5 if not panzerkreuzer_funded; panzerkreuzer_b_funded = 1; kpd_coalition_dissent += 1; kpd_relation -= 6; workers_spd -= 4; socialism -= 3; {!
 Q.bill_support = Math.round(Q.bill_support);
 !}
 
@@ -54,7 +54,7 @@ go-to: built if spd_r + kpd_r + ddp_r < 50; not_built if spd_r + kpd_r + ddp_r >
 Our vote against the battlecruiser is unpopular among the right-wing parties[? if in_grand_coalition or in_weimar_coalition: , including our coalition partners ?][? if spd_toleration: , including the minority government that we are currently supporting ?].
 
 @abstain
-on-arrival: bill_support = 100*((bourgeois_coalition+far_right_coalition)/(100-spd_r)); dvp_relation -= 5; z_relation -= 3; left_dissent += 5; labor_dissent += 5 if not panzerkreuzer_funded; panzerkreuzer_b_funded = 1; kpd_relation -= 3; {!
+on-arrival: bill_support = 100*((bourgeois_coalition+far_right_coalition)/(100-(spd_r*(1-dissent)))); dvp_relation -= 5; z_relation -= 3; left_dissent += 5; labor_dissent += 5 if not panzerkreuzer_funded; panzerkreuzer_b_funded = 1; kpd_relation -= 3; {!
 Q.bill_support = Math.round(Q.bill_support);
 !}
 
