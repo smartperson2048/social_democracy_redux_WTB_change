@@ -22,7 +22,7 @@ Q.bill_support = Math.round(Q.bill_support);
 
 Our grassroots party members are shocked by our intransigence! Many party branches have begun agitating against the cabinet, and our Reichstag members even plan a full vote on the proposal, contravening the government's decision.
 
-[? if legislature_enabled : KPD: Against
+KPD: Against
 
 [? if sapd_formed : SAPD: Against ?]
 
@@ -42,7 +42,7 @@ DNVP: For
 
 NSDAP: For
 
-With [+ bill_support +]% in favor, the vote succeeds. ?]
+With [+ bill_support +]% in favor, the vote succeeds.
 
 The campaign against the battlecruiser fails, with only the dissident SPD and KPD members voting against. The ship will be built.
 
@@ -63,7 +63,7 @@ on-arrival: panzerkreuzer_funded = 1; bill_support = bourgeois_coalition+far_rig
 
 Our coalition partners are shocked by our intransigence! Despite Chancellor Müller's rejection of the proposal, the other parties bring the matter to a Reichstag vote, which easily passes, with only the SPD and KPD voting against. The ship will be built.
 
-[? if legislature_enabled : KPD: Against
+KPD: Against
 
 [? if sapd_formed : SAPD: Against ?]
 
@@ -83,14 +83,14 @@ DNVP: For
 
 NSDAP: For
 
-With [+ bill_support +]% in favor, the vote succeeds. ?]
+With [+ bill_support +]% in favor, the vote succeeds.
 
 @vote_no_pass
 on-arrival: panzerkreuzer_funded = 1; bill_support = bourgeois_coalition+far_right_coalition
 
 Our coalition partners are shocked by our intransigence! Chancellor [+ chancellor +] brings the matter to a Reichstag vote, which passes with all parties in favor except the SPD and KPD. The ship will be built.
 
-[? if legislature_enabled : KPD: Against
+KPD: Against
 
 [? if sapd_formed : SAPD: Against ?]
 
@@ -110,7 +110,7 @@ DNVP: For
 
 NSDAP: For
 
-With [+ bill_support +]% in favor, the vote succeeds. ?]
+With [+ bill_support +]% in favor, the vote succeeds.
 
 @abstain
 on-arrival: bill_support = 100*((bourgeois_coalition+far_right_coalition)/(100-spd_r)); dvp_relation -= 5; z_relation -= 3; left_dissent += 5; labor_dissent += 5; panzerkreuzer_funded = 1; kpd_relation -= 3; {!
@@ -119,7 +119,7 @@ Q.bill_support = Math.round(Q.bill_support);
 
 Our coalition partners are shocked by our intransigence! Despite our abstention, the vote in the Reichstag goes through, with all parties in favor except the SPD and KPD. The ship will be built.
 
-[? if legislature_enabled : KPD: Against
+KPD: Against
 
 [? if sapd_formed : SAPD: Against ?]
 
@@ -139,4 +139,4 @@ DNVP: For
 
 NSDAP: For
 
-With [+ bill_support +]% in favor, the vote succeeds. ?]
+With [+ bill_support +]% in favor, the vote succeeds.

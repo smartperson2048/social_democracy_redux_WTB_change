@@ -23,7 +23,7 @@ Q.bill_support = Math.round(Q.bill_support);
 
 Our grassroots party members are highly critical of our decision. Many party branches have increased their agitation against our parliamentary fraction. [? if panzerkreuzer_funded : However, given the construction of the previous battlecruiser, this seemed to be a foregone conclusion, and the reaction is muted. ?]
 
-[? if legislature_enabled : KPD: Against
+KPD: Against
 
 [? if sapd_formed : SAPD: Against ?]
 
@@ -43,7 +43,7 @@ DNVP: For
 
 NSDAP: For
 
-With [+ bill_support +]% in favor, the vote succeeds. ?]
+With [+ bill_support +]% in favor, the vote succeeds.
 
 The vote in favor of the battlecruiser easily passes, with opposition only from the KPD. The ship will be built.
 
@@ -62,7 +62,7 @@ The center-right parties are critical of our decision to abstain, and the pressu
 
 [? if panzerkreuzer_funded : Given the construction of the previous battlecruiser, this seemed to be a foregone conclusion, and the reaction is muted. ?]
 
-[? if legislature_enabled : KPD: Against
+KPD: Against
 
 [? if sapd_formed : SAPD: Against ?]
 
@@ -82,14 +82,14 @@ DNVP: For
 
 NSDAP: For
 
-With [+ bill_support +]% in favor, the vote succeeds. ?]
+With [+ bill_support +]% in favor, the vote succeeds.
 
 @built
 on-arrival: panzerkreuzer_b_funded = 1
 
 Chancellor [+ chancellor +] brings the matter to a full Reichstag vote, which passes with all parties in favor except the SPD and KPD. The ship will be built.
 
-[? if legislature_enabled : KPD: Against
+KPD: Against
 
 [? if sapd_formed : SAPD: Against ?]
 
@@ -109,14 +109,14 @@ DNVP: For
 
 NSDAP: For
 
-With [+ bill_support +]% in favor, the vote succeeds. ?]
+With [+ bill_support +]% in favor, the vote succeeds.
 
 @not_built
 on-arrival: panzerkreuzer_b_funded = 0; budget += 1 if panzerkreuzer_funded = 0; coup_progress += 1
 
 Our vote against the battlecruiser succeeds, with the support of the KPD and anti-war portions of the [+ ddp_name +]. The ship will not be built! [? if panzerkreuzer_funded == 0 : We have saved some budget from not funding the two ships. ?]
 
-[? if legislature_enabled : KPD: Against
+if legislature_enabled : KPD: Against
 
 [? if sapd_formed : SAPD: Against ?]
 
@@ -136,7 +136,7 @@ DNVP: For
 
 NSDAP: For
 
-With but [+ bill_support +]% in favor, the motion fails and is withdrawn. ?]
+With but [+ bill_support +]% in favor, the motion fails and is withdrawn.
 
 @ministry
 on-arrival: panzerkreuzer_b_funded = 0; budget += 1 if panzerkreuzer_funded = 0; coup_progress += 1; coup_progress += 1 if reichswehr_strength < 100; coup_progress += 1 if panzerkreuzer_funded == 0
