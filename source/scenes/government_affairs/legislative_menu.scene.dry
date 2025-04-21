@@ -973,7 +973,7 @@ We give concessions to the DVP enough that they agree to vote in favor of our bi
 
 @motion_fails
 on-arrival: left_dissent += 5 if left_dissent < 40; center_dissent += 5 if center_dissent < 40; reformist_dissent += 5 if reformist_dissent < 50; neorevisionist_dissent += 5 if neorevisionist_dissent < 50; labor_dissent += 5 if labor_dissent < 50
-on-departure: welfare_cut_vote = 0; welfare_fund_pre_depression_vote = 0; welfare_fund_post_depression_vote = 0; women_vote = 0; council_vote_1 = 0; council_vote_2 = 0; council_vote_3 = 0; socialization_vote = 0; cooperative_vote = 0; judicial_vote = 0; concordat_vote = 0; eu_vote = 0; progressive_tax_vote = 0; raise_rich_vote = 0; cut_vote = 0; raise_vote = 0; regressive_vote = 0; tariff_cut_vote = 0; tariff_hike_vote = 0; women_labor_vote = 0; women_family_vote; cut_benefits_vote = 0; increase_employers_vote = 0; balance_vote = 0
+on-departure: welfare_cut_vote = 0; welfare_fund_pre_depression_vote = 0; welfare_fund_post_depression_vote = 0; women_vote = 0; council_vote_1 = 0; council_vote_2 = 0; council_vote_3 = 0; socialization_vote = 0; cooperative_vote = 0; judicial_vote = 0; concordat_vote = 0; eu_vote = 0; progressive_tax_vote = 0; raise_rich_vote = 0; cut_vote = 0; raise_vote = 0; regressive_vote = 0; tariff_cut_vote = 0; tariff_hike_vote = 0; women_labor_vote = 0; women_family_vote = 0; cut_benefits_vote = 0; increase_employers_vote = 0; balance_vote = 0
 
 KPD: [+ kpd_vote : vote_display +]
 
