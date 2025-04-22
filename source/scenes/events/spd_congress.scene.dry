@@ -32,6 +32,7 @@ if (Q.new_middle_conscious) {
 Q.left_old_middle = 0;
 Q.left_rural = 0.4;
 Q.left_unemployed = 1.25;
+Q.left_catholics = 0.75;
 
 Q.center_workers = 1;
 Q.center_new_middle = 1;
@@ -41,6 +42,7 @@ if (Q.new_middle_conscious) {
 Q.center_old_middle = 0.5;
 Q.center_rural = 0.5;
 Q.center_unemployed = 0.9;
+Q.center_catholics = 1;
 
 Q.reformist_workers = 0.75;
 Q.reformist_new_middle = 1.5;
@@ -50,6 +52,7 @@ if (Q.new_middle_conscious) {
 Q.reformist_old_middle = 3;
 Q.reformist_rural = 1.5;
 Q.reformist_unemployed = 0.25;
+Q.reformist_catholics = 1.25;
 
 Q.labor_workers = 2;
 Q.labor_new_middle = 1;
@@ -62,13 +65,21 @@ Q.labor_unemployed = 0.2;
 if (Q.wtb_adopted) {
     Q.labor_unemployed += 0.3;
 }
+Q.labor_catholics = 1;
 
+Q.neorevisionist_workers = 0;
+Q.neorevisionist_new_middle = 0;
+Q.neorevisionist_old_middle = 0;
+Q.neorevisionist_rural = 0;
+Q.neorevisionist_unemployed = 0;
+Q.neorevisionist_catholics = 0;
 if (Q.neorevisionism) {
     Q.neorevisionist_workers = 0.6;
     Q.neorevisionist_new_middle = 1;
     Q.neorevisionist_old_middle = 2;
     Q.neorevisionist_rural = 2;
     Q.neorevisionist_unemployed = Q.rb_militancy;
+    Q.neorevisionist_catholics = 0.75;
 }
 
 var total_spd = 0;
@@ -81,8 +92,8 @@ for (var c of Q.classes) {
 for (var faction of Q.factions) {
     for (var c of Q.classes) {
         Q[faction+'_votes'] += ((Q[faction+'_strength']/100)*Q[faction+'_'+c])*((Q[c+'_spd_normalized']*Q[c])/total_spd);
-        total_factions += Q[faction+'_votes'];
     }
+    total_factions += Q[faction+'_votes'];
 }
 
 for (var faction of Q.factions) {
