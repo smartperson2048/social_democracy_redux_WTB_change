@@ -233,15 +233,16 @@ go-to: coalition_menu
 
 {!<table>!} 
 {!<tr><td>Party</td><td>Vote share</td><td>% Change</td></tr>!}
-<tr><td><div class="box" style='background-color:#c40000;'> </div> </td><td> <strong>Left:</strong> </td><td> [+ left_r +]% </td><td> [+ str_change_left +] </td></tr>
 
-<tr><td><div class="box" style='background-color:#E3000F;'> </div> </td><td> <strong>Center:</strong> </td><td> [+ center_r +]% </td><td> [+ str_change_center +] </td></tr>
+{!<tr><td><div class="box" style='background-color:#9d0000'> </div> !}Left: {!</td><td>!} [+ left_c +]% {!</td><td>!} [+ str_change_left +] {!</td></tr>!}
 
-<tr><td><div class="box" style='background-color:#ff2b2b;'> </div> </td><td> <strong>Labor:</strong> </td><td> [+ labor_r +]% </td><td> [+ str_change_labor +] </td></tr>
+{!<tr><td><div class="box" style='background-color:#c40000'> </div> !} Center: {!</td><td>!} [+ center_c +]% {!</td><td>!} [+ str_change_center +] {!</td></tr>!}
 
-<tr><td><div class="box" style='background-color:#FF6F61;'> </div> </td><td> <strong>Reformists:</strong> </td><td> [+ reform_r +]% </td><td> [+ str_change_reform +] </td></tr>
+{!<tr><td><div class="box" style='background-color:#ff613a'> </div> !} Labor: {!</td><td>!} [+ labor_c +]% {!</td><td>!} [+ str_change_labor +] {!</td></tr>!}
 
-[? if neorevisionism : <tr><td><div class="box" style='background-color:#ff61b8;'> </div> </td><td> <strong>Neorevisionists:</strong> </td><td> [+ neo_r +]% </td><td> [+ str_change_neo +] </td></tr> ?]
+{!<tr><td><div class="box" style='background-color:#ff6b84'> </div> !} Reformists: {!</td><td>!} [+ reformist_c +] {!</td><td>!} [+ str_change_reformist +] {!</td></tr>!}
+
+[? if neorevisionism == 1 : {!<tr><td><div class="box" style='background-color:#ff7fc3'> </div> !}Neorevisionists: {!</td><td>!} [+ neorevisionist_c +]% {!</td><td>!} [+ str_change_neorevisionist +] {!</td></tr>!} ?]
 
 @coalition_menu
 
