@@ -240,7 +240,7 @@ go-to: coalition_menu
 
 {!<tr><td><div class="box" style='background-color:#ff613a'> </div> !} Labor: {!</td><td>!} [+ labor_c +]% {!</td><td>!} [+ str_change_labor +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#ff6b84'> </div> !} Reformists: {!</td><td>!} [+ reformist_c +] {!</td><td>!} [+ str_change_reformist +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#ff6b84'> </div> !} Reformists: {!</td><td>!} [+ reformist_c +]% {!</td><td>!} [+ str_change_reformist +] {!</td></tr>!}
 
 [? if neorevisionism == 1 : {!<tr><td><div class="box" style='background-color:#ff7fc3'> </div> !}Neorevisionists: {!</td><td>!} [+ neorevisionist_c +]% {!</td><td>!} [+ str_change_neorevisionist +] {!</td></tr>!} ?]
 
