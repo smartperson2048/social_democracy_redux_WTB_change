@@ -1,0 +1,228 @@
+title: SPD Party Congress
+new-page: true
+tags: event
+priority: -1
+view-if: never
+on-departure: never = 0;
+set-jump: post_congress
+
+# the low priority means that this event is only seen after all other events are resolved for the month.
+# note: z_coalition = z_celation + (pro_cepublic/2); z_coalition *= 1.25 if z_faction_leader == "Joos";
+
+= SPD Party Congress, [+ month : month +] [+ year +]
+
+The Party congress is to be held now.
+
+- @faction_algorithm: May we do our best...
+
+@faction_algorithm
+on-arrival: {!
+
+Q.left_votes = 0;
+Q.center_votes = 0;
+Q.reformist_votes = 0;
+Q.labor_votes = 0;
+Q.neorevisionist_votes = 0;
+
+Q.left_workers = 1;
+Q.left_new_middle = 0.7;
+if (Q.new_middle_conscious) {
+    Q.left_new_middle += 0.3;
+}
+Q.left_old_middle = 0;
+Q.left_rural = 0.4;
+Q.left_unemployed = 1.25;
+
+Q.center_workers = 1;
+Q.center_new_middle = 1;
+if (Q.new_middle_conscious) {
+    Q.center_new_middle += 0.25;
+}
+Q.center_old_middle = 0.5;
+Q.center_rural = 0.5;
+Q.center_unemployed = 0.9;
+
+Q.reformist_workers = 0.75;
+Q.reformist_new_middle = 1.5;
+if (Q.new_middle_conscious) {
+    Q.reformist_new_middle -= 0.25;
+}
+Q.reformist_old_middle = 3;
+Q.reformist_rural = 1.5;
+Q.reformist_unemployed = 0.25;
+
+Q.labor_workers = 2;
+Q.labor_new_middle = 1;
+if (Q.new_middle_conscious) {
+    Q.labor_new_middle -= 0.3;
+}
+Q.labor_old_middle = 0.1;
+Q.labor_rural = 0.7;
+Q.labor_unemployed = 0.2;
+if (Q.wtb_adopted) {
+    Q.labor_unemployed += 0.3;
+}
+
+if (Q.neorevisionism) {
+    Q.neorevisionist_workers = 0.6;
+    Q.neorevisionist_new_middle = 1;
+    Q.neorevisionist_old_middle = 2;
+    Q.neorevisionist_rural = 2;
+    Q.neorevisionist_unemployed = Q.rb_militancy;
+}
+
+var total_spd = 0;
+var total_factions = 0;
+
+for (var c of Q.classes) {
+    total_spd += (Q[c+'_spd_normalized']*Q[c]);
+}
+
+for (var faction of Q.factions) {
+    for (var c of Q.classes) {
+        Q[faction+'_votes'] += ((Q[faction+'_strength']/100)*Q[faction+'_'+c])*((Q[c+'_spd_normalized']*Q[c])/total_spd);
+        total_factions += Q[faction+'_votes'];
+    }
+}
+
+for (var faction of Q.factions) {
+    Q[faction+'_votes'] = Math.round((Q[faction+'_votes']/total_factions)*100);
+}
+!}
+
+@post_congress
+on-arrival: {!
+// set old results
+// election threshold constitutional reform
+// banning parties
+var new_faction_sum = 0;
+for (var faction of Q.factions) {
+    Q['old_' + faction + '_c'] = Q[faction + '_c'];
+    Q[faction + '_c'] = Q[faction + '_votes'];
+        // if we use decimals, then we might want to truncate the numbers
+    if (Q.use_decimals) {
+        Q[faction + '_c_disp'] = Q[faction+'_c'].toFixed(1);
+    }  else {
+            Q[faction + '_c_disp'] = Q[faction+'_c'];
+    }
+    Q['change_' + faction + '_c'] = Q[faction + '_c'] - Q['old_' + faction + '_c'];
+    var sign = Q['change_' + faction + '_c'] > 0 ? '+'  : '';
+    Q['str_change_' + faction] = sign + Q['change_' + faction + '_c'];//.toFixed(1);
+}
+// calculate new faction sum if electoral reform
+if (Q.electoral_threshold && Q.electoral_threshold > 0 || Q.faction_bans) {
+    for (var faction of Q.parties) {
+        if (Q[faction + '_c'] > 0) {
+            if (Q.use_decimals) {
+                Q[faction + '_c'] = Math.round(Q[faction + '_c']*1000/new_faction_sum)/10;
+            } else {
+                Q[faction + '_c'] = Math.round(Q[faction + '_c']*100/new_faction_sum);
+            }
+        }
+        if (Q.use_decimals) {
+            Q[faction + '_c_disp'] = Q[faction+'_c'].toFixed(1);
+        } else {
+            Q[faction + '_c_disp'] = Q[faction+'_c'];
+        }
+        Q['change_' + faction + '_c'] = Q[faction + '_c'] - Q['old_' + faction + '_c'];
+        var sign = Q['change_' + faction + '_c'] > 0 ? '+'  : '';
+        Q['str_change_' + faction] = sign + Q['change_' + faction + '_c'];//.toFixed(1);
+    }
+}
+
+!}
+on-display: {!
+if (Q.neorevisionism == 1) {
+    data = [
+        {   "id": "left",
+            "legend": "Left",
+            "name": "Left",
+            "seats": Math.round(Q.left_c*0.5),
+        },
+        {
+            "id": "center",
+            "legend": "Center",
+            "name": "Center",
+            "seats": Math.round(Q.center_c*0.5),
+        },
+        {
+            "id": "labor",
+            "legend": "Labor",
+            "name": "Labor",
+            "seats": Math.round(Q.labor_c*0.5),
+        },
+        {
+            "id": "reformist",
+            "legend": "Reformists",
+            "name": "Reformists",
+            "seats": Math.round(Q.reformist_c*0.5),
+        },
+];
+}
+else {
+    data = [
+        {   "id": "left",
+            "legend": "Left",
+            "name": "Left",
+            "seats": Math.round(Q.left_c*0.5),
+        },
+        {
+            "id": "center",
+            "legend": "Center",
+            "name": "Center",
+            "seats": Math.round(Q.center_c*0.5),
+        },
+        {
+            "id": "labor",
+            "legend": "Labor",
+            "name": "Labor",
+            "seats": Math.round(Q.labor_c*0.5),
+        },
+        {
+            "id": "reformist",
+            "legend": "Reformists",
+            "name": "Reformists",
+            "seats": Math.round(Q.reformist_c*0.5),
+        },
+        {
+            "id": "neorevisionist",
+            "legend": "Neorevisionists",
+            "name": "Neorevisionists",
+            "seats": Math.round(Q.neorevisionist_c*0.5),
+        },
+];
+}
+if (window && d3) {
+    var width = 500; 
+    var height = 500;
+    var screenWidth = document.getElementById('content').offsetWidth;
+    if (screenWidth < width - 50) {
+        width = screenWidth - 50; 
+        height = width;
+        document.getElementById("reichstag").style.height = screenWidth/2 + "px";
+    } 
+
+    var parliament = d3.parliament();
+    parliament.width(width).height(height).innerRadiusCoef(0.4);
+    parliament.enter.fromCenter(true).smallToBig(true);
+    parliament.exit.toCenter(false).bigToSmall(true);
+    d3.select("#reichstag").datum(data).call(parliament);
+}
+!}
+go-to: coalition_menu if not vonc_formed; coalition_vonc if vonc_formed
+
+= Election results
+
+{!<svg id="reichstag" style="width: 500px; height: 250px;"> </svg>!}
+
+{!<table>!} 
+{!<tr><td>Party</td><td>Vote share</td><td>% Change</td></tr>!}
+<tr><td><div class="box" style='background-color:#c40000;'> </div> </td><td> <strong>Left:</strong> </td><td> [+ left_r +]% </td><td> [+ str_change_left +] </td></tr>
+
+<tr><td><div class="box" style='background-color:#E3000F;'> </div> </td><td> <strong>Center:</strong> </td><td> [+ center_r +]% </td><td> [+ str_change_center +] </td></tr>
+
+<tr><td><div class="box" style='background-color:#ff2b2b;'> </div> </td><td> <strong>Labor:</strong> </td><td> [+ labor_r +]% </td><td> [+ str_change_labor +] </td></tr>
+
+<tr><td><div class="box" style='background-color:#FF6F61;'> </div> </td><td> <strong>Reformists:</strong> </td><td> [+ reform_r +]% </td><td> [+ str_change_reform +] </td></tr>
+
+[? if neorevisionism : <tr><td><div class="box" style='background-color:#ff61b8;'> </div> </td><td> <strong>Neorevisionists:</strong> </td><td> [+ neo_r +]% </td><td> [+ str_change_neo +] </td></tr> ?]

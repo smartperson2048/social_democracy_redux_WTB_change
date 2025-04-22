@@ -555,6 +555,21 @@ table {
 .seat.vonc {
   fill: #ffffff00;
 }
+.seat.left {
+  fill: #c40000;
+}
+.seat.center {
+  fill: #E3000F;
+}
+.seat.labor {
+  fill: #ff2b2b;
+}
+.seat.reformist {
+  fill: #FF6F61;
+}
+.seat.neorevisionist {
+  fill: #ff61b8;
+}
 
 .tooltip-text {
   text-decoration: underline;
