@@ -130,6 +130,10 @@ if (Q.electoral_threshold && Q.electoral_threshold > 0 || Q.faction_bans) {
     }
 }
 
+Q.marxist_unity = Q.left_c+Q.center_c;
+Q.toleration_unity = Q.center_c+Q.reformist_c+Q.neorevisionist_c;
+Q.lassalean_unity = Q.reformist_c+Q.neorevisionist_c;
+Q.antitoleration_unity = Q.left_c+Q.labor_c;
 !}
 on-display: {!
 if (Q.neorevisionism == 1) {
@@ -209,7 +213,7 @@ if (window && d3) {
     d3.select("#reichstag").datum(data).call(parliament);
 }
 !}
-go-to: coalition_menu if not vonc_formed; coalition_vonc if vonc_formed
+go-to: coalition_menu
 
 = Election results
 
@@ -226,3 +230,78 @@ go-to: coalition_menu if not vonc_formed; coalition_vonc if vonc_formed
 <tr><td><div class="box" style='background-color:#FF6F61;'> </div> </td><td> <strong>Reformists:</strong> </td><td> [+ reform_r +]% </td><td> [+ str_change_reform +] </td></tr>
 
 [? if neorevisionism : <tr><td><div class="box" style='background-color:#ff61b8;'> </div> </td><td> <strong>Neorevisionists:</strong> </td><td> [+ neo_r +]% </td><td> [+ str_change_neo +] </td></tr> ?]
+
+@coalition_menu
+
+- @marxist_unity: Marxist Unity
+- @left_majority: The Left
+- @center_majority: The Center
+- @toleration_unity: The Pro-Toleration Wing
+- @reformist_majority: The Reformists
+- @neorevisionist_majority: The Neorevisionists
+- @labor_majority: Labor
+- @antitoleration_unity: The Anti-Toleration Wing
+- @lassalean_unity: Lassalean Unity
+
+@marxist_unity
+view-if: marxist_unity >= 50
+subtitle: Left + Center ([+ marxist_unity +]%)
+on-arrival: reformist_strength -= 5; neorevisionist_strength -= 5; labor_strength -= 5; left_dissent -= 5; center_dissent -= 5
+
+The party retains a Marxist platform.
+
+@left_majority  
+view-if: left_c >= 50  
+subtitle: Left ([+ left_c +]%)  
+on-arrival: left_strength += 10; reformist_dissent += 10; neorevisionist_dissent += 10; labor_dissent += 5; center_dissent += 5
+
+The party is increasingly driven by the radical left.
+
+@center_majority  
+view-if: center_c >= 50  
+subtitle: Center ([+ center_c +]%)  
+on-arrival: center_strength += 10; left_dissent += 5; reformist_dissent += 5; neorevisionist_dissent += 5; labor_dissent += 5
+
+The party remains in the hands of the Centrist Marxists.
+
+@reformist_majority  
+view-if: reformist_c >= 50  
+subtitle: Reformists ([+ reformist_c +]%)  
+on-arrival: reformist_strength += 10; left_dissent += 10; center_dissent += 5; labor_dissent += 5
+
+The party emphasizes legal reform and parliamentary pragmatism over confrontation.
+
+@neorevisionist_majority  
+view-if: neorevisionist_c >= 50  
+subtitle: Neorevisionists ([+ neorevisionist_c +]%)  
+on-arrival: neorevisionist_strength += 10; left_dissent += 15; center_dissent += 10; labor_dissent += 5
+
+The party has fallen under the control of the neorevisionists.
+
+@labor_majority  
+view-if: labor_c >= 50  
+subtitle: Labor ([+ labor_c +]%)  
+on-arrival: labor_strength += 10; center_dissent += 10; left_dissent += 5; reformist_dissent += 5
+
+The party has fallen under the control of the trade unions.
+
+@toleration_unity  
+view-if: toleration_unity >= 50 and spd_toleration
+subtitle: Center + Reformists + Neorevisionists ([+ toleration_unity +]%)  
+on-arrival: labor_strength -= 5; left_strength -= 5; left_dissent += 5; z_relation += 5
+
+The party has taken a pro-toleration course.
+
+@antitoleration_unity  
+view-if: antitoleration_unity >= 50 and spd_toleration
+subtitle: Left + Labor ([+ antitoleration_unity +]%)  
+on-arrival: center_strength -= 5; reformist_strength -= 5; neorevisionist_strength -= 5; reformist_dissent += 5; neorevisionist_dissent += 5
+
+The party has taken an anti-toleration course.
+
+@lassalean_unity  
+view-if: lassalean_unity >= 50  
+subtitle: Reformists + Neorevisionists ([+ lassalean_unity +]%)  
+on-arrival: reformist_strength += 5; neorevisionist_strength += 5; left_dissent += 10; center_dissent += 5
+
+The party has taken a less than Marxist course.
