@@ -100,6 +100,7 @@ for (var faction of Q.factions) {
     Q[faction+'_votes'] = Math.round((Q[faction+'_votes']/total_factions)*100);
 }
 !}
+go-to: post_congress
 
 @post_congress
 on-arrival: {!
