@@ -13,6 +13,7 @@ Wels is the long-time chairman of the SPD. He is a gifted organizer and a member
 - @party_discipline
 - @emergency_fundraising
 - @snap_election
+- @debug_never
 - @root: Return to main
 
 @clear_agenda
@@ -59,3 +60,11 @@ on-arrival: advisor_action_timer = 6; time_to_election = 3
 call: set_next_election_time
 
 We have called for new elections, set for [+ next_election_month : month +] [+ next_election_year +].
+
+@debug_never
+title: DEBUG: Never
+subtitle: Never = 1
+view-if: legislature_enabled
+on-arrival: never = 1
+
+Never enabled
