@@ -92,6 +92,12 @@ if (Q.neorevisionism) {
 
 var total_spd = 0;
 var total_factions = 0;
+var spd_performance = Q.spd_votes-Q.old_spd_performance;
+if (Q.old_spd_performance) {
+    Q.old_spd_performance = Q.spd_votes;
+} else {
+    Q.old_spd_performance = 26;
+}
 
 for (var c of Q.classes) {
     total_spd += (Q[c+'_spd_normalized']*Q[c]);
@@ -99,7 +105,9 @@ for (var c of Q.classes) {
 
 for (var faction of Q.factions) {
     for (var c of Q.classes) {
-        Q[faction+'_votes'] += ((Q[faction+'_strength']/100)*Q[faction+'_'+c])*((Q[c+'_spd_normalized']*Q[c])/total_spd);
+        var base_vote = ((Q[faction+'_strength']/100)*Q[faction+'_'+c])*((Q[c+'_spd_normalized']*Q[c])/total_spd);
+        var dissent_modifier = 1 + (Q[faction + '_dissent'] / 60) * (-spd_performance / 100);
+        Q[faction+'_votes'] += base_vote*dissent_modifier;
     }
     total_factions += Q[faction+'_votes'];
 }
