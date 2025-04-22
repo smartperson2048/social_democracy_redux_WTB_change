@@ -559,16 +559,16 @@ table {
   fill: #9d0000;
 }
 .seat.center {
-  fill: #c40000;
+  fill: #ec0000;
 }
 .seat.labor {
-  fill: #ff613a;
+  fill: #ff4a1d;
 }
 .seat.reformist {
   fill: #ff6b84;
 }
 .seat.neorevisionist {
-  fill: #ff7fc3;
+  fill: #ff3ca4;
 }
 
 .tooltip-text {

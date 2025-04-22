@@ -43,6 +43,14 @@ Q.center_old_middle = 0.5;
 Q.center_rural = 0.5;
 Q.center_unemployed = 0.9;
 Q.center_catholics = 1;
+if (Q.center_strength >= Q.left_strength && Q.center_strength >= Q.reformist_strength) {
+    Q.center_workers += 0.25;
+    Q.center_new_middle += 0.25;
+    Q.center_old_middle += 0.1;
+    Q.center_rural += 0.1;
+    Q.center_unemployed += 0.2;
+    Q.center_catholics += 0.25;
+}
 
 Q.reformist_workers = 0.75;
 Q.reformist_new_middle = 1.5;
@@ -54,7 +62,7 @@ Q.reformist_rural = 1.5;
 Q.reformist_unemployed = 0.25;
 Q.reformist_catholics = 1.25;
 
-Q.labor_workers = 2;
+Q.labor_workers = 1.5;
 Q.labor_new_middle = 1;
 if (Q.new_middle_conscious) {
     Q.labor_new_middle -= 0.3;
@@ -236,13 +244,13 @@ go-to: coalition_menu
 
 {!<tr><td><div class="box" style='background-color:#9d0000'> </div> !}Left: {!</td><td>!} [+ left_c +]% {!</td><td>!} [+ str_change_left +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#c40000'> </div> !} Center: {!</td><td>!} [+ center_c +]% {!</td><td>!} [+ str_change_center +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#ec0000'> </div> !} Center: {!</td><td>!} [+ center_c +]% {!</td><td>!} [+ str_change_center +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#ff613a'> </div> !} Labor: {!</td><td>!} [+ labor_c +]% {!</td><td>!} [+ str_change_labor +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#ff4a1d'> </div> !} Labor: {!</td><td>!} [+ labor_c +]% {!</td><td>!} [+ str_change_labor +] {!</td></tr>!}
 
 {!<tr><td><div class="box" style='background-color:#ff6b84'> </div> !} Reformists: {!</td><td>!} [+ reformist_c +]% {!</td><td>!} [+ str_change_reformist +] {!</td></tr>!}
 
-[? if neorevisionism == 1 : {!<tr><td><div class="box" style='background-color:#ff7fc3'> </div> !}Neorevisionists: {!</td><td>!} [+ neorevisionist_c +]% {!</td><td>!} [+ str_change_neorevisionist +] {!</td></tr>!} ?]
+[? if neorevisionism == 1 : {!<tr><td><div class="box" style='background-color:#ff3ca4'> </div> !}Neorevisionists: {!</td><td>!} [+ neorevisionist_c +]% {!</td><td>!} [+ str_change_neorevisionist +] {!</td></tr>!} ?]
 
 @coalition_menu
 
