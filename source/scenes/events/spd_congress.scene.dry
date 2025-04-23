@@ -106,7 +106,7 @@ for (var c of Q.classes) {
 for (var faction of Q.factions) {
     for (var c of Q.classes) {
         var base_vote = ((Q[faction+'_strength']/100)*Q[faction+'_'+c])*((Q[c+'_spd_normalized']*Q[c])/total_spd);
-        var dissent_modifier = 1 + (Q[faction + '_dissent'] / 60) * (-spd_performance / 100);
+        var dissent_modifier = (1 + (Q[faction + '_dissent'] / 60) * (-spd_performance / 100))*3;
         Q[faction+'_votes'] += base_vote*dissent_modifier;
     }
     total_factions += Q[faction+'_votes'];
