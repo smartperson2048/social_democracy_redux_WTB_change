@@ -154,7 +154,6 @@ on-arrival: budget -= 1; public_hs += 1; workers_spd += 6*(1-dissent); unemploye
 # this makes the bureaucracy more proletarian
 We have funded more public secondary schools so that proletarian children may receive the same education as middle and upper-class children, and can be prepared for universities.
 
-
 @school_boards
 title: Create elected school boards to give local areas more control over education.
 view-if: school_boards = 0
