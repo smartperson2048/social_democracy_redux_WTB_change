@@ -275,11 +275,11 @@ go-to: coalition_menu
 {!<table>!} 
 {!<tr><td>Party</td><td>Vote share</td><td>% Change</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#950000'> </div> !} Left: {!</td><td>!} [+ left_c +]% {!</td><td>!} [+ str_change_left +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#9c0000'> </div> !} Left: {!</td><td>!} [+ left_c +]% {!</td><td>!} [+ str_change_left +] {!</td></tr>!}
 
 {!<tr><td><div class="box" style='background-color:#e30000'> </div> !} Center: {!</td><td>!} [+ center_c +]% {!</td><td>!} [+ str_change_center +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#ff681d'> </div> !} Labor: {!</td><td>!} [+ labor_c +]% {!</td><td>!} [+ str_change_labor +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#ff3f18'> </div> !} Labor: {!</td><td>!} [+ labor_c +]% {!</td><td>!} [+ str_change_labor +] {!</td></tr>!}
 
 {!<tr><td><div class="box" style='background-color:#ff6ba9'> </div> !} Reformists: {!</td><td>!} [+ reformist_c +]% {!</td><td>!} [+ str_change_reformist +] {!</td></tr>!}
 
