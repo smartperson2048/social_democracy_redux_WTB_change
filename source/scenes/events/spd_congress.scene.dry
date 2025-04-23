@@ -119,7 +119,7 @@ for (var faction of Q.factions) {
     for (var c of Q.classes) {
         var base_vote = ((Q[faction + '_strength'] / 100) * Q[faction + '_' + c]) * ((Q[c + '_spd_normalized'] * Q[c]) / total_spd);
         var dissent = Q[faction + '_dissent'] || 0;
-        var dissent_modifier = (1 + (dissent / 60) * (-spd_performance / 100)) * 3;
+        var dissent_modifier = (1 + (dissent / 60) * (-spd_performance / 10)) * 3;
 
         console.log(`[${faction}] + [${c}]`);
         console.log("  Base vote:", base_vote.toFixed(4));
