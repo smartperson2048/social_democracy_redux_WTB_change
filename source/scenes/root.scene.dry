@@ -865,6 +865,37 @@ this.state.disableSaves = true;
 !}
 go-to: 1930_main
 
+@1925_easy
+view-if: year == 1925
+on-arrival: difficulty = -1; resources = 4; dues = 3; rb_strength = 2500; kpd_relation += 9; z_relation += 5; dvp_relation += 9; budget += 1
+go-to: 1930_main
+
+@1925_hard
+view-if: year == 1925
+on-arrival: difficulty = 1; resources = 0; dues = 1; rb_strength = 1000; reformist_dissent += 10; left_dissent += 10; labor_dissent += 10; center_dissent += 15; z_relation -=  9; kpd_relation -= 5; dvp_relation -= 9; budget -= 1;
+go-to: 1930_main
+
+@1925_historical
+view-if: year == 1925
+subtitle: Saving, loading, and polls will be disabled. [? if not achievement_game_completed: Not recommended for a first playthrough. ?]
+on-arrival: {!
+Q.difficulty = 2;
+Q.historical_mode = 1;
+Q.resources = 2;
+Q.dues = 1;
+Q.rb_strength = 2000;
+Q.reformist_dissent += 5;
+Q.left_dissent += 5;
+Q.labor_dissent += 5;
+Q.center_dissent += 10;
+Q.z_relation -= 9;
+Q.kpd_relation -= 5;
+Q.dvp_relation -= 9;
+Q.budget -= 2;
+this.state.disableSaves = true;
+!}
+go-to: 1930_main
+
 @settings
 subtitle: Enable or disable various features.
 
@@ -882,6 +913,7 @@ For other, non-difficulty related tweaks.
 - @disable_legislature: Disable legislative rework (WIP)
 - @1930: Begin the game in 1930.
 - @1928: Begin the game in 1928.
+- @1925: Begin the game in 1925.
 - @menu: Back.
 
 @disable_end
@@ -956,6 +988,12 @@ go-to: menu
 
 The legislative rework has been disabled.
 
+@1925
+view-if: year != 1925
+go-to: 1925_root
+
+The starting date has been changed to 1925. This is so WIP you wouldn't believe it. Literally unplayable. Don't blame me when it's exactly as I warned.
+
 @1930
 view-if: year != 1930
 go-to: 1930_root
@@ -968,6 +1006,10 @@ go-to: start_menu_2
 
 @menu
 
+- @1925_easy: Begin (easy difficulty)
+- @1925_main: Begin (normal difficulty)
+- @1925_hard: Begin (hard difficulty)
+- @1925_historical: Begin (historical mode)
 - @1928_easy: Begin (easy difficulty)
 - @1928_main: Begin (normal difficulty)
 - @1928_hard: Begin (hard difficulty)
