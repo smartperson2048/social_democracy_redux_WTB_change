@@ -54,6 +54,12 @@ Socialism has always stood for science and rationality. Despite the setbacks of 
 title: Fund the Kaiser Wilhelm Society for basic scientific research.
 subtitle: -1 budget
 choose-if: budget >= 1
+on-arrival: kwg_vote = 1
+go-to: kwg_done if not legislature_enabled; legislative_menu if legislature_enabled
+
+We propose the expansion of funding for the Kaiser Wilhelm Society.
+
+@kwg_done
 on-arrival: budget -= 1; science += 1; kwg_research += 1; economic_growth += 0.3 if economic_growth <= 8; new_middle_spd += 5*(1-dissent); ddp_relation += 5*(1-dissent); unemployed -= 0.2 if unemployed >= 4; west_relation += 1; science_funding += 1
 
 The Kaiser Wilhelm Society is one of the most respected scientific research institutions in the world, with physicist Albert Einstein as its most famous employee. Our research program is to provide the Society with additional resources to hire and train scientists and conduct fundamental research, based on the scientists' own interests.
@@ -62,6 +68,12 @@ The Kaiser Wilhelm Society is one of the most respected scientific research inst
 title: Fund applied research in economically useful technologies.
 subtitle: -1 budget
 choose-if: budget >= 1
+on-arrival: applied_vote = 1
+go-to: applied_done if not legislature_enabled; legislative_menu if legislature_enabled
+
+We propose the expansion of funding for applied research.
+
+@applied_done
 on-arrival: budget -= 1; science += 1; applied_research += 1; economic_growth += 0.5 if economic_growth <= 8 and applied_research <= 1; economic_growth += 3 if applied_research > 1; new_middle_spd += 5*(1-dissent); workers_spd += 3*(1-dissent); ddp_relation += 5*(1-dissent); unemployed -= 0.5 if unemployed >= 4; capital_strike_progress -= 1 if capital_strike_progress > 0; science_funding += 1
 
 Our research program focuses on collaborating with industry to develop useful technologies, creating new research institutions for applied science. This collaboration is focused on economic growth and development.
@@ -70,6 +82,12 @@ Our research program focuses on collaborating with industry to develop useful te
 title: Fund biomedical research at the hospitals and medical schools.
 subtitle: -1 budget
 choose-if: budget >= 1
+on-arrival: medical_vote = 1
+go-to: medical_done if not legislature_enabled; legislative_menu if legislature_enabled
+
+We propose the expansion of funding for medical research.
+
+@medical_done
 on-arrival: budget -= 1; science += 1; medical_research += 1; economic_growth += 0.4 if economic_growth <= 8; new_middle_spd += 5*(1-dissent); workers_spd += 3*(1-dissent); ddp_relation += 5*(1-dissent); unemployed -= 0.2 if unemployed >= 4; science_funding += 1
 
 Our research program focuses on medical research to improve the treatment of diseases and public health. [? if change_sex: Some of our medical advancements include new methods for sex change surgery and hormone therapy for transsexual individuals. ?]
@@ -124,8 +142,14 @@ The SPD, DDP, DVP, and KPD vote in favor of secular education, overcoming the op
 title: Increase educational opportunities for the working class by funding public high schools.
 subtitle: -1 budget
 choose-if: budget >= 1
-on-arrival: budget -= 1; public_hs += 1; workers_spd += 6*(1-dissent); unemployed_spd += 3*(1-dissent); prussian_police_loyalty += 0.04; education_science += 0.5; unemployed -= 0.2; economic_growth += 0.2; pro_republic += 4*(1-dissent);
+on-arrival: public_hs_vote = 1
 max-visits: 3
+go-to: public_hs_done if not legislature_enabled; legislative_menu if legislature_enabled
+
+We propose the expansion of public high school funding.
+
+@public_hs_done
+on-arrival: budget -= 1; public_hs += 1; workers_spd += 6*(1-dissent); unemployed_spd += 3*(1-dissent); prussian_police_loyalty += 0.04; education_science += 0.5; unemployed -= 0.2; economic_growth += 0.2; pro_republic += 4*(1-dissent);
 
 # this makes the bureaucracy more proletarian
 We have funded more public secondary schools so that proletarian children may receive the same education as middle and upper-class children, and can be prepared for universities.
@@ -133,8 +157,14 @@ We have funded more public secondary schools so that proletarian children may re
 
 @school_boards
 title: Create elected school boards to give local areas more control over education.
-on-arrival: school_boards += 1; workers_spd += 3*(1-dissent); new_middle_spd += 3*(1-dissent); old_middle += 2*(1-dissent); education_science += 0.2;
 view-if: school_boards = 0
+on-arrival: school_board_vote = 1
+go-to: school_board_done if not legislature_enabled; legislative_menu if legislature_enabled
+
+We propose the creation of school boards in the Reichstag.
+
+@school_board_done
+on-arrival: school_boards += 1; workers_spd += 3*(1-dissent); new_middle_spd += 3*(1-dissent); old_middle += 2*(1-dissent); education_science += 0.2;
 
 We have created local elected school boards, and delegated some of the decision-making for local schools to them.
 
