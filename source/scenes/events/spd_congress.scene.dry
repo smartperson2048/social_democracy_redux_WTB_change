@@ -188,7 +188,7 @@ Q.lassalean_unity = Q.reformist_c+Q.neorevisionist_c;
 Q.antitoleration_unity = Q.left_c+Q.labor_c;
 !}
 on-display: {!
-if (Q.neorevisionism == 1) {
+if (!Q.neorevisionism) {
     data = [
         {   "id": "left",
             "legend": "Left",
@@ -276,13 +276,13 @@ go-to: coalition_menu
 
 {!<tr><td><div class="box" style='background-color:#9d0000'> </div> !}Left: {!</td><td>!} [+ left_c +]% {!</td><td>!} [+ str_change_left +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#ec0000'> </div> !} Center: {!</td><td>!} [+ center_c +]% {!</td><td>!} [+ str_change_center +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#d50000'> </div> !} Center: {!</td><td>!} [+ center_c +]% {!</td><td>!} [+ str_change_center +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#ff4a1d'> </div> !} Labor: {!</td><td>!} [+ labor_c +]% {!</td><td>!} [+ str_change_labor +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#ff741d'> </div> !} Labor: {!</td><td>!} [+ labor_c +]% {!</td><td>!} [+ str_change_labor +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#ff6b84'> </div> !} Reformists: {!</td><td>!} [+ reformist_c +]% {!</td><td>!} [+ str_change_reformist +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#ff6ba9'> </div> !} Reformists: {!</td><td>!} [+ reformist_c +]% {!</td><td>!} [+ str_change_reformist +] {!</td></tr>!}
 
-[? if neorevisionism == 1 : {!<tr><td><div class="box" style='background-color:#ff3ca4'> </div> !}Neorevisionists: {!</td><td>!} [+ neorevisionist_c +]% {!</td><td>!} [+ str_change_neorevisionist +] {!</td></tr>!} ?]
+[? if neorevisionism == 1 : {!<tr><td><div class="box" style='background-color:#ff14a5'> </div> !}Neorevisionists: {!</td><td>!} [+ neorevisionist_c +]% {!</td><td>!} [+ str_change_neorevisionist +] {!</td></tr>!} ?]
 
 @coalition_menu
 
