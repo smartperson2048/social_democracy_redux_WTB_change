@@ -186,6 +186,7 @@ Q.marxist_unity = Q.left_c+Q.center_c;
 Q.toleration_unity = Q.center_c+Q.reformist_c+Q.neorevisionist_c;
 Q.lassalean_unity = Q.reformist_c+Q.neorevisionist_c;
 Q.antitoleration_unity = Q.left_c+Q.labor_c;
+Q.pragmatic_unity = Q.center_c+Q.reformist_c;
 !}
 on-display: {!
 if (!Q.neorevisionism) {
@@ -274,11 +275,11 @@ go-to: coalition_menu
 {!<table>!} 
 {!<tr><td>Party</td><td>Vote share</td><td>% Change</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#9d0000'> </div> !}Left: {!</td><td>!} [+ left_c +]% {!</td><td>!} [+ str_change_left +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#9d0000'> </div> !} Left: {!</td><td>!} [+ left_c +]% {!</td><td>!} [+ str_change_left +] {!</td></tr>!}
 
 {!<tr><td><div class="box" style='background-color:#e30000'> </div> !} Center: {!</td><td>!} [+ center_c +]% {!</td><td>!} [+ str_change_center +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#ff741d'> </div> !} Labor: {!</td><td>!} [+ labor_c +]% {!</td><td>!} [+ str_change_labor +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#ff681d'> </div> !} Labor: {!</td><td>!} [+ labor_c +]% {!</td><td>!} [+ str_change_labor +] {!</td></tr>!}
 
 {!<tr><td><div class="box" style='background-color:#ff6ba9'> </div> !} Reformists: {!</td><td>!} [+ reformist_c +]% {!</td><td>!} [+ str_change_reformist +] {!</td></tr>!}
 
@@ -290,6 +291,7 @@ go-to: coalition_menu
 - @left_majority: The Left
 - @center_majority: The Center
 - @toleration_unity: The Pro-Toleration Wing
+- @pragmatic_unity: The Pragmatist Wing
 - @reformist_majority: The Reformists
 - @neorevisionist_majority: The Neorevisionists
 - @labor_majority: Labor
@@ -339,11 +341,18 @@ on-arrival: labor_strength += 10; center_dissent += 10; left_dissent += 5; refor
 The party has fallen under the control of the trade unions.
 
 @toleration_unity  
-view-if: toleration_unity >= 50 and spd_toleration
+view-if: toleration_unity >= 50 and spd_toleration and neorevisionism
 subtitle: Center + Reformists + Neorevisionists ([+ toleration_unity +]%)  
 on-arrival: labor_strength -= 5; left_strength -= 5; left_dissent += 5; z_relation += 5
 
 The party has taken a pro-toleration course.
+
+@pragmatic_unity
+view-if: pragmatic_unity >= 50 and (not spd_toleration or not neorevisionism)
+subtitle: Center + Reformists ([+ pragmatic_unity +]%)
+on-arrival: center_strength += 5; reformist_strength += 5
+
+The party pragmatists have won out in this congress.
 
 @antitoleration_unity  
 view-if: antitoleration_unity >= 50 and spd_toleration
