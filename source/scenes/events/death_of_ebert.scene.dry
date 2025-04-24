@@ -233,8 +233,8 @@ if (Q.gessler_campaign) {
 }
 if (Q.hergt25_campaign) {
     Q.hergt_votes += Q.dnvp_normalized;
-    Q.hergt_votes += Q.dvp_normalized*(Q.nationalism/250);
-    Q.hergt_votes += Q.other_normalized*(Q.nationalism/200);
+    Q.hergt_votes += Q.dvp_normalized*(Q.nationalism/150);
+    Q.hergt_votes += Q.other_normalized*(Q.nationalism/100);
     Q.hergt_votes += ((Math.floor(Math.random() * 11))/500);
 }
 if (Q.hindenburg_campaign) {
