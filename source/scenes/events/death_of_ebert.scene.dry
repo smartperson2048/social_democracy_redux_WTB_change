@@ -268,7 +268,7 @@ for (var k of Q.presidents_25) {
 }
 for (var k of Q.presidents_25) {
     if (Q[k+'_plurality']) {
-        if (Q[k+'_votes']) < highest_support {
+        if (Q[k+'_votes'] < highest_support) {
            Q[k+'_plurality'] = 0;
         }
     }
