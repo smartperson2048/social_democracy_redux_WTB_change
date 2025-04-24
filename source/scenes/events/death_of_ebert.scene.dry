@@ -95,7 +95,7 @@ subtitle: -2 resources
 choose-if: resources >= 2
 view-if: braun_percent <= 0.7
 on-arrival: resources -= 2; braun_percent += 0.3;
-go-to: cg2
+go-to: cb2
 max-visits: 1
 
 We launch a large-scale campaign for Braun to ensure turnout from our party members.
@@ -105,7 +105,7 @@ subtitle: -1 resource
 on-arrival: resources -= 1; braun_percent += 0.15
 choose-if: resources >= 1
 view-if: braun_percent <= 0.7
-go-to: cg2
+go-to: cb2
 max-visits: 1
 
 We launch a small-scale campaign for Braun to try and ensure turnout from our party members.
