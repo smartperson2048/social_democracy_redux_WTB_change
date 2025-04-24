@@ -332,7 +332,7 @@ As expected, there is no majority in the first round of voting.
 on-arrival: hellpach_campaign = 0; ddp_support_marx = 1; braun_percent += 0.1 if braun_percent <= 0.9; braun_percent = 1 if braun_percent > 0.9
 go-to: braun2_menu
 
-Otto Braun has landed [? if braun_votes_disp > spd_r : a stunning ?] [+ braun_votes_disp +]%, easily ahead of all other parties in the Weimar Coalition. Nonetheless, experience from the elections of the German Empire shows that bourgeois voters rarely vote social democrats in runoffs - it may be better to endorse Wilhelm Marx in the second round.
+Otto Braun has landed [? if braun_votes_disp > spd_r : a stunning ?] [+ braun_votes_disp +]%, easily ahead of all other parties in the Weimar Coalition. Nonetheless, experience from the elections of the German Empire shows that bourgeois voters rarely vote social democrats in runoffs - it may be better to endorse Wilhelm Marx in the second round, especially as they have promised to vote for Otto Braun to be the Minister-President of Prussia if we do.
 
 Meanwhile, the **Reichsblock** of the right begins to desperately search for a candidate able to mobilize higher turnout from their camp. Whether or not they will succeed remains to be seen.
 
