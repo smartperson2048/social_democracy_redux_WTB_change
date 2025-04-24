@@ -316,7 +316,7 @@ As expected, there is no majority in the first round of voting.
 @braun_consolidation
 on-arrival: hellpach_campaign = 0; ddp_support_marx = 1
 
-Otto Braun has landed a stunning [+ braun_votes_disp +]%, easily ahead of all other parties in the Weimar Coalition. Nonetheless, experience from the elections of the German Empire shows that bourgeois voters rarely vote social democrats in runoffs - it may be better to endorse Wilhelm Marx in the second round.
+Otto Braun has landed [? if braun_votes_disp > spd_r : a stunning ?] [+ braun_votes_disp +]%, easily ahead of all other parties in the Weimar Coalition. Nonetheless, experience from the elections of the German Empire shows that bourgeois voters rarely vote social democrats in runoffs - it may be better to endorse Wilhelm Marx in the second round.
 
 Meanwhile, the **Reichsblock** of the right begins to desperately search for a candidate able to mobilize higher turnout from their camp. Whether or not they will succeed remains to be seen.
 
