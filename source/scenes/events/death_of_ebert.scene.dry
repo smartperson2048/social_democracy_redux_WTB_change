@@ -212,7 +212,11 @@ if (Q.ludendorff_campaign) {
     Q.ludendorff_votes += ((Math.floor(Math.random() * 11))/500);
 }
 if (Q.gessler_campaign) {
-    Q.gessler_votes += Q.spd_normalized*(1-left_dissent_percent);
+    var spd_turnout = 0.7;
+    if (Q.round25 > 1) {
+        spd_turnout += 0.1;
+    }
+    Q.gessler_votes += ((Q.spd_normalized*(1-left_dissent_percent))*(1-Q.dissent))*spd_turnout;
     Q.gessler_votes += Q.z_normalized-0.03;
     if (Q.bvp_support_gessler) {
         Q.gessler_votes += 0.03;
