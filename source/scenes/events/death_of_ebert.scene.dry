@@ -223,9 +223,9 @@ if (Q.gessler_campaign) {
     }
     Q.gessler_votes += Q.ddp_normalized;
     if (!Q.dvp_abstain) {
-        Q.gessler_votes += Q.dvp_normalized*((1+(Q.pro_republic/100))/2);
+        Q.gessler_votes += Q.dvp_normalized*(Q.pro_republic/100);
     }
-    Q.gessler_votes += Q.pro_republic/3250;
+    Q.gessler_votes += Q.pro_republic/3500;
     if (!Q.hindenburg_campaign) {
         Q.gessler_votes += Q.other_normalized*(Q.pro_republic/200);
     }
