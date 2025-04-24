@@ -428,7 +428,6 @@ We contribute to the campaign by helping the Centrists recover their right flank
 subtitle: -1 resource
 choose-if: resources >= 1
 on-arrival: resources -= 1
-set-jump: bc2
 max-visits: 1
 
 - @class_struggle: The class struggle of the proletariat against the bourgeoisie.
@@ -440,16 +439,19 @@ max-visits: 1
 
 @class_struggle
 on-arrival: workers_spd += 4*(1-dissent); unemployed_spd += 3*(1-dissent) if left_strength > reformist_strength; workers_spd += 4*(1-dissent) if nationalization_progress > 0; unemployed_spd += 3*(1-dissent) if nationalization_progress > 0; left_strength += 5; left_dissent -= 5; old_middle_spd -= 3; new_middle_spd -= 2 if not new_middle_conscious; socialism += 2*(1-dissent); ddp_relation -= 10; z_relation -= 10; dvp_relation -= 10
+go-to: bc2
 
 Our message of class struggle appeals to the left wing of the working class, while potentially alienating the middle class. [? if nationalization_progress > 0 : Our achievements in nationalization have assisted our messaging. ?]
 
 @welfare
 on-arrival: workers_spd += 3*(1-dissent); workers_spd += 3*(1-dissent) if welfare > 0; unemployed_spd += 3*(1-dissent) if welfare > 0; unemployed_spd += 4*(1-dissent) if welfare > 1; reformist_strength += 3; labor_strength += 4; reformist_dissent -= 3; labor_dissent -= 3;
+go-to: bc2
 
 The reformist message appeals to the organized workers, whose benefits are the accomplishments of social democracy. [? if welfare > 1 : Our achievements in expanding welfare have made this message more effective. ?]
 
 @democracy
 on-arrival: democratization += 1; pro_republic += 2*(1 - dissent); workers_spd += 4*(1-dissent) if democratization >= 3; unemployed_spd += 3*(1-dissent) if democratization >= 3; pro_republic += 4*(1 - dissent) if democratization >= 3; new_middle_spd += 4*(1-dissent) if democratization >= 3 
+go-to: bc2
 
 Our speakers defend the republican system and rail against the monarchists and authoritarians who threaten it.
 
@@ -458,6 +460,7 @@ Our speakers defend the republican system and rail against the monarchists and a
 
 @pacifism
 on-arrival: pacifism += 1; nationalism -= 2*(1 - dissent); workers_spd += 4*(1 - dissent) if pacifism >= 3; unemployed_spd += 3*(1-dissent) if pacifism >= 3; nationalism -= 3*(1-dissent) if pacifism >= 3; new_middle_spd += 4*(1-dissent) if pacifism >= 3
+go-to: bc2
 
 Our speakers denounce the military establishment and all the spending entering that black hole. Some adventurous speakers question the responsibility of the military elites in organizing the Great War.
 
@@ -466,6 +469,7 @@ Our speakers denounce the military establishment and all the spending entering t
 
 @local
 on-arrival: workers_spd += 3*(1-dissent); old_middle_spd += 1*(1-dissent); new_middle_spd += 2*(1-dissent); unemployed_spd += 3*(1-dissent);
+go-to: bc2
 
 Our speakers have gauged the mood and are speaking to the issues that seem to most affect the workers in this moment.
 
@@ -473,7 +477,6 @@ Our speakers have gauged the mood and are speaking to the issues that seem to mo
 subtitle: -1 resource
 choose-if: resources >= 1
 on-arrival: resources -= 1
-set-jump: bc2
 max-visits: 1
 
 - @workers: The urban working class, our traditional support base.
@@ -484,26 +487,31 @@ max-visits: 1
 
 @workers
 on-arrival: workers_spd += 6*(1-dissent); workers_spd -= 2 if unemployed >= 15; workers_spd -= 2 if unemployed >= 25; workers_spd += 6*(1-dissent) if wtb_adopted = 1; workers_spd += 3*(1-dissent) if nationalization_progress >= 1;
+go-to: bc2
 
 We have increased our campaigning among the workers. [? if unemployed >= 15: The high levels of unemployment make our campaign more difficult. ?][? if wtb_adopted = 1 : Adopting the WTB plan gives us a new rallying point around which to attract workers. ?]
 
 @new_middle
 on-arrival: new_middle_spd += 6*(1-dissent); new_middle_spd -= 4 if socialism <= 49 and peoples_party == 0; peoples_party_support += 1;
+go-to: bc2
 
 We have increased our campaigning among the new middle class. [? if socialism <= 49 and peoples_party == 0: The popular antipathy towards socialism among this group makes our campaign more difficult. ?] [? if peoples_party > 0: As a people's party, we have an easier time increasing support among the middle class than before. ?]
 
 @old_middle
 on-arrival: old_middle_spd += 5*(1-dissent); old_middle_spd -= 3 if nationalism >= 51 and peoples_party == 0; peoples_party_support += 1
+go-to: bc2
 
 We have increased our campaigning among the old middle class. [? if nationalism >= 51 and peoples_party == 0: The high levels of nationalism among this group make our campaign more difficult. ?] [? if peoples_party > 0: As a people's party, we have an easier time increasing support among the middle class than before. ?]
 
 @rural
 on-arrival: rural_spd += 5*(1-dissent); rural_spd -= 3*(1-dissent) if peoples_party == 0; peoples_party_support += 1; rural_spd += 3*(1-dissent) if rural_policy >= 2
+go-to: bc2
 
 We have increased our campaigning among farmers. [? if peoples_party == 0: We have not historically campaigned much among the farmers, and they do not trust us. ?][? if peoples_party > 0: As a people's party, we have an easier time increasing support among farmers than before. ?][? if rural_policy >= 2 : Our rural policies have made it easier for us to build support among farmers. ?]
 
 @unemployed
 on-arrival: unemployed_spd += 6*(1-dissent); unemployed_spd -= 3 if welfare < 0; unemployed_spd += 6*(1-dissent) if wtb_adopted = 1; unemployed_spd += 3*(1-dissent) if welfare >= 2;
+go-to: bc2
 
 We have increased our campaigning among the unemployed. [? if welfare < 0: The welfare cuts and resultant poverty make our campaign more difficult, since we are associated with the government that enacted these cuts, and our campaign may even backfire. ?][? if wtb_adopted = 1 : Adopting the WTB plan gives us a new rallying point around which to attract support from the unemployed. ?]
 
