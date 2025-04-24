@@ -1,7 +1,7 @@
 title: The Death of Ebert
 subtitle: The President has died...
 new-page: true
-view-if: year = 1925 and month >= 3
+view-if: year = 1925 and month >= 3 and not ebert_dead
 on-arrival: round25 = 0; ebert_dead = 1; president = "Simons (acting)"; jarres_campaign = 1; marx_campaign = 1; held_campaign = 1; thalmann_campaign = 1; ludendorff_campaign = 1; hellpach_campaign = 1;
 tags: event
 go-to: pres_menu
