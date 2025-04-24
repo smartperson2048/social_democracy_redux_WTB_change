@@ -577,6 +577,7 @@ unavailable-subtitle: The Weimar parties are unwilling.
 Nah uh
 
 @marx_r2
+subtitle: It may be necessary to preserve the coalition.
 on-arrival: braun_percent = 0.8; gessler_campaign = 0; spd_support_marx = 1; ddp_support_marx = 1; marx_campaign = 1; bvp_support_marx = 1 if bvp_support_gessler; bvp_support_gessler = 0
 
 We back Wilhelm Marx from the Center Party. Hopefully he can manage to win.
