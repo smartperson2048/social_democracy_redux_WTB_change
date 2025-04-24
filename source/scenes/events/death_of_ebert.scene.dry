@@ -177,11 +177,11 @@ if (Q.thalmann_campaign) {
 if (Q.hellpach_campaign) {
     Q.hellpach_votes += Q.ddp_normalized;
     Q.hellpach_votes += ((Math.floor(Math.random() * 11))/350);
-    Q.hellpach_votes += Q.pro_republic/3500;
+    Q.hellpach_votes += Q.pro_republic/4500;
 }
 if (Q.held_campaign) {
     Q.held_votes += 0.03;
-    Q.held_votes += Q.nationalism/2500;
+    Q.held_votes += Q.nationalism/4500;
 }
 if (Q.marx_campaign) {
     Q.marx_votes += Q.z_normalized;
@@ -204,10 +204,10 @@ if (Q.jarres_campaign) {
     Q.jarres_votes += Q.dnvp_normalized;
     Q.jarres_votes += Q.other_normalized;
     Q.jarres_votes += ((Math.floor(Math.random() * 11))/350);
-    Q.jarres_votes += Q.nationalism/2500;
+    Q.jarres_votes += Q.nationalism/1500;
 }
 if (Q.ludendorff_campaign) {
-    Q.ludendorff_votes += Q.nsdap_normalized/3;
+    Q.ludendorff_votes += Q.nsdap_normalized/6;
     Q.ludendorff_votes += ((Math.floor(Math.random() * 11))/350);
 }
 if (Q.gessler_campaign) {
@@ -237,7 +237,7 @@ if (Q.hindenburg_campaign) {
     Q.hindenburg_votes += Q.other_normalized;
     Q.hindenburg_votes += Q.nsdap_normalized;
     Q.hindenburg_votes += ((Math.floor(Math.random() * 11))/350);
-    Q.hindenburg_votes += Q.nationalism/2000;
+    Q.hindenburg_votes += Q.nationalism/1000;
     if (Q.dvp_support_hindenburg) {
         Q.hindenburg_votes += Q.dvp_normalized;
     }
