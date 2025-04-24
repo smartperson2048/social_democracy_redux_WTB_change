@@ -552,6 +552,8 @@ on-arrival: resources -= 2; dvp_abstain = 1; old_middle_dvp -= 4; new_middle_dvp
 
 We try to convince the DVP to stay in the Gessler campaign, causing immense debate within the DVP. Many on the right may vote Hindenburg anyway. In the end, in the name of party unity, it is decided the DVP will abstain in the election.
 
+- @round1: Let the voting begin...
+
 @convince_dvp_abstain
 choose-if: resources >= 1
 subtitle: -1 resource
@@ -575,7 +577,7 @@ unavailable-subtitle: The Weimar parties are unwilling.
 Nah uh
 
 @marx_r2
-on-arrival: gessler_campaign = 0; spd_support_marx = 1; ddp_support_marx = 1; marx_campaign = 1; bvp_support_marx = 1 if bvp_support_gessler; bvp_support_gessler = 0
+on-arrival: braun_percent = 0.8; gessler_campaign = 0; spd_support_marx = 1; ddp_support_marx = 1; marx_campaign = 1; bvp_support_marx = 1 if bvp_support_gessler; bvp_support_gessler = 0
 
 We back Wilhelm Marx from the Center Party. Hopefully he can manage to win.
 
