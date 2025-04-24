@@ -367,7 +367,7 @@ go-to: braun2_menu
 Using our relations to win them over, the Center Party has agreed to back Otto Braun. Let's hope we can manage to win.
 
 @back_marx
-view-if: marx_campaign
+view-if: marx_campaign and not spd_support_marx
 on-arrival: ddp_support_braun = 0; ddp_support_marx = 1; spd_support_marx = 1; left_dissent += 5; workers_spd -= 1; braun_campaign = 0
 go-to: braun2_menu
 
