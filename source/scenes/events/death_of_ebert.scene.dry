@@ -383,10 +383,10 @@ Using our relations to win them over, the Center Party has agreed to back Otto B
 
 @back_marx
 view-if: marx_campaign and not spd_support_marx
-on-arrival: ddp_support_braun = 0; ddp_support_marx = 1; spd_support_marx = 1; left_dissent += 5; workers_spd -= 1; braun_campaign = 0
+on-arrival: spd_prussia = 1 ddp_support_braun = 0; ddp_support_marx = 1; spd_support_marx = 1; left_dissent += 5; workers_spd -= 1; braun_campaign = 0
 go-to: braun2_menu
 
-We have dropped out and endorsed Wilhelm Marx, who is now the candidate of the **Volksblock**. 
+We have dropped out and endorsed Wilhelm Marx, who is now the candidate of the **Volksblock**. In return, the Center Party has voted Otto Braun as M-P of Prussia.
 
 @finished_campaign_braun
 on-arrival: held_campaign = 0; jarres_campaign = 0; ludendorff_campaign = 0; dvp_support_hindenburg = 1; hindenburg_campaign = 1; bvp_support_hindenburg = 1 if z_relation < 55 and spd_support_marx; bvp_support_marx = 1 if z_relation > 65 or not spd_support_marx; nationalism += 5
@@ -578,9 +578,9 @@ Nah uh
 
 @marx_r2
 subtitle: It may be necessary to preserve the coalition.
-on-arrival: braun_percent = 0.8; gessler_campaign = 0; spd_support_marx = 1; ddp_support_marx = 1; marx_campaign = 1; bvp_support_marx = 1 if bvp_support_gessler; bvp_support_gessler = 0
+on-arrival: spd_prussia = 1; braun_percent = 0.8; gessler_campaign = 0; spd_support_marx = 1; ddp_support_marx = 1; marx_campaign = 1; bvp_support_marx = 1 if bvp_support_gessler; bvp_support_gessler = 0
 
-We back Wilhelm Marx from the Center Party. Hopefully he can manage to win.
+We back Wilhelm Marx from the Center Party. In return, the Center Party votes Otto Braun for M-P of Prussia.
 
 - @round1: Let the voting begin...
 
