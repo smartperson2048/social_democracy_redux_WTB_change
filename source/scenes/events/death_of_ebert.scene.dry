@@ -140,8 +140,7 @@ Q.presidents_25 = ['thalmann', 'braun', 'hellpach', 'marx', 'held', 'jarres', 'l
 // initial phase:
 if (Q.braun_campaign) {
     if (Q.z_support_braun) {
-        var z_percent = Q.z_relation/100;
-        z_percent = Math.max(0.6, 1);
+        var z_percent = (0.5+(Q.z_relation/100))/2;
         Q.braun_votes += Q.z_normalized*z_percent;
         if (Q.braun_percent < 1) {
             Q.braun_percent += 0.1;
@@ -149,8 +148,7 @@ if (Q.braun_campaign) {
         }
     }
     if (Q.ddp_support_braun) {
-        var ddp_percent = Q.ddp_relation/100;
-        ddp_percent = Math.max(0.6, 1);
+        var ddp_percent = (0.5+(Q.ddp_relation/100))/2;
         Q.braun_votes += Q.ddp_normalized*ddp_percent;
         if (Q.braun_percent < 1) {
             Q.braun_percent += 0.05;
