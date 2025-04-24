@@ -171,7 +171,7 @@ if (Q.thalmann_campaign) {
         Q.thalmann_votes += Q.spd_normalized*(left_dissent_percent/2);
     }
     if (Q.round > 1) {
-        Q.thalmann_votes = Q.thalmann_votes*0.6;
+        Q.thalmann_votes = Q.thalmann_votes*0.5;
     }
 }
 if (Q.hellpach_campaign) {
@@ -237,8 +237,8 @@ if (Q.hindenburg_campaign) {
     Q.hindenburg_votes += Q.other_normalized;
     Q.hindenburg_votes += Q.nsdap_normalized;
     Q.hindenburg_votes += ((Math.floor(Math.random() * 11))/500);
-    Q.hindenburg_votes += Q.nationalism/1500;
-    Q.hindenburg_votes += (100-Q.pro_republic)/1500;
+    Q.hindenburg_votes += Q.nationalism/1250;
+    Q.hindenburg_votes += (100-Q.pro_republic)/1250;
     if (Q.dvp_support_hindenburg) {
         Q.hindenburg_votes += Q.dvp_normalized;
     }
