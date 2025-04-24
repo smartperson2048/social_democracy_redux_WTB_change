@@ -3,7 +3,6 @@ subtitle: The President has died...
 new-page: true
 view-if: year = 1925 and month >= 3
 on-arrival: round25 = 0; ebert_dead = 1; president = "Simons (acting)"; jarres_campaign = 1; marx_campaign = 1; held_campaign = 1; thalmann_campaign = 1; ludendorff_campaign = 1; hellpach_campaign = 1;
-on-departure: jarres_campaign = 0; marx_campaign = 0; held_campaign = 0; thalmann_campaign = 0; ludendorff_campaign = 0; hellpach_campaign = 0; gessler_campaign = 0; braun_campaign = 0; z_support_braun = 0; ddp_support_braun = 0; bvp_support_hindenburg = 0
 tags: event
 go-to: pres_menu
 
@@ -290,22 +289,22 @@ Results:
 [? if ludendorff_campaign : Ludendorff - [+ ludendorff_votes_disp +]% ?]
 
 @hindenburg_wins
-on-arrival: president = "Hindenburg"; pro_republic -= 5; nationalism += 5; west_relation -= 2; east_relation -= 2; dvp_relation -= 5; kpd_relation += 5; left_strength += 5
+on-arrival: president = "Hindenburg"; pro_republic -= 5; nationalism += 5; west_relation -= 2; east_relation -= 2; dvp_relation -= 5; kpd_relation += 5; left_strength += 5; jarres_campaign = 0; marx_campaign = 0; held_campaign = 0; thalmann_campaign = 0; ludendorff_campaign = 0; hellpach_campaign = 0; gessler_campaign = 0; braun_campaign = 0; z_support_braun = 0; ddp_support_braun = 0; bvp_support_hindenburg = 0
 
 Paul von Hindenburg has won the election with the backing of all the reactionary right organized under the **Reichsblock** behind him. Though many in our party anticipate an immediate restructuring of Germany along authoritarian and aristocratic lines, he seems, for now, to be following the constitution. Regardless, this signals a dark turn for German democracy. Who knows what Hindenburg may do in power?
 
 @marx_wins
-on-arrival: president = "Marx"; pro_republic += 5; nationalism -= 5; z_relation += 5; ddp_relation += 5; reformist_strength += 5
+on-arrival: president = "Marx"; pro_republic += 5; nationalism -= 5; z_relation += 5; ddp_relation += 5; reformist_strength += 5; jarres_campaign = 0; marx_campaign = 0; held_campaign = 0; thalmann_campaign = 0; ludendorff_campaign = 0; hellpach_campaign = 0; gessler_campaign = 0; braun_campaign = 0; z_support_braun = 0; ddp_support_braun = 0; bvp_support_hindenburg = 0
 
 Wilhelm Marx has won the election with the backing of all the republican left organized under the **Volksblock** behind him. This is a victory for German democracy and the continued normalization of the republic.
 
 @braun_wins
-on-arrival: president = "Braun"; pro_republic += 8; socialism += 4; nationalism -= 2; dvp_relation -= 5; left_dissent -= 5; center_dissent -= 5; reformist_dissent -= 5; labor_dissent -= 5; workers_spd += 5*(1-dissent); new_middle_spd += 4*(1-dissent); unemployed_spd += 4*(1-dissent); rural_spd += 2*(1-dissent)
+on-arrival: president = "Braun"; pro_republic += 8; socialism += 4; nationalism -= 2; dvp_relation -= 5; left_dissent -= 5; center_dissent -= 5; reformist_dissent -= 5; labor_dissent -= 5; workers_spd += 5*(1-dissent); new_middle_spd += 4*(1-dissent); unemployed_spd += 4*(1-dissent); rural_spd += 2*(1-dissent); jarres_campaign = 0; marx_campaign = 0; held_campaign = 0; thalmann_campaign = 0; ludendorff_campaign = 0; hellpach_campaign = 0; gessler_campaign = 0; braun_campaign = 0; z_support_braun = 0; ddp_support_braun = 0; bvp_support_hindenburg = 0
 
 Otto Braun has won the election! This has only been possible thanks to the backing of the **Volksblock**, the Center and Democratic parties. Regardless, the continuation of Social Democratic rule over Germany is a significant victory, and the party is jubilant.
 
 @gessler_wins
-on-arrival: president = "Gessler"; pro_republic += 2; socialism -= 5; left_dissent += 5; dvp_relation += 10
+on-arrival: president = "Gessler"; pro_republic += 2; socialism -= 5; left_dissent += 5; dvp_relation += 10; jarres_campaign = 0; marx_campaign = 0; held_campaign = 0; thalmann_campaign = 0; ludendorff_campaign = 0; hellpach_campaign = 0; gessler_campaign = 0; braun_campaign = 0; z_support_braun = 0; ddp_support_braun = 0; bvp_support_hindenburg = 0
 
 Otto Gessler has won the election as the candidate of the democratic parties, including the DVP. We have in this campaign pulled the DVP away from the DNVP and the right as a whole towards the center, but also created a whole on the left that the KPD is eager to fill. 
 
