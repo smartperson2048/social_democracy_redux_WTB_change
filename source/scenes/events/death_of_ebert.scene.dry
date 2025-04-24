@@ -383,7 +383,7 @@ Using our relations to win them over, the Center Party has agreed to back Otto B
 
 @back_marx
 view-if: marx_campaign and not spd_support_marx
-on-arrival: spd_prussia = 1 ddp_support_braun = 0; ddp_support_marx = 1; spd_support_marx = 1; left_dissent += 5; workers_spd -= 1; braun_campaign = 0
+on-arrival: spd_prussia = 1; ddp_support_braun = 0; ddp_support_marx = 1; spd_support_marx = 1; left_dissent += 5; workers_spd -= 1; braun_campaign = 0
 go-to: braun2_menu
 
 We have dropped out and endorsed Wilhelm Marx, who is now the candidate of the **Volksblock**. In return, the Center Party has voted Otto Braun as M-P of Prussia.
