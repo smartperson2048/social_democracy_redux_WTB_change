@@ -189,7 +189,7 @@ if (Q.marx_campaign) {
         Q.marx_votes -= 0.03;
     }
     Q.marx_votes += ((Math.floor(Math.random() * 11))/500);
-    Q.marx_votes += Q.pro_republic/2500;
+    Q.marx_votes += Q.pro_republic/2750;
     if (Q.spd_support_marx) {
         var left_dissent_percent = (Q.left_strength*(1+(Q.left_dissent/100)))/100;
         Q.marx_votes += (Q.spd_normalized*(1-(left_dissent_percent*(Q.pro_republic/100))))*Q.braun_percent;
