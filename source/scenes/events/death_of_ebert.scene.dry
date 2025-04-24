@@ -171,7 +171,7 @@ if (Q.thalmann_campaign) {
         Q.thalmann_votes += Q.spd_normalized*(left_dissent_percent/2);
     }
     if (Q.round25 > 1) {
-        Q.thalmann_votes = Q.thalmann_votes*0.8;
+        Q.thalmann_votes = Q.thalmann_votes*0.9;
     }
 }
 if (Q.hellpach_campaign) {
