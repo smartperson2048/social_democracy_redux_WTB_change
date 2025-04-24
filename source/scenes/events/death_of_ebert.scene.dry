@@ -140,7 +140,7 @@ Q.presidents_25 = ['thalmann', 'braun', 'hellpach', 'marx', 'held', 'jarres', 'l
 // initial phase:
 if (Q.braun_campaign) {
     if (Q.z_support_braun) {
-        var z_percent = (0.5+(Q.z_relation/100))/2;
+        var z_percent = (0.55+(Q.z_relation/100))/2;
         Q.braun_votes += Q.z_normalized*z_percent;
         if (Q.braun_percent < 1) {
             Q.braun_percent += 0.1;
@@ -148,7 +148,7 @@ if (Q.braun_campaign) {
         }
     }
     if (Q.ddp_support_braun) {
-        var ddp_percent = (0.5+(Q.ddp_relation/100))/2;
+        var ddp_percent = (0.6+(Q.ddp_relation/100))/2;
         Q.braun_votes += Q.ddp_normalized*ddp_percent;
         if (Q.braun_percent < 1) {
             Q.braun_percent += 0.05;
@@ -158,6 +158,9 @@ if (Q.braun_campaign) {
     Q.braun_votes += Q.spd_normalized*Q.braun_percent;
     Q.braun_votes += Q.socialism/2750;
     Q.braun_votes += Q.pro_republic/2000;
+    if (Q.ddp_support_braun && Q.z_support_braun) {
+        Q.braun_votes += Q.pro_republic/3000;
+    }
     Q.braun_votes += ((Math.floor(Math.random() * 11))/500);
 }
 if (Q.thalmann_campaign) {
@@ -369,7 +372,7 @@ choose-if: resources >= 1
 on-arrival: z_relation += 5; resources -= 1; left_dissent += 2; marx_campaign = 0; z_support_braun = 1; bvp_support_hindenburg = 1
 go-to: braun2_menu
 
-With our resources, the Center Party has agreed to back Otto Braun. Let's hope we can manage to win.
+With our resources, the Center Party has agreed to back Otto Braun. The Bavarian People's Party however, with about 3% of the vote behind it, has not, and turns to Hindenburg.
 
 @relations_z
 subtitle: We require good relations.
@@ -377,7 +380,7 @@ choose-if: z_relation >= 65
 on-arrival: z_relation -= 5; marx_campaign = 0; z_support_braun = 1; bvp_support_hindenburg = 1
 go-to: braun2_menu
 
-Using our relations to win them over, the Center Party has agreed to back Otto Braun. Let's hope we can manage to win.
+Using our relations to win them over, the Center Party has agreed to back Otto Braun. The Bavarian People's Party however, with about 3% of the vote behind it, has not, and turns to Hindenburg.
 
 @back_marx
 view-if: marx_campaign and not spd_support_marx
