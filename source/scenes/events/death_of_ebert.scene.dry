@@ -22,7 +22,7 @@ Now, new presidential elections have been scheduled. It is expected that a wide 
 subtitle: -1 resource - The party's left-wing will likely revolt.
 choose-if: left_strength+labor_strength < reformist_strength and dvp_relation >= 50 and resources >= 1
 unavailable-subtitle: -1 resource. [? if left_strength+labor_strength < reformist_strength : The party refuses. ?][? if dvp_relation < 50 : The DVP itself is unwilling. ?][? if resources < 1 : The DVP wants us to front the resources for a campaign. ?]
-on-arrival: gessler_campaign = 1; hergt25_campaign = 1; jarres_campaign = 0; marx_campaign = 0; hellpach_campaign = 0; resources -= 1; left_dissent += 10; workers_spd -= 5; workers_kpd += 5; unemployed_spd -= 5; unemployed_kpd += 5; old_middle_dvp -= 5; rural_dvp -= 5
+on-arrival: gessler_campaign = 1; hergt25_campaign = 1; jarres_campaign = 0; marx_campaign = 0; hellpach_campaign = 0; resources -= 1; left_dissent += 20; workers_spd -= 6; workers_kpd += 6; unemployed_spd -= 6; unemployed_kpd += 6; old_middle_dvp -= 5; rural_dvp -= 5
 
 Somehow, we have managed to engineer a Gessler coalition. The left is understandably outraged, and the communist campaign is bolstered.
 
@@ -221,7 +221,7 @@ if (Q.gessler_campaign) {
     if (!Q.dvp_abstain) {
         Q.gessler_votes += Q.dvp_normalized*((1+(Q.pro_republic/100))/2);
     }
-    Q.gessler_votes += Q.pro_republic/2250;
+    Q.gessler_votes += Q.pro_republic/3250;
     if (!Q.hindenburg_campaign) {
         Q.gessler_votes += Q.other_normalized*(Q.pro_republic/200);
     }
