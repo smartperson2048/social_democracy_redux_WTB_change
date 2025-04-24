@@ -504,9 +504,9 @@ Q.n_elections = 1;
 Q.no_majority_elections = 0;
 // elections are not on a timer, but rather there is an indicator for whether you're in an electoral cycle.
 Q.in_election = 0;
-Q.next_election_year = 1932;
-Q.next_election_month = 5;
-Q.next_election_time = 50;
+Q.next_election_year = 1928;
+Q.next_election_month = 12;
+Q.next_election_time = 12;
 // government affairs timers
 Q.agricultural_policy_timer = 0;
 Q.domestic_enemies_timer = 0;
