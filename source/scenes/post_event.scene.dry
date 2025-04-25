@@ -1446,10 +1446,10 @@ if (Q.month_actions >= 1) {
         if (Q.disarray_timer <= 0) {
             Q.spd_disarray = 0;
         }
-        Q.workers_spd -= 8/12;
-        Q.unemployed_spd -= 10/12;
-        Q.workers_kpd += 6/12;
-        Q.unemployed_kpd += 8/12;
+        Q.workers_spd -= 12/12;
+        Q.unemployed_spd -= 15/12;
+        Q.workers_kpd += 10/12;
+        Q.unemployed_kpd += 12/12;
     }
     if (Q.nazi_peak) {
         if (Q.nazi_peaked) {
