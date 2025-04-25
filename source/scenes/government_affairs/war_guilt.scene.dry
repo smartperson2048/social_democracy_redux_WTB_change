@@ -3,9 +3,8 @@ new-page: true
 is-card: true
 tags: govt_affairs
 on-arrival: war_guilt_timer = 6; month_actions += 1
-view-if: spd_in_government = 1 and war_guilt_timer = 0
+view-if: spd_in_government = 1 and war_guilt_timer = 0 and not war_guilt
 card-image: img/reichstag_1.jpg
-max-visits: 1
 
 = Reichstag War Guilt Inquiry
 
@@ -16,6 +15,12 @@ The War Guilt Inquiry has been an intermittent Reichstag committee for investiga
 - @easy_discard
 
 @restart
+on-arrival: war_guilt_vote = 1
+go-to: war_guilt_done if not legislature_enabled; legislative_menu if legislature_enabled
+
+We propose the restoration of the War Guilt Inquiry.
+
+@war_guilt_done
 on-arrival: war_guilt += 1
 
 What is the goal of this tribunal?

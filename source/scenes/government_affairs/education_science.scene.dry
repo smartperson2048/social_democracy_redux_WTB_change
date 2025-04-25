@@ -97,6 +97,12 @@ title: Cut science funding.
 subtitle: +1 budget
 choose-if: science_funding >= 1
 unavailable-subtitle: We have not funded science.
+on-arrival: cut_science_vote = 1
+go-to: cut_science_done if not legislature_enabled; legislative_menu if legislature_enabled
+
+We propose the cutting of science funding.
+
+@cut_science_done
 on-arrival: budget += 1; science -= 1; science_funding -= 1; applied_research -= 0.33; kwg_research -= 0.33; medical_research -= 0.33; economic_growth -= 0.5; new_middle_spd -= 5; workers_spd -= 2; ddp_relation -= 5; unemployed += 0.3
 
 We have cut funding for science. This has a negative effect on our economic growth, and unemployed scientists are less likely to support the SPD.
