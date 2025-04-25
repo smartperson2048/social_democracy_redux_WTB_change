@@ -1,6 +1,6 @@
 title: The Nazis Split!
 subtitle: Finally, the internal contradictions of the NSDAP have caught up to it.
-view-if: schleichers_scheme_success and year >= 1933 and (nazi_peak or nazi_peaked) and strasser_percent >= 0.3
+view-if: schleichers_scheme_success and year >= 1933 and (nazi_peak or nazi_peaked) and strasser_percent >= 0.25
 on-arrival: {! 
 Q.parties.push('dne');
 Q.workers_dne = Q.workers_nsdap*Q.strasser_percent;
