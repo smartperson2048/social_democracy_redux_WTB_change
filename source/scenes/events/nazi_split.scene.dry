@@ -24,7 +24,7 @@ Q.schleicher_support += Q.dne_r;
 Q.dne_formed = 1;
 Q.labor_dissent += 10;
 for (var state of Q.states) {
-    Q['dne_'+state] = 0;
+    Q[state+'_dne'] = 0;
 }
 Q.dne_timer = 4;
 !}
