@@ -1163,6 +1163,15 @@ if (Q.month_actions >= 1) {
         }
         if (Q.return_to_normalcy) {
             // return to normalcy -> voters return to the base
+            if (Q.ddp_votes_wurttemberg >= Q.ddp_votes*1.75) {
+                Q.wurttemberg_ddp -= 15/12;
+            }
+            if (Q.ddp_votes_hamburg >= Q.ddp_votes*1.75) {
+                Q.hamburg_ddp -= 15/12;
+            }
+            if (Q.ddp_votes_schaumburg_lippe >= Q.ddp_votes*1.75) {
+                Q.schaumburg_lippe_ddp -= 15/12;
+            }
             if (Q.new_middle_ddp_normalized < 40) {
                 Q.new_middle_ddp += 6/12;
             }
