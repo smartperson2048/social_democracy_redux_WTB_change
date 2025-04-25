@@ -1451,6 +1451,30 @@ if (Q.month_actions >= 1) {
         Q.workers_kpd += 8/3;
         Q.unemployed_kpd += 12/3;
     }
+    if (Q.dne_reorganized) {
+        Q.workers_spd -= 15/6;
+        Q.unemployed_spd -= 15/6;
+        Q.workers_dne += 10/6;
+        Q.workers_kpd += 5/6;
+        Q.unemployed_kpd += 10/6;
+        Q.unemployed_nsdap -= 5/6;
+        Q.workers_nsdap -= 5/6;
+        Q.new_middle_nsdap -= 5/6;
+        Q.old_middle_nsdap -= 5/6;
+        Q.rural_nsdap -= 5/6;
+        Q.new_middle_other -= 5/6;
+        Q.old_middle_other -= 5/6;
+        Q.rural_other -= 5/6;
+        Q.catholics_other -= 5/6;
+        Q.workers_other -= 5/6;
+        Q.unemployed_other -= 5/6;
+        Q.workers_dne += 10/6;
+        Q.new_middle_dne += 10/6;
+        Q.old_middle_dne += 10/6;
+        Q.rural_dne += 10/6;
+        Q.unemployed_dne += 10/6;
+        Q.catholics_dne += 5/6;
+    }
     if (Q.nazi_peak) {
         if (Q.nazi_peaked) {
             Q.nazi_peak = 0;

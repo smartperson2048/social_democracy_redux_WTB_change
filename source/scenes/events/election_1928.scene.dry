@@ -319,6 +319,17 @@ else {
             "name": "DNVP",
             "seats": Q.dnvp_r*5,
         },
+    ]);
+        if (Q.dne_r && Q.dne_formed) {
+            data.push({
+                "id": "dne",
+                "legend": "DNE",
+                "name": "DNE",
+                "seats": Q.dne_r*5,
+            });
+        }
+
+    data = data.concat([
         {
             "id": "nsdap",
             "legend": "NSDAP",
@@ -372,6 +383,8 @@ go-to: coalition_menu if not vonc_formed; coalition_vonc if vonc_formed
 
 {!<tr><td><div class="box" style='background-color:#3f7bc1'> </div> !} DNVP: {!</td><td>!} [+ dnvp_r +]% {!</td><td>!} [+ str_change_dnvp +] {!</td></tr>!}
 
+[? if dne_formed == 1 : {!<tr><td><div class="box" style='background-color:#ab0047'> </div> !}DNE: {!</td><td>!} [+ dne_r +]% {!</td><td>!} [+ str_change_dne +] {!</td></tr>!} ?]
+
 {!<tr><td><div class="box" style='background-color:#954B00'> </div> !} NSDAP: {!</td><td>!} [+ nsdap_r +]% {!</td><td>!} [+ str_change_nsdap +] {!</td></tr>!}
 {!</table>!}
 
@@ -417,6 +430,7 @@ As expected, the
 - @far_right_coalition
 - @no_majority
 - @black_brown
+- @schleicher_coalition
 - @no_majority_seldte2
 - @no_majority_hitler2
 - @no_majority_adenauer
@@ -1221,9 +1235,107 @@ Somehow, the NSDAP has agreed to join Brüning's government, giving it [+ hitler
 
 Immediately, democratic reforms are undone as the cabinet sets to work sending Germany back into the dark ages. For now, democracy is being preserved, but the Nazis are sure to take their first opportunity to fully destroy it.
 
+@schleicher_coalition
+view-if: dne_formed and chancellor == "Schleicher"
+subtitle: Schleicher attempts to hold onto power ([+ dne_r +]%)
+go-to: schleicher_majority if dne_r >= 50 or constructive_vonc; schleicher_negotiate if dne_r < 50 and not constructive_vonc
+on-arrival: schleicher_support = dne_r
+
+@schleicher_majority
+on-arrival: schleicher_victory = 1
+
+With the backing of the DNE behind him, Schleicher is able to hold onto power. [? if constructive_vonc and dne_r < 50 : This is thanks to the constructive motion of no confidence rule, which allows Schleicher to govern in a minority cabinet. ?]
+
+- @game_over: Schleicher has won.
+
+@schleicher_negotiate
+go-to: schleicher_menu
+
+As Kurt von Schleicher has fallen short of a majority, he must engineer another "Querfront" with which to prop himself up in the Reichstag. With the DNE as his basis, he considers his options.
+
+@schleicher_menu
+
+- @schleicher_spd: The SPD?
+- @schleicher_ddp: The [+ ddp_name +]?
+- @schleicher_z: The Center Party?
+- @schleicher_dvp: The DVP?
+- @schleicher_dnvp: The DNVP?
+- @no_majority_schleicher: Schleicher fails to cobble together a majority.
+- @schleicher_wins: Schleicher has managed to cobble together a majority.
+
+@schleicher_spd
+view-if: schleicher_support < 50 
+max-visits: 1
+
+Kurt von Schleicher has reached out once more to our party, promising further public works and even some ministries should we support his government.
+
+- @accept_schleicher: Accept.
+- @refuse_schleicher: Refuse! This was a temporary alliance, we will not support a dictator!
+
+@accept_schleicher
+on-arrival: schleicher_support += spd_r; schleicher_support -= dnvp_r if dnvp_support_schleicher; spd_support_schleicher = 1; left_dissent += 20; center_dissent += 20; reformist_dissent += 20; neorevisionist_dissent += 20; labor_dissent -= 5
+go-to: schleicher_menu
+
+Despite the protests of our party, we continue to support Schleicher. 
+
+@refuse_schleicher
+on-arrival: labor_dissent += 5; spd_refused_schleicher = 1
+go-to: schleicher_menu
+
+Despite the protests of the ADGB, we refuse to support Schleicher a second time.
+
+@schleicher_ddp
+view-if: schleicher_support < 50
+choose-if: ddp_name != "DDP" and pro_republic < 40
+unavailable-subtitle: The DDP is unwilling.
+max-visits: 1
+on-arrival: schleicher_support += ddp_r; ddp_support_schleicher = 1
+go-to: schleicher_menu
+
+The [+ ddp_name +] has agreed to back Schleicher.
+
+@schleicher_z
+view-if: schleicher_support < 50
+choose-if: pro_republic < 50 and z_party_leader != "Stegerwald" and (unemployed > 30 or not reichskonkordat)
+unavailable-subtitle: The DDP is unwilling.
+max-visits: 1
+on-arrival: schleicher_support += z_r; z_support_schleicher = 1
+go-to: schleicher_menu
+
+The Center Party has agreed to back Schleicher[? if not reichskonkordat : in return for a promise of his support for a Reichskonkordat?].
+
+@schleicher_dvp
+view-if: schleicher_support < 50
+choose-if: pro_republic < 55 and nationalism < 55
+unavailable-subtitle: The DVP is unwilling.
+max-visits: 1
+on-arrival: schleicher_support += (dvp_r+other_r); dvp_support_schleicher = 1
+go-to: schleicher_menu
+
+The DVP has agreed to back Schleicher, alongside the minor other parties.
+
+@schleicher_dnvp
+view-if: schleicher_support < 50
+choose-if: dnvp_reform or (not spd_support_schleicher or sapd_formed)
+unavailable-subtitle: The DNVP is unwilling.
+max-visits: 1
+on-arrival: schleicher_support += dnvp_r; dnvp_support_schleicher = 1
+go-to: schleicher_menu
+
+The DNVP has agreed to back Schleicher[? if not sapd_formed and not dnvp_reform : in return for an end of his cooperation with us. ?]
+
+@schleicher_wins
+view-if: schleicher_support >= 50
+subtitle: The Red General secures his future.
+on-arrival: schleicher_victory = 1
+
+Having successfully cobbled together an odd mismatch across the political spectrum, Schleicher has won the vote of no confidence against him pushed by the energetic KPD. With the political machine of the DNE behind him, Hindenburg's trust, and the tenuous support of the Reichswehr, Schleicher's future is secure. Hitler has lost, but at what cost?
+
+- @game_over: Game over.
+
 @no_majority
 title: There is no clear governing majority.
-view-if: (weimar_coalition < 50 or z_willing != 1) and (grand_coalition < 50 or grand_coalition_failed == 1 or dvp_willing != 1) and president = "Hindenburg" and far_right_coalition < 50 and (right_coalition < 50 or right_coalition_failed) and (hitler_right_coalition < 50 or left_strength < 50 or political_crisis_progress < 1 or chancellor != "Brüning" or bb_failed) and bourgeois_coalition < 50
+view-if: (weimar_coalition < 50 or z_willing != 1) and (grand_coalition < 50 or grand_coalition_failed == 1 or dvp_willing != 1) and president = "Hindenburg" and far_right_coalition < 50 and (right_coalition < 50 or right_coalition_failed) and (hitler_right_coalition < 50 or left_strength < 50 or political_crisis_progress < 1 or chancellor != "Brüning" or bb_failed) and bourgeois_coalition < 50 and not (dne_formed and chancellor == "Schleicher")
 on-arrival: no_majority_elections += 1
 go-to: no_majority_scholz if chancellor = "Scholz"; no_majority_bruning if chancellor = "Brüning" or chancellor = "Wirth"; no_majority_papen if chancellor = "Papen" and no_majority_papen_elections == 0; no_majority_papen_2 if chancellor == "Papen" and no_majority_papen_elections > 0 and not resisted_hitler; no_majority_schleicher if chancellor = "Schleicher"; no_majority_spd if chancellor_party = "SPD" or chancellor == "Marx"; no_majority_seldte if chancellor == "Seldte"; no_majority_nsdap if hitler_seen and chancellor_party == "NSDAP"; no_majority_bruning_back if chancellor == "Papen" and resisted_hitler
 
@@ -1560,6 +1672,8 @@ New elections have been set for [+ next_election_month : month +] [+ next_electi
 
 
 @no_majority_schleicher
+subtitle: Who will Hindenburg appoint in his place?
+view-if: schleicher_support < 50 and (spd_support_schleicher or spd_refused_schleicher) and (ddp_support_schleicher or ddp_name == "DDP" or pro_republic >= 40) and (z_support_schleicher or z_party_leader == "Stegerwald" or pro_republic >= 50 or (unemployed <= 30 and reichskonkordat)) and (dvp_support_schleicher or pro_republic >= 55 or nationalism >= 55) and (dnvp_support_schleicher or (spd_support_schleicher and not dnvp_reform and not sapd_formed))
 go-to: hitler_chancellor
 
 # TODO: there should be a second Schleicher option if the NSDAP isn't the strongest

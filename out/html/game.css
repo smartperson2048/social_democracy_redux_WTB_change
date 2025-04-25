@@ -549,6 +549,9 @@ table {
 .seat.dnvp {
     fill: #3F7BC1;
 }
+.seat.dne {
+  fill: #ab0047;
+}
 .seat.nsdap {
     fill: #954B00;
 }

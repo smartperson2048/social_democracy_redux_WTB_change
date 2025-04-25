@@ -122,6 +122,13 @@ if ((Q.welfare > 0 && Q.judicial_reform >= 2 && Q.womens_work >= 1 && Q.family_l
 - #endings
 - @end_game: End game.
 
+@schleicher_victory
+view-if: schleicher_victory
+title: Kurt von Schleicher is in undisputed control over Germany.
+tags: endings
+go-to: eg_menu
+
+Kurt von Schleicher has won control over Germany, with our support. Whether this arrangement will last remains to be seen.
 
 @hitler_wins
 view-if: (chancellor == "Hitler" or president == "Hitler") and (total_defeat==1 or civil_war_seen == 0)
