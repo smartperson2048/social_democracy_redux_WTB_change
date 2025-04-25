@@ -1236,8 +1236,9 @@ Somehow, the NSDAP has agreed to join Brüning's government, giving it [+ hitler
 Immediately, democratic reforms are undone as the cabinet sets to work sending Germany back into the dark ages. For now, democracy is being preserved, but the Nazis are sure to take their first opportunity to fully destroy it.
 
 @schleicher_coalition
+title: Schleicher attempts to hold on to power.
 view-if: dne_formed and chancellor == "Schleicher"
-subtitle: Schleicher attempts to hold onto power ([+ dne_r +]%)
+subtitle: DNE ([+ dne_r +]%)
 go-to: schleicher_majority if dne_r >= 50 or constructive_vonc; schleicher_negotiate if dne_r < 50 and not constructive_vonc
 on-arrival: schleicher_support = dne_r
 

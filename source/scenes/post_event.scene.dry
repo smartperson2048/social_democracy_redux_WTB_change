@@ -1474,6 +1474,12 @@ if (Q.month_actions >= 1) {
         Q.rural_dne += 10/6;
         Q.unemployed_dne += 10/6;
         Q.catholics_dne += 5/6;
+        Q.rb_militancy -= 0.25/6;
+        Q.sh_militancy -= 0.25/6;
+        Q.sa_militancy -= 0.5/6;
+        Q.sa_strength -= 100/6;
+        Q.rb_strength -= 200/6;
+        Q.rfb_strength += 100/6;
     }
     if (Q.nazi_peak) {
         if (Q.nazi_peaked) {
