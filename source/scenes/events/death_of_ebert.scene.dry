@@ -32,9 +32,9 @@ Somehow, we have managed to engineer a Gessler coalition. The left is understand
 
 @back_braun
 subtitle: The consensus choice.
-on-arrival: braun_campaign = 1
+on-arrival: braun_campaign = 1; spd_prussia = 0
 
-We have entered Otto Braun into the race. Now it is time to campaign - without a healthy campaign, Otto Braun may not even be assured the votes of the SPD.
+We have entered Otto Braun into the race, and he has resigned as Minister-President to pursue this course. Now it is time to campaign - without a healthy campaign, Otto Braun may not even be assured the votes of the SPD.
 
 - @campaign_braun: Now, we must campaign.
 
@@ -346,7 +346,7 @@ Meanwhile, the **Reichsblock** of the right begins to desperately search for a c
 
 @convince_ddp
 view-if: braun_campaign
-choose-if: ddp_relation >= 60
+choose-if: ddp_relation >= 60 or (ddp_relation >= 57 and z_support_braun)
 unavailable-subtitle: The DDP is unwilling to back Otto Braun.
 on-arrival: ddp_support_braun = 1; ddp_support_marx = 0
 max-visits: 1
