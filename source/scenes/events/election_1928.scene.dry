@@ -229,8 +229,8 @@ if (Q.sapd_formed == 1) {
         },
         {
             "id": "bvp",
-            "legend": Q.bvp_name,
-            "name": Q.bvp_name,
+            "legend": "BVP",
+            "name": "BVP",
             "seats": 3*5,
         },
         {
@@ -251,6 +251,17 @@ if (Q.sapd_formed == 1) {
             "name": "DNVP",
             "seats": Q.dnvp_r*5,
         },
+    ]);
+        if (Q.dne_r && Q.dne_formed) {
+            data.push({
+                "id": "dne",
+                "legend": "DNE",
+                "name": "DNE",
+                "seats": Q.dne_r*5,
+            });
+        }
+
+    data = data.concat([
         {
             "id": "nsdap",
             "legend": "NSDAP",
