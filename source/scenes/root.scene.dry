@@ -227,6 +227,10 @@ Q.inflation = 2.9;
 // economic growth - same source as above, Table 2 (preisbereinigt) - this is also the source for the yearly changes in the great depression.
 Q.economic_growth = 4.4;
 
+// economic expansion timer
+Q.economic_expansion = 0;
+
+
 
 Q.strife = 0;
 
@@ -505,7 +509,7 @@ Q.timers = ['advisor_action', 'confronting_nazis', 'crisis_program',
             'kpd_policy', 'kpd_ultimatum', 'popular_front_dispute',
             'high_inflation', 'banking_crisis', 'march_on_berlin', 'abysinnia', 'nazi_peak',
             'nazi_reform', 'understanding_enemy', 'laissez_faire', 'presidential', 'papenomics', 'thuringeration',
-            'advisor_loss'];
+            'advisor_loss', 'schleichers_schemes'];
 Q.advisor_action_timer = 0;
 Q.advisor_loss_timer = 0;
 // party affairs timers

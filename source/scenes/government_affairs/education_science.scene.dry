@@ -169,7 +169,7 @@ go-to: school_board_done if not legislature_enabled; legislative_menu if legisla
 We propose the creation of school boards in the Reichstag.
 
 @school_board_done
-on-arrival: school_boards += 1; workers_spd += 3*(1-dissent); new_middle_spd += 3*(1-dissent); old_middle += 2*(1-dissent); education_science += 0.2;
+on-arrival: school_boards += 1; workers_spd += 3*(1-dissent); new_middle_spd += 3*(1-dissent); old_middle_spd += 2*(1-dissent); education_science += 0.2;
 
 We have created local elected school boards, and delegated some of the decision-making for local schools to them.
 
