@@ -1,7 +1,7 @@
 title: Schleicher's Reichsexekutions
 subtitle: Chancellor Schleicher works to bring state governments to heel
-view-if: year >= 1933 and month >= 5 and chancellor = "Schleicher" and schleichers_scheme_success
-on-arrival: new_middle_dne += 5; strife -= 1; coup_progress += 5 if not dne_formed; landtags_enabled = 0
+view-if: year >= 1933 and month >= 3 and chancellor = "Schleicher" and schleichers_scheme_success
+on-arrival: new_middle_dne += 5; strife -= 2; coup_progress += 5 if not dne_formed; landtags_enabled = 0
 new-page: true
 max-visits: 1
 face-image: img/portraits/SchleicherKurt.jpg
