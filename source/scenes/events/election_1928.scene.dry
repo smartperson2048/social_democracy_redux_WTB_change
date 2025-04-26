@@ -394,7 +394,7 @@ go-to: coalition_menu if not vonc_formed; coalition_vonc if vonc_formed
 
 {!<tr><td><div class="box" style='background-color:#3f7bc1'> </div> !} DNVP: {!</td><td>!} [+ dnvp_r +]% {!</td><td>!} [+ str_change_dnvp +] {!</td></tr>!}
 
-[? if dne_formed == 1 : {!<tr><td><div class="box" style='background-color:#a70080'> </div> !}DNE: {!</td><td>!} [+ dne_r +]% {!</td><td>!} [+ str_change_dne +] {!</td></tr>!} ?]
+[? if dne_formed == 1 : {!<tr><td><div class="box" style='background-color:#b81191'> </div> !}DNE: {!</td><td>!} [+ dne_r +]% {!</td><td>!} [+ str_change_dne +] {!</td></tr>!} ?]
 
 {!<tr><td><div class="box" style='background-color:#954B00'> </div> !} NSDAP: {!</td><td>!} [+ nsdap_r +]% {!</td><td>!} [+ str_change_nsdap +] {!</td></tr>!}
 {!</table>!}
