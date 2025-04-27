@@ -1,0 +1,52 @@
+title: A New Government Forms
+subtitle: [+ president +] is to appoint a new government
+view-if: year == 1926 and locarno_seen
+new-page: true
+max-visits: 1
+tags: event
+go-to: marx_chancellor if president == "Marx"; hindenburg_chancellor if president == "Hindenburg"
+
+= A New Government Forms
+
+@hindenburg_chancellor
+
+- @grand_coalition_real: A "Grand Coalition"?
+
+@grand_coalition_real
+subtitle: SPD + Z + BVP + DDP + DVP (61%)
+
+The bourgeois parties have reached out to us to form a grand coalition - even Hindenburg has expressed willingness to the idea should a clear working basis be established. To this end, the Democrat Koch-Weser has been entrusted with cabinet negotiation, and attempts to gain our support.
+
+However, entering such a government in a time of increasing economic uncertainty may end the trend of our increasing voteshare, and bolster the communists as an alternative rather than us. Furthermore, the bourgeois parties are unwilling to meet our demand for new elections.
+
+- @accept_groko: Form the Grand Coalition!
+- @refuse_groko: Refuse the offer.
+
+@accept_groko
+choose-if: reformist_strength > left_strength+labor_strength
+unavailable-subtitle: The party is opposed.
+on-arrival: left_dissent += 5; labor_dissent += 5; workers_spd -= 3; unemployed_spd -= 5; workers_kpd += 2; unemployed_kpd += 2; old_middle_dvp -= 2; chancellor = "Koch-Weser"; chancellor_party = "DDP"; in_grand_coalition = 1; spd_in_government = 1; leverage = spd_r; leverage -= 5
+go-to: election_1928.ministries
+
+We have decided to enter government as per the seemingly sincere wishes of the bourgeois. Now we must decide which ministries to take.
+
+@refuse_groko
+on-arrival: dvp_relation -= 5; z_relation -= 2; ddp_relation -= 2
+
+With a Grand Coalition out of the picture, a short negotiation period between the bourgeois parties follows. President Hindenburg then announces the formation of a new government.
+
+- @luther_second: A second Luther cabinet.
+
+@luther_second
+subtitle: Z + BVP + DDP + DVP (35%)
+
+Luther is reappointed as chancellor, this time in a minority government of the Center, Democratic, People's and Bavarian People's parties. As a minority government, it is unlikely to last long, and de-facto relies on us as we could bring it down at any moment. Doing so without a justification, however, could hurt our own support and drive the bourgeois back into the hands of the DNVP.
+
+- @tolerate_luther: Let Luther govern, for now.
+
+@tolerate_luther
+on-arrival: spd_toleration = 1; z_relation += 4; ddp_relation += 4
+
+@marx_chancellor
+
+WIP! Begone!

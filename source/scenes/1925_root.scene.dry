@@ -62,11 +62,11 @@ Q.radicalization = 0;
 // Support for the WTB plan and proto-Keynesian works creation plans in general
 Q.wtb_support = 0;
 // Support for Pacifism within the SPD relative to 1928
-Q.pacifism = -2;
+Q.pacifism = -1;
 // Support for democratic reform within the SPD relative to 1928
-Q.democratization = -2;
+Q.democratization = -1;
 // Support for a communist coalition relative to 1928
-Q.communist_coalition = 2;
+Q.communist_coalition = 0;
 // economic_plan: have we adopted *any* economic plan?
 // 1 - WTB plan, 2 - AfA-bund plan, 3 - radical plan (mass nationalization of industries)
 Q.economic_plan = 0;
@@ -110,6 +110,8 @@ Q.nsdap_leader = "Hitler";
 // hmm... maybe we can play nice with Hindenburg???
 Q.hindenburg_relation = 10;
 
+Q.marx_relation = 50;
+
 
 // Does the SPD lead in Prussia?
 Q.spd_prussia = 1;
@@ -123,19 +125,19 @@ Q.rb_strength = 2000;
 Q.rb_militancy = 0.06;
 Q.women_in_rb = 0;
 Q.rb_banned = 0;
-Q.sh_strength = 500;
+Q.sh_strength = 300;
 // todo: stalhelm grows too fast in base game...
 Q.sh_militancy = 0.2;
 Q.sh_banned = 0;
 Q.sh_banned_prussia = 0;
-Q.sa_strength = 280;
-Q.sa_militancy = 0.3;
+Q.sa_strength = 30;
+Q.sa_militancy = 0.7;
 Q.sa_banned = 0;
 Q.sa_banned_prussia = 0;
-Q.rfb_strength = 130;
-Q.rfb_militancy = 0.3;
-Q.rfb_banned = 1;
-Q.rfb_banned_prussia = 1;
+Q.rfb_strength = 50;
+Q.rfb_militancy = 0.5;
+Q.rfb_banned = 0;
+Q.rfb_banned_prussia = 0;
 
 Q.interior_police_strength = 50;
 Q.interior_police_militancy = 1;
@@ -157,7 +159,7 @@ Q.reichswehr_loyalty = 0.2;
 // nationalism vs internationalism or pacifism or non-nationalism
 Q.nationalism = 57;
 // socialism vs capitalism
-Q.socialism = 44;
+Q.socialism = 35;
 // pro-republic vs anti-republic
 Q.pro_republic = 63;
 
@@ -193,7 +195,7 @@ Q.old_middle = 13; // "old mittelstand"
 Q.new_middle = 14; // "new mittelstand"
 Q.rural = 25; // agriculture and forestry employment... but many of those are proletarians so...
 // source: https://surface.syr.edu/cgi/viewcontent.cgi?filename=3&article=1016&context=books&type=additional page 43, table 3.3
-Q.unemployed = 5;
+Q.unemployed = 6.8;
 Q.catholics = 30;
 
 // unemployment: 1929 - 13.3, 1930 - 22.7, 1931 - 34.3, 1932 - 43.8 (same source as above)
@@ -203,13 +205,13 @@ Q.income = 1600;
 // what about incomes for different classes? rural workers? middle-class workers?
 
 // inflation (in %; 1928: 2.9; 1929: 0; 1930: -5%; 1931: -10%; 1932: -10%) - source: https://en.wikipedia.org/wiki/File:BSPDRWeltkriseEngl.PNG, derived from https://www.destatis.de/DE/Methoden/WISTA-Wirtschaft-und-Statistik/2009/03/rezession-betrachtung-032009.pdf?__blob=publicationFile
-Q.inflation = -3.8;
+Q.inflation = 2.4;
 
 // economic growth - same source as above, Table 2 (preisbereinigt) - this is also the source for the yearly changes in the great depression.
-Q.economic_growth = -1.5;
+Q.economic_growth = 2.6;
 
 
-Q.strife = 2;
+Q.strife = 0;
 
 // quality of life (as % of 1928 - currently unused - should be welfare-adjusted.)
 Q.workers_qol = 100;
@@ -590,26 +592,93 @@ Q.hirschfeld_advisor = 0; // Magnus Hirschfeld
 Q.radbruch_advisor = 0; // Gustav Radbruch
 Q.stampfer_advisor = 0; // Friedrich Stampfer
 
-Q.prussia_election_year = 1932;
-Q.prussia_election_month = 4;
+Q.prussia_election_year = 1928;
+Q.prussia_election_month = 5;
 
-Q.bavaria_election_year = 1932;
-Q.bavaria_election_month = 4;
+Q.bavaria_election_year = 1928;
+Q.bavaria_election_month = 5;
 
-Q.thuringia_election_year = 1933;
-Q.thuringia_election_month = 11;
+Q.thuringia_election_year = 1929;
+Q.thuringia_election_month = 12;
 
-Q.saxony_election_year = 1933;
-Q.saxony_election_month = 4;
+Q.saxony_election_year = 1929;
+Q.saxony_election_month = 5;
 
-Q.schaumburg_lippe_election_year = 1931;
-Q.schaumburg_lippe_election_month = 5;
+Q.schaumburg_lippe_election_year = 1928;
+Q.schaumburg_lippe_election_month = 4;
 
-Q.hamburg_election_year = 1931;
-Q.hamburg_election_month = 9;
+Q.hamburg_election_year = 1928;
+Q.hamburg_election_month = 2;
 
-Q.wurttemberg_election_year = 1932;
-Q.wurttemberg_election_month = 4;
+Q.wurttemberg_election_year = 1928;
+Q.wurttemberg_election_month = 5;
+
+Q.spd_pl = 25;
+Q.dnvp_pl = 24;
+Q.z_pl = 18;
+Q.dvp_pl = 10;
+Q.kpd_pl = 10;
+Q.ddp_pl = 6;
+Q.nsdap_pl = 2;
+Q.other_pl = 6;
+
+Q.spd_bl = 17;
+Q.z_bl = 33;
+Q.nsdap_bl = 17;
+Q.dnvp_bl = 9;
+Q.dvp_bl = 0;
+Q.kpd_bl = 8;
+Q.bb_bl = 7;
+Q.ddp_bl = 3;
+Q.other_bl = 5;
+
+Q.spd_tl = 33;
+Q.z_tl = 0;
+Q.nsdap_tl = 3;
+Q.dnvp_tl = 23;
+Q.dvp_tl = 11;
+Q.kpd_tl = 14;
+Q.ddp_tl = 3;
+Q.other_tl = 12;
+
+Q.spd_sl = 32;
+Q.z_sl = 0;
+Q.nsdap_sl = 2;
+Q.dnvp_sl = 14;
+Q.dvp_sl = 12;
+Q.kpd_sl = 15;
+Q.ddp_sl = 5;
+Q.other_sl = 5;
+Q.aspd_sl = 4;
+
+Q.spd_schl = 45;
+Q.z_schl = 0;
+Q.nsdap_schl = 0;
+Q.dnvp_schl = 25;
+Q.dvp_schl = 9;
+Q.kpd_schl = 2;
+Q.ddp_schl = 7;
+Q.other_schl = 11;
+
+Q.spd_hl = 38;
+Q.z_hl = 2;
+Q.nsdap_hl = 2;
+Q.dnvp_hl = 15;
+Q.dvp_hl = 11;
+Q.kpd_hl = 17;
+Q.ddp_hl = 10;
+Q.other_hl = 5;
+
+Q.spd_wl = 16;
+Q.z_wl = 21;
+Q.nsdap_wl = 0;
+Q.dnvp_wl = 10;
+Q.dvp_wl = 5;
+Q.kpd_wl = 12;
+Q.ddp_wl = 11;
+Q.other_wl = 24;
+
+// for when i tackle landtags...not yet, though
 
 !}
 go-to: root.menu
