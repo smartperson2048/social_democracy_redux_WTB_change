@@ -63,7 +63,8 @@ As expected, Adenauer is unable to form a government, either, due to his insiste
 
 - @what_now: So who next?
 
-@what_not
+@what_now
+
 subtitle: Wilhelm Marx assumes the task of government formation.
 on-arrival: chancellor = "Marx"; chancellor_party = "Z"
 
