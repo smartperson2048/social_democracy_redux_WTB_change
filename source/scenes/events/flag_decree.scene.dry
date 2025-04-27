@@ -1,0 +1,18 @@
+title: The Flag Dispute
+subtitle: A dispute over the colors of the German flag abroad arises
+view-if: year == 1926 and month >= 5 and chancellor == "Luther"
+new-page: true
+max-visits: 1
+tags: event
+
+= The Flag Dispute
+
+It has come to Chancellor Luther's attention that German expatriate groups abroad only accept the black-white-red colors of the Imperial flag, in conflict with the official black-red-gold colors of the foreign service. 
+
+To ease over tensions with these expatriates, Luther is pushing for a revision of the flag law to make the black-white-red trade flag a secondary flag.
+
+- @unacceptable: This is unacceptable.
+
+@unacceptable
+
+And so echo the Center and Democratic parties. Luther has caved, modifying the proposal so that it should only apply in consular institutions abroad. This, still, is too great of a concession to 
