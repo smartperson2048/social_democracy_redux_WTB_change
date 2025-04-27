@@ -15,4 +15,21 @@ To ease over tensions with these expatriates, Luther is pushing for a revision o
 
 @unacceptable
 
-And so echo the Center and Democratic parties. Luther has caved, modifying the proposal so that it should only apply in consular institutions abroad. This, still, is too great of a concession to 
+And so echo the Center and Democratic parties. Luther has caved, modifying the proposal so that it should only apply in consular institutions abroad. This, still, is too great of a concession to German nationalism, and the DDP is in agreement on this manner.
+
+- @in_government: Defeat Luther in a vote of the cabinet.
+- @vonc_luther: Call a motion of no confidence against Luther.
+
+@in_government
+view-if: spd_in_government and not spd_toleration
+on-arrival: coalition_dissent += 1
+
+A cabinet vote is called, and Luther is defeated. The matter is dropped, for now.
+
+@vonc_luther
+view-if: spd_toleration and not spd_in_government
+on-arrival: chancellor = "Gessler"; chancellor_party = "DDP"
+
+The DNVP sides with Luther in the vote of no confidence, and it fails. However, the DDP's proposal for a motion of censure against Luther is successful; he responds by announcing his resignation, effectively meaning the same effect as a vote of no confidence.
+
+Otto Gessler of the DDP has been appointed as caretaker chancellor while a new government is negotiated.
