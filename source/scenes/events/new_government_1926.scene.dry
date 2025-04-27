@@ -10,6 +10,8 @@ go-to: marx_chancellor if president == "Marx"; hindenburg_chancellor if presiden
 
 @hindenburg_chancellor
 
+Since the fall of the Luther cabinet, there has been much speculation on what government may take its place. One idea has gained surprising momentum, however.
+
 - @grand_coalition_real: A "Grand Coalition"?
 
 @grand_coalition_real
@@ -43,9 +45,20 @@ subtitle: Z + BVP + DDP + DVP (35%)
 Luther is reappointed as chancellor, this time in a minority government of the Center, Democratic, People's and Bavarian People's parties. As a minority government, it is unlikely to last long, and de-facto relies on us as we could bring it down at any moment. Doing so without a justification, however, could hurt our own support and drive the bourgeois back into the hands of the DNVP.
 
 - @tolerate_luther: Let Luther govern, for now.
+#- @vonc_luther: Call a motion of no confidence with the KPD.
 
 @tolerate_luther
 on-arrival: spd_toleration = 1; z_relation += 4; ddp_relation += 4
+
+We will see how things play out. For now, the SPD will not move against the government.
+
+@vonc_luther
+choose-if: left_strength > center_strength+reformist_strength
+unavailable-subtitle: The party is opposed.
+on-arrival: workers_spd -= 2; new_middle_spd -= 4; old_middle_spd -= 3; z_relation -= 5; ddp_relation -= 5; dvp_relation -= 5; kpd_relation += 5; reformist_dissent += 10; left_strength += 10
+
+# todo: new elections? or DNVP back in gov?
+
 
 @marx_chancellor
 
