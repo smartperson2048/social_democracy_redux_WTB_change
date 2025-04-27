@@ -344,6 +344,10 @@ Q.dnvp_in_government = 1;
 Q.kpd_in_government = 0;
 Q.nsdap_in_government = 0;
 
+Q.grand_coalition = 61;
+Q.z_minus_bvp_r = 14;
+Q.right_coalition = 56;
+
 Q.in_right_coalition = 1;
 // Weimar coalition = SPD + Z + DDP
 Q.in_weimar_coalition = 0;

@@ -54,7 +54,7 @@ By transferring resources to our coalition partners, we can reduce their dissent
 
 @right_coalition
 view-if: right_coalition >= 50 and bourgeois_coalition < 50
-choose-if: right_coalition_failed != 1 and (year < 1929 and month < 8)
+choose-if: right_coalition_failed != 1 and (year < 1929 and ( year < 1928 or month < 8))
 unavailable-subtitle: The DNVP isn't willing to enter government.
 go-to: election_1928.right_coalition_2
 
