@@ -28,7 +28,7 @@ go-to: election_1928.ministries
 Despite the protests of our party's left and pacifist wings, we have entered government, all the while the rearmament plans have, supposedly, been scrapped, and moderate reforms of the Reichswehr conducted by Gessler. Now we must choose which ministries we shall take.
 
 @demand_resignation
-on-arrival: dvp_relation -= 5; ddp_relation -= 2; z_relation -= 2; marx_rearmament = 1
+on-arrival: spd_toleration = 0; dvp_relation -= 5; ddp_relation -= 2; z_relation -= 2; marx_rearmament = 1
 subtitle: We shall present a motion of no confidence should they refuse.
 
 As expected, the cabinet refuses to resign. We attack the government for its complacency in allowing the Reichswehr to rearm and call a motion of no confidence. Though the far-right brand us traitors, they vote alongside us against the government anyway.

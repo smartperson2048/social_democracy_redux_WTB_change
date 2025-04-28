@@ -31,15 +31,15 @@ Q.dissent_percent = 5;
 // factions
 Q.factions = ['left', 'center', 'labor', 'reformist', 'neorevisionist'];
 // should this be normalized to 100%?
-Q.left_strength = 10;
-Q.left_dissent = 35;
-Q.center_strength = 35;
-Q.center_dissent = 0;
+Q.left_strength = 15;
+Q.left_dissent = 15;
+Q.center_strength = 30;
+Q.center_dissent = 10;
 Q.labor_strength = 20;
-Q.labor_dissent = 10;
-Q.reformist_strength = 25;
+Q.labor_dissent = 5;
+Q.reformist_strength = 30;
 Q.reformist_dissent = 5;
-Q.neorevisionist_strength = 10;
+Q.neorevisionist_strength = 5;
 Q.neorevisionist_dissent = 10;
 
 // secret events...
@@ -185,7 +185,7 @@ Q.coup_info = 0;
 Q.capital_strike_progress = 0;
 Q.nazi_rage_progress = 0;
 
-Q.budget = 2;
+Q.budget = 3;
 
 // Proportion of different social groups
 // source: https://surface.syr.edu/cgi/viewcontent.cgi?filename=3&article=1016&context=books&type=additional page 45, table 3.4 - using 1925 figures

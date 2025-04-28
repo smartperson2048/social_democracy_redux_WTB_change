@@ -1,0 +1,13 @@
+title: 1928
+subtitle: A new year
+on-arrival: old_republic = pro_republic; {!
+// see post_event.scene.dry for changes.
+Q.economic_growth -= 5.5;
+Q.inflation += 1.5;
+!}
+tags: event
+view-if: year = 1928 and month = 1 and locarno_seen
+priority: 2
+max-visits: 1
+
+A new year begins. The economy continues to grow steadily, though inflation is gradually rising once more.
