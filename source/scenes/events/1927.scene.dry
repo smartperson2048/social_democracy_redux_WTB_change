@@ -15,6 +15,7 @@ if (Q.lower_tax_rates < 0) {
     Q.economic_growth += 2.5;
     Q.inflation += 0.2;
 }
+Q.budget += 1;
 !}
 tags: event
 view-if: year = 1927 and month = 1

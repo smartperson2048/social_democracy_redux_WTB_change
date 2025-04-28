@@ -4,6 +4,7 @@ on-arrival: old_republic = pro_republic; {!
 // see post_event.scene.dry for changes.
 Q.economic_growth -= 5.5;
 Q.inflation += 1.5;
+Q.budget += 2;
 !}
 tags: event
 view-if: year = 1928 and month = 1 and locarno_seen
