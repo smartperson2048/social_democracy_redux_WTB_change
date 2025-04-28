@@ -311,6 +311,7 @@ if (Q.month_actions >= 1) {
         Q.coalition_dissent += (Q.hyperinflation*2);
     }
     // deflation is bad
+    if (Q.year >= 1928) {
     if (Q.inflation < -0.5 && Q.inflation > -5 && Q.unemployed < 15) {
         Q.unemployed += 0.2;
     }
@@ -415,6 +416,7 @@ if (Q.month_actions >= 1) {
     }
     if (Q.unemployed >= 20 && Q.inflation >= -4) {
         Q.inflation -= 0.1;
+    }
     }
     // economy health rating - vibes based
     Q.economic_health = Q.economic_growth*10;

@@ -5,6 +5,11 @@ on-arrival: old_republic = pro_republic; {!
 Q.economic_growth -= 5.5;
 Q.inflation += 1.5;
 Q.budget += 2;
+for (var party of Q.parties) {
+    for (var c of Q.classes) {
+        Q[c+'_'+party] = (Q[c+'_'+party+'_normalized']);
+    } 
+}
 !}
 tags: event
 view-if: year = 1928 and month = 1 and locarno_seen
