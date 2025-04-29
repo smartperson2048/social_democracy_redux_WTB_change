@@ -30,7 +30,7 @@ Regardless, the petition is now to be voted on by the Reichstag. Its rejection i
 
 - @vote_for: We will vote for the law in the Reichstag.
 - @vote_against: We will vote against the law in the Reichstag.
-- @luther_and_hindenburg_suck: President Hindenburg and the Luther cabinet throw us a new hurdle.
+- @luther_and_hindenburg_suck: President Hindenburg and the [+ chancellor +] cabinet throw us a new hurdle.
 - @zmarx_reference: President Marx ???s.
 
 @vote_for
@@ -47,7 +47,7 @@ on-arrival: reformist_dissent += 5; dvp_relation -= 5; z_relation -= 5; princes_
 
 Despite our previous opposition, we have chosen to in the end campaign in favor of the referendum. We will of course conduct our campaigns alone, and avoid any association with the communists; nonetheless it would cost too much for us to allow the communists to monopolize this clearly significant vote.
 
-- @luther_and_hindenburg_suck: President Hindenburg and the Luther cabinet throw us a new hurdle.
+- @luther_and_hindenburg_suck: President Hindenburg and the [+ chancellor +] cabinet throw us a new hurdle.
 - @zmarx_reference: President Marx ???s.
 
 @neutral
@@ -67,15 +67,47 @@ subtitle: They allege the bill to be unconstitutional, which would make the refe
 It is the opinion of the aristocratic President Hindenburg that this bill, which targets the aristocracy, is unconstitutional, not serving the common good but instead being entirely politically motivated.
 
 - @justice_minister_marx: Justice Minister Wilhelm Marx confirms this fact.
+- @justice_minister_radbruch: Justice Minister Gustav Radbruch must make a decision.
 
-@justice_minister_marx
+@justice_minister_radbruch
+view-if: justice_minister_party == "SPD"
+
+As we control the Justice Ministry in the [+ chancellor +] cabinet, we can choose whether or not the referendum is constitutional.
+
+- @constitutional: It is, of course, entirely constitutional.
+- @unconstitutional: The referendum is indeed unconstitutional.
+
+@constitutional
+on-arrival: princes_constitutional = 1; coalition_dissent += 1
+
+We contradict Hindenburg's opinion and declare that the referendum is constitutional, as the provisions of the bill mean that it indeed would serve the common good. This causes significant controversy within the cabinet.
+
+- @dvp_withdraws_gov: The DVP withdraws from government.
+- @menu_for_no_real_reason: But, for now, the government survives.
+
+@dvp_withdraws_gov
+view-if: coalition_dissent >= 3 or (coalition_dissent >= 2 and dvp_relation < 40)
+on-arrival: princes_constitutional = 0; dvp_relation -= 5; z_relation -= 5; chancellor = "Marx"; chancellor_party = "Z"; spd_in_government = 0; spd_toleration = 0; foreign_minister_party = "DVP"; interior_minister_party = "Z"; justice_minister_party = "Z"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = "Z"; finance_minister_party = "Z"; agriculture_minister_party = "Z"
 go-to: menu_for_no_real_reason
 
-With the Luther cabinet confirming the opinion of Hindenburg, then, this referendum would require not just a majority of yes voters over no voters, but a majority of all eligible voters in Germany. 
+The DVP has withdrawn its confidence in the Koch-Weser cabinet over the decision of our justice minister. Koch-Weser then resigns, and Hindenburg appoints as replacement Wilhelm Marx to lead a bourgeois minority government backed, for now, by the DNVP. They immediately reverse our decision, finding the referendum to be unconstitutional.
+
+@unconstitutional
+view-if: not princes_initiated
+on-arrival: coalition_dissent -= 1; z_relation += 4; dvp_relation += 4; kpd_relation -= 10; left_dissent += 10; workers_spd -= 3; unemployed_spd -= 3; workers_kpd += 3; unemployed_kpd += 3
+
+We agree with Hindenburg's opinion that the referendum is unconstitutional. This provokes outrage within the party, but has greatly pleased the bourgeois parties.
+
+@justice_minister_marx
+view-if: justice_minister_party != "SPD"
+go-to: menu_for_no_real_reason
+
+With the [+ chancellor +] cabinet confirming the opinion of Hindenburg, then, this referendum would require not just a majority of yes voters over no voters, but a majority of all eligible voters in Germany. 
 
 Perhaps more luckily, however, this has also eliminated the possibility of compromise, as any compromise bill would need to be approved by both the SPD and the DNVP to reach the 2/3rds required for constitutional revisions. As a result, many supporters of the bourgeois parties have taken a liking to our bill, and the DDP has declared neutrality.
 
 @menu_for_no_real_reason
+view-if: coalition_dissent < 2 or (coalition_dissent < 3 and dvp_relation >= 40)
 
 - @campaign_big: Launch a massive campaign in support of the referendum!
 - @campaign_small: Launch a campaign in support of the referendum.
