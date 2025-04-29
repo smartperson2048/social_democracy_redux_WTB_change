@@ -2,7 +2,7 @@ title: The Locarno Pact
 subtitle: Stresemann presents before the Reichstag several treaties
 view-if: year == 1925 and month >= 11
 new-page: true
-on-arrival: locarno_seen = 1
+on-arrival: locarno_seen = 1; west_relation += 1
 max-visits: 1
 tags: event
 
