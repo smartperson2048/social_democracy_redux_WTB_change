@@ -1,6 +1,6 @@
 title: Expropriation of the Princes
 subtitle: [? if princes_initiated: Campaigning for the referendum begins. ?] The Luther cabinet attempts to propose to us a compromise
-view-if: time = princes_time-1 and year >= 1926
+view-if: (time == princes_time-1) and year >= 1926
 tags: event
 max-visits: 1
 new-page: true
