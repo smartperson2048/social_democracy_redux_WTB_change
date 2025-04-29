@@ -30,6 +30,7 @@ if (Q.princes_constitutional) {
     Q.petition_opposition -= Q.rural*(Q.socialism/200);
     Q.petition_opposition = Q.petition_opposition*(1+((100-Q.dvp_relation)/100))/2; 
     Q.princes_support = (Q.petition_support/(Q.petition_support+Q.petition_opposition)*100).toFixed(1);
+}
 !}
 new-page: true
 
