@@ -59,9 +59,8 @@ on-arrival: workers_spd -= 3; unemployed_spd -= 3; left_dissent += 10
 We vote against the proposed bill, though many on our party's left break party discipline to vote in favor anyway. With only the KPD and these dissidents backing the proposal, it, as expected, fails. Now, a referendum will be held, one of almost certain defeat for the communists as the government finds the referendum to be unconstitutional and thus require an absolute majority of all eligible voters to pass.
 
 @luther_and_hindenburg_suck
-view-if: princes_initiated
+view-if: princes_initiated and president == "Hindenburg"
 subtitle: They allege the bill to be unconstitutional, which would make the referendum one of constitutional revision.
-view-if: president == "Hindenburg"
 
 It is the opinion of the aristocratic President Hindenburg that this bill, which targets the aristocracy, is unconstitutional, not serving the common good but instead being entirely politically motivated.
 
@@ -101,6 +100,6 @@ We launch a reasonable campaign in support of the referendum, rallying our suppo
 We shall see in three months whether our preparations will have been enough.
 
 @zmarx_reference
-view-if: princes_initiated
+view-if: princes_initiated and president == "Marx"
 
 idk what he'd do, WIP
