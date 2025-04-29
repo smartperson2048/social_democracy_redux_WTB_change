@@ -31,14 +31,14 @@ if (Q.princes_constitutional) {
     Q.petition_opposition = Q.petition_opposition*(1+((100-Q.dvp_relation)/100))/2; 
     Q.princes_support = (Q.petition_support/(Q.petition_support+Q.petition_opposition)*100).toFixed(1);
 }
-Q.petition_support = Q.petition_support.toFixed(1);
-Q.referendum_turnout = Q.petition_support;
+Q.referendum_turnout = Q.petition_support.toFixed(1);
 if (Q.princes_constitutional) {
     Q.referendum_turnout = Q.petition_support+Q.petition_opposition;
     Q.referendum_turnout = Q.referendum_turnout.toFixed(1);
 } else {
-    Q.princes_support = Q.petition_support;
+    Q.princes_support = Q.petition_support.toFixed(1);
 }
+Q.petition_support = Q.petition_support.toFixed(1);
 !}
 new-page: true
 go-to: defeated if princes_support < 50; success if princes_support >= 50
