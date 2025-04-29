@@ -18,8 +18,6 @@ Q.petition_support += (Q.ddp_votes*(Q.ddp_relation/200));
 var relation_multiplier = (1+(Q.kpd_relation/100))/2;
 relation_multiplier = Math.max(0.4, Math.min(1, relation_multiplier));
 Q.petition_support = Q.petition_support*relation_multiplier;
-Q.petition_support = Q.petition_support.toFixed(1);
-
 if (Q.princes_constitutional) {
     Q.petition_opposition = Q.dnvp_votes;
     Q.petition_opposition += Q.nsdap_votes;
@@ -31,6 +29,7 @@ if (Q.princes_constitutional) {
     Q.petition_opposition = Q.petition_opposition*(1+((100-Q.dvp_relation)/100))/2; 
     Q.princes_support = (Q.petition_support/(Q.petition_support+Q.petition_opposition)*100).toFixed(1);
 }
+Q.petition_support = Q.petition_support.toFixed(1);
 !}
 new-page: true
 
