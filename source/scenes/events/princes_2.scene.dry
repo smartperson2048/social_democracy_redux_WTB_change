@@ -57,7 +57,7 @@ on-arrival: princes_bonus += 3; kpd_relation += 10; reformist_dissent += 10; wor
 This referendum shall only succeed through the joint mobilization of the proletariat by the SPD and the KPD together. We cannot hope to win if we do not campaign alongside the KPD.
 
 @join_referendum
-on-arrival: workers_spd += 1*(1-dissent); rural_spd += 1*(1-dissent); z_relation -= 2; ddp_relation -= 2; dvp_relation -= 3; left_dissent += 5; reformist_dissent += 5
+on-arrival: princes_initiated = 1; workers_spd += 1*(1-dissent); rural_spd += 1*(1-dissent); z_relation -= 2; ddp_relation -= 2; dvp_relation -= 3; left_dissent += 5; reformist_dissent += 5
 
 Though there is no way we could directly back the communist suggestion, the ADGB has mediated a bill that both parties are able to agree on after much indecision on our part. The indecision hurts our party's credibility, and leaves both the left and right feeling unsatisfied. Meanwhile, our campaigning for the referendum is carried out separately from the KPD's, so as to not give the impression of a true united front.
 
