@@ -60,13 +60,13 @@ We will see how things play out. For now, the SPD will not move against the gove
 
 @back_referendum
 view-if: not princes_initiated
-on-arrival: princes_initiated = 1; princes_time = time+3; kpd_relation += 5; dvp_relation -= 3; old_middle_spd -= 2; new_middle_spd -= 2
+on-arrival: princes_initiated = 1; princes_time = time+2; kpd_relation += 5; dvp_relation -= 3; old_middle_spd -= 2; new_middle_spd -= 2
 
 As we will be in opposition for the foreseeable future, there is no real reason to let the communists be the only party to benefit from the support for expropriation. Though there is no way we could directly back the communist suggestion, the ADGB has mediated a bill that both parties are able to agree on, and preparations for referendum are underway.
 
 @refuse_referendum
 view-if: not princes_initiated
-on-arrival: princes_time = time+4; left_dissent += 5; workers_spd -= 4; workers_kpd += 4; unemployed_spd -= 5; unemployed_kpd += 5; rural_kpd += 1; dvp_relation += 5; z_relation += 5; ddp_relation += 5
+on-arrival: princes_time = time+3; left_dissent += 5; workers_spd -= 4; workers_kpd += 4; unemployed_spd -= 5; unemployed_kpd += 5; rural_kpd += 1; dvp_relation += 5; z_relation += 5; ddp_relation += 5
 
 We continue to refuse to back the communist initiative for a referendum. Though this leaves the KPD in a strong position to gain, it leaves open the possibility of resolving the issue with a compromise in the Reichstag.
 

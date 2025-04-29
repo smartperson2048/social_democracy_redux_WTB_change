@@ -685,6 +685,9 @@ if (Q.month_actions >= 1) {
 
     ////////////////////////// annual support changes
     if (Q.year < 1928 && Q.president != "Ebert") {
+        if (Q.princes_time) {
+            Q.compromise_time = Q.princes_time-1;
+        } 
         Q.workers_spd -= 5/12;
         if (Q.spd_toleration) {
             Q.workers_spd -= 2/12;

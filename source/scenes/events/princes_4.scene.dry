@@ -10,10 +10,10 @@ if (Q.princes_initiated) {
     Q.petition_support = Q.spd_votes*((Q.left_strength*(1+(Q.left_dissent/100)))/100);
 }
 Q.petition_support += Q.kpd_votes;
-Q.petition_support += Q.workers*(Q.socialism/100);
+Q.petition_support += (Q.workers+Q.unemployed+Q.new_middle)*(Q.socialism/100);
 Q.petition_support += Q.princes_bonus;
 Q.petition_support += (Q.ddp_votes*(Q.ddp_relation/200));
-Q.petition_support = Q.petition_support*(Q.kpd_relation/100);
+Q.petition_support = Q.petition_support*((1+(Q.kpd_relation/100))/2);
 Q.petition_support = Q.petition_support.toFixed(1);
 !}
 new-page: true
