@@ -12,7 +12,9 @@ if (Q.princes_initiated) {
 Q.petition_support += Q.kpd_votes;
 Q.petition_support += (Q.workers+Q.princes_bonus)*(Q.socialism/125);
 Q.petition_support += (Q.ddp_votes*(Q.ddp_relation/200));
-Q.petition_support = Q.petition_support*((1+(Q.kpd_relation/100))/2);
+var relation_multiplier = (1+(Q.kpd_relation/100))/2;
+relation_multiplier = Math.max(0.4, Math.min(1, relation_multiplier));
+Q.petition_support = Q.petition_support*relation_multiplier;
 Q.petition_support = Q.petition_support.toFixed(1);
 !}
 new-page: true
