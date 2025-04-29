@@ -1,0 +1,37 @@
+title: Expropriation of the Princes
+subtitle: The referendum has been held
+view-if: time = princes_time+3 and year >= 1926
+tags: event
+max-visits: 1
+on-arrival: {!
+if (Q.princes_initiated) {
+    Q.petition_support = Q.spd_votes*(1-Q.dissent);
+} else {
+    Q.petition_support = Q.spd_votes*((Q.left_strength*(1+(Q.left_dissent/100)))/100);
+}
+Q.petition_support += Q.kpd_votes;
+Q.petition_support += Q.workers*(Q.socialism/100);
+Q.petition_support += Q.princes_bonus;
+Q.petition_support += (Q.ddp_votes*(Q.ddp_relation/200));
+Q.petition_support = Q.petition_support*(Q.kpd_relation/100);
+Q.petition_support = Q.petition_support.toFixed(1);
+!}
+new-page: true
+
+= Expropriation of the Princes
+
+The referendum has been held, and the results are in.
+
+- @defeated: With only [+ petition_support +]% turnout, the referendum fails.
+- @success: With [+ petition_support +]% turnout, the referendum succeeds.
+
+@defeated
+view-if: petition_support < 50 and not princes_constitutional
+on-arrival: kpd_relation -= 5; socialism -= 2
+
+Unfortunately, the referendum has failed. Nonetheless, it has demonstrated the immense support of the workers' parties and shown that the German left is not dead. 
+
+@success
+view-if: petition_support >= 50 or princes_constitutional
+
+That's crazy

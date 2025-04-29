@@ -1,0 +1,106 @@
+title: Expropriation of the Princes
+subtitle: The petition has reached the necessary quorum
+view-if: time = princes_time and year >= 1926
+tags: event
+max-visits: 1
+on-arrival: {!
+if (Q.princes_initiated) {
+    Q.petition_support = Q.spd_votes*(1-Q.dissent);
+} else {
+    Q.petition_support = Q.spd_votes*((Q.left_strength*(1+(Q.left_dissent/100)))/100);
+}
+Q.petition_support += Q.kpd_votes;
+Q.petition_support += Q.workers*(Q.socialism/100);
+Q.petition_support = Q.petition_support*(Q.kpd_relation/100);
+Q.petition_support = Q.petition_support.toFixed(1);
+Q.petition_proportion = (Q.petition_support/10).toFixed(1);
+
+Q.kpd_relation += 5;
+Q.socialism += 5;
+!}
+new-page: true
+
+= Expropriation of the Princes
+
+The petition has reached [+ petition_support +]% of Germany's eligible voting population, surpassing the 10% quorum by around [+ petition_proportion +] times. The result has come as a startling surprise, and indicates a strong rise in the support of the workers' parties.
+
+Regardless, the petition is now to be voted on by the Reichstag. Its rejection is inevitable, which will mean, as anticipated, a referendum on the matter. [? if princes_initiated : Perhaps we truly can manage to win? ?]
+
+- @vote_for: We will vote for the law in the Reichstag.
+- @vote_against: We will vote against the law in the Reichstag.
+- @luther_and_hindenburg_suck: President Hindenburg and the Luther cabinet throw us a new hurdle.
+- @zmarx_reference: President Marx ???s.
+
+@vote_for
+view-if: not princes_initiated
+on-arrival: reformist_dissent += 5; dvp_relation -= 5
+
+Seeing the writing on the wall following the overperformance of the petition, we change course and vote for the law in the Reichstag. It, as expected, fails, meaning the holding of a referendum on the manner.
+
+- @back_referendum: A referendum which we will support.
+- @neutral: A referendum we will continue to have no part in.
+
+@back_referendum
+on-arrival: reformist_dissent += 5; dvp_relation -= 5; z_relation -= 5; princes_initiated = 1; new_middle_spd -= 2; old_middle_spd -= 3
+
+Despite our previous opposition, we have chosen to in the end campaign in favor of the referendum. We will of course conduct our campaigns alone, and avoid any association with the communists; nonetheless it would cost too much for us to allow the communists to monopolize this clearly significant vote.
+
+- @luther_and_hindenburg_suck: President Hindenburg and the Luther cabinet throw us a new hurdle.
+- @zmarx_reference: President Marx ???s.
+
+@neutral
+
+It will be up to the communists to win this referendum, which now has little chance of success especially with the recent opinion of the government that the KPD's proposed law, being unconstitutional, would require a majority of all eligible voters, not just those voting in the referendum.
+
+@vote_against
+view-if: not princes_initiated
+on-arrival: workers_spd -= 3; unemployed_spd -= 3; left_dissent += 10
+
+We vote against the proposed bill, though many on our party's left break party discipline to vote in favor anyway. With only the KPD and these dissidents backing the proposal, it, as expected, fails. Now, a referendum will be held, one of almost certain defeat for the communists as the government finds the referendum to be unconstitutional and thus require an absolute majority of all eligible voters to pass.
+
+@luther_and_hindenburg_suck
+view-if: princes_initiated
+subtitle: They allege the bill to be unconstitutional, which would make the referendum one of constitutional revision.
+view-if: president == "Hindenburg"
+
+It is the opinion of the aristocratic President Hindenburg that this bill, which targets the aristocracy, is unconstitutional, not serving the common good but instead being entirely politically motivated.
+
+- @justice_minister_marx: Justice Minister Wilhelm Marx confirms this fact.
+
+@justice_minister_marx
+go-to: menu_for_no_real_reason
+
+With the Luther cabinet confirming the opinion of Hindenburg, then, this referendum would require not just a majority of yes voters over no voters, but a majority of all eligible voters in Germany. 
+
+Perhaps more luckily, however, this has also eliminated the possibility of compromise, as any compromise bill would need to be approved by both the SPD and the DNVP to reach the 2/3rds required for constitutional revisions. As a result, many supporters of the bourgeois parties have taken a liking to our bill, and the DDP has declared neutrality.
+
+@menu_for_no_real_reason
+
+- @campaign_big: Launch a massive campaign in support of the referendum!
+- @campaign_small: Launch a campaign in support of the referendum.
+- @filler: The referendum is in three months.
+
+@campaign_big
+view-if: not_prince_campaigned
+choose-if: resources >= 2
+on-arrival: resources -= 2; socialism += 3; workers_spd += 2*(1-dissent); rural_spd += 1*(1-dissent); princes_bonus += 5; prince_campaigned = 1
+go-to: menu_for_no_real_reason
+
+We launch a large campaign in support of the referendum, rallying our supporters and even those that we can from the bourgeois parties to vote for the expropriation of the princes.
+
+@campaign_small
+view-if: not prince_campaigned
+choose-if: resources >= 1
+on-arrival: resources -= 1; socialism += 1; workers_spd += 1*(1-dissent); princes_bonus += 2; prince_campaigned = 1
+go-to: menu_for_no_real_reason
+
+We launch a reasonable campaign in support of the referendum, rallying our supporters to vote for the expropriation of the princes.
+
+@filler
+
+We shall see in three months whether our preparations will have been enough.
+
+@zmarx_reference
+view-if: princes_initiated
+
+idk what he'd do, WIP
