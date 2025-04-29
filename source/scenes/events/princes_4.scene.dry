@@ -19,6 +19,9 @@ var relation_multiplier = (1+(Q.kpd_relation/100))/2;
 relation_multiplier = Math.max(0.4, Math.min(1, relation_multiplier));
 Q.petition_support = Q.petition_support*relation_multiplier;
 if (Q.princes_constitutional) {
+    Q.petition_support = Q.petition_support/relation_multiplier;
+    relation_multiplier = Math.max(0.75, Math.min(1, relation_multiplier));
+    Q.petition_support = Q.petition_support*relation_multiplier;
     Q.petition_opposition = Q.dnvp_votes;
     Q.petition_opposition += Q.nsdap_votes;
     Q.petition_opposition += Q.z_votes;
