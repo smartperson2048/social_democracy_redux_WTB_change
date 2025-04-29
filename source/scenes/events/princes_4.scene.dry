@@ -56,4 +56,4 @@ Unfortunately, the referendum has failed, with only [+ referendum_turnout +]% vo
 view-if: petition_support >= 50 or (princes_constitutional and princes_support >= 50)
 on-arrival: rural_spd += 5*(1-dissent); unemployed_spd += 3*(1-dissent); unemployed_kpd += 2; workers_spd += 4*(1-dissent); workers_dnvp -= 5; rural_dnvp -= 5; old_middle_dnvp -= 2; old_middle_spd += 2*(1-dissent); nationalism -= 5; socialism += 5; kpd_relation += 5; land_reform += 1; unemployed -= 1
 
-With [+ referendum_support +]% voting[? if princes_constitutional : and [+ princes_support +]% in favor of the bill ?] the referendum has succeeded! This is a massive victory for the left[? if president == "Hindenburg" : showing that despite the victory of Hindenburg last year, the socialism prevails over reaction?].
+With [+ referendum_turnout +]% voting [? if princes_constitutional : and [+ princes_support +]% in favor of the bill ?] the referendum has succeeded! This is a massive victory for the left[? if president == "Hindenburg" : showing that despite the victory of Hindenburg last year, the socialism prevails over reaction?].
