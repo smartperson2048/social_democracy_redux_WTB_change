@@ -4,6 +4,9 @@ view-if: time = princes_time+3 and year >= 1926
 tags: event
 max-visits: 1
 on-arrival: {!
+if (!Q.princes_bonus) {
+    Q.princes_bonus = 0;
+}
 if (Q.princes_initiated) {
     Q.petition_support = Q.spd_votes*(1-Q.dissent);
 } else {
