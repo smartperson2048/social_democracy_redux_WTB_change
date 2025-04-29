@@ -27,10 +27,12 @@ However, entering such a government in a time of increasing economic uncertainty
 @accept_groko
 choose-if: reformist_strength > left_strength+labor_strength and not princes_initiated
 unavailable-subtitle: The party is opposed.
-on-arrival: left_dissent += 5; labor_dissent += 5; workers_spd -= 3; unemployed_spd -= 5; workers_kpd += 2; unemployed_kpd += 2; old_middle_dvp -= 2; chancellor = "Koch-Weser"; chancellor_party = "DDP"; in_grand_coalition = 1; spd_in_government = 1; leverage = spd_r; leverage -= 5
+on-arrival: left_dissent += 5; labor_dissent += 5; workers_spd -= 3; unemployed_spd -= 5; workers_kpd += 2; unemployed_kpd += 2; old_middle_dvp -= 2; chancellor = "Koch-Weser"; chancellor_party = "DDP"; in_grand_coalition = 1; spd_in_government = 1; leverage = spd_r; leverage -= 5; princes_time = time+3 if not princes_initiated
 go-to: election_1928.ministries
 
 We have decided to enter government as per the seemingly sincere wishes of the bourgeois. Now we must decide which ministries to take.
+
+[? if not princes_initiated : Meanwhile, the communists, seeing that we will seemingly not be joining their referendum, have gone ahead with collecting signatures. ?]
 
 @refuse_groko
 on-arrival: dvp_relation -= 3; z_relation -= 2; ddp_relation -= 2

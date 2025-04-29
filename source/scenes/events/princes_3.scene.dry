@@ -1,6 +1,6 @@
 title: Expropriation of the Princes
 subtitle: The petition has reached the necessary quorum
-view-if: time = princes_time and year >= 1926
+view-if: time = princes_time and year == 1926
 tags: event
 max-visits: 1
 on-arrival: {!
