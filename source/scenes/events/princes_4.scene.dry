@@ -32,11 +32,11 @@ if (Q.princes_constitutional) {
     Q.princes_support = (Q.petition_support/(Q.petition_support+Q.petition_opposition)*100).toFixed(1);
 }
 Q.petition_support = Q.petition_support.toFixed(1);
-Q.referendum_turnout = Q.petition_support;
+Q.referendum_turnout = Q.petition_support.toFixed(1);
 if (Q.princes_constitutional) {
-    Q.referendum_turnout = Q.petition_support+Q.petition_opposition;
+    Q.referendum_turnout = (Q.petition_support+Q.petition_opposition).toFixed(1);
 } else {
-    Q.princes_support = Q.petition_support;
+    Q.princes_support = Q.petition_support.toFixed(1);
 }
 !}
 new-page: true
