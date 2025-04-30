@@ -1,6 +1,6 @@
 title: Expropriation of the Princes
 subtitle: Disputes arise over the status of princely lands
-view-if: (year == 1925 and month >= 12) or year >= 1926
+view-if: (year == 1925 and month >= 12) or year == 1926
 on-arrival: workers_kpd += 5; unemployed_kpd += 2
 tags: event
 max-visits: 1

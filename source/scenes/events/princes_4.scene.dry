@@ -1,6 +1,6 @@
 title: Expropriation of the Princes
 subtitle: The referendum has been held
-view-if: time = princes_time+3 and year >= 1926
+view-if: time = princes_time+3 and year < 1928
 tags: event
 max-visits: 1
 on-arrival: {!
