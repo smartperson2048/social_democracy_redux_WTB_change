@@ -96,7 +96,7 @@ However, entering such a government in a time of increasing economic uncertainty
 - @accept_groko2: Form the Grand Coalition!
 - @refuse_groko2: Refuse the offer.
 
-@accept_groko
+@accept_groko2
 choose-if: reformist_strength+(marx_relation/2) > left_strength+labor_strength and not princes_initiated
 unavailable-subtitle: The party is opposed.
 on-arrival: left_dissent += 5; labor_dissent += 5; workers_spd -= 3; unemployed_spd -= 5; workers_kpd += 2; unemployed_kpd += 2; old_middle_dvp -= 3; old_middle_dnvp += 1; marx_relation += 5; chancellor = "Koch-Weser"; chancellor_party = "DDP"; in_grand_coalition = 1; spd_in_government = 1; leverage = spd_r; leverage -= 5; princes_time = time+3 if not princes_initiated
@@ -106,7 +106,7 @@ We have decided to enter government as per the seemingly sincere wishes of the b
 
 [? if not princes_initiated : Meanwhile, the communists, seeing that we will seemingly not be joining their referendum, have gone ahead with collecting signatures. ?]
 
-@refuse_groko
+@refuse_groko2
 on-arrival: dvp_relation -= 3; z_relation -= 2; ddp_relation -= 2; marx_relation -= 5
 
 With a Grand Coalition out of the picture, a short negotiation period between the bourgeois parties follows.
