@@ -439,6 +439,7 @@ As expected, the
 - @unity_government
 - @right_coalition
 - @far_right_coalition
+- @no_majority_marx
 - @no_majority
 - @black_brown
 - @schleicher_coalition
@@ -1345,6 +1346,43 @@ Having successfully cobbled together an odd mismatch across the political spectr
 
 - @game_over: Game over.
 
+@no_majority_marx
+title: There is no clear governing majority.
+view-if: (weimar_coalition < 50 or z_willing != 1) and (grand_coalition < 50 or grand_coalition_failed == 1 or dvp_willing != 1) and president = "Marx" and far_right_coalition < 50 and (right_coalition < 50 or right_coalition_failed) and (hitler_right_coalition < 50 or left_strength < 50 or political_crisis_progress < 1 or chancellor != "Brüning" or bb_failed) and bourgeois_coalition < 50 and not (dne_formed and chancellor == "Schleicher")
+on-arrival: no_majority_elections += 1
+go-to: no_majority_scholz if chancellor = "Scholz"; no_majority_bruning2 if chancellor = "Brüning" or chancellor = "Wirth"; no_majority_spd2 if chancellor_party = "SPD" or n_elections <= 1
+
+@no_majority_bruning2
+go-to: no_majority_bruning_toleration if ((no_majority_elections <= 3 and anti_democratic_coalition <= 50 and marx_relation >= 20) or marx_relation >= 40); marx_appoints_bracht if ((no_majority_elections > 3 or anti_democratic_coalition > 50 or marx_relation < 20) and marx_relation < 40)
+
+@marx_appoints_bracht
+on-arrival: marx_relation -= 5; bracht_r = 0; chancellor = "Bracht"; chancellor_party = "Z" if z_relation < 30; chancellor_party = "I" if z_relation >= 30; sa_banned = 0; pro_republic -= 6; finance_minister_party = "I"; interior_minister_party = "I"; economic_minister_party = "I"; labor_minister_party = "I"; foreign_minister_party = "I"; agriculture_minister_party = "I"; reichswehr_minister = "I"; nazi_chance = nsdap_r; nazi_chance += socialism; nazi_chance += nationalism; nazi_chance -= pro_republic; nazi_chance += left_coalition if communist_coalition >= 3 and kpd_relation >= 50; nazi_chance += rb_force+rfb_force; nazi_chance -= sa_force; nazi_chance += (radicalization+capital_strike_progress+coup_progress)*political_crisis_progress; bracht_r = dvp_r; bracht_r += dnvp_r if z_relation < 25; bracht_r += z_r if z_relation < 45; bracht_r += nsdap_r if nazi_chance >= 200
+go-to: bracht_falls if bracht_r < 50; bracht_wins if bracht_r >= 50
+
+There is no path to a majority government. President Marx is tired of the chaos, and appoints Franz Bracht as chancellor instead of Brüning, hoping that Bracht would be able to form a coalition, or at least receive toleration, from the NSDAP. Bracht is significantly to the right of the majority of the Center Party.
+
+Bracht is immediately faced with a vote of no confidence. [+ bracht_r +]% vote in support of his government.
+
+@bracht_falls
+on-arrival: marx_relation += 10; next_election_time = time+3; next_election_month = month + 3; next_election_year = year; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12;
+
+Bracht has failed to win a majority. Seeing no majority in the Reichstag, Wilhelm Marx has called new elections, which have been set for [+ next_election_month : month +] [+ next_election_year +].
+
+@bracht_wins
+on-arrival: pro_republic -= 5; nationalism += 5; coup_progress += 3; reichswehr_loyalty -= 0.1; judicial_reform -= 2
+
+Bracht has somehow won a majority in the Reichstag. Democratic reforms that we undertook in the past are undone. Let us hope President Marx's confidence in Bracht wears thin.
+
+@no_majority_spd2
+on-arrival: chancellor = "Brüning"; chancellor_party = "Z"
+
+There is no path to an obviously workable majority. Since President Marx does not see potential for a successful minority or caretaker SPD government, his preferred chancellor is Heinrich Brüning of the Center Party.
+
+- @toleration_bruning: We will tolerate Brüning.
+- @new_grand_coalition: We will try to form a new grand coalition.
+- @new_elections: We will have new elections.
+- @new_elections_2: We will have new elections.
+
 @no_majority
 title: There is no clear governing majority.
 view-if: (weimar_coalition < 50 or z_willing != 1) and (grand_coalition < 50 or grand_coalition_failed == 1 or dvp_willing != 1) and president = "Hindenburg" and far_right_coalition < 50 and (right_coalition < 50 or right_coalition_failed) and (hitler_right_coalition < 50 or left_strength < 50 or political_crisis_progress < 1 or chancellor != "Brüning" or bb_failed) and bourgeois_coalition < 50 and not (dne_formed and chancellor == "Schleicher")
@@ -1987,7 +2025,7 @@ go-to: grand_coalition_spd_lead if ((n_elections <= 1 and largest_party == "SPD"
 @grand_coalition_z_lead
 go-to: grand_coalition_z_lead_2 if dvp_relation >= 30; grand_coalition_fail if dvp_relation < 30
 
-There are enough votes to form a majority coalition consisting of the SPD, Center (Z), Bavarian People's ([+ bvp_name +]), Democratic ([+ ddp_name +]), and People's (DVP) parties. Given our rather weak electoral performance, [? if spd_no_confidence = 1 : and our previous vote of no confidence against the government, ?][? if no_confidence_against_spd = 1 : and the vote of no confidence against us, ?] President Hindenburg has asked the Center Party to take the lead role in forming a government.
+There are enough votes to form a majority coalition consisting of the SPD, Center (Z), Bavarian People's ([+ bvp_name +]), Democratic ([+ ddp_name +]), and People's (DVP) parties. Given our rather weak electoral performance, [? if spd_no_confidence = 1 : and our previous vote of no confidence against the government, ?][? if no_confidence_against_spd = 1 : and the vote of no confidence against us, ?] President [+ president +] has asked the Center Party to take the lead role in forming a government.
 
 # TODO: if the SPD participated in bringing down the previous government via a vote-of-no-confidence, or if we were essentially removed from government by our coalition partners, we should be more reluctant to participate in a new government.
 
@@ -2025,6 +2063,7 @@ If we do not at least "tolerate" the government, there will be new elections in 
 @new_elections
 view-if: neo_weimar_coalition >= 50
 on-arrival: {!
+Q.marx_relation -= 10;
 Q.next_election_month = Q.month + 3;
 Q.next_election_time = Q.time + 3;
 if (Q.next_election_month > 12) {
@@ -2117,7 +2156,7 @@ The people's faith in democracy is shaken by this ordeal. Of course, the Nazis a
 @new_elections_2
 view-if: neo_weimar_coalition < 50
 call: set_next_election_time
-on-arrival: time_to_election = 3; strife += 0.5; pro_republic -= 5; rural_nsdap += 2; old_middle_nsdap += 2; new_middle_nsdap += 2; political_crisis_progress += 1
+on-arrival: time_to_election = 3; strife += 0.5; marx_relation -= 5; pro_republic -= 5; rural_nsdap += 2; old_middle_nsdap += 2; new_middle_nsdap += 2; political_crisis_progress += 1
 
 As the anti-democratic parties hold a majority, there is no path to a majority government. New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
 

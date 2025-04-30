@@ -31,7 +31,8 @@ Regardless, the petition is now to be voted on by the Reichstag. Its rejection i
 - @vote_for: We will vote for the law in the Reichstag.
 - @vote_against: We will vote against the law in the Reichstag.
 - @luther_and_hindenburg_suck: President Hindenburg and the [+ chancellor +] cabinet throw us a new hurdle.
-- @zmarx_reference: President Marx ???s.
+- @zmarx_reference: The reactionary judiciary throws us a new hurdle.
+- @zmarx_wholesome: The DVP throws us a new hurdle.
 
 @vote_for
 view-if: not princes_initiated
@@ -43,7 +44,7 @@ Seeing the writing on the wall following the overperformance of the petition, we
 - @neutral: A referendum we will continue to have no part in.
 
 @back_referendum
-on-arrival: reformist_dissent += 5; dvp_relation -= 5; z_relation -= 5; princes_initiated = 1; new_middle_spd -= 2; old_middle_spd -= 3
+on-arrival: reformist_dissent += 5; dvp_relation -= 5; z_relation -= 5; marx_relation -= 2; princes_initiated = 1; new_middle_spd -= 2; old_middle_spd -= 3
 
 Despite our previous opposition, we have chosen to in the end campaign in favor of the referendum. We will of course conduct our campaigns alone, and avoid any association with the communists; nonetheless it would cost too much for us to allow the communists to monopolize this clearly significant vote.
 
@@ -56,7 +57,7 @@ It will be up to the communists to win this referendum, which now has little cha
 
 @vote_against
 view-if: not princes_initiated
-on-arrival: workers_spd -= 3; unemployed_spd -= 3; left_dissent += 10
+on-arrival: workers_spd -= 3; unemployed_spd -= 3; left_dissent += 10; marx_relation += 2
 
 We vote against the proposed bill, though many on our party's left break party discipline to vote in favor anyway. With only the KPD and these dissidents backing the proposal, it, as expected, fails. Now, a referendum will be held, one of almost certain defeat for the communists as the government finds the referendum to be unconstitutional and thus require an absolute majority of all eligible voters to pass.
 
@@ -78,16 +79,24 @@ As we control the Justice Ministry in the [+ chancellor +] cabinet, we can choos
 - @unconstitutional: The referendum is indeed unconstitutional.
 
 @constitutional
-on-arrival: princes_constitutional = 1; coalition_dissent += 1
+on-arrival: princes_constitutional = 1; coalition_dissent += 1; coup_progress += 1
 
 We contradict Hindenburg's opinion and declare that the referendum is constitutional, as the provisions of the bill mean that it indeed would serve the common good. This causes significant controversy within the cabinet.
 
+- @radbruch_resigns: Justice Minister Radbruch must resign.
 - @dvp_withdraws_gov: The DVP withdraws from government.
 - @menu_for_no_real_reason: But, for now, the government survives.
 
+@radbruch_resigns
+view-if: coalition_dissent >= 3 or (coalition_dissent >= 2 and dvp_relation < 40)
+on-arrival: princes_constitutional = 0; justice_minister_party = "Z"; coup_progress -= 1; coalition_dissent -= 1
+go-to: menu_for_no_real_reason
+
+To preserve the coalition, Radbruch must resign. He is replaced by Wilhelm Marx from the Center Party, who immediately reverses our decision: the referendum remains unconstitutional.
+
 @dvp_withdraws_gov
 view-if: coalition_dissent >= 3 or (coalition_dissent >= 2 and dvp_relation < 40)
-on-arrival: princes_constitutional = 0; dvp_relation -= 5; z_relation -= 5; chancellor = "Marx"; chancellor_party = "Z"; spd_in_government = 0; spd_toleration = 0; foreign_minister_party = "DVP"; interior_minister_party = "Z"; justice_minister_party = "Z"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = "Z"; finance_minister_party = "Z"; agriculture_minister_party = "Z"
+on-arrival: princes_constitutional = 0; coup_progress -= 1; dvp_relation -= 5; z_relation -= 5; chancellor = "Marx"; chancellor_party = "Z"; spd_in_government = 0; spd_toleration = 0; foreign_minister_party = "DVP"; interior_minister_party = "Z"; justice_minister_party = "Z"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = "Z"; finance_minister_party = "Z"; agriculture_minister_party = "Z"
 go-to: menu_for_no_real_reason
 
 The DVP has withdrawn its confidence in the Koch-Weser cabinet over the decision of our justice minister. Koch-Weser then resigns, and Hindenburg appoints as replacement Wilhelm Marx to lead a bourgeois minority government backed, for now, by the DNVP. They immediately reverse our decision, finding the referendum to be unconstitutional.
@@ -107,14 +116,14 @@ With the [+ chancellor +] cabinet confirming the opinion of Hindenburg, then, th
 Perhaps more luckily, however, this has also eliminated the possibility of compromise, as any compromise bill would need to be approved by both the SPD and the DNVP to reach the 2/3rds required for constitutional revisions. As a result, many supporters of the bourgeois parties have taken a liking to our bill, and the DDP has declared neutrality.
 
 @menu_for_no_real_reason
-view-if: coalition_dissent < 2 or (coalition_dissent < 3 and dvp_relation >= 40)
+view-if: coalition_dissent < 2 or (coalition_dissent < 3 and (dvp_relation >= 40 or (dvp_relation >= 30 and president == "Marx")))
 
 - @campaign_big: Launch a massive campaign in support of the referendum!
 - @campaign_small: Launch a campaign in support of the referendum.
 - @filler: The referendum is in three months.
 
 @campaign_big
-view-if: not_prince_campaigned
+view-if: not prince_campaigned
 choose-if: resources >= 2
 subtitle: -2 resources
 on-arrival: resources -= 2; socialism += 3; workers_spd += 2*(1-dissent); rural_spd += 1*(1-dissent); princes_bonus += 5; prince_campaigned = 1
@@ -136,6 +145,35 @@ We launch a reasonable campaign in support of the referendum, rallying our suppo
 We shall see in three months whether our preparations will have been enough.
 
 @zmarx_reference
-view-if: princes_initiated and president == "Marx"
+view-if: princes_initiated and president == "Marx" and judicial_reform < 2
 
-idk what he'd do, WIP
+The *Reichsgerichts* (Supreme Court) has submitted an opinion to the Justice Ministry, held by the [+ justice_minister_party +], that the referendum proposed is unconstitutional, and would thus require an extraordinary majority of not just those voting but all eligible German voters.
+
+- @wrong_and_lame: The Justice Ministry finds the referendum entirely constitutional.
+- @true_true: The Justice Ministry agrees with the Supreme Court's opinion.
+
+@wrong_and_lame
+view-if: justice_minister_party == "SPD"
+on-arrival: coalition_dissent += 1; reichswehr_loyalty -= 0.05; coup_progress += 2
+
+Justice Minister Gustav Radbruch has reviewed the Supreme Court's opinion and found his own, that the referendum is indeed constitutional, serving the common good as the constitution prescribes. 
+
+This causes significant friction with the DVP, which is being pushed by its right flank to turn against the Grand Coalition.
+
+- @radbruch_resigns2: Justice Minister Radbruch must resign.
+- @dvp_withdraws_gov2: The DVP withdraws from government.
+- @menu_for_no_real_reason: But, for now, the government survives.
+
+@radbruch_resigns2
+view-if: coalition_dissent >= 3 or (coalition_dissent >= 2 and dvp_relation < 30)
+on-arrival: princes_constitutional = 0; justice_minister_party = "Z"; coup_progress -= 1; coalition_dissent -= 1; marx_relation += 5
+go-to: menu_for_no_real_reason
+
+To preserve the coalition, Radbruch must resign. He is replaced by Johannes Bell from the Center Party, who immediately reverses our decision: the referendum remains unconstitutional.
+
+@dvp_withdraws_gov2
+view-if: coalition_dissent >= 3 or (coalition_dissent >= 2 and dvp_relation < 30)
+on-arrival: princes_constitutional = 0; coup_progress -= 1; dvp_relation -= 5; z_relation -= 5; marx_relation -= 5; chancellor = "Brüning"; chancellor_party = "Z"; spd_in_government = 0; spd_toleration = 0; foreign_minister_party = "DVP"; interior_minister_party = "Z"; justice_minister_party = "Z"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = "Z"; finance_minister_party = "Z"; agriculture_minister_party = "Z"
+go-to: menu_for_no_real_reason
+
+The DVP has withdrawn its confidence in the Koch-Weser cabinet over the decision of our justice minister. Koch-Weser then resigns, and Marx appoints as replacement Brüning to lead a bourgeois minority government backed, for now, by the DNVP. They immediately reverse our decision, finding the referendum to be unconstitutional.
