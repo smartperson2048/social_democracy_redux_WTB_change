@@ -314,7 +314,7 @@ Results:
 [? if marx_campaign : Marx - [+ marx_votes_disp +]% ?]
 [? if adenauer_campaign : Adenauer - [+ adenauer_votes_disp +]% ?]
 
-[? if duesterberg : Duesterberg - [+ duesterberg_votes_disp +]% ?]
+[? if duesterberg_campaign : Duesterberg - [+ duesterberg_votes_disp +]% ?]
 [? if seeckt_campaign : Seeckt - [+ seeckt_votes_disp +]% ?]
 
 [? if hitler_campaign : Hitler - [+ hitler_votes_disp +]% ?]
