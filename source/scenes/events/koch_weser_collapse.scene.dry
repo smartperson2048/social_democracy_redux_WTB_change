@@ -24,5 +24,8 @@ on-arrival: spd_in_government = 0; spd_toleration = 0; foreign_minister_party = 
 We have returned to opposition.
 
 @marx
+on-arrival: chancellor = "Brüning"; chancellor_party = "Z"; marx_relation -= 5
 
-idk
+Marx has asked to form a government Heinrich Brüning, who has formed a minority government of the bourgeois parties, to act as a stepping stone either towards a reformed Grand Coalition or a right-wing one.
+
+- @dnvp_tolerates: Regardless of how we vote, the cabinet wins the Reichstag's confidence.
