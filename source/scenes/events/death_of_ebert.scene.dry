@@ -199,6 +199,9 @@ if (Q.marx_campaign) {
     if (Q.ddp_support_marx) {
         Q.marx_votes += Q.ddp_normalized;
     }
+    if (Q.debug_marx_bonus) {
+        Q.marx_votes += Q.debug_marx_bonus;
+    }
 }
 if (Q.jarres_campaign) {
     Q.jarres_votes += Q.dvp_normalized;
