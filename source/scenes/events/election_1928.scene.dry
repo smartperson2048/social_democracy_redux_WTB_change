@@ -1449,7 +1449,7 @@ Wilhelm Marx has very reluctantly appointed Adolf Hitler of the NSDAP as chancel
 @marx_braun
 choose-if: braun_chosen
 unavailable-subtitle: Wilhelm Marx is not willing to appoint Braun.
-on-arrival: chancellor = "Braun"; chancellor_party = "SPD"; spd_in_government = 1; pro_republic -= 5; foreign_minister_party = "SPD"; interior_minister_party = "SPD"; justice_minister_party = "SPD"; labor_minister_party = "SPD"; reichswehr_minister_party = "SPD"; economic_minister_party = "SPD"; finance_minister_party = "SPD"; agriculture_minister_party = "SPD"; z_prussia = 1 if spd_prussia; braun_removed = 1 if spd_prussia; spd_prussia = 0; braun_r = spd_r; braun_r
+on-arrival: chancellor = "Braun"; chancellor_party = "SPD"; spd_in_government = 1; pro_republic -= 5; foreign_minister_party = "SPD"; interior_minister_party = "SPD"; justice_minister_party = "SPD"; labor_minister_party = "SPD"; reichswehr_minister_party = "SPD"; economic_minister_party = "SPD"; finance_minister_party = "SPD"; agriculture_minister_party = "SPD"; z_prussia = 1 if spd_prussia; braun_removed = 1 if spd_prussia; spd_prussia = 0
 
 Wilhelm Marx has appointed Otto Braun as chancellor. [? if braun_removed : He first had to resign as Minister-President of Prussia however. ?]
 
