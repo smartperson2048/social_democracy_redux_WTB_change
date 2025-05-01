@@ -14,8 +14,12 @@ go-to: marx_crisis if president == "Marx"; hindenburg_crisis if president == "Hi
 For multiple elections in a row now, no government has been able to be formed. This has been destroying the trust of the German people in their democracy, and all eyes turn to the president to see what he will do.
 
 @marx_crisis
+on-arrival: chancellor = "Groener"; spd_toleration = 0; chancellor_party = "I"; time_to_election = 12+strife; strife -= 3; sa_militancy -= 0.1; rb_militancy -= 0.1 if rb_militancy >= 0.1; rfb_militancy -= 0.1; sh_militancy -= 0.05; reichswehr_loyalty += 0.1;
+go-to: fascist_uprising if coup_progress >= 10 and sa_force+sh_force >= 50 and nsdap_r+dnvp_r >= 40; next_election_time if coup_progress < 10 or sa_force+sh_force < 45 or nsdap_r+dnvp_r < 35
 
-WIP!
+Wilhelm Marx has become increasingly influenced by an inner cadre of military men and seeing the total inability of the Reichstag to form a government has caved to their increasing calls for martial law. 
+
+He has asked Wilhelm Groener to lead a temporary military government and, wielding the powers of Article 48 of the German constitution, declared martial law and cancelled the next elections. 
 
 @hindenburg_crisis
 on-arrival: chancellor = "Seldte"; chancellor_party = "DNVP"
