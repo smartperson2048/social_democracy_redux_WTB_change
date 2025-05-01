@@ -4,7 +4,7 @@ view-if: year = 1932 and (month = 4 or month = 5) and presidential_election_seen
 frequency: 1000
 max-visits: 1
 new-page: true
-on-arrival: marx_campaign = 1; braun_campaign = 0; thalmann_campaign = 1; duesterburg_campaign = 1; seeckt_campaign = 0; burgerblock_campaign = 0; hitler_campaign = 1; presidential_election_seen = 1; nsdap_candidate = "Hitler" if hitler_deported == 0 else nsdap_candidate = "Göring";
+on-arrival: marx_campaign = 1; braun_campaign = 0; thalmann_campaign = 1; duesterberg_campaign = 1; seeckt_campaign = 0; burgerblock_campaign = 0; hitler_campaign = 1; presidential_election_seen = 1; nsdap_candidate = "Hitler" if hitler_deported == 0 else nsdap_candidate = "Göring";
 tags: event
 go-to: election_algorithm
 set-jump: pres_election
@@ -209,7 +209,7 @@ if (Q.braun_campaign) {
         Q.braun_votes += Q.dvp_normalized;
     }
     Q.braun_votes += ((Math.floor(Math.random() * 11))/350);
- }
+}
 if (Q.marx_campaign) {
     Q.marx_votes += Q.spd_normalized;
     Q.marx_votes += Q.ddp_normalized;
@@ -230,7 +230,7 @@ if (Q.hitler_campaign) {
         Q.hitler_votes += (Q.dnvp_normalized*0.5);
         Q.hitler_votes += Q.other_normalized*(Q.nationalism/400)
         if (!Q.dvp_support_braun && !Q.dvp_support_marx) {
-              Q.hitler_votes += Q.dvp_normalized*(Q.nationalism/100);
+            Q.hitler_votes += Q.dvp_normalized*(Q.nationalism/100);
         }
     }
     Q.hitler_votes += Q.other_normalized*(Q.nationalism/400);
