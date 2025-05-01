@@ -4,7 +4,7 @@ view-if: year = 1932 and (month = 4 or month = 5) and presidential_election_seen
 frequency: 1000
 max-visits: 1
 new-page: true
-on-arrival: marx_campaign = 1; braun_campaign = 0; thalmann_campaign = 1; duesterberg_campaign = 1; seeckt_campaign = 0; burgerblock_campaign = 0; hitler_campaign = 1; presidential_election_seen = 1; nsdap_candidate = "Hitler" if hitler_deported == 0 else nsdap_candidate = "Göring";
+on-arrival: election_round = 0; marx_campaign = 1; braun_campaign = 0; thalmann_campaign = 1; duesterberg_campaign = 1; seeckt_campaign = 0; burgerblock_campaign = 0; hitler_campaign = 1; presidential_election_seen = 1; nsdap_candidate = "Hitler" if hitler_deported == 0 else nsdap_candidate = "Göring";
 tags: event
 go-to: election_algorithm
 set-jump: pres_election
@@ -182,6 +182,7 @@ set-jump: post_election
 @post_election
 on-arrival: {!
 Q.presidents_32 = ['braun', 'marx', 'hitler', 'thalmann', 'duesterberg', 'seeckt'];
+Q.election_round += 1;
 
 Q.braun_votes = 0;
 Q.marx_votes = 0;
