@@ -190,7 +190,7 @@ Q.hitler_votes = 0;
 Q.thalmann_votes = 0;
 Q.duesterberg_votes = 0;
 Q.seeckt_votes = 0;
-Q.adenauer_campaign = 0;
+Q.adenauer_votes = 0;
 
 // initial phase:
 if (Q.braun_campaign) {
