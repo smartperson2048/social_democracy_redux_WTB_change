@@ -741,6 +741,27 @@ if (Q.month_actions >= 1) {
         }
     }
     if (Q.year == 1929) {
+        if (Q.president == "Marx") {
+            Q.marx_relation -= 5/12;
+            if (Q.left_strength >= Q.reformist_strength) {
+                Q.marx_relation -= 2/12;
+                Q.marx_relation -= Q.left_strength/120;
+            }
+            if (Q.kpd_relation >= 50) {
+                Q.marx_relation -= 2/12;
+                Q.marx_relation -= Q.kpd_relation/240;
+            }
+            if (Q.z_relation >= 50) {
+                Q.marx_relation += 2/12;
+                Q.marx_relation += Q.z_relation/240;
+            }
+            if (!Q.spd_in_government) {
+                Q.marx_relation -= 2/12;
+            }
+            if (Q.spd_toleration) {
+                Q.marx_relation -= 2/12;
+            }
+        }
         Q.unemployed += 3/12;
         Q.inflation -= 1/12;
         // steggy 
@@ -800,6 +821,31 @@ if (Q.month_actions >= 1) {
         }
     }
     if (Q.year == 1930) {
+        if (Q.president == "Marx") {
+            Q.marx_relation -= 10/12;
+            if (Q.reformist_strength >= Q.left_strength) {
+                Q.marx_relation += 2/12;
+                Q.marx_relation += Q.reformist_strength/120;
+            }
+            if (Q.kpd_relation >= 50) {
+                Q.marx_relation -= 2/12;
+                Q.marx_relation -= Q.kpd_relation/240;
+            }
+            if (Q.z_relation >= 50) {
+                Q.marx_relation += 3/12;
+                Q.marx_relation += Q.z_relation/240;
+            }
+            if (Q.spd_in_government) {
+                Q.marx_relation += 2/12;
+            }
+            if (Q.spd_toleration) {
+                Q.marx_relation -= 1/12;
+            }
+            Q.marx_relation -= Q.nsdap_votes/120;
+            Q.marx_relation += Q.pro_republic/240;
+            Q.marx_relation -= Q.capital_strike_progress/12;
+            Q.marx_relation -= Q.coup_progress/12;
+        }
         Q.rural_nsdap += 10/12;
         Q.rural_dnvp -= 5/12;
         Q.new_middle_dvp -= 5/12;
@@ -920,6 +966,30 @@ if (Q.month_actions >= 1) {
         }
     }
     if (Q.year == 1931) {
+        if (Q.president == "Marx") {
+            Q.marx_relation -= 5/12;
+            if (Q.reformist_strength >= Q.left_strength) {
+                Q.marx_relation += 3/12;
+                Q.marx_relation += Q.reformist_strength/120;
+            }
+            if (Q.kpd_relation >= 50) {
+                Q.marx_relation -= 3/12;
+                Q.marx_relation -= Q.kpd_relation/240;
+            }
+            if (Q.z_relation >= 50) {
+                Q.marx_relation += 4/12;
+                Q.marx_relation += Q.z_relation/240;
+            }
+            if (Q.spd_in_government) {
+                Q.marx_relation += 1/12;
+            }
+            Q.marx_relation -= Q.nsdap_votes/120;
+            Q.marx_relation -= Q.sa_force/120;
+            Q.marx_relation -= Q.strife/12;
+            Q.marx_relation -= Q.nationalism/120;
+            Q.marx_relation += Q.pro_republic/120;
+            Q.marx_relation -= Q.coup_progress/12;
+        }
         Q.catholics_z += 2/12;
         Q.rural_dvp -= 8/12;
         Q.rural_spd -= 2/12;
@@ -1091,6 +1161,29 @@ if (Q.month_actions >= 1) {
         }
     }
     if (Q.year == 1932) {
+        if (Q.president == "Marx") {
+            if (Q.reformist_strength >= Q.left_strength) {
+                Q.marx_relation += 4/12;
+                Q.marx_relation += Q.reformist_strength/120;
+            }
+            if (Q.kpd_relation >= 50) {
+                Q.marx_relation -= 4/12;
+                Q.marx_relation -= Q.kpd_relation/240;
+            }
+            if (Q.z_relation >= 50) {
+                Q.marx_relation += 4/12;
+                Q.marx_relation += Q.z_relation/240;
+            }
+            if (Q.spd_in_government) {
+                Q.marx_relation += 3/12;
+            }
+            Q.marx_relation -= Q.nsdap_votes/120;
+            Q.marx_relation -= Q.strife/12;
+            Q.marx_relation -= Q.nationalism/120;
+            Q.marx_relation += Q.pro_republic/120;
+            Q.marx_relation += Q.spd_votes/120;
+            Q.marx_relation -= Q.coup_progress/12;
+        }
         Q.old_middle_other -= 7/12;
         Q.rural_other -= 7/12;
         Q.rural_dnvp += 2/12;

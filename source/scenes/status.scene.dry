@@ -35,7 +35,7 @@ Internal dissent: [+ dissent_percent : dissent +]
 
 President: [+ president +]
 
-[? if president == "Marx" : Presidential Relations : [+ marx_relation : relationships +] ?]
+[? if president == "Marx" : Presidential Relations: [+ marx_relation : relationships +] ?]
 
 Chancellor: [+ chancellor +] ([+ chancellor_party +])
 
