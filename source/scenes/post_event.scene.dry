@@ -742,7 +742,9 @@ if (Q.month_actions >= 1) {
     }
     if (Q.year == 1929) {
         if (Q.president == "Marx") {
-            Q.marx_relation -= 5/12;
+            if (Q.marx_relation >= 30) {
+                Q.marx_relation -= 5/12;
+            }
             if (Q.left_strength >= Q.reformist_strength) {
                 Q.marx_relation -= 3/12;
                 Q.marx_relation -= Q.left_strength/120;
@@ -822,7 +824,9 @@ if (Q.month_actions >= 1) {
     }
     if (Q.year == 1930) {
         if (Q.president == "Marx") {
-            Q.marx_relation -= 10/12;
+            if (Q.marx_relation >= 30) {
+                Q.marx_relation -= 10/12;
+            }
             if (Q.reformist_strength >= Q.left_strength) {
                 Q.marx_relation += 1/12;
                 Q.marx_relation += Q.reformist_strength/240;
@@ -967,7 +971,9 @@ if (Q.month_actions >= 1) {
     }
     if (Q.year == 1931) {
         if (Q.president == "Marx") {
-            Q.marx_relation -= 5/12;
+            if (Q.marx_relation >= 30) {
+                Q.marx_relation -= 5/12;
+            }
             if (Q.reformist_strength >= Q.left_strength) {
                 Q.marx_relation += 2/12;
                 Q.marx_relation += Q.reformist_strength/240;
