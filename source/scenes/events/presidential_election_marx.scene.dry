@@ -449,3 +449,6 @@ go-to: r2_menu
 
 The Center Party has withdrawn from the race and endorsed Braun.
 
+@round2_results
+go-to: seeckt_wins if seeckt_plurality == 1; thalmann_wins if thalmann_plurality == 1; braun_wins if braun_plurality == 1; hitler_wins if hitler_plurality == 1; marx_wins if marx_plurality == 1
+
