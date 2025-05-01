@@ -874,12 +874,12 @@ go-to: 1930_main
 @1925_easy
 view-if: year == 1925
 on-arrival: difficulty = -1; resources = 4; dues = 3; rb_strength = 2500; kpd_relation += 9; z_relation += 5; dvp_relation += 9; budget += 1
-go-to: 1930_main
+go-to: 1925_main
 
 @1925_hard
 view-if: year == 1925
 on-arrival: difficulty = 1; resources = 0; dues = 1; rb_strength = 1000; reformist_dissent += 10; left_dissent += 10; labor_dissent += 10; center_dissent += 15; z_relation -=  9; kpd_relation -= 5; dvp_relation -= 9; budget -= 1;
-go-to: 1930_main
+go-to: 1925_main
 
 @1925_historical
 view-if: year == 1925
@@ -900,7 +900,7 @@ Q.dvp_relation -= 9;
 Q.budget -= 2;
 this.state.disableSaves = true;
 !}
-go-to: 1930_main
+go-to: 1925_main
 
 @settings
 subtitle: Enable or disable various features.
