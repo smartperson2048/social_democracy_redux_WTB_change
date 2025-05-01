@@ -1365,10 +1365,10 @@ on-arrival: no_majority_elections += 1
 go-to: no_majority_scholz if chancellor = "Scholz"; no_majority_bruning2 if chancellor = "Brüning" or chancellor = "Wirth"; no_majority_spd2 if chancellor_party = "SPD" or n_elections <= 1
 
 @no_majority_bruning2
-go-to: no_majority_bruning_toleration if ((no_majority_elections <= 3 and anti_democratic_coalition <= 50 and marx_relation >= 20) or marx_relation >= 40); marx_appoints_bracht if ((no_majority_elections > 3 or anti_democratic_coalition > 50 or marx_relation < 20) and marx_relation < 40)
+go-to: no_majority_bruning_toleration if ((no_majority_elections <= 3 and anti_democratic_coalition <= 50 and marx_relation >= 10) or marx_relation >= 40); marx_appoints_bracht if ((no_majority_elections > 3 or anti_democratic_coalition > 50 or marx_relation < 10) and marx_relation < 40); no_majority_bracht if chancellor == "Bracht"
 
 @marx_appoints_bracht
-on-arrival: marx_relation -= 5; bracht_r = 0; chancellor = "Bracht"; chancellor_party = "Z" if z_relation < 30; chancellor_party = "I" if z_relation >= 30; sa_banned = 0; pro_republic -= 6; finance_minister_party = "I"; interior_minister_party = "I"; economic_minister_party = "I"; labor_minister_party = "I"; foreign_minister_party = "I"; agriculture_minister_party = "I"; reichswehr_minister = "I"; nazi_chance = nsdap_r; nazi_chance += socialism; nazi_chance += nationalism; nazi_chance -= pro_republic; nazi_chance += left_coalition if communist_coalition >= 3 and kpd_relation >= 50; nazi_chance += rb_force+rfb_force; nazi_chance -= sa_force; nazi_chance += (radicalization+capital_strike_progress+coup_progress)*political_crisis_progress; bracht_r = dvp_r; bracht_r += dnvp_r if z_relation < 25; bracht_r += z_r if z_relation < 45; bracht_r += nsdap_r if nazi_chance >= 200
+on-arrival: old_middle_nsdap += 5; rural_nsdap += 5; unemployed_nsdap += 5; new_middle_nsdap += 5; marx_relation -= 5; bracht_r = 0; chancellor = "Bracht"; chancellor_party = "Z" if z_relation < 30; chancellor_party = "I" if z_relation >= 30; sa_banned = 0; pro_republic -= 6; finance_minister_party = "I"; interior_minister_party = "I"; economic_minister_party = "I"; labor_minister_party = "I"; foreign_minister_party = "I"; agriculture_minister_party = "I"; reichswehr_minister = "I"; nazi_chance = nsdap_r; nazi_chance += socialism; nazi_chance += nationalism; nazi_chance -= pro_republic; nazi_chance += left_coalition if communist_coalition >= 3 and kpd_relation >= 50; nazi_chance += rb_force+rfb_force; nazi_chance -= sa_force; nazi_chance += (radicalization+capital_strike_progress+coup_progress)*political_crisis_progress; bracht_r = dvp_r; bracht_r += dnvp_r if z_relation < 25; bracht_r += z_r if z_relation < 45; bracht_r += nsdap_r if nazi_chance >= 200
 go-to: bracht_falls if bracht_r < 50; bracht_wins if bracht_r >= 50
 
 There is no path to a majority government. President Marx is tired of the chaos, and appoints Franz Bracht as chancellor instead of Brüning, hoping that Bracht would be able to form a coalition, or at least receive toleration, from the NSDAP. Bracht is significantly to the right of the majority of the Center Party.
@@ -1384,6 +1384,96 @@ Bracht has failed to win a majority. Seeing no majority in the Reichstag, Wilhel
 on-arrival: pro_republic -= 5; nationalism += 5; coup_progress += 3; reichswehr_loyalty -= 0.1; judicial_reform -= 2
 
 Bracht has somehow won a majority in the Reichstag. Democratic reforms that we undertook in the past are undone. Let us hope President Marx's confidence in Bracht wears thin.
+
+@no_majority_bracht
+on-arrival: {!
+var hitler_points = 0;
+var braun_points = 0;
+var bruning_points = 0;
+
+hitler_points += Q.nsdap_r;
+hitler_points += Q.nationalism;
+hitler_points += Q.anti_democratic_coalition;
+hitler_points -= Q.sa_force;
+hitler_points += Q.kpd_r;
+hitler_points -= Q.marx_relation;
+
+braun_points += Q.spd_r;
+braun_points += Q.socialism;
+braun_points += Q.pro_republic;
+braun_points += Q.weimar_coalition;
+braun_points -= Q.rb_force;
+braun_points += Q.marx_relation;
+braun_points -= Q.kpd_relation;
+braun_points += Q.dvp_relation;
+
+bruning_points += Q.z_r;
+bruning_points += Q.neo_weimar_coalition;
+bruning_points += Q.pro_republic;
+bruning_points += (100-Q.socialism);
+bruning_points += (100-Q.nationalism);
+if (braun_points >= hitler_points) {
+    bruning_points += hitler_points/2;
+} else {
+    bruning_points += braun_points/2;
+}
+
+Q.braun_chosen = 0;
+Q.hitler_chosen = 0;
+Q.bruning_chosen = 0;
+
+if (braun_points >= hitler_points && braun_points >= bruning_points) {
+    Q.braun_chosen = 1;
+} else if (hitler_points >= braun_points && hitler_points >= bruning_points) {
+    Q.hitler_chosen = 1;
+} else {
+    Q.bruning_chosen = 1;
+}
+!}
+
+With there still being no majority for Bracht, Wilhelm Marx dismisses him and looks to alternative candidates. 
+
+- @marx_hitler: Adolf Hitler?
+- @marx_braun: Otto Braun?
+- @marx_bruning: Heinrich Brüning?
+- @marx_wirth: Joseph Wirth?
+
+@marx_hitler
+choose-if: hitler_chosen
+unavailable-subtitle: Wilhelm Marx is not willing to appoint Hitler.
+on-arrival: chancellor = "Hitler"; chancellor_party = "NSDAP"
+go-to: slow_consolidation
+
+Wilhelm Marx has very reluctantly appointed Adolf Hitler of the NSDAP as chancellor.
+
+@marx_braun
+choose-if: braun_chosen
+unavailable-subtitle: Wilhelm Marx is not willing to appoint Braun.
+on-arrival: chancellor = "Braun"; chancellor_party = "SPD"; spd_in_government = 1; pro_republic -= 5; foreign_minister_party = "SPD"; interior_minister_party = "SPD"; justice_minister_party = "SPD"; labor_minister_party = "SPD"; reichswehr_minister_party = "SPD"; economic_minister_party = "SPD"; finance_minister_party = "SPD"; agriculture_minister_party = "SPD"; z_prussia = 1 if spd_prussia; braun_removed = 1 if spd_prussia; spd_prussia = 0; braun_r = spd_r; braun_r
+
+Wilhelm Marx has appointed Otto Braun as chancellor. [? if braun_removed : He first had to resign as Minister-President of Prussia however. ?]
+
+- @emergency_no_confidence
+
+@marx_bruning
+choose-if: bruning_chosen and (z_relation+spd_r < 100)
+unavailable-subtitle: Wilhelm Marx is not willing to appoint Brüning.
+on-arrival: chancellor = "Brüning"; chancellor_party = "Z"
+go-to: no_majority_bruning_toleration
+
+Wilhelm Marx has appointed Heinrich Brüning as head of a minority government.
+
+@marx_wirth
+choose-if: bruning_chosen and (z_relation+spd_r >= 100)
+unavailable-subtitle: Wilhelm Marx is not willing to appoint Wirth.
+
+Wilhelm Marx has appointed Joseph Wirth as head of a minority government.
+
+- @toleration_wirth: We will tolerate Wirth.
+- @new_elections: We will have new elections.
+- @new_elections_2: We will have new elections.
+
+
 
 @no_majority_spd2
 on-arrival: chancellor = "Brüning"; chancellor_party = "Z"
