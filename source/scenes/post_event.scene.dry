@@ -685,6 +685,58 @@ if (Q.month_actions >= 1) {
 
     ////////////////////////// annual support changes
     if (Q.year < 1928 && Q.president != "Ebert") {
+        if (Q.workers_spd_normalized >= 60) {
+            Q.workers_spd -= 2/12;
+        }
+        if (Q.new_middle_spd_normalized >= 5) {
+            Q.new_middle_spd -= 1/12;
+        }
+        if (Q.old_middle_spd_normalized >= 5) {
+            Q.old_middle_spd -= 1/12;
+        }
+        if (Q.rural_spd_normalized >= 10) {
+            Q.rural_spd -= 1/12;
+        }
+        if (Q.unemployed_spd_normalized >= 20) {
+            Q.unemployed_spd -= 1/12;
+        }
+        if (Q.catholics_spd_normalized >= 20) {
+            Q.catholics_spd -= 1/12;
+        }
+        if (Q.workers_kpd_normalized >= 20) {
+            Q.workers_kpd -= 1/12;
+        } else {
+            Q.workers_kpd += 1/12;
+        }
+        if (Q.unemployed_kpd_normalized >= 50) {
+            Q.unemployed_kpd -= 1/12;
+        } else {
+            Q.unemployed_kpd += 1/12;
+        }
+        if (Q.workers_dnvp_normalized >= 5) {
+            Q.workers_dnvp -= 1/12;
+        } else {
+            Q.workers_dnvp += 1/12;
+        }
+        if (Q.workers_other_normalized >= 10) {
+            Q.workers_other -= 1/12;
+        } else {
+            Q.workers_other += 1/12;
+        }
+        if (Q.workers_ddp_normalized > 0) {
+            Q.workers_ddp -= 1/12;
+        }
+        if (Q.workers_dvp_normalized > 0) {
+            Q.workers_dvp -= 1/12;
+        }
+        if (Q.workers_nsdap_normalized > 0) {
+            Q.workers_nsdap -= 1/12;
+        }
+        if (Q.new_middle_ddp_normalized >= 25) {
+            Q.new_middle_ddp -= 1/12;
+        } else {
+            Q.new_middle_ddp += 1/12;
+        }
         if (Q.princes_time) {
             Q.compromise_time = Q.princes_time-1;
         } 
@@ -713,8 +765,12 @@ if (Q.month_actions >= 1) {
         Q.workers_ddp -= 1/12;
         Q.workers_dvp -= 4/12;
         Q.workers_other += 1/12;
-        Q.old_middle_spd += 1/12;
-        Q.new_middle_spd += 1/12;
+        if (Q.old_middle_spd_normalized < 5) {
+            Q.old_middle_spd += 1/12;
+        }
+        if (Q.new_middle_spd_normalized < 5) {
+            Q.new_middle_spd += 1/12;
+        }
         Q.old_middle_dvp -= 3/12;
         Q.old_middle_nsdap += 1/12;
         Q.old_middle_other -= 3/12;
