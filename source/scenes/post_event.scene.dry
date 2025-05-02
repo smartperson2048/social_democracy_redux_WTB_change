@@ -896,7 +896,7 @@ if (Q.month_actions >= 1) {
         if (Q.new_middle_spd_normalized < 5) {
             Q.new_middle_spd += 1/12;
         }
-        Q.old_middle_dvp -= 4/12;
+        Q.old_middle_dvp -= 3/12;
         Q.old_middle_nsdap += 1/12;
         Q.old_middle_other -= 3/12;
         Q.new_middle_dvp -= 2/12;
@@ -910,7 +910,7 @@ if (Q.month_actions >= 1) {
         Q.unemployed_spd -= 6/12;
         Q.unemployed_kpd += 4/12;
         Q.unemployed_dnvp -= 1/12;
-        Q.unemployed_nsdap += 2/12;
+        Q.unemployed_nsdap += 1/12;
         Q.unemployed_other += 2/12;
         Q.catholics_other -= 1/12;
         Q.catholics_dnvp += 1/12;
