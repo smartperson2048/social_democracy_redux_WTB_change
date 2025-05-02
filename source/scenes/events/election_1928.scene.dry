@@ -768,7 +768,9 @@ go-to: civil_war
 @enabling_act_failed
 on-arrival: spd_rebel = 1; sa_militancy -= 0.2; sa_strength *= 0.8; reichswehr_loyalty += 0.25; rb_militancy += 0.1; rb_strength += 500; kpd_relation += 25
 
-Somehow, we have stopped Hitler from passing his Enabling Act, with only [+ enabling_r +]% present voting for! Growing frustrated with the chaos on the streets Hitler himself is unleashing, Hindenburg turns on him and demands his resignation while he attempts to call a constitutional referendum to pass the Enabling Act instead. The Reichsbanner swells and fighting in the streets erupts, while the army is deployed, not for but against Hitler as civil war engulfs the nation.
+[? if president != "Hitler" and president != "Göring" : Somehow, we have stopped Hitler from passing his Enabling Act, with only [+ enabling_r +]% present voting for! Growing frustrated with the chaos on the streets Hitler himself is unleashing, [+ president +] turns on him and demands his resignation while he attempts to call a constitutional referendum to pass the Enabling Act instead. The Reichsbanner swells and fighting in the streets erupts, while the army is deployed, not for but against Hitler as civil war engulfs the nation. ?]
+
+[? if president == "Hitler" or president == "Göring" : Somehow, we have stopped Hitler from passing his Enabling Act, with only [+ enabling_r +]% present voting for! [+ president +] dissolves the Reichstag for new elections, ruling by decree in the meantime. A constitutional referendum is called as Hitler seeks to pass it outside of the Reichstag's framework, and fighting erupts on the streets as, tired of the chaos, Reichswehr forces begin to join in the emerging rebellion against Hitler and civil war engulfs the nation. ?]
 
 - @civil_war: To victory!
 
