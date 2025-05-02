@@ -16,7 +16,9 @@ This mod adds a variety of changes to the base game, mostly in the form of flavo
 - @economics: Economic changes
 - @sapd: SAPD flavor
 - @extension: Content to 1936
-- @start_dates: 1930 start date
+- @start_dates: 1930 start date, 1925 start date
+- @landtags: Landtags
+- @legislification: "Legislification" of government cards
 - @civil_war_flavor: Civil War flavor
 - @weakened_presidency_hitler: Weakened Presidency + Hitler takeover flavor
 - @coalition_flavor: Coalition flavor
@@ -42,6 +44,8 @@ Once you've managed, you can now rally for the Weimar Plan together with Zentrum
 
 I have added hyperinflation if you have a big budget deficit and high inflation, and plan to add a way to end hyperinflation through the replacement of the Reichsmark with the Volksmark. Also, you can do tax cuts even if you don't have enough budget if you've adopted the WTB plan.
 
+Update: hyperinflation cut out, but other economic changes are planned
+
 @left
 
 = Left Plan flavor
@@ -56,11 +60,31 @@ You can rally alongside the KPD for the Left Plan on May Day, leading to confron
 
 The Centrists now fill their historical niche of being acceptable to both sides of the party and controlling dissent, and you might find the party a lot less stable without them. Furthermore, if the crisis gets too bad, Hilferding may eventually concede to the necessity of an economic plan.
 
+- @flavors: Back
+
 @start_dates
 
-= 1930 start date
+= 1930 and 1925 start dates
 
-You can now start the game in January 1930 for a real challenge. The depression has already hit and your coalition is on the verge of collapse.
+You can now start the game in January 1930 for a real challenge. The depression has already hit and your coalition is on the verge of collapse. Or, if you want a less desperate position, then 1925 might be for you. Maybe you can even elect Wilhelm Marx!
+
+- @flavors: Back
+
+@landtags
+
+= Landtags
+
+Though WIP, regional landtags are being added, with the end goal of adding all landtags
+
+- @flavors: Back
+
+@legislification
+
+= Legislification
+
+"Legislification" refers to the new feature of gov card decisions being voted on by the Reichstag, rather than automatic approval so long as the ministry is held.
+
+- @flavors: Back
 
 @sapd
 
@@ -99,6 +123,8 @@ I have made it so that a right-wing coalition from Zentrum to the DNVP can form 
 = Content to 1936
 
 Content to 1936 has been added in the form of events, including the Abysinnia Crisis and the Spanish Civil War
+
+- @flavors: Back
 
 @minor_changes
 
@@ -160,7 +186,7 @@ The mod also contains many small changes that I felt would be good additions to 
 
 **24/1/2025**: Reichsexekuting Thuringia if SPD president added
 
-*27/1/2025**: Seldte martial law added and generally just more of the March on Berlin seldte variation content
+**27/1/2025**: Seldte martial law added and generally just more of the March on Berlin seldte variation content
 
 **30/1/2025**: Economic factors feed into each other, effect support. Also modified post-34 bourgeois economic plan to include tariff hikes if budget deficit
 
@@ -174,15 +200,15 @@ The mod also contains many small changes that I felt would be good additions to 
 
 **17/2/2025**: 1930 start date for those who want a challenge!
 
+**2/5/2025**: And a lot more since then, but I forgot to update the changelog: post-hitler content, landtags, legislification, 1925...
+
 - @flavors: Back
 
 @plans
 
 = Plans for the mod
 
-Going to wrap up playable "Victory for the Republic" and finish Communist takeover outcomes (SPD banned if relations not good enough and Thalmann, otherwise potential forceful incorporation into SED under Conciliators)
-
-Also plan to add different endings for Austria that Germany can influence, and even extend the game to 1936. Then, I'll make the game not end the moment Hitler takes power but instead when the SPD ceases to exist.
+Legislification, 1925 and landtags.
 
 - @flavors: Back
 
