@@ -685,6 +685,10 @@ if (Q.month_actions >= 1) {
 
     ////////////////////////// annual support changes
     if (Q.year < 1928 && Q.president != "Ebert") {
+        Q.sa_strength += 50/36;
+        Q.sa_militancy -= 0.4/36;
+        Q.rfb_strength += 80/36;
+        Q.rfb_militancy -= 0.2/36;
         if (Q.workers_spd_normalized >= 60) {
             Q.workers_spd -= 2/12;
         }
