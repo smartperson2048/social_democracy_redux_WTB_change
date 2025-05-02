@@ -737,6 +737,131 @@ if (Q.month_actions >= 1) {
         } else {
             Q.new_middle_ddp += 1/12;
         }
+        if (Q.new_middle_dvp_normalized >= 25) {
+            Q.new_middle_dvp -= 1/12;
+        } else {
+            Q.new_middle_dvp += 1/12;
+        }
+        if (Q.new_middle_dnvp_normalized >= 10) {
+            Q.new_middle_dnvp -= 1/12;
+        } else {
+            Q.new_middle_dnvp += 1/12;
+        }
+        if (Q.new_middle_nsdap_normalized >= 5) {
+            Q.new_middle_nsdap -= 1/12;
+        } else {
+            Q.new_middle_nsdap += 1/12;
+        }
+        if (Q.new_middle_other_normalized >= 15) {
+            Q.new_middle_other -= 1/12;
+        } else {
+            Q.new_middle_other += 1/12;
+        }
+        if (Q.new_middle_z_normalized >= 10) {
+            Q.new_middle_z -= 1/12;
+        } else {
+            Q.new_middle_z += 1/12;
+        }
+        if (Q.old_middle_ddp_normalized >= 10) {
+            Q.old_middle_ddp -= 1/12;
+        } else {
+            Q.old_middle_ddp += 1/12;
+        }
+        if (Q.old_middle_dvp_normalized >= 30) {
+            Q.old_middle_dvp -= 1/12;
+        } else {
+            Q.old_middle_dvp += 1/12;
+        }
+        if (Q.old_middle_z_normalized >= 5) {
+            Q.old_middle_z -= 1/12;
+        } else {
+            Q.old_middle_z += 1/12;
+        }
+        if (Q.old_middle_dnvp_normalized >= 30) {
+            Q.old_middle_dnvp -= 1/12;
+        } else {
+            Q.old_middle_dnvp += 1/12;
+        }
+        if (Q.old_middle_nsdap_normalized >= 10) {
+            Q.old_middle_nsdap -= 1/12;
+        } else {
+            Q.old_middle_nsdap += 1/12;
+        }
+        if (Q.old_middle_other_normalized >= 10) {
+            Q.old_middle_other -= 1/12;
+        } else {
+            Q.old_middle_other += 1/12;
+        }
+        if (Q.rural_z_normalized >= 5) {
+            Q.rural_z -= 1/12;
+        } else {
+            Q.rural_z += 1/12;
+        }
+        if (Q.rural_ddp_normalized >= 5) {
+            Q.rural_ddp -= 1/12;
+        } else {
+            Q.rural_ddp += 1/12;
+        }
+        if (Q.rural_dvp_normalized >= 15) {
+            Q.rural_dvp -= 1/12;
+        } else {
+            Q.rural_dvp += 1/12;
+        }
+        if (Q.rural_dnvp_normalized >= 45) {
+            Q.rural_dnvp -= 1/12;
+        } else {
+            Q.rural_dnvp += 1/12;
+        }
+        if (Q.rural_nsdap_normalized >= 5) {
+            Q.rural_nsdap -= 1/12;
+        } else {
+            Q.rural_nsdap += 1/12;
+        }
+        if (Q.rural_other_normalized >= 10) {
+            Q.rural_other -= 1/12;
+        } else {
+            Q.rural_other += 1/12;
+        }
+        if (Q.unemployed_dnvp_normalized >= 5) {
+            Q.unemployed_dnvp -= 1/12;
+        } else {
+            Q.unemployed_dnvp += 1/12;
+        }
+        if (Q.unemployed_nsdap_normalized >= 15) {
+            Q.unemployed_nsdap -= 1/12;
+        } else {
+            Q.unemployed_nsdap += 1/12;
+        }
+        if (Q.unemployed_other_normalized >= 10) {
+            Q.unemployed_other -= 1/12;
+        } else {
+            Q.unemployed_other += 1/12;
+        }
+        if (Q.catholics_other_normalized >= 15) {
+            Q.catholics_other -= 1/12;
+        } else {
+            Q.catholics_other += 1/12;
+        }
+        if (Q.catholics_dnvp_normalized >= 5) {
+            Q.catholics_dnvp -= 1/12;
+        } else {
+            Q.catholics_dnvp += 1/12;
+        }
+        if (Q.catholics_dvp_normalized >= 15) {
+            Q.catholics_dvp -= 1/12;
+        } else {
+            Q.catholics_dvp += 1/12;
+        }
+        if (Q.catholics_z_normalized >= 55) {
+            Q.catholics_z -= 1/12;
+        } else {
+            Q.catholics_z += 1/12;
+        }
+        if (Q.catholics_spd_normalized >= 15) {
+            Q.catholics_spd -= 1/12;
+        } else {
+            Q.catholics_spd += 1/12;
+        }
         if (Q.princes_time) {
             Q.compromise_time = Q.princes_time-1;
         } 
