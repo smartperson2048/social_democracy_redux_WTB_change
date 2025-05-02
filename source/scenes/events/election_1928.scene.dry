@@ -1414,10 +1414,11 @@ bruning_points += Q.neo_weimar_coalition;
 bruning_points += Q.pro_republic;
 bruning_points += (100-Q.socialism);
 bruning_points += (100-Q.nationalism);
+bruning_points -= Q.political_crisis_progress;
 if (braun_points >= hitler_points) {
-    bruning_points += hitler_points/2;
+    bruning_points += hitler_points/4;
 } else {
-    bruning_points += braun_points/2;
+    bruning_points += braun_points/4;
 }
 
 Q.braun_chosen = 0;
@@ -1441,14 +1442,16 @@ With there still being no majority for Bracht, Wilhelm Marx dismisses him and lo
 - @marx_wirth: Joseph Wirth?
 
 @marx_hitler
+subtitle: Perhaps the Nazis can be tamed and demystified?
 choose-if: hitler_chosen
 unavailable-subtitle: Wilhelm Marx is not willing to appoint Hitler.
-on-arrival: chancellor = "Hitler"; chancellor_party = "NSDAP"
+on-arrival: chancellor = "Hitler"; chancellor_party = "NSDAP"; marx_appointed_hitler = 1
 go-to: slow_consolidation
 
 Wilhelm Marx has very reluctantly appointed Adolf Hitler of the NSDAP as chancellor.
 
 @marx_braun
+subtitle: Perhaps we can lead Germany out of its crisis.
 choose-if: braun_chosen
 unavailable-subtitle: Wilhelm Marx is not willing to appoint Braun.
 on-arrival: chancellor = "Braun"; chancellor_party = "SPD"; spd_in_government = 1; pro_republic -= 5; foreign_minister_party = "SPD"; interior_minister_party = "SPD"; justice_minister_party = "SPD"; labor_minister_party = "SPD"; reichswehr_minister_party = "SPD"; economic_minister_party = "SPD"; finance_minister_party = "SPD"; agriculture_minister_party = "SPD"; z_prussia = 1 if spd_prussia; braun_removed = 1 if spd_prussia; spd_prussia = 0
@@ -1458,6 +1461,7 @@ Wilhelm Marx has appointed Otto Braun as chancellor. [? if braun_removed : He fi
 - @emergency_no_confidence
 
 @marx_bruning
+subtitle: Perhaps Brüning can manage to form a government this time?
 choose-if: bruning_chosen and (z_relation+spd_r < 100)
 unavailable-subtitle: Wilhelm Marx is not willing to appoint Brüning.
 on-arrival: chancellor = "Brüning"; chancellor_party = "Z"
@@ -1466,6 +1470,7 @@ go-to: no_majority_bruning_toleration
 Wilhelm Marx has appointed Heinrich Brüning as head of a minority government.
 
 @marx_wirth
+subtitle: Perhaps the answer lies in the left-wing of the Center Party?
 choose-if: bruning_chosen and (z_relation+spd_r >= 100)
 unavailable-subtitle: Wilhelm Marx is not willing to appoint Wirth.
 
