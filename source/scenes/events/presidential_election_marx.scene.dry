@@ -308,10 +308,9 @@ for (var k of Q.presidents_32) {
     Q[k+'_votes_disp'] = Q[k+'_votes'].toFixed(1);
 }
 for (var k of Q.presidents_32) {
-    if (Q[k+'_plurality']) {
+    if (Q[k+'_plurality'] && !Q[k+'_majority']) {
         if (Q[k+'_votes'] < highest_support) {
            Q[k+'_plurality'] = 0;
-           Q[k+'_majority'] = 0;
         }
     }
 }
