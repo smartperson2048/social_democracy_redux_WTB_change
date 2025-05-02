@@ -47,7 +47,7 @@ The DVP has agreed to support Wilhelm Marx.
 subtitle: This will cost us 2 resources.
 choose-if: resources >= 2
 unavailable-subtitle: Not enough resources.
-on-arrival: resources -= 2; braun_campaign = 1; marx_campaign = 0
+on-arrival: resources -= 2; braun_campaign = 1; marx_campaign = 0; adenauer_campaign = 1
 go-to: braun_campaign
 
 It takes effort to run a somewhat unexpected campaign. First, Braun has to be convinced to run. He himself had supported backing Marx, and it takes a good deal of prodding to convince him of his destiny.
@@ -99,6 +99,7 @@ We remind the Center leaders of the successes they've had as part of the Weimar 
 
 @z_success
 go-to: braun_campaign
+on-arrival: adenauer_campaign = 0
 
 The Center are convinced! They will be part of the Braun coalition.
 
@@ -113,7 +114,7 @@ The Center are not satisfied with our arguments, but they are open to being conv
 choose-if: resources >= 3
 subtitle: -3 resources
 unavailable-subtitle: Not enough resources (need 3)
-on-arrival: resources -= 3; z_support_braun = 1
+on-arrival: resources -= 3; z_support_braun = 1; adenauer_campaign = 0
 go-to: braun_campaign
 
 With our resources, the Center are convinced to support Braun.
@@ -140,7 +141,7 @@ view-if: kpd_relation >= 50 and not historical_mode
 choose-if: resources >= 3
 subtitle: -3 resources
 unavailable-subtitle: Not enough resources (need 3).
-on-arrival: resources -= 3; kpd_support_braun = 1
+on-arrival: resources -= 3; kpd_support_braun = 1; thalmann_campaign = 0
 go-to: braun_campaign
 
 The KPD now endorses Braun in the presidential election! We ask them to keep their support low-key, so as to not alienate the bourgeois voters.
@@ -148,7 +149,7 @@ The KPD now endorses Braun in the presidential election! We ask them to keep the
 @kpd_relations
 view-if: kpd_relation >= 60 or (kpd_party_leader == "Conciliators" and kpd_relation >= 45)
 unavailable-subtitle: Our relations are not good enough.
-on-arrival: kpd_support_braun = 1
+on-arrival: kpd_support_braun = 1; thalmann_campaign = 0
 go-to: braun_campaign
 
 The KPD now endorses Braun in the presidential election! We ask them to keep their support low-key, so as to not alienate the bourgeois voters.
@@ -203,7 +204,11 @@ if (Q.braun_campaign) {
         Q.braun_votes += Q.socialism/4000;
     }
     if (Q.z_support_braun) {
-        Q.braun_votes += (Q.z_normalized-0.03);
+        var z_percent = (0.6+(Q.z_relation/100))/2;
+        if (Q.hitler_plurality && z_percent <= 0.9) {
+            z_percent += 0.1;
+        }
+        Q.braun_votes += ((Q.z_normalized-0.03)*z_percent);
         Q.braun_votes += Q.pro_republic/4000;
     }
     if (Q.dvp_support_braun) {
@@ -254,6 +259,9 @@ if (Q.thalmann_campaign) {
         Q.thalmann_votes += Q.sapd_normalized;
     } 
     Q.thalmann_votes += ((Math.floor(Math.random() * 11))/350);
+    if (Q.election_round > 1 && !Q.thalmann_plurality && !Q.spd_support_thalmann) {
+        Q.thalmann_votes = Q.thalmann_votes*0.9;
+    }
 }
 if (Q.duesterberg_campaign) {
     Q.duesterberg_votes += (Q.dnvp_normalized*0.5);
@@ -445,7 +453,7 @@ We have convinced the DVP to back Wilhelm Marx.
 @r2_kpd_braun
 view-if: not kpd_support_braun and braun_campaign
 choose-if: kpd_relation >= 60 or ((kpd_relation >= 50 and (kpd_party_leader == "Conciliators" or hitler_plurality)) or (kpd_relation >= 40 and kpd_party_leader == "Conciliators" and hitler_plurality))
-on-arrival: kpd_support_braun = 1
+on-arrival: kpd_support_braun = 1; thalmann_campaign = 0
 go-to: r2_menu
 
 We have convinced the KPD to back Otto Braun.
