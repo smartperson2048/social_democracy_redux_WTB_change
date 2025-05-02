@@ -353,7 +353,7 @@ Otto Braun of the SPD has won the presidency! This is a moment of celebration fo
 
 @far_right_coup
 view-if: coup_progress >= 10
-on-arrival: reichswehr_loyalty -= 0.1 if reichswehr_loyalty <= 0.05; reichswehr_loyalty += 0.1; reichswehr_loyalty += 0.15 if z_support_braun or president == "Marx"; reichswehr_loyalty -= 0.05 if kpd_support_braun; rb_strength += 100
+on-arrival: nazi_rebel = 1; reichswehr_loyalty -= 0.1 if reichswehr_loyalty <= 0.05; reichswehr_loyalty += 0.1; reichswehr_loyalty += 0.15 if z_support_braun or president == "Marx"; reichswehr_loyalty -= 0.05 if kpd_support_braun; rb_strength += 100
 
 Immediately following the election, forces of the Stalhelm and SA organized across the country under the Harzburg Front storm government offices, communications, railway, and other important infrastructure, as reactionary officers begin taking their forces out of barracks and joining in the coup.
 
