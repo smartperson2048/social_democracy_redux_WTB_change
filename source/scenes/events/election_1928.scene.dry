@@ -1097,7 +1097,7 @@ go-to: right_coalition_3 if dnvp_reform; right_coalition_old if not dnvp_reform
 
 @right_coalition_old
 
-Even though the DNVP is very reluctant to participate in such a coalition, they still accede to President Hindenburg's wishes and to allow a government to be formed. Thus, a majority center-right coalition is formed, with Brüning as chancellor.
+Even though the DNVP is very reluctant to participate in such a coalition, they still accede to [? if president == "Hindenburg" : President Hindenburg's wishes ?][? if president != "Hindenburg" : the Center Party's wishes ?] and to allow a government to be formed. Thus, a majority center-right coalition is formed, with Brüning as chancellor.
 
 @right_coalition_3
 
