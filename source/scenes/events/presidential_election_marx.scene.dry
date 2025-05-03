@@ -182,7 +182,7 @@ set-jump: post_election
 
 @post_election
 on-arrival: {!
-Q.presidents_32 = ['braun', 'marx', 'hitler', 'thalmann', 'duesterberg', 'seeckt'];
+Q.presidents_32 = ['braun', 'marx', 'adenauer', 'hitler', 'thalmann', 'duesterberg', 'seeckt'];
 Q.election_round += 1;
 
 Q.braun_votes = 0;
