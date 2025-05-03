@@ -328,7 +328,7 @@ Surprisingly, the motion to reject cooperation with the bourgeoisie is passed th
 
 @silly
 choose-if: left_c < 50
-subtitle: The Center and Right ([ + pragmatic_unity +]%)
+subtitle: The Center and Right ([+ pragmatic_unity +]%)
 on-arrival: reformist_dissent -= 5; left_dissent += 5
 #go-to: saxon_struggle
 
