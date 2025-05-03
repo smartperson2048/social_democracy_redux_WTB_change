@@ -340,14 +340,38 @@ call: set_next_election_time
 Hans von Seeckt has won the Presidency as the reactionary and anti-republican candidate. His first act is to replace the chancellor with Franz von Papen, an independent formerly of the Center Party, and dissolve the Reichstag for new elections in the hopes that a reactionary coalition may have a majority.
 
 @marx_wins
-on-arrival: president = "Marx"; marx_relation += 5; reformist_strength += 5; coup_progress += 2
+on-arrival: president = "Marx"; marx_relation += 5; reformist_strength += 5; coup_progress += 2; {!
+if (Q.reactionary_consolidate && Q.hitler_votes_disp >= Q.nsdap_votes) {
+    var nazi_normalization = Q.hitler_votes_disp-Q.nsdap_votes;
+    Q.workers_nsdap += nazi_normalization/2;
+    Q.new_middle_nsdap += nazi_normalization;
+    Q.old_middle_nsdap += nazi_normalization;
+    Q.rural_nsdap += nazi_normalization;
+    Q.unemployed_nsdap += nazi_normalization/2;
+    Q.new_middle_other -= nazi_normalization/2;
+    Q.old_middle_other -= nazi_normalization/2;
+    Q.rural_other -= nazi_normalization/2;
+}
+!}
 
 Wilhelm Marx has won re-election as president, despite the attempts by the reactionaries to depose him. The republic endures, for now.
 
 - @far_right_coup: The Harzburg Front immediately initiates a coup...
 
 @braun_wins
-on-arrival: president = "Braun"; coup_progress += 3; coup_progress += 1 if sa_force + sh_force >= 50; reformist_dissent -= 15; center_dissent -= 15; labor_dissent -= 15; left_dissent -= 5; workers_spd += 8*(1-dissent); old_middle_spd += 5*(1-dissent); new_middle_spd += 5*(1-dissent); rural_spd += 5*(1-dissent); unemployed_spd += 5*(1-dissent);
+on-arrival: president = "Braun"; coup_progress += 3; coup_progress += 1 if sa_force + sh_force >= 50; reformist_dissent -= 15; center_dissent -= 15; labor_dissent -= 15; left_dissent -= 5; workers_spd += 8*(1-dissent); old_middle_spd += 5*(1-dissent); new_middle_spd += 5*(1-dissent); rural_spd += 5*(1-dissent); unemployed_spd += 5*(1-dissent); {!
+if (Q.reactionary_consolidate && Q.hitler_votes_disp >= Q.nsdap_votes) {
+    var nazi_normalization = Q.hitler_votes_disp-Q.nsdap_votes;
+    Q.workers_nsdap += nazi_normalization/2;
+    Q.new_middle_nsdap += nazi_normalization;
+    Q.old_middle_nsdap += nazi_normalization;
+    Q.rural_nsdap += nazi_normalization;
+    Q.unemployed_nsdap += nazi_normalization/2;
+    Q.new_middle_other -= nazi_normalization/2;
+    Q.old_middle_other -= nazi_normalization/2;
+    Q.rural_other -= nazi_normalization/2;
+}
+!}
 
 Otto Braun of the SPD has won the presidency! This is a moment of celebration for our party, and his victory is able to bolster our support.
 
