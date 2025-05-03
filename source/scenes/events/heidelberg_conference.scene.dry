@@ -320,7 +320,7 @@ Max Seydewitz of the left meanwhile has proposed before the conference what woul
 
 @seydewitz
 choose-if: left_c >= 50 or ((left_c+labor_c >= 50 and not gorlitz_program) or (reformist_c < 50 and seydewitz_advisor and not gorlitz_program and left_c+labor_c >= center_c and president != "Marx" and dvp_relation < 40 and z_relation < 50))
-subtitle: The Left ([ + left_c +]%) [? if left_c < 50 : - though the Leftists lack a majority, the trade unions and dissident centrists may be convinced. ?]
+subtitle: The Left ([+ left_c +]%) [? if left_c < 50 : - though the Leftists lack a majority, the trade unions and dissident centrists may be convinced. ?]
 on-arrival: left_strength += 20; reformist_strength -= 10; reformist_dissent += 25; center_dissent += 10; labor_dissent += ((z_relation+dvp_relation)/10); marx_relation -= 10; z_relation -= 15; dvp_relation -= 15; ddp_relation -= 15; kpd_relation += 10; communist_coalition += 1
 go-to: saxon_struggle
 
