@@ -1523,6 +1523,9 @@ if (Q.month_actions >= 1) {
             }
         }
         if (Q.return_to_normalcy) {
+            if (Q.marx_relation < Q.z_relation) {
+                Q.marx_relation += 10/12;
+            }
             // return to normalcy -> voters return to the base
             if (Q.ddp_votes_wurttemberg >= Q.ddp_votes*1.75) {
                 Q.wurttemberg_ddp -= 15/12;
