@@ -693,16 +693,16 @@ if (Q.month_actions >= 1) {
             Q.workers_spd -= 2/12;
         }
         if (Q.new_middle_spd_normalized >= 5) {
-            Q.new_middle_spd -= 1/12;
+            Q.new_middle_spd -= 2/12;
         }
         if (Q.old_middle_spd_normalized >= 5) {
-            Q.old_middle_spd -= 1/12;
+            Q.old_middle_spd -= 2/12;
         }
         if (Q.rural_spd_normalized >= 10) {
-            Q.rural_spd -= 1/12;
+            Q.rural_spd -= 2/12;
         }
         if (Q.unemployed_spd_normalized >= 20) {
-            Q.unemployed_spd -= 1/12;
+            Q.unemployed_spd -= 2/12;
         }
         if (Q.catholics_spd_normalized >= 20) {
             Q.catholics_spd -= 1/12;
