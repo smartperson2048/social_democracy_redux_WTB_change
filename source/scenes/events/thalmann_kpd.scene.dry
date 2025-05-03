@@ -1,0 +1,11 @@
+title: The KPD's New Leader
+subtitle: The Comintern has turned on Fischer
+view-if: year == 1925 and month >= 9
+max-visits: 1
+tags: event
+new-page: true
+on-arrival: kpd_party_leader = "Thälmann"; kpd_relation += 5
+
+= The KPD's New Leader
+
+placeholder text
