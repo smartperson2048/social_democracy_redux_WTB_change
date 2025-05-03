@@ -1414,7 +1414,7 @@ bruning_points += Q.neo_weimar_coalition;
 bruning_points += Q.pro_republic;
 bruning_points += (100-Q.socialism);
 bruning_points += (100-Q.nationalism);
-bruning_points -= Q.political_crisis_progress;
+bruning_points -= Q.no_majority_elections;
 if (braun_points >= hitler_points) {
     bruning_points += hitler_points/4;
 } else {

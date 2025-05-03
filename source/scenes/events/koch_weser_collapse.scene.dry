@@ -23,6 +23,8 @@ on-arrival: spd_in_government = 0; spd_toleration = 0; foreign_minister_party = 
 
 We have returned to opposition.
 
+# todo: set dnvp_toleration to one from this, and if DNVP toleration is one then upon rearmament scandal rather than VONCing the DNVP will block our VONC and join gov
+
 @marx
 on-arrival: chancellor = "Brüning"; chancellor_party = "Z"; marx_relation -= 5
 
