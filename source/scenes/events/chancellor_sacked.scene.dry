@@ -18,7 +18,7 @@ on-arrival: spd_in_government = 0; spd_toleration = 0; chancellor = "Brüning"; 
 Replacing us is Brüning of the Center Party, who has reorganized his cabinet to encompass the right-wing parties, including the DNVP who reluctantly accede to Hindenburg's wishes for a government. Their coalition frustratingly holds a majority in the Reichstag, meaning we are forced to accept the loss and prepare for the next elections.
 
 @no_majority
-on-arrival: spd_in_government = 0; spd_toleration = 1; chancellor = "Brüning"; chancellor_party = "Z"; foreign_minister_party = "DVP"; interior_minister_party = "Z"; justice_minister_party = "Z"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = "Z"; finance_minister_party = "Z"; agriculture_minister_party = "Z"; in_right_coalition = 1
+on-arrival: spd_in_government = 0; spd_toleration = 1; chancellor = "Brüning"; chancellor_party = "Z"; foreign_minister_party = "DVP"; interior_minister_party = "Z"; justice_minister_party = "Z"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = "Z"; finance_minister_party = "Z"; agriculture_minister_party = "Z"
 
 Replacing us is Brüning of the Center Party, who has reorganized his cabinet to encompass the bourgeois parties. Although they lack a majority in the Reichstag, we could tolerate their government at the next session to prevent new elections, effectively acquiscing to Hindenburg's wishes.
 
