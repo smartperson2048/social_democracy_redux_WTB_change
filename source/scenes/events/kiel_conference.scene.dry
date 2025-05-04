@@ -323,7 +323,7 @@ go-to: agriculture_program
 
 The resolution is adopted, expressing and providing support to the trade unions as the defenders of working class prosperity, including that of the new middle class.
 
-@Nah
+@nah
 subtitle: There are greater priorities.
 choose-if: labor_strength < 50 or resources < 1
 on-arrival: labor_dissent += 5; labor_strength -= 5
