@@ -1,8 +1,8 @@
-title: Heidelberg Conference
-subtitle: The SPD holds a party conference in Heidelberg
+title: Kiel Conference
+subtitle: The SPD holds a party conference in Kiel
 new-page: true
 tags: event
-view-if: year == 1925 and month >= 9
+view-if: year == 1927 and month >= 5
 set-jump: post_congress
 max-visits: 1
 
@@ -11,9 +11,7 @@ max-visits: 1
 
 = Heidelberg Conference
 
-The SPD is holding its biannual conference in the city of Heidelberg, the burial place of the recently deceased Friedrich Ebert. Among the priorities on the agenda is the drafting of a new party program to replace the Görlitz program, which is seen by many as deviating too far from Marxism and as a result costing the SPD amongst the working class.
-
-Another issue is that of Saxony, where the regional party organization has split nearly in half over Max Heldt's decision to govern with the DVP.
+The SPD is holding its biannual conference in the city of Kiel, where Baade is expected to present his agricultural programme for adoption by the SPD, and the left expected to demand, even more clearly than in the last conference, the SPD reject entrance into government.
 
 - @faction_algorithm: The delegates enter...
 
@@ -200,25 +198,25 @@ if (!Q.neorevisionism) {
         {   "id": "left",
             "legend": "Left",
             "name": "Left",
-            "seats": Math.round(Q.left_c*3.98),
+            "seats": Math.round(Q.left_c*4.15),
         },
         {
             "id": "center",
             "legend": "Center",
             "name": "Center",
-            "seats": Math.round(Q.center_c*3.98),
+            "seats": Math.round(Q.center_c*4.15),
         },
         {
             "id": "labor",
             "legend": "Labor",
             "name": "Labor",
-            "seats": Math.round(Q.labor_c*3.98),
+            "seats": Math.round(Q.labor_c*4.15),
         },
         {
             "id": "reformist",
             "legend": "Reformists",
             "name": "Reformists",
-            "seats": Math.round(Q.reformist_c*3.98),
+            "seats": Math.round(Q.reformist_c*4.15),
         },
 ];
 }
@@ -227,31 +225,31 @@ else {
         {   "id": "left",
             "legend": "Left",
             "name": "Left",
-            "seats": Math.round(Q.left_c*3.98),
+            "seats": Math.round(Q.left_c*4.15),
         },
         {
             "id": "center",
             "legend": "Center",
             "name": "Center",
-            "seats": Math.round(Q.center_c*3.98),
+            "seats": Math.round(Q.center_c*4.15),
         },
         {
             "id": "labor",
             "legend": "Labor",
             "name": "Labor",
-            "seats": Math.round(Q.labor_c*3.98),
+            "seats": Math.round(Q.labor_c*4.15),
         },
         {
             "id": "reformist",
             "legend": "Reformists",
             "name": "Reformists",
-            "seats": Math.round(Q.reformist_c*3.98),
+            "seats": Math.round(Q.reformist_c*4.15),
         },
         {
             "id": "neorevisionist",
             "legend": "Neorevisionists",
             "name": "Neorevisionists",
-            "seats": Math.round(Q.neorevisionist_c*3.98),
+            "seats": Math.round(Q.neorevisionist_c*4.15),
         },
 ];
 }
@@ -289,52 +287,66 @@ go-to: coalition_menu
 
 @coalition_menu
 
-The first matter in the conference is what is to be done regarding the party program. The Center has drafted a new program, a significant shift to the left, though the Left gathered around Levi remains skeptical.
+The prominent issue in the conference becomes clear as the left around Toni Sender and Siegfried Aufhäuser propose a resolution that would explicitly state that the class struggle can only be waged from opposition. In opposition are the reformists on the party right, as well as the bulk of the center and the trade unions, though with Aufhäuser joining in the push an understanding between the unions and the left against the [? if center_c+reformist_c >= left_c : dominating ?] pragmatists may be possible.
 
-Alternatively, the Görlitz program could be maintained, with revisions to match the changing times. With Heidelberg not even entirely satisfying the party left, this would certainly provoke quite the rebellion.
+- @oppositionist: The resolution is adopted, rejecting the notion of government participation.
+- @participationist: The resolution is defeated, and instead one in support is adopted.
 
-- @heidelberg: Adopt a new party program as written by the Centrists.
-- @gorlitz: Retain the Görlitz program, but moderately revised.
+@oppositionist
+choose-if: left_c >= 50 or (pragmatic_unity < 50 and dvp_relation < 40 and z_relation < 50)
+subtitle: The Left ([+ left_c +]%) [? if left_c < 50 : - though the Left lacks a majority, the trade unions could be won over. ?]
+on-arrival: left_strength += 20; reformist_strength -= 10; reformist_dissent += 30; center_dissent += 15; labor_dissent += ((z_relation+dvp_relation)/10); marx_relation -= 10; z_relation -= 15; dvp_relation -= 15; ddp_relation -= 15; kpd_relation += 10; communist_coalition += 1
+go-to: unions
 
-@heidelberg
-subtitle: The Center ([+ center_c +]%) [? if center_c < 50 : - though the Centrists lack a majority, it can still pass as a compromise resolution. ?]
-choose-if: reformist_c < 50
-on-arrival: heidelberg_program = 1; center_strength += 5; reformist_strength -= 5; left_dissent -= 5; center_dissent -= 10; reformist_dissent += 5; dvp_relation -= 5; kpd_relation += 5
-go-to: coalition_issue
+The resolution expressly rejecting government participation as a means of class struggle is accepted by the conference, much to the uproar of the party right. 
 
-The party has adopted the Heidelberg program, written by Karl Kautsky of the party center and representing a return towards the party's Marxist roots. 
-
-@gorlitz
-subtitle: The Right ([+ reformist_c +]%) [? if reformist_c < 50 : - though the Reformists lack a majority, the trade unions may be convinced. ?]
-choose-if: (reformist_c+labor_c) >= 50
-on-arrival: gorlitz_program = 1; center_strength -= 5; marx_relation += 5; left_strength -= 5; reformist_strength += 10; left_dissent += 20; center_dissent += 15; reformist_dissent -= 5; peoples_party_support += 1; dvp_relation += 5; kpd_relation -= 5; labor_strength += 10 if reformist_c < 50; center_dissent += 5 if reformist_c < 50
-go-to: coalition_issue
-
-The party has, surprisingly, chosen to retain the bulk of the Görlitz program. The left and center wings of the party are incensed by this decision. [? if reformist_c < 50 : The trade unions have been given significant concessions to be convinced of this, further angering the centrists. ?]
-
-@coalition_issue
-
-Max Seydewitz of the left meanwhile has proposed before the conference what would amount to a rejection of coalitions with the bourgeois parties in order to represent the interests of the proletariat in all future struggles without regard to their opinions.
-
-- @seydewitz: The motion is passed by the conference.
-- @silly: The motion is defeated by the conference.
-
-@seydewitz
-choose-if: left_c >= 50 or ((left_c+labor_c >= 50 and not gorlitz_program) or (reformist_c < 50 and seydewitz_advisor and not gorlitz_program and left_c+labor_c >= center_c and president != "Marx" and dvp_relation < 40 and z_relation < 50))
-subtitle: The Left ([+ left_c +]%) [? if left_c < 50 : - though the Leftists lack a majority, the trade unions and dissident centrists may be convinced. ?]
-on-arrival: left_strength += 20; reformist_strength -= 10; reformist_dissent += 25; center_dissent += 10; labor_dissent += ((z_relation+dvp_relation)/10); marx_relation -= 10; z_relation -= 15; dvp_relation -= 15; ddp_relation -= 15; kpd_relation += 10; communist_coalition += 1
-#go-to: saxon_struggle
-
-Surprisingly, the motion to reject cooperation with the bourgeoisie is passed through the conference. The party's right wing is incensed by this decision, with some even threatening revolt.
-
-@silly
+@participationist
 choose-if: left_c < 50
-subtitle: The Center and Right ([+ pragmatic_unity +]%)
-on-arrival: reformist_dissent -= 5; left_dissent += 5
-#go-to: saxon_struggle
+subtitle: The Center and the Right ([+ pragmatic_unity +]%) [? if pragmatic_unity < 50 : - though they lack a majority, the trade unions could be won over. ?]
+on-arrival: left_dissent += 5; dvp_relation += 10; z_relation += 10; ddp_relation += 10; reformist_dissent -= 5; left_strength -= 5; labor_dissent += 5 if dvp_relation < 40 and z_relation < 50
+go-to: unions
 
-As expected, the motion is defeated. The party remains too attached to the Weimar Coalition for such a move to be feasible.
+The resolution is, as expected, rejected by the conference, to the disappointment of the [? if left_c < 15 : increasingly sidelined ?] left.
 
-@saxon_struggle
+@unions
 
-Finally, the last main issue for the conference is what should be done about Saxony, where the SPD has essentially split in half following the decision of Max Heldt to govern with the DVP despite the local party chapter's express refusal.
+With the major polarizing issue out of the way, the next proposal to be voted on is a resolution of support for the trade unions and expression of solidarity with the new middle class, perhaps engineered to satisfy those unions upset by the adoption of the previous resolution.
+
+- @union_support: The resolution is adopted.
+- @nah: The resolution is rejected.
+
+@union_support
+subtitle: -1 resource - Labor ([+ labor_c +]%)
+choose-if: resources >= 1
+on-arrival: resources -= 1; labor_dissent -= 10; labor_strength += 5; new_middle_spd += 3*(1-dissent)
+go-to: agriculture_program
+
+The resolution is adopted, expressing and providing support to the trade unions as the defenders of working class prosperity, including that of the new middle class.
+
+@Nah
+subtitle: There are greater priorities.
+choose-if: labor_strength < 50 or resources < 1
+on-arrival: labor_dissent += 5; labor_strength -= 5
+go-to: agriculture_program
+
+The resolution is ultimately rejected, with the conference considering support for the unions and the new middle class to not be a pressing priority.
+
+@agriculture_program
+
+Finally to be voted on is the agricultural programme proposed by Fritz Baade, published in January. The program is a step towards the SPD expanding its voteshare beyond simply the urban working class, but into other working class groups too. Some on the left worry, however, that this opens the door to revisionist "Volkspartei" rhetoric or that it would result in the SPD supporting petty bourgeois producers.
+
+- @program_adopted: The agricultural programme is adopted.
+- @program_refused: The agricultural programme is rejected.
+
+@program_adopted
+subtitle: The Right ([+ reformist_c +]%) [? if reformist_c < 50 : - though the reformists lack a majority, much of the center and trade unions are sympathetic. ?]
+choose-if: left_c < 50
+on-arrival: peoples_party_support += 1
+
+The programme is adopted. Perhaps this will enable the SPD to breach into the rural regions that the DNVP currently dominates.
+
+@program_refused
+subtitle: The Left ([+ left_c +]%) [? if left_c < 50 : - though the left lacks a majority, much of the center and trade unions are sympathetic. ?]
+choose-if: reformist_c < 50
+
+The programme is rejected. It seems the SPD shall continue to remain a strictly urban working class party.
