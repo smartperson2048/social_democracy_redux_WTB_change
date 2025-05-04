@@ -265,7 +265,7 @@ We choose to allow Hindenburg's presidency to continue.
 - @agenda_gov: Continue...
 
 @resign
-on-arrival: pro_republic -= 5; z_relation -= 5; dvp_relation -= 10; presidential_timer = 1 if year < 1933; president = "Bumke" if year >= 1933 and judicial_reform < 4; president = "Großmann" if year >= 1933 and judicial_reform >= 4; presidential_timer = 3 if year >= 1933; president = "N/A" if year < 1933
+on-arrival: presidency_vacated = 1; pro_republic -= 5; z_relation -= 5; dvp_relation -= 10; presidential_timer = 1 if year < 1933; president = "Bumke" if year >= 1933 and judicial_reform < 4; president = "Großmann" if year >= 1933 and judicial_reform >= 4; presidential_timer = 3 if year >= 1933; president = "N/A" if year < 1933
 
 Hindenburg is forced to resign by our forces. [? if year >= 1933 : As is procedure, the president of the Supreme Court is to succeed him as interim. ?]
 
@@ -325,7 +325,7 @@ on-arrival: presidency_decided = 1
 - @abolish: We will abolish the Presidency entirely.
 
 @snap_election
-on-arrival: presidential_timer = 2; president = "Bumke" if year >= 1933 and judicial_reform < 4; president = "Großmann" if year >= 1933 and judicial_reform >= 4; president = "N/A" if year < 1933; presidential_timer -= 1 if year < 1933
+on-arrival: presidency_vacated = 1; presidential_timer = 2; president = "Bumke" if year >= 1933 and judicial_reform < 4; president = "Großmann" if year >= 1933 and judicial_reform >= 4; president = "N/A" if year < 1933; presidential_timer -= 1 if year < 1933
 go-to: agenda_reb
 
 New presidential elections have been scheduled for shortly.
@@ -338,7 +338,7 @@ We have made Otto Braun the President of Germany.
 - @agenda_reb: Continue...
 
 @provisional
-on-arrival: president = "Wirth"; presidential_timer = 12
+on-arrival: president = "Wirth"; presidential_timer = 12; presidency_vacated = 1; 
 
 We leave the election to the Reichstag, which elects Joseph Wirth of the Center as a compromise candidate.
 

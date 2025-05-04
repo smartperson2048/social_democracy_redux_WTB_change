@@ -1,6 +1,6 @@
 title: Presidential Election
 subtitle: Finally, presidential elections can be held again...
-view-if: presidential_timer <= 0 and victory_republic and not presidency_abolished
+view-if: presidential_timer <= 0 and victory_republic and not presidency_abolished and presidency_vacated
 frequency: 1000
 max-visits: 1
 new-page: true

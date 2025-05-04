@@ -304,8 +304,17 @@ There are some potential coalition arrangements.
 - @right_prussia
 - @left_prussia
 - @far_right_prussia
+- @spd_prussia
 - @no_majority_braun
 - @no_majority_stegerwald
+
+@spd_prussia
+title: Social Democracy has won a majority in Prussia.
+subtitle: SPD ([ + spd_pl +]%)
+view-if: spd_pl >= 50 or (spd_prussia and in_spd_prussia)
+on-arrival: in_spd_prussia = 1
+
+We have won a majority in Prussia!
 
 @weimar_prussia
 title: The Weimar Coalition, traditionally dominant in Prussia.
