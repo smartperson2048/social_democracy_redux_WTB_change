@@ -1,6 +1,6 @@
 title: Reichstag Fire!
 subtitle: The Reichstag has been burned down, and the Nazis are using this as a pretext to consolidate power.
-view-if: impending_fire == 1 and (month = hitler_month + 1 or (year = hitler_year + 1 and hitler_month = 12))
+view-if: impending_fire == 1 and (month = hitler_month + 1 or (year = hitler_year + 1 and hitler_month = 12)) and not victory_republic
 tags: event
 new-page: true
 max-visits: 1
