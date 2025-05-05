@@ -26,6 +26,9 @@ Q.rb_power = Q.rb_strength*Q.rb_militancy;
 if (Q.dissent > 0.15) {
     Q.rb_power *= (1 - Q.dissent/1.5);
 }
+if (Q.spd_normalized < 0.25) {
+    Q.rb_power *= (Q.spd_normalized/0.25);
+}
 Q.total_power += Q.rb_power;
 Q.prussian_police_power = Q.prussian_police_strength*Q.prussian_police_militancy*Q.prussian_police_loyalty;
 if (Q.spd_prussia) {
