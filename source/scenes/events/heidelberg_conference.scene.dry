@@ -128,8 +128,8 @@ for (var faction of Q.factions) {
         console.log("  Dissent:", dissent);
         console.log("  Dissent modifier:", dissent_modifier.toFixed(4));
 
-        if (dissent_modifier < 0.25) {
-            dissent_modifier = 0.25;
+        if (dissent_modifier < 0.1) {
+            dissent_modifier = 0.1;
         }
 
         Q[faction + '_votes'] += base_vote * dissent_modifier;
