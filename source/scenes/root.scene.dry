@@ -913,13 +913,13 @@ For other, non-difficulty related tweaks.
 - @disable_normalize: Disable experimental support changes.
 - @enable_hyperinflation: Enable hyperinflation (janky)
 - @disable_hyperinflation: Disable hyperinflation
-- @enable_landtags: Enable WIP landtags (very WIP).
-- @disable_landtags: Disable WIP landtags (very WIP).
-- @enable_legislature: Enable legislative rework (WIP)
-- @disable_legislature: Disable legislative rework (WIP)
+- @enable_landtags: Enable WIP landtags (WIP).
+- @disable_landtags: Disable WIP landtags (WIP).
+- @enable_legislature: Enable legislative rework
+- @disable_legislature: Disable legislative rework
 - @1930: Begin the game in 1930.
 - @1928: Begin the game in 1928.
-- @1925: Begin the game in 1925 (biggest WIP to ever WIP unless you just wanna elect Wilhelm Marx)
+- @1925: Begin the game in 1925 (fairly WIP)
 - @menu: Back.
 
 @disable_end

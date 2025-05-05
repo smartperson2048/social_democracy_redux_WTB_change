@@ -504,7 +504,7 @@ Q.streetfighting_timer = 0;
 Q.peoples_party_timer = 0;
 Q.weimar_plan_timer = 0;
 // n_elections is the number of elections that have happened since the start of the game.
-Q.n_elections = 1;
+Q.n_elections = 0;
 // number of elections without a clear majority.
 Q.no_majority_elections = 0;
 // elections are not on a timer, but rather there is an indicator for whether you're in an electoral cycle.
