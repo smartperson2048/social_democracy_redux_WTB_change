@@ -116,7 +116,7 @@ on-arrival: panzerkreuzer_b_funded = 0; budget += 1 if panzerkreuzer_funded = 0;
 
 Our vote against the battlecruiser succeeds, with the support of the KPD and anti-war portions of the [+ ddp_name +]. The ship will not be built! [? if panzerkreuzer_funded == 0 : We have saved some budget from not funding the two ships. ?]
 
-if legislature_enabled : KPD: Against
+KPD: Against
 
 [? if sapd_formed : SAPD: Against ?]
 

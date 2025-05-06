@@ -1,8 +1,8 @@
-title: Kiel Conference
-subtitle: The SPD holds a party conference in Kiel
+title: Magdeburg Conference
+subtitle: The SPD holds a party conference in Magdeburg
 new-page: true
 tags: event
-view-if: year == 1927 and month >= 5
+view-if: year == 1929 and month >= 5
 set-jump: post_congress
 max-visits: 1
 
@@ -11,7 +11,7 @@ max-visits: 1
 
 = Heidelberg Conference
 
-The SPD is holding its biannual conference in the city of Kiel, where Baade is expected to present his agricultural programme for adoption by the SPD, and the left expected to demand, even more clearly than in the last conference, the SPD reject entrance into government.
+The SPD is holding its biannual conference in the city of Magdeburg, where it is expected that the Armed Forces Commission of the SPD will present its report and guidelines on military policy for vote. [? if spd_in_government and in_grand_coalition : Furthermore, the Grand Coalition with the DVP has come under increasing scrutiny as the left wing agitates against the pragmatic leadership of the party. ?]
 
 - @faction_algorithm: The delegates enter...
 
@@ -198,25 +198,25 @@ if (!Q.neorevisionism) {
         {   "id": "left",
             "legend": "Left",
             "name": "Left",
-            "seats": Math.round(Q.left_c*4.15),
+            "seats": Math.round(Q.left_c*3.97),
         },
         {
             "id": "center",
             "legend": "Center",
             "name": "Center",
-            "seats": Math.round(Q.center_c*4.15),
+            "seats": Math.round(Q.center_c*3.97),
         },
         {
             "id": "labor",
             "legend": "Labor",
             "name": "Labor",
-            "seats": Math.round(Q.labor_c*4.15),
+            "seats": Math.round(Q.labor_c*3.97),
         },
         {
             "id": "reformist",
             "legend": "Reformists",
             "name": "Reformists",
-            "seats": Math.round(Q.reformist_c*4.15),
+            "seats": Math.round(Q.reformist_c*3.97),
         },
 ];
 }
@@ -225,31 +225,31 @@ else {
         {   "id": "left",
             "legend": "Left",
             "name": "Left",
-            "seats": Math.round(Q.left_c*4.15),
+            "seats": Math.round(Q.left_c*3.97),
         },
         {
             "id": "center",
             "legend": "Center",
             "name": "Center",
-            "seats": Math.round(Q.center_c*4.15),
+            "seats": Math.round(Q.center_c*3.97),
         },
         {
             "id": "labor",
             "legend": "Labor",
             "name": "Labor",
-            "seats": Math.round(Q.labor_c*4.15),
+            "seats": Math.round(Q.labor_c*3.97),
         },
         {
             "id": "reformist",
             "legend": "Reformists",
             "name": "Reformists",
-            "seats": Math.round(Q.reformist_c*4.15),
+            "seats": Math.round(Q.reformist_c*3.97),
         },
         {
             "id": "neorevisionist",
             "legend": "Neorevisionists",
             "name": "Neorevisionists",
-            "seats": Math.round(Q.neorevisionist_c*4.15),
+            "seats": Math.round(Q.neorevisionist_c*3.97),
         },
 ];
 }
@@ -270,7 +270,7 @@ if (window && d3) {
     d3.select("#reichstag").datum(data).call(parliament);
 }
 !}
-go-to: coalition_menu
+go-to: coalition_menu if in_grand_coalition; spd_military_policy if not in_grand_coalition
 
 {!<svg id="reichstag" style="width: 500px; height: 250px;"> </svg>!}
 
@@ -287,66 +287,35 @@ go-to: coalition_menu
 
 @coalition_menu
 
-The prominent issue in the conference becomes clear as the left around Toni Sender and Siegfried Aufhäuser propose a resolution that would explicitly state that the class struggle can only be waged from opposition. In opposition are the reformists on the party right, as well as the bulk of the center and the trade unions, though with Aufhäuser joining in the push an understanding between the unions and the left against the [? if center_c+reformist_c >= left_c : dominating ?] pragmatists may be possible.
+[? if panzerkreuzer_funded : The construction of a battlecruiser by a government that the SPD participates in has caused significant backlash, backlash the left hopes to exploit to take down the Grand Coalition. ?][? if not panzerkreuzer_funded : Though the SPD has prevented the construction of a battlecruise, the Grand Coalition remains controversial, and the left hopes to bring it down. ?]
 
-- @oppositionist: The resolution is adopted, rejecting the notion of government participation.
-- @participationist: The resolution is defeated, and instead one in support is adopted.
+Thus, to pre-empt the left, a motion is submitted by the centrists to pass the matter on to the agenda, while the left around Aufhäuser and Sender attempt to pass a motion to criticize the behavior of the SPD's ministers and press the parliamentary group to advocate a variety of the demands of labor, something the trade unions are naturally sympathetic towards.
 
-@oppositionist
-choose-if: left_c >= 50 or (pragmatic_unity < 50 and dvp_relation < 40 and z_relation < 50)
-subtitle: The Left ([+ left_c +]%) [? if left_c < 50 : - though the Left lacks a majority, the trade unions could be won over. ?]
-on-arrival: coalition_dissent += 5; left_strength += 20; reformist_strength -= 10; reformist_dissent += 30; center_dissent += 15; labor_dissent += ((z_relation+dvp_relation)/10); marx_relation -= 10; z_relation -= 15; dvp_relation -= 15; ddp_relation -= 15; kpd_relation += 10; communist_coalition += 1
-go-to: unions
+- @destroy_groko: The motion by Aufhäuser and Sender against the grand coalition is passed.
+- @preserve_groko: The motion to pass the matter on to the agenda so as to preserve the government is passed.
 
-The resolution expressly rejecting government participation as a means of class struggle is accepted by the conference, much to the uproar of the party right. 
+@destroy_groko
+subtitle: The Left and Labor ([+ antitoleration_unity +]%) [? if antitoleration_unity < 50 : - some centrists may be swayed. ?]
+choose-if: lassalean_unity < 50
+on-arrival: reformist_dissent += 15; dvp_relation -= 10; z_relation -= 5; ddp_relation -= 5; left_strength += 10; center_dissent += 5; coalition_dissent += 2
+go-to: spd_military_policy
 
-@participationist
+The motion by the left is passed, tying the SPD's ministers and parliamentary group to party discipline for advocacy of the demands of labor irregardless of the concerns of the coalition. Naturally, the bourgeois parties are upset, and the government as a whole less stable.
+
+@preserve_groko
+subtitle: The Center and the Right ([+ pragmatic_unity +]%) [? if pragmatic_unity < 50 : - some trade unionists may be swayed. ?]
 choose-if: left_c < 50
-subtitle: The Center and the Right ([+ pragmatic_unity +]%) [? if pragmatic_unity < 50 : - though they lack a majority, the trade unions could be won over. ?]
-on-arrival: left_dissent += 5; dvp_relation += 10; z_relation += 10; ddp_relation += 10; reformist_dissent -= 5; left_strength -= 5; labor_dissent += 5 if dvp_relation < 40 and z_relation < 50
-go-to: unions
+on-arrival: left_dissent += 5; reformist_dissent -= 5; center_strength += 5
+go-to: spd_military_policy
 
-The resolution is, as expected, rejected by the conference, to the disappointment of the [? if left_c < 15 : increasingly sidelined ?] left.
+The motion by the center is passed, effectively delaying any firm committment by the SPD either way in the interests of preserving the unity of both party and government. The left is disappointed, but the motion is passed regardless.
 
-@unions
+@spd_military_policy
 
-With the major polarizing issue out of the way, the next proposal to be voted on is a resolution of support for the trade unions and expression of solidarity with the new middle class, perhaps engineered to satisfy those unions upset by the adoption of the previous resolution.
+Meanwhile, the Armed Forces Commission of the SPD has presented before the conference its report, outlining the guidelines for future military policy by the SPD.
 
-- @union_support: The resolution is adopted.
-- @nah: The resolution is rejected.
+- @wip: WIP
 
-@union_support
-subtitle: -1 resource - Labor ([+ labor_c +]%)
-choose-if: resources >= 1
-on-arrival: resources -= 1; labor_dissent -= 10; labor_strength += 5; new_middle_spd += 3*(1-dissent)
-go-to: agriculture_program
-
-The resolution is adopted, expressing and providing support to the trade unions as the defenders of working class prosperity, including that of the new middle class.
-
-@nah
-subtitle: There are greater priorities.
-choose-if: labor_strength < 50 or resources < 1
-on-arrival: labor_dissent += 5; labor_strength -= 5
-go-to: agriculture_program
-
-The resolution is ultimately rejected, with the conference considering support for the unions and the new middle class to not be a pressing priority.
-
-@agriculture_program
-
-Finally to be voted on is the agricultural programme proposed by Fritz Baade, published in January. The program is a step towards the SPD expanding its voteshare beyond simply the urban working class, but into other working class groups too. Some on the left worry, however, that this opens the door to revisionist "Volkspartei" rhetoric or that it would result in the SPD supporting petty bourgeois producers.
-
-- @program_adopted: The agricultural programme is adopted.
-- @program_refused: The agricultural programme is rejected.
-
-@program_adopted
-subtitle: The Right ([+ reformist_c +]%) [? if reformist_c < 50 : - though the reformists lack a majority, much of the center and trade unions are sympathetic. ?]
-choose-if: left_c < 50
-on-arrival: peoples_party_support += 1
-
-The programme is adopted. Perhaps this will enable the SPD to breach into the rural regions that the DNVP currently dominates.
-
-@program_refused
-subtitle: The Left ([+ left_c +]%) [? if left_c < 50 : - though the left lacks a majority, much of the center and trade unions are sympathetic. ?]
-choose-if: reformist_c < 50
-
-The programme is rejected. It seems the SPD shall continue to remain a strictly urban working class party.
+@wip
+subtitle: There should be two options here, but I need to find a good source on the military policy in question before I can add two options for a vote result. But don't worry, you aren't missing out on much, probably. It'd just be like "the left doesn't like this because imperialism but the center and right like it because government" and then you pick which one and trade off some dissent in return. So yeah, it's not so important, don't worry about missing out. The much cooler thing here is the fun graphs of your internal factions. One day I'm gonna tie it to economic plans, just you wait. 
+go-to: root
