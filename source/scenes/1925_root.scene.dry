@@ -601,8 +601,9 @@ Q.prussia_election_month = 5;
 Q.bavaria_election_year = 1928;
 Q.bavaria_election_month = 5;
 
-Q.thuringia_election_year = 1929;
-Q.thuringia_election_month = 12;
+Q.thuringia_election_year = 1927;
+Q.thuringia_election_month = 1;
+Q.t_elections = -1;
 
 Q.saxony_election_year = 1929;
 Q.saxony_election_month = 5;
@@ -635,14 +636,16 @@ Q.bb_bl = 7;
 Q.ddp_bl = 3;
 Q.other_bl = 5;
 
-Q.spd_tl = 33;
+Q.spd_tl = 23;
 Q.z_tl = 0;
-Q.nsdap_tl = 3;
-Q.dnvp_tl = 23;
-Q.dvp_tl = 11;
-Q.kpd_tl = 14;
-Q.ddp_tl = 3;
-Q.other_tl = 12;
+Q.nsdap_tl = 9;
+Q.dnvp_tl = 31;
+Q.dvp_tl = 17;
+Q.kpd_tl = 18;
+Q.ddp_tl = 0;
+Q.other_tl = 0;
+
+Q.dr_exists = 1;
 
 Q.spd_sl = 32;
 Q.z_sl = 0;

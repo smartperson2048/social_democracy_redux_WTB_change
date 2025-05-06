@@ -6,6 +6,7 @@ Q.economic_growth -= 5.4;
 Q.inflation += 1.1;
 Q.unemployed += 1.2;
 Q.budget += 2;
+Q.dr_exists = 0;
 for (var party of Q.parties) {
     for (var c of Q.classes) {
         Q[c+'_'+party] = (Q[c+'_'+party+'_normalized']);
