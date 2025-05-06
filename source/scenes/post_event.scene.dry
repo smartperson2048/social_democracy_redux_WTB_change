@@ -1086,7 +1086,10 @@ if (Q.month_actions >= 1) {
         }
         Q.hamburg_spd -= 0.25/12;
         Q.hamburg_kpd -= 0.35/12;
-        Q.hamburg_ddp += 10/12;
+        Q.hamburg_ddp += 5/12;
+        if (Q.ddp_votes < 3) {
+            Q.hamburg_ddp += 5/12;
+        } 
         Q.hamburg_dvp += 2/12;
         Q.hamburg_other += 1/12;
         Q.hamburg_dnvp -= 0.2/12;
