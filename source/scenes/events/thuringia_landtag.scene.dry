@@ -310,7 +310,7 @@ There are some potential coalition arrangements.
 title: A right-wing bourgeois coalition.
 subtitle: DVP + DNVP + Others ([+ t_bourgeois_coalition +]%)
 view-if: t_bourgeois_coalition >= 50 or t_elections <= 1
-choose-if: t_bourgeois_coalition >= 50 or (t_elections <= 0 and t_bourgeois_coalition+ddptl+nsdap_tl >= 50)
+choose-if: t_bourgeois_coalition >= 50 or (t_elections <= 0 and t_bourgeois_coalition+ddp_tl+nsdap_tl >= 50)
 unavailable-subtitle: DVP + DNVP + Others ([+ t_bourgeois_coalition +]%) - The bourgeois have fallen short of a majority.
 
 The incumbent bourgeois coalition is able to survive[? if t_bourgeois_coalition >= 50 : , thankfully, without Nazi toleration. ?][? if t_bourgeois_coalition < 50 : , though only with the toleration of the Nazi Party is it able to do so. ?]
