@@ -12,6 +12,14 @@ for (var party of Q.parties) {
         Q[c+'_'+party] = (Q[c+'_'+party+'_normalized']);
     } 
 }
+Q.thuringia_spd += 0.25; // 1.15;
+Q.thuringia_kpd -= 0.3;
+Q.thuringia_ddp += 0.2;
+Q.thuringia_z += 0.1;
+Q.thuringia_dvp -= 0.1;
+Q.thuringia_dnvp -= 0.5;
+Q.thuringia_other += 1.4;
+Q.thuringia_nsdap += 0.1;
 !}
 tags: event
 view-if: year = 1928 and month = 1 and locarno_seen

@@ -210,16 +210,16 @@ else {
             "seats": Math.round(Q.z_tl*0.6),
         },
         {
-            "id": "dvp",
-            "legend": "DVP",
-            "name": "DVP",
-            "seats": Math.round(Q.dvp_tl*0.6),
-        },
-        {
             "id": "other",
             "legend": "Other",
             "name": "Other",
             "seats": Math.round(Q.other_tl*0.6),
+        },
+        {
+            "id": "dvp",
+            "legend": "DVP",
+            "name": "DVP",
+            "seats": Math.round(Q.dvp_tl*0.6),
         },
         {
             "id": "dnvp",

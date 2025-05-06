@@ -645,6 +645,16 @@ Q.kpd_tl = 18;
 Q.ddp_tl = 0;
 Q.other_tl = 0;
 
+Q.thuringia_spd = 0.9;
+Q.thuringia_sapd = 1;
+Q.thuringia_kpd = 1;
+Q.thuringia_ddp = 0.8;
+Q.thuringia_dvp = 1.5;
+Q.thuringia_dnvp = 1;
+Q.thuringia_z = 0.1;
+Q.thuringia_other = 1.25;
+Q.thuringia_nsdap = 0.75;
+
 Q.dr_exists = 1;
 
 Q.spd_sl = 32;
