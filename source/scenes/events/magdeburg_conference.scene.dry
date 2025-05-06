@@ -270,7 +270,7 @@ if (window && d3) {
     d3.select("#reichstag").datum(data).call(parliament);
 }
 !}
-go-to: coalition_menu if in_grand_coalition; spd_military_policy if not in_grand_coalition
+go-to: coalition_menu if spd_in_government and in_grand_coalition; spd_military_policy if not spd_in_government or not in_grand_coalition
 
 {!<svg id="reichstag" style="width: 500px; height: 250px;"> </svg>!}
 
@@ -296,7 +296,7 @@ Thus, to pre-empt the left, a motion is submitted by the centrists to pass the m
 
 @destroy_groko
 subtitle: The Left and Labor ([+ antitoleration_unity +]%) [? if antitoleration_unity < 50 : - some centrists may be swayed. ?]
-choose-if: lassalean_unity < 50
+choose-if: pragmatic_unity < 65
 on-arrival: reformist_dissent += 15; dvp_relation -= 10; z_relation -= 5; ddp_relation -= 5; left_strength += 10; center_dissent += 5; coalition_dissent += 2
 go-to: spd_military_policy
 
@@ -304,7 +304,7 @@ The motion by the left is passed, tying the SPD's ministers and parliamentary gr
 
 @preserve_groko
 subtitle: The Center and the Right ([+ pragmatic_unity +]%) [? if pragmatic_unity < 50 : - some trade unionists may be swayed. ?]
-choose-if: left_c < 50
+choose-if: antitoleration_unity < 65
 on-arrival: left_dissent += 5; reformist_dissent -= 5; center_strength += 5
 go-to: spd_military_policy
 
