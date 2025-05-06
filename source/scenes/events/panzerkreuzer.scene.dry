@@ -116,7 +116,7 @@ NSDAP: For
 With [+ bill_support +]% in favor, the vote succeeds.
 
 @vote_no_success
-on-arrival: on-arrival: panzerkreuzer_funded = 0; nationalism -= 3*(1-dissent); panzerkreuzer_failed = 1; workers_spd += 5*(1-dissent); coup_progress += 1; bill_support = bourgeois_coalition+far_right_coalition
+on-arrival: panzerkreuzer_funded = 0; nationalism -= 3*(1-dissent); panzerkreuzer_failed = 1; workers_spd += 5*(1-dissent); coup_progress += 1; bill_support = bourgeois_coalition+far_right_coalition
 
 Our coalition partners are shocked by our intransigence! Chancellor [+ chancellor +] brings the matter to a Reichstag vote, which fails even with all parties in favor except the SPD and KPD. The ship will not be built!
 
