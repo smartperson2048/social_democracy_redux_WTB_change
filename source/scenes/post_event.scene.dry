@@ -771,12 +771,12 @@ if (Q.month_actions >= 1) {
         } else {
             Q.new_middle_z += 1/12;
         }
-        if (Q.old_middle_ddp_normalized >= 10) {
+        if (Q.old_middle_ddp_normalized >= 11) {
             Q.old_middle_ddp -= 1/12;
         } else {
             Q.old_middle_ddp += 1/12;
         }
-        if (Q.old_middle_dvp_normalized >= 30) {
+        if (Q.old_middle_dvp_normalized >= 28) {
             Q.old_middle_dvp -= 1/12;
         } else {
             Q.old_middle_dvp += 1/12;
@@ -796,7 +796,7 @@ if (Q.month_actions >= 1) {
         } else {
             Q.old_middle_nsdap += 1/12;
         }
-        if (Q.old_middle_other_normalized >= 10) {
+        if (Q.old_middle_other_normalized >= 11) {
             Q.old_middle_other -= 1/12;
         } else {
             Q.old_middle_other += 1/12;
