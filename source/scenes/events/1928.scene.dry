@@ -20,6 +20,8 @@ Q.thuringia_dvp -= 0.1;
 Q.thuringia_dnvp -= 0.5;
 Q.thuringia_other += 1.4;
 Q.thuringia_nsdap += 0.1;
+Q.thuringia_election_year = 1929;
+Q.thuringia_election_month = 12;
 !}
 tags: event
 view-if: year = 1928 and month = 1 and locarno_seen
