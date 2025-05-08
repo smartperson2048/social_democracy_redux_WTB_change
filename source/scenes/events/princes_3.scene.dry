@@ -156,7 +156,7 @@ The *Reichsgerichts* (Supreme Court) has submitted an opinion to the Justice Min
 
 @wrong_and_lame
 view-if: justice_minister_party == "SPD"
-on-arrival: coalition_dissent += 1; reichswehr_loyalty -= 0.05; coup_progress += 2
+on-arrival: coalition_dissent += 1; reichswehr_loyalty -= 0.05; coup_progress += 2; princes_constitutional = 1
 
 Justice Minister Gustav Radbruch has reviewed the Supreme Court's opinion and found his own, that the referendum is indeed constitutional, serving the common good as the constitution prescribes, to be the correct one. 
 
@@ -199,7 +199,7 @@ The DVP's legal experts have come to the opinion that the referendum is unconsti
 
 @wrong_and_lame2
 view-if: justice_minister_party == "SPD"
-on-arrival: coalition_dissent += 1; reichswehr_loyalty -= 0.05; coup_progress += 2
+on-arrival: princes_constitutional = 1; coalition_dissent += 1; reichswehr_loyalty -= 0.05; coup_progress += 2
 
 Justice Minister Gustav Radbruch has reviewed the DVP's opinion and found his own, that the referendum is indeed constitutional, serving the common good as the constitution prescribes, to be the correct one. 
 
