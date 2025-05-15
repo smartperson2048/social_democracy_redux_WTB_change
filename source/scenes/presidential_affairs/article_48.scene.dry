@@ -4,6 +4,7 @@ new-page: true
 tags: pres_affairs
 is-card: true
 card-image: img/Weimar_Constitution.jpg
+on-departure: article_48_timer += 4
 
 = Article 48
 
