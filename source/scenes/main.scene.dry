@@ -18,6 +18,7 @@ max-cards: 3
 
 - @party
 - @govt
+- @pres
 - #advisor
 - @shuffle_leadership_pinned
 
