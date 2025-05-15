@@ -301,6 +301,7 @@ There are some potential coalition arrangements.
 - @left_front
 - @spd_majority
 - @nsdap_majority
+- @no_majority
 
 @grand_coalition
 title: A Grand Coalition, with the bourgeois parties.
@@ -353,3 +354,10 @@ view-if: nsdap_hl >= 50 or in_nazi_hamburg
 on-arrival: in_nazi_hamburg = 1; in_hamburg_soclib = 0; in_hamburg_left = 0; in_spd_hamburg = 0; in_hamburg_groko = 0; hamburg_nsdap += 0.25; hamburg_kpd -= 0.25; hamburg_spd -= 0.1; workers_nsdap += 3; new_middle_nsdap += 3; old_middle_nsdap += 4; rural_nsdap += 3; unemployed_nsdap += 3
 
 The NSDAP governs Hamburg alone. Suppression of the left-wing parties is intense, and the Nazis consolidate power within the state.
+
+@no_majority
+view-if: not (nsdap_hl >= 50 or in_nazi_hamburg) and not (spd_hl >= 50 or in_spd_hamburg) and not ((h_left_coalition >= 50 or in_hamburg_left) reformist_strength < 25 and kpd_relation >= 55 and communist_coalition >= 2) and not (h_social_liberal_coalition >= 50 or in_hamburg_soclib) and not (h_grand_coalition >= 50 or h_elections < 1 or in_hamburg_groko)
+title: There is no clear majority.
+on-arrival: kpd_relation += 5 if h_left_coalition >= 50 and kpd_relation < 50; hamburg_kpd -= 0.2 if h_left_coalition >= 50 and kpd_relation < 50; hamburg_spd += 0.2 if h_left_coalition >= 50 and kpd_relation < 50; hamburg_dvp -= 0.1; hamburg_other -= 0.1; hamburg_dnvp -= 0.1; hamburg_ddp += 0.1; hamburg_nsdap += 0.05; hamburg_election_month = month+3; hamburg_election_year += 1 if hamburg_election_month > 12; hamburg_election_month -= 12 if hamburg_election_month > 12
+
+There is no clear majority, new elections have been set.

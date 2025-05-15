@@ -498,7 +498,7 @@ title: A new "Popular Front" coalition?
 subtitle: SPD + KPD + Z + [+ ddp_name +] ([+ popular_front_coalition +]%)
 unavailable-subtitle: SPD + KPD + Z + [+ ddp_name +] ([+ popular_front_coalition +]%) - [? if kpd_relation < 50: We do not have good enough relations with the KPD. ?][? if z_relation < 50: We do not have good enough relations with the Center Party. ?][? if communist_coalition < 3 : The Communists are unwilling to compromise at all. ?][? if president == "Hitler" : Hitler refuses to appoint a chancellor under such a governing arrangement. ?][? if president == "Hindenburg" and coup_progress >= 8 and popular_front < 55 and historical_mode : Hindenburg is unwilling to appoint this government. ?]
 view-if: popular_front_coalition >= 50 or (sapd_formed == 1 and (popular_front_coalition + sapd_r) >= 50)
-choose-if: ((((kpd_relation >= 65 and kpd_party_leader == "Thälmann") or (kpd_relation >= 45 and kpd_party_leader == "Conciliators")) and ((z_relation >= 45 and z_party_leader == "Joos") or (z_relation >= 65 and z_party_leader != "Joos" and kpd_party_leader != "Conciliators") or (z_relation >= 55 and z_party_leader != "Joos" and kpd_party_leader == "Conciliators")) and ddp_relation >= 50 and communist_coalition >= 3) or (z_party_leader == "Joos" and kpd_party_leader == "Conciliators" and z_relation >= 30 and kpd_relation >= 30)) and president != "Hitler" and (president != "Hindenburg" or coup_progress < 8 or popular_front >= 55 or not historical_mode)
+choose-if: ((((kpd_relation >= 65 and kpd_party_leader == "Thälmann") or (kpd_relation >= 45 and kpd_party_leader == "Conciliators")) and ((z_relation >= 45 and z_party_leader == "Joos") or (z_relation >= 65 and z_party_leader != "Joos" and kpd_party_leader != "Conciliators") or (z_relation >= 55 and z_party_leader != "Joos" and kpd_party_leader == "Conciliators")) and ddp_relation >= 50 and communist_coalition >= 3) or (z_party_leader == "Joos" and kpd_party_leader == "Conciliators" and z_relation >= 30 and kpd_relation >= 30)) and president != "Hitler" and (president != "Hindenburg" or ((coup_progress < 8 or popular_front >= 55 or not historical_mode) and not spd_sackings))
 
 Could we really form a coalition that included both the Center and the Communists? It seems like an absurd concept, but given our good relationships with both sides, it is not an impossibility. [? if sapd_formed == 1 and popular_front_coalition < 50 : The SAPD will tolerate this governing arrangement, allowing us to form such a government despite a slim minority. ?]
 
@@ -777,9 +777,9 @@ on-arrival: spd_rebel = 1; sa_militancy -= 0.2; sa_strength *= 0.8; reichswehr_l
 @left_coalition
 title: Is a United Left coalition possible?
 subtitle: SPD + KPD ([+ left_coalition +]%)
-unavailable-subtitle: SPD + KPD ([+ left_coalition +]%). [? if kpd_relation < 50 : We do not have adequate relations with the KPD. ?][? if communist_coalition < 3 : The Communists are too committed to their radical ways to partake in government. ?][? if president == "Hitler" : Hitler refuses to appoint a chancellor under such a governing arrangement. ?]
+unavailable-subtitle: SPD + KPD ([+ left_coalition +]%). [? if kpd_relation < 50 : We do not have adequate relations with the KPD. ?][? if communist_coalition < 3 : The Communists are too committed to their radical ways to partake in government. ?][? if president == "Hitler" or president == "Göring" or president == "Seldte" or president == "Seeckt" or president == "Hindenburg" : [+ president +] refuses to appoint a chancellor under such a governing arrangement. ?]
 view-if: left_coalition >= 50 or (sapd_formed == 1 and (left_coalition + sapd_r) >= 50)
-choose-if: (kpd_relation >= 50 or (kpd_party_leader == "Conciliators" and kpd_relation >= 40)) and communist_coalition >= 3 and president != "Hitler"
+choose-if: (kpd_relation >= 50 or (kpd_party_leader == "Conciliators" and kpd_relation >= 40)) and communist_coalition >= 3 and president != "Hitler" and president != "Göring" and president != "Seldte" and president != "Seeckt" and (president != "Hindenburg" or year < 1929)
 
 There are enough votes for a SPD + KPD coalition government, if such a thing were actually possible. [? if sapd_formed == 1 and left_coalition < 50 : The SAPD will tolerate this governing arrangement, allowing us to form such a government despite a slim minority. ?]
 
@@ -2383,6 +2383,7 @@ Who should be the chancellor?
 @muller
 title: Hermann Müller for Chancellor
 view-if: muller_dead = 0
+choose-if: (president != "Hindenburg" or not spd_sackings)
 subtitle: Müller is popular within the party, and is the preferred candidate of the Center and other parties.
 on-arrival: spd_in_government = 1; chancellor = "Müller"; chancellor_party = "SPD"; in_grand_coalition = 1 if in_weimar_coalition == 0
 go-to: ministries
@@ -2391,6 +2392,7 @@ Müller's appointment as chancellor is approved by all our potential allies.
 
 @wels
 title: Otto Wels for Chancellor
+choose-if: (president != "Hindenburg" or not spd_sackings)
 view-if: muller_dead = 1
 subtitle: Otto Wels is a party leader, but can he also be chancellor?
 on-arrival: spd_in_government = 1; chancellor = "Wels"; chancellor_party = "SPD"; in_grand_coalition = 1 if in_weimar_coalition == 0
@@ -2399,15 +2401,17 @@ go-to: ministries
 Otto Wels's appointment as chancellor is approved by our potential allies.
 
 @braun
+choose-if: (president != "Hindenburg" or not spd_sackings)
 title: Otto Braun for Chancellor
 view-if: not historical_mode or not spd_prussia
 subtitle: Braun is currently the Minister-President of Prussia, and is one of our most popular leaders. However, other parties may have qualms about concentrating too much power in one man.
 
-The Center party has significant qualms about appointing Braun as chancellor, given that he is already Minister-President of Prussia. They ask for either more cabinet positions, or for Braun to resign his state government role. The latter is completely unacceptable.
+The Center party has significant qualms about appointing Braun as chancellor, given that he is already Minister-President of Prussia. They ask for either more cabinet positions, or for Braun to resign his state government role.
 
 - @muller
 - @wels
 - @braun_2: Let the Center have their cabinet positions.
+- @braun_resigned: Let the Center have Prussia.
 
 @braun_2
 subtitle: Otto Braun will be Chancellor.
@@ -2417,6 +2421,14 @@ go-to: ministries
 
 We have promised to let the Center have more influence in the government in response to the appointment of Braun as chancellor.
 
+@braun_resigned
+subtitle: Adam Stegerwald will be Minister-President.
+choose-if: spd_prussia
+unavailable-subtitle: Wait, what? Damn, this shit's bugged. Ping me on discord or on reddit, I'll fix it.
+on-arrival: spd_prussia = 0; z_prussia = 1; spd_in_government = 1; chancellor = "Braun"; chancellor_party = "SPD"; in_grand_coalition = 1 if in_weimar_coalition == 0
+go-to: ministries
+
+Otto Braun has resigned as Minister-President of Prussia to pursue his aspirations on the national level.
 
 @z_chancellor
 title: Let the Center Party have their chancellor.

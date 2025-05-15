@@ -902,7 +902,7 @@ Our large-scale socializations of the economy and empowerment of works councils 
 - @constitutional: See other reform options.
 
 @supreme_soviet_2
-on-arrival: constitutional_reform += 1; supreme_soviet = 1; capital_strike_progress = 10; z_relation -= 15; ddp_relation -= 25; dvp_relation -= 50; coalition_dissent += 3
+on-arrival: constitutional_reform += 1; supreme_soviet = 1; capital_strike_progress += 15; z_relation -= 15; ddp_relation -= 25; dvp_relation -= 50; coalition_dissent += 3
 achievement: raterrepublik
 go-to: constitutional
 
@@ -1006,7 +1006,7 @@ The capitalists are, predictably, up in arms about our policy of legalizing fact
 @wealth_seizure
 view-if: not wealth_seized
 subtitle: +6 budget.
-on-arrival: wealth_seized = 1; upper_tax_rates += 3; coalition_dissent += 3; workers_spd += 6*(1-dissent); unemployed_spd += 6*(1-dissent); z_relation -= 10; ddp_relation -= 12; dvp_relation -= 16; pro_republic -= 8; budget += 6; capital_strike_progress = 10; old_middle_spd *= 0.25; new_middle_spd *= 0.6
+on-arrival: wealth_seized = 1; upper_tax_rates += 3; coalition_dissent += 3; workers_spd += 6*(1-dissent); unemployed_spd += 6*(1-dissent); z_relation -= 10; ddp_relation -= 12; dvp_relation -= 16; pro_republic -= 8; budget += 6; capital_strike_progress += 15; old_middle_spd *= 0.25; new_middle_spd *= 0.6
 
 We seize the assets of the rich and even the Reichsbank in a mass redistribution of wealth, greatly increasing our budget. Of course, the bourgeoisie and their parties are immediately up in arms about this, threatening our provisional governing coalition.
 
@@ -1075,7 +1075,7 @@ Many on our party's left as well as in the KPD blame the takeover of the country
 - @bad_idea: No, we will keep the Reichstag.
 
 @supreme_soviet_3
-on-arrival: economic_democracy += (3-works_councils) if works_councils < 3; works_councils = 3 if works_councils < 3; kpd_relation += 20; left_strength += 15; labor_strength += 10; labor_dissent += 5; left_dissent -= 10; reformist_dissent += 10; neorevisionist_dissent += 5; constitutional_reform += 1; supreme_soviet = 1; capital_strike_progress = 10; z_relation -= 15; ddp_relation -= 25; dvp_relation -= 50
+on-arrival: economic_democracy += (3-works_councils) if works_councils < 3; works_councils = 3 if works_councils < 3; kpd_relation += 20; left_strength += 15; labor_strength += 10; labor_dissent += 5; left_dissent -= 10; reformist_dissent += 10; neorevisionist_dissent += 5; constitutional_reform += 1; supreme_soviet = 1; capital_strike_progress += 15; z_relation -= 15; ddp_relation -= 25; dvp_relation -= 50
 go-to: agenda_reb
 
 We have enshrined a new Supreme Soviet in our constitution. Let us hope this move towards a dictatorship of the proletariat puts an end to the risk of fascism for good.
@@ -1484,7 +1484,7 @@ In order to finance their other programs, the KPD have made a plan for the seizu
 - @refuse_seizure: Convince the KPD to drop the decree.
 
 @accept_seizure
-on-arrival: wealth_decided = 1; wealth_seized = 1; upper_tax_rates += 3; workers_spd += 6*(1-dissent); unemployed_spd += 6*(1-dissent); z_relation -= 10; ddp_relation -= 12; dvp_relation -= 16; pro_republic -= 8; budget += 6; capital_strike_progress = 10; old_middle_spd *= 0.25; new_middle_spd *= 0.6
+on-arrival: wealth_decided = 1; wealth_seized = 1; upper_tax_rates += 3; workers_spd += 6*(1-dissent); unemployed_spd += 6*(1-dissent); z_relation -= 10; ddp_relation -= 12; dvp_relation -= 16; pro_republic -= 8; budget += 6; capital_strike_progress += 15; old_middle_spd *= 0.25; new_middle_spd *= 0.6
 
 We allow the KPD to go forward with the decree, greatly increasing the budget available to be spent by the government on other directives.
 
