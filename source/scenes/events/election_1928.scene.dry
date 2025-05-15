@@ -2010,7 +2010,7 @@ In total, [+ no_confidence_votes +]% of the Reichstag is against us. [? if no_co
 - @no_confidence_win: We have won, for now.
 
 @no_confidence_lose
-on-arrival: chancellor = "Empty"; chancellor_party = "I"; in_emergency_government = 0
+on-arrival: previous_chancellor = chancellor; previous_chancellor_party = chancellor_party; chancellor = "Empty"; chancellor_party = "I"; in_emergency_government = 0
 
 Who should be chancellor instead remains our decision. Is the Reichstag workable?
 
@@ -2020,6 +2020,8 @@ Who should be chancellor instead remains our decision. Is the Reichstag workable
 
 @no_confidence_elections_new
 on-arrival: {!
+Q.chancellor = Q.previous_chancellor;
+Q.chancellor_party = Q.previous_chancellor_party;
 Q.in_emergency_government = 1;
 Q.no_majority_elections += 1;
 Q.political_crisis_progress += 1;

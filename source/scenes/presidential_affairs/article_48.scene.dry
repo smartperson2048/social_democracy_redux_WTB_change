@@ -5,6 +5,8 @@ tags: pres_affairs
 is-card: true
 card-image: Weimar_Constitution.jpg
 
+= Article 48
+
 Through the support of the offices of not just the president but also the chancellor, we may sign through wide-ranging decrees to bypass the Reichstag should need be, though the Reichstag still can repeal these decrees by a simple majority.
 
 [? if return_to_normalcy : Given the general feeling that the crisis period has passed, there is opposition to the idea of wielding emergency powers, due to worries that it would set a bad precedent. ?]
