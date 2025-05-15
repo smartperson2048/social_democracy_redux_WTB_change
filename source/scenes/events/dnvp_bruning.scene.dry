@@ -2,7 +2,7 @@ title: Hugenberg vs. Brüning
 subtitle: Hugenberg attempts to lead his party against Brüning's government
 new-page: true
 view-if: dnvp_toleration = 1 and year = 1930 and month >= 6 and not constructive_vonc and president == "Hindenburg"
-on-arrival: {!
+on-arrival: confrontation_seen = 1; {!
 Q.pro_bruning = 0;
 Q.anti_bruning = 0;
 Q.pro_bruning += Q.pro_republic;
