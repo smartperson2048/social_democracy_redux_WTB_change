@@ -3,7 +3,7 @@ view-if: chancellor_party == "SPD" and not presidential_powers and article_48_ti
 new-page: true
 tags: pres_affairs
 is-card: true
-card-image: Weimar_Constitution.jpg
+card-image: img/Weimar_Constitution.jpg
 
 = Article 48
 
