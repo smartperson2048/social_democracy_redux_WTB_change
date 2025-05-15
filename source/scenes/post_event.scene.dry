@@ -2119,6 +2119,10 @@ if (Q.advisor_loss_timer <= 0 && Q.in_vonc_coalition) {
     Q.go_to_advisor_loss = 0;
 }
 
+if (Q.reenable_legislature) {
+    Q.legislature_enabled = 1;
+}
+
 Q.has_event = 0;
 // check if there are any cards in #event, and then go to main if not.
 var scene = this.game.scenes['post_event.events_choice'];

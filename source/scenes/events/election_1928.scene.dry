@@ -2006,9 +2006,17 @@ The NSDAP and DNVP will vote against us, of course. The other parties vote their
 
 In total, [+ no_confidence_votes +]% of the Reichstag is against us. [? if no_confidence_succeeds : We have lost the vote of no confidence. ?]
 
-- @no_confidence_elections_new: There will be new elections, which we will try to delay.
+- @no_confidence_lose: We have lost the vote of no confidence.
 - @no_confidence_win: We have won, for now.
 
+@no_confidence_lose
+on-arrival: chancellor = "Empty"; chancellor_party = "I"; in_emergency_government = 0
+
+Who should be chancellor instead remains our decision. Is the Reichstag workable?
+
+- @emergency_braun
+- @no_confidence_elections_new: Dissolve the Reichstag for new elections.
+- @coalition_menu: Are there any alternative governments?
 
 @no_confidence_elections_new
 on-arrival: {!

@@ -41,6 +41,7 @@ max-cards: 4
 
 - @party
 - @govt
+- @pres
 - #advisor
 - @shuffle_leadership_pinned
 
@@ -59,3 +60,11 @@ card-image: img/reichstag_2.jpg
 is-deck: true
 
 - #govt_affairs
+
+@pres
+title: Presidential Affairs
+view-if: president == "Braun" or president == "Schumacher" or president == "Juchacz"
+card-image: img/presidential_affairs.jpg
+is-deck: true
+
+- #pres_affairs
