@@ -104,9 +104,6 @@ New elections have been set for [+ next_election_month : month +] [+ next_electi
 @dnvp_tolerate
 on-arrival: dnvp_toleration = 1
 
-@dnvp_tolerate
-on-arrival: dnvp_toleration = 1
-
 The DNVP is split, as what remains of its moderate wing refuses to vote against [+ chancellor +] following Schiele (a high-ranking member of the DNVP) being included in cabinet.
 
 @let_it_happen_braun
