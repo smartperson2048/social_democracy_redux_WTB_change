@@ -3,7 +3,7 @@ title: The Issue of Thuringia
 new-page: true
 is-card: true
 view-if: ((((nsdap_votes*(1 + (sa_force/100)))+(unemployed/1.5)) >= 50) or thuringia_seen) and (president == "Braun" or president == "Schumacher" or president == "Juchacz") and dvp_relation < 50 and (not presidential_powers and not victory_republic)
-tags: govt_affairs
+tags: pres_affairs
 card-image: img/reichsexekution.jpg
 max-visits: 1
 on-arrival: thuringia_seen = 1
