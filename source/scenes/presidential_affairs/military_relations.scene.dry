@@ -21,6 +21,8 @@ Relations with the Military: [+ army_relation : relationships +]
 - @unban_sh: Unban the Stalhelm.
 - @ban_rfb: Ban the RFB.
 - @reichsexekute_kpd: Reichsexekute left-wing state governments.
+- @root: No, we should not do any of these things.
+- @easy_discard
 
 @allow_rearmament
 choose-if: reichswehr_minister_party != "SPD"
