@@ -1,6 +1,6 @@
 title: March on Berlin
 subtitle: Right-wing militants are taking action...
-view-if: ((((spd_in_government = 1 and coup_progress >= 10) or (coup_progress >= 15)) and year >= 1929 and (year >= 1930 or month >= 6) and ((sa_banned=0 or sh_banned=0) or (sa_force + sh_force + army_force*(1-reichswehr_loyalty) >= 50))) or (year >= 1933 and month >= 2 and chancellor != "Papen" and chancellor != "Schleicher" and coup_progress >= 6 and president == "Braun" and nsdap_votes + dnvp_votes + (sa_force+sh_force)/4 >= 50)) and march_on_berlin_timer = 0 and (nsdap_votes + sa_force < dnvp_votes + other_votes + dvp_votes + sh_force)
+view-if: ((((spd_in_government = 1 and coup_progress >= 10) or (coup_progress >= 15)) and year >= 1929 and (year >= 1930 or month >= 6) and ((sa_banned=0 or sh_banned=0) or (sa_force + sh_force + army_force*(1-reichswehr_loyalty) >= 50))) or (year >= 1933 and month >= 2 and chancellor != "Papen" and chancellor != "Schleicher" and coup_progress >= 6 and president == "Braun" and nsdap_votes + dnvp_votes + (sa_force+sh_force)/4 >= 50)) and march_on_berlin_timer = 0 and (nsdap_votes + sa_force < dnvp_votes + other_votes + dvp_votes + sh_force) and chancellor_party != "DNVP"
 new-page: true
 max-visits: 4
 on-arrival: march_on_berlin_seen += 1; sa_strength += 40; sh_strength += 120; strife += 1; march_on_berlin_timer += 8

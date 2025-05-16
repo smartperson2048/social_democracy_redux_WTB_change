@@ -27,7 +27,7 @@ Relations with the Military: [+ army_relation : relationships +]
 @allow_rearmament
 choose-if: reichswehr_minister_party != "SPD"
 unavailable-subtitle: The rest of the SPD would know, as Leber is Reichswehr Minister.
-on-arrival: army_relation += 10; west_relation -= 2; east_relation -= 2; reichswehr_militancy += 0.15; sh_militancy += 0.05; pacifism -= 1; nationalism += 3; pro_republic -= 3; left_dissent += 5
+on-arrival: army_relation += 10; reichswehr_loyalty += 0.05 if reichswehr_loyalty < 0.5; west_relation -= 2; east_relation -= 2; reichswehr_militancy += 0.15; sh_militancy += 0.05; pacifism -= 1; nationalism += 3; pro_republic -= 3; left_dissent += 5
 
 We allow the Reichswehr to secretly rearm, increasing its strength, and, seemingly though to a lesser extent, the strength of the Stalhelm. Though it is a secret, the Entente countries nonetheless have their suspicions, as does our party left.
 
