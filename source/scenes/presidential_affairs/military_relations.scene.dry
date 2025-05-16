@@ -75,7 +75,7 @@ on-arrival: red_thuringia = 0
 
 We have performed a *Reichsexekution* against the government of Thuringia, removing it of KPD ministers.
 
-@reichsexekute_thuringia
+@reichsexekute_saxony
 view-if: red_saxony
 tags: reichsexekutions_left
 title: Reichsexekute Saxony.
