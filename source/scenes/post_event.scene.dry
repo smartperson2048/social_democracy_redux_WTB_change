@@ -2081,6 +2081,42 @@ if (Q.month_actions >= 1) {
             Q.reichswehr_loyalty += 0.1/12;
         }
     }
+    if (Q.president == "Braun" || Q.president == "Schumacher" || Q.president == "Juchacz") {
+        if (!Q.army_relation) {
+            Q.army_relation = 40;
+        }
+        Q.army_relation_equilibrium = 75;
+        Q.army_relation_equilibrium -= Q.kpd_relation;
+        Q.army_relation_equilibrium -= Q.pacifism;
+        Q.army_relation_equilibrium -= Q.capital_strike_progress;
+        Q.army_relation_equilibrium -= Q.coup_progress;
+        Q.army_relation_equilibrium -= Q.rfb_force;
+        Q.army_relation_equilibrium -= Q.rb_force;
+        Q.army_relation_equilibrium -= Q.strife;
+        Q.army_relation_equilibrium *= Q.reichswehr_loyalty;
+        if (Q.in_left_front || Q.in_popular_front) {
+            Q.army_relation_equilibrium -= Q.kpd_r;
+        }
+        if (Q.reichsweh_minister_party != "I") {
+            Q.army_relation_equilibrium -= 10;
+        }
+        if (Q.spd_in_government) {
+            Q.army_relation_equilibrium -= 5;
+        }
+        if (Q.chancellor_party == "SPD") {
+            Q.army_relation_equilibrium -= 5;
+        }
+        if (Q.army_relation >= Q.army_relation_equilibrium) {
+            Q.army_relation -= ((Q.army_relation-Q.army_relation_equilibrium)/(Q.army_force/5));
+        }
+        if (Q.army_relation < 40) {
+            Q.coup_progress += ((40-Q.army_relation)/10);
+            Q.sh_militancy += (Q.reichswehr_militancy/Q.army_relation);
+        }
+        if (Q.army_relation > 60) {
+            Q.coup_progress -= ((50-Q.army_relation)/10);
+        }
+    }
 }
 // prevent forever support if the economy is bad
     if (Q.year >= 1934 && (Q.inflation >= 8 || Q.unemployed >= 20) && Q.pro_republic <= 45 && Q.spd_in_government) {

@@ -2,7 +2,7 @@ title: The Issue of Thuringia
 #subtitle: The Nazis rule Thuringia, and are taking full advantage
 new-page: true
 is-card: true
-view-if: ((((nsdap_votes*(1 + (sa_force/100)))+(unemployed/1.5)) >= 50) or thuringia_seen) and (president == "Braun" or president == "Schumacher" or president == "Juchacz") and dvp_relation < 50 and (not presidential_powers and not victory_republic)
+view-if: ((((((nsdap_votes*(1 + (sa_force/100)))+(unemployed/1.5)) >= 50) and dvp_relation < 50) or thuringia_seen and not landtags_enabled) or (landtags_enabled and nazi_thuringia)) and (president == "Braun" or president == "Schumacher" or president == "Juchacz") and and (not presidential_powers and not victory_republic)
 tags: pres_affairs
 card-image: img/reichsexekution.jpg
 max-visits: 1

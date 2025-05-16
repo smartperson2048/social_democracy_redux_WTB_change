@@ -509,7 +509,8 @@ Q.timers = ['advisor_action', 'confronting_nazis', 'crisis_program',
             'kpd_policy', 'kpd_ultimatum', 'popular_front_dispute',
             'high_inflation', 'banking_crisis', 'march_on_berlin', 'abysinnia', 'nazi_peak',
             'nazi_reform', 'understanding_enemy', 'laissez_faire', 'presidential', 'papenomics', 'thuringeration',
-            'advisor_loss', 'schleichers_schemes', 'disarray', 'dne', 'businesses_lose_confidence', 'article_48'];
+            'advisor_loss', 'schleichers_schemes', 'disarray', 'dne', 'businesses_lose_confidence', 'article_48',
+            ' military_relations'];
 Q.advisor_action_timer = 0;
 Q.advisor_loss_timer = 0;
 // party affairs timers
@@ -585,6 +586,7 @@ Q.dne_timer = 0;
 Q.businesses_lose_confidence_timer = 0;
 // presidential affairs
 Q.article_48_timer = 0;
+Q.military_relations_timer = 0;
 
 Q.fun_value = Math.floor(Math.random() * 100) + 1;
 

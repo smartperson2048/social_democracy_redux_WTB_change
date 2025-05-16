@@ -362,7 +362,7 @@ Surprisingly, the center-right bourgeois parties are capable of a lone majority!
 title: An anticommunist coalition, of the bourgeois and their sympathizers.
 subtitle: ASPD + [+ ddp_name +] + Z + DVP + Others + DNVP + NSDAP ([+ s_anticommunist_coalition +]%)
 view-if: s_anticommunist_coalition >= 50 or s_elections <= 1
-choose-if: s_anticommunist_coalition >= 50 and s_center_right_coalition < 50 and s_progressive_coalition < 50 and (year < 1930 or (dnvp_reform and nazi_reform))
+choose-if: s_anticommunist_coalition >= 50 and s_center_right_coalition < 50 and s_progressive_coalition < 50 and (year < 1930 or ((dnvp_reform and nazi_reform) or (s_neo_weimar_coalition < 50)))
 unavailable-subtitle: ASPD + [+ ddp_name +] + Z + DVP + Others + DNVP + NSDAP ([+ s_anticommunist_coalition +]%)[? if s_center_right_coalition >= 50 : - the bourgeois don't need the Nazis. ?][? if year >= 1930 : The bourgeois and the reactionaries are no longer open to cooperation. ?]
 on-arrival: saxon_dispute = 1; saxony_nsdap += 0.05 if saxony_nsdap < 1.2; reformist_strength -= 2; nazi_saxony = 1 if nsdap_sl >= s_center_right_coalition; saxony_nsdap += 0.05 if nazi_saxony; saxony_spd -= 0.05 if nazi_saxony; kpd_relation += 5 if nazi_saxony; nazi_urgency += 1 if nazi_saxony;
 
