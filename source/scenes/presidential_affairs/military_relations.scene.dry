@@ -3,7 +3,7 @@ view-if: military_relations_timer <= 0 and not victory_republic
 new-page: true
 tags: pres_affairs
 is-card: true
-card-image: img/schleicher.jpg
+card-image: img/schleicher.jpeg
 on-departure: military_relations_timer += 6
 
 = Military Relations
