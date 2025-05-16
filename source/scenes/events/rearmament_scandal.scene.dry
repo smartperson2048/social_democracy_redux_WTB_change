@@ -22,7 +22,7 @@ To avoid a crisis, the bourgeois parties, even including the DVP, have offered t
 subtitle: SPD + Z + BVP + DDP + DVP ([+ grand_coalition +]%)
 choose-if: left_strength+center_strength < reformist_strength
 unavailable-subtitle: SPD + Z + BVP + DDP + DVP ([+ grand_coalition +]%) - The party is too opposed.
-on-arrival: left_dissent += 10; spd_leverage = spd_r; spd_leverage += 5; center_dissent += 5; labor_dissent += 5; pacifism -= 2; workers_spd -= 3; new_middle_spd -= 2; unemployed_spd -= 3; workers_kpd += 2; unemployed_kpd += 2; reichswehr_loyalty += 0.05
+on-arrival: left_dissent += 10; leverage = spd_r; leverage += 5; center_dissent += 5; labor_dissent += 5; pacifism -= 2; workers_spd -= 3; new_middle_spd -= 2; unemployed_spd -= 3; workers_kpd += 2; unemployed_kpd += 2; reichswehr_loyalty += 0.05
 go-to: election_1928.ministries
 
 Despite the protests of our party's left and pacifist wings, we have entered government, all the while the rearmament plans have, supposedly, been scrapped, and moderate reforms of the Reichswehr conducted by Gessler. Now we must choose which ministries we shall take.
