@@ -4,7 +4,7 @@ new-page: true
 tags: pres_affairs
 is-card: true
 card-image: img/schleicher.jpeg
-on-departure: military_relations_timer += 6
+on-departure: military_relations_timer += 5
 
 = Military Relations
 

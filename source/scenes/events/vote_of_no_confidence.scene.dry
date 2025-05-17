@@ -91,7 +91,7 @@ go-to: let_it_happen_hindenburg if president != "Braun"; let_it_happen_braun if 
 
 @let_it_happen_hindenburg
 on-arrival: chancellor = "Brüning"; chancellor_party = "Z"; welfare -= 2;
-go-to: reichstag_dissolved if year >= 1931 or confrontation_seen; dnvp_tolerate if year < 1931 and not confrontation_seen
+go-to: reichstag_dissolved if year >= 1931 or confrontation_seen or president != "Hindenburg"; dnvp_tolerate if year < 1931 and not confrontation_seen and president == "Hindenburg"
 
 The vote succeeds, and our government has resigned. Chancellor Brüning has been appointed as the head of an acting government, consisting solely of the bourgeois parties. He immediately proceeds to cut welfare spending substantially.
 

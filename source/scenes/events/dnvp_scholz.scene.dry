@@ -1,7 +1,7 @@
 title: Scholz Resigns!
 subtitle: Ernst Scholz has resigned as chancellor due to health issues
 new-page: true
-view-if: scholz_dnvp = 1 and ((year = 1930 and month >= 12) or (year >= 1931)) and president == "Hindenburg"
+view-if: scholz_dnvp = 1 and ((year = 1930 and month >= 12) or (year >= 1931)) and (president == "Hindenburg" or president == "Marx")
 on-arrival: chancellor = "Brüning"; chancellor_party = "Z"; scholz_dnvp = 0; dnvp_toleration = 1
 tags: event
 max-visits: 1
