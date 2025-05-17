@@ -15,6 +15,7 @@ Q.communist_strength += Q.rb_force*(Q.left_strength/100);
 Q.harzburg_strength = Q.sa_force;
 Q.harzburg_strength += Q.sh_force;
 Q.harzburg_strength += Q.prussia_force*(1-Q.prussian_police_loyalty);
+Q.harzburg_strength += Q.rural*(1-((Q.rural_spd_normalized+Q.rural_kpd_normalized)/100));
 !}
 
 = [+ month : month +] Revolution
@@ -67,6 +68,7 @@ unavailable-subtitle: The communists are rising against us. We have no choice bu
 By firmly taking a side we would split, as the communists want us to. We will wait the chaos out.
 
 @kpd_vs_army
+view-if: spd_revolution
 on-arrival: harzburg_strength += army_force
 go-to: kpd_victory if communist_strength > harzburg_strength; kpd_beaten if harzburg_strength >= communist_strength
 
@@ -79,7 +81,7 @@ The answer seems to be yes, as, somehow, the Red Army drive the Reichswehr force
 - @civil_war_if_spd: It is a civil war.
 
 @long_war
-view-if: not spd_revolution and (communist_strength*0.75) < harzburg_strength
+view-if: not spd_revolution and (communist_strength*0.6) < harzburg_strength
 on-arrival: long_war = 1
 
 The initial phase of the action ends, and somehow, both sides remain standing.
@@ -89,7 +91,7 @@ This will not be a quick coup, but a long civil war. The nation will destroy its
 - @game_over: Game over.
 
 @true_kpd_victory
-view-if: not spd_revolution and (communist_strength*0.75) >= harzburg_strength
+view-if: not spd_revolution and (communist_strength*0.6) >= harzburg_strength
 on-arrival: capital_strike_progress += 50; works_councils += 3; economic_democracy += 3; time_to_election = 3; red_banner = 1; supreme_soviet = 1; workers_kpd += 25; new_middle_kpd += 10; unemployed_kpd += 25; president = "Thälmann"; nsdap_banned = 1; dne_banned = 1 if dne_formed; dne_reorganized = 0 if dne_reorganized; party_bans = 1; dnvp_banned = 1; dvp_banned = 1; other_banned = 1; ddp_banned = 1; z_banned = 1 if z_party_leader != "Joos"; sa_banned = 1; sh_banned = 1; constitutional_reform += 1; rfb_banned = 0; socialism += 25; chancellor = "Ulbricht"; chancellor_party = "KPD"; victory_republic = 1; unemployed_nsdap *= 0.2; new_middle_nsdap *= 0.3; old_middle_nsdap *= 0.4; workers_nsdap *= 0.2; rural_nsdap *= 0.5; old_middle_dnvp *= 0.4; rural_dnvp *= 0.5; new_middle_dnvp *= 0.2; sa_strength *= 0.2; sh_strength *= 0.2; sa_militancy *= 0.5; sh_militancy *= 0.5; rb_strength *= 0.8; rfb_strength *= 0.8; reichswehr_strength = 0
 call: set_next_election_time
 
@@ -109,7 +111,7 @@ The answer seems to be no, as, predictably, the Reichswehr drive the Red Army fo
 - @civil_war_if_spd: It is a civil war.
 
 @long_war2
-view-if: not spd_revolution and (harzburg_strength*0.75) < communist_strength
+view-if: not spd_revolution and (harzburg_strength*0.6) < communist_strength
 on-arrival: long_war = 1
 
 The initial phase of the action ends, and somehow, both sides remain standing.
@@ -119,6 +121,7 @@ This will not be a quick coup, but a long civil war. The nation will destroy its
 - @game_over: Game over.
 
 @kpd_crushed
+view-if: not spd_revolution and (harzburg_strength*0.6) >= communist_strength
 on-arrival: rfb_banned = 1; rfb_strength *= 0.1; rfb_militancy *= 0.4; workers_kpd *= 0.4; unemployed_kpd *= 0.6; workers_spd *= 0.9; workers_spd *= 0.7 if spd_revolution; workers_nsdap += 10; unemployed_nsdap += 10; workers_dnvp += 10
 
 The communists are predictably crushed. Worker councils are shuttered and leading conspirators executed. The RFB is banned, and so are most communist publications. The KPD's leaders are arrested - those that are not summarily executed, anyway.
