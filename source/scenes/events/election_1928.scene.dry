@@ -2098,6 +2098,7 @@ Who should be the chancellor?
 
 @breitscheid_coalition_chancellor
 title: Rudolf Breitscheid for Chancellor
+choose-if: (president != "Hindenburg" or not spd_sackings)
 subtitle: Breitscheid is viewed as friendlier towards the left of the SPD.
 view-if: year >= 1930
 on-arrival: chancellor = "Breitscheid"; chancellor_party = "SPD";
