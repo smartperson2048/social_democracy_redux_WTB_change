@@ -63,7 +63,7 @@ With the exception of the trade unions, every faction of the SPD is horrified by
 
 [? if kpd_relation <= 10 and left_strength + center_strength < labor_strength: Somehow, the DNVP has agreed to Schleicher's proposal, forming a temporary alliance with the general against Nazis and Communists. ?][? if z_relation >= 50 : The Center Party also supports Schleicher's plan. ?][? if dvp_relation >= 25 : In addition, the DVP and some other smaller parties support this proposal. ?][? if kpd_relation > 10 or left_strength + center_strength >= labor_strength: The DNVP, despite being courted by Schleicher, is not interested in joining this alliance. DNVP chairman Hugenberg seems to prefer working with Hitler to any alliance that includes the SPD. ?]
 
-[? if strasser_percent >= 0.25 : Seeing the writing on the wall, many Nazi deputies surrounding Strasser vote for Schleicher's motion alongside us, despite Hitler's continued opposition. Does this signal a Nazi split? ?]
+[? if strasser_percent >= 0.25 and schleicher_support >= 50 : Seeing the writing on the wall, many Nazi deputies surrounding Strasser vote for Schleicher's motion alongside us, despite Hitler's continued opposition. Does this signal a Nazi split? ?]
 
 @schleicher_success
 on-arrival: next_election_month = month+13; next_election_time = time+13; next_election_year = year+1; next_election_month -= 12; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12; schleichers_scheme_success = 1
