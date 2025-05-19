@@ -25,8 +25,14 @@ if (Q.socialism >= 100) {
 if (Q.nationalism < 0) {
     Q.nationalism = 0;
 }
-if (Q.pro_republic >= 100) {
+if (Q.nationalism >= 100) {
     Q.nationalism = 99;
+}
+if (Q.reichswehr_loyalty < 0) {
+    Q.reichswehr_loyalty = 0;
+}
+if (Q.reichswehr_loyalty >= 1) {
+    Q.reichswehr_loyalty = 1;
 }
 // re-calculate party support
 // calculate normalized class voting for the achievements
