@@ -304,6 +304,9 @@ Q.dnvp_r = 20;
 Q.nsdap_r = 3;
 Q.other_r = 9;
 
+Q.bourgeois_coalition = 41;
+Q.far_right_coalition = 23;
+
 // diff from prev
 Q.old_spd_r = 20;
 Q.old_sapd_r = 0;

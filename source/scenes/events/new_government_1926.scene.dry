@@ -4,7 +4,7 @@ view-if: year == 1926 and locarno_seen
 new-page: true
 max-visits: 1
 tags: event
-go-to: marx_chancellor if president == "Marx"; hindenburg_chancellor if president == "Hindenburg"
+go-to: marx_chancellor if president == "Marx"; hindenburg_chancellor if president == "Hindenburg"; braun_chancellor if president == "Braun"
 
 = A New Government Forms
 
@@ -114,6 +114,50 @@ With a Grand Coalition out of the picture, a short negotiation period between th
 - @luther_second2: A second Luther cabinet.
 
 @luther_second2
+subtitle: Z + BVP + DDP + DVP (35%)
+on-arrival: budget -= 2; upper_tax_rates -= 1; lower_tax_rates -= 1; unemployed -= 1 if unemployed >= 5; inflation += 0.4; economic_growth += 0.4; socialism -= 1
+
+Luther is reappointed as chancellor, this time in a minority government of the Center, Democratic, People's and Bavarian People's parties. As a minority government, it is unlikely to last long, and de-facto relies on us as we could bring it down at any moment. Doing so without a justification, however, could hurt our own support and drive the bourgeois back into the hands of the DNVP.
+
+Meanwhile, one of the first things the government does is try to cut taxes in order to stimulate the economy. Only time will tell if this will be effective.
+
+- @tolerate_luther: Let Luther govern, for now.
+#- @vonc_luther: Call a motion of no confidence with the KPD.
+
+@braun_chancellor
+
+Since the fall of the Luther cabinet, there has been much speculation on what government may take its place. One idea has gained surprising momentum, however.
+
+- @grand_coalition_real3: A "Grand Coalition"?
+
+@grand_coalition_real3
+subtitle: SPD + Z + BVP + DDP + DVP (61%)
+
+The bourgeois parties have reached out to us to form a grand coalition, backed in doing so by Braun, who has floated the democrat Koch-Weser for the role following the DVP's rejection of a social democrat for the role. He has now reached out to us and the DVP for support in this cabinet.
+
+However, entering such a government in a time of increasing economic uncertainty may end the trend of our increasing voteshare, and bolster the communists as an alternative rather than us. Furthermore, the DVP seems reluctant to meet our demand for new elections, or even join the government at all.
+
+- @accept_groko3: Form the Grand Coalition!
+- @refuse_groko3: Refuse the offer.
+
+@accept_groko3
+choose-if: dvp_relation >= 50 and not princes_initiated
+unavailable-subtitle: The DVP is opposed.
+on-arrival: left_dissent += 5; workers_spd -= 2; unemployed_spd -= 2; workers_kpd += 1; unemployed_kpd += 1; old_middle_dvp -= 4; old_middle_dnvp += 2; chancellor = "Koch-Weser"; chancellor_party = "DDP"; in_grand_coalition = 1; spd_in_government = 1; leverage = spd_r; leverage -= 5; princes_time = time+3 if not princes_initiated
+go-to: election_1928.ministries
+
+We have decided to enter government as per the seemingly sincere wishes of the bourgeois. Now we must decide which ministries to take.
+
+[? if not princes_initiated : Meanwhile, the communists, seeing that we will seemingly not be joining their referendum, have gone ahead with collecting signatures. ?]
+
+@refuse_groko3
+on-arrival: dvp_relation -= 1; z_relation -= 1; ddp_relation -= 1
+
+With a Grand Coalition out of the picture, a short negotiation period between the bourgeois parties follows.
+
+- @luther_second3: A second Luther cabinet.
+
+@luther_second3
 subtitle: Z + BVP + DDP + DVP (35%)
 on-arrival: budget -= 2; upper_tax_rates -= 1; lower_tax_rates -= 1; unemployed -= 1 if unemployed >= 5; inflation += 0.4; economic_growth += 0.4; socialism -= 1
 
