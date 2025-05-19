@@ -2109,11 +2109,11 @@ if (Q.month_actions >= 1) {
         if (Q.army_relation >= Q.army_relation_equilibrium) {
             Q.army_relation -= (((Q.army_relation-Q.army_relation_equilibrium)/(Q.army_force/5)))/12;
         }
-        if (Q.army_relation < 40) {
+        if (Q.army_relation < 50) {
             Q.coup_progress += (((40-Q.army_relation)/10)/12);
-            Q.sh_militancy += 0.1/12;
+            Q.sh_militancy += 0.05/12;
         }
-        if (Q.army_relation > 60) {
+        if (Q.army_relation > 50) {
             Q.coup_progress -= (((50-Q.army_relation)/10)/12);
             Q.reichswehr_loyalty += (((Q.army_relation-50)/10)/12);
         }
