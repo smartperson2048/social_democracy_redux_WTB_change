@@ -1525,6 +1525,11 @@ if (Q.month_actions >= 1) {
         }
     }
     if (Q.year >= 1933) {
+        if (Q.unemployed >= 15) {
+            Q.unemployed *= 0.98;
+            Q.inflation += 3/12;
+            Q.economic_growth += 1/12;
+        }
         if (Q.largest_party != "NSDAP" && Q.pro_republic < 55) {
             Q.pro_republic += 5/12;
             if (Q.spd_toleration || Q.spd_in_government) {
