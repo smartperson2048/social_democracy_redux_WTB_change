@@ -510,7 +510,7 @@ Q.timers = ['advisor_action', 'confronting_nazis', 'crisis_program',
             'high_inflation', 'banking_crisis', 'march_on_berlin', 'abysinnia', 'nazi_peak',
             'nazi_reform', 'understanding_enemy', 'laissez_faire', 'presidential', 'papenomics', 'thuringeration',
             'advisor_loss', 'schleichers_schemes', 'disarray', 'dne', 'businesses_lose_confidence', 'article_48',
-            'military_relations'];
+            'military_relations', 'postal_affairs'];
 Q.advisor_action_timer = 0;
 Q.advisor_loss_timer = 0;
 // party affairs timers
@@ -567,6 +567,7 @@ Q.abortion_referendum_timer = 0;
 Q.buyer_referendum_timer = 0;
 Q.council_development_timer = 0;
 Q.spanish_war_timer = 0;
+Q.postal_affairs_timer = 0;
 // event timers
 Q.emergency_cuts_timer = 0;
 Q.unemployment_insurance_timer = 0;

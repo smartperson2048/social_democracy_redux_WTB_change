@@ -2731,6 +2731,18 @@ go-to: ministries
 
 Julius Leber of the SPD has been appointed Reichswehr Minister.
 
+@postal_affairs
+title: Postal Affairs Ministry
+view-if: fun_value >= 62 and fun_value < 70 and postal_affairs_minister_party != "SPD"
+subtitle: This is not our typical domain, and it is not recommended we take this ministry unless we're fine with silly jokes.
+unavailable-subtitle: We do not have enough leverage.
+tags: mins_1928
+choose-if: leverage >= 35 and president == "Wirth"
+on-arrival: leverage -= 35; postal_affairs_minister_party = "SPD"; postal_affairs_minister = "Fillak"
+go-to: ministries
+
+Tobias Fillak of the SPD has been appointed Postal Affairs Minister.
+
 
 
 @no_more
@@ -2795,4 +2807,11 @@ title: Drop the Reichswehr Ministry.
 view-if: reichswehr_minister_party = "SPD"
 on-arrival: reichswehr_minister_party = "I"; reichswehr_minister = "Groener"; leverage += 15; coup_progress -= 1
 tags: drop_mins_1928
+go-to: ministries
+
+@drop_postal_affairs
+title: Drop the Postal Affairs Ministry.
+view-if: postal_affairs_minister_party == "SPD"
+tags: drop_mins_1928
+on-arrival: leverage += 35; postal_affairs_minister_party = "I"; postal_affairs_minister = "Nobody"
 go-to: ministries
