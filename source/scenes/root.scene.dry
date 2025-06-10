@@ -1057,12 +1057,12 @@ It is a grim time for German democracy. Following the largest crash in the stock
 It will be our responsibility to ensure that this crisis of capitalism will not end so badly for the working class.
 
 @1925_main
-view-if: year == 1925
+view-if: year == 1919
 audio: shuffle music/1928_1930/FruhlingsliedMendelssohn.mp3 music/1928_1930/AUF_HOHEN_BERGEN_noise_reduced.mp3 music/1928_1930/MarekWeber.mp3 music/1928_1930/BAUERNKAPELLE.mp3 music/1928_1933/DERLINDENBAUM_normalized.mp3 music/1928_1933/ZurSonne_zurFreiheit.mp3 music/1928_1933/arbeiter_marseille.mp3 music/1928_1933/Wann_wir_schreiten_Seit_an_Seit.mp3 music/1930_1933/Internationale-de_normalized.ogg
 new-page: true
 go-to: main if difficulty >= 0; main.main_easy if difficulty < 0
 
-= 1925
+= 1919
 
 It is an uncertain time for German democracy. Though the crises of 1923 have subsided and given way to a stabilization and normalization, the bourgeois parties continue to shift to the right to exclude us from government, even including the anticonstitutional DNVP in the form of the Luther cabinet which has just assumed power. 
 
